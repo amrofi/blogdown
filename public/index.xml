@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Adriano M R Figueiredo</title>
+    <link>/</link>
+      <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <description>Adriano M R Figueiredo</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Thu, 19 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>img/icon-32.png</url>
+      <title>Adriano M R Figueiredo</title>
+      <link>/</link>
+    </image>
+    
+    <item>
+      <title>Migração do Rpubs para um website com Blogdown </title>
+      <link>/post/migracao-do-rpubs-para-um-website-com-blogdown/</link>
+      <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/post/migracao-do-rpubs-para-um-website-com-blogdown/</guid>
+      <description>
+
+
+&lt;div id=&#34;Licença&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Licença&lt;/h1&gt;
+&lt;p&gt;This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/4.0/&#34; class=&#34;uri&#34;&gt;http://creativecommons.org/licenses/by-sa/4.0/&lt;/a&gt; or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png&#34; alt=&#34;License: CC BY-SA 4.0&#34; style=&#34;width:25.0%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;License: CC BY-SA 4.0&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;introdução&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introdução&lt;/h1&gt;
+&lt;p&gt;Prezados leitores. Iniciei essa jornada de fazer um website com o pacote &lt;code&gt;blogdown&lt;/code&gt; e estou aos poucos migrando minhas informações para o site. Fiz várias postagens utilizando a ferramenta de publicação com o RStudio e o RMarkdown colocando no Rpubs: &lt;a href=&#34;http://rpubs.com/amrofi/&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/&lt;/a&gt;. Agora estou aos poucos elaborando este site para melhor apresentar meu trabalho a vocês.
+Espero que tenham paciência pois ainda estou aprendendo a mexer no site. Inicio pelo código de religião com text mining pois sem Deus nada disso seria possível.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;religião&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Religião&lt;/h1&gt;
+&lt;p&gt;Text Mining e Nuvem de palavras com R: Bíblia, Evangelho segundo Mateus: &lt;a href=&#34;http://rpubs.com/amrofi/word_cloud_with_R_Mateus&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/word_cloud_with_R_Mateus&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;econometria&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Econometria&lt;/h1&gt;
+&lt;p&gt;Econometria: Salários de advogados - Wooldridge(exemplo 7.8) adaptado de MOHR (2018): &lt;a href=&#34;http://rpubs.com/amrofi/wooldridge_ex7_8&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/wooldridge_ex7_8&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: exemplo de seleção de modelos, Faraway (2014): &lt;a href=&#34;http://rpubs.com/amrofi/Faraway_backward_selection&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/Faraway_backward_selection&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: exercício crescimento municipal em Mato Grosso entre 2001 e 2010: &lt;a href=&#34;http://rpubs.com/amrofi/growth_mt2001_2010&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/growth_mt2001_2010&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: exemplo multicolinearidade - horas de trabalho da mulher, Gujarati (2015, p.84-92 english second edition): &lt;a href=&#34;http://rpubs.com/amrofi/Gujarati_women_hours&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/Gujarati_women_hours&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: exemplo 11.10, heterocedasticidade, Gujarati (2004, p.424 english edition) (p388 Brazilian edition): &lt;a href=&#34;http://rpubs.com/amrofi/Gujarati_salesp424&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/Gujarati_salesp424&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: regressão com dados do Índice de Competitividade Global do WEF e o pacote &lt;code&gt;data360r&lt;/code&gt;: &lt;a href=&#34;http://rpubs.com/amrofi/competitiveness_data360r&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/competitiveness_data360r&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: exercício da quantidade produzida de algodão em MS, MT e GO: &lt;a href=&#34;http://rpubs.com/amrofi/cotton_exercise&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/cotton_exercise&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: regressão linear por matrizes: &lt;a href=&#34;http://rpubs.com/amrofi/matrix_reg&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/matrix_reg&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Dados do IPEA com R: &lt;code&gt;ipeadatar&lt;/code&gt;: &lt;a href=&#34;http://rpubs.com/amrofi/ipeadatar_exemplo&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/ipeadatar_exemplo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: exercício Longley, Forças Armadas, de Greene (2003), Tabela F4_2: &lt;a href=&#34;http://rpubs.com/amrofi/example_greene_F4_2&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/example_greene_F4_2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: exercício Tabela F3.1, investimento de Greene (2012,7ed.,p.28-29 e 1109): &lt;a href=&#34;http://rpubs.com/amrofi/example_greene_F3_1&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/example_greene_F3_1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: exemplos 10.5 e 12.3 do Wooldridge (2016, p.390): &lt;a href=&#34;http://rpubs.com/amrofi/ex_wooldridge_12_3_autocorrelation&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/ex_wooldridge_12_3_autocorrelation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: exercício 11.15, automóveis, Gujarati e Porter (2011, p.408-409): &lt;a href=&#34;http://rpubs.com/amrofi/exercicio_gujarati_11_15&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/exercicio_gujarati_11_15&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: exercício Efeitos da Isenção de Impostos nas Taxas de Fertilidade: &lt;a href=&#34;http://rpubs.com/amrofi/ex_wooldridge_10_8_update&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/ex_wooldridge_10_8_update&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: exercício produção de soja em Sinop com dummies: &lt;a href=&#34;http://rpubs.com/amrofi/exercicio_sinop&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/exercicio_sinop&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: exercício Efeitos da Isenção de Impostos nas Taxas de Fertilidade: &lt;a href=&#34;http://rpubs.com/amrofi/example_wooldridge_10_4_and_10_8&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/example_wooldridge_10_4_and_10_8&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: exercício 7.19, demanda por frangos, Gujarati e Porter (2011, p.235-236): &lt;a href=&#34;http://rpubs.com/amrofi/exercicio_gujarati_7_19&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/exercicio_gujarati_7_19&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria: exercício 5.14, demanda de moeda, Gujarati e Porter (2011, p.157): &lt;a href=&#34;http://rpubs.com/amrofi/exercicio_gujarati_5_14&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/exercicio_gujarati_5_14&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;séries-temporais&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Séries Temporais&lt;/h1&gt;
+&lt;p&gt;Séries Temporais com R: Combinação de forecasts para o Consumo do Varejo em MS com &lt;code&gt;forecastHybrid&lt;/code&gt;: &lt;a href=&#34;http://rpubs.com/amrofi/forecastHybrid_varejoms&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/forecastHybrid_varejoms&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Séries Temporais com R: Exemplo ARCH com stocks: &lt;a href=&#34;http://rpubs.com/amrofi/stocks_garch&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/stocks_garch&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Séries Temporais com R: Modelo híbrido para BVSP Bovespa - B3: &lt;a href=&#34;http://rpubs.com/amrofi/Time_Series_Hybrid&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/Time_Series_Hybrid&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Séries Temporais com R: Modelo híbrido de Hyndman e Athanasopoulos (2018): &lt;a href=&#34;http://rpubs.com/amrofi/combination_forecast&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/combination_forecast&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Séries Temporais com R: Análise ARIMA do Consumo do Varejo em MS: &lt;a href=&#34;http://rpubs.com/amrofi/arima_varejoms&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/arima_varejoms&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Séries Temporais com R: Arima simulator: &lt;a href=&#34;http://rpubs.com/amrofi/arima_simulator&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/arima_simulator&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Séries Temporais: previsão de ações com ETS: &lt;a href=&#34;http://rpubs.com/amrofi/stocks_ETS&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/stocks_ETS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Séries Temporais: suavização exponencial e acurácia: &lt;a href=&#34;http://rpubs.com/amrofi/smoothing_varejoms&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/smoothing_varejoms&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Séries Temporais: decomposição clássica e a abordagem X11: &lt;a href=&#34;http://rpubs.com/amrofi/decompose_x11_varejoms&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/decompose_x11_varejoms&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Aplicações com R: preços de carros - tabela FIPE: &lt;a href=&#34;http://rpubs.com/amrofi/aplication_car_price&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/aplication_car_price&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Séries Temporais com R: Modelo híbrido em &lt;code&gt;opera&lt;/code&gt;: &lt;a href=&#34;http://rpubs.com/amrofi/Time_Series_Hybrid_opera&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/Time_Series_Hybrid_opera&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Tópicos de econometria: ações: &lt;a href=&#34;http://rpubs.com/amrofi/acoesBOV_VALE3&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/acoesBOV_VALE3&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Tópicos de econometria: tipos de datasets: &lt;a href=&#34;http://rpubs.com/amrofi/TS_dataset_types&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/TS_dataset_types&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Apresentação das Séries Temporais com R: &lt;a href=&#34;http://rpubs.com/amrofi/time_series_rstudio_intro&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/time_series_rstudio_intro&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;microdados-amostra-complexa---survey-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Microdados (Amostra complexa - survey data)&lt;/h1&gt;
+&lt;p&gt;Econometria com Microdados da PNAD contínua de 2018 com R::PNADcIBGE, de BRAGA (2017): &lt;a href=&#34;http://rpubs.com/amrofi/pnadcibge_survey&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/pnadcibge_survey&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Econometria com Complex Survey: Resolução exercício 7.6 Heeringa et al (2010): &lt;a href=&#34;http://rpubs.com/amrofi/Econometrics_survey_heeringa76&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/Econometrics_survey_heeringa76&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;painel-panel-data&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Painel (Panel data)&lt;/h1&gt;
+&lt;p&gt;Econometria com Panel Data: Exemplo utilizando &lt;code&gt;pder::FinanceGrowth&lt;/code&gt; dataset: &lt;a href=&#34;http://rpubs.com/amrofi/Econometrics_panel_FinanceGrowth&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/Econometrics_panel_FinanceGrowth&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Painel Espacial com R: reproduzindo Millo e Piras (2012): &lt;a href=&#34;http://rpubs.com/amrofi/spatial_panel_with_R&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/spatial_panel_with_R&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;economia-regional&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Economia Regional&lt;/h1&gt;
+&lt;p&gt;GVC com R: reprodução do &lt;code&gt;decompr&lt;/code&gt; de Bastiaan Quast: &lt;a href=&#34;http://rpubs.com/amrofi/decompr_vignette&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/decompr_vignette&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Economia Regional: exercícios com R: &lt;a href=&#34;http://rpubs.com/amrofi/Regional_Economics_exercises&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/Regional_Economics_exercises&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Economia Regional: Mapas de Quociente Locacional em R: &lt;a href=&#34;http://rpubs.com/amrofi/Regional_Economics_LQmaps&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/Regional_Economics_LQmaps&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Economia Regional: análise de insumo-produto de Leontief em R: &lt;a href=&#34;http://rpubs.com/amrofi/Regional_Economics_mip&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/Regional_Economics_mip&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Economia Regional: Lei de Zipf em R: &lt;a href=&#34;http://rpubs.com/amrofi/Regional_Economics_zipfms&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/Regional_Economics_zipfms&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Economia Regional: Mapas em R: &lt;a href=&#34;http://rpubs.com/amrofi/Regional_Economics_Spatial&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/Regional_Economics_Spatial&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;instalação-do-r-e-rstudio&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Instalação do R e RStudio&lt;/h1&gt;
+&lt;p&gt;Apêndice - instalação do RStudio: &lt;a href=&#34;http://rpubs.com/amrofi/instrucoes_RStudio&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/instrucoes_RStudio&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

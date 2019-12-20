@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2019-12-19T18:36:32-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/blogdown/</loc>
+    <lastmod>2019-12-19T18:36:32-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/migracao-do-rpubs-para-um-website-com-blogdown/</loc>
+    <lastmod>2019-12-19T18:36:32-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2019-12-19T18:36:32-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/posts/</loc>
+    <lastmod>2019-12-19T18:36:32-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/rpubs/</loc>
+    <lastmod>2019-12-19T18:36:32-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2019-12-19T18:36:32-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/authors/admin/</loc>
+  </url>
+  
+  <url>
+    <loc>/authors/</loc>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>/courses/</loc>
+  </url>
+  
+  <url>
+    <loc>/news/</loc>
+  </url>
+  
+  <url>
+    <loc>/publication_types/</loc>
+  </url>
+  
+  <url>
+    <loc>/publication/</loc>
+  </url>
+  
+</urlset>

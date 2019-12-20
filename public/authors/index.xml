@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors | Adriano M R Figueiredo</title>
+    <link>/authors/</link>
+      <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authors</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright>
+    <image>
+      <url>img/icon-32.png</url>
+      <title>Authors</title>
+      <link>/authors/</link>
+    </image>
+    
+    <item>
+      <title></title>
+      <link>/authors/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/authors/admin/</guid>
+      <description>&lt;p&gt;Adriano M R Figueiredo is a professor of Regional Economics and Quantitative Methods at the Federal University of Mato Grosso do Sul. His research interests include regional economics, econometrics, sustainable public policies and agricultural economics. He leads the Human Development (DESENHO) group, which studies social and economic development at Mato Grosso do Sul, Brazil.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

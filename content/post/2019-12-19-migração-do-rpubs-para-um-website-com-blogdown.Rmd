@@ -1,0 +1,151 @@
+---
+title: 'Migração do Rpubs para um website com Blogdown '
+author: "Adriano M R Figueiredo"
+date: '2019-12-19'
+categories: []
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+lastmod: '2019-12-19T18:36:32-04:00'
+projects: []
+slug: migração-do-rpubs-para-um-website-com-blogdown
+subtitle: ''
+summary: Neste post faço um esclarecimento de postagens anteriores que fiz em Rpubs.com/amrofi
+tags:
+- Rpubs
+- Blogdown
+- posts
+authors: []
+---
+
+Licença {-#Licença}
+===================
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <http://creativecommons.org/licenses/by-sa/4.0/> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+![License: CC BY-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png){ width=25% }
+
+Introdução
+=============
+
+Prezados leitores. Iniciei essa jornada de fazer um website com o pacote `blogdown` e estou aos poucos migrando minhas informações para o site. Fiz várias postagens utilizando a ferramenta de publicação com o RStudio e o RMarkdown colocando no Rpubs: <http://rpubs.com/amrofi/>. Agora estou aos poucos elaborando este site para melhor apresentar meu trabalho a vocês.
+Espero que tenham paciência pois ainda estou aprendendo a mexer no site. Inicio pelo código de religião com text mining pois sem Deus nada disso seria possível. 
+
+Religião
+=================
+
+Text Mining e Nuvem de palavras com R: Bíblia, Evangelho segundo Mateus: <http://rpubs.com/amrofi/word_cloud_with_R_Mateus>
+
+Econometria
+================
+
+Econometria: Salários de advogados - Wooldridge(exemplo 7.8) adaptado de MOHR (2018): <http://rpubs.com/amrofi/wooldridge_ex7_8>    
+
+Econometria: exemplo de seleção de modelos, Faraway (2014): <http://rpubs.com/amrofi/Faraway_backward_selection>    
+
+Econometria: exercício crescimento municipal em Mato Grosso entre 2001 e 2010: <http://rpubs.com/amrofi/growth_mt2001_2010>    
+
+Econometria: exemplo multicolinearidade - horas de trabalho da mulher, Gujarati (2015, p.84-92 english second edition): <http://rpubs.com/amrofi/Gujarati_women_hours>    
+
+Econometria: exemplo 11.10, heterocedasticidade, Gujarati (2004, p.424 english edition) (p388 Brazilian edition): <http://rpubs.com/amrofi/Gujarati_salesp424>    
+
+Econometria: regressão com dados do Índice de Competitividade Global do WEF e o pacote `data360r`: <http://rpubs.com/amrofi/competitiveness_data360r>    
+
+Econometria: exercício da quantidade produzida de algodão em MS, MT e GO: <http://rpubs.com/amrofi/cotton_exercise>     
+
+Econometria: regressão linear por matrizes: <http://rpubs.com/amrofi/matrix_reg>    
+
+Dados do IPEA com R: `ipeadatar`: <http://rpubs.com/amrofi/ipeadatar_exemplo>    
+
+Econometria: exercício Longley, Forças Armadas, de Greene (2003), Tabela F4_2: <http://rpubs.com/amrofi/example_greene_F4_2>     
+
+Econometria: exercício Tabela F3.1, investimento de Greene (2012,7ed.,p.28-29 e 1109): <http://rpubs.com/amrofi/example_greene_F3_1>    
+
+Econometria: exemplos 10.5 e 12.3 do Wooldridge (2016, p.390): <http://rpubs.com/amrofi/ex_wooldridge_12_3_autocorrelation>    
+
+Econometria: exercício 11.15, automóveis, Gujarati e Porter (2011, p.408-409): <http://rpubs.com/amrofi/exercicio_gujarati_11_15>     
+
+Econometria: exercício Efeitos da Isenção de Impostos nas Taxas de Fertilidade: <http://rpubs.com/amrofi/ex_wooldridge_10_8_update>    
+
+Econometria: exercício produção de soja em Sinop com dummies:  <http://rpubs.com/amrofi/exercicio_sinop>    
+
+Econometria: exercício Efeitos da Isenção de Impostos nas Taxas de Fertilidade: <http://rpubs.com/amrofi/example_wooldridge_10_4_and_10_8>    
+
+Econometria: exercício 7.19, demanda por frangos, Gujarati e Porter (2011, p.235-236): <http://rpubs.com/amrofi/exercicio_gujarati_7_19>     
+
+Econometria: exercício 5.14, demanda de moeda, Gujarati e Porter (2011, p.157): <http://rpubs.com/amrofi/exercicio_gujarati_5_14>    
+
+Séries Temporais
+=================
+
+Séries Temporais com R: Combinação de forecasts para o Consumo do Varejo em MS com `forecastHybrid`: <http://rpubs.com/amrofi/forecastHybrid_varejoms>    
+
+Séries Temporais com R: Exemplo ARCH com stocks: <http://rpubs.com/amrofi/stocks_garch>     
+
+Séries Temporais com R: Modelo híbrido para BVSP Bovespa - B3: <http://rpubs.com/amrofi/Time_Series_Hybrid>    
+
+Séries Temporais com R: Modelo híbrido de Hyndman e Athanasopoulos (2018): <http://rpubs.com/amrofi/combination_forecast>    
+
+Séries Temporais com R: Análise ARIMA do Consumo do Varejo em MS: <http://rpubs.com/amrofi/arima_varejoms>    
+
+Séries Temporais com R: Arima simulator: <http://rpubs.com/amrofi/arima_simulator>    
+
+Séries Temporais: previsão de ações com ETS: <http://rpubs.com/amrofi/stocks_ETS>    
+
+Séries Temporais: suavização exponencial e acurácia: <http://rpubs.com/amrofi/smoothing_varejoms>    
+
+Séries Temporais: decomposição clássica e a abordagem X11: <http://rpubs.com/amrofi/decompose_x11_varejoms>    
+
+
+Aplicações com R: preços de carros - tabela FIPE: <http://rpubs.com/amrofi/aplication_car_price>    
+
+Séries Temporais com R: Modelo híbrido em `opera`: <http://rpubs.com/amrofi/Time_Series_Hybrid_opera>    
+
+Tópicos de econometria: ações: <http://rpubs.com/amrofi/acoesBOV_VALE3>    
+
+Tópicos de econometria: tipos de datasets: <http://rpubs.com/amrofi/TS_dataset_types>    
+
+Apresentação das Séries Temporais com R: <http://rpubs.com/amrofi/time_series_rstudio_intro>    
+
+
+
+Microdados (Amostra complexa - survey data)
+=================
+
+Econometria com Microdados da PNAD contínua de 2018 com R::PNADcIBGE, de BRAGA (2017): <http://rpubs.com/amrofi/pnadcibge_survey>    
+
+Econometria com Complex Survey: Resolução exercício 7.6 Heeringa et al (2010): <http://rpubs.com/amrofi/Econometrics_survey_heeringa76>    
+
+
+
+Painel (Panel data)
+=================
+
+Econometria com Panel Data: Exemplo utilizando `pder::FinanceGrowth` dataset: <http://rpubs.com/amrofi/Econometrics_panel_FinanceGrowth>    
+
+Painel Espacial com R: reproduzindo Millo e Piras (2012): <http://rpubs.com/amrofi/spatial_panel_with_R>    
+
+
+
+Economia Regional
+=================
+
+GVC com R: reprodução do `decompr` de Bastiaan Quast: <http://rpubs.com/amrofi/decompr_vignette>    
+
+Economia Regional: exercícios com R: <http://rpubs.com/amrofi/Regional_Economics_exercises>    
+
+Economia Regional: Mapas de Quociente Locacional em R: <http://rpubs.com/amrofi/Regional_Economics_LQmaps>     
+
+Economia Regional: análise de insumo-produto de Leontief em R: <http://rpubs.com/amrofi/Regional_Economics_mip>    
+
+Economia Regional: Lei de Zipf em R: <http://rpubs.com/amrofi/Regional_Economics_zipfms>    
+
+Economia Regional: Mapas em R: <http://rpubs.com/amrofi/Regional_Economics_Spatial>    
+
+Instalação do R e RStudio
+=================
+
+Apêndice - instalação do RStudio: <http://rpubs.com/amrofi/instrucoes_RStudio>    
+

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags | Adriano M R Figueiredo</title>
+    <link>/tags/</link>
+      <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <description>Tags</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Mon, 23 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>img/icon-32.png</url>
+      <title>Tags</title>
+      <link>/tags/</link>
+    </image>
+    
+    <item>
+      <title>artigos publicados</title>
+      <link>/tags/artigos-publicados/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/artigos-publicados/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cadeia global de valor</title>
+      <link>/tags/cadeia-global-de-valor/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/cadeia-global-de-valor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>complexidade econômica</title>
+      <link>/tags/complexidade-economica/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/complexidade-economica/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>desenvolvimento regional</title>
+      <link>/tags/desenvolvimento-regional/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/desenvolvimento-regional/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GVC</title>
+      <link>/tags/gvc/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/gvc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>journals</title>
+      <link>/tags/journals/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/journals/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>papers</title>
+      <link>/tags/papers/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/papers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Blogdown</title>
+      <link>/tags/blogdown/</link>
+      <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/blogdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>posts</title>
+      <link>/tags/posts/</link>
+      <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/posts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rpubs</title>
+      <link>/tags/rpubs/</link>
+      <pubDate>Thu, 19 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/tags/rpubs/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>desenvolvimento regional | Adriano M R Figueiredo</title>
+    <link>/tags/desenvolvimento-regional/</link>
+      <atom:link href="/tags/desenvolvimento-regional/index.xml" rel="self" type="application/rss+xml" />
+    <description>desenvolvimento regional</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Mon, 23 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>img/icon-32.png</url>
+      <title>desenvolvimento regional</title>
+      <link>/tags/desenvolvimento-regional/</link>
+    </image>
+    
+    <item>
+      <title>Análise do desenvolvimento regional: o caso de Mato Grosso do Sul no período de 2002 a 2017</title>
+      <link>/project/analise-do-desenvolvimento-regional-o-caso-de-mato-grosso-do-sul-no-periodo-de-2002-a-2017/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/project/analise-do-desenvolvimento-regional-o-caso-de-mato-grosso-do-sul-no-periodo-de-2002-a-2017/</guid>
+      <description>
+
+
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/project/2019-12-23-análise-do-desenvolvimento-regional-o-caso-de-mato-grosso-do-sul-no-período-de-2002-a-2017_files/RGI_MS.JPG&#34; alt=&#34;Regiões geográficas intermediárias de MS. Fonte: IBGE, 2017.&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Regiões geográficas intermediárias de MS. Fonte: IBGE, 2017.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Projeto sem fomento externo iniciado em Fev/2018 e prazo previsto de 24 meses. (em fase de elaboração do relatório final).&lt;/p&gt;
+&lt;p&gt;Considerando as várias correntes teóricas versando sobre o desenvolvimento regional, a questão norteadora da pesquisa será: quais as principais variáveis determinantes do desenvolvimento regional do estado de Mato Grosso do Sul e seus municípios, no período 2002-2017?&lt;/p&gt;
+&lt;p&gt;Para estudar o processo de crescimento e desenvolvimento econômico entre países/estados/regiões/municípios e, dessa maneira, verificar se há crescimento equilibrado ou desigual, vários autores utilizam técnicas da análise regional e econometria espacial para visualizar os efeitos espaciais do processo de crescimento regional, a análise de convergência de renda per capita, a dinâmica regional e as possíveis desigualdades regionais.&lt;/p&gt;
+&lt;p&gt;Entre os autores com análise aplicadas aos municípios brasileiros destacam-se Perobelli et al (2006), Maranduba Júnior (2007), Barreto (2007), Monastério e Ávila (2004), Resende e Silva (2007), Porsse (2008), Oliveira (2005), Dassow, Costa e Figueiredo (2011 e 2012), e Silva Jr e Figueiredo (2017). Essas técnicas estatísticas e/ou econométricas também possibilitam identificar a formação de possíveis agrupamentos de municípios que apresentam valores semelhantes. Em outras palavras, permite verificar a existência de possíveis aglomerações de crescimento, caso existam. A identificação destas possibilita conhecer as regiões mais dinâmicas e potenciais do estado e, por outro lado, regiões carentes e enclaves. Nesse sentido, justifica-se o estudo criando vetores para os formuladores de política,uma ideia mais clara dos locais que carecem de atuação diferenciada, ampliando os indicadores e a temporalidade comparativamente aos estudos citados.&lt;/p&gt;
+&lt;p&gt;O objetivo geral é: Avaliar a dinâmica e a evolução comparativa dos municípios sul-mato-grossenses no período 2002-2017, com respeito aos indicadores associados ao desenvolvimento estadual de
+Mato Grosso do Sul e de seus municípios. Especificamente, objetiva-se: a) Avaliar os determinantes da estrutura econômica municipal sobre seu desenvolvimento municipal e do estado; b) Avaliar a mudança na distribuição regional do produto no âmbito do desenvolvimento path-dependent; c) Identificar eventuais tendências de polarização regional em distintos grupos; d) Avaliar o efeito da complexidade econômica sobre o desenvolvimento municipal; e, e) Avaliar o efeito do comércio internacional, da abertura comercial e da competitividade sobre o desenvolvimento municipal.&lt;/p&gt;
+&lt;p&gt;A inovação e originalidade estão na aplicação, primeiro, para bases de dados municipais de MS de 2002 a 2016 (portanto, dados em painel). As demais inovações, para o referido conjunto de dados, são: a) de métodos de análise espacial de dados, como os da econometria espacial; b) do cômputo de indicadores para explicar a evolução e dinâmica do desenvolvimento municipal de Mato Grosso do Sul, baseados em teorias da economia regional como: índice de variação de Williamson (1965); o Quociente locacional de Haig (1928); o Coeficiente de especialização de Hoover e Giarratani (1984); o índice de dessemelhança de Krugman (1993); coeficiente de localização de Florence e Baldamus (1948); o índice de Herfindahl-Hirschman de concentração; o índices de concentração de Gini para renda e
+Gini Locacional de Hoover (1936); potencial de mercado de Harris (1954); o índice de dependência espacial de Moran e de Anselin (1995) e de Ellison-Glaeser (1997); índice de separação espacial de Venables; c) Outros indicadores serão ainda utilizados para a análise como a conciliação do desenvolvimento regional com a teoria da complexidade econômica de Hausmann et al. (2014) e Gala (2017); e, d) Utilização da linguagem de programação R para construção de indicadores de análise regional dos municípios de Mato Grosso do Sul.&lt;/p&gt;
+&lt;p&gt;Executado pela Universidade Federal de Mato Grosso do Sul (UFMS) na Escola de Administração e Negócios (ESAN). Constam na equipe, além do coordenador Prof. Dr. Adriano M R Figueiredo, o Prof. Dr. Leonardo F. Figueiredo Neto, a Profa. Dra. Mayra B. B. Fagundes, e os Mestres em Administração da UFMS (Campo Grande-MS) Ernani de A. Silva Jr. (&lt;em&gt;A DINÂMICA DO CRESCIMENTO ECONÔMICO MUNICIPAL EM MATO GROSSO DO SUL: UMA ANÁLISE ESPACIAL&lt;/em&gt;, 2019) e Eliane de S. Andrade (&lt;em&gt;DINÂMICA DO MERCADO DE TRABALHO DAS ATIVIDADES DE BASE AGRÍCOLAS NAS REGIÕES GEOGRÁFICAS IMEDIATAS DE MATO GROSSO DO SUL&lt;/em&gt;,2019).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Complexidade econômica em cadeias globais de valor: dinâmicas e tendências do desenvolvimento regional</title>
+      <link>/project/complexidade-economica-em-cadeias-globais-de-valor/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/project/complexidade-economica-em-cadeias-globais-de-valor/</guid>
+      <description>
+
+
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/project/2019-12-23-complexidade-economica-em-cadeias-globais-de-valor_files/featured.jpg&#34; alt=&#34;GVC Types. Source: Gereffi (2011), https://unstats.un.org/unsd/trade/s_geneva2011/presentations/wed-am/gary-gereffi.pptx&#34; style=&#34;width:50.0%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;GVC Types. Source: Gereffi (2011), &lt;a href=&#34;https://unstats.un.org/unsd/trade/s_geneva2011/presentations/wed-am/gary-gereffi.pptx&#34; class=&#34;uri&#34;&gt;https://unstats.un.org/unsd/trade/s_geneva2011/presentations/wed-am/gary-gereffi.pptx&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Projeto iniciado em 06/Dez/2018 com auxílio de pesquisa do CNPq e prazo previsto de 36 meses.&lt;/p&gt;
+&lt;p&gt;A análise das cadeias globais de valor (CGV) tem sido importante para avaliar o posicionamento estratégico dos países e dos setores econômicos (TIAN et al, 2016) e como os setores econômicos têm se modernizado ou desenvolvido. Marcato e Baltar (2017) analisaram o progresso econômico e social associado às CGV. As diferenças entre os países ricos e pobres, e a discussão ainda presente de “centro-periferia” nas cadeias globais de valor têm apontado para a presença de maior complexidade econômica (CE) naqueles países centrais, ou mais ricos (CARDOSO e REIS, 2016). Questiona-se: de que modo a complexidade econômica está associada à participação nas cadeias globais de valor em regiões subnacionais? A hipótese de Cheng et al (2015) é que um posicionamento mais acima na CGV (setores mais a frente na cadeia, rumo ao consumidor final) e com maior complexidade econômica estão associados a maior parcela do país no valor adicionado da CGV. A análise da CE tem se desenvolvida em termos da diversidade e ubiquidade dos produtos nos fluxos internacionais de comércio, assim como em termos da estrutura setorial do emprego. Desta forma, busca-se compreender a interação entre as cadeias globais de valor relevantes para regiões subnacionais e as medidas de complexidade econômica baseadas em fluxos comerciais assim como em emprego gerado nos setores econômicos.&lt;/p&gt;
+&lt;p&gt;Executado pela Universidade Federal de Mato Grosso do Sul (UFMS) na Escola de Administração e Negócios (ESAN). Constam na equipe, além do coordenador Prof. Dr. Adriano M R Figueiredo, o Prof. Dr. Leonardo F. Figueiredo Neto, a Profa. Dra. Mayra B. B. Fagundes, e a mestranda em Economia da UFMT (Cuiabá-MT) Thaina M.G. Chaves.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

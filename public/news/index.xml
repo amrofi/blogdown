@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>News | Adriano M R Figueiredo</title>
+    <link>/news/</link>
+      <atom:link href="/news/index.xml" rel="self" type="application/rss+xml" />
+    <description>News</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright>
+    <image>
+      <url>/img/icon-32.png</url>
+      <title>News</title>
+      <link>/news/</link>
+    </image>
+    
+  </channel>
+</rss>

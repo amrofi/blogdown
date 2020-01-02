@@ -38,5 +38,10 @@ subtitle = ""
   icon_pack = "fab"
   name = "R-Econometrics"
   description = ""
-
+  
+[[feature]]
+  icon = "chart-area"
+  icon_pack = "fas"
+  name = "Applied Economics"
+  description = ""
 +++

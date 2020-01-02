@@ -21,15 +21,21 @@ subtitle = ""
   description = ""
   
 [[feature]]
-  icon = "chart-line"
+  icon = "chart-bar"
   icon_pack = "fas"
-  name = "Statistics"
+  name = "Applied Statistics"
   description = ""  
   
 [[feature]]
-  icon = "chart-area"
+  icon = "chart-line"
   icon_pack = "fas"
-  name = "Research"
+  name = "Applied Econometrics"
+  description = "" 
+
+[[feature]]
+  icon = "globe-americas"
+  icon_pack = "fas"
+  name = "Regional Economics"
   description = ""
 
 +++

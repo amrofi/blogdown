@@ -15,22 +15,17 @@ subtitle = ""
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons
 
 
-[[feature]]
-  icon = "chart-bar"
-  icon_pack = "fas"
-  name = "Applied Statistics"
-  description = ""  
-  
+
 [[feature]]
   icon = "chart-line"
   icon_pack = "fas"
-  name = "Applied Econometrics"
+  name = "Applied Statistics and Econometrics"
   description = "" 
 
 [[feature]]
   icon = "globe-americas"
   icon_pack = "fas"
-  name = "Regional Economics"
+  name = "Regional and Applied Economics"
   description = ""
   
 [[feature]]
@@ -39,9 +34,4 @@ subtitle = ""
   name = "R-Econometrics"
   description = ""
   
-[[feature]]
-  icon = "chart-area"
-  icon_pack = "fas"
-  name = "Applied Economics"
-  description = ""
 +++

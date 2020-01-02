@@ -14,12 +14,7 @@ subtitle = ""
 # 
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons
 
-[[feature]]
-  icon = "r-project"
-  icon_pack = "fab"
-  name = "R-Econometrics"
-  description = ""
-  
+
 [[feature]]
   icon = "chart-bar"
   icon_pack = "fas"
@@ -36,6 +31,12 @@ subtitle = ""
   icon = "globe-americas"
   icon_pack = "fas"
   name = "Regional Economics"
+  description = ""
+  
+[[feature]]
+  icon = "r-project"
+  icon_pack = "fab"
+  name = "R-Econometrics"
   description = ""
 
 +++

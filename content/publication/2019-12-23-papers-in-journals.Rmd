@@ -24,7 +24,7 @@ authors: []
 
 
 1.	  COUTINHO, M. R.; FAGUNDES, M. B. B.; FIGUEIREDO NETO, L. F.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2019.
-A contribuição das atividades de base agropecuária na geração de emprego nos municípios de Mato Grosso do Sul (Brasil) In EURE-REVISTA LATINOAMERICANA DE ESTUDIOS URBANO REGIONALES. , v.45, 223-244
+A contribuição das atividades de base agropecuária na geração de emprego nos municípios de Mato Grosso do Sul (Brasil) In _EURE-Revista Latinoamericana de Estudios Urbano Regionales_. , v.45, 223-244
 Palavras-chave: Desenvolvimento regional e local, Economia Regional, Agronegócio
 Áreas do conhecimento: Economia Regional e Urbana,Economia Agrária,Métodos e Técnicas do Planejamento Urbano e Regional
 Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Administração pública, defesa e seguridade social
@@ -33,7 +33,7 @@ O objetivo deste estudo foi analisar a contribuição das atividades de base agr
 
 
 2.	  FERNANDES, M. M.; OLIVEIRA, D. V.; FAGUNDES, Mayra Batista Bitencourt; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2018.
-A contribuição da avicultura de corte para o desenvolvimento do Mato Grosso do Sul In REVISTA BRASILEIRA DE DESENVOLVIMENTO REGIONAL. , v.6, 109-136
+A contribuição da avicultura de corte para o desenvolvimento do Mato Grosso do Sul In _Revista Brasileira de Desenvolvimento Regional_. , v.6, 109-136
 Palavras-chave: Agronegócio, aves, Desenvolvimento Multidimensional, ICN, Mato Grosso do Sul
 Áreas do conhecimento: Economia Agrária,Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
 Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Administração pública, defesa e seguridade social
@@ -42,7 +42,7 @@ O objetivo geral deste artigo é analisar a contribuição da avicultura na gera
 
 
 3.	 NASCIMENTO, A. P.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; MIRANDA, P. R.. 2018.
-DIMENSÃO DO PIB DO AGRONEGÓCIO NA ECONOMIA DE MATO GROSSO In ENSAIOS FEE (ONLINE). , v.38, 903-930
+Dimensão do PIB do Agronegócio na Economia de Mato Grosso In _Ensaios FEE (Online)_. , v.38, 903-930
 Palavras-chave: Agronegócio, Cadeia produtiva, insumo-produto, PIB
 Áreas do conhecimento: Economia Agrária,Economia Regional e Urbana,Métodos e Técnicas do Planejamento Urbano e Regional
 Setores de atividade: Administração pública, defesa e seguridade social, Agricultura, Pecuária e Serviços Relacionados
@@ -51,7 +51,7 @@ O objetivo principal foi avaliar e mensurar a importância de cadeias produtivas
 
 
 4.	 DELGADO, H. J.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
-A criminalidade em Mato Grosso: uma descrição do período 2006-2014 In REVISTA ELETRÔNICA DOCUMENTO/MONUMENTO. , v.21, 97-114
+A criminalidade em Mato Grosso: uma descrição do período 2006-2014 In _Revista Eletrônica Documento/Monumento_. , v.21, 97-114
 Palavras-chave: Crime, Mato Grosso, Homicídios
 Áreas do conhecimento: Economia Regional,Crescimento e Desenvolvimento Econômico,História Econômica
 Setores de atividade: Administração pública, defesa e seguridade social, Atividades de vigilância, segurança e investigação
@@ -60,7 +60,7 @@ O presente artigo objetiva descrever a criminalidade em Mato Grosso no período 
 
 
 5.	 TOLDI, K.; FROZZA, F.; BARI, M. L.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
-A evolução da agropecuária e da agroindústria brasileira: um comparativo da matriz insumo-produto 2003 e 2013 In ESPACIOS (CARACAS). , v.38, 2-17
+A evolução da agropecuária e da agroindústria brasileira: um comparativo da matriz insumo-produto 2003 e 2013 In _Espacios (Caracas)_. , v.38, 2-17, Caracas,Venezuela.
 Palavras-chave: insumo-produto, economia, agropecuária
 Áreas do conhecimento: Economia Agrária,Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
 Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
@@ -69,7 +69,7 @@ Verificou-se a evolução da agropecuária e da agroindústria no Brasil, entre 
 
 
 6.	 SILVA JUNIOR, E. A.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
-Análise da convergência de renda entre os municípios de Mato Grosso do Sul entre 1999 e 2012 In Revista de Economia da UEG. , v.13, 51-69
+Análise da convergência de renda entre os municípios de Mato Grosso do Sul entre 1999 e 2012 In _Revista de Economia da UEG_. , v.13, 51-69, Caracas,Venezuela.
 Palavras-chave: Crescimento Setorial, Mato Grosso do Sul, convergência
 Áreas do conhecimento: Crescimento e Desenvolvimento Econômico,Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Métodos e Técnicas do Planejamento Urbano e Regional
 Setores de atividade: Administração pública, defesa e seguridade social
@@ -78,7 +78,7 @@ Examina?-se a dinâmica setorial para o crescimento econômico municipal de Mato
 
 
 7.	 BROCANELLI, G. R. R.; FERRAZ, V. A. C.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
-Análise dos fatores de crescimento das receitas de exportações brasileiras de suco de laranja: 1997-2015 In ESPACIOS (CARACAS). , v.38, 16-27
+Análise dos fatores de crescimento das receitas de exportações brasileiras de suco de laranja: 1997-2015 In _Espacios (Caracas)_. , v.38, 16-27
 Palavras-chave: taxa de câmbio, shift-share, commodity
 Áreas do conhecimento: Economia Agrária,Métodos e Técnicas do Planejamento Urbano e Regional,Economia Internacional
 Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
@@ -87,7 +87,7 @@ Neste artigo são analisadas a taxa de câmbio, a quantidade exportada e o preç
 
 
 8.	 TEIXEIRA, M. D. J.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
-ANÁLISE INTERSETORIAL E ESPACIAL DA CADEIA PRODUTIVA DA MADEIRA E MÓVEIS NA ECONOMIA DE MATO GROSSO: UMA CONTRIBUIÇÃO PARA IDENTIFICAÇÃO DE APLS In REVISTA BRASILEIRA DE GESTÃO E DESENVOLVIMENTO REGIONAL. , v.13, 103-128
+Análise Intersetorial e Espacial da Cadeia Produtiva da Madeira e Móveis na Economia de Mato Grosso: uma Contribuição para Identificação de APLs In _Revista Brasileira de Gestão e Desenvolvimento Regional_. , v.13, 103-128
 Palavras-chave: Cadeia Produtiva da Madeira, Arranjo Produtivo Local, Desenvolvimento Regional
 Áreas do conhecimento: Economia Regional e Urbana,Métodos e Técnicas do Planejamento Urbano e Regional
 Setores de atividade: Administração pública, defesa e seguridade social, Produção Florestal
@@ -96,7 +96,7 @@ A cadeia produtiva de madeira e móveis apresentou evolução expressiva nos ind
 
 
 9.	  TORRES, O.; FAGUNDES, M. B. B.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; TREDEZINI, C. A. O.. 2017.
-Impacto da Implantação do Custo do Pedágio na BR-163 em Relação ao Transporte de Soja do Estado de Mato Grosso In REVISTA DE ECONOMIA E SOCIOLOGIA RURAL (IMPRESSO). , v.55, 533-550
+Impacto da Implantação do Custo do Pedágio na BR-163 em Relação ao Transporte de Soja do Estado de Mato Grosso In _Revista de Economia e Sociologia Rural (Impresso)_. , v.55, 533-550
 Palavras-chave: Agronegócio, competitividade, Politica Publica, Concessão da Rodovia
 Áreas do conhecimento: Economia Agrária,Administração,Economia Regional
 Setores de atividade: Administração pública, defesa e seguridade social, Transporte terrestre, Agricultura, Pecuária e Serviços Relacionados
@@ -105,7 +105,7 @@ Este artigo tem por objetivo a análise da concessão da rodovia BR-163, conside
 
 
 10.	   ALMEIDA, J. B. S. A.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
-POPULAÇÃO NEM-NEM: uma análise a partir dos dados da PNAD 2012 In REVISTA DE ESTUDOS SOCIAIS. , 106-129
+População Nem-Nem: uma análise a partir dos dados da PNAD 2012 In _Revista de Estudos Sociais_. , 106-129
 Palavras-chave: trabalho, educação, exclusão
 Áreas do conhecimento: Economia Regional,Crescimento e Desenvolvimento Econômico
 Setores de atividade: Administração pública, defesa e seguridade social
@@ -114,7 +114,7 @@ Este trabalho objetivou estudar o subgrupo populacional dos jovens de modo que s
 
 
 11.	 GIANETTI, G. W.; FIGUEIREDO, Adriano M.R. 2016.
-Indústria de Transformação na Geração de Produto e Renda de Mato Grosso do Sul: Uma Aplicação da Matriz de Contabilidade Social In Revista Brasileira de Estudos Regionais e Urbanos. , v.10, 64-81
+Indústria de Transformação na Geração de Produto e Renda de Mato Grosso do Sul: Uma Aplicação da Matriz de Contabilidade Social In _Revista Brasileira de Estudos Regionais e Urbanos_. , v.10, 64-81
 Palavras-chave: Economia Regional, Desenvolvimento, Politica Publica
 Áreas do conhecimento: Economia Agrária,Economia Regional
 Setores de atividade: Administração pública, defesa e seguridade social, Agricultura, Pecuária e Serviços Relacionados
@@ -123,7 +123,7 @@ Esta pesquisa analisa a participação da indústria de transformação na gera�
 
 
 12.	   FAGUNDES, M. B. B.; DIAS, D. T.; FIGUEIREDO, Adriano M.R; PITALUGA, C. M.. 2016.
-INTERLIGAÇÕES SETORIAIS E COMPOSIÇÃO DO PRODUTO, DEMANDA E RENDIMENTO DA AGROPECUÁRIA DE MATO GROSSO DO SUL: UMA APLICAÇÃO DA MATRIZ INSUMO-PRODUTO In CONTEXTUS - REVISTA CONTEMPORÂNEA DE ECONOMIA E GESTÃO. , v.14, 58-82
+Interligações Setoriais e Composição do Produto, Demanda e Rendimento da Agropecuária de Mato Grosso do Sul: uma Aplicação da Matriz Insumo-Produto In _Contextus - Revista Contemporânea de Economia e Gestão_. , v.14, 58-82
 Palavras-chave: agricultura, pecuária, produto interno bruto
 Áreas do conhecimento: Economia Agrária,Economia Regional
 Setores de atividade: Administração pública, defesa e seguridade social, Agricultura, Pecuária e Serviços Relacionados
@@ -132,13 +132,13 @@ O objetivo geral deste artigo é analisar a composição do produto, da demanda,
 
 
 13.	   AZEVEDO JUNIOR, W. C.; Dallemole Dilamar; FIGUEIREDO, A. M. R.; SANTANA, A. C.; FARIA, A. M. M.. 2015.
-ÁREAS DE INFLUÊNCIA ECONÔMICA DAS USINAS DE CANA-DE-AÇÚCAR EM MATO GROSSO, 2010 In Estudos do CEPE. , v.39, 117-133
+Áreas de Influência Econômica das Usinas de Cana-de-Açúcar em Mato Grosso, 2010 In _Estudos do CEPE_. , v.39, 117-133
 Palavras-chave: Modelo Gravitacional, Cadeia Sucroalcooleira, Mato Grosso
 Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [http://online.unisc.br/seer/index.php/cepe/article/view/5267]    
 
 
 14.	 LISBOA, E. A. S.; FIGUEIREDO, A. M. R.. 2014.
-A AGROINDÚSTRIA CANAVIEIRA MATO-GROSSENSE E O SISTEMA DE GESTÃO AMBIENTAL In Amazônia (Banco da Amazônia. 2005). n.19, v.10, 57-71
+A Agroindústria Canavieira Mato-Grossense e o Sistema de Gestão Ambiental In _Amazônia_ (Banco da Amazônia. 2005). n.19, v.10, 57-71
 Palavras-chave: gestão ambiental, desenvolvimento sustentável, setor sucroalcooleiro
 Áreas do conhecimento: Economia dos Recursos Naturais
 Setores de atividade: Fabricação de produtos diversos
@@ -147,7 +147,7 @@ A pesquisa foi elaborada com o objetivo de investigar a situação corrente do E
 
 
 15.	 SILVA, C. E. S. F.; SCHOENHERR, R. P.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2014.
-Efeitos dos investimentos públicos em infraestrutura para a Copa do Mundo FIFA 2014 no setor da construção em Mato Grosso In Revista de Economia da UEG. Seção Eletrônica. , v.10, 36-54
+Efeitos dos investimentos públicos em infraestrutura para a Copa do Mundo FIFA 2014 no setor da construção em Mato Grosso In _Revista de Economia da UEG_. Seção Eletrônica. , v.10, 36-54
 Palavras-chave: futebol, infraestrutura, construção
 Áreas do conhecimento: Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
 Setores de atividade: Construção de edifícios, Administração pública, defesa e seguridade social
@@ -156,7 +156,7 @@ A cidade de Cuiabá será sede da Copa do Mundo FIFA 2014. Um importante evento 
 
 
 16.	   FEARNSIDE, PHILIP M.; FIGUEIREDO, ADRIANO M. R.; BONJOUR, SANDRA C. M.. 2013.
-Amazonian forest loss and the long reach of China¿s influence In ENVIRONMENT, DEVELOPMENT AND SUSTAINABILITY. , v.15, 325-338
+Amazonian forest loss and the long reach of China's influence In _Environment, Development And Sustainability_. , v.15, 325-338
 Palavras-chave: Amazonia, Brazil, China, deforestation, soybeans
 Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
 Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Produção Florestal
@@ -165,7 +165,7 @@ This paper explores China’s role in deforestation in Latin America. Brazil’s
 
 
 17.	 OLIVEIRA, L. J.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; RAUSCHKOLB, A. S.. 2013.
-Ambientes institucional e organizacional do setor apícola na região norte de Mato Grosso In Revista Eletrônica Documento/Monumento. , v.10, 89-106
+Ambientes institucional e organizacional do setor apícola na região norte de Mato Grosso In _Revista Eletrônica Documento/Monumento_. , v.10, 89-106
 Palavras-chave: instituições, organizações, apicultura, Mato Grosso, Sinop-MT
 Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
 Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
@@ -174,7 +174,7 @@ Fez-se uma análise dos papéis dos ambientes institucional e organizacional no 
 
 
 18.	 CANGUSSU, S. V.; ROSA, M. J. A.; FIGUEIREDO, Adriano M.R. 2013.
-Determinantes do preço do frete rodoviário para transporte de soja em grãos em Mato Grosso In Revista de Economia da UEG. Seção Eletrônica. , v.9, 78-94
+Determinantes do preço do frete rodoviário para transporte de soja em grãos em Mato Grosso In _Revista de Economia da UEG_. Seção Eletrônica. , v.9, 78-94
 Palavras-chave: soja, frete, Mato Grosso
 Áreas do conhecimento: Economia Agrária,Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Economia Regional
 Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
@@ -183,7 +183,7 @@ A proposta deste trabalho é analisar as variáveis que influenciam na formaçã
 
 
 19.	 OLIVEIRA, L. J.; FIGUEIREDO, Adriano M.R; RAUSCHKOLB, A. S.. 2013.
-Estrutura de governança do setor apícola na região norte de Mato Grosso In Revista de Economia da UEG. Seção Eletrônica. , v.9, 95-115
+Estrutura de governança do setor apícola na região norte de Mato Grosso In _Revista de Economia da UEG_. Seção Eletrônica. , v.9, 95-115
 Palavras-chave: governança, transacao, apicultura
 Áreas do conhecimento: Economia Agrária,Economia dos Recursos Naturais,Economia Florestal
 Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
@@ -192,7 +192,7 @@ Nesse estudo analisou-se a estrutura de governança do setor apícola na região
 
 
 20.	 OLIVEIRA, L. J.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; RAUSCHKOLB, A. S.. 2013.
-Perfil tecnológico dos apicultores da região norte do estado de Mato Grosso In Amazônia (Banco da Amazônia. 2005). , v.8, 151-166
+Perfil tecnológico dos apicultores da região norte do estado de Mato Grosso In _Amazônia_ (Banco da Amazônia. 2005). , v.8, 151-166
 Palavras-chave: apicultura, perfil tecnologico, analise fatorial, Mato Grosso
 Áreas do conhecimento: Economias Agrária e dos Recursos Naturais,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
 Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
@@ -201,7 +201,7 @@ Avalia o perfil tecnológico dos apicultores da região norte de Mato Grosso. Fo
 
 
 21.	 OLIVEIRA, L. J.; RAUSCHKOLB, A. S.; DANIEL, L. P.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2012.
-Aglomerações produtivas do setor de criação e suínos no estado de Mato Grosso In Desafio (Campo Grande). , v.13, 83-95
+Aglomerações produtivas do setor de criação e suínos no estado de Mato Grosso In _Desafio_ (Campo Grande). , v.13, 83-95
 Palavras-chave: suinos, concentracao, ICN
 Áreas do conhecimento: Economia Agrária,Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
 Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
@@ -209,7 +209,7 @@ Referências adicionais: Português.
 
 
 22.	 PEES, D.A.; FIGUEIREDO, M. G.; FIGUEIREDO, Adriano M.R. 2012.
-Análise econométrica da oferta e demanda de carne bovina no Brasil no período de 2000 a 2010 In Revista de Economia da UEG. Seção Eletrônica. , v.8, 54-73
+Análise econométrica da oferta e demanda de carne bovina no Brasil no período de 2000 a 2010 In _Revista de Economia da UEG_. Seção Eletrônica. , v.8, 54-73
 Palavras-chave: carne bovina, oferta, demanda, modelo de equações simultâneas
 Áreas do conhecimento: Economia Agrária,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
 Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
@@ -218,7 +218,7 @@ Este trabalho teve como objetivo analisar a oferta e a demanda de carne bovina n
 
 
 23.	 DASSOW, C.; COSTA, R.M.G.S.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2012.
-Crescimento econômico e clusters municipais no estado de Mato Grosso In Nexos Econômicos (Salvador). , v.6, 11-33
+Crescimento econômico e clusters municipais no estado de Mato Grosso In _Nexos Econômicos_ (Salvador). , v.6, 11-33
 Palavras-chave: Polos, Região, Brasil
 Áreas do conhecimento: Economia Regional,Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Métodos e Técnicas do Planejamento Urbano e Regional
 Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Administração pública, defesa e seguridade social
@@ -227,7 +227,7 @@ RESUMO: Mato Grosso tem se destacado pelas altas taxas de crescimento econômico
 
 
 24.	 BERCHIELI, R.; FIGUEIREDO, Adriano M.R; BONJOUR, S. C. M.. 2012.
-Incentivos fiscais como instrumento da política agrícola recente de Mato Grosso: 1994-2008 In Revista Eletrônica Documento/Monumento. , v.7, 68-80
+Incentivos fiscais como instrumento da política agrícola recente de Mato Grosso: 1994-2008 In _Revista Eletrônica Documento/Monumento_. , v.7, 68-80
 Palavras-chave: renúncia, incentivo, subsídio
 Áreas do conhecimento: Economia Agrária,Economia Regional e Urbana
 Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Administração pública, defesa e seguridade social
@@ -236,7 +236,7 @@ RESUMO. Analisa-se a política de incentivos ou renúncias fiscais como instrume
 
 
 25.	 RAUSCHKOLB, A. S.; OLIVEIRA, L. J.; FIGUEIREDO, Adriano M.R; BONJOUR, S. C. M.. 2012.
-Ligações setoriais na cadeia produtiva de leite em Mato Grosso In Revista de Politica Agricola. , v.xxi, 68-82
+Ligações setoriais na cadeia produtiva de leite em Mato Grosso In _Revista de Politica Agricola_. , v.xxi, 68-82
 Palavras-chave: Agronegócio, lácteo, leite
 Áreas do conhecimento: Economia Agrária,Economia Regional,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
 Setores de atividade: Agricultura, Pecuária e Serviços Relacionados

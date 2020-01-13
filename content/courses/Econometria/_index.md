@@ -15,22 +15,25 @@ weight: 1
 ---
 
 ## Ementa:    
-
-	O Modelo de Regressão Linear Clássico; Métodos de estimação e suas propriedades; Testes 	de hipótese. Previsão. Violações às hipóteses do Modelo Clássico; Multicolinearidade, Heterocedasticidade e Autocorrelação de resíduos. Formas funcionais e a escolha da especificação. Mínimos quadrados com variáveis dummy. O Método das Variáveis Instrumentais. Breve noção sobre sistemas de Equações Simultâneas. Breve noção sobre modelos de escolha (Probit e Logit). Breve noção de dados de painel. Series temporais.    
+     
+     
+O _Modelo de Regressão Linear Clássico_; Métodos de estimação e suas propriedades; Testes 	de hipótese. Previsão. Violações às hipóteses do Modelo Clássico; Multicolinearidade, Heterocedasticidade e Autocorrelação de resíduos. Formas funcionais e a escolha da especificação. Mínimos quadrados com variáveis dummy. O Método das Variáveis Instrumentais. Breve noção sobre sistemas de Equações Simultâneas. Breve noção sobre modelos de escolha (Probit e Logit). Breve noção de dados de painel. Series temporais.    
+	
 	
 ## Objetivo:     
-
-	Propiciar aos alunos conhecimentos das técnicas econométricas que possibilitarão a análise de fenômenos socioeconômicos e a identificação de alternativas para a tomada de decisões. Realizar práticas de estimação e análise de resultados econométricos por meio de software.    
+    
+    
+Propiciar aos alunos conhecimentos das técnicas econométricas que possibilitarão a _análise de fenômenos socioeconômicos_ e a identificação de alternativas para a _tomada de decisões_. Realizar _práticas de estimação_ e _análise de resultados econométricos_ por meio de software.    
 	
 ## Programa:     
 
-Introdução: apresentação da disciplina e noções do software R/RStudio    
+Introdução: apresentação da disciplina e noções do software R/RStudio      
 1.    Regressão Linear Múltipla    
 	1.1.    Conceitos básicos e o método econométrico    
 	1.2.    Pressupostos do Modelo Clássico de Regressão Linear (MCRL)    
 	1.3.    Estimadores do método dos mínimos quadrados ordinários (MQO)    
-	1.4.    Propriedades dos estimadores de MQO 
-	1.5.    Indicadores do ajustamento do modelo (R², F, testes de hipóteses etc) 
+	1.4.    Propriedades dos estimadores de MQO    
+	1.5.    Indicadores do ajustamento do modelo (R², F, testes de hipóteses etc)    
 	1.6.    Variáveis Dummy ou binárias    
 	
 2.    Especificação do modelo    

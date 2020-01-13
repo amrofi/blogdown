@@ -28,16 +28,6 @@ Propiciar aos estudantes o entendimento das dinâmicas regionais e a influência
 	
 ## Programa:     
 
-Introdução: apresentação da disciplina e noções do software R/RStudio      
-1.    Regressão Linear Múltipla    
-	1.1.    Conceitos básicos e o método econométrico    
-	1.2.    Pressupostos do Modelo Clássico de Regressão Linear (MCRL)    
-	1.3.    Estimadores do método dos mínimos quadrados ordinários (MQO)    
-	1.4.    Propriedades dos estimadores de MQO    
-	1.5.    Indicadores do ajustamento do modelo (R², F, testes de hipóteses etc)    
-	1.6.    Variáveis Dummy ou binárias    
-	
-2.    Especificação do modelo    
 
 1.    ESPAÇO, REGIÃO E ECONOMIA REGIONAL    
 1.1.    Noções introdutórias: Espaço econômico e região econômica    
@@ -48,7 +38,7 @@ Introdução: apresentação da disciplina e noções do software R/RStudio
 2.1    Indicadores regionais e de localização, Quociente locacional, Indicadores de especialização    
 2.2.    Análise dos complexos industriais 	    
 
-3.    TEORIAS DA LOCALIZAÇÃO  	
+3.    TEORIAS DA LOCALIZAÇÃO    
 3.1.    Localização agrícola    
 	3.1.1    Anéis de Von Thunen (agrícola)    
 	3.1.2    Weber (localização industrial)    

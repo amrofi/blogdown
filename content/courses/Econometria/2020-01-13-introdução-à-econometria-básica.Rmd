@@ -1,0 +1,24 @@
+---
+title: Introdução à Econometria Básica
+author: Adriano M R Figueiredo
+date: '2020-01-13'
+slug: introdução-à-econometria-básica
+categories: []
+tags:
+  - econometria
+linktitle: 2020 01 13 Introdução À Econometria Básica
+summary: ~
+lastmod: '2020-01-13T10:16:20-04:00'
+#toc: true
+type: docs
+menu:
+  econometria:
+    name: Introdução
+    weight: 2
+weight: 2
+---
+
+## Tip1
+
+
+## Tip2

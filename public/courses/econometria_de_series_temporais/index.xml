@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Overview | Adriano M R Figueiredo</title>
+    <link>/courses/econometria_de_series_temporais/</link>
+      <atom:link href="/courses/econometria_de_series_temporais/index.xml" rel="self" type="application/rss+xml" />
+    <description>Overview</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Mon, 13 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>img/icon-32.png</url>
+      <title>Overview</title>
+      <link>/courses/econometria_de_series_temporais/</link>
+    </image>
+    
+  </channel>
+</rss>

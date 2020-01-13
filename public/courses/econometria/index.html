@@ -570,10 +570,9 @@
 
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#flexibility">Flexibility</a></li>
-    <li><a href="#delete-tutorials">Delete tutorials</a></li>
-    <li><a href="#update-site-menu">Update site menu</a></li>
-    <li><a href="#update-the-docs-menu">Update the docs menu</a></li>
+    <li><a href="#ementa">Ementa:</a></li>
+    <li><a href="#objetivo">Objetivo:</a></li>
+    <li><a href="#programa">Programa:</a></li>
   </ul>
 </nav>
 
@@ -589,32 +588,59 @@
           <h1>Overview</h1>
 
           <div class="article-style">
-            <h2 id="flexibility">Flexibility</h2>
-<p>This feature can be used for publishing content such as:</p>
-<ul>
-<li><strong>Online courses</strong></li>
-<li><strong>Project or software documentation</strong></li>
-<li><strong>Tutorials</strong></li>
-</ul>
-<p>The <code>courses</code> folder may be renamed. For example, we can rename it to <code>docs</code> for software/project documentation or <code>tutorials</code> for creating an online course.</p>
-<h2 id="delete-tutorials">Delete tutorials</h2>
-<p><strong>To remove these pages, delete the <code>courses</code> folder and see below to delete the associated menu link.</strong></p>
-<h2 id="update-site-menu">Update site menu</h2>
-<p>After renaming or deleting the <code>courses</code> folder, you may wish to update any <code>[[main]]</code> menu links to it by editing your menu configuration at <code>config/_default/menus.toml</code>.</p>
-<p>For example, if you delete this folder, you can remove the following from your menu configuration:</p>
-<pre><code class="language-toml">[[main]]
-  name = &quot;Courses&quot;
-  url = &quot;courses/&quot;
-  weight = 50
+            <h2 id="ementa">Ementa:</h2>
+<pre><code>O Modelo de Regressão Linear Clássico; Métodos de estimação e suas propriedades; Testes 	de hipótese. Previsão. Violações às hipóteses do Modelo Clássico; Multicolinearidade, Heterocedasticidade e Autocorrelação de resíduos. Formas funcionais e a escolha da especificação. Mínimos quadrados com variáveis dummy. O Método das Variáveis Instrumentais. Breve noção sobre sistemas de Equações Simultâneas. Breve noção sobre modelos de escolha (Probit e Logit). Breve noção de dados de painel. Series temporais.    
 </code></pre>
-<p>Or, if you are creating a software documentation site, you can rename the <code>courses</code> folder to <code>docs</code> and update the associated <em>Courses</em> menu configuration to:</p>
-<pre><code class="language-toml">[[main]]
-  name = &quot;Docs&quot;
-  url = &quot;docs/&quot;
-  weight = 50
+<h2 id="objetivo">Objetivo:</h2>
+<pre><code>Propiciar aos alunos conhecimentos das técnicas econométricas que possibilitarão a análise de fenômenos socioeconômicos e a identificação de alternativas para a tomada de decisões. Realizar práticas de estimação e análise de resultados econométricos por meio de software.    
 </code></pre>
-<h2 id="update-the-docs-menu">Update the docs menu</h2>
-<p>If you use the <em>docs</em> layout, note that the name of the menu in the front matter should be in the form <code>[menu.X]</code> where <code>X</code> is the folder name. Hence, if you rename the <code>courses/example/</code> folder, you should also rename the menu definitions in the front matter of files within <code>courses/example/</code> from <code>[menu.example]</code> to <code>[menu.&lt;NewFolderName&gt;]</code>.</p>
+<h2 id="programa">Programa:</h2>
+<p>Introdução: apresentação da disciplina e noções do software R/RStudio</p>
+<ol>
+<li>
+<p>Regressão Linear Múltipla <br>
+1.1.    Conceitos básicos e o método econométrico <br>
+1.2.    Pressupostos do Modelo Clássico de Regressão Linear (MCRL) <br>
+1.3.    Estimadores do método dos mínimos quadrados ordinários (MQO) <br>
+1.4.    Propriedades dos estimadores de MQO 
+1.5.    Indicadores do ajustamento do modelo (R², F, testes de hipóteses etc) 
+1.6.    Variáveis Dummy ou binárias</p>
+</li>
+<li>
+<p>Especificação do modelo <br>
+2.1. A natureza e consequências do problema (linearidade, inclusão e omissão de variáveis) <br>
+2.2. Algumas formas funcionais dos modelos de regressão <br>
+2.3. Tipos de erros de especificação e Teste de especificação <br>
+2.4. Método de correção da especificação</p>
+</li>
+<li>
+<p>Média e Normalidade dos Resíduos <br>
+3.1. A natureza e consequências, testes e consequências de média e normalidade</p>
+</li>
+<li>
+<p>Heterocedasticidade <br>
+4.1. A natureza e consequências da heterocedasticidade <br>
+4.2. Testes para detecção da heterocedasticidade <br>
+4.3. Método de correção da heterocedasticidade</p>
+</li>
+<li>
+<p>Autocorrelação dos resíduos <br>
+5.1. A natureza e as Consequências da autocorrelação <br>
+5.2. Testes para detecção da autocorrelação <br>
+5.3. Métodos de correção da autocorrelação</p>
+</li>
+<li>
+<p>Multicolinearidade <br>
+6.1. A natureza e as Consequências da multicolinearidade <br>
+6.2. Testes para detecção da multicolinearidade <br>
+6.3. Métodos de correção da multicolinearidade</p>
+</li>
+<li>
+<p>Introdução ao estudo de séries temporais  <br>
+7.1. Algumas definições iniciais <br>
+7.2. Principais testes</p>
+</li>
+</ol>
 
           </div>
 

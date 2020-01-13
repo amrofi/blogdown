@@ -14,42 +14,49 @@ type: docs
 weight: 1
 ---
 
-## Flexibility
+## Ementa:    
 
-This feature can be used for publishing content such as:
+	O Modelo de Regressão Linear Clássico; Métodos de estimação e suas propriedades; Testes 	de hipótese. Previsão. Violações às hipóteses do Modelo Clássico; Multicolinearidade, Heterocedasticidade e Autocorrelação de resíduos. Formas funcionais e a escolha da especificação. Mínimos quadrados com variáveis dummy. O Método das Variáveis Instrumentais. Breve noção sobre sistemas de Equações Simultâneas. Breve noção sobre modelos de escolha (Probit e Logit). Breve noção de dados de painel. Series temporais.    
+	
+## Objetivo:     
 
-* **Online courses**
-* **Project or software documentation**
-* **Tutorials**
+	Propiciar aos alunos conhecimentos das técnicas econométricas que possibilitarão a análise de fenômenos socioeconômicos e a identificação de alternativas para a tomada de decisões. Realizar práticas de estimação e análise de resultados econométricos por meio de software.    
+	
+## Programa:     
 
-The `courses` folder may be renamed. For example, we can rename it to `docs` for software/project documentation or `tutorials` for creating an online course.
+Introdução: apresentação da disciplina e noções do software R/RStudio    
+1.    Regressão Linear Múltipla    
+	1.1.    Conceitos básicos e o método econométrico    
+	1.2.    Pressupostos do Modelo Clássico de Regressão Linear (MCRL)    
+	1.3.    Estimadores do método dos mínimos quadrados ordinários (MQO)    
+	1.4.    Propriedades dos estimadores de MQO 
+	1.5.    Indicadores do ajustamento do modelo (R², F, testes de hipóteses etc) 
+	1.6.    Variáveis Dummy ou binárias    
+	
+2.    Especificação do modelo    
+	2.1. A natureza e consequências do problema (linearidade, inclusão e omissão de variáveis)    
+	2.2. Algumas formas funcionais dos modelos de regressão    
+	2.3. Tipos de erros de especificação e Teste de especificação    
+	2.4. Método de correção da especificação    
+	
+3.    Média e Normalidade dos Resíduos    
+	3.1. A natureza e consequências, testes e consequências de média e normalidade    
 
-## Delete tutorials
+4.    Heterocedasticidade    
+	4.1. A natureza e consequências da heterocedasticidade    
+	4.2. Testes para detecção da heterocedasticidade    
+	4.3. Método de correção da heterocedasticidade
+	
+5.    Autocorrelação dos resíduos    
+	5.1. A natureza e as Consequências da autocorrelação    
+	5.2. Testes para detecção da autocorrelação    
+	5.3. Métodos de correção da autocorrelação 	
+	
+6.    Multicolinearidade    
+	6.1. A natureza e as Consequências da multicolinearidade    
+	6.2. Testes para detecção da multicolinearidade    
+	6.3. Métodos de correção da multicolinearidade 	    
 
-**To remove these pages, delete the `courses` folder and see below to delete the associated menu link.**
-
-## Update site menu
-
-After renaming or deleting the `courses` folder, you may wish to update any `[[main]]` menu links to it by editing your menu configuration at `config/_default/menus.toml`.
-
-For example, if you delete this folder, you can remove the following from your menu configuration:
-
-```toml
-[[main]]
-  name = "Courses"
-  url = "courses/"
-  weight = 50
-```
-
-Or, if you are creating a software documentation site, you can rename the `courses` folder to `docs` and update the associated *Courses* menu configuration to:
-
-```toml
-[[main]]
-  name = "Docs"
-  url = "docs/"
-  weight = 50
-```
-
-## Update the docs menu
-
-If you use the *docs* layout, note that the name of the menu in the front matter should be in the form `[menu.X]` where `X` is the folder name. Hence, if you rename the `courses/example/` folder, you should also rename the menu definitions in the front matter of files within `courses/example/` from `[menu.example]` to `[menu.<NewFolderName>]`.
+7.    Introdução ao estudo de séries temporais     
+	7.1. Algumas definições iniciais    
+	7.2. Principais testes

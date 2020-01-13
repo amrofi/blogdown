@@ -54,5 +54,5 @@ Propiciar aos estudantes o entendimento das dinâmicas regionais e a influência
 	
 4.    A QUESTÃO DOS DESEQUILÍBRIOS REGIONAIS    
 4.1.     Convergência x divergência    
-4.2.     As novas orientações produtivas e o crescimento regional 
+4.2.     As novas orientações produtivas e o crescimento regional     
 4.3.     Políticas públicas no contexto do desenvolvimento regional

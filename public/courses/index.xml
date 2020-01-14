@@ -7,7 +7,7 @@
     <description>Courses</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright>
     <image>
-      <url>/img/icon-32.png</url>
+      <url>img/icon-32.png</url>
       <title>Courses</title>
       <link>/courses/</link>
     </image>

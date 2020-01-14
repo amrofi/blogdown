@@ -29,7 +29,37 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-01-13T10:16:20-04:00</lastmod>
+    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/artigos-aceitos/</loc>
+    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/artigos-publicados/</loc>
+    <lastmod>2019-12-23T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/books/</loc>
+    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/books-and-chapters/</loc>
+    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/chapters/</loc>
+    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/conferences/</loc>
+    <lastmod>2019-12-23T19:56:18-04:00</lastmod>
   </url>
   
   <url>
@@ -38,18 +68,38 @@
   </url>
   
   <url>
+    <loc>/publication/forthcoming-in-journals/</loc>
+    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/journals/</loc>
+    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/papers/</loc>
+    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/papers-in-conferences/</loc>
+    <lastmod>2019-12-23T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/</loc>
+    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/</loc>
-    <lastmod>2020-01-13T10:16:20-04:00</lastmod>
+    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
   </url>
   
   <url>
     <loc>/project/analise-do-desenvolvimento-regional-o-caso-de-mato-grosso-do-sul-no-periodo-de-2002-a-2017/</loc>
     <lastmod>2019-12-23T18:36:32-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/artigos-publicados/</loc>
-    <lastmod>2019-12-23T19:56:18-04:00</lastmod>
   </url>
   
   <url>
@@ -83,21 +133,6 @@
   </url>
   
   <url>
-    <loc>/tags/journals/</loc>
-    <lastmod>2019-12-23T19:56:18-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/papers/</loc>
-    <lastmod>2019-12-23T19:56:18-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication/</loc>
-    <lastmod>2019-12-23T19:56:18-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/publication/papers-in-journals/</loc>
     <lastmod>2019-12-23T19:56:18-04:00</lastmod>
   </url>
@@ -125,16 +160,6 @@
   <url>
     <loc>/tags/rpubs/</loc>
     <lastmod>2019-12-19T18:36:32-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/privacy/</loc>
-    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/terms/</loc>
-    <lastmod>2018-06-28T00:00:00+01:00</lastmod>
   </url>
   
   <url>

@@ -7,10 +7,50 @@
     <description>Tags</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Mon, 13 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/icon-32.png</url>
+      <url>img/icon-32.png</url>
       <title>Tags</title>
       <link>/tags/</link>
     </image>
+    
+    <item>
+      <title>artigos aceitos</title>
+      <link>/tags/artigos-aceitos/</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/artigos-aceitos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>artigos publicados</title>
+      <link>/tags/artigos-publicados/</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/artigos-publicados/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>books</title>
+      <link>/tags/books/</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/books/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chapters</title>
+      <link>/tags/chapters/</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/chapters/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>conferences</title>
+      <link>/tags/conferences/</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/conferences/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>econometria</title>
@@ -21,10 +61,18 @@
     </item>
     
     <item>
-      <title>artigos publicados</title>
-      <link>/tags/artigos-publicados/</link>
-      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/artigos-publicados/</guid>
+      <title>journals</title>
+      <link>/tags/journals/</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/journals/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>papers</title>
+      <link>/tags/papers/</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/papers/</guid>
       <description></description>
     </item>
     
@@ -57,22 +105,6 @@
       <link>/tags/gvc/</link>
       <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
       <guid>/tags/gvc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>journals</title>
-      <link>/tags/journals/</link>
-      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/journals/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>papers</title>
-      <link>/tags/papers/</link>
-      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/tags/papers/</guid>
       <description></description>
     </item>
     

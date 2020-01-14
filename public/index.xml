@@ -7,7 +7,7 @@
     <description>Adriano M R Figueiredo</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Mon, 13 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>/img/icon-32.png</url>
+      <url>img/icon-32.png</url>
       <title>Adriano M R Figueiredo</title>
       <link>/</link>
     </image>
@@ -30,489 +30,13 @@
     </item>
     
     <item>
-      <title>Análise do desenvolvimento regional: o caso de Mato Grosso do Sul no período de 2002 a 2017</title>
-      <link>/project/analise-do-desenvolvimento-regional-o-caso-de-mato-grosso-do-sul-no-periodo-de-2002-a-2017/</link>
-      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/project/analise-do-desenvolvimento-regional-o-caso-de-mato-grosso-do-sul-no-periodo-de-2002-a-2017/</guid>
+      <title>Books and chapters</title>
+      <link>/publication/books-and-chapters/</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/books-and-chapters/</guid>
       <description>
 
 
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/project/2019-12-23-análise-do-desenvolvimento-regional-o-caso-de-mato-grosso-do-sul-no-período-de-2002-a-2017_files/RGI_MS.JPG&#34; alt=&#34;Regiões geográficas intermediárias de MS. Fonte: IBGE, 2017.&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;Regiões geográficas intermediárias de MS. Fonte: IBGE, 2017.&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;Projeto sem fomento externo iniciado em Fev/2018 e prazo previsto de 24 meses. (em fase de elaboração do relatório final).&lt;/p&gt;
-&lt;p&gt;Considerando as várias correntes teóricas versando sobre o desenvolvimento regional, a questão norteadora da pesquisa será: quais as principais variáveis determinantes do desenvolvimento regional do estado de Mato Grosso do Sul e seus municípios, no período 2002-2017?&lt;/p&gt;
-&lt;p&gt;Para estudar o processo de crescimento e desenvolvimento econômico entre países/estados/regiões/municípios e, dessa maneira, verificar se há crescimento equilibrado ou desigual, vários autores utilizam técnicas da análise regional e econometria espacial para visualizar os efeitos espaciais do processo de crescimento regional, a análise de convergência de renda per capita, a dinâmica regional e as possíveis desigualdades regionais.&lt;/p&gt;
-&lt;p&gt;Entre os autores com análise aplicadas aos municípios brasileiros destacam-se Perobelli et al (2006), Maranduba Júnior (2007), Barreto (2007), Monastério e Ávila (2004), Resende e Silva (2007), Porsse (2008), Oliveira (2005), Dassow, Costa e Figueiredo (2011 e 2012), e Silva Jr e Figueiredo (2017). Essas técnicas estatísticas e/ou econométricas também possibilitam identificar a formação de possíveis agrupamentos de municípios que apresentam valores semelhantes. Em outras palavras, permite verificar a existência de possíveis aglomerações de crescimento, caso existam. A identificação destas possibilita conhecer as regiões mais dinâmicas e potenciais do estado e, por outro lado, regiões carentes e enclaves. Nesse sentido, justifica-se o estudo criando vetores para os formuladores de política,uma ideia mais clara dos locais que carecem de atuação diferenciada, ampliando os indicadores e a temporalidade comparativamente aos estudos citados.&lt;/p&gt;
-&lt;p&gt;O objetivo geral é: Avaliar a dinâmica e a evolução comparativa dos municípios sul-mato-grossenses no período 2002-2017, com respeito aos indicadores associados ao desenvolvimento estadual de
-Mato Grosso do Sul e de seus municípios. Especificamente, objetiva-se: a) Avaliar os determinantes da estrutura econômica municipal sobre seu desenvolvimento municipal e do estado; b) Avaliar a mudança na distribuição regional do produto no âmbito do desenvolvimento path-dependent; c) Identificar eventuais tendências de polarização regional em distintos grupos; d) Avaliar o efeito da complexidade econômica sobre o desenvolvimento municipal; e, e) Avaliar o efeito do comércio internacional, da abertura comercial e da competitividade sobre o desenvolvimento municipal.&lt;/p&gt;
-&lt;p&gt;A inovação e originalidade estão na aplicação, primeiro, para bases de dados municipais de MS de 2002 a 2016 (portanto, dados em painel). As demais inovações, para o referido conjunto de dados, são: a) de métodos de análise espacial de dados, como os da econometria espacial; b) do cômputo de indicadores para explicar a evolução e dinâmica do desenvolvimento municipal de Mato Grosso do Sul, baseados em teorias da economia regional como: índice de variação de Williamson (1965); o Quociente locacional de Haig (1928); o Coeficiente de especialização de Hoover e Giarratani (1984); o índice de dessemelhança de Krugman (1993); coeficiente de localização de Florence e Baldamus (1948); o índice de Herfindahl-Hirschman de concentração; o índices de concentração de Gini para renda e
-Gini Locacional de Hoover (1936); potencial de mercado de Harris (1954); o índice de dependência espacial de Moran e de Anselin (1995) e de Ellison-Glaeser (1997); índice de separação espacial de Venables; c) Outros indicadores serão ainda utilizados para a análise como a conciliação do desenvolvimento regional com a teoria da complexidade econômica de Hausmann et al. (2014) e Gala (2017); e, d) Utilização da linguagem de programação R para construção de indicadores de análise regional dos municípios de Mato Grosso do Sul.&lt;/p&gt;
-&lt;p&gt;Executado pela Universidade Federal de Mato Grosso do Sul (UFMS) na Escola de Administração e Negócios (ESAN). Constam na equipe, além do coordenador Prof. Dr. Adriano M R Figueiredo, o Prof. Dr. Leonardo F. Figueiredo Neto, a Profa. Dra. Mayra B. B. Fagundes, e os Mestres em Administração da UFMS (Campo Grande-MS) Ernani de A. Silva Jr. (&lt;em&gt;A DINÂMICA DO CRESCIMENTO ECONÔMICO MUNICIPAL EM MATO GROSSO DO SUL: UMA ANÁLISE ESPACIAL&lt;/em&gt;, 2019) e Eliane de S. Andrade (&lt;em&gt;DINÂMICA DO MERCADO DE TRABALHO DAS ATIVIDADES DE BASE AGRÍCOLAS NAS REGIÕES GEOGRÁFICAS IMEDIATAS DE MATO GROSSO DO SUL&lt;/em&gt;,2019).&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Complexidade econômica em cadeias globais de valor: dinâmicas e tendências do desenvolvimento regional</title>
-      <link>/project/complexidade-economica-em-cadeias-globais-de-valor/</link>
-      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/project/complexidade-economica-em-cadeias-globais-de-valor/</guid>
-      <description>
-
-
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/project/2019-12-23-complexidade-economica-em-cadeias-globais-de-valor_files/featured.jpg&#34; alt=&#34;GVC Types. Source: Gereffi (2011), https://unstats.un.org/unsd/trade/s_geneva2011/presentations/wed-am/gary-gereffi.pptx&#34; style=&#34;width:50.0%&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;GVC Types. Source: Gereffi (2011), &lt;a href=&#34;https://unstats.un.org/unsd/trade/s_geneva2011/presentations/wed-am/gary-gereffi.pptx&#34; class=&#34;uri&#34;&gt;https://unstats.un.org/unsd/trade/s_geneva2011/presentations/wed-am/gary-gereffi.pptx&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;Projeto iniciado em 06/Dez/2018 com auxílio de pesquisa do CNPq e prazo previsto de 36 meses.&lt;/p&gt;
-&lt;p&gt;A análise das cadeias globais de valor (CGV) tem sido importante para avaliar o posicionamento estratégico dos países e dos setores econômicos (TIAN et al, 2016) e como os setores econômicos têm se modernizado ou desenvolvido. Marcato e Baltar (2017) analisaram o progresso econômico e social associado às CGV. As diferenças entre os países ricos e pobres, e a discussão ainda presente de “centro-periferia” nas cadeias globais de valor têm apontado para a presença de maior complexidade econômica (CE) naqueles países centrais, ou mais ricos (CARDOSO e REIS, 2016). Questiona-se: de que modo a complexidade econômica está associada à participação nas cadeias globais de valor em regiões subnacionais? A hipótese de Cheng et al (2015) é que um posicionamento mais acima na CGV (setores mais a frente na cadeia, rumo ao consumidor final) e com maior complexidade econômica estão associados a maior parcela do país no valor adicionado da CGV. A análise da CE tem se desenvolvida em termos da diversidade e ubiquidade dos produtos nos fluxos internacionais de comércio, assim como em termos da estrutura setorial do emprego. Desta forma, busca-se compreender a interação entre as cadeias globais de valor relevantes para regiões subnacionais e as medidas de complexidade econômica baseadas em fluxos comerciais assim como em emprego gerado nos setores econômicos.&lt;/p&gt;
-&lt;p&gt;Executado pela Universidade Federal de Mato Grosso do Sul (UFMS) na Escola de Administração e Negócios (ESAN). Constam na equipe, além do coordenador Prof. Dr. Adriano M R Figueiredo, o Prof. Dr. Leonardo F. Figueiredo Neto, a Profa. Dra. Mayra B. B. Fagundes, e a mestranda em Economia da UFMT (Cuiabá-MT) Thaina M.G. Chaves.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Publications (click to open full list)</title>
-      <link>/publication/papers-in-journals/</link>
-      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/publication/papers-in-journals/</guid>
-      <description>
-
-
-&lt;div id=&#34;artigos-completos-publicados-em-periódicos&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Artigos completos publicados em periódicos&lt;/h2&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;COUTINHO, M. R.; FAGUNDES, M. B. B.; FIGUEIREDO NETO, L. F.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2019.
-A contribuição das atividades de base agropecuária na geração de emprego nos municípios de Mato Grosso do Sul (Brasil) In &lt;em&gt;EURE-Revista Latinoamericana de Estudios Urbano Regionales&lt;/em&gt;. , v.45, 223-244
-Palavras-chave: Desenvolvimento regional e local, Economia Regional, Agronegócio
-Áreas do conhecimento: Economia Regional e Urbana,Economia Agrária,Métodos e Técnicas do Planejamento Urbano e Regional
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Administração pública, defesa e seguridade social
-Referências adicionais: Inglês. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.eure.cl/index.php/eure/article/view/2569/1180&#34; class=&#34;uri&#34;&gt;http://www.eure.cl/index.php/eure/article/view/2569/1180&lt;/a&gt;]
-O objetivo deste estudo foi analisar a contribuição das atividades de base agropecuária na geração de emprego formal. É de suma importância para avaliar o desenvolvimento territorial nos municípios do Estado de Mato Grosso do Sul. Utilizou-se o método quantitativo com a aplicação do Índice de Concentração Normalizado (icn). Concluiu-se que as principais atividades econômicas geradoras de emprego estão relacionadas à administração pública, serviços e comércio, com participação relativa do total de empregos gerados no estado (19%, 15% e 9%), em 2015. Foi comprovado que as atividades de base agropecuária contribuíram na geração de emprego (12%) e 33 municípios do Estado, em um universo de 79, possuem especialização em, pelo menos, uma atividade de base agropecuária. As atividades de base agropecuária, além de gerarem emprego, contribuem direta e indiretamente para a dinamização de outros setores, constituindo-se, portanto, como peça-chave no desenvolvimento regional.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;FERNANDES, M. M.; OLIVEIRA, D. V.; FAGUNDES, Mayra Batista Bitencourt; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2018.
-A contribuição da avicultura de corte para o desenvolvimento do Mato Grosso do Sul In &lt;em&gt;Revista Brasileira de Desenvolvimento Regional&lt;/em&gt;. , v.6, 109-136
-Palavras-chave: Agronegócio, aves, Desenvolvimento Multidimensional, ICN, Mato Grosso do Sul
-Áreas do conhecimento: Economia Agrária,Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Administração pública, defesa e seguridade social
-Referências adicionais: Português. DOI: [&lt;a href=&#34;http://dx.doi.org/10.7867/2317-5443.2018v6n1p109-136&#34; class=&#34;uri&#34;&gt;http://dx.doi.org/10.7867/2317-5443.2018v6n1p109-136&lt;/a&gt;]
-O objetivo geral deste artigo é analisar a contribuição da avicultura na geração de emprego e massa salarial para os municípios de Mato Grosso do Sul. Com o intuito de embasar a discussão, utilizou-se a teoria de desenvolvimento multidimensional. A metodologia utilizada alicerçou-se no Índice de Concentração Normalizado (ICN), visando subsidiar a análise da geração de emprego e massa salarial na avicultura, assim como o desenvolvimento da economia estadual. Os resultados demonstram que o setor avícola de Mato Grosso do Sul é importante para a geração de emprego e massa salarial, principalmente para os municípios de Itaquiraí, Dourados, Sidrolândia, Caarapó e Aparecida do Taboado no abate, e Água Clara, Cassilândia, Dourados, Sidrolândia e Terenos na criação, localizados na região centro-sul do estado. A relevância da avicultura é indicada, principalmente, pelo grau de aglomeração nesses municípios e confirmada pelo índice que mede a especialização para 2015. Conclui-se que quaisquer fatores exógenos que incidirem sobre esse setor causarão impactos negativos nessas localidades.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;NASCIMENTO, A. P.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; MIRANDA, P. R.. 2018.
-Dimensão do PIB do Agronegócio na Economia de Mato Grosso In &lt;em&gt;Ensaios FEE (Online)&lt;/em&gt;. , v.38, 903-930
-Palavras-chave: Agronegócio, Cadeia produtiva, insumo-produto, PIB
-Áreas do conhecimento: Economia Agrária,Economia Regional e Urbana,Métodos e Técnicas do Planejamento Urbano e Regional
-Setores de atividade: Administração pública, defesa e seguridade social, Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://https://revistas.fee.tche.br/index.php/ensaios/article/view/3781&#34; class=&#34;uri&#34;&gt;http://https://revistas.fee.tche.br/index.php/ensaios/article/view/3781&lt;/a&gt;]
-O objetivo principal foi avaliar e mensurar a importância de cadeias produtivas do agronegócio na economia do estado de Mato Grosso. Para isso, utilizou-se a matriz insumo-produto construída para o ano de 2007 com estimação do PIB das cadeias produtivas de algodão, soja e milho. A cadeia da soja apresentou a maior renda do período em estudo, com 8.922,06 milhões de reais (a preços de mercado). Na sequência veio à cadeia do algodão com 1.505,84 milhões de reais, seguida pela cadeia do milho com 1.251,93 milhões de reais. A cultura da soja apresentou maior destaque, com participação de 40,36% no PIB do agronegócio e 21,45% do PIB estadual, se consagrando como a cultura mais importante para geração de renda na economia do estado.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;DELGADO, H. J.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
-A criminalidade em Mato Grosso: uma descrição do período 2006-2014 In &lt;em&gt;Revista Eletrônica Documento/Monumento&lt;/em&gt;. , v.21, 97-114
-Palavras-chave: Crime, Mato Grosso, Homicídios
-Áreas do conhecimento: Economia Regional,Crescimento e Desenvolvimento Econômico,História Econômica
-Setores de atividade: Administração pública, defesa e seguridade social, Atividades de vigilância, segurança e investigação
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://200.129.241.80/ndihr/revista/revistas-anteriores/revista-dm-21.pdf&#34; class=&#34;uri&#34;&gt;http://200.129.241.80/ndihr/revista/revistas-anteriores/revista-dm-21.pdf&lt;/a&gt;]
-O presente artigo objetiva descrever a criminalidade em Mato Grosso no período 2006 a 2014. Para tanto, utilizam-se dados secundários de homicídios dolosos, latrocínio, lesão seguida de morte, estupro e roubos de veículos encontrados no Estado comparados com os dados nacionais. Entre os principais resultados destacam-se as elevadas e crescentes taxas de criminalidade, mas deve-se ter cautela nas afirmações, pois existe grande heterogeneidade nos níveis de criminalidade entre os municípios do estado.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;TOLDI, K.; FROZZA, F.; BARI, M. L.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
-A evolução da agropecuária e da agroindústria brasileira: um comparativo da matriz insumo-produto 2003 e 2013 In &lt;em&gt;Espacios (Caracas)&lt;/em&gt;. , v.38, 2-17, Caracas,Venezuela.
-Palavras-chave: insumo-produto, economia, agropecuária
-Áreas do conhecimento: Economia Agrária,Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.revistaespacios.com/a17v38n44/a17v38n44p02.pdf&#34; class=&#34;uri&#34;&gt;http://www.revistaespacios.com/a17v38n44/a17v38n44p02.pdf&lt;/a&gt;]
-Verificou-se a evolução da agropecuária e da agroindústria no Brasil, entre 2003 e 2013, utilizando-se os multiplicadores de insumo-produto de Leontief e encadeamentos de Hirschman. As atividades não sofreram grandes mudanças nos encadeamentos no período. Notou-se um decrescimento do impacto econômico do emprego, relacionado com a mecanização e aumentos de salários, lucro, impostos, importações e exportações. As atividades agroindustriais indicaram-se como setores chaves na economia brasileira em 2003. Em 2013 o setor têxtil perdeu competitividade no encadeamento para frente. Palavras chave: insumo-produto, economia, agropecuária&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;SILVA JUNIOR, E. A.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
-Análise da convergência de renda entre os municípios de Mato Grosso do Sul entre 1999 e 2012 In &lt;em&gt;Revista de Economia da UEG&lt;/em&gt;. , v.13, 51-69, Caracas,Venezuela.
-Palavras-chave: Crescimento Setorial, Mato Grosso do Sul, convergência
-Áreas do conhecimento: Crescimento e Desenvolvimento Econômico,Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Métodos e Técnicas do Planejamento Urbano e Regional
-Setores de atividade: Administração pública, defesa e seguridade social
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.revista.ueg.br/index.php/economia/article/view/6189/4611&#34; class=&#34;uri&#34;&gt;http://www.revista.ueg.br/index.php/economia/article/view/6189/4611&lt;/a&gt;]
-Examina?-se a dinâmica setorial para o crescimento econômico municipal de Mato Grosso do Sul, e avalia?-se a convergência de renda entre os anos de 1999 e 2012. Portanto, foi utilizado e adaptado o modelo de convergência proposto por Barro e Sala-?I-?Martin de modo a testar as hipóteses de convergência absoluta e condicional além de outras análises descritivas. Encontraram?-se evidências estatísticas que permitem concluir pela presença de convergência de renda no período analisado sendo o setor de serviços o centro dinamizador . Foram significativos para explicar o crescimento: o PIB no início do período; as participações dos setores econômicos (agropecuária, indústria, serviços e administração pública); o crescimento populacional; e o capital humano.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;BROCANELLI, G. R. R.; FERRAZ, V. A. C.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
-Análise dos fatores de crescimento das receitas de exportações brasileiras de suco de laranja: 1997-2015 In &lt;em&gt;Espacios (Caracas)&lt;/em&gt;. , v.38, 16-27
-Palavras-chave: taxa de câmbio, shift-share, commodity
-Áreas do conhecimento: Economia Agrária,Métodos e Técnicas do Planejamento Urbano e Regional,Economia Internacional
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.revistaespacios.com/a17v38n47/a17v38n47p16.pdf&#34; class=&#34;uri&#34;&gt;http://www.revistaespacios.com/a17v38n47/a17v38n47p16.pdf&lt;/a&gt;]
-Neste artigo são analisadas a taxa de câmbio, a quantidade exportada e o preço internacional do suco de laranja sobre a receita da exportação brasileira dessa commodity, no período de 1997 a 2015. A análise foi feita através do método shiftshare, que permite decompor o efeito isolado das variáveis estudadas. Os resultados apontaram que as receitas das exportações de suco de laranja são cíclicas. O câmbio e o preço se mostraram os maiores influenciadores, afetando as receitas de forma concisa.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;TEIXEIRA, M. D. J.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
-Análise Intersetorial e Espacial da Cadeia Produtiva da Madeira e Móveis na Economia de Mato Grosso: uma Contribuição para Identificação de APLs In &lt;em&gt;Revista Brasileira de Gestão e Desenvolvimento Regional&lt;/em&gt;. , v.13, 103-128
-Palavras-chave: Cadeia Produtiva da Madeira, Arranjo Produtivo Local, Desenvolvimento Regional
-Áreas do conhecimento: Economia Regional e Urbana,Métodos e Técnicas do Planejamento Urbano e Regional
-Setores de atividade: Administração pública, defesa e seguridade social, Produção Florestal
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.rbgdr.net/revista/index.php/rbgdr/article/view/2991/607&#34; class=&#34;uri&#34;&gt;http://www.rbgdr.net/revista/index.php/rbgdr/article/view/2991/607&lt;/a&gt;]
-A cadeia produtiva de madeira e móveis apresentou evolução expressiva nos indicadores de renda e emprego no estado de Mato Grosso. Emoldurado por esta afirmativa, este artigo objetivou mensurar o impacto que as atividades desta cadeia possuem na economia do estado, em particular, atividades de produção florestal e atividades industriais ligadas ao processamento e comércio da madeira. Este artigo contempla as teorias do desenvolvimento regional tradicional, analisando os encadeamentos e efeitos multiplicadores do setor na economia mato-grossense por meio da matriz de insumo produto, associado ao novo paradigma do desenvolvimento regional endógeno, através da localização de polos de setores especializados mediante utilização do Índice de Concentração Normalizado (ICn), relacionando com a probabilidade de existência de arranjo produtivo local (APL).Os resultados demonstram que as atividades da cadeia produtiva possuem impacto representativo na economia e são essenciais para o desenvolvimento do estado, principalmente para os municípios do noroeste, onde foi identificado o maior número de possíveis APLs. Salienta-se também que as atividades de fabricação e comércio de móveis precisam de maior desenvolvimento para possibilitar maior agregação de valor na cadeia produtiva da madeira dentro do estado.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;TORRES, O.; FAGUNDES, M. B. B.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; TREDEZINI, C. A. O.. 2017.
-Impacto da Implantação do Custo do Pedágio na BR-163 em Relação ao Transporte de Soja do Estado de Mato Grosso In &lt;em&gt;Revista de Economia e Sociologia Rural (Impresso)&lt;/em&gt;. , v.55, 533-550
-Palavras-chave: Agronegócio, competitividade, Politica Publica, Concessão da Rodovia
-Áreas do conhecimento: Economia Agrária,Administração,Economia Regional
-Setores de atividade: Administração pública, defesa e seguridade social, Transporte terrestre, Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.scielo.br/scielo.php?pid=S0103-20032017000300533&amp;amp;script=sci_arttext&#34; class=&#34;uri&#34;&gt;http://www.scielo.br/scielo.php?pid=S0103-20032017000300533&amp;amp;script=sci_arttext&lt;/a&gt;]
-Este artigo tem por objetivo a análise da concessão da rodovia BR-163, considerando as possíveis implicações sobre a competitividade no transporte da soja do estado de Mato Grosso. Esta proposição se justifica, sobretudo, porque o pedágio, a priori, representa custo ao transporte rodoviário, qualquer gasto acrescido a ela poderá comprometer a margem de lucro. Esta pesquisa foi subsidiada por revisão bibliográfica e documental, utilizando de pesquisa do tipo descritiva. Buscou-se identificar os principais componentes do custo do transporte rodoviário e o impacto da rodovia concedida na competitividade do setor. Assim, foi feita uma análise comparativa do custo do transporte de soja em rodovias pagas (concedidas) e as economias com custos que são inerentes a esta modalidade de transporte, decorrente da ótima condição da pavimentação asfáltica. Para perpetrar essa verificação e contrapor os custos com pedágio, foram elencadas três variáveis, são elas: (i) a economia com o combustível, (ii) a economia com o custo operacional dos caminhões e (iii) a economia que se faz em menor perdas de grãos de soja. O resultado encontrado após a quantificação das variáveis econômicas apontou impacto positivo, com benefícios econômicos para o estado de Mato Grosso.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;ALMEIDA, J. B. S. A.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
-População Nem-Nem: uma análise a partir dos dados da PNAD 2012 In &lt;em&gt;Revista de Estudos Sociais&lt;/em&gt;. , 106-129
-Palavras-chave: trabalho, educação, exclusão
-Áreas do conhecimento: Economia Regional,Crescimento e Desenvolvimento Econômico
-Setores de atividade: Administração pública, defesa e seguridade social
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://periodicoscientificos.ufmt.br/ojs/index.php/res/article/view/4942&#34; class=&#34;uri&#34;&gt;http://periodicoscientificos.ufmt.br/ojs/index.php/res/article/view/4942&lt;/a&gt;]
-Este trabalho objetivou estudar o subgrupo populacional dos jovens de modo que se possa identificar quem entre eles e por que estão na condição “Nem-Nem”. Especificamente, objetivou-se: identificar os aspectos gerais desta população comparando os resultados existentes para o caso do Brasil, América Latina e OCDE; identificar as principais características desta população e traçar um perfil desses jovens; comparar o perfil característico desses jovens, através dos dados da PNAD; e, mensurar as variáveis mais influentes à condição “Nem-Nem”. O estudo revelou que a grande maioria dos jovens que estão na condição Nem-Nem, são mulheres. O modelo probit foi utilizado e nas variáveis com influência negativa, ou seja, aquelas que influenciarão o indivíduo a não estar na condição estudada, estão a maioria das variáveis do modelo, sendo elas: “sexo”, “escolaridade”, “renda”, “ler/escrever”, “internet”, “desquitado”, “divorciado”, “solteiro”. As variáveis “idade”, “domestico”, “morar com a mãe”, “ter filho” e “cor branca” são as com influência positiva, aquelas que contribuirão para indivíduo estar na condição Nem-Nem.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;GIANETTI, G. W.; FIGUEIREDO, Adriano M.R. 2016.
-Indústria de Transformação na Geração de Produto e Renda de Mato Grosso do Sul: Uma Aplicação da Matriz de Contabilidade Social In &lt;em&gt;Revista Brasileira de Estudos Regionais e Urbanos&lt;/em&gt;. , v.10, 64-81
-Palavras-chave: Economia Regional, Desenvolvimento, Politica Publica
-Áreas do conhecimento: Economia Agrária,Economia Regional
-Setores de atividade: Administração pública, defesa e seguridade social, Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Português. . Home page: [&lt;a href=&#34;http://https://www.revistaaber.org.br/rberu/article/view/152&#34; class=&#34;uri&#34;&gt;http://https://www.revistaaber.org.br/rberu/article/view/152&lt;/a&gt;]
-Esta pesquisa analisa a participação da indústria de transformação na geração de produto e renda de Mato Grosso do Sul utilizando-se uma Matriz de Contabilidade Social (MCS) estadual para o ano de 2010. Calcularam-se os multiplicadores contábeis de produto e renda, e analisaram-se os principais setores desta economia. Os resultados indicam que a indústria de transformação, incluindo a agroindústria, apresenta elevadas interligações setoriais, majoritariamente do setor de alimentos e bebidas. Os maiores multiplicadores de PIB e renda são do setor de serviços, ambos referentes às atividades imobiliárias e aluguéis. No entanto, o setor da pecuária e pesca figura em décimo maior multiplicador de PIB e oitavo de renda, devido às interrelações com o setor de alimentos e bebidas e a presença em extensa área estadual . Existe concentração na participação na produção e nas exportações derivadas do setor agropecuário e das indústrias de transformação (por meio das agroindústrias). Ao analisar a correlação do posto dos setores de atividade na participação na produção, importação, exportação e multiplicadores, verifica-se que os setores que possuem os melhores multiplicadores nem sempre são os mais participativos na economia local.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;FAGUNDES, M. B. B.; DIAS, D. T.; FIGUEIREDO, Adriano M.R; PITALUGA, C. M.. 2016.
-Interligações Setoriais e Composição do Produto, Demanda e Rendimento da Agropecuária de Mato Grosso do Sul: uma Aplicação da Matriz Insumo-Produto In &lt;em&gt;Contextus - Revista Contemporânea de Economia e Gestão&lt;/em&gt;. , v.14, 58-82
-Palavras-chave: agricultura, pecuária, produto interno bruto
-Áreas do conhecimento: Economia Agrária,Economia Regional
-Setores de atividade: Administração pública, defesa e seguridade social, Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.contextus.ufc.br/2014/index.php/contextus/article/view/779/263&#34; class=&#34;uri&#34;&gt;http://www.contextus.ufc.br/2014/index.php/contextus/article/view/779/263&lt;/a&gt;]
-O objetivo geral deste artigo é analisar a composição do produto, da demanda, da renda e das interligações setoriais da agropecuária do estado do Mato Grosso do Sul. Utilizou-se o método quantitativo de pesquisa da matriz insumo-produto e as noções do PIB pelas abordagens do produto, demanda e renda. Dentre os principais resultados estão as compras e vendas concentradas, principalmente, na própria agropecuária e no setor de alimentos e bebidas. Quanto às óticas do PIB, a agropecuária se posicionou entre as cinco primeiras em produto. Pela ótica da renda, as tributações e salários da agropecuária atingiram pequenas proporções da economia. Pela demanda, o destaque coube à participação das exportações destinadas ao restante do Brasil. Esses resultados demonstraram a importância da agropecuária na economia de Mato Grosso do Sul, fornecendo suporte à tomada de decisões do próprio setor e do governo.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;AZEVEDO JUNIOR, W. C.; Dallemole Dilamar; FIGUEIREDO, A. M. R.; SANTANA, A. C.; FARIA, A. M. M.. 2015.
-Áreas de Influência Econômica das Usinas de Cana-de-Açúcar em Mato Grosso, 2010 In &lt;em&gt;Estudos do CEPE&lt;/em&gt;. , v.39, 117-133
-Palavras-chave: Modelo Gravitacional, Cadeia Sucroalcooleira, Mato Grosso
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://online.unisc.br/seer/index.php/cepe/article/view/5267&#34; class=&#34;uri&#34;&gt;http://online.unisc.br/seer/index.php/cepe/article/view/5267&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;LISBOA, E. A. S.; FIGUEIREDO, A. M. R.. 2014.
-A Agroindústria Canavieira Mato-Grossense e o Sistema de Gestão Ambiental In &lt;em&gt;Amazônia&lt;/em&gt; (Banco da Amazônia. 2005). n.19, v.10, 57-71
-Palavras-chave: gestão ambiental, desenvolvimento sustentável, setor sucroalcooleiro
-Áreas do conhecimento: Economia dos Recursos Naturais
-Setores de atividade: Fabricação de produtos diversos
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;https://www.bancoamazonia.com.br/index.php/component/edocman/revista-amazonia-ciencia-e-desenvolvimento-edicao-19/viewdocument?Itemid=&#34; class=&#34;uri&#34;&gt;https://www.bancoamazonia.com.br/index.php/component/edocman/revista-amazonia-ciencia-e-desenvolvimento-edicao-19/viewdocument?Itemid=&lt;/a&gt;]
-A pesquisa foi elaborada com o objetivo de investigar a situação corrente do Estado de Mato Grosso quanto à disposição do setor sucroalcooleiro em produzir de acordo com a correta gestão e aproveitamento dos resíduos gerados no processo produtivo. O problema central se concentrou em saber de que modo ocorre e quais as motivações para que haja a gestão de resíduos ambientais na indústria sucroalcooleira estadual. Dentre os métodos e procedimentos utilizados na pesquisa, realizouse uma pesquisa de campo com aplicação de questionários junto a três agroindústrias do setor no Estado. Como principais resultados destacam-se a ineficiência dos sistemas de gestão ambiental instalados nas agroindústrias analisadas e pouca participação governamental no processo de formulação de políticas públicas ambientais bem como a ineficiência da fiscalização.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;SILVA, C. E. S. F.; SCHOENHERR, R. P.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2014.
-Efeitos dos investimentos públicos em infraestrutura para a Copa do Mundo FIFA 2014 no setor da construção em Mato Grosso In &lt;em&gt;Revista de Economia da UEG&lt;/em&gt;. Seção Eletrônica. , v.10, 36-54
-Palavras-chave: futebol, infraestrutura, construção
-Áreas do conhecimento: Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
-Setores de atividade: Construção de edifícios, Administração pública, defesa e seguridade social
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.revista.ueg.br/index.php/economia/article/view/3069/1980&#34; class=&#34;uri&#34;&gt;http://www.revista.ueg.br/index.php/economia/article/view/3069/1980&lt;/a&gt;]
-A cidade de Cuiabá será sede da Copa do Mundo FIFA 2014. Um importante evento esportivo de repercussão mundial, em que investimentos principalmente na área de infraestrutura se fazem necessários. Sendo o setor da construção o mais impactado diretamente pelo mundial. Neste trabalho procura-se verificar os impactos dos investimentos públicos em infraestrutura para a Copa do Mundo FIFA 2014 no setor da construção de Mato Grosso. Também se procurou demonstrar o papel da construção para a economia do estado. Para tal, utilizou-se como base a Matriz de Insumo-Produto Inter-Regional de Mato Grosso e Resto do Brasil – 2007 e os dados das obras públicas da SECOPA/MT (Secretaria Extraordinária da Copa Mundo FIFA 2014), órgão responsável pelos assuntos da Copa do Mundo no estado de Mato Grosso. O método utilizado neste estudo foi o dos multiplicadores de impacto e o choque na demanda final. Os multiplicadores mostraram o quanto é impactado na economia como um todo através de uma mudança exógena na demanda final no setor de construção. Os resultados do impacto na demanda final evidenciaram que os investimentos públicos em infraestrutura para a Copa do Mundo em Cuiabá terão um impacto no setor da construção de Mato Grosso de 6,17% do PIB.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;FEARNSIDE, PHILIP M.; FIGUEIREDO, ADRIANO M. R.; BONJOUR, SANDRA C. M.. 2013.
-Amazonian forest loss and the long reach of China’s influence In &lt;em&gt;Environment, Development And Sustainability&lt;/em&gt;. , v.15, 325-338
-Palavras-chave: Amazonia, Brazil, China, deforestation, soybeans
-Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Produção Florestal
-Referências adicionais: Inglês. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://link.springer.com/article/10.1007/s10668-012-9412-2&#34; class=&#34;uri&#34;&gt;http://link.springer.com/article/10.1007/s10668-012-9412-2&lt;/a&gt;]
-This paper explores China’s role in deforestation in Latin America. Brazil’s Amazon region contains vast natural resources including land, timber, minerals and hydroelectric potential. China’s strong economy and large demands relative to domestic supplies of these resources mean that China has become Brazil’s largest trading partner, primarily for natural resources. The paper examines how China influences deforestation in Brazilian Amazonia in a variety of ways, including through the direct influence of Chinese enterprises through land purchases and other mechanisms. This paper finds that the rapid rise in exports of soy and beef products to China are two of the major drivers of Amazonian deforestation in Brazil. The paper further argues that Chinese purchases of agricultural and forest land and Chinese imports of commodities such as timber and aluminum also cause environmental impacts in Amazonia. Chinese financing and investment in Amazonian infrastructure such as railways and mineral processing facilities have additional impacts.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;OLIVEIRA, L. J.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; RAUSCHKOLB, A. S.. 2013.
-Ambientes institucional e organizacional do setor apícola na região norte de Mato Grosso In &lt;em&gt;Revista Eletrônica Documento/Monumento&lt;/em&gt;. , v.10, 89-106
-Palavras-chave: instituições, organizações, apicultura, Mato Grosso, Sinop-MT
-Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://200.17.60.4/ndihr/revista/artigos/7.pdf&#34; class=&#34;uri&#34;&gt;http://200.17.60.4/ndihr/revista/artigos/7.pdf&lt;/a&gt;]
-Fez-se uma análise dos papéis dos ambientes institucional e organizacional no desempenho competitivo do setor apícola na região Norte de Mato Grosso. Foram entrevistadas 11 organizações que fazem parte do projeto de “Desenvolvimento da Apicultura na Região de Sinop”. O referencial teórico foi centrado no estudo das instituições e ambiente institucional, bem como o estudo da economia das organizações. Verificou-se que no ambiente institucional são feitas análises da qualidade do mel e também são ofertados cursos e palestras de boas práticas de higiene, mantendo, assim, um controle de segurança no padrão de qualidade do mel natural. O ambiente organizacional da apicultura mostrou-se eficiente no aspecto de articulação de políticas de capacitação e no fortalecimento da governança por meio do espírito coletivo. Ações conjuntas, no sentido de captar pessoas interessadas em trabalhar com a atividade são desenvolvidas pelas associações da região, enquanto o Sebrae e outras entidades dão suporte no sentido de qualificar e capacitar a mão de obra local. Há uma tendência de que se aumente o poder de barganha dos apicultores na região por intermédio da Cooperativa dos Apicultores do Norte de Mato Grosso (COAPISNORTE), que está em fase de fortalecimento. Isso faz com que os produtores agreguem mais valor ao produto comercializado, aumentando, assim, o desempenho competitivo na estrutura produtiva, propiciando o desenvolvimento da atividade de forma justa, econômica e sustentável.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;CANGUSSU, S. V.; ROSA, M. J. A.; FIGUEIREDO, Adriano M.R. 2013.
-Determinantes do preço do frete rodoviário para transporte de soja em grãos em Mato Grosso In &lt;em&gt;Revista de Economia da UEG&lt;/em&gt;. Seção Eletrônica. , v.9, 78-94
-Palavras-chave: soja, frete, Mato Grosso
-Áreas do conhecimento: Economia Agrária,Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Economia Regional
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.prp.ueg.br/revista/index.php/economia/article/view/1425/1117&#34; class=&#34;uri&#34;&gt;http://www.prp.ueg.br/revista/index.php/economia/article/view/1425/1117&lt;/a&gt;]
-A proposta deste trabalho é analisar as variáveis que influenciam na formação do preço do frete rodoviário da soja em grãos com origem em Mato Grosso, valendo-se de um modelo de regressão linear múltipla, estimado pelo método dos mínimos quadrados ordinários (MQO), procurou-se identificar a influência de alguns desses fatores para a composição dos fretes rodoviários de soja a granel com origem no estado de Mato Grosso entre 2008 e 2010. Os resultados obtidos indicam que, para as amostras utilizadas como referência do transporte de soja a granel com origem no estado de Mato Grosso, durante as safras de 2008 a 2010, a distância percorrida foi um fator fundamental para a composição dos preços dos fretes praticados, independentemente do período e origem das cargas. Porém, o valor do frete nesses percursos, em alguns momentos, em maior ou menor grau, foi influenciado por fatores secundários, tais como: a existência de praças de pedágios em algumas rodovias, sazonalidade da demanda por transporte e as condições das vias utilizadas.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;OLIVEIRA, L. J.; FIGUEIREDO, Adriano M.R; RAUSCHKOLB, A. S.. 2013.
-Estrutura de governança do setor apícola na região norte de Mato Grosso In &lt;em&gt;Revista de Economia da UEG&lt;/em&gt;. Seção Eletrônica. , v.9, 95-115
-Palavras-chave: governança, transacao, apicultura
-Áreas do conhecimento: Economia Agrária,Economia dos Recursos Naturais,Economia Florestal
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.prp.ueg.br/revista/index.php/economia/article/view/1465/1118&#34; class=&#34;uri&#34;&gt;http://www.prp.ueg.br/revista/index.php/economia/article/view/1465/1118&lt;/a&gt;]
-Nesse estudo analisou-se a estrutura de governança do setor apícola na região Norte de Mato Grosso caracterizando os tipos de transações dos apicultores da região. A base teórica foi fundamentada na Nova Economia Institucional (NEI), porém utilizou-se também de algumas considerações dos modos de coordenação em função dos níveis de garantias abordado pela Economia das Convenções. Foram utilizados dados primários de uma pesquisa de campo, obtidos pela aplicação de 52 questionários junto aos apicultores da região. Verificou-se que a estrutura de governança dos apicultores da região Norte de Mato Grosso é predominantemente via “Mercado Spot”. Esse modo de coordenação vem favorecendo o desenvolvimento da atividade no contexto vivenciado pelos apicultores locais.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;OLIVEIRA, L. J.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; RAUSCHKOLB, A. S.. 2013.
-Perfil tecnológico dos apicultores da região norte do estado de Mato Grosso In &lt;em&gt;Amazônia&lt;/em&gt; (Banco da Amazônia. 2005). , v.8, 151-166
-Palavras-chave: apicultura, perfil tecnologico, analise fatorial, Mato Grosso
-Áreas do conhecimento: Economias Agrária e dos Recursos Naturais,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.basa.com.br/images/arquivos/institucional/biblioteca/revista_amazonia/edicao16/00_Revista_Amazonia_Ciencia_e_Desenvolvimento_Edicao_16.pdf&#34; class=&#34;uri&#34;&gt;http://www.basa.com.br/images/arquivos/institucional/biblioteca/revista_amazonia/edicao16/00_Revista_Amazonia_Ciencia_e_Desenvolvimento_Edicao_16.pdf&lt;/a&gt;]
-Avalia o perfil tecnológico dos apicultores da região norte de Mato Grosso. Foram aplicados cinquenta e dois questionários em oito municípios. Os dados submetidos à análise de confiabilidade por meio do Alfa de Cronbach e posteriormente utilizou-se a análise fatorial por componentes principais para identificar os fatores que definem o perfil tecnológico dos produtores. Foram encontrados sete fatores, respectivamente denominados: nível de especialização; origem da renda; modo de aquisição das colmeias; nível de instrução com aperfeiçoamento; associativismo; nível de instrução sem aperfeiçoamento; e, renda da apicultura. Os resultados indicam que a apicultura apresentou-se como uma atividade complementar de renda e de geração de trabalho para os produtores da região.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;OLIVEIRA, L. J.; RAUSCHKOLB, A. S.; DANIEL, L. P.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2012.
-Aglomerações produtivas do setor de criação e suínos no estado de Mato Grosso In &lt;em&gt;Desafio&lt;/em&gt; (Campo Grande). , v.13, 83-95
-Palavras-chave: suinos, concentracao, ICN
-Áreas do conhecimento: Economia Agrária,Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Português.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;PEES, D.A.; FIGUEIREDO, M. G.; FIGUEIREDO, Adriano M.R. 2012.
-Análise econométrica da oferta e demanda de carne bovina no Brasil no período de 2000 a 2010 In &lt;em&gt;Revista de Economia da UEG&lt;/em&gt;. Seção Eletrônica. , v.8, 54-73
-Palavras-chave: carne bovina, oferta, demanda, modelo de equações simultâneas
-Áreas do conhecimento: Economia Agrária,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.prp.ueg.br/revista/index.php/economia/index&#34; class=&#34;uri&#34;&gt;http://www.prp.ueg.br/revista/index.php/economia/index&lt;/a&gt;]
-Este trabalho teve como objetivo analisar a oferta e a demanda de carne bovina no Brasil no período de 2000 a 2010 empregando um sistema de Equações Simultâneas para obter as elasticidades-preço, elasticidade-renda e elasticidades-cruzada da demanda e da oferta. A hipótese de que as relações entre a oferta e a demanda da carne bovina no Brasil ocorrem simultaneamente não foi confirmada, uma vez que a aplicação do teste de raiz unitária indicou que as séries empregadas no modelo não são integradas de mesma ordem, verificando-se relação de equilíbrio em longo prazo apenas nas séries que compõem a equação de oferta. Ademais, a aplicação do Vetor de Correção de Erros (VEC) aponta um ajustamento em longo prazo entre a quantidade comercializada e as variáveis da equação de oferta, através de parcelas de -0,107888 ao mês.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;DASSOW, C.; COSTA, R.M.G.S.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2012.
-Crescimento econômico e clusters municipais no estado de Mato Grosso In &lt;em&gt;Nexos Econômicos&lt;/em&gt; (Salvador). , v.6, 11-33
-Palavras-chave: Polos, Região, Brasil
-Áreas do conhecimento: Economia Regional,Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Métodos e Técnicas do Planejamento Urbano e Regional
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Administração pública, defesa e seguridade social
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.portalseer.ufba.br/index.php/revnexeco/article/view/7950&#34; class=&#34;uri&#34;&gt;http://www.portalseer.ufba.br/index.php/revnexeco/article/view/7950&lt;/a&gt;]
-RESUMO: Mato Grosso tem se destacado pelas altas taxas de crescimento econômico e elevada renda per capita, mas seu crescimento não ocorre de forma homogênea em todos os municípios/regiões. Assim, analisa-se o processo de crescimento econômico de seus municípios no período de 2001 a 2007. Investiga-se a dependência espacial entre os municípios, e se há cluster de crescimento econômico no estado com uso do teste I de Moran e o indicador LISA, para a presença de clusters. Verificou-se: a existência de pequenos efeitos espaciais nas taxas de crescimento e renda per capita assim como clusters de crescimento econômico.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;BERCHIELI, R.; FIGUEIREDO, Adriano M.R; BONJOUR, S. C. M.. 2012.
-Incentivos fiscais como instrumento da política agrícola recente de Mato Grosso: 1994-2008 In &lt;em&gt;Revista Eletrônica Documento/Monumento&lt;/em&gt;. , v.7, 68-80
-Palavras-chave: renúncia, incentivo, subsídio
-Áreas do conhecimento: Economia Agrária,Economia Regional e Urbana
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Administração pública, defesa e seguridade social
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://200.17.60.4/ndihr/revista/artigos/revista-dm.pdf&#34; class=&#34;uri&#34;&gt;http://200.17.60.4/ndihr/revista/artigos/revista-dm.pdf&lt;/a&gt;]
-RESUMO. Analisa-se a política de incentivos ou renúncias fiscais como instrumentos da política agrícola de Mato Grosso. Descrevem-se os principais incentivos fiscais destinados à produção agroindustrial mato-grossense bem como as instituições que operacionalizaram tais instrumentos. Por meio da base teórica da regulação e a NEI, apresenta-se o inventário dessa política, sendo estimuladas as agroindústrias dos derivados do algodão, da madeira e mobiliário, do couro, do café, do arroz, de laticínios e, principalmente ao final do período, aparece o PRODEIC para o desenvolvimento industrial e comercial. Em geral, facilitavam a adoção de tecnologias capital intensivas as quais muitas vezes reduziam emprego, à despeito dos programas terem como metas a geração de empregos. Em muitos casos, como no programa para a indústria de derivados de algodão, o estímulo realmente se traduziu em marco no desenvolvimento setorial.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;RAUSCHKOLB, A. S.; OLIVEIRA, L. J.; FIGUEIREDO, Adriano M.R; BONJOUR, S. C. M.. 2012.
-Ligações setoriais na cadeia produtiva de leite em Mato Grosso In &lt;em&gt;Revista de Politica Agricola&lt;/em&gt;. , v.xxi, 68-82
-Palavras-chave: Agronegócio, lácteo, leite
-Áreas do conhecimento: Economia Agrária,Economia Regional,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://https://seer.sede.embrapa.br/index.php/RPA/article/view/247/207&#34; class=&#34;uri&#34;&gt;http://https://seer.sede.embrapa.br/index.php/RPA/article/view/247/207&lt;/a&gt;]
-O objetivo deste estudo foi examinar os impactos na economia de Mato Grosso dos setores de criação de bovinos e indústria de laticínios. Baseia-se nas técnicas e conceitos de insumo-produto, tendo sido usada a matriz insumo-produto do estado de Mato Grosso – ano de 2007. Realizou-se a análise dos índices de ligação de Rasmussen-Hirschman; dos índices puros de ligação; dos multiplicadores tipo I e II de produto, renda e emprego; e dos multiplicadores de impostos, lucro e importação. Os resultados revelam que o setor de criação de bovinos de leite é chave para frente e para trás, enquanto o setor de indústria de laticínios em questão é chave somente para trás, ou seja, impacta mais os setores a montante que a jusante da cadeia. Os resultados obtidos indicam que um investimento no setor de criação de bovinos leiteiros geraria mais benefícios à economia de Mato Grosso do que o mesmo investimento no setor de indústria de laticínios, ocasionando um aumento maior na renda e emprego, de forma tanto direta como indireta, e de modo induzido.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;MELLO, G.C.F.C.; FIGUEIREDO, A. M. R.. 2012.
-O Programa de Aquisição de Alimentos (PAA) em Cuiabá-MT na Ótica da Nova Economia Institucional In Revista Novos Cadernos NAEA. , v.15, 131-159
-Palavras-chave: agricultura familiar, PAA, NEI, Mato Grosso
-Áreas do conhecimento: Economia Agrária,Economia Regional e Urbana
-Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.periodicos.ufpa.br/index.php/ncn/article/view/747/1332&#34; class=&#34;uri&#34;&gt;http://www.periodicos.ufpa.br/index.php/ncn/article/view/747/1332&lt;/a&gt;]
-O Programa de Aquisição de Alimentos (PAA) em Cuiabá-MT foi analisado na ótica da nova economia institucional quanto a: a operacionalização e metas; resultados produtivos; e, eventuais dificuldades ou imperfeições na gestão. Fez-se análise estatística das variáveis tecnológicas assim como produção e área, comparando-se grupos dos participantes e dos não participantes do PAA. Os resultados indicaram que o programa estava sendo executado com algumas dificuldades ou imperfeições devido à sua estrutura de governança. As metas do programa foram avaliadas tanto no âmbito do “MDS-Prefeitura” como de “MDS-Conab”. Houve diferença favorável ao grupo do PAA quanto à participação em organizações. Não existiu diferença na produção média entre os grupos participantes e não participantes; e foram detectados filtros institucionais em ambos os níveis de análise.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;OLIVEIRA, L. J.; RAUSCHKOLB, A. S.; FIGUEIREDO, Adriano M.R. 2012.
-Transações e governança na apicultura de Mato Grosso: o caso da Apisnorte In Revista de Politica Agricola. , v.11, 20-34
-Palavras-chave: abelha, mercado, NEI
-Áreas do conhecimento: Economia Agrária,Economia dos Recursos Naturais
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.agricultura.gov.br/MapaPortalInternet/consultarpublicacao/editConsultarPublicacaoGrupo2.do?op=downloadArquivo&amp;amp;url=%2Fpolitica-agricola%2Fpublicacoes&amp;amp;publicacao.arquivo.idArquivo=11718&#34; class=&#34;uri&#34;&gt;http://www.agricultura.gov.br/MapaPortalInternet/consultarpublicacao/editConsultarPublicacaoGrupo2.do?op=downloadArquivo&amp;amp;url=%2Fpolitica-agricola%2Fpublicacoes&amp;amp;publicacao.arquivo.idArquivo=11718&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;MATTIELLO, C. C.; FIGUEIREDO, A. M. R.. 2011.
-A importancia do Fethab para o setor de transporte rodoviario do estado de Mato Grosso (2000-2006) In Revista Eletrônica Documento/Monumento. , v.4, 162-176
-Palavras-chave: investimento, fundos, infraestrutura
-Áreas do conhecimento: Economia Regional,Renda e Tributação,Crescimento e Desenvolvimento Econômico
-Setores de atividade: Administração pública, defesa e seguridade social, Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://200.17.60.4/ndihr/revista/artigos/claudia-cristina-mattiello.pdf&#34; class=&#34;uri&#34;&gt;http://200.17.60.4/ndihr/revista/artigos/claudia-cristina-mattiello.pdf&lt;/a&gt;]
-Objetivou-se verificar a importância do Fundo Estadual de Transporte e Habitação (FETHAB) para o desenvolvimento do setor de transporte rodoviário do estado de Mato Grosso no período 2000-2006. O montante de recursos arrecadados com o FETHAB e destinados ao setor de transportes pelo governo estadual para o período permitiram identificar a participação do FETHAB no total de investimentos destinados a esse setor. A base teórica envolve as finanças públicas, as funções básicas do governo no fornecimento de bens públicos, e a base da Parceria Público-Privada em transportes. O FETHAB correspondeu a uma média de 73% do total investido entre 2000 e 2006. Quando se analisa apenas os anos de 2003 a 2006, a participação do FETHAB chegou a corresponder a quase 82% de tudo o que foi investido na malha rodoviária do estado neste período.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;DASSOW, Charline; AZEVEDO JUNIOR, W. C.; COSTA, R. M. G. S.; FIGUEIREDO, A. M. R.. 2011.
-AGROPECUÁRIA, CRESCIMENTO ECONÔMICO E CONVERGÊNCIA DE RENDA MUNICIPAL EM MATO GROSSO In Revista de Estudos Sociais (UFMT). , v.12, 99-119
-Palavras-chave: Crescimento Econômico, convergencia de renda, Econometria Espacial, Mato Grosso
-Áreas do conhecimento: Economia Regional
-Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://200.129.241.94/index.php/res/article/viewFile/228/194&#34; class=&#34;uri&#34;&gt;http://200.129.241.94/index.php/res/article/viewFile/228/194&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;DASSOW, C.; COSTA, R.M.G.S.; FIGUEIREDO, Adriano M.R. 2011.
-Crescimento econômico municipal em Mato Grosso: uma análise de convergência de renda In Revista Brasileira de Economia (Impresso). , v.65, 359-372
-Palavras-chave: Econometria Espacial, PIB municipal, Brasil
-Áreas do conhecimento: Economia Regional e Urbana,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
-Setores de atividade: Administração pública, defesa e seguridade social, Agricultura, Pecuária e Serviços Relacionados
-Referências adicionais: Inglês. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://bibliotecadigital.fgv.br/ojs/index.php/rbe/article/view/3334/2287&#34; class=&#34;uri&#34;&gt;http://bibliotecadigital.fgv.br/ojs/index.php/rbe/article/view/3334/2287&lt;/a&gt;]
-Este artigo analisa os efeitos dos componentes setoriais do valor adicionado bruto sobre o crescimento econômico e a convergência de renda em Mato Grosso de 2001 a 2007. Adaptou-se o modelo de Barro e Sala-i-Martin para β convergência com técnicas econométricas espaciais. Os testes de autocorrelação espacial indicaram dependência espacial nas taxas de crescimento e composições setoriais da renda per capita no valor adicionado total. Houve convergência absoluta e condicional da renda nos municípios mato-grossenses. O setor agropecuário foi o principal responsável pelas oscilações econômicas, tanto para formação do valor adicionado como para a geração de renda.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;HELFAND, S. M.; MOREIRA, A. R. B.; FIGUEIREDO, A. M. R.. 2011.
-Explicando as diferenças de pobreza entre produtores agrícolas no Brasil: simulações contrafactuais com o censo agropecuário 1995-96 In Revista de Economia e Sociologia Rural (Impresso). , v.49, 391-418
-Palavras-chave: pobreza, agricultura, Brasil
-Áreas do conhecimento: Economia Agrária,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
-Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
-Referências adicionais: Inglês. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://dx.doi.org/10.1590/S0103-20032011000200006&#34; class=&#34;uri&#34;&gt;http://dx.doi.org/10.1590/S0103-20032011000200006&lt;/a&gt;]
-O censo agropecuário 1995-96 é utilizado para estudar os fatores responsáveis pelas diferenças na pobreza entre os estabelecimentos agrícolas no Brasil. As diferenças entre as regiões e as seguintes dicotomias são analisadas: proprietários/não proprietários; familiares/não familiares; intensivos em insumos/não intensivos; com/sem máquinas. O artigo utiliza uma metodologia semiparamétrica. Primeiro, uma função fronteira estocástica de lucro é estimada. Em seguida, simulações não paramétricas contrafactuais são utilizadas para identificar os fatores que explicam as diferenças em pobreza. Os fatores incluem o tamanho da propriedade, o trabalho familiar, a lucratividade e as variáveis utilizadas para explicar a lucratividade no modelo de fronteira estocástica. O artigo conclui que a falta de terra e os baixos níveis de produtividade são importantes motivos para a pobreza entre produtores agrícolas. É improvável que qualquer um deles isoladamente possa solucionar o problema da pobreza. As diferenças em “eficiência” – capturadas pelo termo de erro na função fronteira de lucro – são importantes para explicar as diferenças entre os pobres e os não pobres, mas não para as demais dicotomias estudadas. Isto sugere que os fatores não observáveis – como restrições ou falhas de mercado – são importantes para explicar a pobreza entre produtores agrícolas no Brasil.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;FIGUEIREDO, M.G.; GUILHOTO, J. J. M.; BONJOUR, S. C. M.; DETOMINI, E. R.; FIGUEIREDO, A. M. R.; ISHII, K. S.; AZEVEDO JUNIOR, W. C.; LEITE, S. F.; SILVA, F. D. S. E.; SOUZA, R. F.. 2011.
-Matriz Insumo Produto de Mato Grosso 2007: construção e análise dos principais indicadores econômicos In Revista de Estudos Sociais (UFMT). , v.13, 49-73
-Palavras-chave: Matriz insumo-produto, indicadores econômicos, Mato Grosso
-Áreas do conhecimento: Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
-Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Administração pública, defesa e seguridade social
-Referências adicionais: Português. Meio de divulgação: Vários. DOI: [&lt;a href=&#34;http://dx.doi.org/10.19093/res.v13i26.470&#34; class=&#34;uri&#34;&gt;http://dx.doi.org/10.19093/res.v13i26.470&lt;/a&gt;] O estado de Mato Grosso vem apresentando expressivas taxas de crescimento econômico nos últimos anos, de modo que a utilização da matriz insumo-produto, como estratégia de política econômica, representaria não somente a busca da manutenção desse crescimento econômico, mas a preocupação de que o mesmo se traduza em desenvolvimento sócio-econômico. Assim, o presente artigo tem como objetivo geral a apresentação das notas metodológicas de construção da matriz insumo-produto para o Mato Grosso, acompanhadas de uma análise geral da estrutura produtiva da economia do estado. Os principais métodos de análise utilizados no estudo foram os índices de ligações inter-setoriais, bem como os multiplicadores de emprego, renda e produção. Os resultados empíricos confirmaram a importância dos setores primários em termos de suas relações comerciais com as demais atividades, como forma de estimular o aquecimento da economia. Finalmente, através da análise dos multiplicadores, foi possível identificar a importância de diversos setores relacionados ao agronegócio, no que diz respeito às suas capacidades de geração direta e indireta de emprego e renda na economia.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; BONJOUR, S. C. M.; TEIXEIRA, E. C.; HELFAND, S. M.. 2011.
-Spatial Analysis Of Agricultural Supply Response In The Brazilian Center-West In Revista Economía Agraria (AEA Chile). , v.15, 13-25
-Palavras-chave: agriculture, Brazil, spatial dependence, shares, profit
-Áreas do conhecimento: Economia Agrária,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
-Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
-Referências adicionais: Inglês. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.aeachile.cl/docs/r15/6744%20-%202.pdf&#34; class=&#34;uri&#34;&gt;http://www.aeachile.cl/docs/r15/6744%20-%202.pdf&lt;/a&gt;]
-This study investigates the importance of spatial dependence and inter-relations due to geographic localization over the supply response to agricultural prices, in the Brazilian Center-West. Specifically, we evaluated: the spatial error dependence in the input demand and output supply; and, the importance of input and output prices in farmers response. The contribution to the literature is to combine a translog profit share system of equations with spatial error dependence, cross-sectional and four agricultural censuses. There are econometric evidences of spatial dependencies in the residuals. There were high positive spatial autocorrelation in products. This demonstrates an influence of other factors not included in the model, modifying the residuals only due to localization. There are substitution relations mainly to rice price changes and some complementarities among others. Among factors, they were complements. The spatial effects in this study were very important, changing decisively the calculated elasticities, and showing that all analyzed products suffer from these effects.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;DASSOW, C.; AZEVEDO JUNIOR, W. C.; COSTA, R.M.G.S.; FIGUEIREDO, Adriano M.R. 2010.
-Agropecuária, crescimento econômico e convergência de renda municipal em Mato Grosso In Revista de Estudos Sociais (UFMT). , v.1, 99-119
-Palavras-chave: Crescimento Econômico, convergencia de renda, Econometria Espacial, Mato Grosso
-Áreas do conhecimento: Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Economia Regional e Urbana,Crescimento e Desenvolvimento Econômico
-Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://periodicoscientificos.ufmt.br/ojs/index.php/res/article/view/255/244&#34; class=&#34;uri&#34;&gt;http://periodicoscientificos.ufmt.br/ojs/index.php/res/article/view/255/244&lt;/a&gt;] Este trabalho investiga o efeito do setor agropecuário sobre o crescimento econômico e a convergência de renda dos municípios de Mato Grosso para o período de 2002 a 2005. Utilizou-se a teoria de convergência-β condicional, adaptando o modelo de Barro e Sala-i-Martin, e incorporando a metodologia econométrica espacial. Não existe dependência espacial detectada pelo teste global mas o teste de dependência espacial local (LISA) identificou um cluster de crescimento em uma região que é também pólo agropecuário do estado. Concluiu-se que há convergência-β condicional nos municípios mato-grossenses. Ainda, se constatou econometricamente que o setor agropecuário se mostra importante para o crescimento econômico dos municípios. No entanto, considera-se interessante aprofundar esses estudos, levando em consideração as características municipais e regionais, a fim de reduzir as suas desigualdades e obter um processo de crescimento econômico mais eficaz.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; MARTA, J. M. C.; GUIMARAES, P. W.. 2010.
-Determinantes da ocupação do núcleo familiar composto na área rural do Brasil In Economia e Desenvolvimento (Santa Maria). , v.22, 42-61
-Palavras-chave: mercado de trabalho, biprobit, amostra complexa
-Áreas do conhecimento: Economia Agrária,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
-Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://w3.ufsm.br/depcie/arquivos/artigo/artigo_3.pdf?PHPSESSID=21f3325b2a3a0844c735bcf53ce22174&#34; class=&#34;uri&#34;&gt;http://w3.ufsm.br/depcie/arquivos/artigo/artigo_3.pdf?PHPSESSID=21f3325b2a3a0844c735bcf53ce22174&lt;/a&gt;]
-A agricultura brasileira enfrentou profundas transformações em relação ao emprego agrícola durante a década de 90. Visando investigar qual foi o impacto desse processo nos determinantes da ocupação das famílias constituídas por núcleo composto, analisa-se a probabilidade de ocupação no mercado de trabalho de maridos e esposas da área rural do Brasil. Os dados utilizados nesse estudo foram obtidos da Pesquisa Nacional por Amostra de Domicílios (PNAD) para o ano de 2008 com todas as características do seu plano amostral complexo (peso, estrato e unidade primária) e a análise é feita para a área rural do Brasil. Adicionalmente, faz-se uso do modelo Probit Bivariado Aparentemente Não relacionado (BIPROBIT) para determinar se há interação das características que determinam a ocupação de maridos e esposas no mercado de trabalho rural brasileiro. Os resultados obtidos mostraram que há interação das características que determinam a ocupação do núcleo familiar composto rural, mas que as características relevantes para essa ocupação variam consideravelmente conforme se considere marido ou esposa.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;GUIMARAES, P. H. M.; FIGUEIREDO, A.; BONJOUR, S. C. M.. 2010.
-O sistema de distribuição de gás natural em Mato Grosso: uma abordagem institucionalista In Panorama socioeconomico (Chile). , v.28, 128-143
-Palavras-chave: Gás natural, Mato Grosso, Regulacao
-Áreas do conhecimento: Relações do Comércio; Política Comercial; Integração Econômica,Organização Industrial e Estudos Industriais,Economia Regional
-Setores de atividade: Eletricidade, gás e outras utilidades
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.redalyc.org/src/inicio/ArtPdfRed.jsp?iCve=39920230006&#34; class=&#34;uri&#34;&gt;http://www.redalyc.org/src/inicio/ArtPdfRed.jsp?iCve=39920230006&lt;/a&gt;]
-Em Mato Grosso, percebe-se um crescimento lento e com poucas perspectivas de expansão da distribuição de gás natural (GN). Este trabalho caracteriza o mercado de gás natural para entender as razões que levam à subutilização do sistema de distribuição no estado. Os resultados do trabalho apontam que o pouco dinamismo envolve: a ausência de expectativas pela iniciativa privada; a dependência de fornecimento da Bolívia; a exigência de alto nível de investimento para infra-estrutura de redes; o papel predominante da Termocuiabá; o grande número de substitutos energéticos; e os custos de transferência dos energéticos para o GN. &lt;a href=&#34;http://www.panorama.utalca.cl/dentro/2010-dic/articulo2.pdf&#34; class=&#34;uri&#34;&gt;http://www.panorama.utalca.cl/dentro/2010-dic/articulo2.pdf&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;ALVES, J.; FIGUEIREDO, A. M. R.; BONJOUR, S. C. M.; GOMES, M. B.. 2009.
-A Agricultura Familiar em Mato Grosso In Revista Eletrônica Documento/Monumento. , v.1, 69-86
-Palavras-chave: agricultura familiar, Mato Grosso, Economia Agrícola
-Áreas do conhecimento: Economia Agrária
-Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
-Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.ufmt.br/ndihr/revista/artigos/janice-alves.pdf&#34; class=&#34;uri&#34;&gt;http://www.ufmt.br/ndihr/revista/artigos/janice-alves.pdf&lt;/a&gt;]
-RESUMO: Mato Grosso contava no ano-safra 1995/96 com 78.763 propriedades rurais, ocupando 49.849.602 hectares de área, dos quais 69,9% eram familiares. Esta agricultura familiar ocupava 4.664.443 hectares de área, o equivalente a 9,63% do total da área utilizada pela agropecuária no Estado com uma área média de 84,7 hectares por estabelecimento familiar. A análise dos dados destes agricultores familiares permitiu observar que os maiores estabelecimentos seguem o modelo de produção da agricultura patronal, e que a grande maioria sofre sérias carências de assistência técnica, energia elétrica, irrigação, máquinas, entre outros fatores tecnológicos. Percebe-se ainda falta de planejamento, organização e políticas públicas de apoio ao setor.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;MARQUES, A. K.; MANCILLA, G. D.; FIGUEIREDO, A. M. R.; BONJOUR, S. C. M.. 2009.
-A caracterização ambiental da pequena propriedade rural de Lucas do Rio Verde In Revista de Política Agrícola. , v.18, 70-84
-Palavras-chave: Mato Grosso, pequenas propriedades, preservação ambiental, georeferenciamento
-Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
-Setores de atividade: Agricultura, Pecuária, Silvicultura e Exploração Florestal
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.agricultura.gov.br&#34; class=&#34;uri&#34;&gt;http://www.agricultura.gov.br&lt;/a&gt;&amp;gt;]
-Este trabalho tem o objetivo de quantificar e caracterizar a área de preservação ambiental das pequenas propriedades rurais do município de Lucas do Rio Verde no Estado de Mato Grosso. Para tanto, foram utilizados dados primários das propriedades rurais, produção, área produzida, área preservada, produtividade, tipo de custeio e mão-de-obra. Os resultados mostram que as pequenas propriedades apresentam produtividade da terra acima da média estadual, enquanto a preservação ambiental está muito aquém do mínimo permitido por lei. Utilizando imagens de satélite e o georeferenciamento de cada propriedade no projeto Lucas Legal, detectou-se para as pequenas propriedades do município uma área necessária de reserva legal de 4.792 hectares para 1.318 hectares conservados, ou 3.473 hectares degradados. Os custos para recuperar as áreas de reserva legal variam entre 17 e 24 milhões de reais.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;ALVES, J.; FIGUEIREDO, A. M. R.; ZAVALA, A.A.Z.. 2009.
-Análise de eficiência em assentamentos rurais no Estado de Mato Grosso In Revista de Estudos Sociais (UFMT). , v.1, 75-97
-Palavras-chave: assentamentos rurais, DEA, Eficiência, Mato Grosso
-Áreas do conhecimento: Economia Agrária
-Setores de atividade: Agricultura, Pecuária, Silvicultura e Exploração Florestal
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://200.129.241.94/index.php/res/article/view/207/174&#34; class=&#34;uri&#34;&gt;http://200.129.241.94/index.php/res/article/view/207/174&lt;/a&gt;]
-Observa-se em Mato Grosso um crescimento do número de assentamentos rurais após 1994, e diversos estudos já comprovaram que a quantidade e a qualidade dos projetos não estariam associadas. Apesar da extensa pobreza entre os assentados, alguns se destacam de maneira positiva. Este estudo analisa quais são os fatores mais importantes para esta diferenciação entre os assentamentos rurais mato-grossenses. Utilizaram-se dados do Censo da Reforma Agrária de 2002 com técnicas de análise envoltória de dados (DEA) para se obter a fronteira eficiente, e assim detectar o que causa maior eficiência ou menor ineficiência entre os projetos estudados. Como variáveis analisadas estavam a infra-estrutura social e de habitação, isolamento econômico, crédito rural, área, entre outras, concluindo-se que quanto maior a distância dos centros urbanos, o tamanho do lote, a utilização de energia elétrica e a disponibilidade de mão-de-obra maior é a ineficiência. O estudo contribui para a literatura ao aplicar o método para este tipo de análise, com uso de variáveis categóricas em DEA e ainda oferecendo resultados aplicados para o estudo regional.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;SOUZA, S. S. S. DE; BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.. 2009.
-Competitividade do algodão mato-grossense In Revista economia em debate (URCA). , v.3, 5-24
-Palavras-chave: Mato Grosso, algodão, vantagem comparativa
-Áreas do conhecimento: Economia Agrária,Relações do Comércio; Política Comercial; Integração Econômica
-Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
-Referências adicionais: Português. Meio de divulgação: Vários&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;DASSOW, C.; FIGUEIREDO, A. M. R.; MARTA, J. M. C.. 2009.
-Crescimento econômico e ciclos de negócios no município de Campo Novo do Parecis (MT) entre 1990 e 2006 In Revista de Estudos Sociais (UFMT). , v.2, 125-144
-Palavras-chave: Campo Novo do Parecis, Crescimento Econômico, ciclo de negócios
-Áreas do conhecimento: Economia Regional e Urbana,Economias Agrária e dos Recursos Naturais,Crescimento e Desenvolvimento Econômico
-Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://200.129.241.94/index.php/res/article/view/219/186&#34; class=&#34;uri&#34;&gt;http://200.129.241.94/index.php/res/article/view/219/186&lt;/a&gt;]
-Este trabalho tem por objetivo analisar e identificar os fatores mais importantes para o crescimento econômico do município de Campo Novo do Parecis, no período de 1990 a 2006. Para tanto, foi realizada a análise de dados secundários de população, valor adicionado, investimento público, receita orçamentária, estabelecimentos comerciais, emprego, renda e grau de especialização dos trabalhadores. Conclui-se que o crescimento econômico e os ciclos de negócios ocorridos no município no período de 1990 a 2006 foram causados pela sua característica agrícola, ou seja, por o município ser dependente economicamente do agronegócio. Dessa maneira, os fatores que determinam o crescimento econômico e ciclos de negócios do setor agrícola e conseqüentemente do município foram os preços dos produtos, principalmente o da soja, a taxa de câmbio, as condições climáticas, o crédito para a aquisição de insumos, de máquinas e equipamentos e de comercialização, e a oferta e a demanda internacionais.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; TEIXEIRA, E. C.; BONJOUR, S. C. M.. 2009.
-Introdução a econometria espacial na agricultura In Desafio (Campo Grande). , v.10, 16-28
-Palavras-chave: econometria, espacial, agricultura
-Áreas do conhecimento: Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Economia Agrária
-Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.spell.org.br/documentos/ver/2564/introducao-a-econometria-espacial-na-agricultura/i/pt-br&#34; class=&#34;uri&#34;&gt;http://www.spell.org.br/documentos/ver/2564/introducao-a-econometria-espacial-na-agricultura/i/pt-br&lt;/a&gt;]
-A agricultura brasileira tem grande heterogeneidade e a influência de uma localidade sobre seus vizinhos é sempre vista com interesse, uma vez que é comum a constatação de interdependência nas diferentes regiões em estudo. Uma hipótese básica da geografia é que as variáveis em estudo, nas diferentes regiões, estão sempre relacionadas entre si, e esta relação é mais forte quanto mais próximas estas estiverem. Assim, investiga-se como se deve avaliar a interdependência entre diferentes localidades em modelos econométricos aplicados à agricultura. Apresenta-se um breve resumo da econometria espacial enquanto método para considerar os efeitos espaciais e da especificação da dependência espacial, da vizinhança e algumas aplicações na agricultura.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;ALVES, J.; FIGUEIREDO, A. M. R.; BONJOUR, S. C. M.. 2009.
-Os Assentamentos Rurais em Mato Grosso: Uma Análise dos Dados do Censo da Reforma Agrária In Revista Panorama Socioeconómico. , v.27, 150-165
-Palavras-chave: assentamentos, reforma agrária, Mato Grosso
-Áreas do conhecimento: Economias Agrária e dos Recursos Naturais,Economia Regional e Urbana
-Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://panorama.utalca.cl/dentro/2009-dic/articulo6.pdf&#34; class=&#34;uri&#34;&gt;http://panorama.utalca.cl/dentro/2009-dic/articulo6.pdf&lt;/a&gt;]
-Este artigo faz uma caracterização dos assentamentos de reforma agrária mato-grossenses. A primeira parte do trabalho consiste em apresentar as raízes históricas do problema da concentração de terras, ou seja, um breve resumo da história dos projetos de colonização, da posse da terra através das leis que favoreceram os grandes latifúndios que caracterizam a agropecuária estadual até os dias atuais. A segunda e mais importante parte do trabalho apresenta a situação dos assentamentos rurais, com base no Censo da Reforma Agrária, realizado no ano de 2002, fazendo algumas comparações com outros estudos realizados em nível nacional e estadual. O trabalho é uma contribuição para a literatura regional ao oferecer descrições dos assentamentos rurais e evidenciando a agricultura de pequena escala do estado.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;SOUZA, S. S. S.; BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.. 2008.
-Análise da Competitividade do Algodão Mato-Grossense no Cenário Internacional: 1999 a 2005. In Revista de Estudos Sociais. , v.1 e 2, 71-86
-Palavras-chave: algodão, Mato Grosso, vantgem comparativa
-Áreas do conhecimento: Economia
-Referências adicionais: Português. Meio de divulgação: Impresso&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;MARTA, J. M. C.; FIGUEIREDO, A. M. R.. 2008.
-Expansão da soja no cerrado de Mato Grosso: aspectos políticos In Revista de Política Agrícola. , v.17, 117-128
-Palavras-chave: sojicultura, política, agricultura
-Áreas do conhecimento: Economias Agrária e dos Recursos Naturais,Economia Regional
-Setores de atividade: Agricultura, Pecuária, Silvicultura, Exploração Florestal, Desenvolvimento Rural
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.embrapa.br/publicacoes/tecnico/revistaagricola/rpa%201%20-%202008.pdf&#34; class=&#34;uri&#34;&gt;http://www.embrapa.br/publicacoes/tecnico/revistaagricola/rpa%201%20-%202008.pdf&lt;/a&gt;]
-O artigo questiona alguns elementos convencionais de análise na literatura econômica rural e no senso comum dos técnicos na busca de explicação para a entrada e expansão da soja em Mato Grosso, à parte da questão preços x quantidades de insumos e produtos. Fundamentalmente, propõe, na discussão, identificar alguns elementos da modernização do campo, como pré-condição do processo de migração dos agricultores do Sul do país para o território mato-grossense. Também procura mostrar como os sojicultores se tornaram reféns do sistema internacional de preços e insumos modernos, além, naturalmente, do sistema financeiro, indicando ainda sua dependência ao capital agroindustrial, ao mercado e às suas instituições. Indica, inicialmente, que a introdução da soja foi viabilizada por políticas governamentais em conjunto com ações de empresas comerciais que se beneficiaram do processo.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;PESSOA, S.G.; FIGUEIREDO, A. M. R.; OLIVEIRA FILHO, A.; BONJOUR, S. C. M.. 2008.
-Quantificação da Área Disponível para o Seqüestro de Carbono no Bioma Amazônia em Mato Grosso In Amazônia (Banco da Amazônia. 2005). , v.3, 237-247
-Palavras-chave: Áreas florestais, Bioma- Amazonia, desmatamento, sequestro de carbono
-Áreas do conhecimento: Economia dos Recursos Naturais,Economia Agrária
-Setores de atividade: Agricultura, Pecuária, Silvicultura e Exploração Florestal
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.bancoamazonia.com.br/bancoamazonia2/institucional_biblioteca_revistaamazonia.asp&#34; class=&#34;uri&#34;&gt;http://www.bancoamazonia.com.br/bancoamazonia2/institucional_biblioteca_revistaamazonia.asp&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;RESENDE, E. S.; BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.. 2007.
-Análise de rotas alternativas de transporte: o caso da soja de Mato Grosso In Revista de Estudos Sociais (UFMT). , v.14, 99-124
-Palavras-chave: transporte de soja, rotas de escoamento, transporte e logistica
-Áreas do conhecimento: Economias Agrária e dos Recursos Naturais,Economia Regional e Urbana
-Setores de atividade: Agricultura, Pecuária, Silvicultura e Exploração Florestal
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://200.129.241.94/index.php/res/article/view/256/169&#34; class=&#34;uri&#34;&gt;http://200.129.241.94/index.php/res/article/view/256/169&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;PEDRACA, J. S.; FIGUEIREDO, A. M. R.; BONJOUR, S. C. M.. 2007.
-Análise do Programa de Aquisição de Alimentos: Compra Antecipada Especial da Agricultura Familiar em Mato Grosso In Textos para Discussão (UFMT). , v.1, 1-34
-Palavras-chave: agricultura familiar, Desenvolvimento Rural, PAA
-Áreas do conhecimento: Economia Agrária
-Setores de atividade: Desenvolvimento Rural, Agricultura, Pecuária, Silvicultura, Exploração Florestal
-Referências adicionais: Português. Meio de divulgação: Impresso
-Texto para discussão do Mestrado em Agronegócios e Desenvolvimento Regional e NUPES/UFMT.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;MOREIRA, A. R. B.; HELFAND, S. M.; FIGUEIREDO, A. M. R.. 2007.
-Explicando as diferenças na produtividade agrícola no Brasil In Texto para Discussão (IPEA). , v.2007, 1-34
-Palavras-chave: produtividade, agricultura, Brasil
-Áreas do conhecimento: Economia Agrária,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
-Setores de atividade: Desenvolvimento Rural, Agricultura, Pecuária, Silvicultura, Exploração Florestal
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.ipea.gov.br/sites/000/2/publicacoes/tds/td_1254.pdf&#34; class=&#34;uri&#34;&gt;http://www.ipea.gov.br/sites/000/2/publicacoes/tds/td_1254.pdf&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;SOUZA, S. S. S.; LAMERA, J. A.; ALVES, Janice; BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.. 2007.
-Mudanças Cambiais e o Efeito dos Fatores de Crescimento das Receitas de Exportações Brasileiras de Soja In Revista de Economia e Agronegócio. , v.5, 1-24
-Palavras-chave: taxa de câmbio, receita de exportação, soja
-Áreas do conhecimento: Economia Agrária,Relações do Comércio; Política Comercial; Integração Econômica
-Setores de atividade: Produção Vegetal, Desenvolvimento Rural
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://posgrad.der.ufv.br/revista/edicoes_2007_vol5_n1.php&#34; class=&#34;uri&#34;&gt;http://posgrad.der.ufv.br/revista/edicoes_2007_vol5_n1.php&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;MARTA, J. M. C.; FIGUEIREDO, A. M. R.. 2007.
-Uma interpretação política da introdução da soja no cerrado de Mato Grosso In Textos para Discussão (UFMT). , v.1, 1-17
-Palavras-chave: soja, Mato Grosso, Economia Rural
-Áreas do conhecimento: Economia Agrária
-Setores de atividade: Desenvolvimento Rural
-Referências adicionais: Português. Meio de divulgação: Vários
-Texto aprovado para apresentacao no Congreso Latinoamericano y Caribeno de Ciencias Sociales, FLACSO, em quito no Equador. O Texto para Discussão é uma versão preliminar.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;SOUZA, S. S. S.; BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.. 2006.
-Análise da competitividade do Algodão Mato Grossense no cenário internacional no período de 1999-2006 In Revista de Estudos Sociais (UFMT). , v.8, 71-86
-Palavras-chave: Mato Grosso, algodão, vantagem comparativa
-Áreas do conhecimento: Economia Agrária
-Setores de atividade: Agricultura, Pecuária, Silvicultura, Exploração Florestal
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://200.129.241.94/index.php/res/article/view/248/163&#34; class=&#34;uri&#34;&gt;http://200.129.241.94/index.php/res/article/view/248/163&lt;/a&gt;]
-impresso em 2008&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; BONJOUR, S. C. M.; MARTA, J. M. C.; SOUZA, S. S. S.. 2005.
-Análise de Estratégias de Comercialização dos Derivados de Algodão Naturalmente Colorido do Estado de Mato Grosso In Informe GEPEC (Online). , v.9, 7-25
-Palavras-chave: estruturas de mercado, algodão naturalmente colorido, Mato Grosso
-Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
-Setores de atividade: Produção Vegetal
-Referências adicionais: Brasil/Português. Meio de divulgação: Vários. Home page: &lt;a href=&#34;http://www.unioeste.br/cursos/toledo/revistaeconomia/&#34; class=&#34;uri&#34;&gt;http://www.unioeste.br/cursos/toledo/revistaeconomia/&lt;/a&gt;
-Julho-Dezembro/2005.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.; CAMPOS, A. C.. 2004.
-Mudanças na preferência internacional de carne bovina e alterações nos preços e comércio exterior In Economías de Escala. , v.II, 397-413
-Palavras-chave: carne bovina, Equilíbrio geral
-Áreas do conhecimento: Economia Agrária,Relações do Comércio; Política Comercial; Integração Econômica
-Setores de atividade: Produção Animal, Inclusive Serviços Veterinários, Desenvolvimento Rural
-Referências adicionais: Português. Meio de divulgação: Impresso
-Anuario de Politica Economica Internacional Unidixital - Universidade de Santiago de Compostela&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;MIRANDA, O. C.; FIGUEIREDO, A. M. R.; BONJOUR, S. C. M.. 2003.
-Análise da transmissão de preços na comercialização de arroz no estado de Mato Grosso, no período de 1991 a 2000 In Cesur em Revista. , v.3, 31-54
-Palavras-chave: Mato Grosso, arroz, comercialização
-Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
-Setores de atividade: Produção Vegetal
-Referências adicionais: Brasil/Português. Meio de divulgação: Impresso
-Análise dos segmentos de varejo, atacado e produtor, investigando a causalidade nas alterações de preços com métodos de Granger e estimações econométricas com dados secundários mensais.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.. 2003.
-Índice de Administração Rural e Produtividade na Fase de Engorda da Pecuária de Corte de Rondonópolis-MT In Cesur em Revista. , v.3, 55-76
-Palavras-chave: Rondonópolis, pecuária de corte, índices de administração
-Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
-Setores de atividade: Agricultura, Pecuária, Silvicultura, Exploração Florestal
-Referências adicionais: Brasil/Português. Meio de divulgação: Impresso
-Analisou-se a questão da gerência como um problema para maiores produtividades na pecuária de corte, fase de engorda, em Rondonópolis-MT. Coletaram-se dados os quais foram subdivididos em estratos segundo o Índice de Venda, como medida de produtividade da pecuária da região. Criou-se um Índice de Administração, mediante o julgamento das variáveis avaliadas por profissionais da área de estudo. Estimou-se uma função de produção tipo Cobb-Douglas da pecuária de corte e o Índice de Administração mostrou ser importante fator na determinação da produtividade. Constatou-se alta correlação parcial entre os Índices de Venda e de Administração, concluindo-se que a eficiência gerencial é importante para o aumento da produtividade da pecuária de corte no município.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; TEIXEIRA, E. C.; HELFAND, S. M.. 2002.
-Resposta da produção agrícola aos preços no Centro-Oeste brasileiro: uma análise de econometria espacial para o período 1975-1995/1996 In Revista de Estudos Sociais (UFMT). , v.1, 72-104
-Palavras-chave: autocorrelação espacial, dualidade, Centro-Oeste
-Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
-Setores de atividade: Agricultura, Pecuária, Silvicultura, Exploração Florestal
-Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://200.129.241.94/index.php/res/article/view/170/123&#34; class=&#34;uri&#34;&gt;http://200.129.241.94/index.php/res/article/view/170/123&lt;/a&gt;]
-Artigo resultado da tese de doutorado do primeiro autor, concluido na Universidade Federal de Viçosa em 2002, com apoio do CNPq e CAPES (doutorado sanduíche com a Universidade da California em Riverside).&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; FERREIRA, A. V.; TEIXEIRA, E. C.. 2001.
-Impactos da integração econômica nas commodities da economia brasileira e da União Européia In Revista Brasileira de Economia (Impresso). , v.55, 77-106
-Palavras-chave: agricultura, Integração Regional, Equilíbrio geral, GTAP
-Áreas do conhecimento: Relações do Comércio; Política Comercial; Integração Econômica,Economia Agrária
-Setores de atividade: Desenvolvimento Rural
-Referências adicionais: Inglês. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.scielo.br/scielo.php?script=sci_abstract&amp;amp;pid=S0034-71402001000100004&amp;amp;lng=en&amp;amp;nrm=iso&amp;amp;tlng=pt&#34; class=&#34;uri&#34;&gt;http://www.scielo.br/scielo.php?script=sci_abstract&amp;amp;pid=S0034-71402001000100004&amp;amp;lng=en&amp;amp;nrm=iso&amp;amp;tlng=pt&lt;/a&gt;]
-JEL: F15, Q17, C68&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;FERREIRA, A. V.; FIGUEIREDO, A. M. R.; TEIXEIRA, E. C.. 1999.
-Custos e benefícios de um programa de garantia de renda aplicado ao PRONAF In Revista de Economia e Sociologia Rural (Impresso). , v.37, 31-50
-Palavras-chave: agricultura familiar, risco, garantia de renda
-Áreas do conhecimento: Renda e Tributação,Economia Agrária
-Setores de atividade: Desenvolvimento Rural
-Referências adicionais: Português. Meio de divulgação: Impresso
-Análise do Programa de Garantia de Renda como um aperfeiçoamento ao PRONAF, visando minimizar o risco associado à renda da agricultura familiar, para produtores de feijão e mandioca, no período 1990/97.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; FERREIRA, A. V.; TEIXEIRA, E. C.. 1999.
-Impactos de uma Desvalorização Cambial Sobre as Relações de Produção na Cultura do Café In Revista de Economia e Sociologia Rural (Impresso). , v.37, 47-69
-Palavras-chave: dualidade, câmbio, funções translog
-Áreas do conhecimento: Relações do Comércio; Política Comercial; Integração Econômica,Economia Agrária
-Setores de atividade: Produção Vegetal
-Referências adicionais: Português. Meio de divulgação: Impresso
-Este trabalho analisa as mudanças nos mercados de produtos e fatores produtivos, advindos de choques cambiais, verificando a substitutibilidade entre os últimos, a partir da aplicação das propriedades duais da função translog.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
-&lt;div id=&#34;artigos-aceitos-para-publicação&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Artigos aceitos para publicação&lt;/h2&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;Fagundes, Mayra Batista Bitencourt; SILVA JUNIOR, E. A.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; MACHADO, J. V.. 2019.
-COMPLEXIDADE ECONÔMICA REGIONAL: UMA ABORDAGEM A PARTIR DE DADOS DE EMPREGO In RDE. Revista de Desenvolvimento Econômico.
-Palavras-chave: complexidade economica, Mato Grosso do Sul, emprego
-Áreas do conhecimento: Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
-Setores de atividade: Administração pública, defesa e seguridade social
-Referências adicionais: Português.
-aceito para publicação no numero 43 da RDE&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Dallemole Dilamar; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2019.
-The Consumer Profile and Car Insurance Market of Cuiabá, Brasil In Estudios de Economía Aplicada.
-Palavras-chave: car insurance, consumer profile, market, Cuiabá
-Áreas do conhecimento: Economia Regional e Urbana,Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Economia do Consumidor
-Setores de atividade: Administração pública, defesa e seguridade social
-Referências adicionais: Português.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;MUCELLINI, A. B.; BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.. 2007.
-Sistemas e custos de produção da bovinocultura de corte no município de Alta Floresta – Mato Grosso In Geicor Business Review.
-Palavras-chave: pecuária de corte, custos de producao, Alta Floresta
-Áreas do conhecimento: Economia Agrária
-Setores de atividade: Agricultura, Pecuária, Silvicultura, Exploração Florestal
-Referências adicionais: Português.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/div&gt;
 &lt;div id=&#34;livros-publicados&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Livros publicados&lt;/h2&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
@@ -625,6 +149,52 @@ Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqü
 Referências adicionais: Brasil/Português. Meio de divulgação: Impresso&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Forthcoming in journals</title>
+      <link>/publication/forthcoming-in-journals/</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/forthcoming-in-journals/</guid>
+      <description>
+
+
+&lt;div id=&#34;artigos-aceitos-para-publicação&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Artigos aceitos para publicação&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Fagundes, Mayra Batista Bitencourt; SILVA JUNIOR, E. A.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; MACHADO, J. V.. 2019.
+COMPLEXIDADE ECONÔMICA REGIONAL: UMA ABORDAGEM A PARTIR DE DADOS DE EMPREGO In RDE. Revista de Desenvolvimento Econômico.
+Palavras-chave: complexidade economica, Mato Grosso do Sul, emprego
+Áreas do conhecimento: Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
+Setores de atividade: Administração pública, defesa e seguridade social
+Referências adicionais: Português.
+aceito para publicação no numero 43 da RDE&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Dallemole Dilamar; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2019.
+The Consumer Profile and Car Insurance Market of Cuiabá, Brasil In Estudios de Economía Aplicada.
+Palavras-chave: car insurance, consumer profile, market, Cuiabá
+Áreas do conhecimento: Economia Regional e Urbana,Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Economia do Consumidor
+Setores de atividade: Administração pública, defesa e seguridade social
+Referências adicionais: Português.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;MUCELLINI, A. B.; BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.. 2007.
+Sistemas e custos de produção da bovinocultura de corte no município de Alta Floresta – Mato Grosso In Geicor Business Review.
+Palavras-chave: pecuária de corte, custos de producao, Alta Floresta
+Áreas do conhecimento: Economia Agrária
+Setores de atividade: Agricultura, Pecuária, Silvicultura, Exploração Florestal
+Referências adicionais: Português.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Papers in Conferences</title>
+      <link>/publication/papers-in-conferences/</link>
+      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/publication/papers-in-conferences/</guid>
+      <description>
+
+
 &lt;div id=&#34;trabalhos-publicados-em-anais-de-eventos-completo&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Trabalhos publicados em anais de eventos (completo)&lt;/h2&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
@@ -1056,13 +626,13 @@ Palavras-chave: pecuária de corte, translog, substituição de insumos
 Setores de atividade: Produção Animal, Inclusive Serviços Veterinários, Desenvolvimento Rural
 Referências adicionais: Brasil/Português. Meio de divulgação: Meio digital
 Resumo impresso e texto completo no CD-Rom do evento.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;FERREIRA, A. V.; FIGUEIREDO, A. M. R.; TEIXEIRA, E. C.. 1999.
+&lt;li&gt;&lt;p&gt;FERREIRA, A. V.; FIGUEIREDO, A. M. R.; TEIXEIRA, E. C.. 1999.
 Custos e benefícios de um programa de garantia de renda aplicado ao PRONAF In O Agronegócio do Mercosul e a sua Inserçao na Economia Mundial XXXVII Congresso Brasileiro de Economia e Sociologia Rural e First SOBER / IAAE Joint Symposium Foz do Iguaçu - Paraná-Brasil 1999 37 137-137 Brasília/DF: Sociedade Brasileira de Economia e Sociologia Rural
 Palavras-chave: agricultura familiar, risco, garantia de renda
 Áreas do conhecimento: Economia Agrária
 Setores de atividade: Desenvolvimento Rural
 Referências adicionais: Brasil/Português. Meio de divulgação: Vários
-Trabalho apresentado fazendo análise do Programa de Garantia de Renda como um aperfeiçoamento ao PRONAF, visando minimizar o risco associado à renda da agricultura familiar, para produtores de feijão e mandioca, no período 1990/97.&lt;/li&gt;
+Trabalho apresentado fazendo análise do Programa de Garantia de Renda como um aperfeiçoamento ao PRONAF, visando minimizar o risco associado à renda da agricultura familiar, para produtores de feijão e mandioca, no período 1990/97.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; FERREIRA, A. V.; TEIXEIRA, E. C.. 1999.
 Impactos de alterações na política cambial sobre as relações de produção na cultura do café In O Agronegócio do Mercosul e a sua Inserção na Economia Mundial XXXVII Congresso Brasileiro de Economia e Sociologia Rural e First SOBER / IAAE Joint Symposium Foz do Iguaçu - PR - Brasil 1999 37 138-138 Brasília - DF: Sociedade Brasileira de Economia e Sociologia Rural
 Palavras-chave: custo, câmbio, funções translog
@@ -1070,6 +640,469 @@ Palavras-chave: custo, câmbio, funções translog
 Setores de atividade: Desenvolvimento Rural, Produção Vegetal
 Referências adicionais: Brasil/Português. Meio de divulgação: Vários
 Trabalho apresentado analisando as relações de produção de café, utilizando funções translog, e um modelo de choques de desvalorização cambial afetando preços, produção e uso dos fatores.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Análise do desenvolvimento regional: o caso de Mato Grosso do Sul no período de 2002 a 2017</title>
+      <link>/project/analise-do-desenvolvimento-regional-o-caso-de-mato-grosso-do-sul-no-periodo-de-2002-a-2017/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/project/analise-do-desenvolvimento-regional-o-caso-de-mato-grosso-do-sul-no-periodo-de-2002-a-2017/</guid>
+      <description>
+
+
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/project/2019-12-23-análise-do-desenvolvimento-regional-o-caso-de-mato-grosso-do-sul-no-período-de-2002-a-2017_files/RGI_MS.JPG&#34; alt=&#34;Regiões geográficas intermediárias de MS. Fonte: IBGE, 2017.&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Regiões geográficas intermediárias de MS. Fonte: IBGE, 2017.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Projeto sem fomento externo iniciado em Fev/2018 e prazo previsto de 24 meses. (em fase de elaboração do relatório final).&lt;/p&gt;
+&lt;p&gt;Considerando as várias correntes teóricas versando sobre o desenvolvimento regional, a questão norteadora da pesquisa será: quais as principais variáveis determinantes do desenvolvimento regional do estado de Mato Grosso do Sul e seus municípios, no período 2002-2017?&lt;/p&gt;
+&lt;p&gt;Para estudar o processo de crescimento e desenvolvimento econômico entre países/estados/regiões/municípios e, dessa maneira, verificar se há crescimento equilibrado ou desigual, vários autores utilizam técnicas da análise regional e econometria espacial para visualizar os efeitos espaciais do processo de crescimento regional, a análise de convergência de renda per capita, a dinâmica regional e as possíveis desigualdades regionais.&lt;/p&gt;
+&lt;p&gt;Entre os autores com análise aplicadas aos municípios brasileiros destacam-se Perobelli et al (2006), Maranduba Júnior (2007), Barreto (2007), Monastério e Ávila (2004), Resende e Silva (2007), Porsse (2008), Oliveira (2005), Dassow, Costa e Figueiredo (2011 e 2012), e Silva Jr e Figueiredo (2017). Essas técnicas estatísticas e/ou econométricas também possibilitam identificar a formação de possíveis agrupamentos de municípios que apresentam valores semelhantes. Em outras palavras, permite verificar a existência de possíveis aglomerações de crescimento, caso existam. A identificação destas possibilita conhecer as regiões mais dinâmicas e potenciais do estado e, por outro lado, regiões carentes e enclaves. Nesse sentido, justifica-se o estudo criando vetores para os formuladores de política,uma ideia mais clara dos locais que carecem de atuação diferenciada, ampliando os indicadores e a temporalidade comparativamente aos estudos citados.&lt;/p&gt;
+&lt;p&gt;O objetivo geral é: Avaliar a dinâmica e a evolução comparativa dos municípios sul-mato-grossenses no período 2002-2017, com respeito aos indicadores associados ao desenvolvimento estadual de
+Mato Grosso do Sul e de seus municípios. Especificamente, objetiva-se: a) Avaliar os determinantes da estrutura econômica municipal sobre seu desenvolvimento municipal e do estado; b) Avaliar a mudança na distribuição regional do produto no âmbito do desenvolvimento path-dependent; c) Identificar eventuais tendências de polarização regional em distintos grupos; d) Avaliar o efeito da complexidade econômica sobre o desenvolvimento municipal; e, e) Avaliar o efeito do comércio internacional, da abertura comercial e da competitividade sobre o desenvolvimento municipal.&lt;/p&gt;
+&lt;p&gt;A inovação e originalidade estão na aplicação, primeiro, para bases de dados municipais de MS de 2002 a 2016 (portanto, dados em painel). As demais inovações, para o referido conjunto de dados, são: a) de métodos de análise espacial de dados, como os da econometria espacial; b) do cômputo de indicadores para explicar a evolução e dinâmica do desenvolvimento municipal de Mato Grosso do Sul, baseados em teorias da economia regional como: índice de variação de Williamson (1965); o Quociente locacional de Haig (1928); o Coeficiente de especialização de Hoover e Giarratani (1984); o índice de dessemelhança de Krugman (1993); coeficiente de localização de Florence e Baldamus (1948); o índice de Herfindahl-Hirschman de concentração; o índices de concentração de Gini para renda e
+Gini Locacional de Hoover (1936); potencial de mercado de Harris (1954); o índice de dependência espacial de Moran e de Anselin (1995) e de Ellison-Glaeser (1997); índice de separação espacial de Venables; c) Outros indicadores serão ainda utilizados para a análise como a conciliação do desenvolvimento regional com a teoria da complexidade econômica de Hausmann et al. (2014) e Gala (2017); e, d) Utilização da linguagem de programação R para construção de indicadores de análise regional dos municípios de Mato Grosso do Sul.&lt;/p&gt;
+&lt;p&gt;Executado pela Universidade Federal de Mato Grosso do Sul (UFMS) na Escola de Administração e Negócios (ESAN). Constam na equipe, além do coordenador Prof. Dr. Adriano M R Figueiredo, o Prof. Dr. Leonardo F. Figueiredo Neto, a Profa. Dra. Mayra B. B. Fagundes, e os Mestres em Administração da UFMS (Campo Grande-MS) Ernani de A. Silva Jr. (&lt;em&gt;A DINÂMICA DO CRESCIMENTO ECONÔMICO MUNICIPAL EM MATO GROSSO DO SUL: UMA ANÁLISE ESPACIAL&lt;/em&gt;, 2019) e Eliane de S. Andrade (&lt;em&gt;DINÂMICA DO MERCADO DE TRABALHO DAS ATIVIDADES DE BASE AGRÍCOLAS NAS REGIÕES GEOGRÁFICAS IMEDIATAS DE MATO GROSSO DO SUL&lt;/em&gt;,2019).&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Complexidade econômica em cadeias globais de valor: dinâmicas e tendências do desenvolvimento regional</title>
+      <link>/project/complexidade-economica-em-cadeias-globais-de-valor/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/project/complexidade-economica-em-cadeias-globais-de-valor/</guid>
+      <description>
+
+
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/project/2019-12-23-complexidade-economica-em-cadeias-globais-de-valor_files/featured.jpg&#34; alt=&#34;GVC Types. Source: Gereffi (2011), https://unstats.un.org/unsd/trade/s_geneva2011/presentations/wed-am/gary-gereffi.pptx&#34; style=&#34;width:50.0%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;GVC Types. Source: Gereffi (2011), &lt;a href=&#34;https://unstats.un.org/unsd/trade/s_geneva2011/presentations/wed-am/gary-gereffi.pptx&#34; class=&#34;uri&#34;&gt;https://unstats.un.org/unsd/trade/s_geneva2011/presentations/wed-am/gary-gereffi.pptx&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Projeto iniciado em 06/Dez/2018 com auxílio de pesquisa do CNPq e prazo previsto de 36 meses.&lt;/p&gt;
+&lt;p&gt;A análise das cadeias globais de valor (CGV) tem sido importante para avaliar o posicionamento estratégico dos países e dos setores econômicos (TIAN et al, 2016) e como os setores econômicos têm se modernizado ou desenvolvido. Marcato e Baltar (2017) analisaram o progresso econômico e social associado às CGV. As diferenças entre os países ricos e pobres, e a discussão ainda presente de “centro-periferia” nas cadeias globais de valor têm apontado para a presença de maior complexidade econômica (CE) naqueles países centrais, ou mais ricos (CARDOSO e REIS, 2016). Questiona-se: de que modo a complexidade econômica está associada à participação nas cadeias globais de valor em regiões subnacionais? A hipótese de Cheng et al (2015) é que um posicionamento mais acima na CGV (setores mais a frente na cadeia, rumo ao consumidor final) e com maior complexidade econômica estão associados a maior parcela do país no valor adicionado da CGV. A análise da CE tem se desenvolvida em termos da diversidade e ubiquidade dos produtos nos fluxos internacionais de comércio, assim como em termos da estrutura setorial do emprego. Desta forma, busca-se compreender a interação entre as cadeias globais de valor relevantes para regiões subnacionais e as medidas de complexidade econômica baseadas em fluxos comerciais assim como em emprego gerado nos setores econômicos.&lt;/p&gt;
+&lt;p&gt;Executado pela Universidade Federal de Mato Grosso do Sul (UFMS) na Escola de Administração e Negócios (ESAN). Constam na equipe, além do coordenador Prof. Dr. Adriano M R Figueiredo, o Prof. Dr. Leonardo F. Figueiredo Neto, a Profa. Dra. Mayra B. B. Fagundes, e a mestranda em Economia da UFMT (Cuiabá-MT) Thaina M.G. Chaves.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Papers in journals (Artigos em Periódicos Científicos</title>
+      <link>/publication/papers-in-journals/</link>
+      <pubDate>Mon, 23 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/publication/papers-in-journals/</guid>
+      <description>
+
+
+&lt;div id=&#34;artigos-completos-publicados-em-periódicos&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Artigos completos publicados em periódicos&lt;/h2&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;COUTINHO, M. R.; FAGUNDES, M. B. B.; FIGUEIREDO NETO, L. F.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2019.
+A contribuição das atividades de base agropecuária na geração de emprego nos municípios de Mato Grosso do Sul (Brasil) In &lt;em&gt;EURE-Revista Latinoamericana de Estudios Urbano Regionales&lt;/em&gt;. , v.45, 223-244
+Palavras-chave: Desenvolvimento regional e local, Economia Regional, Agronegócio
+Áreas do conhecimento: Economia Regional e Urbana,Economia Agrária,Métodos e Técnicas do Planejamento Urbano e Regional
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Administração pública, defesa e seguridade social
+Referências adicionais: Inglês. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.eure.cl/index.php/eure/article/view/2569/1180&#34; class=&#34;uri&#34;&gt;http://www.eure.cl/index.php/eure/article/view/2569/1180&lt;/a&gt;]
+O objetivo deste estudo foi analisar a contribuição das atividades de base agropecuária na geração de emprego formal. É de suma importância para avaliar o desenvolvimento territorial nos municípios do Estado de Mato Grosso do Sul. Utilizou-se o método quantitativo com a aplicação do Índice de Concentração Normalizado (icn). Concluiu-se que as principais atividades econômicas geradoras de emprego estão relacionadas à administração pública, serviços e comércio, com participação relativa do total de empregos gerados no estado (19%, 15% e 9%), em 2015. Foi comprovado que as atividades de base agropecuária contribuíram na geração de emprego (12%) e 33 municípios do Estado, em um universo de 79, possuem especialização em, pelo menos, uma atividade de base agropecuária. As atividades de base agropecuária, além de gerarem emprego, contribuem direta e indiretamente para a dinamização de outros setores, constituindo-se, portanto, como peça-chave no desenvolvimento regional.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FERNANDES, M. M.; OLIVEIRA, D. V.; FAGUNDES, Mayra Batista Bitencourt; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2018.
+A contribuição da avicultura de corte para o desenvolvimento do Mato Grosso do Sul In &lt;em&gt;Revista Brasileira de Desenvolvimento Regional&lt;/em&gt;. , v.6, 109-136
+Palavras-chave: Agronegócio, aves, Desenvolvimento Multidimensional, ICN, Mato Grosso do Sul
+Áreas do conhecimento: Economia Agrária,Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Administração pública, defesa e seguridade social
+Referências adicionais: Português. DOI: [&lt;a href=&#34;http://dx.doi.org/10.7867/2317-5443.2018v6n1p109-136&#34; class=&#34;uri&#34;&gt;http://dx.doi.org/10.7867/2317-5443.2018v6n1p109-136&lt;/a&gt;]
+O objetivo geral deste artigo é analisar a contribuição da avicultura na geração de emprego e massa salarial para os municípios de Mato Grosso do Sul. Com o intuito de embasar a discussão, utilizou-se a teoria de desenvolvimento multidimensional. A metodologia utilizada alicerçou-se no Índice de Concentração Normalizado (ICN), visando subsidiar a análise da geração de emprego e massa salarial na avicultura, assim como o desenvolvimento da economia estadual. Os resultados demonstram que o setor avícola de Mato Grosso do Sul é importante para a geração de emprego e massa salarial, principalmente para os municípios de Itaquiraí, Dourados, Sidrolândia, Caarapó e Aparecida do Taboado no abate, e Água Clara, Cassilândia, Dourados, Sidrolândia e Terenos na criação, localizados na região centro-sul do estado. A relevância da avicultura é indicada, principalmente, pelo grau de aglomeração nesses municípios e confirmada pelo índice que mede a especialização para 2015. Conclui-se que quaisquer fatores exógenos que incidirem sobre esse setor causarão impactos negativos nessas localidades.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;NASCIMENTO, A. P.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; MIRANDA, P. R.. 2018.
+Dimensão do PIB do Agronegócio na Economia de Mato Grosso In &lt;em&gt;Ensaios FEE (Online)&lt;/em&gt;. , v.38, 903-930
+Palavras-chave: Agronegócio, Cadeia produtiva, insumo-produto, PIB
+Áreas do conhecimento: Economia Agrária,Economia Regional e Urbana,Métodos e Técnicas do Planejamento Urbano e Regional
+Setores de atividade: Administração pública, defesa e seguridade social, Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://https://revistas.fee.tche.br/index.php/ensaios/article/view/3781&#34; class=&#34;uri&#34;&gt;http://https://revistas.fee.tche.br/index.php/ensaios/article/view/3781&lt;/a&gt;]
+O objetivo principal foi avaliar e mensurar a importância de cadeias produtivas do agronegócio na economia do estado de Mato Grosso. Para isso, utilizou-se a matriz insumo-produto construída para o ano de 2007 com estimação do PIB das cadeias produtivas de algodão, soja e milho. A cadeia da soja apresentou a maior renda do período em estudo, com 8.922,06 milhões de reais (a preços de mercado). Na sequência veio à cadeia do algodão com 1.505,84 milhões de reais, seguida pela cadeia do milho com 1.251,93 milhões de reais. A cultura da soja apresentou maior destaque, com participação de 40,36% no PIB do agronegócio e 21,45% do PIB estadual, se consagrando como a cultura mais importante para geração de renda na economia do estado.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;DELGADO, H. J.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
+A criminalidade em Mato Grosso: uma descrição do período 2006-2014 In &lt;em&gt;Revista Eletrônica Documento/Monumento&lt;/em&gt;. , v.21, 97-114
+Palavras-chave: Crime, Mato Grosso, Homicídios
+Áreas do conhecimento: Economia Regional,Crescimento e Desenvolvimento Econômico,História Econômica
+Setores de atividade: Administração pública, defesa e seguridade social, Atividades de vigilância, segurança e investigação
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://200.129.241.80/ndihr/revista/revistas-anteriores/revista-dm-21.pdf&#34; class=&#34;uri&#34;&gt;http://200.129.241.80/ndihr/revista/revistas-anteriores/revista-dm-21.pdf&lt;/a&gt;]
+O presente artigo objetiva descrever a criminalidade em Mato Grosso no período 2006 a 2014. Para tanto, utilizam-se dados secundários de homicídios dolosos, latrocínio, lesão seguida de morte, estupro e roubos de veículos encontrados no Estado comparados com os dados nacionais. Entre os principais resultados destacam-se as elevadas e crescentes taxas de criminalidade, mas deve-se ter cautela nas afirmações, pois existe grande heterogeneidade nos níveis de criminalidade entre os municípios do estado.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;TOLDI, K.; FROZZA, F.; BARI, M. L.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
+A evolução da agropecuária e da agroindústria brasileira: um comparativo da matriz insumo-produto 2003 e 2013 In &lt;em&gt;Espacios (Caracas)&lt;/em&gt;. , v.38, 2-17, Caracas,Venezuela.
+Palavras-chave: insumo-produto, economia, agropecuária
+Áreas do conhecimento: Economia Agrária,Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.revistaespacios.com/a17v38n44/a17v38n44p02.pdf&#34; class=&#34;uri&#34;&gt;http://www.revistaespacios.com/a17v38n44/a17v38n44p02.pdf&lt;/a&gt;]
+Verificou-se a evolução da agropecuária e da agroindústria no Brasil, entre 2003 e 2013, utilizando-se os multiplicadores de insumo-produto de Leontief e encadeamentos de Hirschman. As atividades não sofreram grandes mudanças nos encadeamentos no período. Notou-se um decrescimento do impacto econômico do emprego, relacionado com a mecanização e aumentos de salários, lucro, impostos, importações e exportações. As atividades agroindustriais indicaram-se como setores chaves na economia brasileira em 2003. Em 2013 o setor têxtil perdeu competitividade no encadeamento para frente. Palavras chave: insumo-produto, economia, agropecuária&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;SILVA JUNIOR, E. A.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
+Análise da convergência de renda entre os municípios de Mato Grosso do Sul entre 1999 e 2012 In &lt;em&gt;Revista de Economia da UEG&lt;/em&gt;. , v.13, 51-69, Caracas,Venezuela.
+Palavras-chave: Crescimento Setorial, Mato Grosso do Sul, convergência
+Áreas do conhecimento: Crescimento e Desenvolvimento Econômico,Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Métodos e Técnicas do Planejamento Urbano e Regional
+Setores de atividade: Administração pública, defesa e seguridade social
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.revista.ueg.br/index.php/economia/article/view/6189/4611&#34; class=&#34;uri&#34;&gt;http://www.revista.ueg.br/index.php/economia/article/view/6189/4611&lt;/a&gt;]
+Examina?-se a dinâmica setorial para o crescimento econômico municipal de Mato Grosso do Sul, e avalia?-se a convergência de renda entre os anos de 1999 e 2012. Portanto, foi utilizado e adaptado o modelo de convergência proposto por Barro e Sala-?I-?Martin de modo a testar as hipóteses de convergência absoluta e condicional além de outras análises descritivas. Encontraram?-se evidências estatísticas que permitem concluir pela presença de convergência de renda no período analisado sendo o setor de serviços o centro dinamizador . Foram significativos para explicar o crescimento: o PIB no início do período; as participações dos setores econômicos (agropecuária, indústria, serviços e administração pública); o crescimento populacional; e o capital humano.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BROCANELLI, G. R. R.; FERRAZ, V. A. C.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
+Análise dos fatores de crescimento das receitas de exportações brasileiras de suco de laranja: 1997-2015 In &lt;em&gt;Espacios (Caracas)&lt;/em&gt;. , v.38, 16-27
+Palavras-chave: taxa de câmbio, shift-share, commodity
+Áreas do conhecimento: Economia Agrária,Métodos e Técnicas do Planejamento Urbano e Regional,Economia Internacional
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.revistaespacios.com/a17v38n47/a17v38n47p16.pdf&#34; class=&#34;uri&#34;&gt;http://www.revistaespacios.com/a17v38n47/a17v38n47p16.pdf&lt;/a&gt;]
+Neste artigo são analisadas a taxa de câmbio, a quantidade exportada e o preço internacional do suco de laranja sobre a receita da exportação brasileira dessa commodity, no período de 1997 a 2015. A análise foi feita através do método shiftshare, que permite decompor o efeito isolado das variáveis estudadas. Os resultados apontaram que as receitas das exportações de suco de laranja são cíclicas. O câmbio e o preço se mostraram os maiores influenciadores, afetando as receitas de forma concisa.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;TEIXEIRA, M. D. J.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
+Análise Intersetorial e Espacial da Cadeia Produtiva da Madeira e Móveis na Economia de Mato Grosso: uma Contribuição para Identificação de APLs In &lt;em&gt;Revista Brasileira de Gestão e Desenvolvimento Regional&lt;/em&gt;. , v.13, 103-128
+Palavras-chave: Cadeia Produtiva da Madeira, Arranjo Produtivo Local, Desenvolvimento Regional
+Áreas do conhecimento: Economia Regional e Urbana,Métodos e Técnicas do Planejamento Urbano e Regional
+Setores de atividade: Administração pública, defesa e seguridade social, Produção Florestal
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.rbgdr.net/revista/index.php/rbgdr/article/view/2991/607&#34; class=&#34;uri&#34;&gt;http://www.rbgdr.net/revista/index.php/rbgdr/article/view/2991/607&lt;/a&gt;]
+A cadeia produtiva de madeira e móveis apresentou evolução expressiva nos indicadores de renda e emprego no estado de Mato Grosso. Emoldurado por esta afirmativa, este artigo objetivou mensurar o impacto que as atividades desta cadeia possuem na economia do estado, em particular, atividades de produção florestal e atividades industriais ligadas ao processamento e comércio da madeira. Este artigo contempla as teorias do desenvolvimento regional tradicional, analisando os encadeamentos e efeitos multiplicadores do setor na economia mato-grossense por meio da matriz de insumo produto, associado ao novo paradigma do desenvolvimento regional endógeno, através da localização de polos de setores especializados mediante utilização do Índice de Concentração Normalizado (ICn), relacionando com a probabilidade de existência de arranjo produtivo local (APL).Os resultados demonstram que as atividades da cadeia produtiva possuem impacto representativo na economia e são essenciais para o desenvolvimento do estado, principalmente para os municípios do noroeste, onde foi identificado o maior número de possíveis APLs. Salienta-se também que as atividades de fabricação e comércio de móveis precisam de maior desenvolvimento para possibilitar maior agregação de valor na cadeia produtiva da madeira dentro do estado.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;TORRES, O.; FAGUNDES, M. B. B.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; TREDEZINI, C. A. O.. 2017.
+Impacto da Implantação do Custo do Pedágio na BR-163 em Relação ao Transporte de Soja do Estado de Mato Grosso In &lt;em&gt;Revista de Economia e Sociologia Rural (Impresso)&lt;/em&gt;. , v.55, 533-550
+Palavras-chave: Agronegócio, competitividade, Politica Publica, Concessão da Rodovia
+Áreas do conhecimento: Economia Agrária,Administração,Economia Regional
+Setores de atividade: Administração pública, defesa e seguridade social, Transporte terrestre, Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.scielo.br/scielo.php?pid=S0103-20032017000300533&amp;amp;script=sci_arttext&#34; class=&#34;uri&#34;&gt;http://www.scielo.br/scielo.php?pid=S0103-20032017000300533&amp;amp;script=sci_arttext&lt;/a&gt;]
+Este artigo tem por objetivo a análise da concessão da rodovia BR-163, considerando as possíveis implicações sobre a competitividade no transporte da soja do estado de Mato Grosso. Esta proposição se justifica, sobretudo, porque o pedágio, a priori, representa custo ao transporte rodoviário, qualquer gasto acrescido a ela poderá comprometer a margem de lucro. Esta pesquisa foi subsidiada por revisão bibliográfica e documental, utilizando de pesquisa do tipo descritiva. Buscou-se identificar os principais componentes do custo do transporte rodoviário e o impacto da rodovia concedida na competitividade do setor. Assim, foi feita uma análise comparativa do custo do transporte de soja em rodovias pagas (concedidas) e as economias com custos que são inerentes a esta modalidade de transporte, decorrente da ótima condição da pavimentação asfáltica. Para perpetrar essa verificação e contrapor os custos com pedágio, foram elencadas três variáveis, são elas: (i) a economia com o combustível, (ii) a economia com o custo operacional dos caminhões e (iii) a economia que se faz em menor perdas de grãos de soja. O resultado encontrado após a quantificação das variáveis econômicas apontou impacto positivo, com benefícios econômicos para o estado de Mato Grosso.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ALMEIDA, J. B. S. A.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2017.
+População Nem-Nem: uma análise a partir dos dados da PNAD 2012 In &lt;em&gt;Revista de Estudos Sociais&lt;/em&gt;. , 106-129
+Palavras-chave: trabalho, educação, exclusão
+Áreas do conhecimento: Economia Regional,Crescimento e Desenvolvimento Econômico
+Setores de atividade: Administração pública, defesa e seguridade social
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://periodicoscientificos.ufmt.br/ojs/index.php/res/article/view/4942&#34; class=&#34;uri&#34;&gt;http://periodicoscientificos.ufmt.br/ojs/index.php/res/article/view/4942&lt;/a&gt;]
+Este trabalho objetivou estudar o subgrupo populacional dos jovens de modo que se possa identificar quem entre eles e por que estão na condição “Nem-Nem”. Especificamente, objetivou-se: identificar os aspectos gerais desta população comparando os resultados existentes para o caso do Brasil, América Latina e OCDE; identificar as principais características desta população e traçar um perfil desses jovens; comparar o perfil característico desses jovens, através dos dados da PNAD; e, mensurar as variáveis mais influentes à condição “Nem-Nem”. O estudo revelou que a grande maioria dos jovens que estão na condição Nem-Nem, são mulheres. O modelo probit foi utilizado e nas variáveis com influência negativa, ou seja, aquelas que influenciarão o indivíduo a não estar na condição estudada, estão a maioria das variáveis do modelo, sendo elas: “sexo”, “escolaridade”, “renda”, “ler/escrever”, “internet”, “desquitado”, “divorciado”, “solteiro”. As variáveis “idade”, “domestico”, “morar com a mãe”, “ter filho” e “cor branca” são as com influência positiva, aquelas que contribuirão para indivíduo estar na condição Nem-Nem.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;GIANETTI, G. W.; FIGUEIREDO, Adriano M.R. 2016.
+Indústria de Transformação na Geração de Produto e Renda de Mato Grosso do Sul: Uma Aplicação da Matriz de Contabilidade Social In &lt;em&gt;Revista Brasileira de Estudos Regionais e Urbanos&lt;/em&gt;. , v.10, 64-81
+Palavras-chave: Economia Regional, Desenvolvimento, Politica Publica
+Áreas do conhecimento: Economia Agrária,Economia Regional
+Setores de atividade: Administração pública, defesa e seguridade social, Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Português. . Home page: [&lt;a href=&#34;http://https://www.revistaaber.org.br/rberu/article/view/152&#34; class=&#34;uri&#34;&gt;http://https://www.revistaaber.org.br/rberu/article/view/152&lt;/a&gt;]
+Esta pesquisa analisa a participação da indústria de transformação na geração de produto e renda de Mato Grosso do Sul utilizando-se uma Matriz de Contabilidade Social (MCS) estadual para o ano de 2010. Calcularam-se os multiplicadores contábeis de produto e renda, e analisaram-se os principais setores desta economia. Os resultados indicam que a indústria de transformação, incluindo a agroindústria, apresenta elevadas interligações setoriais, majoritariamente do setor de alimentos e bebidas. Os maiores multiplicadores de PIB e renda são do setor de serviços, ambos referentes às atividades imobiliárias e aluguéis. No entanto, o setor da pecuária e pesca figura em décimo maior multiplicador de PIB e oitavo de renda, devido às interrelações com o setor de alimentos e bebidas e a presença em extensa área estadual . Existe concentração na participação na produção e nas exportações derivadas do setor agropecuário e das indústrias de transformação (por meio das agroindústrias). Ao analisar a correlação do posto dos setores de atividade na participação na produção, importação, exportação e multiplicadores, verifica-se que os setores que possuem os melhores multiplicadores nem sempre são os mais participativos na economia local.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FAGUNDES, M. B. B.; DIAS, D. T.; FIGUEIREDO, Adriano M.R; PITALUGA, C. M.. 2016.
+Interligações Setoriais e Composição do Produto, Demanda e Rendimento da Agropecuária de Mato Grosso do Sul: uma Aplicação da Matriz Insumo-Produto In &lt;em&gt;Contextus - Revista Contemporânea de Economia e Gestão&lt;/em&gt;. , v.14, 58-82
+Palavras-chave: agricultura, pecuária, produto interno bruto
+Áreas do conhecimento: Economia Agrária,Economia Regional
+Setores de atividade: Administração pública, defesa e seguridade social, Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.contextus.ufc.br/2014/index.php/contextus/article/view/779/263&#34; class=&#34;uri&#34;&gt;http://www.contextus.ufc.br/2014/index.php/contextus/article/view/779/263&lt;/a&gt;]
+O objetivo geral deste artigo é analisar a composição do produto, da demanda, da renda e das interligações setoriais da agropecuária do estado do Mato Grosso do Sul. Utilizou-se o método quantitativo de pesquisa da matriz insumo-produto e as noções do PIB pelas abordagens do produto, demanda e renda. Dentre os principais resultados estão as compras e vendas concentradas, principalmente, na própria agropecuária e no setor de alimentos e bebidas. Quanto às óticas do PIB, a agropecuária se posicionou entre as cinco primeiras em produto. Pela ótica da renda, as tributações e salários da agropecuária atingiram pequenas proporções da economia. Pela demanda, o destaque coube à participação das exportações destinadas ao restante do Brasil. Esses resultados demonstraram a importância da agropecuária na economia de Mato Grosso do Sul, fornecendo suporte à tomada de decisões do próprio setor e do governo.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;AZEVEDO JUNIOR, W. C.; Dallemole Dilamar; FIGUEIREDO, A. M. R.; SANTANA, A. C.; FARIA, A. M. M.. 2015.
+Áreas de Influência Econômica das Usinas de Cana-de-Açúcar em Mato Grosso, 2010 In &lt;em&gt;Estudos do CEPE&lt;/em&gt;. , v.39, 117-133
+Palavras-chave: Modelo Gravitacional, Cadeia Sucroalcooleira, Mato Grosso
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://online.unisc.br/seer/index.php/cepe/article/view/5267&#34; class=&#34;uri&#34;&gt;http://online.unisc.br/seer/index.php/cepe/article/view/5267&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;LISBOA, E. A. S.; FIGUEIREDO, A. M. R.. 2014.
+A Agroindústria Canavieira Mato-Grossense e o Sistema de Gestão Ambiental In &lt;em&gt;Amazônia&lt;/em&gt; (Banco da Amazônia. 2005). n.19, v.10, 57-71
+Palavras-chave: gestão ambiental, desenvolvimento sustentável, setor sucroalcooleiro
+Áreas do conhecimento: Economia dos Recursos Naturais
+Setores de atividade: Fabricação de produtos diversos
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;https://www.bancoamazonia.com.br/index.php/component/edocman/revista-amazonia-ciencia-e-desenvolvimento-edicao-19/viewdocument?Itemid=&#34; class=&#34;uri&#34;&gt;https://www.bancoamazonia.com.br/index.php/component/edocman/revista-amazonia-ciencia-e-desenvolvimento-edicao-19/viewdocument?Itemid=&lt;/a&gt;]
+A pesquisa foi elaborada com o objetivo de investigar a situação corrente do Estado de Mato Grosso quanto à disposição do setor sucroalcooleiro em produzir de acordo com a correta gestão e aproveitamento dos resíduos gerados no processo produtivo. O problema central se concentrou em saber de que modo ocorre e quais as motivações para que haja a gestão de resíduos ambientais na indústria sucroalcooleira estadual. Dentre os métodos e procedimentos utilizados na pesquisa, realizouse uma pesquisa de campo com aplicação de questionários junto a três agroindústrias do setor no Estado. Como principais resultados destacam-se a ineficiência dos sistemas de gestão ambiental instalados nas agroindústrias analisadas e pouca participação governamental no processo de formulação de políticas públicas ambientais bem como a ineficiência da fiscalização.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;SILVA, C. E. S. F.; SCHOENHERR, R. P.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2014.
+Efeitos dos investimentos públicos em infraestrutura para a Copa do Mundo FIFA 2014 no setor da construção em Mato Grosso In &lt;em&gt;Revista de Economia da UEG&lt;/em&gt;. Seção Eletrônica. , v.10, 36-54
+Palavras-chave: futebol, infraestrutura, construção
+Áreas do conhecimento: Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
+Setores de atividade: Construção de edifícios, Administração pública, defesa e seguridade social
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.revista.ueg.br/index.php/economia/article/view/3069/1980&#34; class=&#34;uri&#34;&gt;http://www.revista.ueg.br/index.php/economia/article/view/3069/1980&lt;/a&gt;]
+A cidade de Cuiabá será sede da Copa do Mundo FIFA 2014. Um importante evento esportivo de repercussão mundial, em que investimentos principalmente na área de infraestrutura se fazem necessários. Sendo o setor da construção o mais impactado diretamente pelo mundial. Neste trabalho procura-se verificar os impactos dos investimentos públicos em infraestrutura para a Copa do Mundo FIFA 2014 no setor da construção de Mato Grosso. Também se procurou demonstrar o papel da construção para a economia do estado. Para tal, utilizou-se como base a Matriz de Insumo-Produto Inter-Regional de Mato Grosso e Resto do Brasil – 2007 e os dados das obras públicas da SECOPA/MT (Secretaria Extraordinária da Copa Mundo FIFA 2014), órgão responsável pelos assuntos da Copa do Mundo no estado de Mato Grosso. O método utilizado neste estudo foi o dos multiplicadores de impacto e o choque na demanda final. Os multiplicadores mostraram o quanto é impactado na economia como um todo através de uma mudança exógena na demanda final no setor de construção. Os resultados do impacto na demanda final evidenciaram que os investimentos públicos em infraestrutura para a Copa do Mundo em Cuiabá terão um impacto no setor da construção de Mato Grosso de 6,17% do PIB.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FEARNSIDE, PHILIP M.; FIGUEIREDO, ADRIANO M. R.; BONJOUR, SANDRA C. M.. 2013.
+Amazonian forest loss and the long reach of China’s influence In &lt;em&gt;Environment, Development And Sustainability&lt;/em&gt;. , v.15, 325-338
+Palavras-chave: Amazonia, Brazil, China, deforestation, soybeans
+Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Produção Florestal
+Referências adicionais: Inglês. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://link.springer.com/article/10.1007/s10668-012-9412-2&#34; class=&#34;uri&#34;&gt;http://link.springer.com/article/10.1007/s10668-012-9412-2&lt;/a&gt;]
+This paper explores China’s role in deforestation in Latin America. Brazil’s Amazon region contains vast natural resources including land, timber, minerals and hydroelectric potential. China’s strong economy and large demands relative to domestic supplies of these resources mean that China has become Brazil’s largest trading partner, primarily for natural resources. The paper examines how China influences deforestation in Brazilian Amazonia in a variety of ways, including through the direct influence of Chinese enterprises through land purchases and other mechanisms. This paper finds that the rapid rise in exports of soy and beef products to China are two of the major drivers of Amazonian deforestation in Brazil. The paper further argues that Chinese purchases of agricultural and forest land and Chinese imports of commodities such as timber and aluminum also cause environmental impacts in Amazonia. Chinese financing and investment in Amazonian infrastructure such as railways and mineral processing facilities have additional impacts.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;OLIVEIRA, L. J.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; RAUSCHKOLB, A. S.. 2013.
+Ambientes institucional e organizacional do setor apícola na região norte de Mato Grosso In &lt;em&gt;Revista Eletrônica Documento/Monumento&lt;/em&gt;. , v.10, 89-106
+Palavras-chave: instituições, organizações, apicultura, Mato Grosso, Sinop-MT
+Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://200.17.60.4/ndihr/revista/artigos/7.pdf&#34; class=&#34;uri&#34;&gt;http://200.17.60.4/ndihr/revista/artigos/7.pdf&lt;/a&gt;]
+Fez-se uma análise dos papéis dos ambientes institucional e organizacional no desempenho competitivo do setor apícola na região Norte de Mato Grosso. Foram entrevistadas 11 organizações que fazem parte do projeto de “Desenvolvimento da Apicultura na Região de Sinop”. O referencial teórico foi centrado no estudo das instituições e ambiente institucional, bem como o estudo da economia das organizações. Verificou-se que no ambiente institucional são feitas análises da qualidade do mel e também são ofertados cursos e palestras de boas práticas de higiene, mantendo, assim, um controle de segurança no padrão de qualidade do mel natural. O ambiente organizacional da apicultura mostrou-se eficiente no aspecto de articulação de políticas de capacitação e no fortalecimento da governança por meio do espírito coletivo. Ações conjuntas, no sentido de captar pessoas interessadas em trabalhar com a atividade são desenvolvidas pelas associações da região, enquanto o Sebrae e outras entidades dão suporte no sentido de qualificar e capacitar a mão de obra local. Há uma tendência de que se aumente o poder de barganha dos apicultores na região por intermédio da Cooperativa dos Apicultores do Norte de Mato Grosso (COAPISNORTE), que está em fase de fortalecimento. Isso faz com que os produtores agreguem mais valor ao produto comercializado, aumentando, assim, o desempenho competitivo na estrutura produtiva, propiciando o desenvolvimento da atividade de forma justa, econômica e sustentável.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;CANGUSSU, S. V.; ROSA, M. J. A.; FIGUEIREDO, Adriano M.R. 2013.
+Determinantes do preço do frete rodoviário para transporte de soja em grãos em Mato Grosso In &lt;em&gt;Revista de Economia da UEG&lt;/em&gt;. Seção Eletrônica. , v.9, 78-94
+Palavras-chave: soja, frete, Mato Grosso
+Áreas do conhecimento: Economia Agrária,Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Economia Regional
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.prp.ueg.br/revista/index.php/economia/article/view/1425/1117&#34; class=&#34;uri&#34;&gt;http://www.prp.ueg.br/revista/index.php/economia/article/view/1425/1117&lt;/a&gt;]
+A proposta deste trabalho é analisar as variáveis que influenciam na formação do preço do frete rodoviário da soja em grãos com origem em Mato Grosso, valendo-se de um modelo de regressão linear múltipla, estimado pelo método dos mínimos quadrados ordinários (MQO), procurou-se identificar a influência de alguns desses fatores para a composição dos fretes rodoviários de soja a granel com origem no estado de Mato Grosso entre 2008 e 2010. Os resultados obtidos indicam que, para as amostras utilizadas como referência do transporte de soja a granel com origem no estado de Mato Grosso, durante as safras de 2008 a 2010, a distância percorrida foi um fator fundamental para a composição dos preços dos fretes praticados, independentemente do período e origem das cargas. Porém, o valor do frete nesses percursos, em alguns momentos, em maior ou menor grau, foi influenciado por fatores secundários, tais como: a existência de praças de pedágios em algumas rodovias, sazonalidade da demanda por transporte e as condições das vias utilizadas.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;OLIVEIRA, L. J.; FIGUEIREDO, Adriano M.R; RAUSCHKOLB, A. S.. 2013.
+Estrutura de governança do setor apícola na região norte de Mato Grosso In &lt;em&gt;Revista de Economia da UEG&lt;/em&gt;. Seção Eletrônica. , v.9, 95-115
+Palavras-chave: governança, transacao, apicultura
+Áreas do conhecimento: Economia Agrária,Economia dos Recursos Naturais,Economia Florestal
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.prp.ueg.br/revista/index.php/economia/article/view/1465/1118&#34; class=&#34;uri&#34;&gt;http://www.prp.ueg.br/revista/index.php/economia/article/view/1465/1118&lt;/a&gt;]
+Nesse estudo analisou-se a estrutura de governança do setor apícola na região Norte de Mato Grosso caracterizando os tipos de transações dos apicultores da região. A base teórica foi fundamentada na Nova Economia Institucional (NEI), porém utilizou-se também de algumas considerações dos modos de coordenação em função dos níveis de garantias abordado pela Economia das Convenções. Foram utilizados dados primários de uma pesquisa de campo, obtidos pela aplicação de 52 questionários junto aos apicultores da região. Verificou-se que a estrutura de governança dos apicultores da região Norte de Mato Grosso é predominantemente via “Mercado Spot”. Esse modo de coordenação vem favorecendo o desenvolvimento da atividade no contexto vivenciado pelos apicultores locais.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;OLIVEIRA, L. J.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; RAUSCHKOLB, A. S.. 2013.
+Perfil tecnológico dos apicultores da região norte do estado de Mato Grosso In &lt;em&gt;Amazônia&lt;/em&gt; (Banco da Amazônia. 2005). , v.8, 151-166
+Palavras-chave: apicultura, perfil tecnologico, analise fatorial, Mato Grosso
+Áreas do conhecimento: Economias Agrária e dos Recursos Naturais,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.basa.com.br/images/arquivos/institucional/biblioteca/revista_amazonia/edicao16/00_Revista_Amazonia_Ciencia_e_Desenvolvimento_Edicao_16.pdf&#34; class=&#34;uri&#34;&gt;http://www.basa.com.br/images/arquivos/institucional/biblioteca/revista_amazonia/edicao16/00_Revista_Amazonia_Ciencia_e_Desenvolvimento_Edicao_16.pdf&lt;/a&gt;]
+Avalia o perfil tecnológico dos apicultores da região norte de Mato Grosso. Foram aplicados cinquenta e dois questionários em oito municípios. Os dados submetidos à análise de confiabilidade por meio do Alfa de Cronbach e posteriormente utilizou-se a análise fatorial por componentes principais para identificar os fatores que definem o perfil tecnológico dos produtores. Foram encontrados sete fatores, respectivamente denominados: nível de especialização; origem da renda; modo de aquisição das colmeias; nível de instrução com aperfeiçoamento; associativismo; nível de instrução sem aperfeiçoamento; e, renda da apicultura. Os resultados indicam que a apicultura apresentou-se como uma atividade complementar de renda e de geração de trabalho para os produtores da região.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;OLIVEIRA, L. J.; RAUSCHKOLB, A. S.; DANIEL, L. P.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2012.
+Aglomerações produtivas do setor de criação e suínos no estado de Mato Grosso In &lt;em&gt;Desafio&lt;/em&gt; (Campo Grande). , v.13, 83-95
+Palavras-chave: suinos, concentracao, ICN
+Áreas do conhecimento: Economia Agrária,Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Português.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;PEES, D.A.; FIGUEIREDO, M. G.; FIGUEIREDO, Adriano M.R. 2012.
+Análise econométrica da oferta e demanda de carne bovina no Brasil no período de 2000 a 2010 In &lt;em&gt;Revista de Economia da UEG&lt;/em&gt;. Seção Eletrônica. , v.8, 54-73
+Palavras-chave: carne bovina, oferta, demanda, modelo de equações simultâneas
+Áreas do conhecimento: Economia Agrária,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.prp.ueg.br/revista/index.php/economia/index&#34; class=&#34;uri&#34;&gt;http://www.prp.ueg.br/revista/index.php/economia/index&lt;/a&gt;]
+Este trabalho teve como objetivo analisar a oferta e a demanda de carne bovina no Brasil no período de 2000 a 2010 empregando um sistema de Equações Simultâneas para obter as elasticidades-preço, elasticidade-renda e elasticidades-cruzada da demanda e da oferta. A hipótese de que as relações entre a oferta e a demanda da carne bovina no Brasil ocorrem simultaneamente não foi confirmada, uma vez que a aplicação do teste de raiz unitária indicou que as séries empregadas no modelo não são integradas de mesma ordem, verificando-se relação de equilíbrio em longo prazo apenas nas séries que compõem a equação de oferta. Ademais, a aplicação do Vetor de Correção de Erros (VEC) aponta um ajustamento em longo prazo entre a quantidade comercializada e as variáveis da equação de oferta, através de parcelas de -0,107888 ao mês.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;DASSOW, C.; COSTA, R.M.G.S.; FIGUEIREDO, ADRIANO MARCOS RODRIGUES. 2012.
+Crescimento econômico e clusters municipais no estado de Mato Grosso In &lt;em&gt;Nexos Econômicos&lt;/em&gt; (Salvador). , v.6, 11-33
+Palavras-chave: Polos, Região, Brasil
+Áreas do conhecimento: Economia Regional,Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Métodos e Técnicas do Planejamento Urbano e Regional
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Administração pública, defesa e seguridade social
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.portalseer.ufba.br/index.php/revnexeco/article/view/7950&#34; class=&#34;uri&#34;&gt;http://www.portalseer.ufba.br/index.php/revnexeco/article/view/7950&lt;/a&gt;]
+RESUMO: Mato Grosso tem se destacado pelas altas taxas de crescimento econômico e elevada renda per capita, mas seu crescimento não ocorre de forma homogênea em todos os municípios/regiões. Assim, analisa-se o processo de crescimento econômico de seus municípios no período de 2001 a 2007. Investiga-se a dependência espacial entre os municípios, e se há cluster de crescimento econômico no estado com uso do teste I de Moran e o indicador LISA, para a presença de clusters. Verificou-se: a existência de pequenos efeitos espaciais nas taxas de crescimento e renda per capita assim como clusters de crescimento econômico.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BERCHIELI, R.; FIGUEIREDO, Adriano M.R; BONJOUR, S. C. M.. 2012.
+Incentivos fiscais como instrumento da política agrícola recente de Mato Grosso: 1994-2008 In &lt;em&gt;Revista Eletrônica Documento/Monumento&lt;/em&gt;. , v.7, 68-80
+Palavras-chave: renúncia, incentivo, subsídio
+Áreas do conhecimento: Economia Agrária,Economia Regional e Urbana
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Administração pública, defesa e seguridade social
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://200.17.60.4/ndihr/revista/artigos/revista-dm.pdf&#34; class=&#34;uri&#34;&gt;http://200.17.60.4/ndihr/revista/artigos/revista-dm.pdf&lt;/a&gt;]
+RESUMO. Analisa-se a política de incentivos ou renúncias fiscais como instrumentos da política agrícola de Mato Grosso. Descrevem-se os principais incentivos fiscais destinados à produção agroindustrial mato-grossense bem como as instituições que operacionalizaram tais instrumentos. Por meio da base teórica da regulação e a NEI, apresenta-se o inventário dessa política, sendo estimuladas as agroindústrias dos derivados do algodão, da madeira e mobiliário, do couro, do café, do arroz, de laticínios e, principalmente ao final do período, aparece o PRODEIC para o desenvolvimento industrial e comercial. Em geral, facilitavam a adoção de tecnologias capital intensivas as quais muitas vezes reduziam emprego, à despeito dos programas terem como metas a geração de empregos. Em muitos casos, como no programa para a indústria de derivados de algodão, o estímulo realmente se traduziu em marco no desenvolvimento setorial.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;RAUSCHKOLB, A. S.; OLIVEIRA, L. J.; FIGUEIREDO, Adriano M.R; BONJOUR, S. C. M.. 2012.
+Ligações setoriais na cadeia produtiva de leite em Mato Grosso In &lt;em&gt;Revista de Politica Agricola&lt;/em&gt;. , v.xxi, 68-82
+Palavras-chave: Agronegócio, lácteo, leite
+Áreas do conhecimento: Economia Agrária,Economia Regional,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://https://seer.sede.embrapa.br/index.php/RPA/article/view/247/207&#34; class=&#34;uri&#34;&gt;http://https://seer.sede.embrapa.br/index.php/RPA/article/view/247/207&lt;/a&gt;]
+O objetivo deste estudo foi examinar os impactos na economia de Mato Grosso dos setores de criação de bovinos e indústria de laticínios. Baseia-se nas técnicas e conceitos de insumo-produto, tendo sido usada a matriz insumo-produto do estado de Mato Grosso – ano de 2007. Realizou-se a análise dos índices de ligação de Rasmussen-Hirschman; dos índices puros de ligação; dos multiplicadores tipo I e II de produto, renda e emprego; e dos multiplicadores de impostos, lucro e importação. Os resultados revelam que o setor de criação de bovinos de leite é chave para frente e para trás, enquanto o setor de indústria de laticínios em questão é chave somente para trás, ou seja, impacta mais os setores a montante que a jusante da cadeia. Os resultados obtidos indicam que um investimento no setor de criação de bovinos leiteiros geraria mais benefícios à economia de Mato Grosso do que o mesmo investimento no setor de indústria de laticínios, ocasionando um aumento maior na renda e emprego, de forma tanto direta como indireta, e de modo induzido.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;MELLO, G.C.F.C.; FIGUEIREDO, A. M. R.. 2012.
+O Programa de Aquisição de Alimentos (PAA) em Cuiabá-MT na Ótica da Nova Economia Institucional In Revista Novos Cadernos NAEA. , v.15, 131-159
+Palavras-chave: agricultura familiar, PAA, NEI, Mato Grosso
+Áreas do conhecimento: Economia Agrária,Economia Regional e Urbana
+Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.periodicos.ufpa.br/index.php/ncn/article/view/747/1332&#34; class=&#34;uri&#34;&gt;http://www.periodicos.ufpa.br/index.php/ncn/article/view/747/1332&lt;/a&gt;]
+O Programa de Aquisição de Alimentos (PAA) em Cuiabá-MT foi analisado na ótica da nova economia institucional quanto a: a operacionalização e metas; resultados produtivos; e, eventuais dificuldades ou imperfeições na gestão. Fez-se análise estatística das variáveis tecnológicas assim como produção e área, comparando-se grupos dos participantes e dos não participantes do PAA. Os resultados indicaram que o programa estava sendo executado com algumas dificuldades ou imperfeições devido à sua estrutura de governança. As metas do programa foram avaliadas tanto no âmbito do “MDS-Prefeitura” como de “MDS-Conab”. Houve diferença favorável ao grupo do PAA quanto à participação em organizações. Não existiu diferença na produção média entre os grupos participantes e não participantes; e foram detectados filtros institucionais em ambos os níveis de análise.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;OLIVEIRA, L. J.; RAUSCHKOLB, A. S.; FIGUEIREDO, Adriano M.R. 2012.
+Transações e governança na apicultura de Mato Grosso: o caso da Apisnorte In Revista de Politica Agricola. , v.11, 20-34
+Palavras-chave: abelha, mercado, NEI
+Áreas do conhecimento: Economia Agrária,Economia dos Recursos Naturais
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.agricultura.gov.br/MapaPortalInternet/consultarpublicacao/editConsultarPublicacaoGrupo2.do?op=downloadArquivo&amp;amp;url=%2Fpolitica-agricola%2Fpublicacoes&amp;amp;publicacao.arquivo.idArquivo=11718&#34; class=&#34;uri&#34;&gt;http://www.agricultura.gov.br/MapaPortalInternet/consultarpublicacao/editConsultarPublicacaoGrupo2.do?op=downloadArquivo&amp;amp;url=%2Fpolitica-agricola%2Fpublicacoes&amp;amp;publicacao.arquivo.idArquivo=11718&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;MATTIELLO, C. C.; FIGUEIREDO, A. M. R.. 2011.
+A importancia do Fethab para o setor de transporte rodoviario do estado de Mato Grosso (2000-2006) In Revista Eletrônica Documento/Monumento. , v.4, 162-176
+Palavras-chave: investimento, fundos, infraestrutura
+Áreas do conhecimento: Economia Regional,Renda e Tributação,Crescimento e Desenvolvimento Econômico
+Setores de atividade: Administração pública, defesa e seguridade social, Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://200.17.60.4/ndihr/revista/artigos/claudia-cristina-mattiello.pdf&#34; class=&#34;uri&#34;&gt;http://200.17.60.4/ndihr/revista/artigos/claudia-cristina-mattiello.pdf&lt;/a&gt;]
+Objetivou-se verificar a importância do Fundo Estadual de Transporte e Habitação (FETHAB) para o desenvolvimento do setor de transporte rodoviário do estado de Mato Grosso no período 2000-2006. O montante de recursos arrecadados com o FETHAB e destinados ao setor de transportes pelo governo estadual para o período permitiram identificar a participação do FETHAB no total de investimentos destinados a esse setor. A base teórica envolve as finanças públicas, as funções básicas do governo no fornecimento de bens públicos, e a base da Parceria Público-Privada em transportes. O FETHAB correspondeu a uma média de 73% do total investido entre 2000 e 2006. Quando se analisa apenas os anos de 2003 a 2006, a participação do FETHAB chegou a corresponder a quase 82% de tudo o que foi investido na malha rodoviária do estado neste período.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;DASSOW, Charline; AZEVEDO JUNIOR, W. C.; COSTA, R. M. G. S.; FIGUEIREDO, A. M. R.. 2011.
+AGROPECUÁRIA, CRESCIMENTO ECONÔMICO E CONVERGÊNCIA DE RENDA MUNICIPAL EM MATO GROSSO In Revista de Estudos Sociais (UFMT). , v.12, 99-119
+Palavras-chave: Crescimento Econômico, convergencia de renda, Econometria Espacial, Mato Grosso
+Áreas do conhecimento: Economia Regional
+Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://200.129.241.94/index.php/res/article/viewFile/228/194&#34; class=&#34;uri&#34;&gt;http://200.129.241.94/index.php/res/article/viewFile/228/194&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;DASSOW, C.; COSTA, R.M.G.S.; FIGUEIREDO, Adriano M.R. 2011.
+Crescimento econômico municipal em Mato Grosso: uma análise de convergência de renda In Revista Brasileira de Economia (Impresso). , v.65, 359-372
+Palavras-chave: Econometria Espacial, PIB municipal, Brasil
+Áreas do conhecimento: Economia Regional e Urbana,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
+Setores de atividade: Administração pública, defesa e seguridade social, Agricultura, Pecuária e Serviços Relacionados
+Referências adicionais: Inglês. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://bibliotecadigital.fgv.br/ojs/index.php/rbe/article/view/3334/2287&#34; class=&#34;uri&#34;&gt;http://bibliotecadigital.fgv.br/ojs/index.php/rbe/article/view/3334/2287&lt;/a&gt;]
+Este artigo analisa os efeitos dos componentes setoriais do valor adicionado bruto sobre o crescimento econômico e a convergência de renda em Mato Grosso de 2001 a 2007. Adaptou-se o modelo de Barro e Sala-i-Martin para β convergência com técnicas econométricas espaciais. Os testes de autocorrelação espacial indicaram dependência espacial nas taxas de crescimento e composições setoriais da renda per capita no valor adicionado total. Houve convergência absoluta e condicional da renda nos municípios mato-grossenses. O setor agropecuário foi o principal responsável pelas oscilações econômicas, tanto para formação do valor adicionado como para a geração de renda.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;HELFAND, S. M.; MOREIRA, A. R. B.; FIGUEIREDO, A. M. R.. 2011.
+Explicando as diferenças de pobreza entre produtores agrícolas no Brasil: simulações contrafactuais com o censo agropecuário 1995-96 In Revista de Economia e Sociologia Rural (Impresso). , v.49, 391-418
+Palavras-chave: pobreza, agricultura, Brasil
+Áreas do conhecimento: Economia Agrária,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
+Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
+Referências adicionais: Inglês. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://dx.doi.org/10.1590/S0103-20032011000200006&#34; class=&#34;uri&#34;&gt;http://dx.doi.org/10.1590/S0103-20032011000200006&lt;/a&gt;]
+O censo agropecuário 1995-96 é utilizado para estudar os fatores responsáveis pelas diferenças na pobreza entre os estabelecimentos agrícolas no Brasil. As diferenças entre as regiões e as seguintes dicotomias são analisadas: proprietários/não proprietários; familiares/não familiares; intensivos em insumos/não intensivos; com/sem máquinas. O artigo utiliza uma metodologia semiparamétrica. Primeiro, uma função fronteira estocástica de lucro é estimada. Em seguida, simulações não paramétricas contrafactuais são utilizadas para identificar os fatores que explicam as diferenças em pobreza. Os fatores incluem o tamanho da propriedade, o trabalho familiar, a lucratividade e as variáveis utilizadas para explicar a lucratividade no modelo de fronteira estocástica. O artigo conclui que a falta de terra e os baixos níveis de produtividade são importantes motivos para a pobreza entre produtores agrícolas. É improvável que qualquer um deles isoladamente possa solucionar o problema da pobreza. As diferenças em “eficiência” – capturadas pelo termo de erro na função fronteira de lucro – são importantes para explicar as diferenças entre os pobres e os não pobres, mas não para as demais dicotomias estudadas. Isto sugere que os fatores não observáveis – como restrições ou falhas de mercado – são importantes para explicar a pobreza entre produtores agrícolas no Brasil.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FIGUEIREDO, M.G.; GUILHOTO, J. J. M.; BONJOUR, S. C. M.; DETOMINI, E. R.; FIGUEIREDO, A. M. R.; ISHII, K. S.; AZEVEDO JUNIOR, W. C.; LEITE, S. F.; SILVA, F. D. S. E.; SOUZA, R. F.. 2011.
+Matriz Insumo Produto de Mato Grosso 2007: construção e análise dos principais indicadores econômicos In Revista de Estudos Sociais (UFMT). , v.13, 49-73
+Palavras-chave: Matriz insumo-produto, indicadores econômicos, Mato Grosso
+Áreas do conhecimento: Economia Regional,Métodos e Técnicas do Planejamento Urbano e Regional
+Setores de atividade: Agricultura, Pecuária e Serviços Relacionados, Administração pública, defesa e seguridade social
+Referências adicionais: Português. Meio de divulgação: Vários. DOI: [&lt;a href=&#34;http://dx.doi.org/10.19093/res.v13i26.470&#34; class=&#34;uri&#34;&gt;http://dx.doi.org/10.19093/res.v13i26.470&lt;/a&gt;] O estado de Mato Grosso vem apresentando expressivas taxas de crescimento econômico nos últimos anos, de modo que a utilização da matriz insumo-produto, como estratégia de política econômica, representaria não somente a busca da manutenção desse crescimento econômico, mas a preocupação de que o mesmo se traduza em desenvolvimento sócio-econômico. Assim, o presente artigo tem como objetivo geral a apresentação das notas metodológicas de construção da matriz insumo-produto para o Mato Grosso, acompanhadas de uma análise geral da estrutura produtiva da economia do estado. Os principais métodos de análise utilizados no estudo foram os índices de ligações inter-setoriais, bem como os multiplicadores de emprego, renda e produção. Os resultados empíricos confirmaram a importância dos setores primários em termos de suas relações comerciais com as demais atividades, como forma de estimular o aquecimento da economia. Finalmente, através da análise dos multiplicadores, foi possível identificar a importância de diversos setores relacionados ao agronegócio, no que diz respeito às suas capacidades de geração direta e indireta de emprego e renda na economia.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; BONJOUR, S. C. M.; TEIXEIRA, E. C.; HELFAND, S. M.. 2011.
+Spatial Analysis Of Agricultural Supply Response In The Brazilian Center-West In Revista Economía Agraria (AEA Chile). , v.15, 13-25
+Palavras-chave: agriculture, Brazil, spatial dependence, shares, profit
+Áreas do conhecimento: Economia Agrária,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
+Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
+Referências adicionais: Inglês. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.aeachile.cl/docs/r15/6744%20-%202.pdf&#34; class=&#34;uri&#34;&gt;http://www.aeachile.cl/docs/r15/6744%20-%202.pdf&lt;/a&gt;]
+This study investigates the importance of spatial dependence and inter-relations due to geographic localization over the supply response to agricultural prices, in the Brazilian Center-West. Specifically, we evaluated: the spatial error dependence in the input demand and output supply; and, the importance of input and output prices in farmers response. The contribution to the literature is to combine a translog profit share system of equations with spatial error dependence, cross-sectional and four agricultural censuses. There are econometric evidences of spatial dependencies in the residuals. There were high positive spatial autocorrelation in products. This demonstrates an influence of other factors not included in the model, modifying the residuals only due to localization. There are substitution relations mainly to rice price changes and some complementarities among others. Among factors, they were complements. The spatial effects in this study were very important, changing decisively the calculated elasticities, and showing that all analyzed products suffer from these effects.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;DASSOW, C.; AZEVEDO JUNIOR, W. C.; COSTA, R.M.G.S.; FIGUEIREDO, Adriano M.R. 2010.
+Agropecuária, crescimento econômico e convergência de renda municipal em Mato Grosso In Revista de Estudos Sociais (UFMT). , v.1, 99-119
+Palavras-chave: Crescimento Econômico, convergencia de renda, Econometria Espacial, Mato Grosso
+Áreas do conhecimento: Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Economia Regional e Urbana,Crescimento e Desenvolvimento Econômico
+Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://periodicoscientificos.ufmt.br/ojs/index.php/res/article/view/255/244&#34; class=&#34;uri&#34;&gt;http://periodicoscientificos.ufmt.br/ojs/index.php/res/article/view/255/244&lt;/a&gt;] Este trabalho investiga o efeito do setor agropecuário sobre o crescimento econômico e a convergência de renda dos municípios de Mato Grosso para o período de 2002 a 2005. Utilizou-se a teoria de convergência-β condicional, adaptando o modelo de Barro e Sala-i-Martin, e incorporando a metodologia econométrica espacial. Não existe dependência espacial detectada pelo teste global mas o teste de dependência espacial local (LISA) identificou um cluster de crescimento em uma região que é também pólo agropecuário do estado. Concluiu-se que há convergência-β condicional nos municípios mato-grossenses. Ainda, se constatou econometricamente que o setor agropecuário se mostra importante para o crescimento econômico dos municípios. No entanto, considera-se interessante aprofundar esses estudos, levando em consideração as características municipais e regionais, a fim de reduzir as suas desigualdades e obter um processo de crescimento econômico mais eficaz.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; MARTA, J. M. C.; GUIMARAES, P. W.. 2010.
+Determinantes da ocupação do núcleo familiar composto na área rural do Brasil In Economia e Desenvolvimento (Santa Maria). , v.22, 42-61
+Palavras-chave: mercado de trabalho, biprobit, amostra complexa
+Áreas do conhecimento: Economia Agrária,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
+Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://w3.ufsm.br/depcie/arquivos/artigo/artigo_3.pdf?PHPSESSID=21f3325b2a3a0844c735bcf53ce22174&#34; class=&#34;uri&#34;&gt;http://w3.ufsm.br/depcie/arquivos/artigo/artigo_3.pdf?PHPSESSID=21f3325b2a3a0844c735bcf53ce22174&lt;/a&gt;]
+A agricultura brasileira enfrentou profundas transformações em relação ao emprego agrícola durante a década de 90. Visando investigar qual foi o impacto desse processo nos determinantes da ocupação das famílias constituídas por núcleo composto, analisa-se a probabilidade de ocupação no mercado de trabalho de maridos e esposas da área rural do Brasil. Os dados utilizados nesse estudo foram obtidos da Pesquisa Nacional por Amostra de Domicílios (PNAD) para o ano de 2008 com todas as características do seu plano amostral complexo (peso, estrato e unidade primária) e a análise é feita para a área rural do Brasil. Adicionalmente, faz-se uso do modelo Probit Bivariado Aparentemente Não relacionado (BIPROBIT) para determinar se há interação das características que determinam a ocupação de maridos e esposas no mercado de trabalho rural brasileiro. Os resultados obtidos mostraram que há interação das características que determinam a ocupação do núcleo familiar composto rural, mas que as características relevantes para essa ocupação variam consideravelmente conforme se considere marido ou esposa.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;GUIMARAES, P. H. M.; FIGUEIREDO, A.; BONJOUR, S. C. M.. 2010.
+O sistema de distribuição de gás natural em Mato Grosso: uma abordagem institucionalista In Panorama socioeconomico (Chile). , v.28, 128-143
+Palavras-chave: Gás natural, Mato Grosso, Regulacao
+Áreas do conhecimento: Relações do Comércio; Política Comercial; Integração Econômica,Organização Industrial e Estudos Industriais,Economia Regional
+Setores de atividade: Eletricidade, gás e outras utilidades
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.redalyc.org/src/inicio/ArtPdfRed.jsp?iCve=39920230006&#34; class=&#34;uri&#34;&gt;http://www.redalyc.org/src/inicio/ArtPdfRed.jsp?iCve=39920230006&lt;/a&gt;]
+Em Mato Grosso, percebe-se um crescimento lento e com poucas perspectivas de expansão da distribuição de gás natural (GN). Este trabalho caracteriza o mercado de gás natural para entender as razões que levam à subutilização do sistema de distribuição no estado. Os resultados do trabalho apontam que o pouco dinamismo envolve: a ausência de expectativas pela iniciativa privada; a dependência de fornecimento da Bolívia; a exigência de alto nível de investimento para infra-estrutura de redes; o papel predominante da Termocuiabá; o grande número de substitutos energéticos; e os custos de transferência dos energéticos para o GN. &lt;a href=&#34;http://www.panorama.utalca.cl/dentro/2010-dic/articulo2.pdf&#34; class=&#34;uri&#34;&gt;http://www.panorama.utalca.cl/dentro/2010-dic/articulo2.pdf&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ALVES, J.; FIGUEIREDO, A. M. R.; BONJOUR, S. C. M.; GOMES, M. B.. 2009.
+A Agricultura Familiar em Mato Grosso In Revista Eletrônica Documento/Monumento. , v.1, 69-86
+Palavras-chave: agricultura familiar, Mato Grosso, Economia Agrícola
+Áreas do conhecimento: Economia Agrária
+Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
+Referências adicionais: Português. Meio de divulgação: Meio digital. Home page: [&lt;a href=&#34;http://www.ufmt.br/ndihr/revista/artigos/janice-alves.pdf&#34; class=&#34;uri&#34;&gt;http://www.ufmt.br/ndihr/revista/artigos/janice-alves.pdf&lt;/a&gt;]
+RESUMO: Mato Grosso contava no ano-safra 1995/96 com 78.763 propriedades rurais, ocupando 49.849.602 hectares de área, dos quais 69,9% eram familiares. Esta agricultura familiar ocupava 4.664.443 hectares de área, o equivalente a 9,63% do total da área utilizada pela agropecuária no Estado com uma área média de 84,7 hectares por estabelecimento familiar. A análise dos dados destes agricultores familiares permitiu observar que os maiores estabelecimentos seguem o modelo de produção da agricultura patronal, e que a grande maioria sofre sérias carências de assistência técnica, energia elétrica, irrigação, máquinas, entre outros fatores tecnológicos. Percebe-se ainda falta de planejamento, organização e políticas públicas de apoio ao setor.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;MARQUES, A. K.; MANCILLA, G. D.; FIGUEIREDO, A. M. R.; BONJOUR, S. C. M.. 2009.
+A caracterização ambiental da pequena propriedade rural de Lucas do Rio Verde In Revista de Política Agrícola. , v.18, 70-84
+Palavras-chave: Mato Grosso, pequenas propriedades, preservação ambiental, georeferenciamento
+Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
+Setores de atividade: Agricultura, Pecuária, Silvicultura e Exploração Florestal
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.agricultura.gov.br&#34; class=&#34;uri&#34;&gt;http://www.agricultura.gov.br&lt;/a&gt;&amp;gt;]
+Este trabalho tem o objetivo de quantificar e caracterizar a área de preservação ambiental das pequenas propriedades rurais do município de Lucas do Rio Verde no Estado de Mato Grosso. Para tanto, foram utilizados dados primários das propriedades rurais, produção, área produzida, área preservada, produtividade, tipo de custeio e mão-de-obra. Os resultados mostram que as pequenas propriedades apresentam produtividade da terra acima da média estadual, enquanto a preservação ambiental está muito aquém do mínimo permitido por lei. Utilizando imagens de satélite e o georeferenciamento de cada propriedade no projeto Lucas Legal, detectou-se para as pequenas propriedades do município uma área necessária de reserva legal de 4.792 hectares para 1.318 hectares conservados, ou 3.473 hectares degradados. Os custos para recuperar as áreas de reserva legal variam entre 17 e 24 milhões de reais.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ALVES, J.; FIGUEIREDO, A. M. R.; ZAVALA, A.A.Z.. 2009.
+Análise de eficiência em assentamentos rurais no Estado de Mato Grosso In Revista de Estudos Sociais (UFMT). , v.1, 75-97
+Palavras-chave: assentamentos rurais, DEA, Eficiência, Mato Grosso
+Áreas do conhecimento: Economia Agrária
+Setores de atividade: Agricultura, Pecuária, Silvicultura e Exploração Florestal
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://200.129.241.94/index.php/res/article/view/207/174&#34; class=&#34;uri&#34;&gt;http://200.129.241.94/index.php/res/article/view/207/174&lt;/a&gt;]
+Observa-se em Mato Grosso um crescimento do número de assentamentos rurais após 1994, e diversos estudos já comprovaram que a quantidade e a qualidade dos projetos não estariam associadas. Apesar da extensa pobreza entre os assentados, alguns se destacam de maneira positiva. Este estudo analisa quais são os fatores mais importantes para esta diferenciação entre os assentamentos rurais mato-grossenses. Utilizaram-se dados do Censo da Reforma Agrária de 2002 com técnicas de análise envoltória de dados (DEA) para se obter a fronteira eficiente, e assim detectar o que causa maior eficiência ou menor ineficiência entre os projetos estudados. Como variáveis analisadas estavam a infra-estrutura social e de habitação, isolamento econômico, crédito rural, área, entre outras, concluindo-se que quanto maior a distância dos centros urbanos, o tamanho do lote, a utilização de energia elétrica e a disponibilidade de mão-de-obra maior é a ineficiência. O estudo contribui para a literatura ao aplicar o método para este tipo de análise, com uso de variáveis categóricas em DEA e ainda oferecendo resultados aplicados para o estudo regional.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;SOUZA, S. S. S. DE; BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.. 2009.
+Competitividade do algodão mato-grossense In Revista economia em debate (URCA). , v.3, 5-24
+Palavras-chave: Mato Grosso, algodão, vantagem comparativa
+Áreas do conhecimento: Economia Agrária,Relações do Comércio; Política Comercial; Integração Econômica
+Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
+Referências adicionais: Português. Meio de divulgação: Vários&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;DASSOW, C.; FIGUEIREDO, A. M. R.; MARTA, J. M. C.. 2009.
+Crescimento econômico e ciclos de negócios no município de Campo Novo do Parecis (MT) entre 1990 e 2006 In Revista de Estudos Sociais (UFMT). , v.2, 125-144
+Palavras-chave: Campo Novo do Parecis, Crescimento Econômico, ciclo de negócios
+Áreas do conhecimento: Economia Regional e Urbana,Economias Agrária e dos Recursos Naturais,Crescimento e Desenvolvimento Econômico
+Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://200.129.241.94/index.php/res/article/view/219/186&#34; class=&#34;uri&#34;&gt;http://200.129.241.94/index.php/res/article/view/219/186&lt;/a&gt;]
+Este trabalho tem por objetivo analisar e identificar os fatores mais importantes para o crescimento econômico do município de Campo Novo do Parecis, no período de 1990 a 2006. Para tanto, foi realizada a análise de dados secundários de população, valor adicionado, investimento público, receita orçamentária, estabelecimentos comerciais, emprego, renda e grau de especialização dos trabalhadores. Conclui-se que o crescimento econômico e os ciclos de negócios ocorridos no município no período de 1990 a 2006 foram causados pela sua característica agrícola, ou seja, por o município ser dependente economicamente do agronegócio. Dessa maneira, os fatores que determinam o crescimento econômico e ciclos de negócios do setor agrícola e conseqüentemente do município foram os preços dos produtos, principalmente o da soja, a taxa de câmbio, as condições climáticas, o crédito para a aquisição de insumos, de máquinas e equipamentos e de comercialização, e a oferta e a demanda internacionais.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; TEIXEIRA, E. C.; BONJOUR, S. C. M.. 2009.
+Introdução a econometria espacial na agricultura In Desafio (Campo Grande). , v.10, 16-28
+Palavras-chave: econometria, espacial, agricultura
+Áreas do conhecimento: Métodos e Modelos Matemáticos, Econométricos e Estatísticos,Economia Agrária
+Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.spell.org.br/documentos/ver/2564/introducao-a-econometria-espacial-na-agricultura/i/pt-br&#34; class=&#34;uri&#34;&gt;http://www.spell.org.br/documentos/ver/2564/introducao-a-econometria-espacial-na-agricultura/i/pt-br&lt;/a&gt;]
+A agricultura brasileira tem grande heterogeneidade e a influência de uma localidade sobre seus vizinhos é sempre vista com interesse, uma vez que é comum a constatação de interdependência nas diferentes regiões em estudo. Uma hipótese básica da geografia é que as variáveis em estudo, nas diferentes regiões, estão sempre relacionadas entre si, e esta relação é mais forte quanto mais próximas estas estiverem. Assim, investiga-se como se deve avaliar a interdependência entre diferentes localidades em modelos econométricos aplicados à agricultura. Apresenta-se um breve resumo da econometria espacial enquanto método para considerar os efeitos espaciais e da especificação da dependência espacial, da vizinhança e algumas aplicações na agricultura.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;ALVES, J.; FIGUEIREDO, A. M. R.; BONJOUR, S. C. M.. 2009.
+Os Assentamentos Rurais em Mato Grosso: Uma Análise dos Dados do Censo da Reforma Agrária In Revista Panorama Socioeconómico. , v.27, 150-165
+Palavras-chave: assentamentos, reforma agrária, Mato Grosso
+Áreas do conhecimento: Economias Agrária e dos Recursos Naturais,Economia Regional e Urbana
+Setores de atividade: Agricultura, Pecuária, Produção Florestal, Pesca e Aqüicultura
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://panorama.utalca.cl/dentro/2009-dic/articulo6.pdf&#34; class=&#34;uri&#34;&gt;http://panorama.utalca.cl/dentro/2009-dic/articulo6.pdf&lt;/a&gt;]
+Este artigo faz uma caracterização dos assentamentos de reforma agrária mato-grossenses. A primeira parte do trabalho consiste em apresentar as raízes históricas do problema da concentração de terras, ou seja, um breve resumo da história dos projetos de colonização, da posse da terra através das leis que favoreceram os grandes latifúndios que caracterizam a agropecuária estadual até os dias atuais. A segunda e mais importante parte do trabalho apresenta a situação dos assentamentos rurais, com base no Censo da Reforma Agrária, realizado no ano de 2002, fazendo algumas comparações com outros estudos realizados em nível nacional e estadual. O trabalho é uma contribuição para a literatura regional ao oferecer descrições dos assentamentos rurais e evidenciando a agricultura de pequena escala do estado.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;SOUZA, S. S. S.; BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.. 2008.
+Análise da Competitividade do Algodão Mato-Grossense no Cenário Internacional: 1999 a 2005. In Revista de Estudos Sociais. , v.1 e 2, 71-86
+Palavras-chave: algodão, Mato Grosso, vantgem comparativa
+Áreas do conhecimento: Economia
+Referências adicionais: Português. Meio de divulgação: Impresso&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;MARTA, J. M. C.; FIGUEIREDO, A. M. R.. 2008.
+Expansão da soja no cerrado de Mato Grosso: aspectos políticos In Revista de Política Agrícola. , v.17, 117-128
+Palavras-chave: sojicultura, política, agricultura
+Áreas do conhecimento: Economias Agrária e dos Recursos Naturais,Economia Regional
+Setores de atividade: Agricultura, Pecuária, Silvicultura, Exploração Florestal, Desenvolvimento Rural
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.embrapa.br/publicacoes/tecnico/revistaagricola/rpa%201%20-%202008.pdf&#34; class=&#34;uri&#34;&gt;http://www.embrapa.br/publicacoes/tecnico/revistaagricola/rpa%201%20-%202008.pdf&lt;/a&gt;]
+O artigo questiona alguns elementos convencionais de análise na literatura econômica rural e no senso comum dos técnicos na busca de explicação para a entrada e expansão da soja em Mato Grosso, à parte da questão preços x quantidades de insumos e produtos. Fundamentalmente, propõe, na discussão, identificar alguns elementos da modernização do campo, como pré-condição do processo de migração dos agricultores do Sul do país para o território mato-grossense. Também procura mostrar como os sojicultores se tornaram reféns do sistema internacional de preços e insumos modernos, além, naturalmente, do sistema financeiro, indicando ainda sua dependência ao capital agroindustrial, ao mercado e às suas instituições. Indica, inicialmente, que a introdução da soja foi viabilizada por políticas governamentais em conjunto com ações de empresas comerciais que se beneficiaram do processo.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;PESSOA, S.G.; FIGUEIREDO, A. M. R.; OLIVEIRA FILHO, A.; BONJOUR, S. C. M.. 2008.
+Quantificação da Área Disponível para o Seqüestro de Carbono no Bioma Amazônia em Mato Grosso In Amazônia (Banco da Amazônia. 2005). , v.3, 237-247
+Palavras-chave: Áreas florestais, Bioma- Amazonia, desmatamento, sequestro de carbono
+Áreas do conhecimento: Economia dos Recursos Naturais,Economia Agrária
+Setores de atividade: Agricultura, Pecuária, Silvicultura e Exploração Florestal
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.bancoamazonia.com.br/bancoamazonia2/institucional_biblioteca_revistaamazonia.asp&#34; class=&#34;uri&#34;&gt;http://www.bancoamazonia.com.br/bancoamazonia2/institucional_biblioteca_revistaamazonia.asp&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;RESENDE, E. S.; BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.. 2007.
+Análise de rotas alternativas de transporte: o caso da soja de Mato Grosso In Revista de Estudos Sociais (UFMT). , v.14, 99-124
+Palavras-chave: transporte de soja, rotas de escoamento, transporte e logistica
+Áreas do conhecimento: Economias Agrária e dos Recursos Naturais,Economia Regional e Urbana
+Setores de atividade: Agricultura, Pecuária, Silvicultura e Exploração Florestal
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://200.129.241.94/index.php/res/article/view/256/169&#34; class=&#34;uri&#34;&gt;http://200.129.241.94/index.php/res/article/view/256/169&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;PEDRACA, J. S.; FIGUEIREDO, A. M. R.; BONJOUR, S. C. M.. 2007.
+Análise do Programa de Aquisição de Alimentos: Compra Antecipada Especial da Agricultura Familiar em Mato Grosso In Textos para Discussão (UFMT). , v.1, 1-34
+Palavras-chave: agricultura familiar, Desenvolvimento Rural, PAA
+Áreas do conhecimento: Economia Agrária
+Setores de atividade: Desenvolvimento Rural, Agricultura, Pecuária, Silvicultura, Exploração Florestal
+Referências adicionais: Português. Meio de divulgação: Impresso
+Texto para discussão do Mestrado em Agronegócios e Desenvolvimento Regional e NUPES/UFMT.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;MOREIRA, A. R. B.; HELFAND, S. M.; FIGUEIREDO, A. M. R.. 2007.
+Explicando as diferenças na produtividade agrícola no Brasil In Texto para Discussão (IPEA). , v.2007, 1-34
+Palavras-chave: produtividade, agricultura, Brasil
+Áreas do conhecimento: Economia Agrária,Métodos e Modelos Matemáticos, Econométricos e Estatísticos
+Setores de atividade: Desenvolvimento Rural, Agricultura, Pecuária, Silvicultura, Exploração Florestal
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.ipea.gov.br/sites/000/2/publicacoes/tds/td_1254.pdf&#34; class=&#34;uri&#34;&gt;http://www.ipea.gov.br/sites/000/2/publicacoes/tds/td_1254.pdf&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;SOUZA, S. S. S.; LAMERA, J. A.; ALVES, Janice; BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.. 2007.
+Mudanças Cambiais e o Efeito dos Fatores de Crescimento das Receitas de Exportações Brasileiras de Soja In Revista de Economia e Agronegócio. , v.5, 1-24
+Palavras-chave: taxa de câmbio, receita de exportação, soja
+Áreas do conhecimento: Economia Agrária,Relações do Comércio; Política Comercial; Integração Econômica
+Setores de atividade: Produção Vegetal, Desenvolvimento Rural
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://posgrad.der.ufv.br/revista/edicoes_2007_vol5_n1.php&#34; class=&#34;uri&#34;&gt;http://posgrad.der.ufv.br/revista/edicoes_2007_vol5_n1.php&lt;/a&gt;]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;MARTA, J. M. C.; FIGUEIREDO, A. M. R.. 2007.
+Uma interpretação política da introdução da soja no cerrado de Mato Grosso In Textos para Discussão (UFMT). , v.1, 1-17
+Palavras-chave: soja, Mato Grosso, Economia Rural
+Áreas do conhecimento: Economia Agrária
+Setores de atividade: Desenvolvimento Rural
+Referências adicionais: Português. Meio de divulgação: Vários
+Texto aprovado para apresentacao no Congreso Latinoamericano y Caribeno de Ciencias Sociales, FLACSO, em quito no Equador. O Texto para Discussão é uma versão preliminar.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;SOUZA, S. S. S.; BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.. 2006.
+Análise da competitividade do Algodão Mato Grossense no cenário internacional no período de 1999-2006 In Revista de Estudos Sociais (UFMT). , v.8, 71-86
+Palavras-chave: Mato Grosso, algodão, vantagem comparativa
+Áreas do conhecimento: Economia Agrária
+Setores de atividade: Agricultura, Pecuária, Silvicultura, Exploração Florestal
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://200.129.241.94/index.php/res/article/view/248/163&#34; class=&#34;uri&#34;&gt;http://200.129.241.94/index.php/res/article/view/248/163&lt;/a&gt;]
+impresso em 2008&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; BONJOUR, S. C. M.; MARTA, J. M. C.; SOUZA, S. S. S.. 2005.
+Análise de Estratégias de Comercialização dos Derivados de Algodão Naturalmente Colorido do Estado de Mato Grosso In Informe GEPEC (Online). , v.9, 7-25
+Palavras-chave: estruturas de mercado, algodão naturalmente colorido, Mato Grosso
+Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
+Setores de atividade: Produção Vegetal
+Referências adicionais: Brasil/Português. Meio de divulgação: Vários. Home page: &lt;a href=&#34;http://www.unioeste.br/cursos/toledo/revistaeconomia/&#34; class=&#34;uri&#34;&gt;http://www.unioeste.br/cursos/toledo/revistaeconomia/&lt;/a&gt;
+Julho-Dezembro/2005.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.; CAMPOS, A. C.. 2004.
+Mudanças na preferência internacional de carne bovina e alterações nos preços e comércio exterior In Economías de Escala. , v.II, 397-413
+Palavras-chave: carne bovina, Equilíbrio geral
+Áreas do conhecimento: Economia Agrária,Relações do Comércio; Política Comercial; Integração Econômica
+Setores de atividade: Produção Animal, Inclusive Serviços Veterinários, Desenvolvimento Rural
+Referências adicionais: Português. Meio de divulgação: Impresso
+Anuario de Politica Economica Internacional Unidixital - Universidade de Santiago de Compostela&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;MIRANDA, O. C.; FIGUEIREDO, A. M. R.; BONJOUR, S. C. M.. 2003.
+Análise da transmissão de preços na comercialização de arroz no estado de Mato Grosso, no período de 1991 a 2000 In Cesur em Revista. , v.3, 31-54
+Palavras-chave: Mato Grosso, arroz, comercialização
+Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
+Setores de atividade: Produção Vegetal
+Referências adicionais: Brasil/Português. Meio de divulgação: Impresso
+Análise dos segmentos de varejo, atacado e produtor, investigando a causalidade nas alterações de preços com métodos de Granger e estimações econométricas com dados secundários mensais.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BONJOUR, S. C. M.; FIGUEIREDO, A. M. R.. 2003.
+Índice de Administração Rural e Produtividade na Fase de Engorda da Pecuária de Corte de Rondonópolis-MT In Cesur em Revista. , v.3, 55-76
+Palavras-chave: Rondonópolis, pecuária de corte, índices de administração
+Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
+Setores de atividade: Agricultura, Pecuária, Silvicultura, Exploração Florestal
+Referências adicionais: Brasil/Português. Meio de divulgação: Impresso
+Analisou-se a questão da gerência como um problema para maiores produtividades na pecuária de corte, fase de engorda, em Rondonópolis-MT. Coletaram-se dados os quais foram subdivididos em estratos segundo o Índice de Venda, como medida de produtividade da pecuária da região. Criou-se um Índice de Administração, mediante o julgamento das variáveis avaliadas por profissionais da área de estudo. Estimou-se uma função de produção tipo Cobb-Douglas da pecuária de corte e o Índice de Administração mostrou ser importante fator na determinação da produtividade. Constatou-se alta correlação parcial entre os Índices de Venda e de Administração, concluindo-se que a eficiência gerencial é importante para o aumento da produtividade da pecuária de corte no município.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; TEIXEIRA, E. C.; HELFAND, S. M.. 2002.
+Resposta da produção agrícola aos preços no Centro-Oeste brasileiro: uma análise de econometria espacial para o período 1975-1995/1996 In Revista de Estudos Sociais (UFMT). , v.1, 72-104
+Palavras-chave: autocorrelação espacial, dualidade, Centro-Oeste
+Áreas do conhecimento: Economias Agrária e dos Recursos Naturais
+Setores de atividade: Agricultura, Pecuária, Silvicultura, Exploração Florestal
+Referências adicionais: Português. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://200.129.241.94/index.php/res/article/view/170/123&#34; class=&#34;uri&#34;&gt;http://200.129.241.94/index.php/res/article/view/170/123&lt;/a&gt;]
+Artigo resultado da tese de doutorado do primeiro autor, concluido na Universidade Federal de Viçosa em 2002, com apoio do CNPq e CAPES (doutorado sanduíche com a Universidade da California em Riverside).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; FERREIRA, A. V.; TEIXEIRA, E. C.. 2001.
+Impactos da integração econômica nas commodities da economia brasileira e da União Européia In Revista Brasileira de Economia (Impresso). , v.55, 77-106
+Palavras-chave: agricultura, Integração Regional, Equilíbrio geral, GTAP
+Áreas do conhecimento: Relações do Comércio; Política Comercial; Integração Econômica,Economia Agrária
+Setores de atividade: Desenvolvimento Rural
+Referências adicionais: Inglês. Meio de divulgação: Vários. Home page: [&lt;a href=&#34;http://www.scielo.br/scielo.php?script=sci_abstract&amp;amp;pid=S0034-71402001000100004&amp;amp;lng=en&amp;amp;nrm=iso&amp;amp;tlng=pt&#34; class=&#34;uri&#34;&gt;http://www.scielo.br/scielo.php?script=sci_abstract&amp;amp;pid=S0034-71402001000100004&amp;amp;lng=en&amp;amp;nrm=iso&amp;amp;tlng=pt&lt;/a&gt;]
+JEL: F15, Q17, C68&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FERREIRA, A. V.; FIGUEIREDO, A. M. R.; TEIXEIRA, E. C.. 1999.
+Custos e benefícios de um programa de garantia de renda aplicado ao PRONAF In Revista de Economia e Sociologia Rural (Impresso). , v.37, 31-50
+Palavras-chave: agricultura familiar, risco, garantia de renda
+Áreas do conhecimento: Renda e Tributação,Economia Agrária
+Setores de atividade: Desenvolvimento Rural
+Referências adicionais: Português. Meio de divulgação: Impresso
+Análise do Programa de Garantia de Renda como um aperfeiçoamento ao PRONAF, visando minimizar o risco associado à renda da agricultura familiar, para produtores de feijão e mandioca, no período 1990/97.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;FIGUEIREDO, A. M. R.; FERREIRA, A. V.; TEIXEIRA, E. C.. 1999.
+Impactos de uma Desvalorização Cambial Sobre as Relações de Produção na Cultura do Café In Revista de Economia e Sociologia Rural (Impresso). , v.37, 47-69
+Palavras-chave: dualidade, câmbio, funções translog
+Áreas do conhecimento: Relações do Comércio; Política Comercial; Integração Econômica,Economia Agrária
+Setores de atividade: Produção Vegetal
+Referências adicionais: Português. Meio de divulgação: Impresso
+Este trabalho analisa as mudanças nos mercados de produtos e fatores produtivos, advindos de choques cambiais, verificando a substitutibilidade entre os últimos, a partir da aplicação das propriedades duais da função translog.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 </description>
@@ -1161,24 +1194,6 @@ Espero que tenham paciência pois ainda estou aprendendo a mexer no site. Inicio
 &lt;h1&gt;Instalação do R e RStudio&lt;/h1&gt;
 &lt;p&gt;Apêndice - instalação do RStudio: &lt;a href=&#34;http://rpubs.com/amrofi/instrucoes_RStudio&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/instrucoes_RStudio&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Privacy Policy</title>
-      <link>/privacy/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
-      <guid>/privacy/</guid>
-      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Terms</title>
-      <link>/terms/</link>
-      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
-      <guid>/terms/</guid>
-      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
 </description>
     </item>
     

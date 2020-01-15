@@ -7,7 +7,7 @@
     <description>Adriano M R Figueiredo</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Mon, 13 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>img/icon-32.png</url>
+      <url>/img/icon-32.png</url>
       <title>Adriano M R Figueiredo</title>
       <link>/</link>
     </image>
@@ -1194,6 +1194,24 @@ Espero que tenham paciência pois ainda estou aprendendo a mexer no site. Inicio
 &lt;h1&gt;Instalação do R e RStudio&lt;/h1&gt;
 &lt;p&gt;Apêndice - instalação do RStudio: &lt;a href=&#34;http://rpubs.com/amrofi/instrucoes_RStudio&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/instrucoes_RStudio&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Privacy Policy</title>
+      <link>/privacy/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
+      <guid>/privacy/</guid>
+      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Terms</title>
+      <link>/terms/</link>
+      <pubDate>Thu, 28 Jun 2018 00:00:00 +0100</pubDate>
+      <guid>/terms/</guid>
+      <description>&lt;p&gt;&amp;hellip;&lt;/p&gt;
 </description>
     </item>
     

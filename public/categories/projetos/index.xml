@@ -1,33 +1,16 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>econometria | Adriano M R Figueiredo</title>
-    <link>/tags/econometria/</link>
-      <atom:link href="/tags/econometria/index.xml" rel="self" type="application/rss+xml" />
-    <description>econometria</description>
+    <title>projetos | Adriano M R Figueiredo</title>
+    <link>/categories/projetos/</link>
+      <atom:link href="/categories/projetos/index.xml" rel="self" type="application/rss+xml" />
+    <description>projetos</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Sat, 18 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-32.png</url>
-      <title>econometria</title>
-      <link>/tags/econometria/</link>
+      <title>projetos</title>
+      <link>/categories/projetos/</link>
     </image>
-    
-    <item>
-      <title>Introdução à Econometria Básica</title>
-      <link>/courses/econometria/introducao-a-econometria-basica/</link>
-      <pubDate>Mon, 13 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/courses/econometria/introducao-a-econometria-basica/</guid>
-      <description>
-
-
-&lt;div id=&#34;tip1&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Tip1&lt;/h2&gt;
-&lt;/div&gt;
-&lt;div id=&#34;tip2&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Tip2&lt;/h2&gt;
-&lt;/div&gt;
-</description>
-    </item>
     
     <item>
       <title>Projetos finalizados</title>

@@ -5,12 +5,190 @@
     <link>/project/</link>
       <atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
     <description>Current Projects</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Mon, 23 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Sat, 18 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/project/featured.jpg</url>
       <title>Current Projects</title>
       <link>/project/</link>
     </image>
+    
+    <item>
+      <title>Projetos finalizados</title>
+      <link>/project/projetos-finalizados/</link>
+      <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/project/projetos-finalizados/</guid>
+      <description>
+
+
+&lt;div id=&#34;projetos-de-pesquisa&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Projetos de pesquisa&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2017 - 2019 &lt;strong&gt;Competitividade das atividades de base agrícola na região Centro-Oeste do Brasil: Impactos sobre crescimento e desenvolvimento econômico&lt;/strong&gt;&lt;/em&gt;
+Descrição: O objetivo geral deste projeto consiste em analisar a situação recente das atividades de base agrícola na região Centro-Oeste e suas contribuições para o crescimento e desenvolvimento econômico. Especificamente, tem-se: identificar as principais atividades de base agrícola na região Centro-Oeste em termos de produção, produtividade e mercado internacional; identificar as atividades de base agrícola que mais contribuem para geração de emprego e renda na região Centro-Oeste e, por fim avaliar os impactos dessas atividades sobre o crescimento e desenvolvimento econômico. Para o embasamento da discussão do tema em questão, serão utilizadas as teorias sobre competitividade, desenvolvimento multidimensional, que se baseiam na dimensão, social, ambiental, política e econômica; além do desenvolvimento regional e territorial. Para mensurar os impactos sobre o crescimento e desenvolvimento será utilizado o método quantitativo através da estimação dos indicadores de análise regional e espacial. A partir desse diagnóstico, o estudo objetiva identificar limitações ao desenvolvimento da agricultura na região e debater medidas que possam contribuir para a ampliação da produção agrícola regional com a geração de empregos e renda para a população.
+Situação: Em andamento Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (3); Mestrado acadêmico (2); Doutorado (1);
+Integrantes: Adriano Marcos Rodrigues Figueiredo; Mayra Batista Bitencourt Fagundes (Responsável); Cícero Antônio Oliveira Tredezini; Leonardo Francisco Figueiredo Neto; Wladimir Machado Teixeira; Christiane Marques Pitaluga; Carlos Roberto Gabriani; Ricardo José dos Santos&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2014 - 2017 &lt;strong&gt;IMPACTOS ECONOMICOS DAS POLÍTICAS APLICADAS AO AGRONEGÓCIO SOBRE O BEM-ESTAR E A PRODUÇÃO SETORIAL BRASILEIRAS: UMA MODELAGEM DINÂMICA REGIONALIZADA&lt;/strong&gt;&lt;/em&gt;
+Descrição: O problema que se propõe a estudar é: de que modo políticas aplicadas ao agronegócio brasileiro têm afetado os diferentes setores da economia brasileira e suas macrorregiões? Assim, aqui se propõe a utilização de uma expansão do modelo de Equilíbrio Geral Computável (EGC) que permita análises regionais com a possibilidade de modificação da estrutura original do modelo GTAP, de acordo com os objetivos da pesquisa, na linguagem de programação GAMS-MPSGE, ou seja, será utilizado o modelo PAEG de Gurgel, Pereira e Teixeira (2010). O modelo PAEG permite a análise das regiões brasileiras, suas relações com outros países ou blocos econômicos (portanto multirregional e múltiplos países), e ainda as relações multissetoriais entre todas as regiões/países. O objetivo geral é estudar os impactos de políticas aplicadas ao agronegócio brasileiro sobre os setores econômicos nas regiões de interesse específico: Brasil, Mato Grosso e Mato Grosso do Sul. Objetivos específicos: 1) Desagregar a macrorregião do Centro-Oeste buscando distinguir os estados de Mato Grosso e Mato Grosso do Sul dentro do modelo; 2) Desenvolver e aplicar um modelo econômico dinâmico de equilíbrio geral para as regiões desagregadas no objetivo 1; 3) Avaliar cenários de alterações na política comercial brasileira, em cenários a serem definidos, principalmente com acordos bilaterais e rodadas da OMC; 4) Avaliar cenários de alterações tributárias em cenários que contemplem as discussões em curso para a reforma tributária brasileira. As contribuições para literatura econômica estão associadas à aplicação de um modelo computável de equilíbrio geral dinâmico com múltiplas regiões e países, para avaliação de alterações na política aplicada ao agronegócio brasileiro. Desta forma, será possível olhar os efeitos em cada região dentro do Brasil assim como nos vários países/blocos econômicos de interesse, ao longo de um período especificado. Outra contribuição importante será a desagregação dos estados de Mato Grosso e Mato Grosso do Sul, dentro da sequência de trabalho que vem sendo colocada pelos pesquisadores (desenvolvimento das matrizes de insumo-produto destes estados, seguido pelo desenvolvimento da matriz de contabilidade social, e agora do modelo de equilíbrio geral computável).
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (3); Mestrado acadêmico (2);
+Integrantes: Adriano Marcos Rodrigues Figueiredo (Responsável); ; Erly Cardoso Teixeira; Angelo Costa Gurgel; Matheus Wemerson Gomes Pereira; Mayra Batista Bitencourt Fagundes
+Financiador(es): Conselho Nacional de Desenvolvimento Científico e Tecnológico-CNPq
+Número de produções C,T &amp;amp; A: 8/ Número de orientações: 5;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2013 - 2015 &lt;strong&gt;Construção da Matriz de Insumo-Produto do Estado de Mato Grosso do Sul&lt;/strong&gt;&lt;/em&gt;
+Descrição: A Matriz de Insumo-Produto é uma ferramenta de planejamento e gestão cada vez mais utilizada pelos governos para que a política econômica se dê de forma mais eficiente. O Mato Grosso do Sul ainda não dispõe de tal instrumental, o que torna deficitárias as avaliações de impactos intersetoriais. Neste contexto, o agronegócio, enquanto atividade de grande participação no PIB estadual, perde em termos gerenciais e competitivos frente aos demais estados que já se utilizam da matriz para proposição de cenários e avaliação dos impactos gerados frente as alterações mercadológicas, além da proposição de políticas públicas direcionadas a minimizar os gargalos sentidos pelo setor motivados pela interação com as demais atividades. Para tanto, o presente projeto tem por objetivo principal a construção da Matriz de Insumo-Produto para o Estado do Mato Grosso do Sul para o ano de 2009. Como objetivos específicos surgem: a)analisar as principais cadeias produtivas no agronegócio do Estado de mato Grosso do Sul; b)selecionar as cadeias produtivas e os dados que irão compor a matriz; c) discutir a metodologia e treinar todos os pesquisadores quanto à construção da matriz; d) estimar a Matriz de Recursos e Usos; e) estimar a matriz de bens e serviços; f)determinar a matriz de Leontief; g) construir a Matriz de Insumo-Produto para o ano de 2009; h) analisar as cadeias produtivas com base nos indicadores econômicos determinados pela matriz; i) projetar cenários de alterações em preços, produção, produtividade e em impostos e determinar seus impactos para a economia local. Para a realização da proposta será disponibilizado um laboratório de pesquisa na UFMS, onde se desenvolverão as discussões de cunho metodológico apoiadas por visitas a outros centros que já aplicam as metodologias, o treinamento do quadro técnico, alocação dos materiais de consumo e bens de capital e desenvolvimento posterior das demais atividades para a geração dos objetivos pretendidos. A coleta de dados se dará vi.
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (3); Mestrado acadêmico (1);
+Integrantes: Adriano Marcos Rodrigues Figueiredo; Mayra Batista Bitencourt Fagundes (Responsável); Cícero Antônio Oliveira Tredezini; VANESSA SCHMIDT; Leonardo Francisco Figueiredo Neto; Daniel Massen Frainer; Daniela Teixeira Dias; Daniel Centurião Amorim; LUIZ CARLOS DA SILVA; Camilla Medina
+Financiador(es): Fundação de Apoio e Desenvolvimento do Ensino, Ciência e Tecnologia do MS-FUNDECT/MS
+Número de produções C,T &amp;amp; A: 4/ Número de orientações: 1;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2012 - 2013 &lt;strong&gt;Matriz Insumo-Produto Regional&lt;/strong&gt;&lt;/em&gt;
+Descrição: Visa elaborar a metodologia de construção das tabelas de recursos e usos (TRU) para os anos de 2008 e 2010 e da matriz de insumo-produto (MIP) para 2010 para Mato Grosso na Rede Ipea (MIP Regional). Os produtos regionais serão compatíveis com a TRU e com MIP nacional do IBGE.
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (1); Mestrado acadêmico (1);
+Integrantes: Adriano Marcos Rodrigues Figueiredo (Responsável); ; Sandra Cristina de Moura Bonjour; Rubiane Prado Schoenherr; Eliezer Pereira da Silva; Eduardo Matsubara; Dayse Cristina de Lima Pinto
+Financiador(es): Instituto de Pesquisa Econômica Aplicada - DF-IPEA
+Número de orientações: 2;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2011 - 2013 &lt;strong&gt;Efeitos economicos de alteracoes na infraestrutura de transporte do centro-oeste brasileiro&lt;/strong&gt;&lt;/em&gt;
+Descrição: O projeto analisa os efeitos da expansão da oferta de transporte rodoviario, ferroviario e hidroviario sobre os setores produtivos, os agregados macroeconomicos (consumo, investimento, gastos do governo, exportacoes e importacoes), o crescimento do PIB e o bem-estar das famílias. Utiliza um modelo de equilibrio geral computavel chamado PAEG em ambiente GAMS/MPSGE, com base de dados de insumo-produto e do GTAPinGAMS.
+Situação: Concluído Natureza: Projetos de pesquisa
+Integrantes: Adriano Marcos Rodrigues Figueiredo (Responsável); ; Erly Cardoso Teixeira; Sandra Cristina de Moura Bonjour; Angelo Costa Gurgel; Matheus Wemerson Gomes Pereira
+Financiador(es): Conselho Nacional de Desenvolvimento Científico e Tecnológico-CNPq
+Número de produções C,T &amp;amp; A: 5/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2011 - 2013 &lt;strong&gt;Carbiocial - Carbon sequestration, biodiversity and social structures in Southern Amazonia: models and implementations of carbon-optimized land management strategies&lt;/strong&gt; &lt;/em&gt;
+Descrição: Project Summary: Climate change will increase precipitation variability – i. e. extreme events like droughts will occur more often also in the tropics and mean temperature will ultimately increase. Land use intensification is associated with (a) losses of ecosystem services like the loss of natural vegetation and associated ecosystem functions in the global and regional climate system, an (b) increasing releases of greenhouse gases (GHG), and (c) the reduction of livelihoods. This project aims at providing interdisciplinary solutions for these problems. Three regions along the land use frontier of Southern Amazonia were selected: Southern Pará: most active deforestation; Northern Mato Grosso: young soy bean production; Central Mato Grosso: established cultivation (&amp;gt;20 years) and adapted mechanised cropping (e.g. no till). Analyses focus on soil carbon (C) turnover, climate, ecosystem functions and socio-economic processes. Simulation models will be combined as software packages to support the decision-taking process based on field and acquired data, including a step-by-step up-scaling from local to landscape and regional scale. All research and implementation activities include direct involvement of the stakeholders. Furthermore, joint field experiments for improving C storage and ecosystem functions will be performed in tight cooperation with an NGO founded by the farmers’ organisation of Mato Grosso. A combined computer-based decision support platform will be developed, including simulation models to run region-specific impacts of different scenarios of land use options and climate change on GHG and C cycling. This will be a highly valuable tool for regional planning authorities. From the scenario calculations simplified versions (e.g. emission factors) will be made available as an easy-to-use decision support system for individual stakeholders. Results will be communicated directly to stakeholders, by human capacity building, and by promoting financially feasible
+Situação: Desativado Natureza: Projetos de pesquisa
+Alunos envolvidos: Mestrado acadêmico (1);
+Integrantes: Adriano Marcos Rodrigues Figueiredo; José Manuel Carvalho Marta; Regine Schoenenberg; José Benatti; Martin Coy; Matthias Siebold; Thomas Berger; Gerhard Gerold (Responsável); Edna M. Ramos de Castro
+Financiador(es): BMBF Framework Programme Research for Sustainable Development (FONA) (RFA)-FONA-BMBF (RFA), Conselho Nacional de Desenvolvimento Científico e Tecnológico-CNPq
+Número de produções C,T &amp;amp; A: 2/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2011 - 2014 &lt;strong&gt;Impacto econômico e social dos investimentos públicos com a realização da Copa do Mundo FIFA 2014 – cidade sede Cuiabá&lt;/strong&gt;&lt;/em&gt;
+Descrição: Buscam-se os impactos econômicos e sociais advindos dos investimentos públicos na realização da Copa do Mundo FIFA 2014 – cidade sede de Cuiabá, assim como os legados para a sociedade. Serão avaliados indicadores socioeconômicos de diferentes segmentos da economia local e estadual, relacionados aos efeitos das mudanças na infraestrutura física.
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (1); Mestrado acadêmico (1);
+Integrantes: Adriano Marcos Rodrigues Figueiredo (Responsável); ; José Manuel Carvalho Marta
+Financiador(es): Secretaria Extraordinária da Copa do Mundo - FIFA 2014-SECOPA-MT
+Número de produções C,T &amp;amp; A: 4/ Número de orientações: 1;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2010 - 2013 &lt;strong&gt;Análise dos Custos das Obras Públicas em Mato Grosso&lt;/strong&gt;&lt;/em&gt;
+Descrição: A UFMT deve utilizar preços de construção civil com base no SINAPI-Caixa. Entretanto, vários insumos não estão contemplados no SINAPI, assim como vários tipos de serviços são muito diferentes daqueles dos projetos padrões da Caixa. Analisaremos os custos das obras da UFMT e aperfeiçoaremos o SINAPI junto a Caixa. O projeto prevê a vinculação de novos insumos aos insumos representativos do Referencial Caixa de modo a ter atualização sistemática pelo IBGE em todos os estados da federação, dando composições atualizadas para todos os estados, para obras típicas da IFES.
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (4);
+Integrantes: Adriano Marcos Rodrigues Figueiredo (Responsável); ; Sandra Cristina de Moura Bonjour; José Manuel Carvalho Marta; Charline Dassow; Valeria Shirley Orth de Jesus
+Número de orientações: 2;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2010 - 2011 &lt;strong&gt;Construção da matriz insumo-produto do estado e Mato Grosso, 2006&lt;/strong&gt;&lt;/em&gt;
+Descrição: O projeto realizou a Construção da matriz insumo-produto do estado e Mato Grosso, 2006, a partir de dados secundários das secretarias de governo e IBGE, com uso das contas regionais e análise em nível de estado.
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (4); Mestrado acadêmico (2);
+Integrantes: Adriano Marcos Rodrigues Figueiredo; Sandra Cristina de Moura Bonjour; Margarida Garcia de Figueiredo (Responsável); Sheila Cristina Ferreira Leite; Euro Roberto Detomini; Karlin Saori Ishii
+Número de produções C,T &amp;amp; A: 1/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2009 - 2013 &lt;strong&gt;Analise de impacto dos programas de transferencia de renda e dos modelos de renda minima em relacao ao enfrentamento da pobreza e da concentracao de renda do Mato Grosso&lt;/strong&gt;&lt;/em&gt;
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (1); Mestrado acadêmico (1);
+Integrantes: Adriano Marcos Rodrigues Figueiredo; Sandra Cristina de Moura Bonjour; José Manuel Carvalho Marta; Benedito Dias Pereira (Responsável); Patrick Wohler Guimaraes
+Financiador(es): Coordenação de Aperfeiçoamento de Pessoal de Nível Superior-CAPES
+Número de produções C,T &amp;amp; A: 1/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2008 - 2010 &lt;strong&gt;Análise do crescimento econômico e da convergência espacial dos municípios de Mato Grosso no período de 1999 a 2005&lt;/strong&gt;&lt;/em&gt;
+Descrição: A pergunta desta proposta é: o que explica o crescimento da renda per capita municipal em Mato Grosso, no período 1999-2005? As hipóteses são: a) não existe convergência de renda entre os municípios do estado e, neste caso, indicar aos formuladores de política a necessidade de estabelecer ações considerando as desigualdades e seus efeitos no bem-estar geral; b) existem clusters de crescimento em torno de pólos agroindustriais no estado. O objetivo geral deste projeto é analisar o crescimento econômico municipal de Mato Grosso, para o período 1999-2005. Especificamente, pretende-se: a) Investigar a distribuição do crescimento dos setores agropecuário, industrial, de serviços e de administração pública nos municípios de Mato Grosso; b) Analisar a possível existência de dependência espacial nos dados setoriais da economia dos municípios mato-grossenses; c) Detectar se ocorre formação de clusters de crescimento no estado de Mato Grosso; d) Explicar o crescimento econômico setorial dos municípios de Mato Grosso. A análise da dependência espacial será importante para avaliar o grau de correlação existente entre uma região e seus vizinhos considerando o valor do PIB setorial assim como municipal. Já a análise de clusters permitirá identificar a formação de possíveis agrupamentos de municípios que apresentarem valores semelhantes, ou seja, permitirá visualizar possíveis clusters caso existam. A técnica prevê a utilização dos indicadores I-Moran para testar a presença de dependência espacial, e métodos de econometria espacial para a investigação da hipótese de A literatura leva em consideração a convergência absoluta, a condicional, a clube, a sigma e a beta, com dados de 1999-2005 em nível municipal. Contribui-se para a literatura econômica e regional oferecendo analises para o estado e ainda métodos para a investigação em economia regional.
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (2); Mestrado acadêmico (1);
+Integrantes: Adriano Marcos Rodrigues Figueiredo (Responsável); ; José Manuel Carvalho Marta; Charline Dassow; Wladimir Colman de Azevedo Junior; Raphaela Marya Gerônima Santos da Costa
+Financiador(es): Fundação de Amparo à Pesquisa do Estado de Mato Grosso-FAPEMAT&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2007 - 2007 &lt;strong&gt;Diagnostico da Cadeia Produtiva da Pecuaria de Corte em Mato Grosso&lt;/strong&gt;&lt;/em&gt;
+Descrição: Diagnóstico da pecuária de corte em MT. Ações futuras poderão ser definidas e avaliadas, e um processo de acompanhamento. Indicará condições locais favoráveis e desfavoráveis ao desenvolvimento do setor, propiciando uma estruturação de ações para solução dos problemas específicos do estado e exploração do potencial do setor. &lt;a href=&#34;http://fabov.com.br/arquivos/fab0121081200939477.pdf&#34; class=&#34;uri&#34;&gt;http://fabov.com.br/arquivos/fab0121081200939477.pdf&lt;/a&gt;
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (2);
+Integrantes: Adriano Marcos Rodrigues Figueiredo; Sandra Cristina de Moura Bonjour; José Manuel Carvalho Marta; Aline Beatriz Mucellini; Altair Dias de Moura (Responsável); Viviani Silva Lirio
+Financiador(es): Federação de Agricultura e Pecuária do Estado de Mato Grosso-FAMATO, Fundação Uniselva-UNISELVA, Fundo de Apoio da Bovinocultura de Corte de Mato Grosso-FABOV
+Número de produções C,T &amp;amp; A: 1/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2006 - 2008 &lt;strong&gt;Análise da eficiência dos produtores rurais familiares assentados em Mato Grosso&lt;/strong&gt;&lt;/em&gt;
+Descrição: O que determina a eficiência dos produtores familiares assentados em Mato Grosso? O objetivo geral é detectar e analisar quais são os fatores mais importantes para o alcance da eficiência na produção agrícola familiar de Mato Grosso. Usará o método de Analise de Envoltória de Dados.
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (2); Mestrado acadêmico (1);
+Integrantes: Adriano Marcos Rodrigues Figueiredo (Responsável); ; Janice Alves Lamera; Maysa Barbosa Gomes; Edneia Giane Zubler
+Número de orientações: 2;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2005 - 2006 &lt;strong&gt;Política Industrial de Mato Grosso: Caracterização, Avaliação, Análises e Tendências&lt;/strong&gt;&lt;/em&gt;
+Descrição: O problema investigado está relacionado aos fatores geradores de competitividade de produtos selecionados de Mato Grosso. Num sub-projeto, serão avaliados indicadores como elementos de analise de desempenho das empresas participantes de programas de desenvolvimento e de incentivos fiscais em Mato Grosso. Em outro sub-projeto, pretende-se avaliar as vantagens e desvantagens competitivas de Mato Grosso, para setores específicos selecionados por meio de fluxos de comércio interestadual na perspectiva de substituição de produtos provenientes de outros estados. Com efeito, este estudo visa também propor políticas públicas horizontais que permitam ampliar as vantagens competitivas de Mato Grosso e equacionar ou minimizar suas desvantagens, através de um diagnóstico dos principais custos associados à Mato Grosso.
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (5);
+Integrantes: Adriano Marcos Rodrigues Figueiredo; Sandra Cristina de Moura Bonjour; José Manuel Carvalho Marta (Responsável); Dirceu Grasel; Benedito Dias Pereira
+Financiador(es): Fundação Uniselva-UNISELVA
+Número de produções C,T &amp;amp; A: 2/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2005 - 2007 &lt;strong&gt;Produtividade e eficiência das propriedades rurais brasileiras&lt;/strong&gt;&lt;/em&gt;
+Descrição: A produtividade tem sido tema de constante discussão em economia e desenvolvimento de regiões rurais. O ganho de produtividade agrícola é normalmente associado ao aumento da renda da propriedade rural, mas os fatores que determinam este ganho não são suficientemente conhecidos no Brasil. Alguns fatores podem ser mencionados como o tamanho da propriedade, o acesso a tecnologias para irrigação, máquinas e equipamentos, o acesso ao crédito, aos serviços de assistência rural, eletrificação rural e outras infra-estruturas. Uma vez que a prioridade do atual Governo Federal é o pequeno proprietário rural, na busca pela sua inclusão social, é fundamental determinar quais os níveis de produtividade e eficiência das propriedades rurais brasileiras, investigando quão afastadas da fronteira eficiente estão aquelas propriedades ditas ineficientes, buscando determinar os fatores que as posicionaram nestes níveis produtivos. A análise por extratos de áreas permitirá avaliar se as pequenas propriedades são mais eficientes como a maior parte da literatura internacional identificou, pois se assim for comprovado, o processo de reforma agrária torna-se ainda mais importante para o crescimento da produtividade agrícola. Ainda que esta hipótese não seja confirmada, a análise permitirá investigar os fatores que auxiliam ou prejudicam a obtenção de maior eficiência econômica, direcionando as políticas agrícolas para as variáveis mais importantes. Outro aspecto importante da análise é que as unidades identificadas como ineficientes poderão observar as eficientes e ter em mente os modelos mais adequados a cada realidade. O que aconteceu com a produtividade das propriedades rurais brasileiras nos últimos dois censos agropecuários? As propriedades maiores são ineficientes? Como as alterações na política agrícola brasileira alteraram a produtividade e eficiência rural? O objetivo geral deste projeto é analisar os fatores que influenciaram a produtividade das propriedades rurais b
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (1);
+Integrantes: Adriano Marcos Rodrigues Figueiredo (Responsável); ; Steven M. Helfand
+Financiador(es): Conselho Nacional de Desenvolvimento Científico e Tecnológico-CNPq
+Número de produções C,T &amp;amp; A: 6/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2003 - 2005 &lt;strong&gt;Heterogeneidade Espacial e Seus Impactos na Resposta da Produção Agrícola de Mato Grosso&lt;/strong&gt;&lt;/em&gt;
+Descrição: A influência de uma localidade sobre seus vizinhos é sempre vista com preocupação, uma vez que esta gera uma interdependência entre as regiões em estudo. Assim, torna-se necessário saber: como a interdependência das localidades influencia a resposta da produção a alterações nos preços agrícolas no Mato Grosso? O objetivo geral é determinar a resposta da produção agrícola aos preços, no estado de Mato Grosso, no período 2003/2004, mediante um modelo com múltiplos produtos e múltiplos fatores, considerando-se a importância dos efeitos e as inter-relações decorrentes da localização geográfica. Especificamente, pretende-se: a) Avaliar a importância dos preços dos fatores e preços dos produtos para a resposta da produção agrícola no Mato Grosso; b) Avaliar os efeitos de localização sobre a demanda de fatores e sobre a oferta de produtos; c) Avaliar a importância de fatores fixos sobre a resposta da produção agrícola no Mato Grosso; e d) Obter recomendações de políticas regionais para os produtos agrícolas analisados. Considera-se a teoria da dualidade para obter as ofertas de produtos e demanda de insumos como funções explícitas dos preços relativos, a partir de relações duais de lucro ou de custo. Será estimado um sistema de parcelas de lucro translog como funções dos preços dos produtos, dos preços dos fatores e ainda dos fatores fixos. Os dados serão secundários.
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (3); Especialização (1);
+Integrantes: Adriano Marcos Rodrigues Figueiredo (Responsável); ; José Manuel Carvalho Marta; Zenil de Almeida Botelho; Janice Alves; Tatiana Eloá Pilger; Eveline Konageski
+Financiador(es): Universidade Federal de Mato Grosso-UFMT
+Número de produções C,T &amp;amp; A: 10/ Número de orientações: 5;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2003 - 2004 &lt;strong&gt;Agregação de valor na cotonicultura familiar do estado de Mato Grosso&lt;/strong&gt;&lt;/em&gt;
+Descrição: Análise da comercialização do algodão naturalmente colorido como alternativa para a sustentabilidade de pequenas propriedades de Mato Grosso. A análise envolveu os segmentos de comercialização e industrialização, com entrevistas aos agentes de fiação, tecelagem e confecções, nos estados de São Paulo, Minas Gerais e Santa Catarina, numa análise por amostragem entre os que responderam aos questionários por e-mail e por telefone. A perspectiva de análise teve por base a Teoria de Canais de Comercialização, verificando os canais existentes e possibilidades de novos canais.
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (1);
+Integrantes: Adriano Marcos Rodrigues Figueiredo (Responsável); ; Sandra Cristina de Moura Bonjour; José Manuel Carvalho Marta; Sonia Sueli Serafim de Souza
+Financiador(es): Federação dos Trabalhadores na Agricultura de Mato Grosso-FETAGRI-MT, Fundação de Apoio e Desenvolvimento da UFMT-UNISELVA
+Número de produções C,T &amp;amp; A: 1/ Número de orientações: 1;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2003 - 2003 &lt;strong&gt;Estudo de Tecnologias para uso de produtos naturais no estado de Mato Grosso&lt;/strong&gt;&lt;/em&gt;
+Descrição: Análise da comercialização de produtos naturais na Grande Cuiabá e seus desdobramentos em termos de negócios formais e informais e possibilidades de crescimento. Utilizou um método descritivo com entrevistas e questionários, abordando os canais de comercialização de produtos naturais e derivados numa perspectiva de identificar um possível arranjo produtivo local.
+Situação: Concluído Natureza: Projetos de pesquisa
+Alunos envolvidos: Graduação (3);
+Integrantes: Adriano Marcos Rodrigues Figueiredo; José Manuel Carvalho Marta (Responsável); Zenil de Almeida Botelho
+Financiador(es): Fundação de Apoio e Desenvolvimento da UFMT-UNISELVA
+Número de produções C,T &amp;amp; A: 1/&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div id=&#34;projeto-de-extensão&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Projeto de extensão&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;2016 - 2016 &lt;strong&gt;Minicurso sobre o Projeto de Análise de Equilíbrio Geral da Economia Brasileira (PAEG)&lt;/strong&gt;&lt;/em&gt;
+Descrição: PAEG é um pacote de equilíbrio geral computável constando de um modelo que permite o relacionamento entre as cinco regiões brasileiras e destas com o resto do mundo, um banco de dados vinculando as regiões brasileiras ao banco de dados 9.0 do GTAP, e de rotinas aplicadas em GAMS/MPSGE. O objetivo principal é capacitar pesquisadores a trabalharem com o PAEG simulando mudanças nas políticas de comércio internacional, e nas políticas macroeconômicas e setoriais sobre o crescimento das economias regionais brasileiras.
+Situação: Concluído Natureza: Projeto de extensão
+Alunos envolvidos: Graduação (9); Mestrado acadêmico (3); Doutorado (2);
+Integrantes: Adriano Marcos Rodrigues Figueiredo (Responsável); ; Erly Cardoso Teixeira; Angelo Costa Gurgel; Matheus Wemerson Gomes Pereira; Mayra Batista Bitencourt Fagundes; Rayan Wolf&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Análise do desenvolvimento regional: o caso de Mato Grosso do Sul no período de 2002 a 2017</title>

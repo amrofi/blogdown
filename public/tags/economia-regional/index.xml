@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>economia regional | Adriano M R Figueiredo</title>
+    <link>/tags/economia-regional/</link>
+      <atom:link href="/tags/economia-regional/index.xml" rel="self" type="application/rss+xml" />
+    <description>economia regional</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Wed, 29 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>img/icon-32.png</url>
+      <title>economia regional</title>
+      <link>/tags/economia-regional/</link>
+    </image>
+    
+    <item>
+      <title>Aplicativo Shiny experimental para as populações dos principais aglomerados urbanos do mundo</title>
+      <link>/post/aplicativo-shiny-experimental-para-as-populacoes-dos-principais-aglomerados-urbanos-do-mundo/</link>
+      <pubDate>Wed, 29 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/post/aplicativo-shiny-experimental-para-as-populacoes-dos-principais-aglomerados-urbanos-do-mundo/</guid>
+      <description>
+
+
+&lt;div id=&#34;Licença&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Licença&lt;/h1&gt;
+&lt;p&gt;This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/4.0/&#34; class=&#34;uri&#34;&gt;http://creativecommons.org/licenses/by-sa/4.0/&lt;/a&gt; or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png&#34; alt=&#34;License: CC BY-SA 4.0&#34; style=&#34;width:25.0%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;License: CC BY-SA 4.0&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;informe&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Informe&lt;/h1&gt;
+&lt;p&gt;Prezados leitores.&lt;/p&gt;
+&lt;p&gt;Iniciei a jornada de fazer um aplicativo web com o &lt;code&gt;Shiny&lt;/code&gt; para o RStudio. Adaptei a instrução de Angela Li (2019), disponível em: &lt;a href=&#34;https://spatialanalysis.github.io/workshop-notes/interactive-maps-with-shiny.html&#34; class=&#34;uri&#34;&gt;https://spatialanalysis.github.io/workshop-notes/interactive-maps-with-shiny.html&lt;/a&gt; e fui alterando ao idioma português e algumas alterações de formato.&lt;/p&gt;
+&lt;p&gt;É, portanto, apenas um exemplo básico de Shiny para estudos e aperfeiçoamentos posteriores. Fiquem a vontade para criticá-lo.&lt;/p&gt;
+&lt;p&gt;O aplicativo está acessível em: &lt;a href=&#34;https://amrofi.shinyapps.io/shiny_workshop/&#34; class=&#34;uri&#34;&gt;https://amrofi.shinyapps.io/shiny_workshop/&lt;/a&gt; e o código está reproduzido abaixo.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;códigoscript&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Código/Script&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;#
+# This is a Shiny web application. You can run the application by clicking
+# the &amp;#39;Run App&amp;#39; button above.
+#
+# Find out more about building applications with Shiny here:
+#
+#    http://shiny.rstudio.com/
+# https://spatialanalysis.github.io/workshop-notes/interactive-maps-with-shiny.html
+
+library(shiny)
+library(leaflet)
+library(spData)
+library(dplyr)
+library(magick)
+library(sf)
+
+# Definir UI para aplicativo que filtra os pontos do mapa baseado no ano e
+# população mínima
+ui &amp;lt;- fluidPage(
+   
+   # Titulo do Aplicativo
+   titlePanel(&amp;quot;População das Aglomerações Urbanas no Mundo ao longo dos anos&amp;quot;),
+   
+   # Barra lateral com insumo deslizante por ano, insumo numérico para população 
+   sidebarLayout(
+      sidebarPanel(
+         h5(&amp;quot;Aplicativo Shiny adaptado de Angela Li, 2019, disponível em: &amp;quot;),
+         a(&amp;quot;&amp;lt;https://spatialanalysis.github.io/workshop-notes/interactive-maps-with-shiny.html&amp;gt;&amp;quot;, style = &amp;quot;color:blue&amp;quot;),
+         p(&amp;quot;&amp;quot;),
+         strong(&amp;quot;Adaptado por Prof. Adriano Marcos Rodrigues Figueiredo&amp;quot;),
+         p(&amp;quot;E-mail: adriano.figueiredo@ufms.br&amp;quot;, style = &amp;quot;color:blue&amp;quot;),
+         strong(&amp;quot;Licença Creative Commons - License: CC BY-SA 4.0&amp;quot;, style = &amp;quot;color:brown&amp;quot;),
+         h5(&amp;quot;This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.     
+            To view a copy of this license, visit&amp;quot;), 
+         a(&amp;quot;&amp;lt;http://creativecommons.org/licenses/by-sa/4.0/&amp;gt;&amp;quot;), 
+         h5(&amp;quot;or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.&amp;quot;),
+         img(src =&amp;quot;https://i.creativecommons.org/l/by-sa/4.0/88x31.png&amp;quot;),
+         sliderInput(&amp;quot;year&amp;quot;,
+                     &amp;quot;Ano&amp;quot;,
+                     min = 1950,
+                     max = 2030,
+                     step = 5,
+                     sep = &amp;quot;&amp;quot;,
+                     value = 1950),
+         
+         sliderInput(&amp;quot;pop_min&amp;quot;,
+                      &amp;quot;População Mínima da Aglomeração Urbana (em milhões)&amp;quot;,
+                      min = 1,
+                      max = 40,
+                      value = 10)
+      ),
+      
+      # Mostra o mapa e tabela
+      mainPanel(
+         # plotOutput(&amp;quot;distPlot&amp;quot;),
+         leafletOutput(&amp;quot;map&amp;quot;),
+         dataTableOutput(&amp;quot;table&amp;quot;)
+      )
+   )
+)
+
+# Define a logica do server requerido para desenhar o mapa e tabela
+server &amp;lt;- function(input, output) {
+
+   
+   output$map &amp;lt;- renderLeaflet({
+      # urban_agglomerations{spData} é o meu dataset no exemplo
+     pop_by_year &amp;lt;- filter(urban_agglomerations, 
+                           year == input$year,
+                           population_millions &amp;gt; input$pop_min)
+     
+     leaflet(data = pop_by_year) %&amp;gt;%
+       addTiles() %&amp;gt;%
+       addMarkers()
+   })
+   
+   output$table &amp;lt;- renderDataTable({
+     # urban_agglomerations{spData} é o meu dataset no exemplo
+     pop_by_year &amp;lt;- filter(urban_agglomerations, 
+                           year == input$year,
+                           population_millions &amp;gt; input$pop_min)
+     
+     pop_by_year
+     
+   })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,136 @@
+---
+title: 'Aplicativo Shiny experimental para as populações dos principais aglomerados urbanos do mundo'
+author: "Adriano M R Figueiredo"
+date: '2020-01-29'
+categories: []
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+slug: aplicativo-shiny-experimental-para-as-populações-dos-principais-aglomerados-urbanos-do-mundo
+subtitle: ''
+summary: Criei um aplicativo shiny para ver os principais aglomerados urbanos do dataset
+  `urban_agglomerations{spData}`.
+tags:
+- economia regional
+- shiny
+- mapas
+---
+
+Licença {-#Licença}
+===================
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <http://creativecommons.org/licenses/by-sa/4.0/> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+![License: CC BY-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png){ width=25% }
+
+Informe
+=============
+
+Prezados leitores.     
+
+Iniciei a jornada de fazer um aplicativo web com o `Shiny` para o RStudio. Adaptei a instrução de Angela Li (2019), disponível em: <https://spatialanalysis.github.io/workshop-notes/interactive-maps-with-shiny.html> e fui alterando ao idioma português e algumas alterações de formato.     
+
+É, portanto, apenas um exemplo básico de Shiny para estudos e aperfeiçoamentos posteriores. Fiquem a vontade para criticá-lo.    
+
+O aplicativo está acessível em: <https://amrofi.shinyapps.io/shiny_workshop/> e o código está reproduzido abaixo.    
+
+
+Código/Script
+=============
+
+```
+#
+# This is a Shiny web application. You can run the application by clicking
+# the 'Run App' button above.
+#
+# Find out more about building applications with Shiny here:
+#
+#    http://shiny.rstudio.com/
+# https://spatialanalysis.github.io/workshop-notes/interactive-maps-with-shiny.html
+
+library(shiny)
+library(leaflet)
+library(spData)
+library(dplyr)
+library(magick)
+library(sf)
+
+# Definir UI para aplicativo que filtra os pontos do mapa baseado no ano e
+# população mínima
+ui <- fluidPage(
+   
+   # Titulo do Aplicativo
+   titlePanel("População das Aglomerações Urbanas no Mundo ao longo dos anos"),
+   
+   # Barra lateral com insumo deslizante por ano, insumo numérico para população 
+   sidebarLayout(
+      sidebarPanel(
+         h5("Aplicativo Shiny adaptado de Angela Li, 2019, disponível em: "),
+         a("<https://spatialanalysis.github.io/workshop-notes/interactive-maps-with-shiny.html>", style = "color:blue"),
+         p(""),
+         strong("Adaptado por Prof. Adriano Marcos Rodrigues Figueiredo"),
+         p("E-mail: adriano.figueiredo@ufms.br", style = "color:blue"),
+         strong("Licença Creative Commons - License: CC BY-SA 4.0", style = "color:brown"),
+         h5("This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.     
+            To view a copy of this license, visit"), 
+         a("<http://creativecommons.org/licenses/by-sa/4.0/>"), 
+         h5("or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA."),
+         img(src ="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"),
+         sliderInput("year",
+                     "Ano",
+                     min = 1950,
+                     max = 2030,
+                     step = 5,
+                     sep = "",
+                     value = 1950),
+         
+         sliderInput("pop_min",
+                      "População Mínima da Aglomeração Urbana (em milhões)",
+                      min = 1,
+                      max = 40,
+                      value = 10)
+      ),
+      
+      # Mostra o mapa e tabela
+      mainPanel(
+         # plotOutput("distPlot"),
+         leafletOutput("map"),
+         dataTableOutput("table")
+      )
+   )
+)
+
+# Define a logica do server requerido para desenhar o mapa e tabela
+server <- function(input, output) {
+
+   
+   output$map <- renderLeaflet({
+      # urban_agglomerations{spData} é o meu dataset no exemplo
+     pop_by_year <- filter(urban_agglomerations, 
+                           year == input$year,
+                           population_millions > input$pop_min)
+     
+     leaflet(data = pop_by_year) %>%
+       addTiles() %>%
+       addMarkers()
+   })
+   
+   output$table <- renderDataTable({
+     # urban_agglomerations{spData} é o meu dataset no exemplo
+     pop_by_year <- filter(urban_agglomerations, 
+                           year == input$year,
+                           population_millions > input$pop_min)
+     
+     pop_by_year
+     
+   })
+}
+
+# Run the application 
+shinyApp(ui = ui, server = server)
+```
+
+

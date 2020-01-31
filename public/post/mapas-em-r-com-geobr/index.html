@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.6.3">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Adriano M R Figueiredo">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Criando mapas do IDHM de Mato Grosso do Sul com os pacotes `ggplot2` e `geobr`.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/mapas-em-r-com-geobr/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/mapas-em-r-com-geobr/">
+
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@amrofi">
+  <meta property="twitter:creator" content="@amrofi">
+  
+  <meta property="og:site_name" content="Adriano M R Figueiredo">
+  <meta property="og:url" content="/post/mapas-em-r-com-geobr/">
+  <meta property="og:title" content="Mapas em R com `geobr` | Adriano M R Figueiredo">
+  <meta property="og:description" content="Criando mapas do IDHM de Mato Grosso do Sul com os pacotes `ggplot2` e `geobr`."><meta property="og:image" content="/img/icon-32.png">
+  <meta property="twitter:image" content="/img/icon-32.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-01-31T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-01-31T08:30:07-04:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/mapas-em-r-com-geobr/"
+  },
+  "headline": "Mapas em R com `geobr`",
+  
+  "datePublished": "2020-01-31T00:00:00Z",
+  "dateModified": "2020-01-31T08:30:07-04:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Adriano M R Figueiredo"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Adriano M R Figueiredo",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/logo.png"
+    }
+  },
+  "description": "Criando mapas do IDHM de Mato Grosso do Sul com os pacotes `ggplot2` e `geobr`."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Mapas em R com `geobr` | Adriano M R Figueiredo</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/"><img src="/img/logo.png" alt="Adriano M R Figueiredo"></a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/"><img src="/img/logo.png" alt="Adriano M R Figueiredo"></a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#biography"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/courses/"><span>Courses</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item">
+        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Mapas em R com `geobr`</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Jan 31, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    8 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+
+<div id="Licença" class="section level1 unnumbered">
+<h1>Licença</h1>
+<p>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <a href="http://creativecommons.org/licenses/by-sa/4.0/" class="uri">http://creativecommons.org/licenses/by-sa/4.0/</a> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.</p>
+<div class="figure">
+<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="License: CC BY-SA 4.0" style="width:25.0%" />
+<p class="caption">License: CC BY-SA 4.0</p>
+</div>
+<p>As ideias aqui expressas são de responsabilidade exclusiva do autor, e não representam as opiniões da instituição a que pertence.</p>
+</div>
+<div id="Citação" class="section level1 unnumbered">
+<h1>Citação</h1>
+<p>Sugestão para citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Mapas em R com <code>geobr</code>. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <a href="http://rpubs.com/amrofi/maps_geobr" class="uri">http://rpubs.com/amrofi/maps_geobr</a>.</p>
+</div>
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Para realizar seu mapa em R, inicialmente o leitor deve baixar os programas e pacotes necessários ao projeto. Neste caso, sugere-se que utilize o RStudio e o R atualizados, a partir de: <a href="http://cran.r-project.org/bin/windows/base/" class="uri">http://cran.r-project.org/bin/windows/base/</a> e <a href="https://www.rstudio.com/products/rstudio/download3/" class="uri">https://www.rstudio.com/products/rstudio/download3/</a>. Quando esta revisão foi feita, a versão do RStudio era a <em>RStudio Desktop 1.2.5033</em> e do <em>R-3.6.1 for Windows (32/64 bit)</em>.</p>
+<p>Primeiro instale o R e posteriormente o RStudio, de modo que o segundo reconheça automaticamente o primeiro. Se tudo estiver perfeito, a tela inicial do RStudio mostrará corretamente a versão do R.</p>
+</div>
+<div id="mapas-em-r" class="section level1">
+<h1>Mapas em R</h1>
+<p>Agora a meta é gerar um mapa simples em R. Para tanto, primeiro define-se a malha municipal desejada. Para o presente caso, utilizam-se as malhas digitais do pacote <code>geobr</code>.</p>
+<p>Os pacotes (previamente instalados) são aqui carregados:</p>
+<pre class="r"><code>library(geobr)</code></pre>
+<pre><code>## Warning: package &#39;geobr&#39; was built under R version 3.6.2</code></pre>
+<pre><code>## Loading required namespace: sf</code></pre>
+<pre class="r"><code>library(ggplot2)
+library(sf)</code></pre>
+<pre><code>## Linking to GEOS 3.6.1, GDAL 2.2.3, PROJ 4.9.3</code></pre>
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(rio)
+library(readr)</code></pre>
+<p>O pacote <code>geobr</code> tem as rotinas para o download dos mapas com divisões territoriais variadas. Faremos para os municípios de Mato Grosso do Sul (MS), malha com a estrutura municipal de 2018, contendo 79 municípios. É importante o leitor ter essa estrutura em mente, pois ao longo dos anos, municípios são criados a partir de desmembramentos de outros, não necessariamente respeitando limites de distritos ou outros atributos previamente definidos.</p>
+<p>Este rápido exemplo faz uso das funções do pacote <code>geobr</code> e assim, precisamos saber quais os códigos para cada estado. A função <code>download_metadata()</code> permite encontrar os códigos para estado e ano e a desagregação desejada (município, estado etc).</p>
+<pre class="r"><code>metadata&lt;-download_metadata() # para ver codigos</code></pre>
+<p>Posso verificar que para MS, especificarei 50 e para o ano de 2018. Agora posso baixar os dados (shapes) para os municípios de Mato Grosso do Sul fazendo uso da função <code>read_municipality(code_muni=50, year=2018)</code> em:</p>
+<pre><code># não executei agora pois farei para 2010 mais a frente
+all_mun_ms &lt;- read_municipality(code_muni=50, year=2018)</code></pre>
+<p>O usuário que desejar baixar todos os municípios observará alguma demora no download dos dados, devido ao número de municípios e restrito à velocidade de sua internet.<br />
+A visualização da saída do objeto <code>all_mun_ms</code> indica as variáveis armazenadas. É possível verificar que esse objeto é da classe <code>sf</code> e <code>data.frame</code>. Um objeto <code>sf</code> contém uma coleção de recursos incluindo atributos e geometrias que contemplam os aspectos espaciais para desenhar o mapa.</p>
+<pre><code>class(all_mun_ms)
+[1] &quot;sf&quot;         &quot;data.frame&quot;</code></pre>
+<p>O dataset pode então ser observado. O dataset contém o código do município, o nome do município, o código do estado, a sigla do estado e aspectos geográficos como latitude, longitude dos vários segmentos que permitirão construir o mapa.</p>
+<div class="figure">
+<img src="/post/2020-01-31-mapas-em-r-com-geobr_files/saida_all_mun_ms.PNG" alt="Imagem do objeto all_mun_ms." />
+<p class="caption">Imagem do objeto <code>all_mun_ms</code>.</p>
+</div>
+<p>Agora vou construir uma variável para ser plotada no mapa. Preciso ter os meus dados em uma planilha em que uma das colunas será o código do município da mesma forma que consta em <code>code_muni</code> no objeto <code>all_mun_ms</code>. Recomendo fazer a associação entre os dados por meio do código, menos sujeito a erros de digitação que para os nomes dos municípios. Para este exemplo, baixei os dados de <a href="http://atlasbrasil.org.br/2013/pt/download/" class="uri">http://atlasbrasil.org.br/2013/pt/download/</a>, ou mais precisamente em <a href="http://atlasbrasil.org.br/2013/data/rawData/atlas2013_dadosbrutos_pt.xlsx" class="uri">http://atlasbrasil.org.br/2013/data/rawData/atlas2013_dadosbrutos_pt.xlsx</a>, o site oficial do PNUD para o Índice de Desenvolvimento Humano Municipal do Brasil, para 2013, que nesse caso se refere aos dados do censo demográfico 2010.</p>
+<p>No caso, o arquivo Excel veio com dados de todo o Brasil e para os anos 1991, 2000 e 2010, mas fiz uma extração dos dados para apenas os municípios de MS e 2010. Observar que nesse caso tenho uma estrutura municipal de 78 municípios invés dos 79 de 2018.</p>
+<pre class="r"><code># Executei uma vez e gerei dput para executar mais rapidamente conforme próximo chunk
+library(readxl)
+url &lt;- &quot;http://atlasbrasil.org.br/2013/data/rawData/atlas2013_dadosbrutos_pt.xlsx&quot;
+destfile &lt;- &quot;atlas2013_dadosbrutos_pt.xlsx&quot;
+#options(timeout= 4000000) # as vezes o site demora conforme sua internet
+curl::curl_download(url, destfile)
+atlas2013_dadosbrutos_pt &lt;- read_excel(destfile, 
+    sheet = &quot;MUN 91-00-10&quot;)
+dados_ms &lt;- subset(atlas2013_dadosbrutos_pt, UF == &#39;50&#39; &amp; ANO == &#39;2010&#39;,
+                   select=c(Codmun7,IDHM,IDHM_E,IDHM_L,IDHM_R))
+print(dados_ms)</code></pre>
+<p>Segue o chunk para carregar dados de <code>dados_ms</code> sem precisar acessar o arquivo mestre do chunk anterior. Gera os mesmos resultados acima, transformados a partir do <code>dput()</code> de <code>dados_ms</code>. Esta alternativa acelera a execução do script.</p>
+<pre class="r"><code>dados_ms&lt;-structure(list(Codmun7 = c(5000203, 5000252, 5000609, 5000708, 
+5000807, 5000856, 5000906, 5001003, 5001102, 5001243, 5001508, 
+5001904, 5002001, 5002100, 5002159, 5002209, 5002308, 5002407, 
+5002605, 5002704, 5002803, 5002902, 5002951, 5003108, 5003157, 
+5003207, 5003256, 5003306, 5003454, 5003488, 5003504, 5003702, 
+5003751, 5003801, 5003900, 5004007, 5004106, 5004304, 5004403, 
+5004502, 5004601, 5004700, 5004809, 5004908, 5005004, 5005103, 
+5005152, 5005202, 5005251, 5005400, 5005608, 5005681, 5005707, 
+5005806, 5006002, 5006200, 5006259, 5006309, 5006358, 5006408, 
+5006606, 5006903, 5007109, 5007208, 5007307, 5007406, 5007505, 
+5007554, 5007695, 5007703, 5007802, 5007901, 5007935, 5007950, 
+5007976, 5008008, 5008305, 5008404), IDHM = c(0.67, 0.711, 0.673, 
+0.663, 0.67, 0.697, 0.643, 0.697, 0.688, 0.633, 0.681, 0.71, 
+0.684, 0.698, 0.666, 0.67, 0.701, 0.692, 0.703, 0.784, 0.647, 
+0.727, 0.754, 0.671, 0.589, 0.7, 0.706, 0.703, 0.694, 0.639, 
+0.699, 0.747, 0.684, 0.714, 0.66, 0.721, 0.675, 0.662, 0.681, 
+0.654, 0.62, 0.72, 0.526, 0.664, 0.712, 0.708, 0.623, 0.704, 
+0.672, 0.736, 0.632, 0.686, 0.7, 0.639, 0.694, 0.721, 0.649, 
+0.721, 0.588, 0.671, 0.701, 0.666, 0.664, 0.715, 0.709, 0.673, 
+0.651, 0.642, 0.729, 0.614, 0.682, 0.686, 0.681, 0.593, 0.651, 
+0.658, 0.744, 0.711), IDHM_E = c(0.518, 0.572, 0.546, 0.557, 
+0.538, 0.582, 0.526, 0.588, 0.562, 0.507, 0.537, 0.606, 0.559, 
+0.585, 0.573, 0.508, 0.57, 0.592, 0.596, 0.724, 0.522, 0.627, 
+0.665, 0.531, 0.417, 0.586, 0.606, 0.579, 0.595, 0.528, 0.597, 
+0.657, 0.577, 0.621, 0.511, 0.648, 0.549, 0.53, 0.531, 0.523, 
+0.479, 0.615, 0.337, 0.53, 0.595, 0.579, 0.485, 0.618, 0.545, 
+0.613, 0.507, 0.565, 0.597, 0.483, 0.554, 0.616, 0.523, 0.627, 
+0.444, 0.562, 0.598, 0.526, 0.519, 0.59, 0.585, 0.521, 0.491, 
+0.505, 0.608, 0.45, 0.576, 0.561, 0.557, 0.434, 0.545, 0.521, 
+0.645, 0.626), IDHM_L = c(0.823, 0.858, 0.818, 0.789, 0.826, 
+0.839, 0.799, 0.804, 0.84, 0.798, 0.848, 0.847, 0.814, 0.83, 
+0.776, 0.831, 0.837, 0.828, 0.817, 0.844, 0.826, 0.811, 0.85, 
+0.83, 0.806, 0.834, 0.811, 0.836, 0.81, 0.773, 0.809, 0.843, 
+0.824, 0.815, 0.83, 0.822, 0.826, 0.817, 0.846, 0.809, 0.772, 
+0.85, 0.791, 0.827, 0.845, 0.857, 0.77, 0.822, 0.822, 0.873, 
+0.782, 0.808, 0.803, 0.822, 0.809, 0.85, 0.798, 0.823, 0.811, 
+0.801, 0.812, 0.83, 0.83, 0.861, 0.869, 0.852, 0.83, 0.8, 0.85, 
+0.778, 0.825, 0.829, 0.803, 0.782, 0.769, 0.839, 0.849, 0.835
+), IDHM_R = c(0.705, 0.733, 0.683, 0.663, 0.676, 0.692, 0.633, 
+0.717, 0.69, 0.628, 0.694, 0.698, 0.702, 0.699, 0.665, 0.714, 
+0.721, 0.676, 0.715, 0.79, 0.628, 0.756, 0.758, 0.684, 0.607, 
+0.701, 0.717, 0.719, 0.693, 0.64, 0.706, 0.753, 0.674, 0.719, 
+0.677, 0.705, 0.677, 0.671, 0.702, 0.66, 0.645, 0.715, 0.547, 
+0.668, 0.718, 0.716, 0.646, 0.687, 0.676, 0.744, 0.638, 0.707, 
+0.715, 0.658, 0.746, 0.716, 0.656, 0.727, 0.566, 0.672, 0.708, 
+0.677, 0.681, 0.72, 0.702, 0.686, 0.676, 0.655, 0.751, 0.66, 
+0.668, 0.694, 0.706, 0.615, 0.657, 0.651, 0.752, 0.689)), row.names = c(NA, 
+-78L), class = c(&quot;tbl_df&quot;, &quot;tbl&quot;, &quot;data.frame&quot;))</code></pre>
+<p>Segue o chunk para opção de download manual e armazenamento em seu diretório.</p>
+<pre class="r"><code># trazendo os dados do Brasil todo apenas para municipios
+library(readxl)
+atlas2013_dadosbrutos_pt &lt;- read_excel(&quot;atlas2013_dadosbrutos_pt.xlsx&quot;, 
+    sheet = &quot;MUN 91-00-10&quot;)
+# reduzir linhas para 2010 e MS
+# usando a funcao subset para pegar as colunas de IDH até a última ()
+dados_ms &lt;- subset(atlas2013_dadosbrutos_pt, UF == &#39;50&#39; &amp; ANO == &#39;2010&#39;,
+                   select=c(Codmun7,IDHM,IDHM_E,IDHM_L,IDHM_R))
+print(dados_ms)</code></pre>
+<p>Precisarei portanto da estrutura de 2010 para compatibilizar o mapa. A execução normal do próximo chunk mostraria o andamento do download da estrutura de 2010, mas em meu markdown solicitei para ‘hide’ para economizar espaço do post.</p>
+<pre class="r"><code>library(geobr)
+# sugiro permanecer o timeout anterior, options(timeout= 4000000)
+all_mun_ms &lt;- read_municipality(code_muni=50, year=2010)</code></pre>
+<pre><code>## Using data from year 2010</code></pre>
+<p>Juntarei os datasets pela condição de que o <code>code_muni</code> do objeto <code>all_mun_ms</code> é igual ao <code>Codmun7</code> do objeto <code>dados_ms</code>.</p>
+<pre class="r"><code>dataset_final = left_join(all_mun_ms, dados_ms, by=c(&quot;code_muni&quot;=&quot;Codmun7&quot;))
+max(dataset_final$IDHM) # 0.784</code></pre>
+<pre><code>## [1] 0.784</code></pre>
+<pre class="r"><code>min(dataset_final$IDHM) # 0.526</code></pre>
+<pre><code>## [1] 0.526</code></pre>
+<pre class="r"><code>ggplot() +
+  geom_sf(data=dataset_final, aes(fill=IDHM), color= NA, size=.15)+
+  labs(title=&quot;IDHM 2013 (ano base 2010) dos Municipíos de MS&quot;,
+       caption=&#39;Fonte: Elaboração própria&#39;, size=8)+
+  scale_fill_distiller(palette = &quot;Greens&quot;, limits=c(0.5, 0.8),
+                       name=&quot;Code_muni&quot;)+
+  theme_minimal()</code></pre>
+<p><img src="/post/2020-01-31-mapas-em-r-com-geobr_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Sendo um mapa feito em <code>ggplot2</code> pelos comandos <code>ggplot() +   geom_sf(data=dataset_final, aes(fill=IDHM), color= NA, size=.15)</code>, o padrão é um mapa na escala azul. Ou seja, fazendo agora um mapa para o IDHM_E (IDHM Educação), recomendo o usuário fazer o passo a passo de modo a ver exatamente o que o código realiza:</p>
+<pre class="r"><code>#dataset_final = left_join(all_mun_ms, dados_ms, by=c(&quot;code_muni&quot;=&quot;Codmun7&quot;))
+max(dataset_final$IDHM_E) # 0.724</code></pre>
+<pre><code>## [1] 0.724</code></pre>
+<pre class="r"><code>min(dataset_final$IDHM_E) # 0.337</code></pre>
+<pre><code>## [1] 0.337</code></pre>
+<pre class="r"><code>ggplot() +
+  geom_sf(data=dataset_final, aes(fill=IDHM_E), color= NA, size=.15)</code></pre>
+<p><img src="/post/2020-01-31-mapas-em-r-com-geobr_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Veja que o mapa anterior saiu em azul, sem rótulos. Observe que nesse caso e no próximo, não fiz nenhuma restrição à legenda.</p>
+<p>O próximo sai com rótulos do título e nota ao final do mapa.</p>
+<pre class="r"><code>ggplot() +
+  geom_sf(data=dataset_final, aes(fill=IDHM_E), color= NA, size=.15)+
+  labs(title=&quot;IDHM Educação 2013 (ano base 2010) dos Municipíos de MS&quot;,
+       caption=&#39;Fonte: Elaboração própria&#39;, size=8)</code></pre>
+<p><img src="/post/2020-01-31-mapas-em-r-com-geobr_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Para o próximo mapa, coloco a palheta de cores em vermelho e os limites para as classes, agora de 0 a 1.</p>
+<pre class="r"><code>ggplot() +
+  geom_sf(data=dataset_final, aes(fill=IDHM_E), color= NA, size=.15)+
+  labs(title=&quot;IDHM Educação 2013 (ano base 2010) dos Municipíos de MS&quot;,
+       caption=&#39;Fonte: Elaboração própria&#39;, size=8)+
+  scale_fill_distiller(palette = &quot;Reds&quot;, limits=c(0.0, 1.0),
+                       name=&quot;Code_muni&quot;)</code></pre>
+<p><img src="/post/2020-01-31-mapas-em-r-com-geobr_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>No exemplo abaixo faço um caso particular em que um município, o de máximo IDHM_E ficou excluído por uma restrição ao delimitar o máximo da palheta em 0.7 (o valor seria de Campo Grande, 0.724, maior que 0.7). Portanto, o município ficou em preto.</p>
+<pre class="r"><code>ggplot() +
+  geom_sf(data=dataset_final, aes(fill=IDHM_E), color= NA, size=.15)+
+  labs(title=&quot;IDHM Educação 2013 (ano base 2010) dos Municipíos de MS&quot;,
+       caption=&#39;Fonte: Elaboração própria&#39;, size=8)+
+  scale_fill_distiller(limits=c(0.3, 0.7))+
+  theme_minimal()</code></pre>
+<p><img src="/post/2020-01-31-mapas-em-r-com-geobr_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>Outras palhetas de cores pode ser visualizada em <a href="http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually" class="uri">http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually</a>.</p>
+<pre class="r"><code># dataset_final = left_join(all_mun_ms, dados_ms, by=c(&quot;code_muni&quot;=&quot;Codmun7&quot;))
+# max(dataset_final$IDHM) # 0.784
+# min(dataset_final$IDHM) # 0.526
+ggplot() +
+  geom_sf(data=dataset_final, aes(fill=IDHM), color= NA, size=.15)+
+  labs(title=&quot;IDHM 2013 (ano base 2010) dos Municipíos de MS&quot;,
+       caption=&#39;Fonte: Elaboração própria&#39;, size=8)+
+  scale_fill_distiller(palette = &quot;RdGy&quot;, limits=c(0.5, 0.8),
+                       name=&quot;Code_muni&quot;)+
+  theme_minimal()</code></pre>
+<p><img src="/post/2020-01-31-mapas-em-r-com-geobr_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="Referências" class="section level1 unnumbered">
+<h1>Referências</h1>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/economia-regional/">economia regional</a>
+  
+  <a class="badge badge-light" href="/tags/mapas/">mapas</a>
+  
+  <a class="badge badge-light" href="/tags/ggplot2/">ggplot2</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/mapas-em-r-com-geobr/&amp;text=Mapas%20em%20R%20com%20%60geobr%60" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/mapas-em-r-com-geobr/&amp;t=Mapas%20em%20R%20com%20%60geobr%60" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Mapas%20em%20R%20com%20%60geobr%60&amp;body=/post/mapas-em-r-com-geobr/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/mapas-em-r-com-geobr/&amp;title=Mapas%20em%20R%20com%20%60geobr%60" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Mapas%20em%20R%20com%20%60geobr%60%20/post/mapas-em-r-com-geobr/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/mapas-em-r-com-geobr/&amp;title=Mapas%20em%20R%20com%20%60geobr%60" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hue9adce3a1ccb9b9d32568a9f62616c02_114438_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/">Adriano M R Figueiredo</a></h5>
+      <h6 class="card-subtitle">Professor of Regional Economics and Econometrics</h6>
+      <p class="card-text">My research interests include regional economics, econometrics, sustainable public policies and agricultural economics.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/amrofi" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com.br/citations?user=LjuEUroAAAAJ&amp;hl=pt-BR" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/amrofi" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/aplicativo-shiny-experimental-para-as-populacoes-dos-principais-aglomerados-urbanos-do-mundo/">Aplicativo Shiny experimental para as populações dos principais aglomerados urbanos do mundo</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.3/mermaid.min.js" integrity="" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.600a2e440c16093e23e26e90951c4d4b.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

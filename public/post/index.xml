@@ -5,12 +5,217 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Wed, 29 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Fri, 31 Jan 2020 00:00:00 +0000</lastBuildDate>
     <image>
-      <url>img/icon-32.png</url>
+      <url>/img/icon-32.png</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Mapas em R com `geobr`</title>
+      <link>/post/mapas-em-r-com-geobr/</link>
+      <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>/post/mapas-em-r-com-geobr/</guid>
+      <description>
+
+
+&lt;div id=&#34;Licença&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Licença&lt;/h1&gt;
+&lt;p&gt;This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/4.0/&#34; class=&#34;uri&#34;&gt;http://creativecommons.org/licenses/by-sa/4.0/&lt;/a&gt; or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png&#34; alt=&#34;License: CC BY-SA 4.0&#34; style=&#34;width:25.0%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;License: CC BY-SA 4.0&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;As ideias aqui expressas são de responsabilidade exclusiva do autor, e não representam as opiniões da instituição a que pertence.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;Citação&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Citação&lt;/h1&gt;
+&lt;p&gt;Sugestão para citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Mapas em R com &lt;code&gt;geobr&lt;/code&gt;. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em &lt;a href=&#34;http://rpubs.com/amrofi/maps_geobr&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/maps_geobr&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;introdução&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introdução&lt;/h1&gt;
+&lt;p&gt;Para realizar seu mapa em R, inicialmente o leitor deve baixar os programas e pacotes necessários ao projeto. Neste caso, sugere-se que utilize o RStudio e o R atualizados, a partir de: &lt;a href=&#34;http://cran.r-project.org/bin/windows/base/&#34; class=&#34;uri&#34;&gt;http://cran.r-project.org/bin/windows/base/&lt;/a&gt; e &lt;a href=&#34;https://www.rstudio.com/products/rstudio/download3/&#34; class=&#34;uri&#34;&gt;https://www.rstudio.com/products/rstudio/download3/&lt;/a&gt;. Quando esta revisão foi feita, a versão do RStudio era a &lt;em&gt;RStudio Desktop 1.2.5033&lt;/em&gt; e do &lt;em&gt;R-3.6.1 for Windows (32/64 bit)&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Primeiro instale o R e posteriormente o RStudio, de modo que o segundo reconheça automaticamente o primeiro. Se tudo estiver perfeito, a tela inicial do RStudio mostrará corretamente a versão do R.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mapas-em-r&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Mapas em R&lt;/h1&gt;
+&lt;p&gt;Agora a meta é gerar um mapa simples em R. Para tanto, primeiro define-se a malha municipal desejada. Para o presente caso, utilizam-se as malhas digitais do pacote &lt;code&gt;geobr&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Os pacotes (previamente instalados) são aqui carregados:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(geobr)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;geobr&amp;#39; was built under R version 3.6.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required namespace: sf&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
+library(sf)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Linking to GEOS 3.6.1, GDAL 2.2.3, PROJ 4.9.3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Attaching package: &amp;#39;dplyr&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:stats&amp;#39;:
+## 
+##     filter, lag&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## The following objects are masked from &amp;#39;package:base&amp;#39;:
+## 
+##     intersect, setdiff, setequal, union&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(rio)
+library(readr)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;O pacote &lt;code&gt;geobr&lt;/code&gt; tem as rotinas para o download dos mapas com divisões territoriais variadas. Faremos para os municípios de Mato Grosso do Sul (MS), malha com a estrutura municipal de 2018, contendo 79 municípios. É importante o leitor ter essa estrutura em mente, pois ao longo dos anos, municípios são criados a partir de desmembramentos de outros, não necessariamente respeitando limites de distritos ou outros atributos previamente definidos.&lt;/p&gt;
+&lt;p&gt;Este rápido exemplo faz uso das funções do pacote &lt;code&gt;geobr&lt;/code&gt; e assim, precisamos saber quais os códigos para cada estado. A função &lt;code&gt;download_metadata()&lt;/code&gt; permite encontrar os códigos para estado e ano e a desagregação desejada (município, estado etc).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;metadata&amp;lt;-download_metadata() # para ver codigos&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Posso verificar que para MS, especificarei 50 e para o ano de 2018. Agora posso baixar os dados (shapes) para os municípios de Mato Grosso do Sul fazendo uso da função &lt;code&gt;read_municipality(code_muni=50, year=2018)&lt;/code&gt; em:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# não executei agora pois farei para 2010 mais a frente
+all_mun_ms &amp;lt;- read_municipality(code_muni=50, year=2018)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;O usuário que desejar baixar todos os municípios observará alguma demora no download dos dados, devido ao número de municípios e restrito à velocidade de sua internet.&lt;br /&gt;
+A visualização da saída do objeto &lt;code&gt;all_mun_ms&lt;/code&gt; indica as variáveis armazenadas. É possível verificar que esse objeto é da classe &lt;code&gt;sf&lt;/code&gt; e &lt;code&gt;data.frame&lt;/code&gt;. Um objeto &lt;code&gt;sf&lt;/code&gt; contém uma coleção de recursos incluindo atributos e geometrias que contemplam os aspectos espaciais para desenhar o mapa.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class(all_mun_ms)
+[1] &amp;quot;sf&amp;quot;         &amp;quot;data.frame&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;O dataset pode então ser observado. O dataset contém o código do município, o nome do município, o código do estado, a sigla do estado e aspectos geográficos como latitude, longitude dos vários segmentos que permitirão construir o mapa.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;/post/2020-01-31-mapas-em-r-com-geobr_files/saida_all_mun_ms.PNG&#34; alt=&#34;Imagem do objeto all_mun_ms.&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;Imagem do objeto &lt;code&gt;all_mun_ms&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Agora vou construir uma variável para ser plotada no mapa. Preciso ter os meus dados em uma planilha em que uma das colunas será o código do município da mesma forma que consta em &lt;code&gt;code_muni&lt;/code&gt; no objeto &lt;code&gt;all_mun_ms&lt;/code&gt;. Recomendo fazer a associação entre os dados por meio do código, menos sujeito a erros de digitação que para os nomes dos municípios. Para este exemplo, baixei os dados de &lt;a href=&#34;http://atlasbrasil.org.br/2013/pt/download/&#34; class=&#34;uri&#34;&gt;http://atlasbrasil.org.br/2013/pt/download/&lt;/a&gt;, ou mais precisamente em &lt;a href=&#34;http://atlasbrasil.org.br/2013/data/rawData/atlas2013_dadosbrutos_pt.xlsx&#34; class=&#34;uri&#34;&gt;http://atlasbrasil.org.br/2013/data/rawData/atlas2013_dadosbrutos_pt.xlsx&lt;/a&gt;, o site oficial do PNUD para o Índice de Desenvolvimento Humano Municipal do Brasil, para 2013, que nesse caso se refere aos dados do censo demográfico 2010.&lt;/p&gt;
+&lt;p&gt;No caso, o arquivo Excel veio com dados de todo o Brasil e para os anos 1991, 2000 e 2010, mas fiz uma extração dos dados para apenas os municípios de MS e 2010. Observar que nesse caso tenho uma estrutura municipal de 78 municípios invés dos 79 de 2018.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Executei uma vez e gerei dput para executar mais rapidamente conforme próximo chunk
+library(readxl)
+url &amp;lt;- &amp;quot;http://atlasbrasil.org.br/2013/data/rawData/atlas2013_dadosbrutos_pt.xlsx&amp;quot;
+destfile &amp;lt;- &amp;quot;atlas2013_dadosbrutos_pt.xlsx&amp;quot;
+#options(timeout= 4000000) # as vezes o site demora conforme sua internet
+curl::curl_download(url, destfile)
+atlas2013_dadosbrutos_pt &amp;lt;- read_excel(destfile, 
+    sheet = &amp;quot;MUN 91-00-10&amp;quot;)
+dados_ms &amp;lt;- subset(atlas2013_dadosbrutos_pt, UF == &amp;#39;50&amp;#39; &amp;amp; ANO == &amp;#39;2010&amp;#39;,
+                   select=c(Codmun7,IDHM,IDHM_E,IDHM_L,IDHM_R))
+print(dados_ms)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Segue o chunk para carregar dados de &lt;code&gt;dados_ms&lt;/code&gt; sem precisar acessar o arquivo mestre do chunk anterior. Gera os mesmos resultados acima, transformados a partir do &lt;code&gt;dput()&lt;/code&gt; de &lt;code&gt;dados_ms&lt;/code&gt;. Esta alternativa acelera a execução do script.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dados_ms&amp;lt;-structure(list(Codmun7 = c(5000203, 5000252, 5000609, 5000708, 
+5000807, 5000856, 5000906, 5001003, 5001102, 5001243, 5001508, 
+5001904, 5002001, 5002100, 5002159, 5002209, 5002308, 5002407, 
+5002605, 5002704, 5002803, 5002902, 5002951, 5003108, 5003157, 
+5003207, 5003256, 5003306, 5003454, 5003488, 5003504, 5003702, 
+5003751, 5003801, 5003900, 5004007, 5004106, 5004304, 5004403, 
+5004502, 5004601, 5004700, 5004809, 5004908, 5005004, 5005103, 
+5005152, 5005202, 5005251, 5005400, 5005608, 5005681, 5005707, 
+5005806, 5006002, 5006200, 5006259, 5006309, 5006358, 5006408, 
+5006606, 5006903, 5007109, 5007208, 5007307, 5007406, 5007505, 
+5007554, 5007695, 5007703, 5007802, 5007901, 5007935, 5007950, 
+5007976, 5008008, 5008305, 5008404), IDHM = c(0.67, 0.711, 0.673, 
+0.663, 0.67, 0.697, 0.643, 0.697, 0.688, 0.633, 0.681, 0.71, 
+0.684, 0.698, 0.666, 0.67, 0.701, 0.692, 0.703, 0.784, 0.647, 
+0.727, 0.754, 0.671, 0.589, 0.7, 0.706, 0.703, 0.694, 0.639, 
+0.699, 0.747, 0.684, 0.714, 0.66, 0.721, 0.675, 0.662, 0.681, 
+0.654, 0.62, 0.72, 0.526, 0.664, 0.712, 0.708, 0.623, 0.704, 
+0.672, 0.736, 0.632, 0.686, 0.7, 0.639, 0.694, 0.721, 0.649, 
+0.721, 0.588, 0.671, 0.701, 0.666, 0.664, 0.715, 0.709, 0.673, 
+0.651, 0.642, 0.729, 0.614, 0.682, 0.686, 0.681, 0.593, 0.651, 
+0.658, 0.744, 0.711), IDHM_E = c(0.518, 0.572, 0.546, 0.557, 
+0.538, 0.582, 0.526, 0.588, 0.562, 0.507, 0.537, 0.606, 0.559, 
+0.585, 0.573, 0.508, 0.57, 0.592, 0.596, 0.724, 0.522, 0.627, 
+0.665, 0.531, 0.417, 0.586, 0.606, 0.579, 0.595, 0.528, 0.597, 
+0.657, 0.577, 0.621, 0.511, 0.648, 0.549, 0.53, 0.531, 0.523, 
+0.479, 0.615, 0.337, 0.53, 0.595, 0.579, 0.485, 0.618, 0.545, 
+0.613, 0.507, 0.565, 0.597, 0.483, 0.554, 0.616, 0.523, 0.627, 
+0.444, 0.562, 0.598, 0.526, 0.519, 0.59, 0.585, 0.521, 0.491, 
+0.505, 0.608, 0.45, 0.576, 0.561, 0.557, 0.434, 0.545, 0.521, 
+0.645, 0.626), IDHM_L = c(0.823, 0.858, 0.818, 0.789, 0.826, 
+0.839, 0.799, 0.804, 0.84, 0.798, 0.848, 0.847, 0.814, 0.83, 
+0.776, 0.831, 0.837, 0.828, 0.817, 0.844, 0.826, 0.811, 0.85, 
+0.83, 0.806, 0.834, 0.811, 0.836, 0.81, 0.773, 0.809, 0.843, 
+0.824, 0.815, 0.83, 0.822, 0.826, 0.817, 0.846, 0.809, 0.772, 
+0.85, 0.791, 0.827, 0.845, 0.857, 0.77, 0.822, 0.822, 0.873, 
+0.782, 0.808, 0.803, 0.822, 0.809, 0.85, 0.798, 0.823, 0.811, 
+0.801, 0.812, 0.83, 0.83, 0.861, 0.869, 0.852, 0.83, 0.8, 0.85, 
+0.778, 0.825, 0.829, 0.803, 0.782, 0.769, 0.839, 0.849, 0.835
+), IDHM_R = c(0.705, 0.733, 0.683, 0.663, 0.676, 0.692, 0.633, 
+0.717, 0.69, 0.628, 0.694, 0.698, 0.702, 0.699, 0.665, 0.714, 
+0.721, 0.676, 0.715, 0.79, 0.628, 0.756, 0.758, 0.684, 0.607, 
+0.701, 0.717, 0.719, 0.693, 0.64, 0.706, 0.753, 0.674, 0.719, 
+0.677, 0.705, 0.677, 0.671, 0.702, 0.66, 0.645, 0.715, 0.547, 
+0.668, 0.718, 0.716, 0.646, 0.687, 0.676, 0.744, 0.638, 0.707, 
+0.715, 0.658, 0.746, 0.716, 0.656, 0.727, 0.566, 0.672, 0.708, 
+0.677, 0.681, 0.72, 0.702, 0.686, 0.676, 0.655, 0.751, 0.66, 
+0.668, 0.694, 0.706, 0.615, 0.657, 0.651, 0.752, 0.689)), row.names = c(NA, 
+-78L), class = c(&amp;quot;tbl_df&amp;quot;, &amp;quot;tbl&amp;quot;, &amp;quot;data.frame&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Segue o chunk para opção de download manual e armazenamento em seu diretório.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# trazendo os dados do Brasil todo apenas para municipios
+library(readxl)
+atlas2013_dadosbrutos_pt &amp;lt;- read_excel(&amp;quot;atlas2013_dadosbrutos_pt.xlsx&amp;quot;, 
+    sheet = &amp;quot;MUN 91-00-10&amp;quot;)
+# reduzir linhas para 2010 e MS
+# usando a funcao subset para pegar as colunas de IDH até a última ()
+dados_ms &amp;lt;- subset(atlas2013_dadosbrutos_pt, UF == &amp;#39;50&amp;#39; &amp;amp; ANO == &amp;#39;2010&amp;#39;,
+                   select=c(Codmun7,IDHM,IDHM_E,IDHM_L,IDHM_R))
+print(dados_ms)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Precisarei portanto da estrutura de 2010 para compatibilizar o mapa. A execução normal do próximo chunk mostraria o andamento do download da estrutura de 2010, mas em meu markdown solicitei para ‘hide’ para economizar espaço do post.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(geobr)
+# sugiro permanecer o timeout anterior, options(timeout= 4000000)
+all_mun_ms &amp;lt;- read_municipality(code_muni=50, year=2010)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Using data from year 2010&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Juntarei os datasets pela condição de que o &lt;code&gt;code_muni&lt;/code&gt; do objeto &lt;code&gt;all_mun_ms&lt;/code&gt; é igual ao &lt;code&gt;Codmun7&lt;/code&gt; do objeto &lt;code&gt;dados_ms&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dataset_final = left_join(all_mun_ms, dados_ms, by=c(&amp;quot;code_muni&amp;quot;=&amp;quot;Codmun7&amp;quot;))
+max(dataset_final$IDHM) # 0.784&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.784&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;min(dataset_final$IDHM) # 0.526&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.526&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot() +
+  geom_sf(data=dataset_final, aes(fill=IDHM), color= NA, size=.15)+
+  labs(title=&amp;quot;IDHM 2013 (ano base 2010) dos Municipíos de MS&amp;quot;,
+       caption=&amp;#39;Fonte: Elaboração própria&amp;#39;, size=8)+
+  scale_fill_distiller(palette = &amp;quot;Greens&amp;quot;, limits=c(0.5, 0.8),
+                       name=&amp;quot;Code_muni&amp;quot;)+
+  theme_minimal()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-31-mapas-em-r-com-geobr_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Sendo um mapa feito em &lt;code&gt;ggplot2&lt;/code&gt; pelos comandos &lt;code&gt;ggplot() +   geom_sf(data=dataset_final, aes(fill=IDHM), color= NA, size=.15)&lt;/code&gt;, o padrão é um mapa na escala azul. Ou seja, fazendo agora um mapa para o IDHM_E (IDHM Educação), recomendo o usuário fazer o passo a passo de modo a ver exatamente o que o código realiza:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;#dataset_final = left_join(all_mun_ms, dados_ms, by=c(&amp;quot;code_muni&amp;quot;=&amp;quot;Codmun7&amp;quot;))
+max(dataset_final$IDHM_E) # 0.724&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.724&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;min(dataset_final$IDHM_E) # 0.337&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## [1] 0.337&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot() +
+  geom_sf(data=dataset_final, aes(fill=IDHM_E), color= NA, size=.15)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-31-mapas-em-r-com-geobr_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Veja que o mapa anterior saiu em azul, sem rótulos. Observe que nesse caso e no próximo, não fiz nenhuma restrição à legenda.&lt;/p&gt;
+&lt;p&gt;O próximo sai com rótulos do título e nota ao final do mapa.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot() +
+  geom_sf(data=dataset_final, aes(fill=IDHM_E), color= NA, size=.15)+
+  labs(title=&amp;quot;IDHM Educação 2013 (ano base 2010) dos Municipíos de MS&amp;quot;,
+       caption=&amp;#39;Fonte: Elaboração própria&amp;#39;, size=8)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-31-mapas-em-r-com-geobr_files/figure-html/unnamed-chunk-10-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Para o próximo mapa, coloco a palheta de cores em vermelho e os limites para as classes, agora de 0 a 1.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot() +
+  geom_sf(data=dataset_final, aes(fill=IDHM_E), color= NA, size=.15)+
+  labs(title=&amp;quot;IDHM Educação 2013 (ano base 2010) dos Municipíos de MS&amp;quot;,
+       caption=&amp;#39;Fonte: Elaboração própria&amp;#39;, size=8)+
+  scale_fill_distiller(palette = &amp;quot;Reds&amp;quot;, limits=c(0.0, 1.0),
+                       name=&amp;quot;Code_muni&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-31-mapas-em-r-com-geobr_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;No exemplo abaixo faço um caso particular em que um município, o de máximo IDHM_E ficou excluído por uma restrição ao delimitar o máximo da palheta em 0.7 (o valor seria de Campo Grande, 0.724, maior que 0.7). Portanto, o município ficou em preto.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ggplot() +
+  geom_sf(data=dataset_final, aes(fill=IDHM_E), color= NA, size=.15)+
+  labs(title=&amp;quot;IDHM Educação 2013 (ano base 2010) dos Municipíos de MS&amp;quot;,
+       caption=&amp;#39;Fonte: Elaboração própria&amp;#39;, size=8)+
+  scale_fill_distiller(limits=c(0.3, 0.7))+
+  theme_minimal()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-31-mapas-em-r-com-geobr_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Outras palhetas de cores pode ser visualizada em &lt;a href=&#34;http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually&#34; class=&#34;uri&#34;&gt;http://www.sthda.com/english/wiki/ggplot2-colors-how-to-change-colors-automatically-and-manually&lt;/a&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# dataset_final = left_join(all_mun_ms, dados_ms, by=c(&amp;quot;code_muni&amp;quot;=&amp;quot;Codmun7&amp;quot;))
+# max(dataset_final$IDHM) # 0.784
+# min(dataset_final$IDHM) # 0.526
+ggplot() +
+  geom_sf(data=dataset_final, aes(fill=IDHM), color= NA, size=.15)+
+  labs(title=&amp;quot;IDHM 2013 (ano base 2010) dos Municipíos de MS&amp;quot;,
+       caption=&amp;#39;Fonte: Elaboração própria&amp;#39;, size=8)+
+  scale_fill_distiller(palette = &amp;quot;RdGy&amp;quot;, limits=c(0.5, 0.8),
+                       name=&amp;quot;Code_muni&amp;quot;)+
+  theme_minimal()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-01-31-mapas-em-r-com-geobr_files/figure-html/unnamed-chunk-13-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;Referências&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Referências&lt;/h1&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Aplicativo Shiny experimental para as populações dos principais aglomerados urbanos do mundo</title>

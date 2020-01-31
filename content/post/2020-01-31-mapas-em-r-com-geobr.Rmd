@@ -38,6 +38,13 @@ Citação {-#Citação}
 Sugestão para citação: 
 FIGUEIREDO, Adriano Marcos Rodrigues. Mapas em R com `geobr`. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/maps_geobr> e <https://adrianofigueiredo.netlify.com/post/mapas-em-r-com-geobr/>. 
 
+Script para reprodução (se utilizar, citar como acima)
+==================
+
+```{r echo=FALSE}
+# a single file
+xfun::embed_file('2020-01-31-mapas-em-r-com-geobr.Rmd')
+```
 
 Introdução 
 ==================
@@ -54,7 +61,7 @@ Agora a meta é gerar um mapa simples em R. Para tanto, primeiro define-se a mal
 
 Os pacotes (previamente instalados) são aqui carregados:
 
-```{r}
+```{r echo = T, results = 'hide',, warnings=FALSE}
 library(geobr)
 library(ggplot2)
 library(sf)
@@ -68,8 +75,9 @@ O pacote `geobr` tem as rotinas para o download dos mapas com divisões territor
 
 Este rápido exemplo faz uso das funções do pacote `geobr` e assim, precisamos saber quais os códigos para cada estado. A função `download_metadata()` permite encontrar os códigos para estado e ano e a desagregação desejada (município, estado etc).
 
-```{r}
+```{r echo = T, results = 'hide'}
 metadata<-download_metadata() # para ver codigos
+head(metadata)
 ```
 
 Posso verificar que para MS, especificarei 50 e para o ano de 2018. Agora posso baixar os dados (shapes) para os municípios de Mato Grosso do Sul fazendo uso da função `read_municipality(code_muni=50, year=2018)` em:

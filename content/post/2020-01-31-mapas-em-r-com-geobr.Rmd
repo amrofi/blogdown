@@ -36,7 +36,7 @@ Citação {-#Citação}
 ===================
 
 Sugestão para citação: 
-FIGUEIREDO, Adriano Marcos Rodrigues. Mapas em R com `geobr`. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/maps_geobr>. 
+FIGUEIREDO, Adriano Marcos Rodrigues. Mapas em R com `geobr`. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/maps_geobr> e <https://adrianofigueiredo.netlify.com/post/mapas-em-r-com-geobr/>. 
 
 
 Introdução 

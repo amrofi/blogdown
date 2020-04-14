@@ -1,0 +1,360 @@
+---
+title: 'Séries Temporais com R: Análise do consumo de Morettin e Toloi com X13ARIMA-SEATS'
+author: "Adriano M R Figueiredo"
+date: '2020-04-14'
+slug: séries-temporais-com-r-análise-do-consumo-de-morettin-e-toloi-com-x13arima-seats
+categories: []
+tags:
+  - econometria
+  - séries temporais
+  - X13ARIMA-SEATS
+  - forecasts
+subtitle: ''
+summary: 'This is an exercise for class use. We analyse data on Retail consumption.'
+lastmod: '2020-04-14T16:55:00-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmarkdown)
+library(rmdformats)
+
+## Global options
+options(max.print="100")
+opts_chunk$set(echo=TRUE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=100)
+```
+
+
+Licença {-#Licença}
+===================
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <http://creativecommons.org/licenses/by-sa/4.0/> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+![License: CC BY-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png){ width=25% }
+
+As ideias aqui expressas são de responsabilidade exclusiva do autor, e não representam as opiniões da instituição a que pertence.
+
+Citação {-#Citação}
+===================================
+
+Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Séries Temporais com R: Análise do consumo Morettin com X13ARIMA-SEATS. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/consumo_morettin_x13> e
+e <https://adrianofigueiredo.netlify.app/post/séries-temporais-com-r-análise-do-consumo-de-morettin-e-toloi-com-x13arima-seats/>. 
+
+Script para reprodução (se utilizar, citar como acima)
+==================
+
+```{r echo=FALSE}
+# a single file
+xfun::embed_file('2020-04-14-séries-temporais-com-r-análise-do-consumo-de-morettin-e-toloi-com-x13arima-seats.Rmd')
+```
+
+Introdução
+===================
+
+Os dados vem do livro de Morettin e Toloi, Análise de Séries Temporais (<https://www.ime.usp.br/~pam/ST.html>), consumo no varejo de São Paulo, mensais de Jan/1984 a Out/1996, em <https://www.ime.usp.br/~pam/CONSUMO.XLS>.
+
+```{r echo = T, results = 'hide',warnings=FALSE}
+library(readxl);library(fpp2)
+# consumo morettin e toloi
+#dados <- read_excel("CONSUMO morettin R.xlsx",sheet = "dados")
+dados<-
+  structure(list(consumo = c(114.13, 110.79, 116.46, 111.57, 120.66, 
+121.15, 121.27, 127.02, 129.04, 133.3, 130.6, 179.39, 120.64, 
+114.05, 130.6, 118.26, 145.54, 135.13, 153.35, 159.95, 150.01, 
+164.93, 170.37, 220.96, 134.26, 133.11, 147.84, 164.46, 181.86, 
+170.44, 186.64, 174.21, 181.62, 194.16, 181.9, 232.01, 140.16, 
+130.78, 119.04, 120.73, 129.81, 111.04, 122.75, 133.95, 125.41, 
+132.05, 129.54, 176.37, 110.09, 113.25, 124.03, 110.63, 116.72, 
+124.63, 124.38, 130.27, 119.87, 115.75, 122.44, 162.43, 105.89, 
+115.59, 147, 131.7, 131.32, 136.66, 126.43, 134.88, 128.26, 125.32, 
+124.61, 166.11, 116.25, 96.93, 89.27, 101.87, 125.57, 113.31, 
+109.39, 127.33, 120.56, 117.73, 113.81, 147.25, 100.15, 95.11, 
+112.26, 109.39, 114.2, 113.8, 126.47, 128.36, 115.71, 116.09, 
+99.53, 127.27, 87.08, 85.67, 82.02, 98.2, 96.44, 90.23, 97.15, 
+95.08, 94, 93, 96.09, 129.21, 75.39, 77.7, 97.34, 84.97, 87.55, 
+86.64, 90.52, 95.4, 95.2, 95.8, 101.23, 128.49, 85.63, 82.77, 
+96.55, 81.33, 96.91, 83.76, 90.19, 114.84, 108.4, 106.05, 109.71, 
+143.86, 99.12, 99.28, 114.75, 106.13, 110.02, 108.07, 112.52, 
+113.87, 107.84, 112.12, 112.03, 139.37, 92.24, 93.56, 107.37, 
+102.89, 114.78, 102.88, 118.41, 119.23, 117.36, 122.06)), row.names = c(NA, 
+-154L), class = c("tbl_df", "tbl", "data.frame"))
+#consumo.ts<-ts(dados,start = c(1984,1),frequency = 12)
+# coloquei opção do dput() a seguir
+consumo.ts<-structure(c(114.13, 110.79, 116.46, 111.57, 120.66, 121.15, 121.27, 
+127.02, 129.04, 133.3, 130.6, 179.39, 120.64, 114.05, 130.6, 
+118.26, 145.54, 135.13, 153.35, 159.95, 150.01, 164.93, 170.37, 
+220.96, 134.26, 133.11, 147.84, 164.46, 181.86, 170.44, 186.64, 
+174.21, 181.62, 194.16, 181.9, 232.01, 140.16, 130.78, 119.04, 
+120.73, 129.81, 111.04, 122.75, 133.95, 125.41, 132.05, 129.54, 
+176.37, 110.09, 113.25, 124.03, 110.63, 116.72, 124.63, 124.38, 
+130.27, 119.87, 115.75, 122.44, 162.43, 105.89, 115.59, 147, 
+131.7, 131.32, 136.66, 126.43, 134.88, 128.26, 125.32, 124.61, 
+166.11, 116.25, 96.93, 89.27, 101.87, 125.57, 113.31, 109.39, 
+127.33, 120.56, 117.73, 113.81, 147.25, 100.15, 95.11, 112.26, 
+109.39, 114.2, 113.8, 126.47, 128.36, 115.71, 116.09, 99.53, 
+127.27, 87.08, 85.67, 82.02, 98.2, 96.44, 90.23, 97.15, 95.08, 
+94, 93, 96.09, 129.21, 75.39, 77.7, 97.34, 84.97, 87.55, 86.64, 
+90.52, 95.4, 95.2, 95.8, 101.23, 128.49, 85.63, 82.77, 96.55, 
+81.33, 96.91, 83.76, 90.19, 114.84, 108.4, 106.05, 109.71, 143.86, 
+99.12, 99.28, 114.75, 106.13, 110.02, 108.07, 112.52, 113.87, 
+107.84, 112.12, 112.03, 139.37, 92.24, 93.56, 107.37, 102.89, 
+114.78, 102.88, 118.41, 119.23, 117.36, 122.06), .Dim = c(154L, 
+1L), .Dimnames = list(NULL, "consumo"), .Tsp = c(1984, 1996.75, 
+12), class = "ts")
+(consumo.ts)
+attach(dados)
+plot(consumo.ts)
+```
+
+```{r echo = T, results = 'hide'}
+#Census x13-Arima-Seats ##############################
+
+# informando ao RStudio onde estão os arquivos para o x13as
+# local <- paste0(getwd(), "/x13as")
+# Sys.setenv(X13_PATH = local)
+
+library(seasonal);library(seasonalview)  #chamando o pacote
+checkX13()  #checagem se o x13 está operacional no RStudio
+
+
+# vou então gerar as análises fazendo como em SAX(2017) e FERREIRA e MATTOS (2016)
+# RELEMBRANDO o gráfico da série
+plot(consumo.ts, xlab="Tempo")
+abline(h = seq(70,230,5), v = seq(1984,1997,1), lty = 3, col = "darkgrey")
+monthplot(consumo.ts, labels = month.abb, lty.base = 2)
+legend("topleft", legend = c("consumo/mes", "media/mes"), cex = 0.8, lty = c(1,2), bty = "n")
+options(digits=6)
+```
+
+Modelo automático
+===================
+
+```{r}
+# rodando o automático
+ajuste <- seas(x=consumo.ts) # rodou x13
+
+```
+
+## O modo Shiny do seasonalview
+
+Ele abre um apps Shiny para auxiliar a modelagem e visualização. Ver figura abaixo de como sai o modelo 'ajuste'.
+
+![Figura da tela do Shiny apps do seasonalview.](/post/2020-04-14-séries-temporais-com-r-análise-do-consumo-de-morettin-e-toloi-com-x13arima-seats/seasonalview_ajuste1.png){ width=80% }
+
+```{r, eval=FALSE}
+# not run
+view(ajuste)  #seasonalview
+```
+
+
+## Avaliação do automático
+
+A avaliação do modelo 'automático' (sem alterar as especificações default) compreende as etapas:
+1.  Verificar teste de sazonalidade QS;
+2.  Diagnosticar pré-ajuste e modelo ARIMA;
+3.  Verificar indícios de sazonalidade ou efeitos de dias úteis graficamente; 
+4.  Avaliar a estabilidade do ajuste sazonal;
+
+```{r}
+# specserie<-spec.ar(consumo.ts)
+# specserie
+options(digits = 6)
+qs(ajuste)      # faz o teste QS para sazonalidade
+summary(ajuste) # mostra os resultados da estimação ARIMA automatica e outliers detectados
+final(ajuste)  # mostra a serie ajustada
+plot(ajuste)   # grafico da serie ajustada
+
+static(ajuste) # permite o ajuste manual do seas
+
+```
+
+O `static` mostra o que foi feito e facilita a alteração de algum item específico, permitindo a replicação ou aperfeiçoamento (ajuste fino).
+
+## Replicando o automático
+
+Replicando o modelo 'automático' a partir do resultado de `static`.
+
+```{r}
+ajuste4<-seas(x = consumo.ts, regression.variables = c("td1coef", "ls1988.Mar", 
+     "ao1990.Mar"), arima.model = "(1 0 1)(1 0 0)", regression.aictest = NULL, 
+     outlier = NULL, transform.function = "log")
+summary(ajuste4)
+
+#seas(x = consumo.ts, regression.variables = c("td1coef", "ls1987.Mar", 
+#    "ao1990.Mar"), arima.model = "(0 1 1)(0 1 1)", regression.aictest = NULL, 
+#     outlier = NULL, transform.function = "log")
+
+# reproduzindo o codigo que saiu do static()
+(seas(x = consumo.ts, regression.variables = c("td1coef", "ls1987.Mar", 
+    "ao1990.Mar"), arima.model = "(0 1 1)(0 1 1)", regression.aictest = NULL, 
+    outlier = NULL, transform.function = "log"))
+
+#ajuste.auto<-view(ajuste4)
+```
+
+## Forecasts do ajuste
+
+```{r}
+ajuste.fcst<-series(ajuste, c("forecast.forecasts"))
+plot(ajuste.fcst)
+```
+
+## Correção do ajuste automático para o Calendário Brasileiro
+
+Faremos a rotina como em Ferreira e Mato (2017). Obtemos os arquivos eletronicamente e colocamos no diretório de trabalho do projeto. Desta forma, conseguimos rodar mesmo sem internet.
+
+```{r}
+# construção dias úteis (building working days)
+# du <- read.csv2("dias_uteis.csv")
+# head(du)
+library(RCurl)
+usingR_url_wd <- getURL("https://raw.githubusercontent.com/pedrocostaferreira/Articles/master/using-R-to-teach-seasonal-adjustment/work_days.csv")
+wd <- read.csv2(text = usingR_url_wd)
+head(wd)
+# outra opcao é pegar direto do arquivo csv, dentro desta pasta
+# uteis <- ts(du[,5], start = c(1970,1), freq = 12)
+Workdays_ok <- ts(wd[,5], start = c(1970,1), freq = 12)
+
+# building moving holidays (mh) feriados moveis
+# construção feriados
+# feriados <- read.csv2("feriados_moveis.csv")
+# head(feriados)  
+
+usingR_url_mh <- 
+  getURL("https://raw.githubusercontent.com/pedrocostaferreira/Articles/master/using-R-to-teach-seasonal-adjustment/moving_holidays.csv")
+mh <- read.csv2(text = usingR_url_mh)
+# outra opcao é pegar direto do arquivo csv, dentro desta pasta
+head(mh)   # Pascoa e Carnaval
+
+# Easter  Pascoa (DOMINGO)
+dates.easter <- as.Date(as.character(mh$Easter),"%d/%m/%Y")
+easter <- genhol(dates.easter, start = -8, end = 1, frequency = 12)
+
+# Carnival (TERCA-FEIRA DE CARNAVAL)
+dates.carnival <- as.Date(as.character(mh$Carnival),"%d/%m/%Y")
+carnival <- genhol(dates.carnival, start = -3, end = 1, 
+                   frequency = 12, center = "calendar")
+# carnival <- genhol(dates.carnival, start = -3, end = 1, frequency = 12)
+regs <- na.omit(cbind(Workdays_ok, easter, carnival))
+regs2<- na.omit(cbind(Workdays_ok,  carnival))
+head(regs)
+head(regs2)
+options(digits=6)
+```
+
+## Modelo com ajuste do calendário brasileiro
+
+```{r}
+ajuste2 <- seas(x = consumo.ts, xreg = regs, regression.aictest = NULL, 
+                regression.usertype = "holiday",forecast.save = "forecasts")
+
+### COLOCAR NATAL E OUTROS FERIADOS IMPORTANTES PARA MODELAR O VAREJO
+
+# ajuste2 <- seas(x = consumo.ts, xreg = regs, 
+#          regression.aictest = NULL, 
+#          regression.usertype = c("td", "easter", "holiday"))
+options(digits=6)
+#view(ajuste2)
+qs(ajuste2)
+summary(ajuste2)
+ajuste2a <- seas(x = consumo.ts, xreg = regs2, regression.aictest = NULL, 
+                regression.usertype = "holiday",forecast.save = "forecasts")
+summary(ajuste2a)
+
+static(ajuste2a)
+
+# ACURACIA  
+library(Metrics)
+# mae(actual, predicted)
+# rmse(actual, predicted)
+predicted<-final(ajuste2a)
+actual<-consumo.ts
+(mae2<-mae(actual, predicted))
+(rmse2<-rmse(actual, predicted))
+
+# ajuste conforme o auto.arima da semana passada
+ajuste3<-seas(x = consumo.ts, xreg = regs2, regression.usertype = "holiday", 
+              forecast.save = "forecasts", regression.variables = "ao1990.Mar", 
+              arima.model = "(0 1 1)(0 1 1)", regression.aictest = NULL, 
+              outlier = NULL, transform.function = "log")
+summary(ajuste3)
+predicted3<-final(ajuste3)
+actual<-consumo.ts
+(mae3<-mae(actual, predicted3))
+(rmse3<-rmse(actual, predicted3))
+# melhor ficar como estava no ajuste2a
+
+# figura dos fatores sazonais
+monthplot(ajuste3, col.base = 1)
+legend("topleft", legend = c("Irregular", "Seasonal", "Seasonal Average"),
+       col = c(4,2,1), lwd = c(1,2,2), lty = 1, bty = "n", cex = 0.6)
+
+# figura da série ajustada
+plot(ajuste3, main = "Ajuste 3 de consumo.ts")
+grid()
+legend("topleft", legend = c("Original", "Adjusted"),
+       col = c(1,2), lwd = c(1,2), lty = 1, bty = "n", cex = 0.6)
+```
+
+```{r}
+# forecasts do ajuste3
+# o mesmo que ajuste3$series$fct
+forecasts3<-series(ajuste3, c("forecast.forecasts"))
+
+require(graphics);require(zoo)
+data.fcst<-cbind.zoo(consumo.ts,series(ajuste3, "forecast.forecasts"))
+ts.plot(data.fcst, col=c(1,2,3,4),
+     main="série original de consumo e forecasts ajuste3", xlab = "Mês/Ano")
+legend("bottomleft",lty=1, pch=1, col=1:4, 
+       c("data","X13as","Lim Inferior","Lim Superior"))
+grid()
+
+# opcao grafica
+library(dygraphs)
+dygraph(data.fcst)
+
+dygraph(data.fcst, main = "Indice de consumo do varejo de São Paulo, 
+        Moretin e Toloi (2005)") %>%
+  dyAxis("y", label = "Indice", valueRange = c(55, 250),
+         axisLabelFontSize = 20) %>%
+  dyAxis("x", label = "Mês/Ano",axisLabelFontSize = 20 ) %>%
+  dyGroup(c("consumo", "forecast"), 
+          drawPoints = TRUE, 
+          color = c("blue", "red")) %>%
+  dyLegend(width = 400)  %>%
+  dyAnnotation("1990-3-1", text = "AO-mar1990",
+               attachAtBottom = TRUE,width = 100) %>%
+  dyOptions(drawPoints = TRUE, 
+            pointSize = 5, 
+            pointShape = "triangle",
+            axisLineWidth = 1.5) 
+
+```
+
+
+Referências {-#Referências}
+========================
+
+FERREIRA, Pedro Costa; SPERANZA, Talitha;  COSTA, Jonatha (2018). BETS: Brazilian Economic Time Series. R package version 0.4.9. Disponível em: <https://CRAN.R-project.org/package=BETS>.     
+
+FERREIRA, Pedro C.; MATOS, Daiane M. Usando o R para ensinar Ajuste Sazonal. São Paulo: FGV, 2017. 18p. Disponível em: <http://portalibre.fgv.br/lumis/portal/file/fileDownload.jsp?fileId=8A7C82C5519A547801533DF7BE5E2D0D> 
+
+HYNDMAN, Rob. (2018). fpp2: Data for "Forecasting: Principles and Practice" (2nd Edition). R package version 2.3. Disponível em: <https://CRAN.R-project.org/package=fpp2>.     
+
+HYNDMAN, R.J., & ATHANASOPOULOS, G. (2018) Forecasting: principles and practice, 2nd edition, OTexts: Melbourne, Australia. Disponível em: <https://otexts.com/fpp2/>. Accessed on 12 Set 2019.
+
+MORETTIN, Pedro A.; TOLOI, Clélia M.C. Análise de Séries Temporais. São paulo: Editora Edgard Blücher, 2004. <https://www.ime.usp.br/~pam/st/>

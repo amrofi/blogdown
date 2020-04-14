@@ -1,0 +1,16 @@
+base
+knitr
+rmarkdown
+rmdformats
+readxl
+ggplot2
+forecast
+fma
+expsmooth
+fpp2
+seasonal
+seasonalview
+RCurl
+Metrics
+zoo
+dygraphs

@@ -29,7 +29,42 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-01-31T08:30:07-04:00</lastmod>
+    <lastmod>2020-04-14T16:55:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/econometria/</loc>
+    <lastmod>2020-04-14T16:55:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/forecasts/</loc>
+    <lastmod>2020-04-14T16:55:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-04-14T16:55:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/series-temporais/</loc>
+    <lastmod>2020-04-14T16:55:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/series-temporais-com-r-analise-do-consumo-de-morettin-e-toloi-com-x13arima-seats/</loc>
+    <lastmod>2020-04-14T16:55:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-04-14T16:55:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/x13arima-seats/</loc>
+    <lastmod>2020-04-14T16:55:00-04:00</lastmod>
   </url>
   
   <url>
@@ -49,16 +84,6 @@
   
   <url>
     <loc>/post/mapas-em-r-com-geobr/</loc>
-    <lastmod>2020-01-31T08:30:07-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2020-01-31T08:30:07-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2020-01-31T08:30:07-04:00</lastmod>
   </url>
   
@@ -84,11 +109,6 @@
   
   <url>
     <loc>/tags/desenvolvimento-regional/</loc>
-    <lastmod>2020-01-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/econometria/</loc>
     <lastmod>2020-01-18T00:00:00+00:00</lastmod>
   </url>
   

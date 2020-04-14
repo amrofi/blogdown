@@ -5,12 +5,44 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Fri, 31 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Tue, 14 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-32.png</url>
       <title>Tags</title>
       <link>/tags/</link>
     </image>
+    
+    <item>
+      <title>econometria</title>
+      <link>/tags/econometria/</link>
+      <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/econometria/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>forecasts</title>
+      <link>/tags/forecasts/</link>
+      <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/forecasts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>séries temporais</title>
+      <link>/tags/series-temporais/</link>
+      <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/series-temporais/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>X13ARIMA-SEATS</title>
+      <link>/tags/x13arima-seats/</link>
+      <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/x13arima-seats/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>economia regional</title>
@@ -49,14 +81,6 @@
       <link>/tags/desenvolvimento-regional/</link>
       <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
       <guid>/tags/desenvolvimento-regional/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>econometria</title>
-      <link>/tags/econometria/</link>
-      <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/econometria/</guid>
       <description></description>
     </item>
     

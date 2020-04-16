@@ -5,12 +5,769 @@
     <link>/tags/forecasts/</link>
       <atom:link href="/tags/forecasts/index.xml" rel="self" type="application/rss+xml" />
     <description>forecasts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Tue, 14 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Thu, 16 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-32.png</url>
       <title>forecasts</title>
       <link>/tags/forecasts/</link>
     </image>
+    
+    <item>
+      <title>Séries Temporais com R: Análise ARIMA do Consumo do Varejo em MS com X13ARIMA-SEATS</title>
+      <link>/post/series-temporais-consumo-varejo-ms-x13arima-seats/</link>
+      <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/series-temporais-consumo-varejo-ms-x13arima-seats/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/dygraphs/dygraph.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/dygraphs/dygraph-combined.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/dygraphs/shapes.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/moment/moment.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/moment-timezone/moment-timezone-with-data.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/moment-fquarter/moment-fquarter.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/dygraphs-binding/dygraphs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;Licença&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Licença&lt;/h1&gt;
+&lt;p&gt;This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/4.0/&#34; class=&#34;uri&#34;&gt;http://creativecommons.org/licenses/by-sa/4.0/&lt;/a&gt; or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png&#34; alt=&#34;License: CC BY-SA 4.0&#34; style=&#34;width:25.0%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;License: CC BY-SA 4.0&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;Citação&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Citação&lt;/h1&gt;
+&lt;p&gt;Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Séries Temporais com R: Análise ARIMA do Consumo do Varejo em MS com X13ARIMA-SEATS. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em &lt;a href=&#34;http://rpubs.com/amrofi/x13arima_seats_varejoms&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/x13arima_seats_varejoms&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;introdução&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introdução&lt;/h1&gt;
+&lt;p&gt;Neste arquivo utilizo a série do Índice de volume de vendas no varejo Total de Mato Grosso do Sul, série mensal a partir de jan/2000 até jul/2019 obtida com o pacote &lt;code&gt;BETS&lt;/code&gt; e importada do Banco Central do Brasil. Portanto, são 235 observações mensais.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;dados&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Dados&lt;/h1&gt;
+&lt;p&gt;Farei de duas formas para o leitor. Uma carrega direto do site do Banco Central do Brasil com o pacote &lt;code&gt;BETS&lt;/code&gt; (FERREIRA, SPERANZA e COSTA, 2018) e a outra eu gerei a estrutura idêntica pela função &lt;code&gt;dput()&lt;/code&gt; para os leitores que não conseguirem por qualquer motivo o acesso ao site do Banco Central (as vezes vejo isso ocorrer dependendo dos bloqueios da sua rede de internet). A forma pelo dput assume o nome varejoms2 enquanto a extraída pelo BETS tem nome varejoms. Esclareço ao leitor que após baixar a série pelo BETS, fiz o dput e a partir de então, desabilitei o bloco (&lt;code&gt;Chunk&lt;/code&gt;) que acessa o BETS apenas para agilizar os cálculos.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(BETS)
+# Pegando as séries a partir do site do Banco Central do Brasil
+# Índice de volume de vendas no varejo Total de Mato Grosso do Sul
+# mensal a partir de jan/2000 até jul/2019 
+# 235 observações mensais
+varejoms &amp;lt;- BETSget(1479) 
+print(varejoms)
+class(varejoms)
+dput(varejoms)  # opção para ter os dados como na structure abaixo&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressMessages(library(fpp2))
+suppressMessages(library(tseries))
+suppressMessages(library(zoo))
+suppressMessages(library(forecast))
+suppressMessages(library(ggplot2))
+# Pegando as séries a partir do site do Banco Central do Brasil Índice de volume
+# de vendas no varejo Total de Mato Grosso do Sul mensal a partir de jan/2000 até
+# jul/2019 Loading the dataset library(readxl) dados &amp;lt;-
+# read_excel(&amp;#39;dados.xlsx&amp;#39;,sheet = &amp;#39;dados&amp;#39;) attach(dados) library(BETS)
+
+# Pegando as séries a partir do site do Banco Central do Brasil Índice de volume
+# de vendas no varejo Total de Mato Grosso do Sul mensal a partir de jan/2000 até
+# jul/2019 (em 12.09.2019)
+
+# varejoms &amp;lt;- BETSget(1479)
+
+varejoms &amp;lt;- structure(c(35.2, 35.6, 39.2, 40.5, 41.6, 40.4, 40.8, 38.7, 37.3, 37.6, 
+    35.6, 47.4, 34.2, 32.2, 38, 37.5, 38.8, 35, 38.4, 40.2, 38.2, 39.3, 36, 46.3, 
+    36.4, 34, 39, 37.8, 38.9, 35.3, 37.2, 38.1, 35.6, 38.3, 35.6, 45.7, 32.2, 31.6, 
+    35.2, 36.8, 37.5, 34.8, 38.4, 38.1, 37, 39, 37.3, 49, 35.8, 35.3, 40.2, 41.3, 
+    43.9, 41.6, 45.9, 42.3, 42.2, 44, 41.3, 56.9, 38.5, 38.5, 45.3, 43.6, 46.2, 44.3, 
+    47.5, 46.5, 46.4, 46, 44.1, 61, 42, 40.2, 44.6, 44.5, 47.8, 45.3, 46.5, 48.5, 
+    47.7, 50.2, 49.3, 64.5, 47, 46.8, 51, 50.5, 55, 51.3, 52.8, 55.3, 54.8, 55.6, 
+    55.3, 72.2, 54.5, 52.1, 56.2, 57.2, 60.8, 56.1, 61.8, 61.6, 59.8, 63.3, 57.7, 
+    77.4, 61.4, 51.9, 57.3, 57.9, 61.9, 57.3, 61.1, 61.1, 60.6, 65.6, 63.5, 83.1, 
+    64.1, 60.2, 67.8, 67.1, 72.8, 68.5, 71.1, 69.3, 69.9, 71.1, 67.9, 92.7, 67.5, 
+    64.8, 69.1, 69.4, 79.6, 70.2, 73.8, 72.5, 71.3, 75.6, 74.7, 100.8, 79.5, 75.7, 
+    82.4, 78, 84.8, 83.2, 84.8, 88.5, 86.3, 91.7, 92.8, 111.4, 92.8, 83.7, 92.5, 
+    88.3, 93.9, 88.8, 96, 95.9, 93.2, 98.3, 100.5, 128.8, 97.2, 90.2, 94.3, 94.4, 
+    101.1, 92, 96.4, 98.2, 97.6, 105.8, 103.1, 129.6, 99.6, 87.8, 97, 94.8, 98.6, 
+    93.4, 98.4, 96.4, 92.5, 100.6, 97.2, 124.5, 91.5, 85.1, 91.6, 88.5, 92.2, 87.4, 
+    90.5, 88.1, 85.2, 89.4, 93.4, 116.9, 90.8, 84, 89.7, 86.3, 90, 87.3, 90.8, 93.5, 
+    93.7, 91.4, 93.5, 114.1, 87.8, 81.1, 94.5, 83.2, 89.9, 88.8, 89.3, 93.7, 93.5, 
+    96.3, 101.3, 118.3, 93.8, 85.2, 90, 86.6, 90, 85.2, 90.9), .Tsp = c(2000, 2019.5, 
+    12), class = &amp;quot;ts&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;modelo-census-x13-arima-seats&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Modelo Census X13-ARIMA-SEATS&lt;/h1&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;suppressMessages(library(seasonal))  #chamando o pacote
+checkX13()  #checagem se o x13 está operacional no RStudio&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;relembrando-o-gráfico-da-série&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Relembrando o gráfico da série&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;consumo.ts &amp;lt;- varejoms
+plot(consumo.ts, xlab = &amp;quot;Tempo&amp;quot;)
+abline(h = seq(40, 230, 5), v = seq(2000, 2017, 1), lty = 3, col = &amp;quot;darkgrey&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-16-séries-temporais-consumo-varejo-ms-x13arima-seats_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;monthplot(consumo.ts, labels = month.abb, lty.base = 2)
+legend(&amp;quot;topleft&amp;quot;, legend = c(&amp;quot;consumo/mes&amp;quot;, &amp;quot;media/mes&amp;quot;), cex = 0.8, lty = c(1, 2), 
+    bty = &amp;quot;n&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-16-séries-temporais-consumo-varejo-ms-x13arima-seats_files/figure-html/unnamed-chunk-3-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;options(digits = 6)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;rodando-o-x13-arima-seats-automático&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Rodando o X13 ARIMA-SEATS automático&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(seasonal)
+ajuste &amp;lt;- seas(x = consumo.ts)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Neste caso, o programa faz as seguintes avaliações no automático:
+1. Verificar teste de sazonalidade QS; A hipótese nula do teste QS é de não haver sazonalidade; - se P-value=0 =&amp;gt; &lt;em&gt;tem sazonalidade&lt;/em&gt;;
+2. Diagnosticar pre-ajuste e modelo ARIMA;
+3. Verificar indicios de sazonalidade ou efeitos de dias uteis graficamente;
+4. Estabilidade do ajuste sazonal.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# specserie&amp;lt;-spec.ar(consumo.ts) specserie
+qs(ajuste)  # faz o teste QS para sazonalidade&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;                    qs   p-val
+qsori        401.53016 0.00000
+qsorievadj   413.70084 0.00000
+qsrsd          0.01129 0.99437
+qssadj         0.00000 1.00000
+qssadjevadj    0.00000 1.00000
+qsirr          0.00000 1.00000
+qsirrevadj     0.00000 1.00000
+qssori       152.62432 0.00000
+qssorievadj  157.51593 0.00000
+qssrsd         0.02656 0.98681
+qsssadj        0.00000 1.00000
+qsssadjevadj   0.00000 1.00000
+qssirr         0.00000 1.00000
+qssirrevadj    0.00000 1.00000&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(ajuste)  # mostra os resultados da estimacao ARIMA automatica e outliers detectados&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+Call:
+seas(x = consumo.ts)
+
+Coefficients:
+                  Estimate Std. Error z value Pr(&amp;gt;|z|)    
+Mon               -0.00750    0.00299   -2.51   0.0121 *  
+Tue                0.00415    0.00302    1.38   0.1689    
+Wed               -0.00304    0.00302   -1.01   0.3136    
+Thu                0.00656    0.00301    2.18   0.0293 *  
+Fri                0.00564    0.00297    1.90   0.0576 .  
+Sat                0.00273    0.00301    0.91   0.3645    
+Easter[15]         0.02240    0.00603    3.71   0.0002 ***
+AO2011.May         0.09444    0.02037    4.63  3.6e-06 ***
+MA-Nonseasonal-01  0.25901    0.06416    4.04  5.4e-05 ***
+MA-Seasonal-12     0.62511    0.05423   11.53  &amp;lt; 2e-16 ***
+---
+Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+
+SEATS adj.  ARIMA: (0 1 1)(0 1 1)  Obs.: 235  Transform: log
+AICc:  920, BIC:  956  QS (no seasonality in final):   0  
+Box-Ljung (no autocorr.): 30.4   Shapiro (normality): 0.995  &lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;final(ajuste)  # mostra a serie ajustada&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;          Jan      Feb      Mar      Apr      May      Jun      Jul      Aug
+2000  39.3300  39.5505  39.4395  40.1428  40.3741  41.2593  40.0219  38.0183
+2001  37.9094  37.1737  37.9657  37.7401  37.3143  36.1452  37.7736  39.3231
+2002  39.7687  39.1410  38.7496  38.4960  37.4410  37.0553  36.5095  37.0814
+2003  35.2496  36.4043  36.3683  36.7113  35.8835  36.8316  37.1479  37.7011
+2004  38.9672  39.6054  41.1016  41.3233  43.1107  43.1698  44.0771  42.4076
+2005  42.8621  44.2698  45.2394  44.7964  45.3881  45.9583  46.5637  46.4023
+2006  46.1595  46.0124  45.7515  45.6118  46.8711  46.7904  46.6203  47.8558
+2007  50.6874  53.3260  51.5483  53.0344  53.3142  53.3089  53.1680  54.5771
+          Sep      Oct      Nov      Dec
+2000  37.8608  37.6293  37.7240  37.9952
+2001  39.1803  38.9487  37.6451  37.4916
+2002  36.8762  37.3688  37.1320  36.7815
+2003  37.8514  38.0284  39.2811  39.0132
+2004  42.8546  43.3296  43.2495  44.3708
+2005  46.6471  45.8362  45.7397  47.0622
+2006  48.1642  49.9190  50.7424  50.4282
+2007  56.1715  55.0249  56.2822  57.2221
+ [ reached getOption(&amp;quot;max.print&amp;quot;) -- omitted 12 rows ]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plot(ajuste)  # grafico da serie ajustada&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-16-séries-temporais-consumo-varejo-ms-x13arima-seats_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ajuste-manual-da-série-ajustada&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Ajuste manual da série ajustada&lt;/h2&gt;
+&lt;p&gt;Pode-se utilizar a especificação do &lt;em&gt;static&lt;/em&gt; para ajustar manualmente a especificação do &lt;em&gt;spec&lt;/em&gt; do X13 ARIMA-SEATS.O &lt;em&gt;static&lt;/em&gt; mostra o que foi feito e facilita a alteração de algum item específico.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;static(ajuste)  # permite o ajuste manual do seas&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;seas(x = consumo.ts, regression.variables = c(&amp;quot;td&amp;quot;, &amp;quot;easter[15]&amp;quot;, 
+&amp;quot;ao2011.May&amp;quot;), arima.model = &amp;quot;(0 1 1)(0 1 1)&amp;quot;, regression.aictest = NULL, 
+    outlier = NULL, transform.function = &amp;quot;log&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;O static permite o ajuste manual do seas. Farei um cenário incluindo uma level shift em maio de 2016.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# cenario ajustemanual
+ajustemanual &amp;lt;- seas(x = consumo.ts, regression.variables = c(&amp;quot;td&amp;quot;, &amp;quot;easter[15]&amp;quot;, 
+    &amp;quot;ao2011.May&amp;quot;, &amp;quot;ls2016.May&amp;quot;), arima.model = &amp;quot;(0 1 1)(0 1 1)&amp;quot;, regression.aictest = NULL, 
+    outlier = NULL, transform.function = &amp;quot;log&amp;quot;)
+summary(ajustemanual)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+Call:
+seas(x = consumo.ts, transform.function = &amp;quot;log&amp;quot;, regression.aictest = NULL, 
+    outlier = NULL, regression.variables = c(&amp;quot;td&amp;quot;, &amp;quot;easter[15]&amp;quot;, 
+        &amp;quot;ao2011.May&amp;quot;, &amp;quot;ls2016.May&amp;quot;), arima.model = &amp;quot;(0 1 1)(0 1 1)&amp;quot;)
+
+Coefficients:
+                   Estimate Std. Error z value Pr(&amp;gt;|z|)    
+Mon               -0.007495   0.002989   -2.51  0.01216 *  
+Tue                0.004147   0.003015    1.38  0.16900    
+Wed               -0.003043   0.003020   -1.01  0.31359    
+Thu                0.006561   0.003016    2.18  0.02958 *  
+Fri                0.005632   0.002970    1.90  0.05796 .  
+Sat                0.002721   0.003024    0.90  0.36812    
+Easter[15]         0.022408   0.006049    3.70  0.00021 ***
+AO2011.May         0.094415   0.020391    4.63  3.7e-06 ***
+LS2016.May        -0.000648   0.024800   -0.03  0.97915    
+MA-Nonseasonal-01  0.259104   0.064163    4.04  5.4e-05 ***
+MA-Seasonal-12     0.625159   0.054230   11.53  &amp;lt; 2e-16 ***
+---
+Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+
+SEATS adj.  ARIMA: (0 1 1)(0 1 1)  Obs.: 235  Transform: log
+AICc:  922, BIC:  962  QS (no seasonality in final):   0  
+Box-Ljung (no autocorr.): 30.5   Shapiro (normality): 0.995  &lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# comparando com o ajuste automático, vejo que não ajudou com ls2016
+summary(ajuste)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+Call:
+seas(x = consumo.ts)
+
+Coefficients:
+                  Estimate Std. Error z value Pr(&amp;gt;|z|)    
+Mon               -0.00750    0.00299   -2.51   0.0121 *  
+Tue                0.00415    0.00302    1.38   0.1689    
+Wed               -0.00304    0.00302   -1.01   0.3136    
+Thu                0.00656    0.00301    2.18   0.0293 *  
+Fri                0.00564    0.00297    1.90   0.0576 .  
+Sat                0.00273    0.00301    0.91   0.3645    
+Easter[15]         0.02240    0.00603    3.71   0.0002 ***
+AO2011.May         0.09444    0.02037    4.63  3.6e-06 ***
+MA-Nonseasonal-01  0.25901    0.06416    4.04  5.4e-05 ***
+MA-Seasonal-12     0.62511    0.05423   11.53  &amp;lt; 2e-16 ***
+---
+Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+
+SEATS adj.  ARIMA: (0 1 1)(0 1 1)  Obs.: 235  Transform: log
+AICc:  920, BIC:  956  QS (no seasonality in final):   0  
+Box-Ljung (no autocorr.): 30.4   Shapiro (normality): 0.995  &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Comentário: embora tenha saído um ajuste, o programa não consegue visualizar adequadamente a time series, colocando ajustes de dias da semana de forma inadequada, uma vez que a série é mensal.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;forecasts-do-ajuste&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Forecasts do ajuste&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ajuste.fcst &amp;lt;- series(ajuste, c(&amp;quot;forecast.forecasts&amp;quot;))
+autoplot(ajuste.fcst)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-16-séries-temporais-consumo-varejo-ms-x13arima-seats_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;correção-do-ajuste-automático&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Correção do ajuste automático&lt;/h2&gt;
+&lt;div id=&#34;construção-dos-dias-úteis-building-working-days&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Construção dos dias Úteis (building working days)&lt;/h3&gt;
+&lt;p&gt;Vou carregar a partir do sítio eletrônico do Prof. Pedro Costa Ferreira.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(RCurl)
+usingR_url_wd &amp;lt;- getURL(&amp;quot;https://raw.githubusercontent.com/pedrocostaferreira/Articles/master/using-R-to-teach-seasonal-adjustment/work_days.csv&amp;quot;)
+wd &amp;lt;- read.csv2(text = usingR_url_wd)
+head(wd)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;FALSE     date Workdays days not_Workdays Workdays_ok.
+FALSE 1 jan/70       21   31           10         -4.0
+FALSE 2 fev/70       19   28            9         -3.5
+FALSE 3 mar/70       21   31           10         -4.0
+FALSE 4 abr/70       21   30            9         -1.5
+FALSE 5 mai/70       19   31           12        -11.0
+FALSE 6 jun/70       22   30            8          2.0&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# outra opcao é pegar direto do arquivo csv, dentro desta pasta uteis &amp;lt;-
+# ts(du[,5], start = c(1970,1), freq = 12)
+Workdays_ok &amp;lt;- ts(wd[, 5], start = c(1970, 1), freq = 12)
+
+# building moving holidays (mh) feriados moveis construção dos feriados móveis -
+# Pascoa, Carnaval, Natal e Ano Novo feriados &amp;lt;- read.csv2(&amp;#39;feriados_moveis.csv&amp;#39;)
+# head(feriados)
+usingR_url_mh &amp;lt;- getURL(&amp;quot;https://raw.githubusercontent.com/pedrocostaferreira/Articles/master/using-R-to-teach-seasonal-adjustment/moving_holidays.csv&amp;quot;)
+mh &amp;lt;- read.csv2(&amp;quot;feriados.csv&amp;quot;)
+# mh &amp;lt;- read.csv2(text = usingR_url_mh) outra opcao é pegar direto do arquivo
+# csv, dentro desta pasta
+head(mh)  # Pascoa e Carnaval, Natal e Ano Novo&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;FALSE   Year     Easter   Carnival      Natal    NewYear
+FALSE 1 1951 25/03/1951 06/02/1951 25/12/1951 01/01/1951
+FALSE 2 1952 13/04/1952 26/02/1952 25/12/1952 01/01/1952
+FALSE 3 1953 05/04/1953 17/02/1953 25/12/1953 01/01/1953
+FALSE 4 1954 18/04/1954 02/03/1954 25/12/1954 01/01/1954
+FALSE 5 1955 10/04/1955 22/02/1955 25/12/1955 01/01/1955
+FALSE 6 1956 01/04/1956 14/02/1956 25/12/1956 01/01/1956&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Easter Pascoa
+dates.easter &amp;lt;- as.Date(as.character(mh$Easter), &amp;quot;%d/%m/%Y&amp;quot;)
+easter &amp;lt;- genhol(dates.easter, start = -8, end = 1, frequency = 12)
+
+# Carnival
+dates.carnival &amp;lt;- as.Date(as.character(mh$Carnival), &amp;quot;%d/%m/%Y&amp;quot;)
+carnival &amp;lt;- genhol(dates.carnival, start = -3, end = 1, frequency = 12, center = &amp;quot;calendar&amp;quot;)
+
+# Ampliação para Natal e Ano Novo
+
+# Natal
+dates.natal &amp;lt;- as.Date(as.character(mh$Natal), &amp;quot;%d/%m/%Y&amp;quot;)
+natal &amp;lt;- genhol(dates.natal, start = -10, end = 5, frequency = 12, center = &amp;quot;calendar&amp;quot;)
+
+# NewYear
+dates.anonovo &amp;lt;- as.Date(as.character(mh$NewYear), &amp;quot;%d/%m/%Y&amp;quot;)
+anonovo &amp;lt;- genhol(dates.anonovo, start = -10, end = 5, frequency = 12, center = &amp;quot;calendar&amp;quot;)
+
+regs &amp;lt;- na.omit(cbind(Workdays_ok, easter, carnival))
+regs2 &amp;lt;- na.omit(cbind(Workdays_ok, easter))
+head(regs)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;FALSE          Workdays_ok easter  carnival
+FALSE Jan 1970        -4.0      0  0.000000
+FALSE Feb 1970        -3.5      0  0.203125
+FALSE Mar 1970        -4.0      1 -0.203125
+FALSE Apr 1970        -1.5      0  0.000000
+FALSE May 1970       -11.0      0  0.000000
+FALSE Jun 1970         2.0      0  0.000000&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;regsamp &amp;lt;- na.omit(cbind(Workdays_ok, easter, carnival, anonovo))
+# obs: embora tenha criado esta rotina, o programa identificou problemas de
+# multicolinearidade e conflito do anonovo com adittive outlier
+head(regsamp)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;FALSE          Workdays_ok easter  carnival    anonovo
+FALSE Jan 1970        -4.0      0  0.000000 0.00290698
+FALSE Feb 1970        -3.5      0  0.203125 0.00000000
+FALSE Mar 1970        -4.0      1 -0.203125 0.00000000
+FALSE Apr 1970        -1.5      0  0.000000 0.00000000
+FALSE May 1970       -11.0      0  0.000000 0.00000000
+FALSE Jun 1970         2.0      0  0.000000 0.00000000&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Agora faz-se novamente a estimação com os dados de dias úteis e feriados brasileiros. Primeiro, farei sem especificar os outliers.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ajuste2 &amp;lt;- seas(x = consumo.ts, xreg = regs, regression.aictest = NULL, regression.usertype = &amp;quot;holiday&amp;quot;, 
+    forecast.save = &amp;quot;forecasts&amp;quot;)
+
+qs(ajuste2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;                    qs   p-val
+qsori        401.53016 0.00000
+qsorievadj   402.57808 0.00000
+qsrsd          0.88286 0.64312
+qssadj         0.00000 1.00000
+qssadjevadj    0.00000 1.00000
+qsirr          0.00000 1.00000
+qsirrevadj     0.00000 1.00000
+qssori       152.62432 0.00000
+qssorievadj  152.25008 0.00000
+qssrsd         1.30197 0.52153
+qsssadj        0.00000 1.00000
+qsssadjevadj   0.00000 1.00000
+qssirr         0.00000 1.00000
+qssirrevadj    0.00000 1.00000&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(ajuste2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+Call:
+seas(x = consumo.ts, xreg = regs, regression.aictest = NULL, 
+    regression.usertype = &amp;quot;holiday&amp;quot;, forecast.save = &amp;quot;forecasts&amp;quot;)
+
+Coefficients:
+                   Estimate Std. Error z value Pr(&amp;gt;|z|)    
+xreg1              0.001390   0.000492    2.82   0.0047 ** 
+xreg2              0.018693   0.008190    2.28   0.0225 *  
+xreg3             -0.013760   0.008106   -1.70   0.0896 .  
+MA-Nonseasonal-01  0.395768   0.060655    6.52  6.8e-11 ***
+MA-Seasonal-12     0.627773   0.054518   11.51  &amp;lt; 2e-16 ***
+---
+Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+
+SEATS adj.  ARIMA: (0 1 1)(0 1 1)  Obs.: 235  Transform: log
+AICc:  968, BIC:  988  QS (no seasonality in final):   0  
+Box-Ljung (no autocorr.): 33.9 . Shapiro (normality): 0.996  &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Agora com os outliers predefinidos. Verá que melhorou um pouco, reduzindo o AICc.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ajuste3 &amp;lt;- seas(x = consumo.ts, xreg = regs, regression.aictest = NULL, regression.variables = c(&amp;quot;ls2016.May&amp;quot;, 
+    &amp;quot;AO2011.May&amp;quot;, &amp;quot;AO2009.Jan&amp;quot;), regression.usertype = &amp;quot;holiday&amp;quot;, forecast.save = &amp;quot;forecasts&amp;quot;)
+
+qs(ajuste3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;                    qs   p-val
+qsori        401.53016 0.00000
+qsorievadj   407.23799 0.00000
+qsrsd          0.72962 0.69433
+qssadj         0.00000 1.00000
+qssadjevadj    0.00000 1.00000
+qsirr          0.00000 1.00000
+qsirrevadj     0.00000 1.00000
+qssori       152.62432 0.00000
+qssorievadj  152.53446 0.00000
+qssrsd         0.95047 0.62174
+qsssadj        0.00000 1.00000
+qsssadjevadj   0.00000 1.00000
+qssirr         0.00000 1.00000
+qssirrevadj    0.00000 1.00000&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(ajuste3)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+Call:
+seas(x = consumo.ts, xreg = regs, regression.aictest = NULL, 
+    regression.variables = c(&amp;quot;ls2016.May&amp;quot;, &amp;quot;AO2011.May&amp;quot;, &amp;quot;AO2009.Jan&amp;quot;), 
+    regression.usertype = &amp;quot;holiday&amp;quot;, forecast.save = &amp;quot;forecasts&amp;quot;)
+
+Coefficients:
+                  Estimate Std. Error z value Pr(&amp;gt;|z|)    
+AO2009.Jan         0.09040    0.02243    4.03  5.6e-05 ***
+AO2011.May         0.06688    0.02248    2.97   0.0029 ** 
+LS2016.May        -0.02424    0.02552   -0.95   0.3421    
+xreg1              0.00137    0.00046    2.99   0.0028 ** 
+xreg2              0.01951    0.00765    2.55   0.0107 *  
+xreg3             -0.01294    0.00755   -1.71   0.0865 .  
+MA-Nonseasonal-01  0.36381    0.06152    5.91  3.3e-09 ***
+MA-Seasonal-12     0.62358    0.05502   11.33  &amp;lt; 2e-16 ***
+---
+Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+
+SEATS adj.  ARIMA: (0 1 1)(0 1 1)  Obs.: 235  Transform: log
+AICc:  950, BIC:  980  QS (no seasonality in final):   0  
+Box-Ljung (no autocorr.): 31.2   Shapiro (normality): 0.997  &lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;fazendo-a-acurácia-do-modelo.&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Fazendo a acurácia do modelo.&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(Metrics)
+# mae(actual, predicted) rmse(actual, predicted)
+predicted &amp;lt;- final(ajuste3)
+actual &amp;lt;- consumo.ts
+forecast::accuracy(predicted, actual)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;                ME    RMSE     MAE      MPE    MAPE        ACF1 Theil&amp;#39;s U
+Test set -0.206603 6.36652 3.64985 -1.01552 5.21183 -0.00996298   0.72423&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# idem ao obtido no Metrics abaixo
+(mae3 &amp;lt;- mae(actual, predicted))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 3.64985&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(rmse3 &amp;lt;- rmse(actual, predicted))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 6.36652&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Verifico a especificação do ajuste3.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;static(ajuste3)  # permite o ajuste manual do seas&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;seas(x = consumo.ts, xreg = regs, regression.variables = c(&amp;quot;ao2009.Jan&amp;quot;, 
+&amp;quot;ao2011.May&amp;quot;, &amp;quot;ls2016.May&amp;quot;), regression.usertype = &amp;quot;holiday&amp;quot;, 
+    forecast.save = &amp;quot;forecasts&amp;quot;, arima.model = &amp;quot;(0 1 1)(0 1 1)&amp;quot;, 
+    regression.aictest = NULL, outlier = NULL, transform.function = &amp;quot;log&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Vou avaliar a retirada de ls2016 não significativo em ajuste3.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(seasonal)
+# 
+ajuste4 &amp;lt;- seas(x = consumo.ts, xreg = regs, regression.variables = c(&amp;quot;AO2011.May&amp;quot;, 
+    &amp;quot;AO2009.Jan&amp;quot;), regression.usertype = &amp;quot;holiday&amp;quot;, forecast.save = &amp;quot;forecasts&amp;quot;, 
+    regression.aictest = NULL, outlier = NULL)
+
+qs(ajuste4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;                    qs   p-val
+qsori        401.53016 0.00000
+qsorievadj   407.88433 0.00000
+qsrsd          0.80386 0.66903
+qssadj         0.00000 1.00000
+qssadjevadj    0.00000 1.00000
+qsirr          0.00000 1.00000
+qsirrevadj     0.00000 1.00000
+qssori       152.62432 0.00000
+qssorievadj  152.32568 0.00000
+qssrsd         1.08601 0.58100
+qsssadj        0.00000 1.00000
+qsssadjevadj   0.00000 1.00000
+qssirr         0.00000 1.00000
+qssirrevadj    0.00000 1.00000&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(ajuste4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+Call:
+seas(x = consumo.ts, xreg = regs, regression.aictest = NULL, 
+    outlier = NULL, regression.variables = c(&amp;quot;AO2011.May&amp;quot;, &amp;quot;AO2009.Jan&amp;quot;), 
+    regression.usertype = &amp;quot;holiday&amp;quot;, forecast.save = &amp;quot;forecasts&amp;quot;)
+
+Coefficients:
+                   Estimate Std. Error z value Pr(&amp;gt;|z|)    
+AO2009.Jan         0.090419   0.022427    4.03  5.5e-05 ***
+AO2011.May         0.067174   0.022479    2.99   0.0028 ** 
+xreg1              0.001358   0.000459    2.96   0.0031 ** 
+xreg2              0.018826   0.007608    2.47   0.0133 *  
+xreg3             -0.013312   0.007533   -1.77   0.0772 .  
+MA-Nonseasonal-01  0.359732   0.061636    5.84  5.3e-09 ***
+MA-Seasonal-12     0.621562   0.055065   11.29  &amp;lt; 2e-16 ***
+---
+Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+
+SEATS adj.  ARIMA: (0 1 1)(0 1 1)  Obs.: 235  Transform: log
+AICc:  949, BIC:  975  QS (no seasonality in final):   0  
+Box-Ljung (no autocorr.): 31.7   Shapiro (normality): 0.997  &lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;predicted4 &amp;lt;- final(ajuste4)
+actual &amp;lt;- consumo.ts
+forecast::accuracy(predicted4, actual)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;                ME   RMSE     MAE      MPE    MAPE        ACF1 Theil&amp;#39;s U
+Test set -0.207287 6.3667 3.65141 -1.01648 5.21273 -0.00849573  0.724218&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# idem ao obtido no Metrics abaixo
+require(Metrics)
+(mae4 &amp;lt;- mae(actual, predicted4))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 3.65141&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(rmse4 &amp;lt;- rmse(actual, predicted4))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 6.3667&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;static(ajuste4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;seas(x = consumo.ts, xreg = regs, regression.variables = c(&amp;quot;ao2009.Jan&amp;quot;, 
+&amp;quot;ao2011.May&amp;quot;), regression.usertype = &amp;quot;holiday&amp;quot;, forecast.save = &amp;quot;forecasts&amp;quot;, 
+    arima.model = &amp;quot;(0 1 1)(0 1 1)&amp;quot;, regression.aictest = NULL, 
+    outlier = NULL, transform.function = &amp;quot;log&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Melhorou pelo AICc e significancia e acurácia. Vou checar mais uma alternativa alterando o ARIMA conforme o obtido em &lt;a href=&#34;https://rpubs.com/amrofi/arima_varejoms&#34; class=&#34;uri&#34;&gt;https://rpubs.com/amrofi/arima_varejoms&lt;/a&gt;, ARIMA(4,1,0)(0,1,1)[12].&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# com especificação do ARIMA
+ajuste5 &amp;lt;- seas(x = consumo.ts, xreg = regs, regression.aictest = NULL, regression.variables = c(&amp;quot;AO2011.May&amp;quot;, 
+    &amp;quot;AO2009.Jan&amp;quot;), arima.model = &amp;quot;(3 1 0)(0 1 1)&amp;quot;, regression.usertype = &amp;quot;holiday&amp;quot;, 
+    forecast.save = &amp;quot;forecasts&amp;quot;)
+
+qs(ajuste5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;                    qs   p-val
+qsori        401.53016 0.00000
+qsorievadj   407.96642 0.00000
+qsrsd          0.72012 0.69763
+qssadj         0.00000 1.00000
+qssadjevadj    0.00000 1.00000
+qsirr          0.02259 0.98877
+qsirrevadj     0.00000 1.00000
+qssori       152.62432 0.00000
+qssorievadj  152.39745 0.00000
+qssrsd         0.95080 0.62164
+qsssadj        0.00000 1.00000
+qsssadjevadj   0.00000 1.00000
+qssirr         0.00000 1.00000
+qssirrevadj    0.00000 1.00000&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(ajuste5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+Call:
+seas(x = consumo.ts, xreg = regs, regression.aictest = NULL, 
+    regression.variables = c(&amp;quot;AO2011.May&amp;quot;, &amp;quot;AO2009.Jan&amp;quot;), arima.model = &amp;quot;(3 1 0)(0 1 1)&amp;quot;, 
+    regression.usertype = &amp;quot;holiday&amp;quot;, forecast.save = &amp;quot;forecasts&amp;quot;)
+
+Coefficients:
+                   Estimate Std. Error z value Pr(&amp;gt;|z|)    
+AO2009.Jan         0.088661   0.021967    4.04  5.4e-05 ***
+AO2011.May         0.068433   0.021982    3.11   0.0019 ** 
+xreg1              0.001316   0.000494    2.66   0.0078 ** 
+xreg2              0.021200   0.007611    2.79   0.0053 ** 
+xreg3             -0.011816   0.007530   -1.57   0.1166    
+AR-Nonseasonal-01 -0.381062   0.066003   -5.77  7.8e-09 ***
+AR-Nonseasonal-02 -0.089895   0.070551   -1.27   0.2026    
+AR-Nonseasonal-03  0.093884   0.065988    1.42   0.1548    
+MA-Seasonal-12     0.621361   0.054694   11.36  &amp;lt; 2e-16 ***
+---
+Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+
+SEATS adj.  ARIMA: (3 1 0)(0 1 1)  Obs.: 235  Transform: log
+AICc:  949, BIC:  982  QS (no seasonality in final):   0  
+Box-Ljung (no autocorr.): 28.7   Shapiro (normality): 0.997  &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Comentário: o melhor modelo foi o ajuste4.&lt;/p&gt;
+&lt;p&gt;Testei com level shift para maio de 2017 e não ajudou.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(seasonal)
+# 
+ajuste6 &amp;lt;- seas(x = consumo.ts, xreg = regs, regression.variables = c(&amp;quot;AO2011.May&amp;quot;, 
+    &amp;quot;AO2009.Jan&amp;quot;, &amp;quot;ls2017.May&amp;quot;), regression.usertype = &amp;quot;holiday&amp;quot;, forecast.save = &amp;quot;forecasts&amp;quot;, 
+    regression.aictest = NULL, outlier = NULL)
+
+qs(ajuste6)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;                    qs   p-val
+qsori        401.53016 0.00000
+qsorievadj   407.42904 0.00000
+qsrsd          0.81383 0.66570
+qssadj         0.00000 1.00000
+qssadjevadj    0.00000 1.00000
+qsirr          0.00000 1.00000
+qsirrevadj     0.00000 1.00000
+qssori       152.62432 0.00000
+qssorievadj  152.17610 0.00000
+qssrsd         1.08365 0.58168
+qsssadj        0.00000 1.00000
+qsssadjevadj   0.00000 1.00000
+qssirr         0.00000 1.00000
+qssirrevadj    0.00000 1.00000&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(ajuste6)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+Call:
+seas(x = consumo.ts, xreg = regs, regression.aictest = NULL, 
+    outlier = NULL, regression.variables = c(&amp;quot;AO2011.May&amp;quot;, &amp;quot;AO2009.Jan&amp;quot;, 
+        &amp;quot;ls2017.May&amp;quot;), regression.usertype = &amp;quot;holiday&amp;quot;, forecast.save = &amp;quot;forecasts&amp;quot;)
+
+Coefficients:
+                   Estimate Std. Error z value Pr(&amp;gt;|z|)    
+AO2009.Jan         0.090486   0.022418    4.04  5.4e-05 ***
+AO2011.May         0.067037   0.022474    2.98   0.0029 ** 
+LS2017.May        -0.008531   0.025883   -0.33   0.7417    
+xreg1              0.001371   0.000461    2.97   0.0029 ** 
+xreg2              0.018752   0.007607    2.46   0.0137 *  
+xreg3             -0.013282   0.007529   -1.76   0.0777 .  
+MA-Nonseasonal-01  0.358471   0.061663    5.81  6.1e-09 ***
+MA-Seasonal-12     0.622614   0.055040   11.31  &amp;lt; 2e-16 ***
+---
+Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+
+SEATS adj.  ARIMA: (0 1 1)(0 1 1)  Obs.: 235  Transform: log
+AICc:  951, BIC:  981  QS (no seasonality in final):   0  
+Box-Ljung (no autocorr.): 31.3   Shapiro (normality): 0.997  &lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;predicted6 &amp;lt;- final(ajuste6)
+actual &amp;lt;- consumo.ts
+forecast::accuracy(predicted6, actual)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;                ME    RMSE     MAE      MPE    MAPE        ACF1 Theil&amp;#39;s U
+Test set -0.209946 6.36654 3.65157 -1.02048 5.21332 -0.00905445  0.724206&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# idem ao obtido no Metrics abaixo
+require(Metrics)
+(mae6 &amp;lt;- mae(actual, predicted6))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 3.65157&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(rmse6 &amp;lt;- rmse(actual, predicted6))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 6.36654&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;static(ajuste6)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;seas(x = consumo.ts, xreg = regs, regression.variables = c(&amp;quot;ao2009.Jan&amp;quot;, 
+&amp;quot;ao2011.May&amp;quot;, &amp;quot;ls2017.May&amp;quot;), regression.usertype = &amp;quot;holiday&amp;quot;, 
+    forecast.save = &amp;quot;forecasts&amp;quot;, arima.model = &amp;quot;(0 1 1)(0 1 1)&amp;quot;, 
+    regression.aictest = NULL, outlier = NULL, transform.function = &amp;quot;log&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Fiz uso do &lt;code&gt;seasonalview::view&lt;/code&gt; para obter um refinamento do modelo, a partir do ajuste5. É possível verificar que o modelo melhora com a especificação do ajuste7.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(seasonalview)
+# view(ajuste5) script do shiny
+ajuste7 &amp;lt;- seas(x = consumo.ts, xreg = regs, regression.aictest = NULL, regression.variables = c(&amp;quot;AO2011.May&amp;quot;, 
+    &amp;quot;AO2009.Jan&amp;quot;), arima.model = &amp;quot;(2 1 1)(0 1 1)&amp;quot;, regression.usertype = &amp;quot;holiday&amp;quot;, 
+    forecast.save = &amp;quot;forecasts&amp;quot;)
+summary(ajuste7)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+Call:
+seas(x = consumo.ts, xreg = regs, regression.aictest = NULL, 
+    regression.variables = c(&amp;quot;AO2011.May&amp;quot;, &amp;quot;AO2009.Jan&amp;quot;), arima.model = &amp;quot;(2 1 1)(0 1 1)&amp;quot;, 
+    regression.usertype = &amp;quot;holiday&amp;quot;, forecast.save = &amp;quot;forecasts&amp;quot;)
+
+Coefficients:
+                   Estimate Std. Error z value Pr(&amp;gt;|z|)    
+AO2009.Jan         0.088026   0.021870    4.02  5.7e-05 ***
+AO2011.May         0.065013   0.021902    2.97   0.0030 ** 
+xreg1              0.001299   0.000493    2.64   0.0084 ** 
+xreg2              0.020741   0.007548    2.75   0.0060 ** 
+xreg3             -0.012047   0.007450   -1.62   0.1059    
+AR-Nonseasonal-01 -0.987530   0.206865   -4.77  1.8e-06 ***
+AR-Nonseasonal-02 -0.346695   0.077358   -4.48  7.4e-06 ***
+MA-Nonseasonal-01 -0.609473   0.212446   -2.87   0.0041 ** 
+MA-Seasonal-12     0.617472   0.054676   11.29  &amp;lt; 2e-16 ***
+---
+Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+
+SEATS adj.  ARIMA: (2 1 1)(0 1 1)  Obs.: 235  Transform: log
+AICc:  948, BIC:  981  QS (no seasonality in final):   0  
+Box-Ljung (no autocorr.): 23.6   Shapiro (normality): 0.996  &lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;figura-dos-fatores-sazonais&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Figura dos fatores sazonais&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;monthplot(ajuste7, col.base = 1)
+legend(&amp;quot;topleft&amp;quot;, legend = c(&amp;quot;Irregular&amp;quot;, &amp;quot;Seasonal&amp;quot;, &amp;quot;Seasonal Average&amp;quot;), col = c(4, 
+    2, 1), lwd = c(1, 2, 2), lty = 1, bty = &amp;quot;n&amp;quot;, cex = 0.6)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-16-séries-temporais-consumo-varejo-ms-x13arima-seats_files/figure-html/unnamed-chunk-19-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# figura da serie ajustada
+plot(ajuste7, main = &amp;quot;Ajuste 7 de consumo.ts&amp;quot;)
+grid()
+legend(&amp;quot;topleft&amp;quot;, legend = c(&amp;quot;Original&amp;quot;, &amp;quot;Adjusted&amp;quot;), col = c(1, 2), lwd = c(1, 2), 
+    lty = 1, bty = &amp;quot;n&amp;quot;, cex = 0.6)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-16-séries-temporais-consumo-varejo-ms-x13arima-seats_files/figure-html/unnamed-chunk-19-2.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;forecasts-do-ajuste7&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Forecasts do ajuste7&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;forecasts7 &amp;lt;- series(ajuste7, c(&amp;quot;forecast.forecasts&amp;quot;))
+
+require(graphics)
+require(zoo)
+data.fcst &amp;lt;- cbind.zoo(consumo.ts, series(ajuste7, &amp;quot;forecast.forecasts&amp;quot;))
+ts.plot(data.fcst, col = c(1, 2, 3, 4), main = &amp;quot;serie original de consumo e forecasts ajuste7&amp;quot;, 
+    xlab = &amp;quot;Mes/Ano&amp;quot;)
+legend(&amp;quot;topleft&amp;quot;, lty = 1, pch = 1, col = 1:4, c(&amp;quot;data&amp;quot;, &amp;quot;X13as&amp;quot;, &amp;quot;Lim Inferior&amp;quot;, 
+    &amp;quot;Lim Superior&amp;quot;))
+grid()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-16-séries-temporais-consumo-varejo-ms-x13arima-seats_files/figure-html/unnamed-chunk-20-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(forecasts7)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+         forecast  lowerci  upperci
+Aug 2019  91.5024  86.3002  97.0182
+Sep 2019  91.0369  84.9747  97.5315
+Oct 2019  94.3149  87.1782 102.0358
+Nov 2019  95.8695  87.6102 104.9075
+Dec 2019 117.0635 106.1817 129.0605
+Jan 2020  90.8174  81.6707 100.9885
+Feb 2020  82.2767  73.4446  92.1710
+Mar 2020  90.8880  80.5582 102.5424
+Apr 2020  86.0581  75.7910  97.7160
+May 2020  89.5263  78.3563 102.2887
+Jun 2020  86.6995  75.4371  99.6432
+Jul 2020  90.4649  78.2656 104.5658
+Aug 2020  90.9903  77.6948 106.5609
+Sep 2020  91.0194  77.0286 107.5514
+Oct 2020  93.2418  78.2199 111.1486
+Nov 2020  95.8195  79.6586 115.2591
+Dec 2020 117.4116  96.8378 142.3564
+Jan 2021  89.8902  73.5364 109.8809
+Feb 2021  82.4448  66.9419 101.5382
+Mar 2021  92.1331  74.2568 114.3130
+Apr 2021  85.0685  68.0859 106.2872
+May 2021  89.8199  71.3990 112.9934
+Jun 2021  86.5924  68.3761 109.6617
+Jul 2021  89.9424  70.5623 114.6453
+Aug 2021  91.2909  70.7465 117.8012
+Sep 2021  90.9064  69.7949 118.4036
+Oct 2021  92.7030  70.5194 121.8651
+Nov 2021  95.7003  72.1191 126.9921
+Dec 2021 117.7998  88.0123 157.6688
+Jan 2022  90.1874  66.8013 121.7606
+Feb 2022  83.1171  61.0589 113.1440
+Mar 2022  90.2201  65.7405 123.8151
+Apr 2022  85.4589  61.7776 118.2178
+ [ reached getOption(&amp;quot;max.print&amp;quot;) -- omitted 3 rows ]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;require(xlsx)
+write.xlsx(as.data.frame.ts(forecasts7), &amp;quot;forecasts.xlsx&amp;quot;, col.names = TRUE, row.names = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;opção-gráfica&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Opção gráfica&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dygraphs)
+dygraph(data.fcst, main = &amp;quot;Índice de consumo do varejo de Mato Grosso do Sul&amp;quot;) %&amp;gt;% 
+    dyAxis(&amp;quot;y&amp;quot;, label = &amp;quot;Índice&amp;quot;, valueRange = c(0, 150), axisLabelFontSize = 20) %&amp;gt;% 
+    dyAxis(&amp;quot;x&amp;quot;, label = &amp;quot;Mês/Ano&amp;quot;, axisLabelFontSize = 20) %&amp;gt;% dyGroup(c(&amp;quot;consumo.ts&amp;quot;, 
+    &amp;quot;forecast&amp;quot;), drawPoints = TRUE, color = c(&amp;quot;blue&amp;quot;, &amp;quot;red&amp;quot;)) %&amp;gt;% dyLegend(width = 400) %&amp;gt;% 
+    dyAnnotation(&amp;quot;2009-1-1&amp;quot;, text = &amp;quot;AOjan09&amp;quot;, attachAtBottom = TRUE, width = 80) %&amp;gt;% 
+    dyAnnotation(&amp;quot;2011-5-1&amp;quot;, text = &amp;quot;AOmai11&amp;quot;, attachAtBottom = TRUE, width = 80) %&amp;gt;% 
+    dyAnnotation(&amp;quot;2016-5-1&amp;quot;, text = &amp;quot;LSmai16&amp;quot;, attachAtBottom = TRUE, width = 80) %&amp;gt;% 
+    dyOptions(drawPoints = TRUE, pointSize = 5, pointShape = &amp;quot;triangle&amp;quot;, axisLineWidth = 1.5)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;dygraphs html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;attrs&#34;:{&#34;axes&#34;:{&#34;x&#34;:{&#34;pixelsPerLabel&#34;:60,&#34;axisLabelFontSize&#34;:20,&#34;drawAxis&#34;:true},&#34;y&#34;:{&#34;valueRange&#34;:[0,150],&#34;axisLabelFontSize&#34;:20,&#34;drawAxis&#34;:true}},&#34;title&#34;:&#34;Índice de consumo do varejo de Mato Grosso do Sul&#34;,&#34;labels&#34;:[&#34;month&#34;,&#34;lowerci&#34;,&#34;upperci&#34;,&#34;consumo.ts&#34;,&#34;forecast&#34;],&#34;retainDateWindow&#34;:false,&#34;ylabel&#34;:&#34;Índice&#34;,&#34;xlabel&#34;:&#34;Mês/Ano&#34;,&#34;colors&#34;:[&#34;#008033&#34;,&#34;#660080&#34;,&#34;blue&#34;,&#34;red&#34;],&#34;series&#34;:{&#34;consumo.ts&#34;:{&#34;axis&#34;:&#34;y&#34;,&#34;drawPoints&#34;:true,&#34;group&#34;:&#34;consumo.tsforecast&#34;},&#34;forecast&#34;:{&#34;axis&#34;:&#34;y&#34;,&#34;drawPoints&#34;:true,&#34;group&#34;:&#34;consumo.tsforecast&#34;}},&#34;legend&#34;:&#34;auto&#34;,&#34;labelsDivWidth&#34;:400,&#34;labelsShowZeroValues&#34;:true,&#34;labelsSeparateLines&#34;:false,&#34;hideOverlayOnMouseOut&#34;:true,&#34;stackedGraph&#34;:false,&#34;fillGraph&#34;:false,&#34;fillAlpha&#34;:0.15,&#34;stepPlot&#34;:false,&#34;drawPoints&#34;:true,&#34;pointSize&#34;:5,&#34;drawGapEdgePoints&#34;:false,&#34;connectSeparatedPoints&#34;:false,&#34;strokeWidth&#34;:1,&#34;strokeBorderColor&#34;:&#34;white&#34;,&#34;colorValue&#34;:0.5,&#34;colorSaturation&#34;:1,&#34;includeZero&#34;:false,&#34;drawAxesAtZero&#34;:false,&#34;logscale&#34;:false,&#34;axisTickSize&#34;:3,&#34;axisLineColor&#34;:&#34;black&#34;,&#34;axisLineWidth&#34;:1.5,&#34;axisLabelColor&#34;:&#34;black&#34;,&#34;axisLabelFontSize&#34;:14,&#34;axisLabelWidth&#34;:60,&#34;drawGrid&#34;:true,&#34;gridLineWidth&#34;:0.3,&#34;rightGap&#34;:5,&#34;digitsAfterDecimal&#34;:2,&#34;labelsKMB&#34;:false,&#34;labelsKMG2&#34;:false,&#34;labelsUTC&#34;:false,&#34;maxNumberWidth&#34;:6,&#34;animatedZooms&#34;:false,&#34;mobileDisableYTouch&#34;:true,&#34;disableZoom&#34;:false},&#34;scale&#34;:&#34;monthly&#34;,&#34;annotations&#34;:[{&#34;x&#34;:&#34;2009-01-01T00:00:00.000Z&#34;,&#34;shortText&#34;:&#34;AOjan09&#34;,&#34;width&#34;:80,&#34;attachAtBottom&#34;:true,&#34;series&#34;:&#34;forecast&#34;},{&#34;x&#34;:&#34;2011-05-01T00:00:00.000Z&#34;,&#34;shortText&#34;:&#34;AOmai11&#34;,&#34;width&#34;:80,&#34;attachAtBottom&#34;:true,&#34;series&#34;:&#34;forecast&#34;},{&#34;x&#34;:&#34;2016-05-01T00:00:00.000Z&#34;,&#34;shortText&#34;:&#34;LSmai16&#34;,&#34;width&#34;:80,&#34;attachAtBottom&#34;:true,&#34;series&#34;:&#34;forecast&#34;}],&#34;shadings&#34;:[],&#34;events&#34;:[],&#34;format&#34;:&#34;date&#34;,&#34;data&#34;:[[&#34;2000-01-01T00:00:00.000Z&#34;,&#34;2000-02-01T00:00:00.000Z&#34;,&#34;2000-03-01T00:00:00.000Z&#34;,&#34;2000-04-01T00:00:00.000Z&#34;,&#34;2000-05-01T00:00:00.000Z&#34;,&#34;2000-06-01T00:00:00.000Z&#34;,&#34;2000-07-01T00:00:00.000Z&#34;,&#34;2000-08-01T00:00:00.000Z&#34;,&#34;2000-09-01T00:00:00.000Z&#34;,&#34;2000-10-01T00:00:00.000Z&#34;,&#34;2000-11-01T00:00:00.000Z&#34;,&#34;2000-12-01T00:00:00.000Z&#34;,&#34;2001-01-01T00:00:00.000Z&#34;,&#34;2001-02-01T00:00:00.000Z&#34;,&#34;2001-03-01T00:00:00.000Z&#34;,&#34;2001-04-01T00:00:00.000Z&#34;,&#34;2001-05-01T00:00:00.000Z&#34;,&#34;2001-06-01T00:00:00.000Z&#34;,&#34;2001-07-01T00:00:00.000Z&#34;,&#34;2001-08-01T00:00:00.000Z&#34;,&#34;2001-09-01T00:00:00.000Z&#34;,&#34;2001-10-01T00:00:00.000Z&#34;,&#34;2001-11-01T00:00:00.000Z&#34;,&#34;2001-12-01T00:00:00.000Z&#34;,&#34;2002-01-01T00:00:00.000Z&#34;,&#34;2002-02-01T00:00:00.000Z&#34;,&#34;2002-03-01T00:00:00.000Z&#34;,&#34;2002-04-01T00:00:00.000Z&#34;,&#34;2002-05-01T00:00:00.000Z&#34;,&#34;2002-06-01T00:00:00.000Z&#34;,&#34;2002-07-01T00:00:00.000Z&#34;,&#34;2002-08-01T00:00:00.000Z&#34;,&#34;2002-09-01T00:00:00.000Z&#34;,&#34;2002-10-01T00:00:00.000Z&#34;,&#34;2002-11-01T00:00:00.000Z&#34;,&#34;2002-12-01T00:00:00.000Z&#34;,&#34;2003-01-01T00:00:00.000Z&#34;,&#34;2003-02-01T00:00:00.000Z&#34;,&#34;2003-03-01T00:00:00.000Z&#34;,&#34;2003-04-01T00:00:00.000Z&#34;,&#34;2003-05-01T00:00:00.000Z&#34;,&#34;2003-06-01T00:00:00.000Z&#34;,&#34;2003-07-01T00:00:00.000Z&#34;,&#34;2003-08-01T00:00:00.000Z&#34;,&#34;2003-09-01T00:00:00.000Z&#34;,&#34;2003-10-01T00:00:00.000Z&#34;,&#34;2003-11-01T00:00:00.000Z&#34;,&#34;2003-12-01T00:00:00.000Z&#34;,&#34;2004-01-01T00:00:00.000Z&#34;,&#34;2004-02-01T00:00:00.000Z&#34;,&#34;2004-03-01T00:00:00.000Z&#34;,&#34;2004-04-01T00:00:00.000Z&#34;,&#34;2004-05-01T00:00:00.000Z&#34;,&#34;2004-06-01T00:00:00.000Z&#34;,&#34;2004-07-01T00:00:00.000Z&#34;,&#34;2004-08-01T00:00:00.000Z&#34;,&#34;2004-09-01T00:00:00.000Z&#34;,&#34;2004-10-01T00:00:00.000Z&#34;,&#34;2004-11-01T00:00:00.000Z&#34;,&#34;2004-12-01T00:00:00.000Z&#34;,&#34;2005-01-01T00:00:00.000Z&#34;,&#34;2005-02-01T00:00:00.000Z&#34;,&#34;2005-03-01T00:00:00.000Z&#34;,&#34;2005-04-01T00:00:00.000Z&#34;,&#34;2005-05-01T00:00:00.000Z&#34;,&#34;2005-06-01T00:00:00.000Z&#34;,&#34;2005-07-01T00:00:00.000Z&#34;,&#34;2005-08-01T00:00:00.000Z&#34;,&#34;2005-09-01T00:00:00.000Z&#34;,&#34;2005-10-01T00:00:00.000Z&#34;,&#34;2005-11-01T00:00:00.000Z&#34;,&#34;2005-12-01T00:00:00.000Z&#34;,&#34;2006-01-01T00:00:00.000Z&#34;,&#34;2006-02-01T00:00:00.000Z&#34;,&#34;2006-03-01T00:00:00.000Z&#34;,&#34;2006-04-01T00:00:00.000Z&#34;,&#34;2006-05-01T00:00:00.000Z&#34;,&#34;2006-06-01T00:00:00.000Z&#34;,&#34;2006-07-01T00:00:00.000Z&#34;,&#34;2006-08-01T00:00:00.000Z&#34;,&#34;2006-09-01T00:00:00.000Z&#34;,&#34;2006-10-01T00:00:00.000Z&#34;,&#34;2006-11-01T00:00:00.000Z&#34;,&#34;2006-12-01T00:00:00.000Z&#34;,&#34;2007-01-01T00:00:00.000Z&#34;,&#34;2007-02-01T00:00:00.000Z&#34;,&#34;2007-03-01T00:00:00.000Z&#34;,&#34;2007-04-01T00:00:00.000Z&#34;,&#34;2007-05-01T00:00:00.000Z&#34;,&#34;2007-06-01T00:00:00.000Z&#34;,&#34;2007-07-01T00:00:00.000Z&#34;,&#34;2007-08-01T00:00:00.000Z&#34;,&#34;2007-09-01T00:00:00.000Z&#34;,&#34;2007-10-01T00:00:00.000Z&#34;,&#34;2007-11-01T00:00:00.000Z&#34;,&#34;2007-12-01T00:00:00.000Z&#34;,&#34;2008-01-01T00:00:00.000Z&#34;,&#34;2008-02-01T00:00:00.000Z&#34;,&#34;2008-03-01T00:00:00.000Z&#34;,&#34;2008-04-01T00:00:00.000Z&#34;,&#34;2008-05-01T00:00:00.000Z&#34;,&#34;2008-06-01T00:00:00.000Z&#34;,&#34;2008-07-01T00:00:00.000Z&#34;,&#34;2008-08-01T00:00:00.000Z&#34;,&#34;2008-09-01T00:00:00.000Z&#34;,&#34;2008-10-01T00:00:00.000Z&#34;,&#34;2008-11-01T00:00:00.000Z&#34;,&#34;2008-12-01T00:00:00.000Z&#34;,&#34;2009-01-01T00:00:00.000Z&#34;,&#34;2009-02-01T00:00:00.000Z&#34;,&#34;2009-03-01T00:00:00.000Z&#34;,&#34;2009-04-01T00:00:00.000Z&#34;,&#34;2009-05-01T00:00:00.000Z&#34;,&#34;2009-06-01T00:00:00.000Z&#34;,&#34;2009-07-01T00:00:00.000Z&#34;,&#34;2009-08-01T00:00:00.000Z&#34;,&#34;2009-09-01T00:00:00.000Z&#34;,&#34;2009-10-01T00:00:00.000Z&#34;,&#34;2009-11-01T00:00:00.000Z&#34;,&#34;2009-12-01T00:00:00.000Z&#34;,&#34;2010-01-01T00:00:00.000Z&#34;,&#34;2010-02-01T00:00:00.000Z&#34;,&#34;2010-03-01T00:00:00.000Z&#34;,&#34;2010-04-01T00:00:00.000Z&#34;,&#34;2010-05-01T00:00:00.000Z&#34;,&#34;2010-06-01T00:00:00.000Z&#34;,&#34;2010-07-01T00:00:00.000Z&#34;,&#34;2010-08-01T00:00:00.000Z&#34;,&#34;2010-09-01T00:00:00.000Z&#34;,&#34;2010-10-01T00:00:00.000Z&#34;,&#34;2010-11-01T00:00:00.000Z&#34;,&#34;2010-12-01T00:00:00.000Z&#34;,&#34;2011-01-01T00:00:00.000Z&#34;,&#34;2011-02-01T00:00:00.000Z&#34;,&#34;2011-03-01T00:00:00.000Z&#34;,&#34;2011-04-01T00:00:00.000Z&#34;,&#34;2011-05-01T00:00:00.000Z&#34;,&#34;2011-06-01T00:00:00.000Z&#34;,&#34;2011-07-01T00:00:00.000Z&#34;,&#34;2011-08-01T00:00:00.000Z&#34;,&#34;2011-09-01T00:00:00.000Z&#34;,&#34;2011-10-01T00:00:00.000Z&#34;,&#34;2011-11-01T00:00:00.000Z&#34;,&#34;2011-12-01T00:00:00.000Z&#34;,&#34;2012-01-01T00:00:00.000Z&#34;,&#34;2012-02-01T00:00:00.000Z&#34;,&#34;2012-03-01T00:00:00.000Z&#34;,&#34;2012-04-01T00:00:00.000Z&#34;,&#34;2012-05-01T00:00:00.000Z&#34;,&#34;2012-06-01T00:00:00.000Z&#34;,&#34;2012-07-01T00:00:00.000Z&#34;,&#34;2012-08-01T00:00:00.000Z&#34;,&#34;2012-09-01T00:00:00.000Z&#34;,&#34;2012-10-01T00:00:00.000Z&#34;,&#34;2012-11-01T00:00:00.000Z&#34;,&#34;2012-12-01T00:00:00.000Z&#34;,&#34;2013-01-01T00:00:00.000Z&#34;,&#34;2013-02-01T00:00:00.000Z&#34;,&#34;2013-03-01T00:00:00.000Z&#34;,&#34;2013-04-01T00:00:00.000Z&#34;,&#34;2013-05-01T00:00:00.000Z&#34;,&#34;2013-06-01T00:00:00.000Z&#34;,&#34;2013-07-01T00:00:00.000Z&#34;,&#34;2013-08-01T00:00:00.000Z&#34;,&#34;2013-09-01T00:00:00.000Z&#34;,&#34;2013-10-01T00:00:00.000Z&#34;,&#34;2013-11-01T00:00:00.000Z&#34;,&#34;2013-12-01T00:00:00.000Z&#34;,&#34;2014-01-01T00:00:00.000Z&#34;,&#34;2014-02-01T00:00:00.000Z&#34;,&#34;2014-03-01T00:00:00.000Z&#34;,&#34;2014-04-01T00:00:00.000Z&#34;,&#34;2014-05-01T00:00:00.000Z&#34;,&#34;2014-06-01T00:00:00.000Z&#34;,&#34;2014-07-01T00:00:00.000Z&#34;,&#34;2014-08-01T00:00:00.000Z&#34;,&#34;2014-09-01T00:00:00.000Z&#34;,&#34;2014-10-01T00:00:00.000Z&#34;,&#34;2014-11-01T00:00:00.000Z&#34;,&#34;2014-12-01T00:00:00.000Z&#34;,&#34;2015-01-01T00:00:00.000Z&#34;,&#34;2015-02-01T00:00:00.000Z&#34;,&#34;2015-03-01T00:00:00.000Z&#34;,&#34;2015-04-01T00:00:00.000Z&#34;,&#34;2015-05-01T00:00:00.000Z&#34;,&#34;2015-06-01T00:00:00.000Z&#34;,&#34;2015-07-01T00:00:00.000Z&#34;,&#34;2015-08-01T00:00:00.000Z&#34;,&#34;2015-09-01T00:00:00.000Z&#34;,&#34;2015-10-01T00:00:00.000Z&#34;,&#34;2015-11-01T00:00:00.000Z&#34;,&#34;2015-12-01T00:00:00.000Z&#34;,&#34;2016-01-01T00:00:00.000Z&#34;,&#34;2016-02-01T00:00:00.000Z&#34;,&#34;2016-03-01T00:00:00.000Z&#34;,&#34;2016-04-01T00:00:00.000Z&#34;,&#34;2016-05-01T00:00:00.000Z&#34;,&#34;2016-06-01T00:00:00.000Z&#34;,&#34;2016-07-01T00:00:00.000Z&#34;,&#34;2016-08-01T00:00:00.000Z&#34;,&#34;2016-09-01T00:00:00.000Z&#34;,&#34;2016-10-01T00:00:00.000Z&#34;,&#34;2016-11-01T00:00:00.000Z&#34;,&#34;2016-12-01T00:00:00.000Z&#34;,&#34;2017-01-01T00:00:00.000Z&#34;,&#34;2017-02-01T00:00:00.000Z&#34;,&#34;2017-03-01T00:00:00.000Z&#34;,&#34;2017-04-01T00:00:00.000Z&#34;,&#34;2017-05-01T00:00:00.000Z&#34;,&#34;2017-06-01T00:00:00.000Z&#34;,&#34;2017-07-01T00:00:00.000Z&#34;,&#34;2017-08-01T00:00:00.000Z&#34;,&#34;2017-09-01T00:00:00.000Z&#34;,&#34;2017-10-01T00:00:00.000Z&#34;,&#34;2017-11-01T00:00:00.000Z&#34;,&#34;2017-12-01T00:00:00.000Z&#34;,&#34;2018-01-01T00:00:00.000Z&#34;,&#34;2018-02-01T00:00:00.000Z&#34;,&#34;2018-03-01T00:00:00.000Z&#34;,&#34;2018-04-01T00:00:00.000Z&#34;,&#34;2018-05-01T00:00:00.000Z&#34;,&#34;2018-06-01T00:00:00.000Z&#34;,&#34;2018-07-01T00:00:00.000Z&#34;,&#34;2018-08-01T00:00:00.000Z&#34;,&#34;2018-09-01T00:00:00.000Z&#34;,&#34;2018-10-01T00:00:00.000Z&#34;,&#34;2018-11-01T00:00:00.000Z&#34;,&#34;2018-12-01T00:00:00.000Z&#34;,&#34;2019-01-01T00:00:00.000Z&#34;,&#34;2019-02-01T00:00:00.000Z&#34;,&#34;2019-03-01T00:00:00.000Z&#34;,&#34;2019-04-01T00:00:00.000Z&#34;,&#34;2019-05-01T00:00:00.000Z&#34;,&#34;2019-06-01T00:00:00.000Z&#34;,&#34;2019-07-01T00:00:00.000Z&#34;,&#34;2019-08-01T00:00:00.000Z&#34;,&#34;2019-09-01T00:00:00.000Z&#34;,&#34;2019-10-01T00:00:00.000Z&#34;,&#34;2019-11-01T00:00:00.000Z&#34;,&#34;2019-12-01T00:00:00.000Z&#34;,&#34;2020-01-01T00:00:00.000Z&#34;,&#34;2020-02-01T00:00:00.000Z&#34;,&#34;2020-03-01T00:00:00.000Z&#34;,&#34;2020-04-01T00:00:00.000Z&#34;,&#34;2020-05-01T00:00:00.000Z&#34;,&#34;2020-06-01T00:00:00.000Z&#34;,&#34;2020-07-01T00:00:00.000Z&#34;,&#34;2020-08-01T00:00:00.000Z&#34;,&#34;2020-09-01T00:00:00.000Z&#34;,&#34;2020-10-01T00:00:00.000Z&#34;,&#34;2020-11-01T00:00:00.000Z&#34;,&#34;2020-12-01T00:00:00.000Z&#34;,&#34;2021-01-01T00:00:00.000Z&#34;,&#34;2021-02-01T00:00:00.000Z&#34;,&#34;2021-03-01T00:00:00.000Z&#34;,&#34;2021-04-01T00:00:00.000Z&#34;,&#34;2021-05-01T00:00:00.000Z&#34;,&#34;2021-06-01T00:00:00.000Z&#34;,&#34;2021-07-01T00:00:00.000Z&#34;,&#34;2021-08-01T00:00:00.000Z&#34;,&#34;2021-09-01T00:00:00.000Z&#34;,&#34;2021-10-01T00:00:00.000Z&#34;,&#34;2021-11-01T00:00:00.000Z&#34;,&#34;2021-12-01T00:00:00.000Z&#34;,&#34;2022-01-01T00:00:00.000Z&#34;,&#34;2022-02-01T00:00:00.000Z&#34;,&#34;2022-03-01T00:00:00.000Z&#34;,&#34;2022-04-01T00:00:00.000Z&#34;,&#34;2022-05-01T00:00:00.000Z&#34;,&#34;2022-06-01T00:00:00.000Z&#34;,&#34;2022-07-01T00:00:00.000Z&#34;],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,86.3001608649687,84.9747260474517,87.1781526716296,87.610212727725,106.181653895255,81.6706968454331,73.4445518098361,80.5581503345428,75.7909656538463,78.3562717584223,75.4371077095241,78.2655915670098,77.6948386915481,77.0285584831613,78.2199293120035,79.6586324540812,96.8377584957838,73.5364059184186,66.941855197476,74.2567750110813,68.08588352169,71.3989598994914,68.3760816561312,70.5623061505702,70.7465183531856,69.7949373249042,70.5194030503222,72.1190941029046,88.0123040218049,66.8013280895536,61.0589112578202,65.7405109749968,61.7776321206968,64.6502213577153,61.5779830713695,63.1999014901575],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,97.0181993528008,97.5314859416604,102.035797395873,104.907486273034,129.0605118688,100.988519118641,92.1710344904198,102.542420891245,97.7160182988902,102.288719539417,99.6432296277822,104.565815117524,106.560869310502,107.551369118696,111.148568469728,115.259086041404,142.356407345042,109.880853787031,101.538153762887,114.313003065088,106.287158582731,112.993442179933,109.661734341377,114.645335157047,117.801158585443,118.403565307022,121.865099449506,126.992086018741,157.668831271989,121.760623968956,113.143994803687,123.815115401225,118.217793106636,125.615358238978,121.465221787634,126.52643893259],[35.2,35.6,39.2,40.5,41.6,40.4,40.8,38.7,37.3,37.6,35.6,47.4,34.2,32.2,38,37.5,38.8,35,38.4,40.2,38.2,39.3,36,46.3,36.4,34,39,37.8,38.9,35.3,37.2,38.1,35.6,38.3,35.6,45.7,32.2,31.6,35.2,36.8,37.5,34.8,38.4,38.1,37,39,37.3,49,35.8,35.3,40.2,41.3,43.9,41.6,45.9,42.3,42.2,44,41.3,56.9,38.5,38.5,45.3,43.6,46.2,44.3,47.5,46.5,46.4,46,44.1,61,42,40.2,44.6,44.5,47.8,45.3,46.5,48.5,47.7,50.2,49.3,64.5,47,46.8,51,50.5,55,51.3,52.8,55.3,54.8,55.6,55.3,72.2,54.5,52.1,56.2,57.2,60.8,56.1,61.8,61.6,59.8,63.3,57.7,77.4,61.4,51.9,57.3,57.9,61.9,57.3,61.1,61.1,60.6,65.6,63.5,83.1,64.1,60.2,67.8,67.1,72.8,68.5,71.1,69.3,69.9,71.1,67.9,92.7,67.5,64.8,69.1,69.4,79.6,70.2,73.8,72.5,71.3,75.6,74.7,100.8,79.5,75.7,82.4,78,84.8,83.2,84.8,88.5,86.3,91.7,92.8,111.4,92.8,83.7,92.5,88.3,93.9,88.8,96,95.9,93.2,98.3,100.5,128.8,97.2,90.2,94.3,94.4,101.1,92,96.4,98.2,97.6,105.8,103.1,129.6,99.6,87.8,97,94.8,98.6,93.4,98.4,96.4,92.5,100.6,97.2,124.5,91.5,85.1,91.6,88.5,92.2,87.4,90.5,88.1,85.2,89.4,93.4,116.9,90.8,84,89.7,86.3,90,87.3,90.8,93.5,93.7,91.4,93.5,114.1,87.8,81.1,94.5,83.2,89.9,88.8,89.3,93.7,93.5,96.3,101.3,118.3,93.8,85.2,90,86.6,90,85.2,90.9,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,91.5023836354896,91.036867800323,94.3148573839185,95.8695321210621,117.063481080981,90.8174142431271,82.2767301124554,90.8879956750333,86.0580698524072,89.5263240954949,86.6994639311908,90.4649400478415,90.9902717432506,91.0193766519171,93.2417994722993,95.8195239602321,117.411564144281,89.8901722478353,82.4448445096127,92.1331370867468,85.0685317794732,89.8198989484543,86.592376696098,89.9424217935355,91.2908638796434,90.9063772221112,92.703042376436,95.7003354325875,117.799817965364,90.1874236805719,83.1170809044302,90.2201139042993,85.4588516928608,90.1169280217577,86.4845845859194,89.4229191898817]],&#34;fixedtz&#34;:false,&#34;tzone&#34;:&#34;&#34;,&#34;pointShape&#34;:&#34;triangle&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;p&gt;Agora que já temos as informações até fev/2020, podemos comparar as estimativas com os dados reais.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# dadosnovos&amp;lt;-BETS::BETSget(1479)
+dadosnovos &amp;lt;- structure(c(35.2, 35.6, 39.2, 40.5, 41.6, 40.4, 40.8, 38.7, 37.3, 37.6, 
+    35.6, 47.4, 34.2, 32.2, 38, 37.5, 38.8, 35, 38.4, 40.2, 38.2, 39.3, 36, 46.3, 
+    36.4, 34, 39, 37.8, 38.9, 35.3, 37.2, 38.1, 35.6, 38.3, 35.6, 45.7, 32.2, 31.6, 
+    35.2, 36.8, 37.5, 34.8, 38.4, 38.1, 37, 39, 37.3, 49, 35.8, 35.3, 40.2, 41.3, 
+    43.9, 41.6, 45.9, 42.3, 42.2, 44, 41.3, 56.9, 38.5, 38.5, 45.3, 43.6, 46.2, 44.3, 
+    47.5, 46.5, 46.4, 46, 44.1, 61, 42, 40.2, 44.6, 44.5, 47.8, 45.3, 46.5, 48.5, 
+    47.7, 50.2, 49.3, 64.5, 47, 46.8, 51, 50.5, 55, 51.3, 52.8, 55.3, 54.8, 55.6, 
+    55.3, 72.2, 54.5, 52.1, 56.2, 57.2, 60.8, 56.1, 61.8, 61.6, 59.8, 63.3, 57.7, 
+    77.4, 61.4, 51.9, 57.3, 57.9, 61.9, 57.3, 61.1, 61.1, 60.6, 65.6, 63.5, 83.1, 
+    64.1, 60.2, 67.8, 67.1, 72.8, 68.5, 71.1, 69.3, 69.9, 71.1, 67.9, 92.7, 67.5, 
+    64.8, 69.1, 69.4, 79.6, 70.2, 73.8, 72.5, 71.3, 75.6, 74.7, 100.8, 79.5, 75.7, 
+    82.4, 78, 84.8, 83.2, 84.8, 88.5, 86.3, 91.7, 92.8, 111.4, 92.8, 83.7, 92.5, 
+    88.3, 93.9, 88.8, 96, 95.9, 93.2, 98.3, 100.5, 128.8, 97.2, 90.2, 94.3, 94.4, 
+    101.1, 92, 96.4, 98.2, 97.6, 105.8, 103.1, 129.6, 99.6, 87.8, 97, 94.8, 98.6, 
+    93.4, 98.4, 96.4, 92.5, 100.6, 97.2, 124.5, 91.5, 85.1, 91.6, 88.5, 92.2, 87.4, 
+    90.5, 88.1, 85.2, 89.4, 93.4, 116.9, 90.8, 84, 89.7, 86.3, 90, 87.3, 90.8, 93.5, 
+    93.7, 91.4, 93.5, 114.1, 87.8, 81.1, 94.5, 83.2, 89.9, 88.8, 89.3, 93.7, 93.5, 
+    96.3, 101.3, 118.3, 93.8, 85.2, 90, 86.6, 90, 85.2, 91, 94.4, 93.4, 95.9, 102.6, 
+    116, 94.9, 89.1), .Tsp = c(2000, 2020.08333333333, 12), class = &amp;quot;ts&amp;quot;)
+# View(cbind.zoo(data.fcst,dadosnovos))
+print(cbind.zoo(data.fcst, dadosnovos)[230:242])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;         consumo.ts forecast  lowerci  upperci dadosnovos
+fev 2019       85.2       NA       NA       NA       85.2
+mar 2019       90.0       NA       NA       NA       90.0
+abr 2019       86.6       NA       NA       NA       86.6
+mai 2019       90.0       NA       NA       NA       90.0
+jun 2019       85.2       NA       NA       NA       85.2
+jul 2019       90.9       NA       NA       NA       91.0
+ago 2019         NA  91.5024  86.3002  97.0182       94.4
+set 2019         NA  91.0369  84.9747  97.5315       93.4
+out 2019         NA  94.3149  87.1782 102.0358       95.9
+nov 2019         NA  95.8695  87.6102 104.9075      102.6
+dez 2019         NA 117.0635 106.1817 129.0605      116.0
+jan 2020         NA  90.8174  81.6707 100.9885       94.9
+fev 2020         NA  82.2767  73.4446  92.1710       89.1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Acurácia do período Agosto/2019 a fev/2020:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;previsto &amp;lt;- forecasts7[1:7, 1]
+observado &amp;lt;- dadosnovos[236:242]
+forecast::accuracy(previsto, observado)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;              ME    RMSE     MAE     MPE    MAPE
+Test set 3.34553 4.24513 3.64939 3.55081 3.81275&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ou seja, um erro percentual médio de 3.55% e um erro absoluto médio de 3.64%.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;Referências&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Referências&lt;/h1&gt;
+&lt;p&gt;FERREIRA, Pedro Costa; SPERANZA, Talitha; COSTA, Jonatha (2018). BETS: Brazilian Economic Time Series. R package version 0.4.9. Disponível em: &lt;a href=&#34;https://CRAN.R-project.org/package=BETS&#34; class=&#34;uri&#34;&gt;https://CRAN.R-project.org/package=BETS&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;FERREIRA, Pedro C.; MATOS, Daiane M. Usando o R para ensinar Ajuste Sazonal. São Paulo: FGV, 2017. 18p. Disponível em: &lt;a href=&#34;http://portalibre.fgv.br/lumis/portal/file/fileDownload.jsp?fileId=8A7C82C5519A547801533DF7BE5E2D0D&#34; class=&#34;uri&#34;&gt;http://portalibre.fgv.br/lumis/portal/file/fileDownload.jsp?fileId=8A7C82C5519A547801533DF7BE5E2D0D&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;HYNDMAN, Rob. (2018). fpp2: Data for “Forecasting: Principles and Practice” (2nd Edition). R package version 2.3. Disponível em: &lt;a href=&#34;https://CRAN.R-project.org/package=fpp2&#34; class=&#34;uri&#34;&gt;https://CRAN.R-project.org/package=fpp2&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;HYNDMAN, R.J., &amp;amp; ATHANASOPOULOS, G. (2018) Forecasting: principles and practice, 2nd edition, OTexts: Melbourne, Australia. Disponível em: &lt;a href=&#34;https://otexts.com/fpp2/&#34; class=&#34;uri&#34;&gt;https://otexts.com/fpp2/&lt;/a&gt;. Accessed on 12 Set 2019.&lt;/p&gt;
+&lt;p&gt;SAX, C; EDDELBUETTEL, D. (2018). “Seasonal Adjustment by X-13ARIMA-SEATS
+in R.” &lt;em&gt;Journal of Statistical Software&lt;/em&gt;, &lt;em&gt;87&lt;/em&gt;(11), 1-17. doi:
+10.18637/jss.v087.i11 (URL: &lt;a href=&#34;https://doi.org/10.18637/jss.v087.i11&#34; class=&#34;uri&#34;&gt;https://doi.org/10.18637/jss.v087.i11&lt;/a&gt;).&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Séries Temporais com R: Análise do consumo de Morettin e Toloi com X13ARIMA-SEATS</title>

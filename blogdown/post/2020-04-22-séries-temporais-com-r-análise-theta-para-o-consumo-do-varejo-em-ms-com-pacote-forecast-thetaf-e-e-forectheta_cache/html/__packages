@@ -1,0 +1,14 @@
+base
+knitr
+rmarkdown
+rmdformats
+BETS
+dygraphs
+ggplot2
+forecast
+fma
+expsmooth
+fpp2
+tseries
+forecTheta
+zoo

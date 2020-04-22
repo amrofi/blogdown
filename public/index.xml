@@ -5,7 +5,7 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Adriano M R Figueiredo</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Thu, 16 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Wed, 22 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-32.png</url>
       <title>Adriano M R Figueiredo</title>
@@ -25,6 +25,461 @@
 &lt;/div&gt;
 &lt;div id=&#34;tip2&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Tip2&lt;/h2&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Séries Temporais com R: Análise Theta para o Consumo do Varejo em MS com pacote forecast::thetaf e forecTheta</title>
+      <link>/post/series-temporais-theta-consumo-varejo-ms/</link>
+      <pubDate>Wed, 22 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/post/series-temporais-theta-consumo-varejo-ms/</guid>
+      <description>
+&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/dygraphs/dygraph.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/dygraphs/dygraph-combined.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/dygraphs/shapes.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/moment/moment.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/moment-timezone/moment-timezone-with-data.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/moment-fquarter/moment-fquarter.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/dygraphs-binding/dygraphs.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;Licença&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Licença&lt;/h1&gt;
+&lt;p&gt;This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/4.0/&#34; class=&#34;uri&#34;&gt;http://creativecommons.org/licenses/by-sa/4.0/&lt;/a&gt; or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png&#34; alt=&#34;License: CC BY-SA 4.0&#34; style=&#34;width:25.0%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;License: CC BY-SA 4.0&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;Citação&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Citação&lt;/h1&gt;
+&lt;p&gt;Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Séries Temporais com R: Análise Theta para o Consumo do Varejo em MS com pacote forecast::thetaf. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em &lt;a href=&#34;http://rpubs.com/amrofi/varejoms_thetaf&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/varejoms_thetaf&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;script-para-reprodução-se-utilizar-citar-como-acima&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Script para reprodução (se utilizar, citar como acima)&lt;/h1&gt;
+&lt;a href=&#34;data:text/x-markdown;base64,LS0tDQp0aXRsZTogJ1PDqXJpZXMgVGVtcG9yYWlzIGNvbSBSOiBBbsOhbGlzZSBUaGV0YSBwYXJhIG8gQ29uc3VtbyBkbyBWYXJlam8gZW0gTVMgY29tIHBhY290ZSBmb3JlY2FzdDo6dGhldGFmIGUgZSBmb3JlY1RoZXRhJw0KYXV0aG9yOiAiQWRyaWFubyBNIFIgRmlndWVpcmVkbyINCmRhdGU6ICcyMDIwLTA0LTIyJw0Kc2x1Zzogc8Opcmllcy10ZW1wb3JhaXMtdGhldGEtY29uc3Vtby12YXJlam8tbXMNCmNhdGVnb3JpZXM6IFtdDQp0YWdzOg0KICAtIGVjb25vbWV0cmlhDQogIC0gZm9yZWNhc3RzDQogIC0gc8OpcmllcyB0ZW1wb3JhaXMNCiAgLSBUaGV0YQ0Kc3VidGl0bGU6ICcnDQpzdW1tYXJ5OiAnVGhpcyBpcyBhbiBleGVyY2lzZSBmb3IgY2xhc3MgdXNlLiBXZSBhbmFseXNlIGRhdGEgb24gUmV0YWlsIGNvbnN1bXB0aW9uLCBmcm9tIEphbnVhcnkvMjAwMCB0byBub3dhZGF5cy4nDQphdXRob3JzOiBbXQ0KbGFzdG1vZDogJzIwMjAtMDQtMjJUMTQ6NDc6MDUtMDQ6MDAnDQpmZWF0dXJlZDogbm8NCmltYWdlOg0KICBjYXB0aW9uOiAnJw0KICBmb2NhbF9wb2ludDogJycNCiAgcHJldmlld19vbmx5OiBubw0KcHJvamVjdHM6IFtdDQotLS0NCg0KYGBge3Iga25pdHJfaW5pdCwgZWNobz1GQUxTRSwgY2FjaGU9RkFMU0V9DQpsaWJyYXJ5KGtuaXRyKQ0KbGlicmFyeShybWFya2Rvd24pDQpsaWJyYXJ5KHJtZGZvcm1hdHMpDQoNCiMjIEdsb2JhbCBvcHRpb25zDQpvcHRpb25zKG1heC5wcmludD0iMTAwIikNCm9wdHNfY2h1bmskc2V0KGVjaG89VFJVRSwNCgkgICAgICAgICAgICAgY2FjaGU9VFJVRSwNCiAgICAgICAgICAgICAgIHByb21wdD1GQUxTRSwNCiAgICAgICAgICAgICAgIHRpZHk9VFJVRSwNCiAgICAgICAgICAgICAgIGNvbW1lbnQ9TkEsDQogICAgICAgICAgICAgICBtZXNzYWdlPUZBTFNFLA0KICAgICAgICAgICAgICAgd2FybmluZz1GQUxTRSkNCm9wdHNfa25pdCRzZXQod2lkdGg9MTAwKQ0KYGBgDQoNCg0KTGljZW7Dp2Egey0jTGljZW7Dp2F9DQo9PT09PT09PT09PT09PT09PT09DQoNClRoaXMgd29yayBpcyBsaWNlbnNlZCB1bmRlciB0aGUgQ3JlYXRpdmUgQ29tbW9ucyBBdHRyaWJ1dGlvbi1TaGFyZUFsaWtlIDQuMCBJbnRlcm5hdGlvbmFsIExpY2Vuc2UuIFRvIHZpZXcgYSBjb3B5IG9mIHRoaXMgbGljZW5zZSwgdmlzaXQgPGh0dHA6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LXNhLzQuMC8+IG9yIHNlbmQgYSBsZXR0ZXIgdG8gQ3JlYXRpdmUgQ29tbW9ucywgUE8gQm94IDE4NjYsIE1vdW50YWluIFZpZXcsIENBIDk0MDQyLCBVU0EuDQoNCiFbTGljZW5zZTogQ0MgQlktU0EgNC4wXShodHRwczovL21pcnJvcnMuY3JlYXRpdmVjb21tb25zLm9yZy9wcmVzc2tpdC9idXR0b25zLzg4eDMxL3BuZy9ieS1zYS5wbmcpeyB3aWR0aD0yNSUgfQ0KDQpDaXRhw6fDo28gey0jQ2l0YcOnw6NvfQ0KPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT0NCg0KU3VnZXN0w6NvIGRlIGNpdGHDp8OjbzoNCkZJR1VFSVJFRE8sIEFkcmlhbm8gTWFyY29zIFJvZHJpZ3Vlcy4gU8OpcmllcyBUZW1wb3JhaXMgY29tIFI6IEFuw6FsaXNlIFRoZXRhIHBhcmEgbyBDb25zdW1vIGRvIFZhcmVqbyBlbSBNUyBjb20gcGFjb3RlIGZvcmVjYXN0Ojp0aGV0YWYuIENhbXBvIEdyYW5kZS1NUyxCcmFzaWw6IFJTdHVkaW8vUnB1YnMsIDIwMjAuIERpc3BvbsOtdmVsIGVtIDxodHRwOi8vcnB1YnMuY29tL2Ftcm9maS92YXJlam9tc190aGV0YWY+LiANCg0KU2NyaXB0IHBhcmEgcmVwcm9kdcOnw6NvIChzZSB1dGlsaXphciwgY2l0YXIgY29tbyBhY2ltYSkNCj09PT09PT09PT09PT09PT09PQ0KDQpgYGB7ciBlY2hvPUZBTFNFfQ0KIyBhIHNpbmdsZSBmaWxlDQp4ZnVuOjplbWJlZF9maWxlKCcyMDIwLTA0LTIyLXPDqXJpZXMtdGVtcG9yYWlzLWNvbS1yLWFuw6FsaXNlLXRoZXRhLXBhcmEtby1jb25zdW1vLWRvLXZhcmVqby1lbS1tcy1jb20tcGFjb3RlLWZvcmVjYXN0LXRoZXRhZi1lLWUtZm9yZWN0aGV0YS5SbWQnKQ0KYGBgDQoNCkludHJvZHXDp8Ojbw0KPT09PT09PT09PT09PT09PT09PQ0KDQpOZXN0ZSBhcnF1aXZvIHV0aWxpem8gYSBzw6lyaWUgZG8gw41uZGljZSBkZSB2b2x1bWUgZGUgdmVuZGFzIG5vIHZhcmVqbyBUb3RhbCBkZSBNYXRvIEdyb3NzbyBkbyBTdWwsIHPDqXJpZSBtZW5zYWwgYSBwYXJ0aXIgZGUgamFuLzIwMDAgYXTDqSBhZ28vMjAxOSBvYnRpZGEgY29tIG8gcGFjb3RlIGBCRVRTYCBlIGltcG9ydGFkYSBkbyBCYW5jbyBDZW50cmFsIGRvIEJyYXNpbC4gUG9ydGFudG8sIHPDo28gMjM2IG9ic2VydmHDp8O1ZXMgbWVuc2Fpcy4NCg0KDQpEYWRvcw0KPT09PT09PT09PT09PT09PT09PQ0KRmFyZWkgZGUgZHVhcyBmb3JtYXMgcGFyYSBvIGxlaXRvci4gVW1hIGNhcnJlZ2EgZGlyZXRvIGRvIHNpdGUgZG8gQmFuY28gQ2VudHJhbCBkbyBCcmFzaWwgY29tIG8gcGFjb3RlIGBCRVRTYCAoRkVSUkVJUkEsIFNQRVJBTlpBIGUgQ09TVEEsIDIwMTgpIGUgYSBvdXRyYSBldSBnZXJlaSBhIGVzdHJ1dHVyYSBpZMOqbnRpY2EgcGVsYSBmdW7Dp8OjbyBgZHB1dCgpYCBwYXJhIG9zIGxlaXRvcmVzIHF1ZSBuw6NvIGNvbnNlZ3VpcmVtIHBvciBxdWFscXVlciBtb3Rpdm8gbyBhY2Vzc28gYW8gc2l0ZSBkbyBCYW5jbyBDZW50cmFsIChhcyB2ZXplcyB2ZWpvIGlzc28gb2NvcnJlciBkZXBlbmRlbmRvIGRvcyBibG9xdWVpb3MgZGEgc3VhIHJlZGUgZGUgaW50ZXJuZXQpLiAgRXNjbGFyZcOnbyBhbyBsZWl0b3IgcXVlIGFww7NzIGJhaXhhciBhIHPDqXJpZSBwZWxvIEJFVFMsIGZpeiBvIGRwdXQgZSBhIHBhcnRpciBkZSBlbnTDo28sIGRlc2FiaWxpdGVpIG8gYmxvY28gKGBDaHVua2ApIHF1ZSBhY2Vzc2EgbyBCRVRTIGFwZW5hcyBwYXJhIGFnaWxpemFyIG9zIGPDoWxjdWxvcy4NCg0KYGBgDQpsaWJyYXJ5KEJFVFMpDQojIFBlZ2FuZG8gYXMgc8OpcmllcyBhIHBhcnRpciBkbyBzaXRlIGRvIEJhbmNvIENlbnRyYWwgZG8gQnJhc2lsDQojIMONbmRpY2UgZGUgdm9sdW1lIGRlIHZlbmRhcyBubyB2YXJlam8gVG90YWwgZGUgTWF0byBHcm9zc28gZG8gU3VsDQojIG1lbnNhbCBhIHBhcnRpciBkZSBqYW4vMjAwMCBhdMOpIGFnby8yMDE5IA0KIyAyMzYgb2JzZXJ2YcOnw7VlcyBtZW5zYWlzDQp2YXJlam9tcyA8LSBCRVRTZ2V0KDE0NzkpIA0KZHB1dCh2YXJlam9tcykgICMgb3DDp8OjbyBwYXJhIHRlciBvcyBkYWRvcyBjb21vIG5hIHN0cnVjdHVyZSBhYmFpeG8NCmBgYA0KDQpgYGB7ciB3YXJuaW5nPUZBTFNFLCBjb21tZW50PUZBTFNFfQ0KbGlicmFyeShCRVRTKQ0KdmFyZWpvbXM8LSBzdHJ1Y3R1cmUoYygzNS4yLCAzNS42LCAzOS4yLCA0MC41LCA0MS42LCA0MC40LCA0MC44LCAzOC43LCAzNy4zLCANCjM3LjYsIDM1LjYsIDQ3LjQsIDM0LjIsIDMyLjIsIDM4LCAzNy41LCAzOC44LCAzNSwgMzguNCwgNDAuMiwgDQozOC4yLCAzOS4zLCAzNiwgNDYuMywgMzYuNCwgMzQsIDM5LCAzNy44LCAzOC45LCAzNS4zLCAzNy4yLCAzOC4xLCANCjM1LjYsIDM4LjMsIDM1LjYsIDQ1LjcsIDMyLjIsIDMxLjYsIDM1LjIsIDM2LjgsIDM3LjUsIDM0LjgsIDM4LjQsIA0KMzguMSwgMzcsIDM5LCAzNy4zLCA0OSwgMzUuOCwgMzUuMywgNDAuMiwgNDEuMywgNDMuOSwgNDEuNiwgNDUuOSwgDQo0Mi4zLCA0Mi4yLCA0NCwgNDEuMywgNTYuOSwgMzguNSwgMzguNSwgNDUuMywgNDMuNiwgNDYuMiwgNDQuMywgDQo0Ny41LCA0Ni41LCA0Ni40LCA0NiwgNDQuMSwgNjEsIDQyLCA0MC4yLCA0NC42LCA0NC41LCA0Ny44LCA0NS4zLCANCjQ2LjUsIDQ4LjUsIDQ3LjcsIDUwLjIsIDQ5LjMsIDY0LjUsIDQ3LCA0Ni44LCA1MSwgNTAuNSwgNTUsIDUxLjMsIA0KNTIuOCwgNTUuMywgNTQuOCwgNTUuNiwgNTUuMywgNzIuMiwgNTQuNSwgNTIuMSwgNTYuMiwgNTcuMiwgNjAuOCwgDQo1Ni4xLCA2MS44LCA2MS42LCA1OS44LCA2My4zLCA1Ny43LCA3Ny40LCA2MS40LCA1MS45LCA1Ny4zLCA1Ny45LCANCjYxLjksIDU3LjMsIDYxLjEsIDYxLjEsIDYwLjYsIDY1LjYsIDYzLjUsIDgzLjEsIDY0LjEsIDYwLjIsIDY3LjgsIA0KNjcuMSwgNzIuOCwgNjguNSwgNzEuMSwgNjkuMywgNjkuOSwgNzEuMSwgNjcuOSwgOTIuNywgNjcuNSwgNjQuOCwgDQo2OS4xLCA2OS40LCA3OS42LCA3MC4yLCA3My44LCA3Mi41LCA3MS4zLCA3NS42LCA3NC43LCAxMDAuOCwgDQo3OS41LCA3NS43LCA4Mi40LCA3OCwgODQuOCwgODMuMiwgODQuOCwgODguNSwgODYuMywgOTEuNywgOTIuOCwgDQoxMTEuNCwgOTIuOCwgODMuNywgOTIuNSwgODguMywgOTMuOSwgODguOCwgOTYsIDk1LjksIDkzLjIsIDk4LjMsIA0KMTAwLjUsIDEyOC44LCA5Ny4yLCA5MC4yLCA5NC4zLCA5NC40LCAxMDEuMSwgOTIsIDk2LjQsIDk4LjIsIA0KOTcuNiwgMTA1LjgsIDEwMy4xLCAxMjkuNiwgOTkuNiwgODcuOCwgOTcsIDk0LjgsIDk4LjYsIDkzLjQsIA0KOTguNCwgOTYuNCwgOTIuNSwgMTAwLjYsIDk3LjIsIDEyNC41LCA5MS41LCA4NS4xLCA5MS42LCA4OC41LCANCjkyLjIsIDg3LjQsIDkwLjUsIDg4LjEsIDg1LjIsIDg5LjQsIDkzLjQsIDExNi45LCA5MC44LCA4NCwgODkuNywgDQo4Ni4zLCA5MCwgODcuMywgOTAuOCwgOTMuNSwgOTMuNywgOTEuNCwgOTMuNSwgMTE0LjEsIDg3LjgsIDgxLjEsIA0KOTQuNSwgODMuMiwgODkuOSwgODguOCwgODkuMywgOTMuNywgOTMuNSwgOTYuMywgMTAxLjMsIDExOC4zLCANCjkzLjgsIDg1LjIsIDkwLCA4Ni42LCA5MCwgODUuMiwgOTEsIDk0LjEpLCAuVHNwID0gYygyMDAwLCAyMDE5LjU4MzMzMzMzMzMzLCANCjEyKSwgY2xhc3MgPSAidHMiKQ0KcHJpbnQodmFyZWpvbXMpDQpjbGFzcyh2YXJlam9tcykNCiMgWzFdICJ0cyINCmBgYA0KDQpBIHJvdGluYSBkZSBkYWRvcyBvYnRpZG9zIHBlbG8gQkVUUyBqw6EgcmV0b3JuYSBhIHPDqXJpZSBlbSBmb3JtYXRvIGB0c2AsIG91IHNlamEsIHPDqXJpZSB0ZW1wb3JhbC4gRmFyZWkgZW50w6NvIGEgY3JpYcOnw6NvIGRlIHVtYSBzw6lyaWUgZW0gZGlmZXJlbsOnYXMgcGFyYSBvYnNlcnZhciBvIGNvbXBvcnRhbWVudG8gZGEgc8OpcmllIGVtIG7DrXZlbCBlIGVtIGRpZmVyZW7Dp2FzLiAgICAgDQoNCkluaWNpYWxtZW50ZSBvbGhhcmVpIGFzIGVzdGF0w61zdGljYXMgZGVzY3JpdGl2YXMgZGEgc8OpcmllLiBFbSBzZWd1aWRhIGZhcmVpIHVtIHBsb3QgYsOhc2ljbyBkYSBzw6lyaWUgZSBvIHBsb3QgcGVsbyBwYWNvdGUgYGR5Z3JhcGhzYCwgw7p0aWwgcGFyYSB2ZXIgb3MgcG9udG9zIGRlIHBpY29zIGUgbW9tZW50b3MgZXNwZWPDrWZpY29zLg0KDQpgYGB7cn0NCmR2YXJlam88LWRpZmYodmFyZWpvbXMpDQojIGVzdGF0aXN0aWNhcyBiYXNpY2FzDQpzdW1tYXJ5KHZhcmVqb21zKQ0KIyBwbG90IGJhc2ljbw0KcGxvdCh2YXJlam9tcykgDQojIHBlbG8gcGFjb3RlIGR5Z3JhcGggZMOhIG1haXMgb3DDp8O1ZXMNCmxpYnJhcnkoZHlncmFwaHMpDQpkeWdyYXBoKHZhcmVqb21zLCBtYWluID0gIsONbmRpY2UgZGUgdm9sdW1lIGRlIHZlbmRhcyBubyB2YXJlam8gdG90YWwgZGUgTWF0byBHcm9zc28gZG8gU3VsIDxicj4gKE1lbnNhbCkgICgyMDExPTEwMCkgQkNCIDE0NzkiKSAlPiUNCiAgZHlBeGlzKCJ4IiwgZHJhd0dyaWQgPSBUUlVFKSAlPiUNCiAgZHlFdmVudCgiMjAwNS0xLTAxIiwgIjIwMDUiLCBsYWJlbExvYyA9ICJib3R0b20iKSAlPiUNCiAgZHlFdmVudCgiMjAxNS0xLTAxIiwgIjIwMTUiLCBsYWJlbExvYyA9ICJib3R0b20iKSAlPiUNCiAgZHlFdmVudCgiMjAxOC0xLTAxIiwgIjIwMTgiLCBsYWJlbExvYyA9ICJib3R0b20iKSAlPiUNCiAgZHlFdmVudCgiMjAxOS0xLTAxIiwgIjIwMTkiLCBsYWJlbExvYyA9ICJib3R0b20iKSAlPiUNCiAgZHlPcHRpb25zKGRyYXdQb2ludHMgPSBUUlVFLCBwb2ludFNpemUgPSAyKQ0KYGBgDQoNCsOJIHBvc3NpdmVsIHZpc3VhbGl6YXIgbm9zIHBsb3RzIGFjaW1hOiBzYXpvbmFsaWRhZGUgKHBvciBleGVtcGxvLCBwaWNvcyBlbSBkZXplbWJybyBkZSBjYWRhIGFubyk7IGEgdGVuZMOqbmNpYSBhcGFyZW50ZW1lbnRlIGNyZXNjZW50ZSBhdMOpIDIwMTQgZSBkZWNyZXNjZSBjb20gYSAiY3Jpc2UiIGJyYXNpbGVpcmE7IGUgdW1hIGFwYXJlbnRlIG7Do28tZXN0YWNpb25hcmllZGFkZSAobcOpZGlhIGUgdmFyacOibmNpYSBtdWRhbSBubyB0ZW1wbykuIA0KDQoNCkFuw6FsaXNlIGRhIHPDqXJpZQ0KPT09PT09PT09PT09PT09PT09PT09PQ0KDQojIyBGdW7Dp8OjbyBkZSBBdXRvY29ycmVsYcOnw6NvIChGQUMpIGUgQXV0b2NvcnJlbGHDp8OjbyBwYXJjaWFsIChGQUNwKSBjb20gZGVmYXNhZ2VtIDM2DQoNCiMjIyBTw6lyaWUgZW0gbsOtdmVsDQoNClVzYXJlaSBhIHJvdGluYSBkbyBIeW5kbWFuIGUgQXRoYW5hc29wb3Vsb3MgKDIwMTgpLiANCg0KYGBge3J9DQp2YXJlam88LXZhcmVqb21zDQp2YXJlam8gJT4lIGZvcmVjYXN0OjpnZ3RzZGlzcGxheShtYWluID0gIlPDqXJpZSBkZSBWYXJlam8gTVMiKQ0KYGBgDQoNCk5lc3RlIGNhc28sIG8gYGdndHNkaXNwbGF5YCBkbyBwYWNvdGUgYGZvcmVjYXN0YCBqw6EgcmV0b3JuYSBvcyBncsOhZmljb3MgZGEgc8OpcmllLCBlIHJlc3BlY3RpdmFzIEFDRiBlIFBBQ0YuDQoNCiMjIyBTw6lyaWUgZW0gcHJpbWVpcmEgZGlmZXJlbsOnYQ0KDQpDb21vIGEgc8OpcmllIGFwcmVzZW50YSB2YXJpYcOnw7VlcyBzYXpvbmFpcyBpbXBvcnRhbnRlcywgYXNzaW0gY29tbyB0ZW5kw6puY2lhIGltcG9ydGFudGUsIGNsYXJhbWVudGUgbsOjby1lc3RhY2lvbsOhcmlhcywgdm91IG9saGFyIHRhbWLDqW0gZW0gcHJpbWVpcmEgZGlmZXJlbsOnYS4NCg0KYGBge3J9DQp2YXJlam8gJT4lIGRpZmYoKSAlPiUgZm9yZWNhc3Q6OmdndHNkaXNwbGF5KG1haW49IlPDqXJpZSB2YXJlam8gZGUgTVMgZW0gcHJpbWVpcmEgZGlmZXJlbsOnYSIpDQpgYGANCg0KIyMjIFByaW1laXJhIGRpZmVyZW7Dp2Egc2F6b25hbCBlIEFDRiBlIFBBQ0YNCg0KRmFyZWkgYWdvcmEgYSBkaWZlcmVuw6dhIHNhem9uYWwuDQoNCmBgYHtyfQ0KdmFyZWpvICU+JSBkaWZmKGxhZz0xMikgJT4lIGZvcmVjYXN0OjpnZ3RzZGlzcGxheShtYWluPSJTw6lyaWUgdmFyZWpvIGRlIE1TIGVtIHByaW1laXJhIGRpZmVyZW7Dp2Egc2F6b25hbCIpICANCmBgYA0KDQojIyMgQWp1c3RlIHNhem9uYWwgZSBBQ0YgZSBQQUNGDQoNCkFwbGljYXJlbW9zIG8gYWp1c3RlIHNhem9uYWwgdGlwbyBTVEwgKFNlYXNvbmFsIERlY29tcG9zaXRpb24gb2YgVGltZSBTZXJpZXMgYnkgTG9lc3MpIGFvcyBkYWRvcy4NCg0KYGBge3J9DQpsaWJyYXJ5KGZwcDIpDQp2YXJlam8gJT4lIHN0bChzLndpbmRvdz0ncGVyaW9kaWMnKSAlPiUgc2Vhc2FkaigpIC0+IHZhcmVqb2Fkag0KYXV0b3Bsb3QodmFyZWpvYWRqLCBtYWluID0gIlPDqXJpZSBkZSBWYXJlam8gTVMgY29tIGFqdXN0ZSBzYXpvbmFsIFNUTCIpDQpgYGANCg0KRSBhZ29yYSBvcyBwbG90cyBkZSBBQ0YgZSBQQUNGIG5hIHPDqXJpZSBhanVzdGFkYSBzYXpvbmFsbWVudGUuDQoNCmBgYHtyfQ0KdmFyZWpvYWRqICU+JSBkaWZmKCkgJT4lIGZvcmVjYXN0OjpnZ3RzZGlzcGxheShtYWluPSJTw6lyaWUgdmFyZWpvIGRlIE1TIGVtIHByaW1laXJhIGRpZmVyZW7Dp2EgZSBhanVzdGUgc2F6b25hbCIpDQpgYGANCg0KIyMgTcOpdG9kbyBUaGV0YSBwZWxvIGBmb3JlY2FzdDo6dGhldGFmYA0KDQoNCmBgYHtyfQ0KeTwtdmFyZWpvbXMNCmg9MTINCnJlcXVpcmUoZm9yZWNhc3QpDQpUIDwtIHRoZXRhZih5LCBoKSRtZWFuDQphdXRvcGxvdCh2YXJlam9tcyxzZXJpZXM9IlZhcmVqby1NUyIpICsNCiAgYXV0b2xheWVyKFQsIHNlcmllcz0iVGhldGEiLCBQST1GQUxTRSkgKw0KICB4bGFiKCJNw6pzL0FubyIpICsgeWxhYigiw41uZGljZSAoMjAxMT0xMDApIikgKw0KICBnZ3RpdGxlKCLDjW5kaWNlIGRlIHZvbHVtZSBkZSB2ZW5kYXMgbm8gdmFyZWpvIHRvdGFsIGRlIE1hdG8gR3Jvc3NvIGRvIFN1bCA8YnI+IChNZW5zYWwpIC0gQkNCIDE0NzkiKQ0KYGBgIA0KDQpPdSBwZWxvIGR5Z3JhcGhzLCB0ZXJlbW9zOg0KDQpgYGB7cn0NCmxpYnJhcnkoZHlncmFwaHMpDQpkeWdyYXBoKGNiaW5kKHZhcmVqb21zLFQpLCBtYWluID0gIsONbmRpY2UgZGUgdm9sdW1lIGRlIHZlbmRhcyBubyB2YXJlam8gdG90YWwgZGUgTWF0byBHcm9zc28gZG8gU3VsIDxicj4gKE1lbnNhbCkgICgyMDExPTEwMCkgQkNCIDE0NzkiKSAlPiUgDQogICAgZHlBeGlzKCJ4IiwgZHJhd0dyaWQgPSBUUlVFKSAlPiUgZHlFdmVudCgiMjAwNS0xLTAxIiwgIjIwMDUiLCBsYWJlbExvYyA9ICJib3R0b20iKSAlPiUgDQogICAgZHlFdmVudCgiMjAxNS0xLTAxIiwgIjIwMTUiLCBsYWJlbExvYyA9ICJib3R0b20iKSAlPiUgZHlFdmVudCgiMjAxOC0xLTAxIiwgDQogICAgIjIwMTgiLCBsYWJlbExvYyA9ICJib3R0b20iKSAlPiUgZHlFdmVudCgiMjAxOS0xLTAxIiwgIjIwMTkiLCBsYWJlbExvYyA9ICJib3R0b20iKSAlPiUgDQogICAgZHlPcHRpb25zKGRyYXdQb2ludHMgPSBUUlVFLCBwb2ludFNpemUgPSAyKQ0KYGBgDQoNCk91dHJvcyBkZXRhbGhlcyBlc3TDo28gbm8gb2JqZXRvIFRoZXRhLg0KDQpgYGB7cn0NCm1vZGVsbzwtdGhldGFmKHksIGgpDQpzdW1tYXJ5KG1vZGVsbykNCmF1dG9wbG90KG1vZGVsbywgUEk9VFJVRSkNCmtuaXRyOjprYWJsZShtb2RlbG8pDQpgYGANCg0KDQojIyBNw6l0b2RvIFRoZXRhIHBlbG8gYGZvcmVjVGhldGFgIGRlIEZpb3J1Y2NpIGV0IGFsICgyMDE2KQ0KDQoNCmBgYHtyLCBldmFsPVRSVUV9DQpsaWJyYXJ5KGZvcmVjVGhldGEpDQp5PC12YXJlam9tcw0KaD0xMg0Kc2V0LnNlZWQoMTIzNDUpDQptb2QyPC1kb3RtKHksaCkNCnBsb3QobW9kMikNCihtb2QyKQ0KYGBgDQoNCk91IHBlbG8gZHlncmFwaHMsIHRlcmVtb3M6DQoNCmBgYHtyfQ0KbGlicmFyeShkeWdyYXBocykNCnJlcXVpcmUoZm9yZWNhc3QpDQpzZXQuc2VlZCgxMjM0NSkNClQyPC0gZG90bSh5LGgpJG1lYW4NCmR5Z3JhcGgoY2JpbmQodmFyZWpvbXMsVDIpLCBtYWluID0gIsONbmRpY2UgZGUgdm9sdW1lIGRlIHZlbmRhcyBubyB2YXJlam8gdG90YWwgZGUgTWF0byBHcm9zc28gZG8gU3VsIDxicj4gKE1lbnNhbCkgICgyMDExPTEwMCkgQkNCIDE0NzkiKSAlPiUgDQogICAgZHlBeGlzKCJ4IiwgZHJhd0dyaWQgPSBUUlVFKSAlPiUgZHlFdmVudCgiMjAwNS0xLTAxIiwgIjIwMDUiLCBsYWJlbExvYyA9ICJib3R0b20iKSAlPiUgDQogICAgZHlFdmVudCgiMjAxNS0xLTAxIiwgIjIwMTUiLCBsYWJlbExvYyA9ICJib3R0b20iKSAlPiUgZHlFdmVudCgiMjAxOC0xLTAxIiwgDQogICAgIjIwMTgiLCBsYWJlbExvYyA9ICJib3R0b20iKSAlPiUgZHlFdmVudCgiMjAxOS0xLTAxIiwgIjIwMTkiLCBsYWJlbExvYyA9ICJib3R0b20iKSAlPiUgDQogICAgZHlPcHRpb25zKGRyYXdQb2ludHMgPSBUUlVFLCBwb2ludFNpemUgPSAyKQ0KYGBgDQoNClBhcsOibWV0cm8gdGhldGEgZXN0aW1hZG86DQoNCmBgYHtyfQ0KbW9kMiRwYXJbMl0gICMgYWxwaGENCm1vZDIkcGFyWzNdICAjIHRoZXRhDQpgYGANCg0KUGVzb3MgZXN0aW1hZG9zOg0KDQpgYGB7cn0NCm1vZDIkd2VpZ2h0cw0KYGBgDQoNClZhbG9yZXMgaW5pY2lhaXMgZG9zIHRoZXRhczogMCw1IGUgMi4gT3DDp8O1ZXMgcGFyYSBNw6l0b2RvIGRlIG90aW1pemHDp8OjbzogJ05lbGRlci1NZWFkJywgJ0wtQkZHUy1CJywgJ1NBTk4nLiBPIHBhZHLDo28gw6kgJ05lbGRlci1NZWFkJy4NCg0KYGBge3J9DQptb2QyJG9wdC5tZXRob2QNCg0KYGBgDQoNCkNvbXBhcmHDp8OjbyBjb20gZGFkb3MgcmVjZW50ZXMNCj09PT09PT09PT09PT09PT09PT09PT09PQ0KDQpBZ29yYSBxdWUgasOhIHRlbW9zIGFzIGluZm9ybWHDp8O1ZXMgYXTDqSBmZXYvMjAyMCwgcG9kZW1vcyBjb21wYXJhciBhcyBlc3RpbWF0aXZhcyBjb20gb3MgZGFkb3MgcmVhaXMuIEZhcmVtb3MgYSBjb21wYXJhw6fDo28gcmVsYXRpdmFtZW50ZSBhbyBmb3JlY2FzdCBkbyBgZm9yZWNhc3Q6OnRoZXRhZmAuDQoNCmBgYHtyfQ0KI2RhZG9zbm92b3M8LUJFVFM6OkJFVFNnZXQoMTQ3OSkNCmRhZG9zbm92b3M8LXN0cnVjdHVyZShjKDM1LjIsIDM1LjYsIDM5LjIsIDQwLjUsIDQxLjYsIDQwLjQsIDQwLjgsIDM4LjcsIDM3LjMsIA0KMzcuNiwgMzUuNiwgNDcuNCwgMzQuMiwgMzIuMiwgMzgsIDM3LjUsIDM4LjgsIDM1LCAzOC40LCA0MC4yLCANCjM4LjIsIDM5LjMsIDM2LCA0Ni4zLCAzNi40LCAzNCwgMzksIDM3LjgsIDM4LjksIDM1LjMsIDM3LjIsIDM4LjEsIA0KMzUuNiwgMzguMywgMzUuNiwgNDUuNywgMzIuMiwgMzEuNiwgMzUuMiwgMzYuOCwgMzcuNSwgMzQuOCwgMzguNCwgDQozOC4xLCAzNywgMzksIDM3LjMsIDQ5LCAzNS44LCAzNS4zLCA0MC4yLCA0MS4zLCA0My45LCA0MS42LCA0NS45LCANCjQyLjMsIDQyLjIsIDQ0LCA0MS4zLCA1Ni45LCAzOC41LCAzOC41LCA0NS4zLCA0My42LCA0Ni4yLCA0NC4zLCANCjQ3LjUsIDQ2LjUsIDQ2LjQsIDQ2LCA0NC4xLCA2MSwgNDIsIDQwLjIsIDQ0LjYsIDQ0LjUsIDQ3LjgsIDQ1LjMsIA0KNDYuNSwgNDguNSwgNDcuNywgNTAuMiwgNDkuMywgNjQuNSwgNDcsIDQ2LjgsIDUxLCA1MC41LCA1NSwgNTEuMywgDQo1Mi44LCA1NS4zLCA1NC44LCA1NS42LCA1NS4zLCA3Mi4yLCA1NC41LCA1Mi4xLCA1Ni4yLCA1Ny4yLCA2MC44LCANCjU2LjEsIDYxLjgsIDYxLjYsIDU5LjgsIDYzLjMsIDU3LjcsIDc3LjQsIDYxLjQsIDUxLjksIDU3LjMsIDU3LjksIA0KNjEuOSwgNTcuMywgNjEuMSwgNjEuMSwgNjAuNiwgNjUuNiwgNjMuNSwgODMuMSwgNjQuMSwgNjAuMiwgNjcuOCwgDQo2Ny4xLCA3Mi44LCA2OC41LCA3MS4xLCA2OS4zLCA2OS45LCA3MS4xLCA2Ny45LCA5Mi43LCA2Ny41LCA2NC44LCANCjY5LjEsIDY5LjQsIDc5LjYsIDcwLjIsIDczLjgsIDcyLjUsIDcxLjMsIDc1LjYsIDc0LjcsIDEwMC44LCANCjc5LjUsIDc1LjcsIDgyLjQsIDc4LCA4NC44LCA4My4yLCA4NC44LCA4OC41LCA4Ni4zLCA5MS43LCA5Mi44LCANCjExMS40LCA5Mi44LCA4My43LCA5Mi41LCA4OC4zLCA5My45LCA4OC44LCA5NiwgOTUuOSwgOTMuMiwgOTguMywgDQoxMDAuNSwgMTI4LjgsIDk3LjIsIDkwLjIsIDk0LjMsIDk0LjQsIDEwMS4xLCA5MiwgOTYuNCwgOTguMiwgDQo5Ny42LCAxMDUuOCwgMTAzLjEsIDEyOS42LCA5OS42LCA4Ny44LCA5NywgOTQuOCwgOTguNiwgOTMuNCwgDQo5OC40LCA5Ni40LCA5Mi41LCAxMDAuNiwgOTcuMiwgMTI0LjUsIDkxLjUsIDg1LjEsIDkxLjYsIDg4LjUsIA0KOTIuMiwgODcuNCwgOTAuNSwgODguMSwgODUuMiwgODkuNCwgOTMuNCwgMTE2LjksIDkwLjgsIDg0LCA4OS43LCANCjg2LjMsIDkwLCA4Ny4zLCA5MC44LCA5My41LCA5My43LCA5MS40LCA5My41LCAxMTQuMSwgODcuOCwgODEuMSwgDQo5NC41LCA4My4yLCA4OS45LCA4OC44LCA4OS4zLCA5My43LCA5My41LCA5Ni4zLCAxMDEuMywgMTE4LjMsIA0KOTMuOCwgODUuMiwgOTAsIDg2LjYsIDkwLCA4NS4yLCA5MSwgOTQuNCwgOTMuNCwgOTUuOSwgMTAyLjYsIA0KMTE2LCA5NC45LCA4OS4xKSwgLlRzcCA9IGMoMjAwMCwgMjAyMC4wODMzMzMzMzMzMywgMTIpLCBjbGFzcyA9ICJ0cyIpDQojVmlldyhjYmluZC56b28oZGF0YS5mY3N0LGRhZG9zbm92b3MpKQ0KcmVxdWlyZSh6b28pDQpwcmludChjYmluZC56b28oVCxkYWRvc25vdm9zKVsyMzA6MjQyXSkNCmBgYA0KDQpBY3Vyw6FjaWEgZG8gcGVyw61vZG8gU2V0ZW1icm8vMjAxOSBhIGZldi8yMDIwOg0KDQpgYGB7cn0NCiMgcGVsbyBmb3JlY2FzdDo6dGhldGFmDQojVCA8LSB0aGV0YWYoeSwgaCkkbWVhbg0KcHJldmlzdG88LVQNCm9ic2VydmFkbzwtZGFkb3Nub3Zvc1syMzc6MjQyXQ0KZm9yZWNhc3Q6OmFjY3VyYWN5KHByZXZpc3RvLG9ic2VydmFkbykNCg0KYGBgDQoNCk91IHNlamEsIHVtIGVycm8gcGVyY2VudHVhbCBtw6lkaW8gZGUgJDQuMDAkJSBlIHVtIGVycm8gYWJzb2x1dG8gbcOpZGlvIGRlICRcYXBwcm94NC43NSQlLg0KDQojIyBDb21wYXJhw6fDo28gY29tIG8gYGZvcmVjVGhldGE6OmRvdG1gDQoNCkFzIGVzdGltYXRpdmFzIHBhcmEgbyBgZm9yZWNUaGV0YTo6ZG90bWAgZm9yYW0gb2J0aWRhcyBmYXplbmRvIGBUMjwtIGRvdG0oeSxoKSRtZWFuYC4gRGEgbWVzbWEgZm9ybWEsIG9idGVtb3MgYSBhY3Vyw6FjaWEgZG8gcGVyw61vZG8gU2V0ZW1icm8vMjAxOSBhIGZldi8yMDIwLg0KDQpgYGB7cn0NCg0KIyBwZWxvIGZvcmVjVGhldGE6OmRvdG0NCiMgVDI8LSBkb3RtKHksaCkkbWVhbg0KcHJldmlzdG8yPC1UMg0Kb2JzZXJ2YWRvPC1kYWRvc25vdm9zWzIzNzoyNDJdDQpmb3JlY2FzdDo6YWNjdXJhY3kocHJldmlzdG8yLG9ic2VydmFkbykNCmBgYA0KDQpPdSBzZWphLCB1bSBlcnJvIHBlcmNlbnR1YWwgbcOpZGlvIGRlICQ0LjA5JCUgZSB1bSBlcnJvIGFic29sdXRvIG3DqWRpbyBkZSAkXGFwcHJveDQuODAkJS4gICAgDQoNCg0KDQpSZWZlcsOqbmNpYXMgey0jUmVmZXLDqm5jaWFzfQ0KPT09PT09PT09PT09PT09PT09PT09PT09DQoNCkFTU0lNQUtPUE9VTE9TLCBWLiBhbmQgTklLT0xPUE9VTE9TLCBLLiAoMjAwMCkuIFRoZSB0aGV0YSBtb2RlbDogYSBkZWNvbXBvc2l0aW9uIGFwcHJvYWNoIHRvIGZvcmVjYXN0aW5nLiBJbnRlcm5hdGlvbmFsIEpvdXJuYWwgb2YgRm9yZWNhc3RpbmcsIDE2LCA1MjEtNTMwLiBET0k6IDxodHRwczovL2RvaS5vcmcvMTAuMTAxNi9TMDE2OS0yMDcwKDAwKTAwMDY2LTI+ICAgICANCg0KRkVSUkVJUkEsIFBlZHJvIENvc3RhOyBTUEVSQU5aQSwgVGFsaXRoYTsgIENPU1RBLCBKb25hdGhhLiAoMjAxOCkuIEJFVFM6IEJyYXppbGlhbiBFY29ub21pYyBUaW1lIFNlcmllcy4gUiBwYWNrYWdlIHZlcnNpb24gMC40LjkuIERpc3BvbsOtdmVsIGVtOiA8aHR0cHM6Ly9DUkFOLlItcHJvamVjdC5vcmcvcGFja2FnZT1CRVRTPi4gICAgIA0KDQpGSU9SVUNDSSwgSm9zZSBBdWd1c3RvOyBMT1VaQURBLCBGcmFuY2lzY28gTG91emFkYTsgWUlRSSwgQmFvLiAoMjAxNikuIGZvcmVjVGhldGE6IEZvcmVjYXN0aW5nIFRpbWUgU2VyaWVzIGJ5IFRoZXRhIE1vZGVscy4gUiBwYWNrYWdlIHZlcnNpb24gMi4yLiBEaXNwb27DrXZlbCBlbTogPGh0dHBzOi8vQ1JBTi5SLXByb2plY3Qub3JnL3BhY2thZ2U9Zm9yZWNUaGV0YT4uICAgIA0KICANCkhZTkRNQU4sIFJvYiBKLiAoMjAxOGEpLiBmcHAyOiBEYXRhIGZvciAiRm9yZWNhc3Rpbmc6IFByaW5jaXBsZXMgYW5kIFByYWN0aWNlIiAoMm5kIEVkaXRpb24pLiBSIHBhY2thZ2UgdmVyc2lvbiAyLjMuIERpc3BvbsOtdmVsIGVtOiA8aHR0cHM6Ly9DUkFOLlItcHJvamVjdC5vcmcvcGFja2FnZT1mcHAyPi4gICAgDQoNCkhZTkRNQU4sIFIuSi4sICYgQVRIQU5BU09QT1VMT1MsIEcuICgyMDE4KSBGb3JlY2FzdGluZzogcHJpbmNpcGxlcyBhbmQgcHJhY3RpY2UsIDJuZCBlZGl0aW9uLCBPVGV4dHM6IE1lbGJvdXJuZSwgQXVzdHJhbGlhLiBEaXNwb27DrXZlbCBlbTogPGh0dHBzOi8vb3RleHRzLmNvbS9mcHAyLz4uIEFjY2Vzc2VkIG9uIDEyIFNldCAyMDE5LiA=&#34; download=&#34;2020-04-22-séries-temporais-com-r-análise-theta-para-o-consumo-do-varejo-em-ms-com-pacote-forecast-thetaf-e-e-forectheta.Rmd&#34;&gt;Download 2020-04-22-séries-temporais-com-r-análise-theta-para-o-consumo-do-varejo-em-ms-com-pacote-forecast-thetaf-e-e-forectheta.Rmd&lt;/a&gt;
+&lt;/div&gt;
+&lt;div id=&#34;introdução&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introdução&lt;/h1&gt;
+&lt;p&gt;Neste arquivo utilizo a série do Índice de volume de vendas no varejo Total de Mato Grosso do Sul, série mensal a partir de jan/2000 até ago/2019 obtida com o pacote &lt;code&gt;BETS&lt;/code&gt; e importada do Banco Central do Brasil. Portanto, são 236 observações mensais.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;dados&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Dados&lt;/h1&gt;
+&lt;p&gt;Farei de duas formas para o leitor. Uma carrega direto do site do Banco Central do Brasil com o pacote &lt;code&gt;BETS&lt;/code&gt; (FERREIRA, SPERANZA e COSTA, 2018) e a outra eu gerei a estrutura idêntica pela função &lt;code&gt;dput()&lt;/code&gt; para os leitores que não conseguirem por qualquer motivo o acesso ao site do Banco Central (as vezes vejo isso ocorrer dependendo dos bloqueios da sua rede de internet). Esclareço ao leitor que após baixar a série pelo BETS, fiz o dput e a partir de então, desabilitei o bloco (&lt;code&gt;Chunk&lt;/code&gt;) que acessa o BETS apenas para agilizar os cálculos.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;library(BETS)
+# Pegando as séries a partir do site do Banco Central do Brasil
+# Índice de volume de vendas no varejo Total de Mato Grosso do Sul
+# mensal a partir de jan/2000 até ago/2019 
+# 236 observações mensais
+varejoms &amp;lt;- BETSget(1479) 
+dput(varejoms)  # opção para ter os dados como na structure abaixo&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(BETS)
+varejoms &amp;lt;- structure(c(35.2, 35.6, 39.2, 40.5, 41.6, 40.4, 40.8, 38.7, 37.3, 37.6, 
+    35.6, 47.4, 34.2, 32.2, 38, 37.5, 38.8, 35, 38.4, 40.2, 38.2, 39.3, 36, 46.3, 
+    36.4, 34, 39, 37.8, 38.9, 35.3, 37.2, 38.1, 35.6, 38.3, 35.6, 45.7, 32.2, 31.6, 
+    35.2, 36.8, 37.5, 34.8, 38.4, 38.1, 37, 39, 37.3, 49, 35.8, 35.3, 40.2, 41.3, 
+    43.9, 41.6, 45.9, 42.3, 42.2, 44, 41.3, 56.9, 38.5, 38.5, 45.3, 43.6, 46.2, 44.3, 
+    47.5, 46.5, 46.4, 46, 44.1, 61, 42, 40.2, 44.6, 44.5, 47.8, 45.3, 46.5, 48.5, 
+    47.7, 50.2, 49.3, 64.5, 47, 46.8, 51, 50.5, 55, 51.3, 52.8, 55.3, 54.8, 55.6, 
+    55.3, 72.2, 54.5, 52.1, 56.2, 57.2, 60.8, 56.1, 61.8, 61.6, 59.8, 63.3, 57.7, 
+    77.4, 61.4, 51.9, 57.3, 57.9, 61.9, 57.3, 61.1, 61.1, 60.6, 65.6, 63.5, 83.1, 
+    64.1, 60.2, 67.8, 67.1, 72.8, 68.5, 71.1, 69.3, 69.9, 71.1, 67.9, 92.7, 67.5, 
+    64.8, 69.1, 69.4, 79.6, 70.2, 73.8, 72.5, 71.3, 75.6, 74.7, 100.8, 79.5, 75.7, 
+    82.4, 78, 84.8, 83.2, 84.8, 88.5, 86.3, 91.7, 92.8, 111.4, 92.8, 83.7, 92.5, 
+    88.3, 93.9, 88.8, 96, 95.9, 93.2, 98.3, 100.5, 128.8, 97.2, 90.2, 94.3, 94.4, 
+    101.1, 92, 96.4, 98.2, 97.6, 105.8, 103.1, 129.6, 99.6, 87.8, 97, 94.8, 98.6, 
+    93.4, 98.4, 96.4, 92.5, 100.6, 97.2, 124.5, 91.5, 85.1, 91.6, 88.5, 92.2, 87.4, 
+    90.5, 88.1, 85.2, 89.4, 93.4, 116.9, 90.8, 84, 89.7, 86.3, 90, 87.3, 90.8, 93.5, 
+    93.7, 91.4, 93.5, 114.1, 87.8, 81.1, 94.5, 83.2, 89.9, 88.8, 89.3, 93.7, 93.5, 
+    96.3, 101.3, 118.3, 93.8, 85.2, 90, 86.6, 90, 85.2, 91, 94.1), .Tsp = c(2000, 
+    2019.58333333333, 12), class = &amp;quot;ts&amp;quot;)
+print(varejoms)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;FALSE        Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct   Nov   Dec
+FALSE 2000  35.2  35.6  39.2  40.5  41.6  40.4  40.8  38.7  37.3  37.6  35.6  47.4
+FALSE 2001  34.2  32.2  38.0  37.5  38.8  35.0  38.4  40.2  38.2  39.3  36.0  46.3
+FALSE 2002  36.4  34.0  39.0  37.8  38.9  35.3  37.2  38.1  35.6  38.3  35.6  45.7
+FALSE 2003  32.2  31.6  35.2  36.8  37.5  34.8  38.4  38.1  37.0  39.0  37.3  49.0
+FALSE 2004  35.8  35.3  40.2  41.3  43.9  41.6  45.9  42.3  42.2  44.0  41.3  56.9
+FALSE 2005  38.5  38.5  45.3  43.6  46.2  44.3  47.5  46.5  46.4  46.0  44.1  61.0
+FALSE 2006  42.0  40.2  44.6  44.5  47.8  45.3  46.5  48.5  47.7  50.2  49.3  64.5
+FALSE 2007  47.0  46.8  51.0  50.5  55.0  51.3  52.8  55.3  54.8  55.6  55.3  72.2
+FALSE  [ reached getOption(&amp;quot;max.print&amp;quot;) -- omitted 12 rows ]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;class(varejoms)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;FALSE [1] &amp;quot;ts&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# [1] &amp;#39;ts&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A rotina de dados obtidos pelo BETS já retorna a série em formato &lt;code&gt;ts&lt;/code&gt;, ou seja, série temporal. Farei então a criação de uma série em diferenças para observar o comportamento da série em nível e em diferenças.&lt;/p&gt;
+&lt;p&gt;Inicialmente olharei as estatísticas descritivas da série. Em seguida farei um plot básico da série e o plot pelo pacote &lt;code&gt;dygraphs&lt;/code&gt;, útil para ver os pontos de picos e momentos específicos.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dvarejo &amp;lt;- diff(varejoms)
+# estatisticas basicas
+summary(varejoms)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  31.60   44.08   64.65   67.39   90.05  129.60 &lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# plot basico
+plot(varejoms)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-22-séries-temporais-com-r-análise-theta-para-o-consumo-do-varejo-em-ms-com-pacote-forecast-thetaf-e-e-forectheta_files/figure-html/unnamed-chunk-3-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# pelo pacote dygraph dá mais opções
+library(dygraphs)
+dygraph(varejoms, main = &amp;quot;Índice de volume de vendas no varejo total de Mato Grosso do Sul &amp;lt;br&amp;gt; (Mensal)  (2011=100) BCB 1479&amp;quot;) %&amp;gt;% 
+    dyAxis(&amp;quot;x&amp;quot;, drawGrid = TRUE) %&amp;gt;% dyEvent(&amp;quot;2005-1-01&amp;quot;, &amp;quot;2005&amp;quot;, labelLoc = &amp;quot;bottom&amp;quot;) %&amp;gt;% 
+    dyEvent(&amp;quot;2015-1-01&amp;quot;, &amp;quot;2015&amp;quot;, labelLoc = &amp;quot;bottom&amp;quot;) %&amp;gt;% dyEvent(&amp;quot;2018-1-01&amp;quot;, &amp;quot;2018&amp;quot;, 
+    labelLoc = &amp;quot;bottom&amp;quot;) %&amp;gt;% dyEvent(&amp;quot;2019-1-01&amp;quot;, &amp;quot;2019&amp;quot;, labelLoc = &amp;quot;bottom&amp;quot;) %&amp;gt;% 
+    dyOptions(drawPoints = TRUE, pointSize = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-1&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;dygraphs html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-1&#34;&gt;{&#34;x&#34;:{&#34;attrs&#34;:{&#34;axes&#34;:{&#34;x&#34;:{&#34;pixelsPerLabel&#34;:60,&#34;drawGrid&#34;:true,&#34;drawAxis&#34;:true},&#34;y&#34;:{&#34;drawAxis&#34;:true}},&#34;title&#34;:&#34;Índice de volume de vendas no varejo total de Mato Grosso do Sul &lt;br&gt; (Mensal)  (2011=100) BCB 1479&#34;,&#34;labels&#34;:[&#34;month&#34;,&#34;V1&#34;],&#34;legend&#34;:&#34;auto&#34;,&#34;retainDateWindow&#34;:false,&#34;stackedGraph&#34;:false,&#34;fillGraph&#34;:false,&#34;fillAlpha&#34;:0.15,&#34;stepPlot&#34;:false,&#34;drawPoints&#34;:true,&#34;pointSize&#34;:2,&#34;drawGapEdgePoints&#34;:false,&#34;connectSeparatedPoints&#34;:false,&#34;strokeWidth&#34;:1,&#34;strokeBorderColor&#34;:&#34;white&#34;,&#34;colorValue&#34;:0.5,&#34;colorSaturation&#34;:1,&#34;includeZero&#34;:false,&#34;drawAxesAtZero&#34;:false,&#34;logscale&#34;:false,&#34;axisTickSize&#34;:3,&#34;axisLineColor&#34;:&#34;black&#34;,&#34;axisLineWidth&#34;:0.3,&#34;axisLabelColor&#34;:&#34;black&#34;,&#34;axisLabelFontSize&#34;:14,&#34;axisLabelWidth&#34;:60,&#34;drawGrid&#34;:true,&#34;gridLineWidth&#34;:0.3,&#34;rightGap&#34;:5,&#34;digitsAfterDecimal&#34;:2,&#34;labelsKMB&#34;:false,&#34;labelsKMG2&#34;:false,&#34;labelsUTC&#34;:false,&#34;maxNumberWidth&#34;:6,&#34;animatedZooms&#34;:false,&#34;mobileDisableYTouch&#34;:true,&#34;disableZoom&#34;:false},&#34;scale&#34;:&#34;monthly&#34;,&#34;annotations&#34;:[],&#34;shadings&#34;:[],&#34;events&#34;:[{&#34;pos&#34;:&#34;2005-01-01T00:00:00.000Z&#34;,&#34;label&#34;:&#34;2005&#34;,&#34;labelLoc&#34;:&#34;bottom&#34;,&#34;color&#34;:&#34;black&#34;,&#34;strokePattern&#34;:[7,3],&#34;axis&#34;:&#34;x&#34;},{&#34;pos&#34;:&#34;2015-01-01T00:00:00.000Z&#34;,&#34;label&#34;:&#34;2015&#34;,&#34;labelLoc&#34;:&#34;bottom&#34;,&#34;color&#34;:&#34;black&#34;,&#34;strokePattern&#34;:[7,3],&#34;axis&#34;:&#34;x&#34;},{&#34;pos&#34;:&#34;2018-01-01T00:00:00.000Z&#34;,&#34;label&#34;:&#34;2018&#34;,&#34;labelLoc&#34;:&#34;bottom&#34;,&#34;color&#34;:&#34;black&#34;,&#34;strokePattern&#34;:[7,3],&#34;axis&#34;:&#34;x&#34;},{&#34;pos&#34;:&#34;2019-01-01T00:00:00.000Z&#34;,&#34;label&#34;:&#34;2019&#34;,&#34;labelLoc&#34;:&#34;bottom&#34;,&#34;color&#34;:&#34;black&#34;,&#34;strokePattern&#34;:[7,3],&#34;axis&#34;:&#34;x&#34;}],&#34;format&#34;:&#34;date&#34;,&#34;data&#34;:[[&#34;2000-01-01T00:00:00.000Z&#34;,&#34;2000-02-01T00:00:00.000Z&#34;,&#34;2000-03-01T00:00:00.000Z&#34;,&#34;2000-04-01T00:00:00.000Z&#34;,&#34;2000-05-01T00:00:00.000Z&#34;,&#34;2000-06-01T00:00:00.000Z&#34;,&#34;2000-07-01T00:00:00.000Z&#34;,&#34;2000-08-01T00:00:00.000Z&#34;,&#34;2000-09-01T00:00:00.000Z&#34;,&#34;2000-10-01T00:00:00.000Z&#34;,&#34;2000-11-01T00:00:00.000Z&#34;,&#34;2000-12-01T00:00:00.000Z&#34;,&#34;2001-01-01T00:00:00.000Z&#34;,&#34;2001-02-01T00:00:00.000Z&#34;,&#34;2001-03-01T00:00:00.000Z&#34;,&#34;2001-04-01T00:00:00.000Z&#34;,&#34;2001-05-01T00:00:00.000Z&#34;,&#34;2001-06-01T00:00:00.000Z&#34;,&#34;2001-07-01T00:00:00.000Z&#34;,&#34;2001-08-01T00:00:00.000Z&#34;,&#34;2001-09-01T00:00:00.000Z&#34;,&#34;2001-10-01T00:00:00.000Z&#34;,&#34;2001-11-01T00:00:00.000Z&#34;,&#34;2001-12-01T00:00:00.000Z&#34;,&#34;2002-01-01T00:00:00.000Z&#34;,&#34;2002-02-01T00:00:00.000Z&#34;,&#34;2002-03-01T00:00:00.000Z&#34;,&#34;2002-04-01T00:00:00.000Z&#34;,&#34;2002-05-01T00:00:00.000Z&#34;,&#34;2002-06-01T00:00:00.000Z&#34;,&#34;2002-07-01T00:00:00.000Z&#34;,&#34;2002-08-01T00:00:00.000Z&#34;,&#34;2002-09-01T00:00:00.000Z&#34;,&#34;2002-10-01T00:00:00.000Z&#34;,&#34;2002-11-01T00:00:00.000Z&#34;,&#34;2002-12-01T00:00:00.000Z&#34;,&#34;2003-01-01T00:00:00.000Z&#34;,&#34;2003-02-01T00:00:00.000Z&#34;,&#34;2003-03-01T00:00:00.000Z&#34;,&#34;2003-04-01T00:00:00.000Z&#34;,&#34;2003-05-01T00:00:00.000Z&#34;,&#34;2003-06-01T00:00:00.000Z&#34;,&#34;2003-07-01T00:00:00.000Z&#34;,&#34;2003-08-01T00:00:00.000Z&#34;,&#34;2003-09-01T00:00:00.000Z&#34;,&#34;2003-10-01T00:00:00.000Z&#34;,&#34;2003-11-01T00:00:00.000Z&#34;,&#34;2003-12-01T00:00:00.000Z&#34;,&#34;2004-01-01T00:00:00.000Z&#34;,&#34;2004-02-01T00:00:00.000Z&#34;,&#34;2004-03-01T00:00:00.000Z&#34;,&#34;2004-04-01T00:00:00.000Z&#34;,&#34;2004-05-01T00:00:00.000Z&#34;,&#34;2004-06-01T00:00:00.000Z&#34;,&#34;2004-07-01T00:00:00.000Z&#34;,&#34;2004-08-01T00:00:00.000Z&#34;,&#34;2004-09-01T00:00:00.000Z&#34;,&#34;2004-10-01T00:00:00.000Z&#34;,&#34;2004-11-01T00:00:00.000Z&#34;,&#34;2004-12-01T00:00:00.000Z&#34;,&#34;2005-01-01T00:00:00.000Z&#34;,&#34;2005-02-01T00:00:00.000Z&#34;,&#34;2005-03-01T00:00:00.000Z&#34;,&#34;2005-04-01T00:00:00.000Z&#34;,&#34;2005-05-01T00:00:00.000Z&#34;,&#34;2005-06-01T00:00:00.000Z&#34;,&#34;2005-07-01T00:00:00.000Z&#34;,&#34;2005-08-01T00:00:00.000Z&#34;,&#34;2005-09-01T00:00:00.000Z&#34;,&#34;2005-10-01T00:00:00.000Z&#34;,&#34;2005-11-01T00:00:00.000Z&#34;,&#34;2005-12-01T00:00:00.000Z&#34;,&#34;2006-01-01T00:00:00.000Z&#34;,&#34;2006-02-01T00:00:00.000Z&#34;,&#34;2006-03-01T00:00:00.000Z&#34;,&#34;2006-04-01T00:00:00.000Z&#34;,&#34;2006-05-01T00:00:00.000Z&#34;,&#34;2006-06-01T00:00:00.000Z&#34;,&#34;2006-07-01T00:00:00.000Z&#34;,&#34;2006-08-01T00:00:00.000Z&#34;,&#34;2006-09-01T00:00:00.000Z&#34;,&#34;2006-10-01T00:00:00.000Z&#34;,&#34;2006-11-01T00:00:00.000Z&#34;,&#34;2006-12-01T00:00:00.000Z&#34;,&#34;2007-01-01T00:00:00.000Z&#34;,&#34;2007-02-01T00:00:00.000Z&#34;,&#34;2007-03-01T00:00:00.000Z&#34;,&#34;2007-04-01T00:00:00.000Z&#34;,&#34;2007-05-01T00:00:00.000Z&#34;,&#34;2007-06-01T00:00:00.000Z&#34;,&#34;2007-07-01T00:00:00.000Z&#34;,&#34;2007-08-01T00:00:00.000Z&#34;,&#34;2007-09-01T00:00:00.000Z&#34;,&#34;2007-10-01T00:00:00.000Z&#34;,&#34;2007-11-01T00:00:00.000Z&#34;,&#34;2007-12-01T00:00:00.000Z&#34;,&#34;2008-01-01T00:00:00.000Z&#34;,&#34;2008-02-01T00:00:00.000Z&#34;,&#34;2008-03-01T00:00:00.000Z&#34;,&#34;2008-04-01T00:00:00.000Z&#34;,&#34;2008-05-01T00:00:00.000Z&#34;,&#34;2008-06-01T00:00:00.000Z&#34;,&#34;2008-07-01T00:00:00.000Z&#34;,&#34;2008-08-01T00:00:00.000Z&#34;,&#34;2008-09-01T00:00:00.000Z&#34;,&#34;2008-10-01T00:00:00.000Z&#34;,&#34;2008-11-01T00:00:00.000Z&#34;,&#34;2008-12-01T00:00:00.000Z&#34;,&#34;2009-01-01T00:00:00.000Z&#34;,&#34;2009-02-01T00:00:00.000Z&#34;,&#34;2009-03-01T00:00:00.000Z&#34;,&#34;2009-04-01T00:00:00.000Z&#34;,&#34;2009-05-01T00:00:00.000Z&#34;,&#34;2009-06-01T00:00:00.000Z&#34;,&#34;2009-07-01T00:00:00.000Z&#34;,&#34;2009-08-01T00:00:00.000Z&#34;,&#34;2009-09-01T00:00:00.000Z&#34;,&#34;2009-10-01T00:00:00.000Z&#34;,&#34;2009-11-01T00:00:00.000Z&#34;,&#34;2009-12-01T00:00:00.000Z&#34;,&#34;2010-01-01T00:00:00.000Z&#34;,&#34;2010-02-01T00:00:00.000Z&#34;,&#34;2010-03-01T00:00:00.000Z&#34;,&#34;2010-04-01T00:00:00.000Z&#34;,&#34;2010-05-01T00:00:00.000Z&#34;,&#34;2010-06-01T00:00:00.000Z&#34;,&#34;2010-07-01T00:00:00.000Z&#34;,&#34;2010-08-01T00:00:00.000Z&#34;,&#34;2010-09-01T00:00:00.000Z&#34;,&#34;2010-10-01T00:00:00.000Z&#34;,&#34;2010-11-01T00:00:00.000Z&#34;,&#34;2010-12-01T00:00:00.000Z&#34;,&#34;2011-01-01T00:00:00.000Z&#34;,&#34;2011-02-01T00:00:00.000Z&#34;,&#34;2011-03-01T00:00:00.000Z&#34;,&#34;2011-04-01T00:00:00.000Z&#34;,&#34;2011-05-01T00:00:00.000Z&#34;,&#34;2011-06-01T00:00:00.000Z&#34;,&#34;2011-07-01T00:00:00.000Z&#34;,&#34;2011-08-01T00:00:00.000Z&#34;,&#34;2011-09-01T00:00:00.000Z&#34;,&#34;2011-10-01T00:00:00.000Z&#34;,&#34;2011-11-01T00:00:00.000Z&#34;,&#34;2011-12-01T00:00:00.000Z&#34;,&#34;2012-01-01T00:00:00.000Z&#34;,&#34;2012-02-01T00:00:00.000Z&#34;,&#34;2012-03-01T00:00:00.000Z&#34;,&#34;2012-04-01T00:00:00.000Z&#34;,&#34;2012-05-01T00:00:00.000Z&#34;,&#34;2012-06-01T00:00:00.000Z&#34;,&#34;2012-07-01T00:00:00.000Z&#34;,&#34;2012-08-01T00:00:00.000Z&#34;,&#34;2012-09-01T00:00:00.000Z&#34;,&#34;2012-10-01T00:00:00.000Z&#34;,&#34;2012-11-01T00:00:00.000Z&#34;,&#34;2012-12-01T00:00:00.000Z&#34;,&#34;2013-01-01T00:00:00.000Z&#34;,&#34;2013-02-01T00:00:00.000Z&#34;,&#34;2013-03-01T00:00:00.000Z&#34;,&#34;2013-04-01T00:00:00.000Z&#34;,&#34;2013-05-01T00:00:00.000Z&#34;,&#34;2013-06-01T00:00:00.000Z&#34;,&#34;2013-07-01T00:00:00.000Z&#34;,&#34;2013-08-01T00:00:00.000Z&#34;,&#34;2013-09-01T00:00:00.000Z&#34;,&#34;2013-10-01T00:00:00.000Z&#34;,&#34;2013-11-01T00:00:00.000Z&#34;,&#34;2013-12-01T00:00:00.000Z&#34;,&#34;2014-01-01T00:00:00.000Z&#34;,&#34;2014-02-01T00:00:00.000Z&#34;,&#34;2014-03-01T00:00:00.000Z&#34;,&#34;2014-04-01T00:00:00.000Z&#34;,&#34;2014-05-01T00:00:00.000Z&#34;,&#34;2014-06-01T00:00:00.000Z&#34;,&#34;2014-07-01T00:00:00.000Z&#34;,&#34;2014-08-01T00:00:00.000Z&#34;,&#34;2014-09-01T00:00:00.000Z&#34;,&#34;2014-10-01T00:00:00.000Z&#34;,&#34;2014-11-01T00:00:00.000Z&#34;,&#34;2014-12-01T00:00:00.000Z&#34;,&#34;2015-01-01T00:00:00.000Z&#34;,&#34;2015-02-01T00:00:00.000Z&#34;,&#34;2015-03-01T00:00:00.000Z&#34;,&#34;2015-04-01T00:00:00.000Z&#34;,&#34;2015-05-01T00:00:00.000Z&#34;,&#34;2015-06-01T00:00:00.000Z&#34;,&#34;2015-07-01T00:00:00.000Z&#34;,&#34;2015-08-01T00:00:00.000Z&#34;,&#34;2015-09-01T00:00:00.000Z&#34;,&#34;2015-10-01T00:00:00.000Z&#34;,&#34;2015-11-01T00:00:00.000Z&#34;,&#34;2015-12-01T00:00:00.000Z&#34;,&#34;2016-01-01T00:00:00.000Z&#34;,&#34;2016-02-01T00:00:00.000Z&#34;,&#34;2016-03-01T00:00:00.000Z&#34;,&#34;2016-04-01T00:00:00.000Z&#34;,&#34;2016-05-01T00:00:00.000Z&#34;,&#34;2016-06-01T00:00:00.000Z&#34;,&#34;2016-07-01T00:00:00.000Z&#34;,&#34;2016-08-01T00:00:00.000Z&#34;,&#34;2016-09-01T00:00:00.000Z&#34;,&#34;2016-10-01T00:00:00.000Z&#34;,&#34;2016-11-01T00:00:00.000Z&#34;,&#34;2016-12-01T00:00:00.000Z&#34;,&#34;2017-01-01T00:00:00.000Z&#34;,&#34;2017-02-01T00:00:00.000Z&#34;,&#34;2017-03-01T00:00:00.000Z&#34;,&#34;2017-04-01T00:00:00.000Z&#34;,&#34;2017-05-01T00:00:00.000Z&#34;,&#34;2017-06-01T00:00:00.000Z&#34;,&#34;2017-07-01T00:00:00.000Z&#34;,&#34;2017-08-01T00:00:00.000Z&#34;,&#34;2017-09-01T00:00:00.000Z&#34;,&#34;2017-10-01T00:00:00.000Z&#34;,&#34;2017-11-01T00:00:00.000Z&#34;,&#34;2017-12-01T00:00:00.000Z&#34;,&#34;2018-01-01T00:00:00.000Z&#34;,&#34;2018-02-01T00:00:00.000Z&#34;,&#34;2018-03-01T00:00:00.000Z&#34;,&#34;2018-04-01T00:00:00.000Z&#34;,&#34;2018-05-01T00:00:00.000Z&#34;,&#34;2018-06-01T00:00:00.000Z&#34;,&#34;2018-07-01T00:00:00.000Z&#34;,&#34;2018-08-01T00:00:00.000Z&#34;,&#34;2018-09-01T00:00:00.000Z&#34;,&#34;2018-10-01T00:00:00.000Z&#34;,&#34;2018-11-01T00:00:00.000Z&#34;,&#34;2018-12-01T00:00:00.000Z&#34;,&#34;2019-01-01T00:00:00.000Z&#34;,&#34;2019-02-01T00:00:00.000Z&#34;,&#34;2019-03-01T00:00:00.000Z&#34;,&#34;2019-04-01T00:00:00.000Z&#34;,&#34;2019-05-01T00:00:00.000Z&#34;,&#34;2019-06-01T00:00:00.000Z&#34;,&#34;2019-07-01T00:00:00.000Z&#34;,&#34;2019-08-01T00:00:00.000Z&#34;],[35.2,35.6,39.2,40.5,41.6,40.4,40.8,38.7,37.3,37.6,35.6,47.4,34.2,32.2,38,37.5,38.8,35,38.4,40.2,38.2,39.3,36,46.3,36.4,34,39,37.8,38.9,35.3,37.2,38.1,35.6,38.3,35.6,45.7,32.2,31.6,35.2,36.8,37.5,34.8,38.4,38.1,37,39,37.3,49,35.8,35.3,40.2,41.3,43.9,41.6,45.9,42.3,42.2,44,41.3,56.9,38.5,38.5,45.3,43.6,46.2,44.3,47.5,46.5,46.4,46,44.1,61,42,40.2,44.6,44.5,47.8,45.3,46.5,48.5,47.7,50.2,49.3,64.5,47,46.8,51,50.5,55,51.3,52.8,55.3,54.8,55.6,55.3,72.2,54.5,52.1,56.2,57.2,60.8,56.1,61.8,61.6,59.8,63.3,57.7,77.4,61.4,51.9,57.3,57.9,61.9,57.3,61.1,61.1,60.6,65.6,63.5,83.1,64.1,60.2,67.8,67.1,72.8,68.5,71.1,69.3,69.9,71.1,67.9,92.7,67.5,64.8,69.1,69.4,79.6,70.2,73.8,72.5,71.3,75.6,74.7,100.8,79.5,75.7,82.4,78,84.8,83.2,84.8,88.5,86.3,91.7,92.8,111.4,92.8,83.7,92.5,88.3,93.9,88.8,96,95.9,93.2,98.3,100.5,128.8,97.2,90.2,94.3,94.4,101.1,92,96.4,98.2,97.6,105.8,103.1,129.6,99.6,87.8,97,94.8,98.6,93.4,98.4,96.4,92.5,100.6,97.2,124.5,91.5,85.1,91.6,88.5,92.2,87.4,90.5,88.1,85.2,89.4,93.4,116.9,90.8,84,89.7,86.3,90,87.3,90.8,93.5,93.7,91.4,93.5,114.1,87.8,81.1,94.5,83.2,89.9,88.8,89.3,93.7,93.5,96.3,101.3,118.3,93.8,85.2,90,86.6,90,85.2,91,94.1]],&#34;fixedtz&#34;:false,&#34;tzone&#34;:&#34;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;p&gt;É possivel visualizar nos plots acima: sazonalidade (por exemplo, picos em dezembro de cada ano); a tendência aparentemente crescente até 2014 e decresce com a “crise” brasileira; e uma aparente não-estacionariedade (média e variância mudam no tempo).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;análise-da-série&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Análise da série&lt;/h1&gt;
+&lt;div id=&#34;função-de-autocorrelação-fac-e-autocorrelação-parcial-facp-com-defasagem-36&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Função de Autocorrelação (FAC) e Autocorrelação parcial (FACp) com defasagem 36&lt;/h2&gt;
+&lt;div id=&#34;série-em-nível&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Série em nível&lt;/h3&gt;
+&lt;p&gt;Usarei a rotina do Hyndman e Athanasopoulos (2018).&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;varejo &amp;lt;- varejoms
+varejo %&amp;gt;% forecast::ggtsdisplay(main = &amp;quot;Série de Varejo MS&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-22-séries-temporais-com-r-análise-theta-para-o-consumo-do-varejo-em-ms-com-pacote-forecast-thetaf-e-e-forectheta_files/figure-html/unnamed-chunk-4-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Neste caso, o &lt;code&gt;ggtsdisplay&lt;/code&gt; do pacote &lt;code&gt;forecast&lt;/code&gt; já retorna os gráficos da série, e respectivas ACF e PACF.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;série-em-primeira-diferença&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Série em primeira diferença&lt;/h3&gt;
+&lt;p&gt;Como a série apresenta variações sazonais importantes, assim como tendência importante, claramente não-estacionárias, vou olhar também em primeira diferença.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;varejo %&amp;gt;% diff() %&amp;gt;% forecast::ggtsdisplay(main = &amp;quot;Série varejo de MS em primeira diferença&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-22-séries-temporais-com-r-análise-theta-para-o-consumo-do-varejo-em-ms-com-pacote-forecast-thetaf-e-e-forectheta_files/figure-html/unnamed-chunk-5-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;primeira-diferença-sazonal-e-acf-e-pacf&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Primeira diferença sazonal e ACF e PACF&lt;/h3&gt;
+&lt;p&gt;Farei agora a diferença sazonal.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;varejo %&amp;gt;% diff(lag = 12) %&amp;gt;% forecast::ggtsdisplay(main = &amp;quot;Série varejo de MS em primeira diferença sazonal&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-22-séries-temporais-com-r-análise-theta-para-o-consumo-do-varejo-em-ms-com-pacote-forecast-thetaf-e-e-forectheta_files/figure-html/unnamed-chunk-6-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;ajuste-sazonal-e-acf-e-pacf&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Ajuste sazonal e ACF e PACF&lt;/h3&gt;
+&lt;p&gt;Aplicaremos o ajuste sazonal tipo STL (Seasonal Decomposition of Time Series by Loess) aos dados.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(fpp2)
+varejoadj &amp;lt;- varejo %&amp;gt;% stl(s.window = &amp;quot;periodic&amp;quot;) %&amp;gt;% seasadj()
+autoplot(varejoadj, main = &amp;quot;Série de Varejo MS com ajuste sazonal STL&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-22-séries-temporais-com-r-análise-theta-para-o-consumo-do-varejo-em-ms-com-pacote-forecast-thetaf-e-e-forectheta_files/figure-html/unnamed-chunk-7-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;E agora os plots de ACF e PACF na série ajustada sazonalmente.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;varejoadj %&amp;gt;% diff() %&amp;gt;% forecast::ggtsdisplay(main = &amp;quot;Série varejo de MS em primeira diferença e ajuste sazonal&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-22-séries-temporais-com-r-análise-theta-para-o-consumo-do-varejo-em-ms-com-pacote-forecast-thetaf-e-e-forectheta_files/figure-html/unnamed-chunk-8-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;método-theta-pelo-forecastthetaf&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Método Theta pelo &lt;code&gt;forecast::thetaf&lt;/code&gt;&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;y &amp;lt;- varejoms
+h = 12
+require(forecast)
+T &amp;lt;- thetaf(y, h)$mean
+autoplot(varejoms, series = &amp;quot;Varejo-MS&amp;quot;) + autolayer(T, series = &amp;quot;Theta&amp;quot;, PI = FALSE) + 
+    xlab(&amp;quot;Mês/Ano&amp;quot;) + ylab(&amp;quot;Índice (2011=100)&amp;quot;) + ggtitle(&amp;quot;Índice de volume de vendas no varejo total de Mato Grosso do Sul &amp;lt;br&amp;gt; (Mensal) - BCB 1479&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-22-séries-temporais-com-r-análise-theta-para-o-consumo-do-varejo-em-ms-com-pacote-forecast-thetaf-e-e-forectheta_files/figure-html/unnamed-chunk-9-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Ou pelo dygraphs, teremos:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dygraphs)
+dygraph(cbind(varejoms, T), main = &amp;quot;Índice de volume de vendas no varejo total de Mato Grosso do Sul &amp;lt;br&amp;gt; (Mensal)  (2011=100) BCB 1479&amp;quot;) %&amp;gt;% 
+    dyAxis(&amp;quot;x&amp;quot;, drawGrid = TRUE) %&amp;gt;% dyEvent(&amp;quot;2005-1-01&amp;quot;, &amp;quot;2005&amp;quot;, labelLoc = &amp;quot;bottom&amp;quot;) %&amp;gt;% 
+    dyEvent(&amp;quot;2015-1-01&amp;quot;, &amp;quot;2015&amp;quot;, labelLoc = &amp;quot;bottom&amp;quot;) %&amp;gt;% dyEvent(&amp;quot;2018-1-01&amp;quot;, &amp;quot;2018&amp;quot;, 
+    labelLoc = &amp;quot;bottom&amp;quot;) %&amp;gt;% dyEvent(&amp;quot;2019-1-01&amp;quot;, &amp;quot;2019&amp;quot;, labelLoc = &amp;quot;bottom&amp;quot;) %&amp;gt;% 
+    dyOptions(drawPoints = TRUE, pointSize = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-2&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;dygraphs html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-2&#34;&gt;{&#34;x&#34;:{&#34;attrs&#34;:{&#34;axes&#34;:{&#34;x&#34;:{&#34;pixelsPerLabel&#34;:60,&#34;drawGrid&#34;:true,&#34;drawAxis&#34;:true},&#34;y&#34;:{&#34;drawAxis&#34;:true}},&#34;title&#34;:&#34;Índice de volume de vendas no varejo total de Mato Grosso do Sul &lt;br&gt; (Mensal)  (2011=100) BCB 1479&#34;,&#34;labels&#34;:[&#34;month&#34;,&#34;varejoms&#34;,&#34;T&#34;],&#34;legend&#34;:&#34;auto&#34;,&#34;retainDateWindow&#34;:false,&#34;stackedGraph&#34;:false,&#34;fillGraph&#34;:false,&#34;fillAlpha&#34;:0.15,&#34;stepPlot&#34;:false,&#34;drawPoints&#34;:true,&#34;pointSize&#34;:2,&#34;drawGapEdgePoints&#34;:false,&#34;connectSeparatedPoints&#34;:false,&#34;strokeWidth&#34;:1,&#34;strokeBorderColor&#34;:&#34;white&#34;,&#34;colorValue&#34;:0.5,&#34;colorSaturation&#34;:1,&#34;includeZero&#34;:false,&#34;drawAxesAtZero&#34;:false,&#34;logscale&#34;:false,&#34;axisTickSize&#34;:3,&#34;axisLineColor&#34;:&#34;black&#34;,&#34;axisLineWidth&#34;:0.3,&#34;axisLabelColor&#34;:&#34;black&#34;,&#34;axisLabelFontSize&#34;:14,&#34;axisLabelWidth&#34;:60,&#34;drawGrid&#34;:true,&#34;gridLineWidth&#34;:0.3,&#34;rightGap&#34;:5,&#34;digitsAfterDecimal&#34;:2,&#34;labelsKMB&#34;:false,&#34;labelsKMG2&#34;:false,&#34;labelsUTC&#34;:false,&#34;maxNumberWidth&#34;:6,&#34;animatedZooms&#34;:false,&#34;mobileDisableYTouch&#34;:true,&#34;disableZoom&#34;:false},&#34;scale&#34;:&#34;monthly&#34;,&#34;annotations&#34;:[],&#34;shadings&#34;:[],&#34;events&#34;:[{&#34;pos&#34;:&#34;2005-01-01T00:00:00.000Z&#34;,&#34;label&#34;:&#34;2005&#34;,&#34;labelLoc&#34;:&#34;bottom&#34;,&#34;color&#34;:&#34;black&#34;,&#34;strokePattern&#34;:[7,3],&#34;axis&#34;:&#34;x&#34;},{&#34;pos&#34;:&#34;2015-01-01T00:00:00.000Z&#34;,&#34;label&#34;:&#34;2015&#34;,&#34;labelLoc&#34;:&#34;bottom&#34;,&#34;color&#34;:&#34;black&#34;,&#34;strokePattern&#34;:[7,3],&#34;axis&#34;:&#34;x&#34;},{&#34;pos&#34;:&#34;2018-01-01T00:00:00.000Z&#34;,&#34;label&#34;:&#34;2018&#34;,&#34;labelLoc&#34;:&#34;bottom&#34;,&#34;color&#34;:&#34;black&#34;,&#34;strokePattern&#34;:[7,3],&#34;axis&#34;:&#34;x&#34;},{&#34;pos&#34;:&#34;2019-01-01T00:00:00.000Z&#34;,&#34;label&#34;:&#34;2019&#34;,&#34;labelLoc&#34;:&#34;bottom&#34;,&#34;color&#34;:&#34;black&#34;,&#34;strokePattern&#34;:[7,3],&#34;axis&#34;:&#34;x&#34;}],&#34;format&#34;:&#34;date&#34;,&#34;data&#34;:[[&#34;2000-01-01T00:00:00.000Z&#34;,&#34;2000-02-01T00:00:00.000Z&#34;,&#34;2000-03-01T00:00:00.000Z&#34;,&#34;2000-04-01T00:00:00.000Z&#34;,&#34;2000-05-01T00:00:00.000Z&#34;,&#34;2000-06-01T00:00:00.000Z&#34;,&#34;2000-07-01T00:00:00.000Z&#34;,&#34;2000-08-01T00:00:00.000Z&#34;,&#34;2000-09-01T00:00:00.000Z&#34;,&#34;2000-10-01T00:00:00.000Z&#34;,&#34;2000-11-01T00:00:00.000Z&#34;,&#34;2000-12-01T00:00:00.000Z&#34;,&#34;2001-01-01T00:00:00.000Z&#34;,&#34;2001-02-01T00:00:00.000Z&#34;,&#34;2001-03-01T00:00:00.000Z&#34;,&#34;2001-04-01T00:00:00.000Z&#34;,&#34;2001-05-01T00:00:00.000Z&#34;,&#34;2001-06-01T00:00:00.000Z&#34;,&#34;2001-07-01T00:00:00.000Z&#34;,&#34;2001-08-01T00:00:00.000Z&#34;,&#34;2001-09-01T00:00:00.000Z&#34;,&#34;2001-10-01T00:00:00.000Z&#34;,&#34;2001-11-01T00:00:00.000Z&#34;,&#34;2001-12-01T00:00:00.000Z&#34;,&#34;2002-01-01T00:00:00.000Z&#34;,&#34;2002-02-01T00:00:00.000Z&#34;,&#34;2002-03-01T00:00:00.000Z&#34;,&#34;2002-04-01T00:00:00.000Z&#34;,&#34;2002-05-01T00:00:00.000Z&#34;,&#34;2002-06-01T00:00:00.000Z&#34;,&#34;2002-07-01T00:00:00.000Z&#34;,&#34;2002-08-01T00:00:00.000Z&#34;,&#34;2002-09-01T00:00:00.000Z&#34;,&#34;2002-10-01T00:00:00.000Z&#34;,&#34;2002-11-01T00:00:00.000Z&#34;,&#34;2002-12-01T00:00:00.000Z&#34;,&#34;2003-01-01T00:00:00.000Z&#34;,&#34;2003-02-01T00:00:00.000Z&#34;,&#34;2003-03-01T00:00:00.000Z&#34;,&#34;2003-04-01T00:00:00.000Z&#34;,&#34;2003-05-01T00:00:00.000Z&#34;,&#34;2003-06-01T00:00:00.000Z&#34;,&#34;2003-07-01T00:00:00.000Z&#34;,&#34;2003-08-01T00:00:00.000Z&#34;,&#34;2003-09-01T00:00:00.000Z&#34;,&#34;2003-10-01T00:00:00.000Z&#34;,&#34;2003-11-01T00:00:00.000Z&#34;,&#34;2003-12-01T00:00:00.000Z&#34;,&#34;2004-01-01T00:00:00.000Z&#34;,&#34;2004-02-01T00:00:00.000Z&#34;,&#34;2004-03-01T00:00:00.000Z&#34;,&#34;2004-04-01T00:00:00.000Z&#34;,&#34;2004-05-01T00:00:00.000Z&#34;,&#34;2004-06-01T00:00:00.000Z&#34;,&#34;2004-07-01T00:00:00.000Z&#34;,&#34;2004-08-01T00:00:00.000Z&#34;,&#34;2004-09-01T00:00:00.000Z&#34;,&#34;2004-10-01T00:00:00.000Z&#34;,&#34;2004-11-01T00:00:00.000Z&#34;,&#34;2004-12-01T00:00:00.000Z&#34;,&#34;2005-01-01T00:00:00.000Z&#34;,&#34;2005-02-01T00:00:00.000Z&#34;,&#34;2005-03-01T00:00:00.000Z&#34;,&#34;2005-04-01T00:00:00.000Z&#34;,&#34;2005-05-01T00:00:00.000Z&#34;,&#34;2005-06-01T00:00:00.000Z&#34;,&#34;2005-07-01T00:00:00.000Z&#34;,&#34;2005-08-01T00:00:00.000Z&#34;,&#34;2005-09-01T00:00:00.000Z&#34;,&#34;2005-10-01T00:00:00.000Z&#34;,&#34;2005-11-01T00:00:00.000Z&#34;,&#34;2005-12-01T00:00:00.000Z&#34;,&#34;2006-01-01T00:00:00.000Z&#34;,&#34;2006-02-01T00:00:00.000Z&#34;,&#34;2006-03-01T00:00:00.000Z&#34;,&#34;2006-04-01T00:00:00.000Z&#34;,&#34;2006-05-01T00:00:00.000Z&#34;,&#34;2006-06-01T00:00:00.000Z&#34;,&#34;2006-07-01T00:00:00.000Z&#34;,&#34;2006-08-01T00:00:00.000Z&#34;,&#34;2006-09-01T00:00:00.000Z&#34;,&#34;2006-10-01T00:00:00.000Z&#34;,&#34;2006-11-01T00:00:00.000Z&#34;,&#34;2006-12-01T00:00:00.000Z&#34;,&#34;2007-01-01T00:00:00.000Z&#34;,&#34;2007-02-01T00:00:00.000Z&#34;,&#34;2007-03-01T00:00:00.000Z&#34;,&#34;2007-04-01T00:00:00.000Z&#34;,&#34;2007-05-01T00:00:00.000Z&#34;,&#34;2007-06-01T00:00:00.000Z&#34;,&#34;2007-07-01T00:00:00.000Z&#34;,&#34;2007-08-01T00:00:00.000Z&#34;,&#34;2007-09-01T00:00:00.000Z&#34;,&#34;2007-10-01T00:00:00.000Z&#34;,&#34;2007-11-01T00:00:00.000Z&#34;,&#34;2007-12-01T00:00:00.000Z&#34;,&#34;2008-01-01T00:00:00.000Z&#34;,&#34;2008-02-01T00:00:00.000Z&#34;,&#34;2008-03-01T00:00:00.000Z&#34;,&#34;2008-04-01T00:00:00.000Z&#34;,&#34;2008-05-01T00:00:00.000Z&#34;,&#34;2008-06-01T00:00:00.000Z&#34;,&#34;2008-07-01T00:00:00.000Z&#34;,&#34;2008-08-01T00:00:00.000Z&#34;,&#34;2008-09-01T00:00:00.000Z&#34;,&#34;2008-10-01T00:00:00.000Z&#34;,&#34;2008-11-01T00:00:00.000Z&#34;,&#34;2008-12-01T00:00:00.000Z&#34;,&#34;2009-01-01T00:00:00.000Z&#34;,&#34;2009-02-01T00:00:00.000Z&#34;,&#34;2009-03-01T00:00:00.000Z&#34;,&#34;2009-04-01T00:00:00.000Z&#34;,&#34;2009-05-01T00:00:00.000Z&#34;,&#34;2009-06-01T00:00:00.000Z&#34;,&#34;2009-07-01T00:00:00.000Z&#34;,&#34;2009-08-01T00:00:00.000Z&#34;,&#34;2009-09-01T00:00:00.000Z&#34;,&#34;2009-10-01T00:00:00.000Z&#34;,&#34;2009-11-01T00:00:00.000Z&#34;,&#34;2009-12-01T00:00:00.000Z&#34;,&#34;2010-01-01T00:00:00.000Z&#34;,&#34;2010-02-01T00:00:00.000Z&#34;,&#34;2010-03-01T00:00:00.000Z&#34;,&#34;2010-04-01T00:00:00.000Z&#34;,&#34;2010-05-01T00:00:00.000Z&#34;,&#34;2010-06-01T00:00:00.000Z&#34;,&#34;2010-07-01T00:00:00.000Z&#34;,&#34;2010-08-01T00:00:00.000Z&#34;,&#34;2010-09-01T00:00:00.000Z&#34;,&#34;2010-10-01T00:00:00.000Z&#34;,&#34;2010-11-01T00:00:00.000Z&#34;,&#34;2010-12-01T00:00:00.000Z&#34;,&#34;2011-01-01T00:00:00.000Z&#34;,&#34;2011-02-01T00:00:00.000Z&#34;,&#34;2011-03-01T00:00:00.000Z&#34;,&#34;2011-04-01T00:00:00.000Z&#34;,&#34;2011-05-01T00:00:00.000Z&#34;,&#34;2011-06-01T00:00:00.000Z&#34;,&#34;2011-07-01T00:00:00.000Z&#34;,&#34;2011-08-01T00:00:00.000Z&#34;,&#34;2011-09-01T00:00:00.000Z&#34;,&#34;2011-10-01T00:00:00.000Z&#34;,&#34;2011-11-01T00:00:00.000Z&#34;,&#34;2011-12-01T00:00:00.000Z&#34;,&#34;2012-01-01T00:00:00.000Z&#34;,&#34;2012-02-01T00:00:00.000Z&#34;,&#34;2012-03-01T00:00:00.000Z&#34;,&#34;2012-04-01T00:00:00.000Z&#34;,&#34;2012-05-01T00:00:00.000Z&#34;,&#34;2012-06-01T00:00:00.000Z&#34;,&#34;2012-07-01T00:00:00.000Z&#34;,&#34;2012-08-01T00:00:00.000Z&#34;,&#34;2012-09-01T00:00:00.000Z&#34;,&#34;2012-10-01T00:00:00.000Z&#34;,&#34;2012-11-01T00:00:00.000Z&#34;,&#34;2012-12-01T00:00:00.000Z&#34;,&#34;2013-01-01T00:00:00.000Z&#34;,&#34;2013-02-01T00:00:00.000Z&#34;,&#34;2013-03-01T00:00:00.000Z&#34;,&#34;2013-04-01T00:00:00.000Z&#34;,&#34;2013-05-01T00:00:00.000Z&#34;,&#34;2013-06-01T00:00:00.000Z&#34;,&#34;2013-07-01T00:00:00.000Z&#34;,&#34;2013-08-01T00:00:00.000Z&#34;,&#34;2013-09-01T00:00:00.000Z&#34;,&#34;2013-10-01T00:00:00.000Z&#34;,&#34;2013-11-01T00:00:00.000Z&#34;,&#34;2013-12-01T00:00:00.000Z&#34;,&#34;2014-01-01T00:00:00.000Z&#34;,&#34;2014-02-01T00:00:00.000Z&#34;,&#34;2014-03-01T00:00:00.000Z&#34;,&#34;2014-04-01T00:00:00.000Z&#34;,&#34;2014-05-01T00:00:00.000Z&#34;,&#34;2014-06-01T00:00:00.000Z&#34;,&#34;2014-07-01T00:00:00.000Z&#34;,&#34;2014-08-01T00:00:00.000Z&#34;,&#34;2014-09-01T00:00:00.000Z&#34;,&#34;2014-10-01T00:00:00.000Z&#34;,&#34;2014-11-01T00:00:00.000Z&#34;,&#34;2014-12-01T00:00:00.000Z&#34;,&#34;2015-01-01T00:00:00.000Z&#34;,&#34;2015-02-01T00:00:00.000Z&#34;,&#34;2015-03-01T00:00:00.000Z&#34;,&#34;2015-04-01T00:00:00.000Z&#34;,&#34;2015-05-01T00:00:00.000Z&#34;,&#34;2015-06-01T00:00:00.000Z&#34;,&#34;2015-07-01T00:00:00.000Z&#34;,&#34;2015-08-01T00:00:00.000Z&#34;,&#34;2015-09-01T00:00:00.000Z&#34;,&#34;2015-10-01T00:00:00.000Z&#34;,&#34;2015-11-01T00:00:00.000Z&#34;,&#34;2015-12-01T00:00:00.000Z&#34;,&#34;2016-01-01T00:00:00.000Z&#34;,&#34;2016-02-01T00:00:00.000Z&#34;,&#34;2016-03-01T00:00:00.000Z&#34;,&#34;2016-04-01T00:00:00.000Z&#34;,&#34;2016-05-01T00:00:00.000Z&#34;,&#34;2016-06-01T00:00:00.000Z&#34;,&#34;2016-07-01T00:00:00.000Z&#34;,&#34;2016-08-01T00:00:00.000Z&#34;,&#34;2016-09-01T00:00:00.000Z&#34;,&#34;2016-10-01T00:00:00.000Z&#34;,&#34;2016-11-01T00:00:00.000Z&#34;,&#34;2016-12-01T00:00:00.000Z&#34;,&#34;2017-01-01T00:00:00.000Z&#34;,&#34;2017-02-01T00:00:00.000Z&#34;,&#34;2017-03-01T00:00:00.000Z&#34;,&#34;2017-04-01T00:00:00.000Z&#34;,&#34;2017-05-01T00:00:00.000Z&#34;,&#34;2017-06-01T00:00:00.000Z&#34;,&#34;2017-07-01T00:00:00.000Z&#34;,&#34;2017-08-01T00:00:00.000Z&#34;,&#34;2017-09-01T00:00:00.000Z&#34;,&#34;2017-10-01T00:00:00.000Z&#34;,&#34;2017-11-01T00:00:00.000Z&#34;,&#34;2017-12-01T00:00:00.000Z&#34;,&#34;2018-01-01T00:00:00.000Z&#34;,&#34;2018-02-01T00:00:00.000Z&#34;,&#34;2018-03-01T00:00:00.000Z&#34;,&#34;2018-04-01T00:00:00.000Z&#34;,&#34;2018-05-01T00:00:00.000Z&#34;,&#34;2018-06-01T00:00:00.000Z&#34;,&#34;2018-07-01T00:00:00.000Z&#34;,&#34;2018-08-01T00:00:00.000Z&#34;,&#34;2018-09-01T00:00:00.000Z&#34;,&#34;2018-10-01T00:00:00.000Z&#34;,&#34;2018-11-01T00:00:00.000Z&#34;,&#34;2018-12-01T00:00:00.000Z&#34;,&#34;2019-01-01T00:00:00.000Z&#34;,&#34;2019-02-01T00:00:00.000Z&#34;,&#34;2019-03-01T00:00:00.000Z&#34;,&#34;2019-04-01T00:00:00.000Z&#34;,&#34;2019-05-01T00:00:00.000Z&#34;,&#34;2019-06-01T00:00:00.000Z&#34;,&#34;2019-07-01T00:00:00.000Z&#34;,&#34;2019-08-01T00:00:00.000Z&#34;,&#34;2019-09-01T00:00:00.000Z&#34;,&#34;2019-10-01T00:00:00.000Z&#34;,&#34;2019-11-01T00:00:00.000Z&#34;,&#34;2019-12-01T00:00:00.000Z&#34;,&#34;2020-01-01T00:00:00.000Z&#34;,&#34;2020-02-01T00:00:00.000Z&#34;,&#34;2020-03-01T00:00:00.000Z&#34;,&#34;2020-04-01T00:00:00.000Z&#34;,&#34;2020-05-01T00:00:00.000Z&#34;,&#34;2020-06-01T00:00:00.000Z&#34;,&#34;2020-07-01T00:00:00.000Z&#34;,&#34;2020-08-01T00:00:00.000Z&#34;],[35.2,35.6,39.2,40.5,41.6,40.4,40.8,38.7,37.3,37.6,35.6,47.4,34.2,32.2,38,37.5,38.8,35,38.4,40.2,38.2,39.3,36,46.3,36.4,34,39,37.8,38.9,35.3,37.2,38.1,35.6,38.3,35.6,45.7,32.2,31.6,35.2,36.8,37.5,34.8,38.4,38.1,37,39,37.3,49,35.8,35.3,40.2,41.3,43.9,41.6,45.9,42.3,42.2,44,41.3,56.9,38.5,38.5,45.3,43.6,46.2,44.3,47.5,46.5,46.4,46,44.1,61,42,40.2,44.6,44.5,47.8,45.3,46.5,48.5,47.7,50.2,49.3,64.5,47,46.8,51,50.5,55,51.3,52.8,55.3,54.8,55.6,55.3,72.2,54.5,52.1,56.2,57.2,60.8,56.1,61.8,61.6,59.8,63.3,57.7,77.4,61.4,51.9,57.3,57.9,61.9,57.3,61.1,61.1,60.6,65.6,63.5,83.1,64.1,60.2,67.8,67.1,72.8,68.5,71.1,69.3,69.9,71.1,67.9,92.7,67.5,64.8,69.1,69.4,79.6,70.2,73.8,72.5,71.3,75.6,74.7,100.8,79.5,75.7,82.4,78,84.8,83.2,84.8,88.5,86.3,91.7,92.8,111.4,92.8,83.7,92.5,88.3,93.9,88.8,96,95.9,93.2,98.3,100.5,128.8,97.2,90.2,94.3,94.4,101.1,92,96.4,98.2,97.6,105.8,103.1,129.6,99.6,87.8,97,94.8,98.6,93.4,98.4,96.4,92.5,100.6,97.2,124.5,91.5,85.1,91.6,88.5,92.2,87.4,90.5,88.1,85.2,89.4,93.4,116.9,90.8,84,89.7,86.3,90,87.3,90.8,93.5,93.7,91.4,93.5,114.1,87.8,81.1,94.5,83.2,89.9,88.8,89.3,93.7,93.5,96.3,101.3,118.3,93.8,85.2,90,86.6,90,85.2,91,94.1,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,90.7671671534183,94.5344954416152,92.0722803183121,118.912291376105,89.3306718870399,83.6138105592018,92.4513597961148,90.5687268443176,96.0992108289845,89.7962499988992,94.8209259302061,94.7996027791049]],&#34;fixedtz&#34;:false,&#34;tzone&#34;:&#34;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;p&gt;Outros detalhes estão no objeto Theta.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;modelo &amp;lt;- thetaf(y, h)
+summary(modelo)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;
+Forecast method: Theta
+
+Model Information:
+$alpha
+[1] 0.6379929
+
+$drift
+        X 
+0.1636578 
+
+$sigma
+[1] 5.651715
+
+$call
+thetaf(y = y, h = h)
+
+
+Error measures:
+                    ME     RMSE      MAE       MPE     MAPE      MASE
+Training set 0.3545975 2.389965 1.818344 0.5126286 2.748774 0.3983852
+                    ACF1
+Training set -0.09309372
+
+Forecasts:
+         Point Forecast     Lo 80     Hi 80     Lo 95     Hi 95
+Sep 2019       90.76717  87.72049  93.81384  86.10768  95.42666
+Oct 2019       94.53450  90.92057  98.14842  89.00748 100.06151
+Nov 2019       92.07228  87.96879  96.17577  85.79654  98.34802
+Dec 2019      118.91229 114.37172 123.45287 111.96808 125.85650
+Jan 2020       89.33067  84.39154  94.26980  81.77692  96.88442
+Feb 2020       83.61381  78.30597  88.92165  75.49616  91.73146
+Mar 2020       92.45136  86.79880  98.10392  83.80652 101.09620
+Apr 2020       90.56873  84.59130  96.54615  81.42705  99.71041
+May 2020       96.09921  89.81369 102.38473  86.48634 105.71209
+Jun 2020       89.79625  83.21704  96.37546  79.73422  99.85828
+Jul 2020       94.82093  87.96059 101.68126  84.32895 105.31290
+Aug 2020       94.79960  87.66922 101.92999  83.89462 105.70458&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;autoplot(modelo, PI = TRUE)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-22-séries-temporais-com-r-análise-theta-para-o-consumo-do-varejo-em-ms-com-pacote-forecast-thetaf-e-e-forectheta_files/figure-html/unnamed-chunk-11-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;knitr::kable(modelo)&lt;/code&gt;&lt;/pre&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Point Forecast&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Lo 80&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Hi 80&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Lo 95&lt;/th&gt;
+&lt;th align=&#34;right&#34;&gt;Hi 95&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Sep 2019&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;90.76717&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;87.72049&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;93.81384&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;86.10768&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;95.42666&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Oct 2019&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;94.53450&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;90.92057&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;98.14842&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;89.00748&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;100.06151&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Nov 2019&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;92.07228&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;87.96879&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;96.17577&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;85.79654&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;98.34802&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Dec 2019&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;118.91229&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;114.37172&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;123.45287&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;111.96808&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;125.85650&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Jan 2020&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;89.33067&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;84.39154&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;94.26980&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;81.77692&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;96.88442&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Feb 2020&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;83.61381&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;78.30597&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;88.92165&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;75.49616&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;91.73146&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Mar 2020&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;92.45136&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;86.79880&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;98.10392&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;83.80652&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;101.09620&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Apr 2020&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;90.56873&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;84.59130&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;96.54615&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;81.42705&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;99.71041&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;May 2020&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;96.09921&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;89.81369&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;102.38473&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;86.48634&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;105.71209&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Jun 2020&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;89.79625&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;83.21704&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;96.37546&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;79.73422&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;99.85828&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;Jul 2020&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;94.82093&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;87.96059&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;101.68126&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;84.32895&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;105.31290&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;Aug 2020&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;94.79960&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;87.66922&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;101.92999&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;83.89462&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;105.70458&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div id=&#34;método-theta-pelo-forectheta-de-fiorucci-et-al-2016&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Método Theta pelo &lt;code&gt;forecTheta&lt;/code&gt; de Fiorucci et al (2016)&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(forecTheta)
+y &amp;lt;- varejoms
+h = 12
+set.seed(12345)
+mod2 &amp;lt;- dotm(y, h)
+plot(mod2)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;img src=&#34;/post/2020-04-22-séries-temporais-com-r-análise-theta-para-o-consumo-do-varejo-em-ms-com-pacote-forecast-thetaf-e-e-forectheta_files/figure-html/unnamed-chunk-12-1.png&#34; width=&#34;672&#34; /&gt;&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;(mod2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;Forecast method: Dynamic Optimised Theta Model 
+
+Seasonal decomposition type: multiplicative 
+
+Optimisation method: Nelder-Mead 
+
+Number of theta lines: 2 
+
+Weights for theta lines:
+        Estimative
+omega_1       0.48
+omega_2       0.52
+
+Estimative of parameters:
+        MLE
+ell0  15.61
+alpha  0.62
+theta  1.92
+
+Forecasting points and prediction intervals
+             Mean    Lo 80    Hi 80    Lo 90    Hi 90    Lo 95    Hi 95
+Sep 2019  90.7055  87.7358  94.3555  87.0361  95.0432  86.5322  95.7098
+Oct 2019  94.4625  91.2530  98.5915  90.4380  99.4901  89.5612 100.3729
+Nov 2019  91.9939  87.9531  96.3013  87.0091  97.6981  86.1153  98.2929
+Dec 2019 118.7997 113.5964 125.0013 112.1571 126.6257 111.3828 127.9087
+Jan 2020  89.2369  84.7963  94.2359  83.4705  95.0678  82.5591  96.2033
+Feb 2020  83.5169  78.5097  88.5590  77.4747  89.7529  76.9382  91.4349
+Mar 2020  92.3336  86.7244  98.2125  85.8621  99.3112  83.9983 100.0960
+Apr 2020  90.4424  85.1185  96.1328  83.1143  97.9635  82.2356  98.6804
+May 2020  95.9529  89.7126 102.5335  88.8577 103.9769  85.8770 104.7699
+Jun 2020  89.6476  83.1236  96.1505  81.8708  97.2885  80.7374  98.5336
+Jul 2020  94.6507  87.0673 101.6476  85.5549 103.3302  84.9208 104.3466
+Aug 2020  94.6157  86.7363 101.6285  85.6061 103.3821  85.0348 104.6449
+
+Warning: According with the Shapiro-Wilk test with 97% of confidence, the unseasoned residuals do not follow the Normal distribution. The prediction intervals may not be adequate.&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ou pelo dygraphs, teremos:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dygraphs)
+require(forecast)
+set.seed(12345)
+T2 &amp;lt;- dotm(y, h)$mean
+dygraph(cbind(varejoms, T2), main = &amp;quot;Índice de volume de vendas no varejo total de Mato Grosso do Sul &amp;lt;br&amp;gt; (Mensal)  (2011=100) BCB 1479&amp;quot;) %&amp;gt;% 
+    dyAxis(&amp;quot;x&amp;quot;, drawGrid = TRUE) %&amp;gt;% dyEvent(&amp;quot;2005-1-01&amp;quot;, &amp;quot;2005&amp;quot;, labelLoc = &amp;quot;bottom&amp;quot;) %&amp;gt;% 
+    dyEvent(&amp;quot;2015-1-01&amp;quot;, &amp;quot;2015&amp;quot;, labelLoc = &amp;quot;bottom&amp;quot;) %&amp;gt;% dyEvent(&amp;quot;2018-1-01&amp;quot;, &amp;quot;2018&amp;quot;, 
+    labelLoc = &amp;quot;bottom&amp;quot;) %&amp;gt;% dyEvent(&amp;quot;2019-1-01&amp;quot;, &amp;quot;2019&amp;quot;, labelLoc = &amp;quot;bottom&amp;quot;) %&amp;gt;% 
+    dyOptions(drawPoints = TRUE, pointSize = 2)&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;htmlwidget-3&#34; style=&#34;width:672px;height:480px;&#34; class=&#34;dygraphs html-widget&#34;&gt;&lt;/div&gt;
+&lt;script type=&#34;application/json&#34; data-for=&#34;htmlwidget-3&#34;&gt;{&#34;x&#34;:{&#34;attrs&#34;:{&#34;axes&#34;:{&#34;x&#34;:{&#34;pixelsPerLabel&#34;:60,&#34;drawGrid&#34;:true,&#34;drawAxis&#34;:true},&#34;y&#34;:{&#34;drawAxis&#34;:true}},&#34;title&#34;:&#34;Índice de volume de vendas no varejo total de Mato Grosso do Sul &lt;br&gt; (Mensal)  (2011=100) BCB 1479&#34;,&#34;labels&#34;:[&#34;month&#34;,&#34;varejoms&#34;,&#34;T2&#34;],&#34;legend&#34;:&#34;auto&#34;,&#34;retainDateWindow&#34;:false,&#34;stackedGraph&#34;:false,&#34;fillGraph&#34;:false,&#34;fillAlpha&#34;:0.15,&#34;stepPlot&#34;:false,&#34;drawPoints&#34;:true,&#34;pointSize&#34;:2,&#34;drawGapEdgePoints&#34;:false,&#34;connectSeparatedPoints&#34;:false,&#34;strokeWidth&#34;:1,&#34;strokeBorderColor&#34;:&#34;white&#34;,&#34;colorValue&#34;:0.5,&#34;colorSaturation&#34;:1,&#34;includeZero&#34;:false,&#34;drawAxesAtZero&#34;:false,&#34;logscale&#34;:false,&#34;axisTickSize&#34;:3,&#34;axisLineColor&#34;:&#34;black&#34;,&#34;axisLineWidth&#34;:0.3,&#34;axisLabelColor&#34;:&#34;black&#34;,&#34;axisLabelFontSize&#34;:14,&#34;axisLabelWidth&#34;:60,&#34;drawGrid&#34;:true,&#34;gridLineWidth&#34;:0.3,&#34;rightGap&#34;:5,&#34;digitsAfterDecimal&#34;:2,&#34;labelsKMB&#34;:false,&#34;labelsKMG2&#34;:false,&#34;labelsUTC&#34;:false,&#34;maxNumberWidth&#34;:6,&#34;animatedZooms&#34;:false,&#34;mobileDisableYTouch&#34;:true,&#34;disableZoom&#34;:false},&#34;scale&#34;:&#34;monthly&#34;,&#34;annotations&#34;:[],&#34;shadings&#34;:[],&#34;events&#34;:[{&#34;pos&#34;:&#34;2005-01-01T00:00:00.000Z&#34;,&#34;label&#34;:&#34;2005&#34;,&#34;labelLoc&#34;:&#34;bottom&#34;,&#34;color&#34;:&#34;black&#34;,&#34;strokePattern&#34;:[7,3],&#34;axis&#34;:&#34;x&#34;},{&#34;pos&#34;:&#34;2015-01-01T00:00:00.000Z&#34;,&#34;label&#34;:&#34;2015&#34;,&#34;labelLoc&#34;:&#34;bottom&#34;,&#34;color&#34;:&#34;black&#34;,&#34;strokePattern&#34;:[7,3],&#34;axis&#34;:&#34;x&#34;},{&#34;pos&#34;:&#34;2018-01-01T00:00:00.000Z&#34;,&#34;label&#34;:&#34;2018&#34;,&#34;labelLoc&#34;:&#34;bottom&#34;,&#34;color&#34;:&#34;black&#34;,&#34;strokePattern&#34;:[7,3],&#34;axis&#34;:&#34;x&#34;},{&#34;pos&#34;:&#34;2019-01-01T00:00:00.000Z&#34;,&#34;label&#34;:&#34;2019&#34;,&#34;labelLoc&#34;:&#34;bottom&#34;,&#34;color&#34;:&#34;black&#34;,&#34;strokePattern&#34;:[7,3],&#34;axis&#34;:&#34;x&#34;}],&#34;format&#34;:&#34;date&#34;,&#34;data&#34;:[[&#34;2000-01-01T00:00:00.000Z&#34;,&#34;2000-02-01T00:00:00.000Z&#34;,&#34;2000-03-01T00:00:00.000Z&#34;,&#34;2000-04-01T00:00:00.000Z&#34;,&#34;2000-05-01T00:00:00.000Z&#34;,&#34;2000-06-01T00:00:00.000Z&#34;,&#34;2000-07-01T00:00:00.000Z&#34;,&#34;2000-08-01T00:00:00.000Z&#34;,&#34;2000-09-01T00:00:00.000Z&#34;,&#34;2000-10-01T00:00:00.000Z&#34;,&#34;2000-11-01T00:00:00.000Z&#34;,&#34;2000-12-01T00:00:00.000Z&#34;,&#34;2001-01-01T00:00:00.000Z&#34;,&#34;2001-02-01T00:00:00.000Z&#34;,&#34;2001-03-01T00:00:00.000Z&#34;,&#34;2001-04-01T00:00:00.000Z&#34;,&#34;2001-05-01T00:00:00.000Z&#34;,&#34;2001-06-01T00:00:00.000Z&#34;,&#34;2001-07-01T00:00:00.000Z&#34;,&#34;2001-08-01T00:00:00.000Z&#34;,&#34;2001-09-01T00:00:00.000Z&#34;,&#34;2001-10-01T00:00:00.000Z&#34;,&#34;2001-11-01T00:00:00.000Z&#34;,&#34;2001-12-01T00:00:00.000Z&#34;,&#34;2002-01-01T00:00:00.000Z&#34;,&#34;2002-02-01T00:00:00.000Z&#34;,&#34;2002-03-01T00:00:00.000Z&#34;,&#34;2002-04-01T00:00:00.000Z&#34;,&#34;2002-05-01T00:00:00.000Z&#34;,&#34;2002-06-01T00:00:00.000Z&#34;,&#34;2002-07-01T00:00:00.000Z&#34;,&#34;2002-08-01T00:00:00.000Z&#34;,&#34;2002-09-01T00:00:00.000Z&#34;,&#34;2002-10-01T00:00:00.000Z&#34;,&#34;2002-11-01T00:00:00.000Z&#34;,&#34;2002-12-01T00:00:00.000Z&#34;,&#34;2003-01-01T00:00:00.000Z&#34;,&#34;2003-02-01T00:00:00.000Z&#34;,&#34;2003-03-01T00:00:00.000Z&#34;,&#34;2003-04-01T00:00:00.000Z&#34;,&#34;2003-05-01T00:00:00.000Z&#34;,&#34;2003-06-01T00:00:00.000Z&#34;,&#34;2003-07-01T00:00:00.000Z&#34;,&#34;2003-08-01T00:00:00.000Z&#34;,&#34;2003-09-01T00:00:00.000Z&#34;,&#34;2003-10-01T00:00:00.000Z&#34;,&#34;2003-11-01T00:00:00.000Z&#34;,&#34;2003-12-01T00:00:00.000Z&#34;,&#34;2004-01-01T00:00:00.000Z&#34;,&#34;2004-02-01T00:00:00.000Z&#34;,&#34;2004-03-01T00:00:00.000Z&#34;,&#34;2004-04-01T00:00:00.000Z&#34;,&#34;2004-05-01T00:00:00.000Z&#34;,&#34;2004-06-01T00:00:00.000Z&#34;,&#34;2004-07-01T00:00:00.000Z&#34;,&#34;2004-08-01T00:00:00.000Z&#34;,&#34;2004-09-01T00:00:00.000Z&#34;,&#34;2004-10-01T00:00:00.000Z&#34;,&#34;2004-11-01T00:00:00.000Z&#34;,&#34;2004-12-01T00:00:00.000Z&#34;,&#34;2005-01-01T00:00:00.000Z&#34;,&#34;2005-02-01T00:00:00.000Z&#34;,&#34;2005-03-01T00:00:00.000Z&#34;,&#34;2005-04-01T00:00:00.000Z&#34;,&#34;2005-05-01T00:00:00.000Z&#34;,&#34;2005-06-01T00:00:00.000Z&#34;,&#34;2005-07-01T00:00:00.000Z&#34;,&#34;2005-08-01T00:00:00.000Z&#34;,&#34;2005-09-01T00:00:00.000Z&#34;,&#34;2005-10-01T00:00:00.000Z&#34;,&#34;2005-11-01T00:00:00.000Z&#34;,&#34;2005-12-01T00:00:00.000Z&#34;,&#34;2006-01-01T00:00:00.000Z&#34;,&#34;2006-02-01T00:00:00.000Z&#34;,&#34;2006-03-01T00:00:00.000Z&#34;,&#34;2006-04-01T00:00:00.000Z&#34;,&#34;2006-05-01T00:00:00.000Z&#34;,&#34;2006-06-01T00:00:00.000Z&#34;,&#34;2006-07-01T00:00:00.000Z&#34;,&#34;2006-08-01T00:00:00.000Z&#34;,&#34;2006-09-01T00:00:00.000Z&#34;,&#34;2006-10-01T00:00:00.000Z&#34;,&#34;2006-11-01T00:00:00.000Z&#34;,&#34;2006-12-01T00:00:00.000Z&#34;,&#34;2007-01-01T00:00:00.000Z&#34;,&#34;2007-02-01T00:00:00.000Z&#34;,&#34;2007-03-01T00:00:00.000Z&#34;,&#34;2007-04-01T00:00:00.000Z&#34;,&#34;2007-05-01T00:00:00.000Z&#34;,&#34;2007-06-01T00:00:00.000Z&#34;,&#34;2007-07-01T00:00:00.000Z&#34;,&#34;2007-08-01T00:00:00.000Z&#34;,&#34;2007-09-01T00:00:00.000Z&#34;,&#34;2007-10-01T00:00:00.000Z&#34;,&#34;2007-11-01T00:00:00.000Z&#34;,&#34;2007-12-01T00:00:00.000Z&#34;,&#34;2008-01-01T00:00:00.000Z&#34;,&#34;2008-02-01T00:00:00.000Z&#34;,&#34;2008-03-01T00:00:00.000Z&#34;,&#34;2008-04-01T00:00:00.000Z&#34;,&#34;2008-05-01T00:00:00.000Z&#34;,&#34;2008-06-01T00:00:00.000Z&#34;,&#34;2008-07-01T00:00:00.000Z&#34;,&#34;2008-08-01T00:00:00.000Z&#34;,&#34;2008-09-01T00:00:00.000Z&#34;,&#34;2008-10-01T00:00:00.000Z&#34;,&#34;2008-11-01T00:00:00.000Z&#34;,&#34;2008-12-01T00:00:00.000Z&#34;,&#34;2009-01-01T00:00:00.000Z&#34;,&#34;2009-02-01T00:00:00.000Z&#34;,&#34;2009-03-01T00:00:00.000Z&#34;,&#34;2009-04-01T00:00:00.000Z&#34;,&#34;2009-05-01T00:00:00.000Z&#34;,&#34;2009-06-01T00:00:00.000Z&#34;,&#34;2009-07-01T00:00:00.000Z&#34;,&#34;2009-08-01T00:00:00.000Z&#34;,&#34;2009-09-01T00:00:00.000Z&#34;,&#34;2009-10-01T00:00:00.000Z&#34;,&#34;2009-11-01T00:00:00.000Z&#34;,&#34;2009-12-01T00:00:00.000Z&#34;,&#34;2010-01-01T00:00:00.000Z&#34;,&#34;2010-02-01T00:00:00.000Z&#34;,&#34;2010-03-01T00:00:00.000Z&#34;,&#34;2010-04-01T00:00:00.000Z&#34;,&#34;2010-05-01T00:00:00.000Z&#34;,&#34;2010-06-01T00:00:00.000Z&#34;,&#34;2010-07-01T00:00:00.000Z&#34;,&#34;2010-08-01T00:00:00.000Z&#34;,&#34;2010-09-01T00:00:00.000Z&#34;,&#34;2010-10-01T00:00:00.000Z&#34;,&#34;2010-11-01T00:00:00.000Z&#34;,&#34;2010-12-01T00:00:00.000Z&#34;,&#34;2011-01-01T00:00:00.000Z&#34;,&#34;2011-02-01T00:00:00.000Z&#34;,&#34;2011-03-01T00:00:00.000Z&#34;,&#34;2011-04-01T00:00:00.000Z&#34;,&#34;2011-05-01T00:00:00.000Z&#34;,&#34;2011-06-01T00:00:00.000Z&#34;,&#34;2011-07-01T00:00:00.000Z&#34;,&#34;2011-08-01T00:00:00.000Z&#34;,&#34;2011-09-01T00:00:00.000Z&#34;,&#34;2011-10-01T00:00:00.000Z&#34;,&#34;2011-11-01T00:00:00.000Z&#34;,&#34;2011-12-01T00:00:00.000Z&#34;,&#34;2012-01-01T00:00:00.000Z&#34;,&#34;2012-02-01T00:00:00.000Z&#34;,&#34;2012-03-01T00:00:00.000Z&#34;,&#34;2012-04-01T00:00:00.000Z&#34;,&#34;2012-05-01T00:00:00.000Z&#34;,&#34;2012-06-01T00:00:00.000Z&#34;,&#34;2012-07-01T00:00:00.000Z&#34;,&#34;2012-08-01T00:00:00.000Z&#34;,&#34;2012-09-01T00:00:00.000Z&#34;,&#34;2012-10-01T00:00:00.000Z&#34;,&#34;2012-11-01T00:00:00.000Z&#34;,&#34;2012-12-01T00:00:00.000Z&#34;,&#34;2013-01-01T00:00:00.000Z&#34;,&#34;2013-02-01T00:00:00.000Z&#34;,&#34;2013-03-01T00:00:00.000Z&#34;,&#34;2013-04-01T00:00:00.000Z&#34;,&#34;2013-05-01T00:00:00.000Z&#34;,&#34;2013-06-01T00:00:00.000Z&#34;,&#34;2013-07-01T00:00:00.000Z&#34;,&#34;2013-08-01T00:00:00.000Z&#34;,&#34;2013-09-01T00:00:00.000Z&#34;,&#34;2013-10-01T00:00:00.000Z&#34;,&#34;2013-11-01T00:00:00.000Z&#34;,&#34;2013-12-01T00:00:00.000Z&#34;,&#34;2014-01-01T00:00:00.000Z&#34;,&#34;2014-02-01T00:00:00.000Z&#34;,&#34;2014-03-01T00:00:00.000Z&#34;,&#34;2014-04-01T00:00:00.000Z&#34;,&#34;2014-05-01T00:00:00.000Z&#34;,&#34;2014-06-01T00:00:00.000Z&#34;,&#34;2014-07-01T00:00:00.000Z&#34;,&#34;2014-08-01T00:00:00.000Z&#34;,&#34;2014-09-01T00:00:00.000Z&#34;,&#34;2014-10-01T00:00:00.000Z&#34;,&#34;2014-11-01T00:00:00.000Z&#34;,&#34;2014-12-01T00:00:00.000Z&#34;,&#34;2015-01-01T00:00:00.000Z&#34;,&#34;2015-02-01T00:00:00.000Z&#34;,&#34;2015-03-01T00:00:00.000Z&#34;,&#34;2015-04-01T00:00:00.000Z&#34;,&#34;2015-05-01T00:00:00.000Z&#34;,&#34;2015-06-01T00:00:00.000Z&#34;,&#34;2015-07-01T00:00:00.000Z&#34;,&#34;2015-08-01T00:00:00.000Z&#34;,&#34;2015-09-01T00:00:00.000Z&#34;,&#34;2015-10-01T00:00:00.000Z&#34;,&#34;2015-11-01T00:00:00.000Z&#34;,&#34;2015-12-01T00:00:00.000Z&#34;,&#34;2016-01-01T00:00:00.000Z&#34;,&#34;2016-02-01T00:00:00.000Z&#34;,&#34;2016-03-01T00:00:00.000Z&#34;,&#34;2016-04-01T00:00:00.000Z&#34;,&#34;2016-05-01T00:00:00.000Z&#34;,&#34;2016-06-01T00:00:00.000Z&#34;,&#34;2016-07-01T00:00:00.000Z&#34;,&#34;2016-08-01T00:00:00.000Z&#34;,&#34;2016-09-01T00:00:00.000Z&#34;,&#34;2016-10-01T00:00:00.000Z&#34;,&#34;2016-11-01T00:00:00.000Z&#34;,&#34;2016-12-01T00:00:00.000Z&#34;,&#34;2017-01-01T00:00:00.000Z&#34;,&#34;2017-02-01T00:00:00.000Z&#34;,&#34;2017-03-01T00:00:00.000Z&#34;,&#34;2017-04-01T00:00:00.000Z&#34;,&#34;2017-05-01T00:00:00.000Z&#34;,&#34;2017-06-01T00:00:00.000Z&#34;,&#34;2017-07-01T00:00:00.000Z&#34;,&#34;2017-08-01T00:00:00.000Z&#34;,&#34;2017-09-01T00:00:00.000Z&#34;,&#34;2017-10-01T00:00:00.000Z&#34;,&#34;2017-11-01T00:00:00.000Z&#34;,&#34;2017-12-01T00:00:00.000Z&#34;,&#34;2018-01-01T00:00:00.000Z&#34;,&#34;2018-02-01T00:00:00.000Z&#34;,&#34;2018-03-01T00:00:00.000Z&#34;,&#34;2018-04-01T00:00:00.000Z&#34;,&#34;2018-05-01T00:00:00.000Z&#34;,&#34;2018-06-01T00:00:00.000Z&#34;,&#34;2018-07-01T00:00:00.000Z&#34;,&#34;2018-08-01T00:00:00.000Z&#34;,&#34;2018-09-01T00:00:00.000Z&#34;,&#34;2018-10-01T00:00:00.000Z&#34;,&#34;2018-11-01T00:00:00.000Z&#34;,&#34;2018-12-01T00:00:00.000Z&#34;,&#34;2019-01-01T00:00:00.000Z&#34;,&#34;2019-02-01T00:00:00.000Z&#34;,&#34;2019-03-01T00:00:00.000Z&#34;,&#34;2019-04-01T00:00:00.000Z&#34;,&#34;2019-05-01T00:00:00.000Z&#34;,&#34;2019-06-01T00:00:00.000Z&#34;,&#34;2019-07-01T00:00:00.000Z&#34;,&#34;2019-08-01T00:00:00.000Z&#34;,&#34;2019-09-01T00:00:00.000Z&#34;,&#34;2019-10-01T00:00:00.000Z&#34;,&#34;2019-11-01T00:00:00.000Z&#34;,&#34;2019-12-01T00:00:00.000Z&#34;,&#34;2020-01-01T00:00:00.000Z&#34;,&#34;2020-02-01T00:00:00.000Z&#34;,&#34;2020-03-01T00:00:00.000Z&#34;,&#34;2020-04-01T00:00:00.000Z&#34;,&#34;2020-05-01T00:00:00.000Z&#34;,&#34;2020-06-01T00:00:00.000Z&#34;,&#34;2020-07-01T00:00:00.000Z&#34;,&#34;2020-08-01T00:00:00.000Z&#34;],[35.2,35.6,39.2,40.5,41.6,40.4,40.8,38.7,37.3,37.6,35.6,47.4,34.2,32.2,38,37.5,38.8,35,38.4,40.2,38.2,39.3,36,46.3,36.4,34,39,37.8,38.9,35.3,37.2,38.1,35.6,38.3,35.6,45.7,32.2,31.6,35.2,36.8,37.5,34.8,38.4,38.1,37,39,37.3,49,35.8,35.3,40.2,41.3,43.9,41.6,45.9,42.3,42.2,44,41.3,56.9,38.5,38.5,45.3,43.6,46.2,44.3,47.5,46.5,46.4,46,44.1,61,42,40.2,44.6,44.5,47.8,45.3,46.5,48.5,47.7,50.2,49.3,64.5,47,46.8,51,50.5,55,51.3,52.8,55.3,54.8,55.6,55.3,72.2,54.5,52.1,56.2,57.2,60.8,56.1,61.8,61.6,59.8,63.3,57.7,77.4,61.4,51.9,57.3,57.9,61.9,57.3,61.1,61.1,60.6,65.6,63.5,83.1,64.1,60.2,67.8,67.1,72.8,68.5,71.1,69.3,69.9,71.1,67.9,92.7,67.5,64.8,69.1,69.4,79.6,70.2,73.8,72.5,71.3,75.6,74.7,100.8,79.5,75.7,82.4,78,84.8,83.2,84.8,88.5,86.3,91.7,92.8,111.4,92.8,83.7,92.5,88.3,93.9,88.8,96,95.9,93.2,98.3,100.5,128.8,97.2,90.2,94.3,94.4,101.1,92,96.4,98.2,97.6,105.8,103.1,129.6,99.6,87.8,97,94.8,98.6,93.4,98.4,96.4,92.5,100.6,97.2,124.5,91.5,85.1,91.6,88.5,92.2,87.4,90.5,88.1,85.2,89.4,93.4,116.9,90.8,84,89.7,86.3,90,87.3,90.8,93.5,93.7,91.4,93.5,114.1,87.8,81.1,94.5,83.2,89.9,88.8,89.3,93.7,93.5,96.3,101.3,118.3,93.8,85.2,90,86.6,90,85.2,91,94.1,null,null,null,null,null,null,null,null,null,null,null,null],[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,90.7054881745377,94.4624607308788,91.9939048972938,118.799664665224,89.2369117604509,83.5169478122663,92.3336105333052,90.4423819852116,95.9529007162126,89.647551908114,94.6506947717906,94.61565253532]],&#34;fixedtz&#34;:false,&#34;tzone&#34;:&#34;&#34;},&#34;evals&#34;:[],&#34;jsHooks&#34;:[]}&lt;/script&gt;
+&lt;p&gt;Parâmetro theta estimado:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mod2$par[2]  # alpha&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 0.6234402&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mod2$par[3]  # theta&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] 1.921107&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Pesos estimados:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mod2$weights&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;        Estimative
+omega_1  0.4794667
+omega_2  0.5205333&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Valores iniciais dos thetas: 0,5 e 2. Opções para Método de otimização: ‘Nelder-Mead’, ‘L-BFGS-B’, ‘SANN’. O padrão é ‘Nelder-Mead’.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mod2$opt.method&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[1] &amp;quot;Nelder-Mead&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;comparação-com-dados-recentes&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Comparação com dados recentes&lt;/h1&gt;
+&lt;p&gt;Agora que já temos as informações até fev/2020, podemos comparar as estimativas com os dados reais. Faremos a comparação relativamente ao forecast do &lt;code&gt;forecast::thetaf&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# dadosnovos&amp;lt;-BETS::BETSget(1479)
+dadosnovos &amp;lt;- structure(c(35.2, 35.6, 39.2, 40.5, 41.6, 40.4, 40.8, 38.7, 37.3, 37.6, 
+    35.6, 47.4, 34.2, 32.2, 38, 37.5, 38.8, 35, 38.4, 40.2, 38.2, 39.3, 36, 46.3, 
+    36.4, 34, 39, 37.8, 38.9, 35.3, 37.2, 38.1, 35.6, 38.3, 35.6, 45.7, 32.2, 31.6, 
+    35.2, 36.8, 37.5, 34.8, 38.4, 38.1, 37, 39, 37.3, 49, 35.8, 35.3, 40.2, 41.3, 
+    43.9, 41.6, 45.9, 42.3, 42.2, 44, 41.3, 56.9, 38.5, 38.5, 45.3, 43.6, 46.2, 44.3, 
+    47.5, 46.5, 46.4, 46, 44.1, 61, 42, 40.2, 44.6, 44.5, 47.8, 45.3, 46.5, 48.5, 
+    47.7, 50.2, 49.3, 64.5, 47, 46.8, 51, 50.5, 55, 51.3, 52.8, 55.3, 54.8, 55.6, 
+    55.3, 72.2, 54.5, 52.1, 56.2, 57.2, 60.8, 56.1, 61.8, 61.6, 59.8, 63.3, 57.7, 
+    77.4, 61.4, 51.9, 57.3, 57.9, 61.9, 57.3, 61.1, 61.1, 60.6, 65.6, 63.5, 83.1, 
+    64.1, 60.2, 67.8, 67.1, 72.8, 68.5, 71.1, 69.3, 69.9, 71.1, 67.9, 92.7, 67.5, 
+    64.8, 69.1, 69.4, 79.6, 70.2, 73.8, 72.5, 71.3, 75.6, 74.7, 100.8, 79.5, 75.7, 
+    82.4, 78, 84.8, 83.2, 84.8, 88.5, 86.3, 91.7, 92.8, 111.4, 92.8, 83.7, 92.5, 
+    88.3, 93.9, 88.8, 96, 95.9, 93.2, 98.3, 100.5, 128.8, 97.2, 90.2, 94.3, 94.4, 
+    101.1, 92, 96.4, 98.2, 97.6, 105.8, 103.1, 129.6, 99.6, 87.8, 97, 94.8, 98.6, 
+    93.4, 98.4, 96.4, 92.5, 100.6, 97.2, 124.5, 91.5, 85.1, 91.6, 88.5, 92.2, 87.4, 
+    90.5, 88.1, 85.2, 89.4, 93.4, 116.9, 90.8, 84, 89.7, 86.3, 90, 87.3, 90.8, 93.5, 
+    93.7, 91.4, 93.5, 114.1, 87.8, 81.1, 94.5, 83.2, 89.9, 88.8, 89.3, 93.7, 93.5, 
+    96.3, 101.3, 118.3, 93.8, 85.2, 90, 86.6, 90, 85.2, 91, 94.4, 93.4, 95.9, 102.6, 
+    116, 94.9, 89.1), .Tsp = c(2000, 2020.08333333333, 12), class = &amp;quot;ts&amp;quot;)
+# View(cbind.zoo(data.fcst,dadosnovos))
+require(zoo)
+print(cbind.zoo(T, dadosnovos)[230:242])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;                 T dadosnovos
+fev 2019        NA       85.2
+mar 2019        NA       90.0
+abr 2019        NA       86.6
+mai 2019        NA       90.0
+jun 2019        NA       85.2
+jul 2019        NA       91.0
+ago 2019        NA       94.4
+set 2019  90.76717       93.4
+out 2019  94.53450       95.9
+nov 2019  92.07228      102.6
+dez 2019 118.91229      116.0
+jan 2020  89.33067       94.9
+fev 2020  83.61381       89.1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Acurácia do período Setembro/2019 a fev/2020:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# pelo forecast::thetaf T &amp;lt;- thetaf(y, h)$mean
+previsto &amp;lt;- T
+observado &amp;lt;- dadosnovos[237:242]
+forecast::accuracy(previsto, observado)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;               ME     RMSE      MAE      MPE     MAPE
+Test set 3.778214 5.615847 4.748978 4.003178 4.840044&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ou seja, um erro percentual médio de &lt;span class=&#34;math inline&#34;&gt;\(4.00\)&lt;/span&gt;% e um erro absoluto médio de &lt;span class=&#34;math inline&#34;&gt;\(\approx4.75\)&lt;/span&gt;%.&lt;/p&gt;
+&lt;div id=&#34;comparação-com-o-forecthetadotm&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Comparação com o &lt;code&gt;forecTheta::dotm&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;As estimativas para o &lt;code&gt;forecTheta::dotm&lt;/code&gt; foram obtidas fazendo &lt;code&gt;T2&amp;lt;- dotm(y,h)$mean&lt;/code&gt;. Da mesma forma, obtemos a acurácia do período Setembro/2019 a fev/2020.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# pelo forecTheta::dotm T2&amp;lt;- dotm(y,h)$mean
+previsto2 &amp;lt;- T2
+observado &amp;lt;- dadosnovos[237:242]
+forecast::accuracy(previsto2, observado)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;               ME     RMSE      MAE      MPE     MAPE
+Test set 3.864104 5.670028 4.797325 4.090202 4.894704&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ou seja, um erro percentual médio de &lt;span class=&#34;math inline&#34;&gt;\(4.09\)&lt;/span&gt;% e um erro absoluto médio de &lt;span class=&#34;math inline&#34;&gt;\(\approx4.80\)&lt;/span&gt;%.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;Referências&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Referências&lt;/h1&gt;
+&lt;p&gt;ASSIMAKOPOULOS, V. and NIKOLOPOULOS, K. (2000). The theta model: a decomposition approach to forecasting. International Journal of Forecasting, 16, 521-530. DOI: &lt;a href=&#34;https://doi.org/10.1016/S0169-2070(00)00066-2&#34; class=&#34;uri&#34;&gt;https://doi.org/10.1016/S0169-2070(00)00066-2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;FERREIRA, Pedro Costa; SPERANZA, Talitha; COSTA, Jonatha. (2018). BETS: Brazilian Economic Time Series. R package version 0.4.9. Disponível em: &lt;a href=&#34;https://CRAN.R-project.org/package=BETS&#34; class=&#34;uri&#34;&gt;https://CRAN.R-project.org/package=BETS&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;FIORUCCI, Jose Augusto; LOUZADA, Francisco Louzada; YIQI, Bao. (2016). forecTheta: Forecasting Time Series by Theta Models. R package version 2.2. Disponível em: &lt;a href=&#34;https://CRAN.R-project.org/package=forecTheta&#34; class=&#34;uri&#34;&gt;https://CRAN.R-project.org/package=forecTheta&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;HYNDMAN, Rob J. (2018a). fpp2: Data for “Forecasting: Principles and Practice” (2nd Edition). R package version 2.3. Disponível em: &lt;a href=&#34;https://CRAN.R-project.org/package=fpp2&#34; class=&#34;uri&#34;&gt;https://CRAN.R-project.org/package=fpp2&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;HYNDMAN, R.J., &amp;amp; ATHANASOPOULOS, G. (2018) Forecasting: principles and practice, 2nd edition, OTexts: Melbourne, Australia. Disponível em: &lt;a href=&#34;https://otexts.com/fpp2/&#34; class=&#34;uri&#34;&gt;https://otexts.com/fpp2/&lt;/a&gt;. Accessed on 12 Set 2019.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>

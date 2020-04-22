@@ -50,7 +50,7 @@ Citação {-#Citação}
 ===================================
 
 Sugestão de citação:
-FIGUEIREDO, Adriano Marcos Rodrigues. Séries Temporais com R: Análise Theta para o Consumo do Varejo em MS com pacote forecast::thetaf. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/varejoms_thetaf>. 
+FIGUEIREDO, Adriano Marcos Rodrigues. Séries Temporais com R: Análise Theta para o Consumo do Varejo em MS com pacote forecast::thetaf e forecTheta. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/varejoms_thetaf>. 
 
 Script para reprodução (se utilizar, citar como acima)
 ==================

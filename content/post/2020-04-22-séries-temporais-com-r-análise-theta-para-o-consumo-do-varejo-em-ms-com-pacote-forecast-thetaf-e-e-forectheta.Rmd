@@ -1,5 +1,5 @@
 ---
-title: 'Séries Temporais com R: Análise Theta para o Consumo do Varejo em MS com pacote forecast::thetaf e forecTheta'
+title: 'Séries Temporais com R: Análise Theta para o Consumo do Varejo em MS com pacotes `forecast::thetaf` e `forecTheta`'
 author: "Adriano M R Figueiredo"
 date: '2020-04-22'
 slug: séries-temporais-theta-consumo-varejo-ms
@@ -50,7 +50,7 @@ Citação {-#Citação}
 ===================================
 
 Sugestão de citação:
-FIGUEIREDO, Adriano Marcos Rodrigues. Séries Temporais com R: Análise Theta para o Consumo do Varejo em MS com pacote forecast::thetaf e forecTheta. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/varejoms_thetaf>. 
+FIGUEIREDO, Adriano Marcos Rodrigues. Séries Temporais com R: Análise Theta para o Consumo do Varejo em MS com pacote `forecast::thetaf` e `forecTheta`. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/varejoms_thetaf> e em <https://adrianofigueiredo.netlify.app/post/series-temporais-theta-consumo-varejo-ms/>. 
 
 Script para reprodução (se utilizar, citar como acima)
 ==================

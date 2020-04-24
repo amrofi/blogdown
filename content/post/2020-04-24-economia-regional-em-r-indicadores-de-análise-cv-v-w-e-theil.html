@@ -1,0 +1,663 @@
+---
+title: 'Economia Regional em R: Indicadores de análise - $CV$, $V_w$ e $Theil$'
+author: "Adriano M R Figueiredo"
+date: '2020-04-24'
+slug: economia-regional-em-r-indicadores-de-análise-cv-v-w-e-theil
+categories: []
+tags:
+  - economia regional
+  - indicadores regionais
+  - CV
+  - Theil
+  - Vw
+  - Williamson
+subtitle: ''
+summary: 'This is an undergrad student level instruction for class use. '
+authors: []
+lastmod: '2020-04-24T18:18:34-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+<div id="Licença" class="section level1 unnumbered">
+<h1>Licença</h1>
+<p>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <a href="http://creativecommons.org/licenses/by-sa/4.0/" class="uri">http://creativecommons.org/licenses/by-sa/4.0/</a> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.</p>
+<div class="figure">
+<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="License: CC BY-SA 4.0" style="width:25.0%" />
+<p class="caption">License: CC BY-SA 4.0</p>
+</div>
+</div>
+<div id="Citação" class="section level1 unnumbered">
+<h1>Citação</h1>
+<p>Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional: <span class="math inline">\(CV\)</span>, <span class="math inline">\(V_w\)</span> e <span class="math inline">\(Theil\)</span> em R. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <a href="http://rpubs.com/amrofi/regional_indicadores_1" class="uri">http://rpubs.com/amrofi/regional_indicadores_1</a>.</p>
+</div>
+<div id="script-para-reprodução" class="section level1">
+<h1>Script para reprodução</h1>
+<p>(se utilizar, citar como acima)</p>
+<a href="data:text/x-markdown;base64,LS0tDQp0aXRsZTogJ0Vjb25vbWlhIFJlZ2lvbmFsIGVtIFI6IEluZGljYWRvcmVzIGRlIGFuw6FsaXNlIC0gJENWJCwgJFZfdyQgZSAkVGhlaWwkJw0KYXV0aG9yOiAiQWRyaWFubyBNIFIgRmlndWVpcmVkbyINCmRhdGU6ICcyMDIwLTA0LTI0Jw0Kc2x1ZzogZWNvbm9taWEtcmVnaW9uYWwtZW0tci1pbmRpY2Fkb3Jlcy1kZS1hbsOhbGlzZS1jdi12LXctZS10aGVpbA0KY2F0ZWdvcmllczogW10NCnRhZ3M6DQogIC0gZWNvbm9taWEgcmVnaW9uYWwNCiAgLSBpbmRpY2Fkb3JlcyByZWdpb25haXMNCiAgLSBDVg0KICAtIFRoZWlsDQogIC0gVncNCiAgLSBXaWxsaWFtc29uDQpzdWJ0aXRsZTogJycNCnN1bW1hcnk6ICdUaGlzIGlzIGFuIHVuZGVyZ3JhZCBzdHVkZW50IGxldmVsIGluc3RydWN0aW9uIGZvciBjbGFzcyB1c2UuICcNCmF1dGhvcnM6IFtdDQpsYXN0bW9kOiAnMjAyMC0wNC0yNFQxODoxODozNC0wNDowMCcNCmZlYXR1cmVkOiBubw0KaW1hZ2U6DQogIGNhcHRpb246ICcnDQogIGZvY2FsX3BvaW50OiAnJw0KICBwcmV2aWV3X29ubHk6IG5vDQpwcm9qZWN0czogW10NCi0tLQ0KDQpgYGB7ciBrbml0cl9pbml0LCBlY2hvPUZBTFNFLCBjYWNoZT1GQUxTRX0NCmxpYnJhcnkoa25pdHIpDQpsaWJyYXJ5KHJtYXJrZG93bikNCmxpYnJhcnkocm1kZm9ybWF0cykNCg0KIyMgR2xvYmFsIG9wdGlvbnMNCm9wdGlvbnMobWF4LnByaW50PSIxMDAiKQ0Kb3B0c19jaHVuayRzZXQoZWNobz1UUlVFLA0KCSAgICAgICAgICAgICBjYWNoZT1UUlVFLA0KICAgICAgICAgICAgICAgcHJvbXB0PUZBTFNFLA0KICAgICAgICAgICAgICAgdGlkeT1UUlVFLA0KICAgICAgICAgICAgICAgY29tbWVudD1OQSwNCiAgICAgICAgICAgICAgIG1lc3NhZ2U9RkFMU0UsDQogICAgICAgICAgICAgICB3YXJuaW5nPUZBTFNFKQ0Kb3B0c19rbml0JHNldCh3aWR0aD0xMDApDQpgYGANCg0KDQpMaWNlbsOnYSB7LSNMaWNlbsOnYX0NCj09PT09PT09PT09PT09PT09PT0NCg0KVGhpcyB3b3JrIGlzIGxpY2Vuc2VkIHVuZGVyIHRoZSBDcmVhdGl2ZSBDb21tb25zIEF0dHJpYnV0aW9uLVNoYXJlQWxpa2UgNC4wIEludGVybmF0aW9uYWwgTGljZW5zZS4gVG8gdmlldyBhIGNvcHkgb2YgdGhpcyBsaWNlbnNlLCB2aXNpdCA8aHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnktc2EvNC4wLz4gb3Igc2VuZCBhIGxldHRlciB0byBDcmVhdGl2ZSBDb21tb25zLCBQTyBCb3ggMTg2NiwgTW91bnRhaW4gVmlldywgQ0EgOTQwNDIsIFVTQS4NCg0KIVtMaWNlbnNlOiBDQyBCWS1TQSA0LjBdKGh0dHBzOi8vbWlycm9ycy5jcmVhdGl2ZWNvbW1vbnMub3JnL3ByZXNza2l0L2J1dHRvbnMvODh4MzEvcG5nL2J5LXNhLnBuZyl7IHdpZHRoPTI1JSB9DQoNCkNpdGHDp8OjbyB7LSNDaXRhw6fDo299DQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQ0KDQpTdWdlc3TDo28gZGUgY2l0YcOnw6NvOg0KRklHVUVJUkVETywgQWRyaWFubyBNYXJjb3MgUm9kcmlndWVzLiBFY29ub21pYSBSZWdpb25hbDogJENWJCwgJFZfdyQgZSAkVGhlaWwkIGVtIFIuIENhbXBvIEdyYW5kZS1NUyxCcmFzaWw6IFJTdHVkaW8vUnB1YnMsIDIwMjAuIERpc3BvbsOtdmVsIGVtIDxodHRwOi8vcnB1YnMuY29tL2Ftcm9maS9yZWdpb25hbF9pbmRpY2Fkb3Jlc18xPi4gDQoNClNjcmlwdCBwYXJhIHJlcHJvZHXDp8OjbyANCj09PT09PT09PT09PT09PT09PQ0KKHNlIHV0aWxpemFyLCBjaXRhciBjb21vIGFjaW1hKQ0KDQpgYGB7ciBlY2hvPUZBTFNFfQ0KIyBhIHNpbmdsZSBmaWxlDQp4ZnVuOjplbWJlZF9maWxlKCcyMDIwLTA0LTI0LWVjb25vbWlhLXJlZ2lvbmFsLWVtLXItaW5kaWNhZG9yZXMtZGUtYW7DoWxpc2UtY3Ytdi13LWUtdGhlaWwuUm1kJykNCmBgYA0KDQpJbnRyb2R1w6fDo28NCj09PT09PT09PT09PT09PT09PT0NCg0KRmFyZW1vcyB1bWEgdmlzw6NvIHBhbm9yw6JtaWNhIG7Do28gZXhhdXN0aXZhIGRhcyBtZWRpZGFzIHV0aWxpemFkYXMgcGVsYSBjacOqbmNpYSByZWdpb25hbCwgYWNvbXBhbmhhbmRvIG8gcmFjaW9jw61uaW8gZGUgTW9uYXN0w6lyaW8gKDIwMTEpLiBQb2RlLXNlIGRpdmlkaXIgYSBhbsOhbGlzZSBlbSBpbmRpY2Fkb3JlcyBkZSBkZXNpZ3VhbGRhZGUsIGRlIGVzcGVjaWFsaXphw6fDo28sIGRlIGNvbmNlbnRyYcOnw6NvIGUgZGUgcG9kZXIgZGUgbWVyY2Fkby4gICAgDQoNCkVudHJlIGFzIHByaW5jaXBhaXMgY2FyYWN0ZXLDrXN0aWNhcyBkb3MgaW5kaWNhZG9yZXMgZXN0w6EgYSBhbsOhbGlzZSBkZSBob21vZ2VuZWlkYWRlIGUgYSBpbnZlc3RpZ2HDp8OjbyBkb3MgbGltaXRlcyBkZSB2YXJpYcOnw6NvLiBOZXN0ZSByb2wsIHBvZGVtb3MgZGVzdGFjYXIgYXMgTWVkaWRhcyBlc3RhdMOtc3RpY2FzIGRlIGRpc3BlcnPDo28gY29tbyBvIENvZWZpY2llbnRlIGRlIHZhcmlhw6fDo28gKCRDViQpLCBvIERlc3Zpby1wYWRyw6NvICgkZHAkKSBlIGEgdmFyacOibmNpYSAoJFZhciQpLiBPdXRyb3Mgw41uZGljZXMgcG9uZGVyYWRvcyBwYXJhIG3Dumx0aXBsYXMgdmFyacOhdmVpcyBzw6NvIHRhbWLDqW0gcG9zc8OtdmVpcywgY29tbyBhcXVlbGVzIG9idGlkb3MgcGVsYSBBbsOhbGlzZSBmYXRvcmlhbCwgb3UgYWluZGEgbWVkaWRhcyBhc3NvY2lhZGFzIMOgIERpc3TDom5jaWEgZWNvbsO0bWljYSAobWFpb3Igb3UgbWVub3IgYWZhc3RhbWVudG8gZW50cmUgdW5pZGFkZXMgcmVnaW9uYWlzKSBlIG9zIE3DqXRvZG9zIGRlIGFncnVwYW1lbnRvcyAoY2x1c3RlcnMpLiAgICANCg0KQWxndW1hcyBwcm9wcmllZGFkZXMgc8OjbyB0aWRhcyBjb21vIGRlc2Vqw6F2ZWlzIHBhcmEgb3MgaW5kaWNhZG9yZXMgbG9jYWNpb25haXMsIGRlIG1vZG8gYSBwZXJtaXRpciB0ZXN0ZXMgZGUgaGlww7N0ZXNlcy4gU8OjbyBlbGFzOiBhIGNvbXBhcmFiaWxpZGFkZSBlbnRyZSBlc2NhbGFzLCBnZXJhbG1lbnRlIG5vcm1hbGl6YW5kbyBwYXJhIG8gaW50ZXJ2YWxvIDAgZSAxOyBvcyByZWNvcnRlcyBlc3BhY2lhaXMgKGFncmVnYcOnw7VlcyBuYSBtZXNtYSBlc2NhbGEgdGlwbyBtdW5pY2lwYWwgb3UgZXN0YWR1YWwsIHBvciBleGVtcGxvKTsgZSBhcyBjbGFzc2lmaWNhw6fDtWVzIHNldG9yaWFpcyAocG9yIGV4ZW1wbG8sIHVtYSBjbGFzc2lmaWNhw6fDo28gdGlwbyBDTkFFLCBvdSBwb3Igc2V0b3IgSUJHRSBldGMuKS4gICAgDQoNCk9zIEluZGljYWRvcmVzIHNpbnRldGl6YW0gIGluZm9ybWHDp8O1ZXMgIGUgIHPDo28gIG8gIHByaW1laXJvICBwYXNzbyAgcGFyYSAgZXN0dWRvcyAgbWFpcyAgYXZhbsOnYWRvcywgYXNzb2NpYW5kbyBhIHRlb3JpYSDDoCBwcsOhdGljYS4gQ29udHVkbywgIG5lbmh1bSAgaW5kaWNhZG9yICByZWdpb25hbCAgw6kgIHN1ZmljaWVudGUgIHBhcmEgIGNvbnNpZGVyYXIgIHRvZG9zICBvcyBmZW7DtG1lbm9zIHJlbGV2YW50ZXMgYXNzb2NpYWRvcyDDoCBkaXN0cmlidWnDp8OjbyBkYSBhdGl2aWRhZGUgZWNvbsO0bWljYSBubyBlc3Bhw6dvLiAgIA0KDQpBdHVhbG1lbnRlLCBjb20gYXMgZmVycmFtZW50YXMgY29tcHV0YWNpb25haXMgZSBhIGRpc3BvbmliaWxpZGFkZSBkZSBncmFuZGUgdm9sdW1lIGRlIGRhZG9zIGVsZXRyw7RuaWNvcywgc3VyZ2VtIHNvZnR3YXJlcyBsaXZyZXMgaW1wb3J0YW50ZXMgbmEgYW7DoWxpc2UgZGEgY2nDqm5jaWEgcmVnaW9uYWwsIGNvbW8gbyBQeXRob24sIFIgZSBHZW9kYSBlbnRyZSBvdXRyb3MuIERhcmVtb3Mgw6puZmFzZSBuZXNzZSBhcnRpZ28gYW8gUi4gTmVzc2UgY2FzbywgY2hhbWFtb3MgYXRlbsOnw6NvIHBhcmEgb3MgcGFjb3RlczogYFJFQVRgIGRlIFdpZWxhbmQgKDIwMTkpOyBlIGBFY29uR2VvYCBkZSAgQmFsbGFuZCAoMjAxOSkuIEVzc2VzIHBhY290ZXMgcmVhbGl6YW0gdW1hIHPDqXJpZSBkZSBpbmRpY2Fkb3JlcyBkZSBhbsOhbGlzZSBkZSBkYWRvcyBjb20gbG9jYWxpemHDp8OjbywgbWFzIGRldmUtc2UgYXRlbnRhciBwYXJhIG9zIGRldGFsaGVzIGRlIGNhZGEgcGFjb3RlLCBuYSBtZWRpZGEgZW0gcXVlIGZvcm1vcyBkZXNlbnZvbHZlbmRvIG9zIGluZGljYWRvcmVzLiBUYW1iw6ltIHJlc3NhbHRhbW9zIGFvIGxlaXRvciBxdWUgZXhpc3RlbSBmZXJyYW1lbnRhcyBxdWUgYXV4aWxpYW0gYSB2aXN1YWxpemHDp8OjbyBkb3MgcmVzdWx0YWRvcywgY29tbyBwcm9jZWRpbWVudG9zIHBhcmEgZmF6ZXIgbWFwYXMsIG91IHByb2NlZGltZW50b3MgcXVlIHBlcm1pdGVtIGdyw6FmaWNvcyBtYWlzIGVsYWJvcmFkb3MuIFBhcmEgdGFsLCByZWNvbWVuZGFtb3MgcXVlIG8gbGVpdG9yIGxlaWEgRmlndWVpcmVkbyAoMjAxOTsgMjAyMCkuICAgIA0KDQoNCkluZGljYWRvcmVzIGRlIERlc2lndWFsZGFkZSBSZWdpb25hbA0KPT09PT09PT09PT09PT09PT09PT09PQ0KDQpPIG9iamV0aXZvIGRlc3NlcyBpbmRpY2Fkb3JlcyDDqSB0ZXIgdW1hIG1lZGlkYSBkbyBncmF1IGRlIGRlc2lndWFsZGFkZSByZWdpb25hbCwgdXN1YWxtZW50ZSBubyB0b2NhbnRlIMOgcyBzdWFzIHJlbmRhcyBwZXIgY2FwaXRhLiBBIGlkZWlhIGLDoXNpY2EgZGVzdGUgYXJxdWl2byDDqSBvcmllbnRhciBvcyBwcm9jZWRpbWVudG9zIHBhcmEgbyBjw6FsY3VsbyBkb3MgaW5kaWNhZG9yZXMgZGUgYW7DoWxpc2UgcmVnaW9uYWwgYSBzYWJlcjoNCg0KMS4gQ29lZmljaWVudGUgZGUgdmFyaWHDp8OjbyAoJENWJCkNCjIuIMONbmRpY2UgZGUgSmVmZnJleSBHYWxlIFdpbGxpYW1zb24gKCRWX3ckKShfV2lsbGlhbXNvbuKAmXMgcG9wdWxhdGlvbi13ZWlnaHRlZCBjb2VmZmljaWVudCBvZiB2YXJpYXRpb25fKQ0KMy4gw41uZGljZSBkZSBUaGVpbCAoJFRoZWlsJCkNCg0KDQojIyBPcmdhbml6YcOnw6NvIGRvcyBkYWRvcw0KDQpOZXN0YSBldGFwYSwgaW5pY2lhbW9zIGNhcnJlZ2FuZG8gb3MgZGFkb3MgZSBwYWNvdGVzLCBuZXNzZSBjYXNvLCBwcmluY2lwYWxtZW50ZSBvIHBhY290ZSBgUkVBVGAuIE5lc3RlIGNhc28sIG9zIGRhZG9zIHPDo28gZG9zIG11bmljw61waW9zIGRlIE1hdG8gR3Jvc3NvIGRvIFN1bCwgZGUgMjAwMiBhIDIwMTUuIE9ic2VydmFyIHF1ZSBlc3NlIGRhdGFzZXQgY29udMOpbSBkYWRvcyAiYXVzZW50ZXMiIChfbWlzc2luZ3NfKSBlIG8gcGVzcXVpc2Fkb3IgZGV2ZXLDoSBjdWlkYXIgZGVzdGVzIGRldGFsaGVzIGFudGVzIGRhIGFuw6FsaXNlLiAgICANCg0KT3MgZGFkb3MgZXN0w6NvIG9yZ2FuaXphZG9zIHBvciBjb2x1bmFzIHBhcmEgbyB2YWxvciBhZGljaW9uYWRvIGJydXRvIChWQUIpIGRvIHNldG9yIGFncm9wZWN1w6FyaW8gKGFncm8pLCBWQUIgZG8gc2V0b3IgZGEgYWRtaW5pc3RyYcOnw6NvIHDDumJsaWNhIChhcHUpLCBvcyBpbXBvc3RvcyAoaW1wKSwgVkFCIGRvIHNldG9yIGRhIGluZMO6c3RyaWEgKGluZCksIFZBQiBkbyBzZXRvciBkZSBzZXJ2acOnb3MgKHNlcnYpLCBvIFZBQiB0b3RhbCAodmFidCksIG8gUElCIC1Qcm9kdXRvIEludGVybm8gQnJ1dG8tIChwaWIpLCBhIHBvcHVsYcOnw6NvIG11bmljaXBhbCAocG9wKSwgbyBQSUIgcGVyIGNhcGl0YSAocGlicGMpLCBvICpzaGFyZSogZGEgcG9wdWxhw6fDo28gbXVuaWNpcGFsIG5vIGVzdGFkbyAoc3BvcCA9IHBvcCBkbyBtdW5pY8OtcGlvL3BvcCBkbyBlc3RhZG8pLCBvICpzaGFyZSogZG8gUElCIG11bmljaXBhbCBubyBlc3RhZG8gKHkgPSBwaWIgZG8gbXVuaWPDrXBpby9waWIgZG8gZXN0YWRvKSwgZSBhIHByb2R1dGl2aWRhZGUgcmVsYXRpdmEgKFI9eS9zcG9wKS4gICAgDQoNCk9zIGRhZG9zIGZvcmFtIG9yZ2FuaXphZG9zIHByZXZpYW1lbnRlIGEgcGFydGlyIGRlIGRhZG9zIGRhcyBjb250YXMgcmVnaW9uYWlzIG11bmljaXBhaXMgZG8gSUJHRSAoMjAyMGEpIChJbnN0aXR1dG8gQnJhc2lsZWlybyBkZSBHZW9ncmFmaWEgZSBFc3RhdMOtc3RpY2EpIChUYWJlbGEgNTkzOCAtIFByb2R1dG8gSW50ZXJubyBCcnV0byBkb3MgTXVuaWPDrXBpb3MpIGUgZGEgaW5mb3JtYcOnw6NvIGRhIHBvcHVsYcOnw6NvIGVzdGltYWRhIChUYWJlbGEgNjU3OSkgcGFyYSBpbmZvcm1hw6fDo28gYW8gVENVIChUcmlidW5hbCBkZSBDb250YXMgZGEgVW5pw6NvKSBwZWxvIElCR0UgKDIwMjBiKS4gRW0gdmlydHVkZSBkYXMgZGVzYWdyZWdhw6fDtWVzIG11bmljaXBhaXMsIG9zIG11bmljw61waW9zIGRlIEZpZ3VlaXLDo28gZSBQYXJhw61zbyBkYXMgw4FndWFzIGZvcmFtIGV4Y2x1w61kb3MgZGEgYW7DoWxpc2UgKHNhYmVtb3MgcXVlIHRhbCBwcm9jZWRpbWVudG8gdGVtIGxpbWl0YcOnw7VlcyBtYXMgZW0gc2UgdHJhdGFuZG8gZGUgdW0gZXhlcmPDrWNpbyBpbHVzdHJhdGl2byBkbyBtw6l0b2RvLCBuw6NvIGdlcmFyw6EgbWFpb3JlcyBpbXBsaWNhw6fDtWVzKS4gUG9ydGFudG8sIG9zIGRhZG9zIHNlbSBvcyBfbWlzc2luZ3NfIGVzdMOjbyBuYSBwbGFuaWxoYSBkYWRvczIuICAgICAgICANCg0KYGBge3J9DQpsaWJyYXJ5IChSRUFUKTsgbGlicmFyeShyZWFkeGwpDQojaGVscCgiUkVBVCIpIA0KZGFkb3MgPC0gcmVhZF9leGNlbCgiZGFkb3NwaWJfcG9wbXMueGxzeCIsIA0KICAgICAgICAgICAgICAgICAgICBzaGVldCA9ICJkYWRvcyIpDQpEVDo6ZGF0YXRhYmxlKGRhZG9zKQ0KDQojIGV4Y2x1aW5kbyBhcyBvYnNlcnZhY29lcyBkZSBGaWd1ZWlyYW8gZSBQYXJhaXNvIGRhcyBBZ3Vhcw0KZGFkb3MyIDwtIHJlYWRfZXhjZWwoImRhZG9zcGliX3BvcG1zLnhsc3giLCANCiAgICAgICAgICAgICAgICAgICAgc2hlZXQgPSAiZGFkb3MyIikNCg0KYGBgDQoNClNlcGFyYXJlbW9zIGFzIHZhcmnDoXZlaXMgYSBzYWJlcjogcGliLCBwb3AsIHBpYnBjLCBSLg0KDQpgYGB7cn0NCnBpYjwtZGFkb3MyWzg3OjEwMF0NCnBvcDwtZGFkb3MyWzEwMToxMTRdDQpwaWJwYzwtZGFkb3MyWzExNToxMjhdDQpSPC0gZGFkb3MyWzE1NzoxNzBdDQoNCmBgYA0KDQpFc3RhdMOtc3RpY2FzIGRlc2NyaXRpdmFzIGRhcyBzw6lyaWVzIGRlIFBJQiBwZXIgY2FwaXRhIGUgcG9wdWxhw6fDo28uDQoNCmBgYHtyfQ0Kc3VtbWFyeShwaWJwYykNCg0KYGBgDQoNCmBgYHtyfQ0Kc3VtbWFyeShwb3ApDQoNCmBgYA0KDQpOYSBwcsOzeGltYSBzZcOnw6NvLCBmYXJlbW9zIG9zIGluZGljYWRvcmVzIGRlIGFuw6FsaXNlLg0KDQojIyBDb2VmaWNpZW50ZSBkZSB2YXJpYcOnw6NvICgkQ1YkKQ0KDQpPICRDViQgcGVybWl0ZSByZXN1bWlyIGFzIGRpc3BhcmlkYWRlcyByZWdpb25haXMgKGV4OiBubyBQSUIgcmVnaW9uYWwgcGVyIGNhcGl0YSkgZW0gdW0gaW5kaWNhZG9yLiBOZXN0ZSBjYXNvLCBvICRDViQgbsOjbyBlc3TDoSBwb25kZXJhZG8gcGVsYSBwb3B1bGHDp8OjbyBlIHBvZGUgc2VyIHBhZHJvbml6YWRvIHBhcmEgZmljYXIgZW50cmUgMCBlIDEuICAgICANCg0KTm8gZXhlbXBsbyBhIHNlZ3VpciwgbsOjbyBlc3TDoSBwYWRyb25pemFkby4gVmVqYSBhIGbDs3JtdWxhIHBhcmEgY8OhbGN1bG8gZG8gQ1YuDQoNCiQkDQpDViA9IFxmcmFje3tcc3FydCB7XGxlZnQoIHtcZnJhY3sxfXt7VCAtIDF9fX0gXHJpZ2h0KXt7XHN1bVxsaW1pdHNfaSB7XGxlZnQoIHt7eV9pfSAtIFxtdSB9IFxyaWdodCl9IH1eMn19IH19e1xtdSB9DQokJA0KDQpOYSBmw7NybXVsYSBkZSAkQ1YkLCBwYXJhIGEgdmFyacOhdmVsIGVtIGFuw6FsaXNlLCBuZXN0ZSBleGVtcGxvLCAkeV9pJCDDqSBvIFBJQiBwZXIgY2FwaXRhIGRvIG11bmljw61waW8gJGkkOyAkXG11JCDDqSBvIFBJQiBwZXIgY2FwaXRhIGRvIGVzdGFkbzsgZSwgVCDDqSBvIG7Dum1lcm8gZGUgbXVuaWPDrXBpb3MgYW5hbGlzYWRvcy4gUG9ydGFudG8sIG8gY29lZmljaWVudGUgZGUgdmFyaWHDp8OjbyAkQ1YkIMOpIG8gcXVvY2llbnRlIGRvIGRlc3ZpbyBwYWRyw6NvIGRpdmlkaWRvIHBlbGEgbcOpZGlhLCBlIHNlcnZpcsOhIHBhcmEgYW5hbGlzYXIgYXMgZGlzcGFyaWRhZGVzIG5hIHZhcmnDoXZlbCBkZSBhbsOhbGlzZSwgbmVzdGUgY2FzbywgbyBQSUIgcGVyIGNhcGl0YSBtdW5pY2lwYWwuDQoNCk8gY29lZmljaWVudGUgZGUgdmFyaWHDp8OjbywgJENWJCwgw6kgdW1hIG1lZGlkYSBlc3RhdMOtc3RpY2EgZGUgZGlzcGVyc8OjbywgYmFzZWFkYSBuYSB2YXJpw6JuY2lhIGUgbm8gZGVzdmlvLXBhZHLDo28uIERlc3RhIGZvcm1hLCBuYSBhbsOhbGlzZSByZWdpb25hbCwgZMOhIHVtYSBpZGVpYSBkZSBjb252ZXJnw6puY2lhIGFic29sdXRhIChvdSDPgy1jb252ZXJnw6puY2lhKSBlbSBjYXNvcyBkZSBwZXF1ZW5hIHZhcmlhw6fDo28gbm8gdGVtcG8gb3Ugbm8gZXNwYcOnby4gQSByZWR1w6fDo28gZGEgZGlzcGVyc8OjbyBwb2RlIHNlciBvcml1bmRhIGRlIGNyZXNjaW1lbnRvIG1haXMgYWNlbGVyYWRvIGRhcyBsb2NhbGlkYWRlcyBtYWlzIHBvYnJlcyByZWxhdGl2YW1lbnRlIMOgcXVlbGFzIG1haXMgcmljYXMsIGNvbmZvcm1lIGFzIHRlb3JpYXMgZGUgY29udmVyZ8OqbmNpYSBkZSByZW5kYS4gDQoNCkEgZXhwcmVzc8OjbyB0cmFkaWNpb25hbCB0cmF0YSBvIGRhdGFzZXQgY29tbyB1bWEgYW1vc3RyYSwgZSBwb3IgZXN0ZSBtb3Rpdm8gbyBkZW5vbWluYWRvciBkYSB2YXJpw6JuY2lhIMOpIFQtMS4gU2UgZm9yIG8gdW5pdmVyc28sIGVudMOjbyBwb2RlLXNlIGVzcGVjaWZpY2FyIGBpcy5zYW1wbGUgPSBGQUxTRWAgZSBhIHJvdGluYSBkZSBgY3ZgIHRyYXRhcsOhIGEgaW5mb3JtYcOnw6NvIGNvbSBvIGRlbm9taW5hZG9yIGlndWFsIGEgVCBuYSB2YXJpw6JuY2lhLg0KDQpgYGB7cn0NCmF0dGFjaChwaWJwYykNCiMgY2FsY3VsbyBwYXJhIG8gUElCIHBlciBjYXBpdGEgcGFyYSB1bSBhbm8NCkNWTVMuMjAxNTwtY3YocGlicGMyMDE1LGlzLnNhbXBsZSA9IEZBTFNFLCANCiAgICAgICAgICAgICAgY29lZm5vcm0gPSBGQUxTRSwgd2VpZ2h0aW5nID0gTlVMTCwgd21lYW4gPSBGQUxTRSwNCiAgICAgICAgICAgICAgbmEucm0gPSBGQUxTRSkgDQpjYXQoIkNWTVMuMjAxNSA9ICIsQ1ZNUy4yMDE1KQ0KDQojIENhbGN1bG8gcGFyYSBvIFBJQiBwZXIgY2FwaXRhIGRlIDIwMDItMjAxNSBlIHBsb3QNCmN2cy5waWJwYyA8LSBhcHBseSAocGlicGMsIE1BUkdJTiA9IDIsIEZVTiA9IGN2KQ0KY2F0KCJtw6F4aW1vIGRlIGN2cy5waWJwYyA9ICIsbWF4KGN2cy5waWJwYykpICMgWzFdIDEuMjkwNTQxDQpjYXQoIm3DrW5pbW8gZGUgY3ZzLnBpYnBjID0gIixtaW4oY3ZzLnBpYnBjKSkgIyBbMV0gMC44NDAyMjYNCiMgQ2FsY3VsbyBkbyBjdiBwYXJhIDIwMDItMjAxNQ0KYW5vcyA8LSAyMDAyOjIwMTUNCg0KIyBQbG90IGN2IG5vIHRlbXBvDQpwbG90KGFub3MsIGN2cy5waWJwYywgImwiLCB5bGltPWMoMC44NCwxLjMwKSwgeGxhYiA9ICJBbm8iLA0KICAgICB5bGFiID0gIkNWIGRvIFBJQiBwZXIgY2FwaXRhIiwNCiAgICAgbWFpbiA9ICJDViBkb3MgUElCIHBlciBjYXBpdGEgbXVuaWNpcGFpcyBkZSBNUywgMjAwMi0yMDE1IikNCmBgYA0KDQojIyMgJENWJCBjb20gbm9ybWFsaXphw6fDo28NCg0KQWdvcmEgcmVmYXplbmRvIG8gJENWJCBkbyBQSUIgY29tIG5vcm1hbGl6YcOnw6NvICgkMCBcbGUgQ1YgXGxlIDEkKS4gTmVzdGUgY2Fzbywgb2JzZXJ2ZSBxdWUgYXBsaWNhbW9zIGEgb3DDp8OjbyBgY29lZm5vcm0gPSBUUlVFYCBuYSBmdW7Dp8OjbyBgY3ZgLg0KDQpgYGB7cn0NCiMgQ2FsY3VsbyBkZSBDViBub3JtYWxpemFkbyBwYXJhIG8gUElCIHBlciBjYXBpdGEgZGUgMjAwMi0yMDE1IGUgcGxvdA0KY3Zzbi5waWJwYyA8LSBhcHBseSAocGlicGMsIE1BUkdJTiA9IDIsIEZVTiA9IGN2LCBjb2Vmbm9ybSA9IFRSVUUpDQptYXgoY3Zzbi5waWJwYykgIyBbMV0gMC4xNDgwMzUxDQptaW4oY3Zzbi5waWJwYykgIyBbMV0gMC4wOTYzODA1NA0KYW5vcyA8LSAyMDAyOjIwMTUNCg0KIyBQbG90IGN2IG5vIHRlbXBvDQpwbG90KGFub3MsIGN2c24ucGlicGMsICJsIiwgeWxpbT1jKDAuMDksMC4xNSksIA0KICAgICB4bGFiID0gIkFubyIseWxhYiA9ICJDViBkbyBQSUIiLA0KICAgICBtYWluID0gIkNWIG5vcm1hbGl6YWRvIGRvcyBQSUJzIHBlciBjYXBpdGEgbXVuaWNpcGFpcyBkZSBNUywgMjAwMi0yMDE1IikNCnJlc3VsdGFkby5jdjwtYXMuZGF0YS5mcmFtZShjYmluZChhbm9zLGN2cy5waWJwYywgY3Zzbi5waWJwYykpDQprbml0cjo6a2FibGUocmVzdWx0YWRvLmN2LA0KICAgICAgY2FwdGlvbiA9ICJDViBlIENWIG5vcm1hbGl6YWRvIGRvcyBQSUJzIHBlciBjYXBpdGEgbXVuaWNpcGFpcyBkZSBNUywgMjAwMi0yMDE1IikNCmBgYA0KDQojIyDDjW5kaWNlIGRlIFdpbGxpYW1zb24gKCRWX3ckKSAoV2lsbGlhbXNvbuKAmXMgcG9wdWxhdGlvbi13ZWlnaHRlZCBjb2VmZmljaWVudCBvZiB2YXJpYXRpb24pDQoNCk8gw61uZGljZSAkVl93JCDDqSB1bSBjb2VmaWNpZW50ZSBkZSB2YXJpYcOnw6NvIHBvbmRlcmFkbyBwZWxhIHBhcmNlbGEgZGEgcG9wdWxhw6fDo28gZW0gY2FkYSByZWdpw6NvLiBQYXJhIGEgZXF1YcOnw6NvIGRlIFdpbGxpYW1zb24gKDE5NjUpLCBwYXJhIGEgcG9wdWxhw6fDo28gJHBfaSQgZGEgcmVnacOjbyAkaSQgZSBwb3B1bGHDp8OjbyBkbyBlc3RhZG8gJE4kLiBPIHZhbG9yIGRlICRWX3ckIHNlcsOhIDAgKHplcm8pIHBhcmEgbsOjbyBleGlzdMOqbmNpYSBkZSBkZXNpZ3VhbGRhZGVzIGRvIFBJQiBwZXIgY2FwaXRhICgkeV9pJCkuIEEgcG9uZGVyYcOnw6NvIHBlbGEgcG9wdWxhw6fDo28gZmF6IGNvbSBxdWUgbyBpbmRpY2Fkb3IgZmlxdWUgbWVsaG9yIHF1ZSBvICRDViQgcXVhbmRvIGhvdXZlciByZWdpw7VlcyBjb20gcGVxdWVuYXMgcG9wdWxhw6fDtWVzIGp1bnRvIGEgb3V0cmFzIGRlIGdyYW5kZXMgcG9wdWxhw6fDtWVzLiBBIGbDs3JtdWxhIMOpIGNvbW8gYWJhaXhvOg0KDQokJA0KVncgPSBcZnJhY3t7XHNxcnQge3t7XHN1bVxsaW1pdHNfaSB7XGxlZnQoIHt7eV9pfSAtIFxtdSB9IFxyaWdodCl9IH1eMn1cbGVmdCgge1xmcmFje3BfaX17e059fX0gXHJpZ2h0KX0gfX17XG11IH0NCiQkDQoNClNpbWlsYXJtZW50ZSBhbyBDViwgcHJpbWVpcm8gY2FsY3Vsb3Utc2UgbyBWdyBwYXJhIHVtIGFubyBlIHNlbSBub3JtYWxpemFyLCBkZXBvaXMgcGFyYSBvcyB2w6FyaW9zIGFub3MgZSBjb20gbm9ybWFsaXphw6fDo28uIE8gY29tYW5kbyDDqSBvIG1lc21vIGRvIENWIChgY3ZgKSwgZG8gcGFjb3RlIGBSRUFUYCwgbWFzIGVzcGVjaWZpY2FuZG8gYSBwb25kZXJhw6fDo28gZW0gYHdlaWdodGluZyA9IHBvcGAuIA0KDQpgYGB7cn0NCiMgcGFyYSB1bSBhbm8gZXNwZWPDrWZpY28sIDIwMDIsIHBhcmEgYSB2YXJpw6F2ZWwgcGlicGM6DQphdHRhY2gocGlicGMpDQphdHRhY2gocG9wKQ0KVndNUy4yMDAyPC1jdihwaWJwYzIwMDIsIGNvZWZub3JtID0gRkFMU0UsDQogICAgICAgICAgICAgIHdlaWdodGluZyA9IHBvcDIwMDIsIHdtZWFuID0gRkFMU0UsIG5hLnJtID0gRkFMU0UpDQpWd01TLjIwMDINCg0KIyBwYXJhIHVtIGFubyBlc3BlY8OtZmljbywgMjAxNSwgcGFyYSBhIHZhcmnDoXZlbCBwaWJwYzoNClZ3TVMuMjAxNTwtY3YocGlicGMyMDE1LCBjb2Vmbm9ybSA9IEZBTFNFLCANCiAgICAgICAgICAgICAgd2VpZ2h0aW5nID0gcG9wMjAxNSwgd21lYW4gPSBGQUxTRSwgbmEucm0gPSBGQUxTRSkNClZ3TVMuMjAxNQ0KYGBgDQoNCmBgYHtyfQ0KIyBBZ29yYSBwYXJhIG9zIHbDoXJpb3MgYW5vcywgbsOjbyBwYWRyb25pemFuZG8gZSBwZXNvICBwb3ANCiMgZmFyZWkgdW0gYSB1bQ0KVncubXM8LWRhdGEuZnJhbWUobWF0cml4KDAsbnJvdz1sZW5ndGgocGlicGMpLG5jb2w9MSkpDQpWdyA8LSBjdihwaWJwYzIwMDIsIGNvZWZub3JtID0gRkFMU0Usd2VpZ2h0aW5nID0gcG9wMjAwMikgIA0KVncubXNbMSwxXTwtVncNClZ3IDwtIGN2KHBpYnBjMjAwMywgY29lZm5vcm0gPSBGQUxTRSx3ZWlnaHRpbmcgPSBwb3AyMDAzKSAgDQpWdy5tc1syLDFdPC1Wdw0KVncgPC0gY3YocGlicGMyMDA0LCBjb2Vmbm9ybSA9IEZBTFNFLHdlaWdodGluZyA9IHBvcDIwMDQpICANClZ3Lm1zWzMsMV08LVZ3DQpWdyA8LSBjdihwaWJwYzIwMDUsIGNvZWZub3JtID0gRkFMU0Usd2VpZ2h0aW5nID0gcG9wMjAwNSkgIA0KVncubXNbNCwxXTwtVncNClZ3IDwtIGN2KHBpYnBjMjAwNiwgY29lZm5vcm0gPSBGQUxTRSx3ZWlnaHRpbmcgPSBwb3AyMDA2KSAgDQpWdy5tc1s1LDFdPC1Wdw0KVncgPC0gY3YocGlicGMyMDA3LCBjb2Vmbm9ybSA9IEZBTFNFLHdlaWdodGluZyA9IHBvcDIwMDcpICANClZ3Lm1zWzYsMV08LVZ3DQpWdyA8LSBjdihwaWJwYzIwMDgsIGNvZWZub3JtID0gRkFMU0Usd2VpZ2h0aW5nID0gcG9wMjAwOCkgIA0KVncubXNbNywxXTwtVncNClZ3IDwtIGN2KHBpYnBjMjAwOSwgY29lZm5vcm0gPSBGQUxTRSx3ZWlnaHRpbmcgPSBwb3AyMDA5KSAgDQpWdy5tc1s4LDFdPC1Wdw0KVncgPC0gY3YocGlicGMyMDEwLCBjb2Vmbm9ybSA9IEZBTFNFLHdlaWdodGluZyA9IHBvcDIwMTApICANClZ3Lm1zWzksMV08LVZ3DQpWdyA8LSBjdihwaWJwYzIwMTEsIGNvZWZub3JtID0gRkFMU0Usd2VpZ2h0aW5nID0gcG9wMjAxMSkgIA0KVncubXNbMTAsMV08LVZ3DQpWdyA8LSBjdihwaWJwYzIwMTIsIGNvZWZub3JtID0gRkFMU0Usd2VpZ2h0aW5nID0gcG9wMjAxMikgIA0KVncubXNbMTEsMV08LVZ3DQpWdyA8LSBjdihwaWJwYzIwMTMsIGNvZWZub3JtID0gRkFMU0Usd2VpZ2h0aW5nID0gcG9wMjAxMykgIA0KVncubXNbMTIsMV08LVZ3DQpWdyA8LSBjdihwaWJwYzIwMTQsIGNvZWZub3JtID0gRkFMU0Usd2VpZ2h0aW5nID0gcG9wMjAxNCkgIA0KVncubXNbMTMsMV08LVZ3DQpWdyA8LSBjdihwaWJwYzIwMTUsIGNvZWZub3JtID0gRkFMU0Usd2VpZ2h0aW5nID0gcG9wMjAxNSkgIA0KVncubXNbMTQsMV08LVZ3DQoNCmFub3MgPC0gMjAwMjoyMDE1DQoNCiMgUGxvdCBWdyBubyB0ZW1wbw0KIHBsb3QoYW5vcywgVncubXNbLDFdLCAibCIsICANCiAgICAgIHhsYWIgPSAiQW5vIix5bGFiID0gIlZ3IGRvIFBJQiBwZXIgY2FwaXRhIiwNCiAgICAgbWFpbiA9ICJWdyBkb3MgUElCcyBtdW5pY2lwYWlzIHBlciBjYXBpdGEgZGUgTVMsIDIwMDItMjAxNSIpDQpyZXN1bHRhZG8udnc8LWFzLmRhdGEuZnJhbWUoVncubXMpDQpyb3duYW1lcyhyZXN1bHRhZG8udncpPC1hbm9zDQpjb2xuYW1lcyhyZXN1bHRhZG8udncpPC1jKCJWdyIpDQprbml0cjo6a2FibGUocmVzdWx0YWRvLnZ3LA0KICAgICAgY2FwdGlvbiA9ICJWdyBkb3MgUElCcyBwZXIgY2FwaXRhIG11bmljaXBhaXMgZGUgTVMsIDIwMDItMjAxNSIpDQpgYGANCg0KT3MgdmFsb3JlcyBub3JtYWxpemFkb3MgZGV2ZW0gZXN0YXIgZW50cmUgMCBlIDEuIEFzc2ltLCBmYXJlaSBhIG5vcm1hbGl6YcOnw6NvLCBjYWxjdWxhbmRvIGFnb3JhIHBhcmEgb3MgdsOhcmlvcyBhbm9zLCAgcGFkcm9uaXphbmRvIGUgdXNhbmRvIG8gcGVzbyAod2VpZ2h0aW5nID0gcG9wKS4gRmFyZWkgYW5vIGEgYW5vLg0KDQpgYGB7cn0NClZ3bi5tczwtZGF0YS5mcmFtZShtYXRyaXgoMCxucm93PWxlbmd0aChwaWJwYyksbmNvbD0xKSkNClZ3biA8LSBjdihwaWJwYzIwMDIsIGNvZWZub3JtID0gVFJVRSx3ZWlnaHRpbmcgPSBwb3AyMDAyLHdtZWFuID0gVFJVRSkgIA0KVnduLm1zWzEsMV08LVZ3bg0KVnduIDwtIGN2KHBpYnBjMjAwMywgY29lZm5vcm0gPSBUUlVFLHdlaWdodGluZyA9IHBvcDIwMDMsd21lYW4gPSBUUlVFKSAgDQpWd24ubXNbMiwxXTwtVnduDQpWd24gPC0gY3YocGlicGMyMDA0LCBjb2Vmbm9ybSA9IFRSVUUsd2VpZ2h0aW5nID0gcG9wMjAwNCx3bWVhbiA9IFRSVUUpICANClZ3bi5tc1szLDFdPC1Wd24NClZ3biA8LSBjdihwaWJwYzIwMDUsIGNvZWZub3JtID0gVFJVRSx3ZWlnaHRpbmcgPSBwb3AyMDA1LHdtZWFuID0gVFJVRSkgIA0KVnduLm1zWzQsMV08LVZ3bg0KVnduIDwtIGN2KHBpYnBjMjAwNiwgY29lZm5vcm0gPSBUUlVFLHdlaWdodGluZyA9IHBvcDIwMDYsd21lYW4gPSBUUlVFKSAgDQpWd24ubXNbNSwxXTwtVnduDQpWd24gPC0gY3YocGlicGMyMDA3LCBjb2Vmbm9ybSA9IFRSVUUsd2VpZ2h0aW5nID0gcG9wMjAwNyx3bWVhbiA9IFRSVUUpICANClZ3bi5tc1s2LDFdPC1Wd24NClZ3biA8LSBjdihwaWJwYzIwMDgsIGNvZWZub3JtID0gVFJVRSx3ZWlnaHRpbmcgPSBwb3AyMDA4LHdtZWFuID0gVFJVRSkgIA0KVnduLm1zWzcsMV08LVZ3bg0KVnduIDwtIGN2KHBpYnBjMjAwOSwgY29lZm5vcm0gPSBUUlVFLHdlaWdodGluZyA9IHBvcDIwMDksd21lYW4gPSBUUlVFKSAgDQpWd24ubXNbOCwxXTwtVnduDQpWd24gPC0gY3YocGlicGMyMDEwLCBjb2Vmbm9ybSA9IFRSVUUsd2VpZ2h0aW5nID0gcG9wMjAxMCx3bWVhbiA9IFRSVUUpICANClZ3bi5tc1s5LDFdPC1Wd24NClZ3biA8LSBjdihwaWJwYzIwMTEsIGNvZWZub3JtID0gVFJVRSx3ZWlnaHRpbmcgPSBwb3AyMDExLHdtZWFuID0gVFJVRSkgIA0KVnduLm1zWzEwLDFdPC1Wd24NClZ3biA8LSBjdihwaWJwYzIwMTIsIGNvZWZub3JtID0gVFJVRSx3ZWlnaHRpbmcgPSBwb3AyMDEyLHdtZWFuID0gVFJVRSkgIA0KVnduLm1zWzExLDFdPC1Wd24NClZ3biA8LSBjdihwaWJwYzIwMTMsIGNvZWZub3JtID0gVFJVRSx3ZWlnaHRpbmcgPSBwb3AyMDEzLHdtZWFuID0gVFJVRSkgIA0KVnduLm1zWzEyLDFdPC1Wd24NClZ3biA8LSBjdihwaWJwYzIwMTQsIGNvZWZub3JtID0gVFJVRSx3ZWlnaHRpbmcgPSBwb3AyMDE0LHdtZWFuID0gVFJVRSkgIA0KVnduLm1zWzEzLDFdPC1Wd24NClZ3biA8LSBjdihwaWJwYzIwMTUsIGNvZWZub3JtID0gVFJVRSx3ZWlnaHRpbmcgPSBwb3AyMDE1LHdtZWFuID0gVFJVRSkgIA0KVnduLm1zWzE0LDFdPC1Wd24NCg0KYW5vcyA8LSAyMDAyOjIwMTUNCg0KIyBQbG90IFZ3IG5vIHRlbXBvDQogcGxvdChhbm9zLCBWd24ubXNbLDFdLCAibCIsICANCiAgICAgIHhsYWIgPSAiQW5vIix5bGFiID0gIlZ3IG5vcm1hbGl6YWRvIGRvIFBJQiBwZXIgY2FwaXRhIiwNCiAgICAgbWFpbiA9ICJWdyBub3JtYWxpemFkbyBkb3MgUElCcyBtdW5pY2lwYWlzIHBlciBjYXBpdGEgZGUgTVMsIDIwMDItMjAxNSIpDQpyZXN1bHRhZG8udnduPC1hcy5kYXRhLmZyYW1lKFZ3bi5tcykNCnJvd25hbWVzKHJlc3VsdGFkby52d24pPC1hbm9zDQpjb2xuYW1lcyhyZXN1bHRhZG8udnduKTwtYygiVnduIikNCmtuaXRyOjprYWJsZShyZXN1bHRhZG8udnduLA0KICAgICAgY2FwdGlvbiA9ICJWdyBub3JtYWxpemFkbyBkb3MgUElCcyBwZXIgY2FwaXRhIG11bmljaXBhaXMgZGUgTVMsIDIwMDItMjAxNSIpDQpgYGANCg0KTm8gY2FzbyBub3JtYWxpemFkbywgb2JzZXJ2YW0tc2UgdmFsb3JlcyBwcsOzeGltb3MgYSB6ZXJvLCBpbmRpY2FuZG8gcGVxdWVuYSB2YXJpYWJpbGlkYWRlIGVudHJlIG9zIG11bmljw61waW9zLiBFbWJvcmEgZXhpc3RhbSBkaXNjcmVww6JuY2lhcywgbyBxdWUgcG9kZSBzZXIgZGV0ZWN0YWRvIG9saGFuZG8gZXN0YXTDrXN0aWNhcyBkZXNjcml0aXZhcyBkYSBzw6lyaWUsIHBlcmNlYmUtc2UgcXVlIGEgdmFyaWFiaWxpZGFkZSBlbnRyZSBvcyBhbm9zIMOpIG11aXRvIHBlcXVlbmEsIG7Do28gcG9kZW5kbyBkaXplciBxdWUgc8OjbyB2YWxvcmVzIGRpZmVyZW50ZXMgZGEgbcOpZGlhIGRvIHBlcsOtb2RvLiAgICANCg0KDQoNCiMjIMONbmRpY2UgZGUgVGhlaWwgDQoNCkVzdGUgw61uZGljZSDDqSBjb211bWVudG8gdXRpbGl6YWRvIHBhcmEgYXZhbGlhciBhIGRlc2lndWFsZGFkZSBlbnRyZSBleHRyYXRvcyBkZSByZW5kYSBvdSwgY29tbyBhcXVpLCBlbnRyZSBsb2NhbGlkYWRlcy4gQSBleHByZXNzw6NvIGLDoXNpY2Egw6kgY29tbyBhYmFpeG8uICAgIA0KDQokJA0KSiA9IFxzdW1cbGltaXRzX3Ige1xsZWZ0KCB7XGxlZnQoIHtcZnJhY3t7e3Bfcn19fXtOfX0gXHJpZ2h0KVxsbiBcbGVmdCgge1xmcmFje3tcZnJhY3t7e3Bfcn19fXtOfX19e3tcZnJhY3t7e1lfcn19fXtZfX19fSBccmlnaHQpfSBccmlnaHQpfSANCiQkDQoNCkEgZXhwcmVzc8OjbyDDqSBhIG1lc21hIGRvIG9yaWdpbmFsIGRlIFRoZWlsIGV0IGFsICgxOTk2LCBwLjEyLTEzKSBlLCBuZXN0ZSBjYXNvOiAkcF9yJCDDqSBhIHBvcHVsYcOnw6NvIGRhIGxvY2FsaWRhZGUgZGUgYW7DoWxpc2UgJHIkOyAkTiQgw6kgYSBwb3B1bGHDp8OjbyBkYSBsb2NhbGlkYWRlIGRlIHJlZmVyw6puY2lhOyAkWV9yJCDDqSBvIFBJQiBwZXIgY2FwaXRhIGRhIGxvY2FsaWRhZGUgZGUgYW7DoWxpc2UgJHIkOyBlICRZJCDDqSBvIFBJQiBwZXIgY2FwaXRhIGRhIGxvY2FsaWRhZGUgZGUgcmVmZXLDqm5jaWEuIE5vIHByZXNlbnRlIGV4ZW1wbG8sIGEgbG9jYWxpZGFkZSBkZSBhbsOhbGlzZSDDqSBvIG11bmljw61waW8gZSBhIGRlIHJlZmVyw6puY2lhIMOpIG8gZXN0YWRvIGRlIE1TLiAgICANCg0KRm9pIGVsYWJvcmFkYSB1bWEgZnVuw6fDo28gcGFyYSByZXByb2R1emlyIGVzc2EgZXhwcmVzc8Ojby4gRXNjbGFyZWNlbW9zIHF1ZSBvIGxlaXRvciBkZXZlIHRlciBjYXV0ZWxhIHBvaXMgZW5jb250cmFtLXNlIG91dHJhcyBleHByZXNzw7VlcyBhdHJpYnXDrWRhcyBjb21vIG8gw61uZGljZSBkZSBUaGVpbCwgbWFzIGNvbSByb3RpbmFzIHF1ZSBkw6NvIG91dHJvcyByZXN1bHRhZG9zLCBjb21vIHBvciBleGVtcGxvIG8gZGEgZnVuw6fDo28gYFJFQVQ6Ojp0aGVpbGAuDQpBIHJvdGluYSBkYSBmdW7Dp8OjbyB1dGlsaXphZGEgKHF1ZSBub21lYW1vcyBjb21vIGB0aGVpbC5tb25gKSDDqToNCg0KYGBge3J9DQp0aGVpbC5tb24gPC0NCiAgZnVuY3Rpb24gKHgseSkNCiAgew0KICAgIHhfc3VtIDwtIHN1bSh4KQ0KICAgIHlfc3VtPC0gc3VtKHkpDQogICAgbG5fc3VtIDwtIGxvZyAoKHkveV9zdW0pLyh4L3hfc3VtKSkNCiAgICAgICAgSiA8LSBzdW0oKHkveV9zdW0pKmxuX3N1bSkNCiAgICAgICAgcmV0dXJuIChKKQ0KICB9DQpgYGANCg0KYGBge3J9DQojIHggw6kgbyBQSUIgcGVyIGNhcGl0YSBlIHkgw6kgYSBwb3B1bGHDp8Ojbw0KYXR0YWNoKHBpYnBjKQ0KYXR0YWNoKHBvcCkNClRoZWlsLm1zPC1kYXRhLmZyYW1lKG1hdHJpeCgwLG5yb3c9MTQsbmNvbD0xKSkNClRoZWlsIDwtIHRoZWlsLm1vbihwaWJwYzIwMDIsIHBvcDIwMDIpICANClRoZWlsLm1zWzEsMV08LVRoZWlsDQpUaGVpbCA8LSB0aGVpbC5tb24ocGlicGMyMDAzLCBwb3AyMDAzKSAgDQpUaGVpbC5tc1syLDFdPC1UaGVpbA0KVGhlaWwgPC0gdGhlaWwubW9uKHBpYnBjMjAwNCwgcG9wMjAwNCkgIA0KVGhlaWwubXNbMywxXTwtVGhlaWwNClRoZWlsIDwtIHRoZWlsLm1vbihwaWJwYzIwMDUsIHBvcDIwMDUpICANClRoZWlsLm1zWzQsMV08LVRoZWlsDQpUaGVpbCA8LSB0aGVpbC5tb24ocGlicGMyMDA2LCBwb3AyMDA2KSAgDQpUaGVpbC5tc1s1LDFdPC1UaGVpbA0KVGhlaWwgPC0gdGhlaWwubW9uKHBpYnBjMjAwNywgcG9wMjAwNykgIA0KVGhlaWwubXNbNiwxXTwtVGhlaWwNClRoZWlsIDwtIHRoZWlsLm1vbihwaWJwYzIwMDgsIHBvcDIwMDgpICANClRoZWlsLm1zWzcsMV08LVRoZWlsDQpUaGVpbCA8LSB0aGVpbC5tb24ocGlicGMyMDA5LCBwb3AyMDA5KSAgDQpUaGVpbC5tc1s4LDFdPC1UaGVpbA0KVGhlaWwgPC0gdGhlaWwubW9uKHBpYnBjMjAxMCwgcG9wMjAxMCkgIA0KVGhlaWwubXNbOSwxXTwtVGhlaWwNClRoZWlsIDwtIHRoZWlsLm1vbihwaWJwYzIwMTEsIHBvcDIwMTEpICANClRoZWlsLm1zWzEwLDFdPC1UaGVpbA0KVGhlaWwgPC0gdGhlaWwubW9uKHBpYnBjMjAxMiwgcG9wMjAxMikgIA0KVGhlaWwubXNbMTEsMV08LVRoZWlsDQpUaGVpbCA8LSB0aGVpbC5tb24ocGlicGMyMDEzLCBwb3AyMDEzKSAgDQpUaGVpbC5tc1sxMiwxXTwtVGhlaWwNClRoZWlsIDwtIHRoZWlsLm1vbihwaWJwYzIwMTQsIHBvcDIwMTQpICANClRoZWlsLm1zWzEzLDFdPC1UaGVpbA0KVGhlaWwgPC0gdGhlaWwubW9uKHBpYnBjMjAxNSwgcG9wMjAxNSkNCiAgDQpUaGVpbC5tc1sxNCwxXTwtVGhlaWwNCnJlc3VsdGFkby5UaGVpbC5tczwtYXMuZGF0YS5mcmFtZShUaGVpbC5tcykNCnJvd25hbWVzKHJlc3VsdGFkby5UaGVpbC5tcyk8LWFub3MNCmNvbG5hbWVzKHJlc3VsdGFkby5UaGVpbC5tcyk8LWMoIlRoZWlsLm1zIikNCmtuaXRyOjprYWJsZShyZXN1bHRhZG8uVGhlaWwubXMsDQogICAgICBjYXB0aW9uID0gIlRoZWlsIGRvcyBQSUJzIHBlciBjYXBpdGEgbXVuaWNpcGFpcyBkZSBNUywgMjAwMi0yMDE1IikNCg0KIyBQbG90IFRoZWlsIChNb25hc3RlcmlvKSBubyB0ZW1wbw0KcGxvdChhbm9zLCBUaGVpbC5tc1ssMV0sICJsIiwgIA0KICAgICB4bGFiID0gIkFubyIseWxhYiA9ICJUaGVpbCBkbyBQSUIgcGVyIGNhcGl0YSIsDQogICAgIG1haW4gPSAiVGhlaWwgZG9zIFBJQnMgbXVuaWNpcGFpcyBwZXIgY2FwaXRhIGRlIE1TLCAyMDAyLTIwMTUiKQ0KYGBgDQoNCsOJIHBvc3PDrXZlbCB2ZXIgcXVlIGEgZGVzaWd1YWxkYWRlIHJlZHV6aXUgZW50cmUgb3MgbXVuaWPDrXBpb3MgYXTDqSAyMDA3LCBhdW1lbnRhZG9zIG5vcyBhbm9zIHNlZ3VpbnRlcy4NCg0KDQpSZWZlcsOqbmNpYXMgey0jUmVmZXLDqm5jaWFzfQ0KPT09PT09PT09PT09PT09PT09PT09PT09DQoNCkJBTEFTU0EsIEIuIFRyYWRlIExpYmVyYWxpemF0aW9uIGFuZCBSZXZlYWxlZCBDb21wYXJhdGl2ZSBBZHZhbnRhZ2UsIFRoZSBNYW5jaGVzdGVyIFNjaG9vbCAzMzogOTktMTIzLiAxOTY1LiANCg0KQkFMTEFORCwgUC5BLiBFY29ub21pYyBHZW9ncmFwaHkgaW4gUjogSW50cm9kdWN0aW9uIHRvIHRoZSBFY29uR2VvIFBhY2thZ2UsIFBhcGVycyBpbiBFdm9sdXRpb25hcnkgRWNvbm9taWMgR2VvZ3JhcGh5LCAxNyAoMDkpOiAxLTc1LCAyMDE3Lg0KDQpCQUxMQU5ELCAgUGllcnJlLUFsZXhhbmRyZS4gRWNvbkdlbzogQ29tcHV0aW5nIEtleSBJbmRpY2F0b3JzIG9mIHRoZSBTcGF0aWFsIERpc3RyaWJ1dGlvbiBvZiBFY29ub21pYyBBY3Rpdml0aWVzLiBSIHBhY2thZ2UgdmVyc2lvbiAxLjMuIDIwMTkuIERpc3BvbsOtdmVsIGVtIDogPGh0dHBzOi8vZ2l0aHViLmNvbS9QQUJhbGxhbmQvRWNvbkdlbz4gICAgDQoNCkNPVVRJTkhPLCBNw6FyY2lvIFIuIEEgY29udHJpYnVpw6fDo28gZGFzIGF0aXZpZGFkZXMgZWNvbsO0bWljYXMgZGUgYmFzZSBhZ3JvcGVjdcOhcmlhIG5hIGdlcmHDp8OjbyBkZSBlbXByZWdvIGUgbWFzc2Egc2FsYXJpYWwgcGFyYSBvcyBtdW5pY8OtcGlvcyBkZSBNYXRvIEdyb3NzbyBkbyBTdWwuIERpc3NlcnRhw6fDo28gZGUgTWVzdHJhZG8gKEFkbWluaXN0cmHDp8OjbykuIENhbXBvIEdyYW5kZTogVUZNUywgMjAxNy4gcC4zMi00Mi4gICAgDQoNCkZJR1VFSVJFRE8sIEFkcmlhbm8gTWFyY29zIFJvZHJpZ3Vlcy4gRWNvbm9taWEgUmVnaW9uYWw6IE1hcGFzIGVtIFIuIENhbXBvIEdyYW5kZS1NUyxCcmFzaWw6IFJTdHVkaW8vUnB1YnMsIDIwMTlhLiBEaXNwb27DrXZlbCBlbTogPGh0dHA6Ly9ycHVicy5jb20vYW1yb2ZpL1JlZ2lvbmFsX0Vjb25vbWljc19TcGF0aWFsPi4gICAgDQoNCkZJR1VFSVJFRE8sIEFkcmlhbm8gTWFyY29zIFJvZHJpZ3Vlcy4gQXDDqm5kaWNlIC0gaW5zdGFsYcOnw6NvIGRvIFJTdHVkaW8uIENhbXBvIEdyYW5kZS1NUyxCcmFzaWw6IFJTdHVkaW8vUnB1YnMsIDIwMTliLiBEaXNwb27DrXZlbCBlbTogPGh0dHA6Ly9ycHVicy5jb20vYW1yb2ZpL2luc3RydWNvZXNfUnN0dWRpbz4uICAgIA0KDQpGSUdVRUlSRURPLCBBZHJpYW5vIE1hcmNvcyBSb2RyaWd1ZXMuIE1hcGFzIGVtIFIgY29tIGBnZW9icmAuIENhbXBvIEdyYW5kZS1NUyxCcmFzaWw6IFJTdHVkaW8vUnB1YnMsIDIwMjAuIERpc3BvbsOtdmVsIGVtOiA8aHR0cDovL3JwdWJzLmNvbS9hbXJvZmkvbWFwc19nZW9icj4gICBlIDxodHRwczovL2Fkcmlhbm9maWd1ZWlyZWRvLm5ldGxpZnkuY29tL3Bvc3QvbWFwYXMtZW0tci1jb20tZ2VvYnIvPi4gICAgDQoNCklCR0UgLSBJbnN0aXR1dG8gQnJhc2lsZWlybyBkZSBHZW9ncmFmaWEgZSBFc3RhdMOtc3RpY2EuIFByb2R1dG8gSW50ZXJubyBCcnV0byBkb3MgTXVuaWPDrXBpb3MuIFJpbyBkZSBKYW5laXJvOiBJQkdFL1NJRFJBLiAyMDIwYS4gRGlzcG9uw612ZWwgZW06PGh0dHBzOi8vc2lkcmEuaWJnZS5nb3YuYnIvcGVzcXVpc2EvcGliLW11bmljL3RhYmVsYXM+LiAgICANCg0KSUJHRSAtIEluc3RpdHV0byBCcmFzaWxlaXJvIGRlIEdlb2dyYWZpYSBlIEVzdGF0w61zdGljYS4gRXN0aW1hdGl2YXMgZGUgcG9wdWxhw6fDo28uIFJpbyBkZSBKYW5laXJvOiBJQkdFL1NJRFJBLiAyMDIwYi4gRGlzcG9uw612ZWwgZW06IDxodHRwczovL3d3dy5pYmdlLmdvdi5ici9lc3RhdGlzdGljYXMvc29jaWFpcy9wb3B1bGFjYW8vOTEwMy1lc3RpbWF0aXZhcy1kZS1wb3B1bGFjYW8uaHRtbD89JnQ9ZG93bmxvYWRzPg0KDQpNT05BU1RFUklPLCBMZW9uYXJkby4gSW5kaWNhZG9yZXMgZGUgYW7DoWxpc2UgcmVnaW9uYWwgZSBlc3BhY2lhbC4gSW46IENSVVogZXQgYWwgKG9yZ3MpLiBFY29ub21pYSByZWdpb25hbCBlIHVyYmFuYSA6IHRlb3JpYXMgZSBtw6l0b2RvcyBjb20gw6puZmFzZSBubyBCcmFzaWwuIEJyYXPDrWxpYTogSXBlYSwgMjAxMS4gY2FwLiAxMC4gcHAuMzE1LTMzMS4gICAgDQoNCldJRUxBTkQsIFQuIFJFQVQ6IEEgUmVnaW9uYWwgRWNvbm9taWMgQW5hbHlzaXMgVG9vbGJveCBmb3IgUi4gUkVHSU9OLCA2KDMpLCBSMS1SNTcuIDIwMTkuIERpc3BvbsOtdmVsIGVtOiA8aHR0cHM6Ly9kb2kub3JnLzEwLjE4MzM1L3JlZ2lvbi52NmkzLjI2Nz4u" download="2020-04-24-economia-regional-em-r-indicadores-de-análise-cv-v-w-e-theil.Rmd">Download 2020-04-24-economia-regional-em-r-indicadores-de-análise-cv-v-w-e-theil.Rmd</a>
+</div>
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Faremos uma visão panorâmica não exaustiva das medidas utilizadas pela ciência regional, acompanhando o raciocínio de Monastério (2011). Pode-se dividir a análise em indicadores de desigualdade, de especialização, de concentração e de poder de mercado.</p>
+<p>Entre as principais características dos indicadores está a análise de homogeneidade e a investigação dos limites de variação. Neste rol, podemos destacar as Medidas estatísticas de dispersão como o Coeficiente de variação (<span class="math inline">\(CV\)</span>), o Desvio-padrão (<span class="math inline">\(dp\)</span>) e a variância (<span class="math inline">\(Var\)</span>). Outros Índices ponderados para múltiplas variáveis são também possíveis, como aqueles obtidos pela Análise fatorial, ou ainda medidas associadas à Distância econômica (maior ou menor afastamento entre unidades regionais) e os Métodos de agrupamentos (clusters).</p>
+<p>Algumas propriedades são tidas como desejáveis para os indicadores locacionais, de modo a permitir testes de hipóteses. São elas: a comparabilidade entre escalas, geralmente normalizando para o intervalo 0 e 1; os recortes espaciais (agregações na mesma escala tipo municipal ou estadual, por exemplo); e as classificações setoriais (por exemplo, uma classificação tipo CNAE, ou por setor IBGE etc.).</p>
+<p>Os Indicadores sintetizam informações e são o primeiro passo para estudos mais avançados, associando a teoria à prática. Contudo, nenhum indicador regional é suficiente para considerar todos os fenômenos relevantes associados à distribuição da atividade econômica no espaço.</p>
+<p>Atualmente, com as ferramentas computacionais e a disponibilidade de grande volume de dados eletrônicos, surgem softwares livres importantes na análise da ciência regional, como o Python, R e Geoda entre outros. Daremos ênfase nesse artigo ao R. Nesse caso, chamamos atenção para os pacotes: <code>REAT</code> de Wieland (2019); e <code>EconGeo</code> de Balland (2019). Esses pacotes realizam uma série de indicadores de análise de dados com localização, mas deve-se atentar para os detalhes de cada pacote, na medida em que formos desenvolvendo os indicadores. Também ressaltamos ao leitor que existem ferramentas que auxiliam a visualização dos resultados, como procedimentos para fazer mapas, ou procedimentos que permitem gráficos mais elaborados. Para tal, recomendamos que o leitor leia Figueiredo (2019; 2020).</p>
+</div>
+<div id="indicadores-de-desigualdade-regional" class="section level1">
+<h1>Indicadores de Desigualdade Regional</h1>
+<p>O objetivo desses indicadores é ter uma medida do grau de desigualdade regional, usualmente no tocante às suas rendas per capita. A ideia básica deste arquivo é orientar os procedimentos para o cálculo dos indicadores de análise regional a saber:</p>
+<ol style="list-style-type: decimal">
+<li>Coeficiente de variação (<span class="math inline">\(CV\)</span>)</li>
+<li>Índice de Jeffrey Gale Williamson (<span class="math inline">\(V_w\)</span>)(<em>Williamson’s population-weighted coefficient of variation</em>)</li>
+<li>Índice de Theil (<span class="math inline">\(Theil\)</span>)</li>
+</ol>
+<div id="organização-dos-dados" class="section level2">
+<h2>Organização dos dados</h2>
+<p>Nesta etapa, iniciamos carregando os dados e pacotes, nesse caso, principalmente o pacote <code>REAT</code>. Neste caso, os dados são dos municípios de Mato Grosso do Sul, de 2002 a 2015. Observar que esse dataset contém dados “ausentes” (<em>missings</em>) e o pesquisador deverá cuidar destes detalhes antes da análise.</p>
+<p>Os dados estão organizados por colunas para o valor adicionado bruto (VAB) do setor agropecuário (agro), VAB do setor da administração pública (apu), os impostos (imp), VAB do setor da indústria (ind), VAB do setor de serviços (serv), o VAB total (vabt), o PIB -Produto Interno Bruto- (pib), a população municipal (pop), o PIB per capita (pibpc), o <em>share</em> da população municipal no estado (spop = pop do município/pop do estado), o <em>share</em> do PIB municipal no estado (y = pib do município/pib do estado), e a produtividade relativa (R=y/spop).</p>
+<p>Os dados foram organizados previamente a partir de dados das contas regionais municipais do IBGE (2020a) (Instituto Brasileiro de Geografia e Estatística) (Tabela 5938 - Produto Interno Bruto dos Municípios) e da informação da população estimada (Tabela 6579) para informação ao TCU (Tribunal de Contas da União) pelo IBGE (2020b). Em virtude das desagregações municipais, os municípios de Figueirão e Paraíso das Águas foram excluídos da análise (sabemos que tal procedimento tem limitações mas em se tratando de um exercício ilustrativo do método, não gerará maiores implicações). Portanto, os dados sem os <em>missings</em> estão na planilha dados2.</p>
+<pre class="r"><code>library(REAT)
+library(readxl)
+# help(&#39;REAT&#39;)
+dados &lt;- read_excel(&quot;dadospib_popms.xlsx&quot;, sheet = &quot;dados&quot;)
+# DT::datatable(dados)
+
+# excluindo as observacoes de Figueirao e Paraiso das Aguas
+dados2 &lt;- read_excel(&quot;dadospib_popms.xlsx&quot;, sheet = &quot;dados2&quot;)</code></pre>
+<p>Separaremos as variáveis a saber: pib, pop, pibpc, R.</p>
+<pre class="r"><code>pib &lt;- dados2[87:100]
+pop &lt;- dados2[101:114]
+pibpc &lt;- dados2[115:128]
+R &lt;- dados2[157:170]</code></pre>
+<p>Estatísticas descritivas das séries de PIB per capita e população.</p>
+<pre class="r"><code>summary(pibpc)</code></pre>
+<pre><code>   pibpc2002       pibpc2003       pibpc2004        pibpc2005     
+ Min.   : 2684   Min.   : 3227   Min.   :  3096   Min.   :  3580  
+ 1st Qu.: 4674   1st Qu.: 6540   1st Qu.:  6689   1st Qu.:  6536  
+ Median : 6061   Median : 7977   Median :  8296   Median :  8377  
+ Mean   : 8159   Mean   :11222   Mean   : 11769   Mean   : 11436  
+ 3rd Qu.: 8867   3rd Qu.:12046   3rd Qu.: 12039   3rd Qu.: 11619  
+ Max.   :66252   Max.   :83192   Max.   :117442   Max.   :128890  
+   pibpc2006        pibpc2007       pibpc2008        pibpc2009     
+ Min.   :  3744   Min.   : 4427   Min.   :  5084   Min.   :  5251  
+ 1st Qu.:  7210   1st Qu.: 8264   1st Qu.:  9638   1st Qu.: 10469  
+ Median :  9471   Median :10680   Median : 12656   Median : 13661  
+ Mean   : 12096   Mean   :13160   Mean   : 15877   Mean   : 16801  
+ 3rd Qu.: 13372   3rd Qu.:14265   3rd Qu.: 16697   3rd Qu.: 17168  
+ Max.   :113228   Max.   :96066   Max.   :135707   Max.   :142556  
+   pibpc2010        pibpc2011        pibpc2012        pibpc2013     
+ Min.   :  5806   Min.   :  6420   Min.   :  7141   Min.   :  9061  
+ 1st Qu.: 11675   1st Qu.: 13229   1st Qu.: 14637   1st Qu.: 15072  
+ Median : 15522   Median : 17862   Median : 19065   Median : 21462  
+ Mean   : 19933   Mean   : 22321   Mean   : 24673   Mean   : 27171  
+ 3rd Qu.: 20674   3rd Qu.: 23541   3rd Qu.: 25755   3rd Qu.: 27352  
+ Max.   :234013   Max.   :212794   Max.   :215305   Max.   :259532  
+   pibpc2014        pibpc2015     
+ Min.   :  9627   Min.   :  9604  
+ 1st Qu.: 17162   1st Qu.: 18699  
+ Median : 23950   Median : 25860  
+ Mean   : 30152   Mean   : 31838  
+ 3rd Qu.: 31463   3rd Qu.: 33713  
+ Max.   :289319   Max.   :246333  </code></pre>
+<pre class="r"><code>summary(pop)</code></pre>
+<pre><code>    pop2002          pop2003          pop2004          pop2005      
+ Min.   :  3165   Min.   :  2926   Min.   :  2426   Min.   :  2148  
+ 1st Qu.:  8053   1st Qu.:  8052   1st Qu.:  8050   1st Qu.:  8049  
+ Median : 12923   Median : 13180   Median : 13426   Median : 13634  
+ Mean   : 27800   Mean   : 28178   Mean   : 28932   Mean   : 29371  
+ 3rd Qu.: 20488   3rd Qu.: 20675   3rd Qu.: 20519   3rd Qu.: 20426  
+ Max.   :692549   Max.   :705975   Max.   :734164   Max.   :749768  
+    pop2006          pop2007          pop2008          pop2009      
+ Min.   :  1873   Min.   :  3117   Min.   :  3198   Min.   :  3165  
+ 1st Qu.:  7979   1st Qu.:  8168   1st Qu.:  8401   1st Qu.:  8397  
+ Median : 13698   Median : 13979   Median : 14416   Median : 14569  
+ Mean   : 29806   Mean   : 29377   Mean   : 30294   Mean   : 30611  
+ 3rd Qu.: 20789   3rd Qu.: 20916   3rd Qu.: 21546   3rd Qu.: 21677  
+ Max.   :765247   Max.   :724524   Max.   :747190   Max.   :755107  
+    pop2010          pop2011          pop2012          pop2013      
+ Min.   :  3518   Min.   :  3520   Min.   :  3522   Min.   :  3570  
+ 1st Qu.:  7985   1st Qu.:  7956   1st Qu.:  7972   1st Qu.:  8288  
+ Median : 14833   Median : 14972   Median : 15065   Median : 15429  
+ Mean   : 31768   Mean   : 32138   Mean   : 32434   Mean   : 33498  
+ 3rd Qu.: 22341   3rd Qu.: 22621   3rd Qu.: 23016   3rd Qu.: 23888  
+ Max.   :786797   Max.   :796252   Max.   :805397   Max.   :832352  
+    pop2014          pop2015      
+ Min.   :  3570   Min.   :  3570  
+ 1st Qu.:  8429   1st Qu.:  8567  
+ Median : 15534   Median : 15637  
+ Mean   : 33917   Mean   : 34326  
+ 3rd Qu.: 24078   3rd Qu.: 24414  
+ Max.   :843120   Max.   :853622  </code></pre>
+<p>Na próxima seção, faremos os indicadores de análise.</p>
+</div>
+<div id="coeficiente-de-variação-cv" class="section level2">
+<h2>Coeficiente de variação (<span class="math inline">\(CV\)</span>)</h2>
+<p>O <span class="math inline">\(CV\)</span> permite resumir as disparidades regionais (ex: no PIB regional per capita) em um indicador. Neste caso, o <span class="math inline">\(CV\)</span> não está ponderado pela população e pode ser padronizado para ficar entre 0 e 1.</p>
+<p>No exemplo a seguir, não está padronizado. Veja a fórmula para cálculo do CV.</p>
+<p><span class="math display">\[
+CV = \frac{{\sqrt {\left( {\frac{1}{{T - 1}}} \right){{\sum\limits_i {\left( {{y_i} - \mu } \right)} }^2}} }}{\mu }
+\]</span></p>
+<p>Na fórmula de <span class="math inline">\(CV\)</span>, para a variável em análise, neste exemplo, <span class="math inline">\(y_i\)</span> é o PIB per capita do município <span class="math inline">\(i\)</span>; <span class="math inline">\(\mu\)</span> é o PIB per capita do estado; e, T é o número de municípios analisados. Portanto, o coeficiente de variação <span class="math inline">\(CV\)</span> é o quociente do desvio padrão dividido pela média, e servirá para analisar as disparidades na variável de análise, neste caso, o PIB per capita municipal.</p>
+<p>O coeficiente de variação, <span class="math inline">\(CV\)</span>, é uma medida estatística de dispersão, baseada na variância e no desvio-padrão. Desta forma, na análise regional, dá uma ideia de convergência absoluta (ou σ-convergência) em casos de pequena variação no tempo ou no espaço. A redução da dispersão pode ser oriunda de crescimento mais acelerado das localidades mais pobres relativamente àquelas mais ricas, conforme as teorias de convergência de renda.</p>
+<p>A expressão tradicional trata o dataset como uma amostra, e por este motivo o denominador da variância é T-1. Se for o universo, então pode-se especificar <code>is.sample = FALSE</code> e a rotina de <code>cv</code> tratará a informação com o denominador igual a T na variância.</p>
+<pre class="r"><code>attach(pibpc)
+# calculo para o PIB per capita para um ano
+CVMS.2015 &lt;- cv(pibpc2015, is.sample = FALSE, coefnorm = FALSE, weighting = NULL, 
+    wmean = FALSE, na.rm = FALSE)
+cat(&quot;CVMS.2015 = &quot;, CVMS.2015)</code></pre>
+<pre><code>CVMS.2015 =  0.8847709</code></pre>
+<pre class="r"><code># Calculo para o PIB per capita de 2002-2015 e plot
+cvs.pibpc &lt;- apply(pibpc, MARGIN = 2, FUN = cv)
+cat(&quot;máximo de cvs.pibpc = &quot;, max(cvs.pibpc))</code></pre>
+<pre><code>máximo de cvs.pibpc =  1.290541</code></pre>
+<pre class="r"><code># [1] 1.290541
+cat(&quot;mínimo de cvs.pibpc = &quot;, min(cvs.pibpc))</code></pre>
+<pre><code>mínimo de cvs.pibpc =  0.840226</code></pre>
+<pre class="r"><code># [1] 0.840226 Calculo do cv para 2002-2015
+anos &lt;- 2002:2015
+
+# Plot cv no tempo
+plot(anos, cvs.pibpc, &quot;l&quot;, ylim = c(0.84, 1.3), xlab = &quot;Ano&quot;, ylab = &quot;CV do PIB per capita&quot;, 
+    main = &quot;CV dos PIB per capita municipais de MS, 2002-2015&quot;)</code></pre>
+<p><img src="/post/2020-04-24-economia-regional-em-r-indicadores-de-análise-cv-v-w-e-theil_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div id="cv-com-normalização" class="section level3">
+<h3><span class="math inline">\(CV\)</span> com normalização</h3>
+<p>Agora refazendo o <span class="math inline">\(CV\)</span> do PIB com normalização (<span class="math inline">\(0 \le CV \le 1\)</span>). Neste caso, observe que aplicamos a opção <code>coefnorm = TRUE</code> na função <code>cv</code>.</p>
+<pre class="r"><code># Calculo de CV normalizado para o PIB per capita de 2002-2015 e plot
+cvsn.pibpc &lt;- apply(pibpc, MARGIN = 2, FUN = cv, coefnorm = TRUE)
+max(cvsn.pibpc)  # [1] 0.1480351</code></pre>
+<pre><code>[1] 0.1480351</code></pre>
+<pre class="r"><code>min(cvsn.pibpc)  # [1] 0.09638054</code></pre>
+<pre><code>[1] 0.09638054</code></pre>
+<pre class="r"><code>anos &lt;- 2002:2015
+
+# Plot cv no tempo
+plot(anos, cvsn.pibpc, &quot;l&quot;, ylim = c(0.09, 0.15), xlab = &quot;Ano&quot;, ylab = &quot;CV do PIB&quot;, 
+    main = &quot;CV normalizado dos PIBs per capita municipais de MS, 2002-2015&quot;)</code></pre>
+<p><img src="/post/2020-04-24-economia-regional-em-r-indicadores-de-análise-cv-v-w-e-theil_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<pre class="r"><code>resultado.cv &lt;- as.data.frame(cbind(anos, cvs.pibpc, cvsn.pibpc))
+knitr::kable(resultado.cv, caption = &quot;CV e CV normalizado dos PIBs per capita municipais de MS, 2002-2015&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-7">Table 1: </span>CV e CV normalizado dos PIBs per capita municipais de MS, 2002-2015</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">anos</th>
+<th align="right">cvs.pibpc</th>
+<th align="right">cvsn.pibpc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pibpc2002</td>
+<td align="right">2002</td>
+<td align="right">0.9560380</td>
+<td align="right">0.1096651</td>
+</tr>
+<tr class="even">
+<td>pibpc2003</td>
+<td align="right">2003</td>
+<td align="right">0.9202166</td>
+<td align="right">0.1055561</td>
+</tr>
+<tr class="odd">
+<td>pibpc2004</td>
+<td align="right">2004</td>
+<td align="right">1.1430126</td>
+<td align="right">0.1311125</td>
+</tr>
+<tr class="even">
+<td>pibpc2005</td>
+<td align="right">2005</td>
+<td align="right">1.2614146</td>
+<td align="right">0.1446942</td>
+</tr>
+<tr class="odd">
+<td>pibpc2006</td>
+<td align="right">2006</td>
+<td align="right">1.0454319</td>
+<td align="right">0.1199193</td>
+</tr>
+<tr class="even">
+<td>pibpc2007</td>
+<td align="right">2007</td>
+<td align="right">0.8402260</td>
+<td align="right">0.0963805</td>
+</tr>
+<tr class="odd">
+<td>pibpc2008</td>
+<td align="right">2008</td>
+<td align="right">0.9630817</td>
+<td align="right">0.1104731</td>
+</tr>
+<tr class="even">
+<td>pibpc2009</td>
+<td align="right">2009</td>
+<td align="right">0.9616951</td>
+<td align="right">0.1103140</td>
+</tr>
+<tr class="odd">
+<td>pibpc2010</td>
+<td align="right">2010</td>
+<td align="right">1.2905405</td>
+<td align="right">0.1480351</td>
+</tr>
+<tr class="even">
+<td>pibpc2011</td>
+<td align="right">2011</td>
+<td align="right">1.0683170</td>
+<td align="right">0.1225444</td>
+</tr>
+<tr class="odd">
+<td>pibpc2012</td>
+<td align="right">2012</td>
+<td align="right">0.9912437</td>
+<td align="right">0.1137034</td>
+</tr>
+<tr class="even">
+<td>pibpc2013</td>
+<td align="right">2013</td>
+<td align="right">1.0696527</td>
+<td align="right">0.1226976</td>
+</tr>
+<tr class="odd">
+<td>pibpc2014</td>
+<td align="right">2014</td>
+<td align="right">1.0765816</td>
+<td align="right">0.1234924</td>
+</tr>
+<tr class="even">
+<td>pibpc2015</td>
+<td align="right">2015</td>
+<td align="right">0.8905727</td>
+<td align="right">0.1021557</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="índice-de-williamson-v_w" class="section level2">
+<h2>Índice de Williamson (<span class="math inline">\(V_w\)</span>)</h2>
+<p><em>Williamson’s population-weighted coefficient of variation</em></p>
+<p>O índice <span class="math inline">\(V_w\)</span> é um coeficiente de variação ponderado pela parcela da população em cada região. Para a equação de Williamson (1965), para a população <span class="math inline">\(p_i\)</span> da região <span class="math inline">\(i\)</span> e população do estado <span class="math inline">\(N\)</span>. O valor de <span class="math inline">\(V_w\)</span> será 0 (zero) para não existência de desigualdades do PIB per capita (<span class="math inline">\(y_i\)</span>). A ponderação pela população faz com que o indicador fique melhor que o <span class="math inline">\(CV\)</span> quando houver regiões com pequenas populações junto a outras de grandes populações. A fórmula é como abaixo:</p>
+<p><span class="math display">\[
+Vw = \frac{{\sqrt {{{\sum\limits_i {\left( {{y_i} - \mu } \right)} }^2}\left( {\frac{p_i}{{N}}} \right)} }}{\mu }
+\]</span></p>
+<p>Similarmente ao CV, primeiro calculou-se o Vw para um ano e sem normalizar, depois para os vários anos e com normalização. O comando é o mesmo do CV (<code>cv</code>), do pacote <code>REAT</code>, mas especificando a ponderação em <code>weighting = pop</code>.</p>
+<pre class="r"><code># para um ano específico, 2002, para a variável pibpc:
+attach(pibpc)
+attach(pop)
+VwMS.2002 &lt;- cv(pibpc2002, coefnorm = FALSE, weighting = pop2002, wmean = FALSE, 
+    na.rm = FALSE)
+VwMS.2002</code></pre>
+<pre><code>[1] 0.5933009</code></pre>
+<pre class="r"><code># para um ano específico, 2015, para a variável pibpc:
+VwMS.2015 &lt;- cv(pibpc2015, coefnorm = FALSE, weighting = pop2015, wmean = FALSE, 
+    na.rm = FALSE)
+VwMS.2015</code></pre>
+<pre><code>[1] 0.5262813</code></pre>
+<pre class="r"><code># Agora para os vários anos, não padronizando e peso pop farei um a um
+Vw.ms &lt;- data.frame(matrix(0, nrow = length(pibpc), ncol = 1))
+Vw &lt;- cv(pibpc2002, coefnorm = FALSE, weighting = pop2002)
+Vw.ms[1, 1] &lt;- Vw
+Vw &lt;- cv(pibpc2003, coefnorm = FALSE, weighting = pop2003)
+Vw.ms[2, 1] &lt;- Vw
+Vw &lt;- cv(pibpc2004, coefnorm = FALSE, weighting = pop2004)
+Vw.ms[3, 1] &lt;- Vw
+Vw &lt;- cv(pibpc2005, coefnorm = FALSE, weighting = pop2005)
+Vw.ms[4, 1] &lt;- Vw
+Vw &lt;- cv(pibpc2006, coefnorm = FALSE, weighting = pop2006)
+Vw.ms[5, 1] &lt;- Vw
+Vw &lt;- cv(pibpc2007, coefnorm = FALSE, weighting = pop2007)
+Vw.ms[6, 1] &lt;- Vw
+Vw &lt;- cv(pibpc2008, coefnorm = FALSE, weighting = pop2008)
+Vw.ms[7, 1] &lt;- Vw
+Vw &lt;- cv(pibpc2009, coefnorm = FALSE, weighting = pop2009)
+Vw.ms[8, 1] &lt;- Vw
+Vw &lt;- cv(pibpc2010, coefnorm = FALSE, weighting = pop2010)
+Vw.ms[9, 1] &lt;- Vw
+Vw &lt;- cv(pibpc2011, coefnorm = FALSE, weighting = pop2011)
+Vw.ms[10, 1] &lt;- Vw
+Vw &lt;- cv(pibpc2012, coefnorm = FALSE, weighting = pop2012)
+Vw.ms[11, 1] &lt;- Vw
+Vw &lt;- cv(pibpc2013, coefnorm = FALSE, weighting = pop2013)
+Vw.ms[12, 1] &lt;- Vw
+Vw &lt;- cv(pibpc2014, coefnorm = FALSE, weighting = pop2014)
+Vw.ms[13, 1] &lt;- Vw
+Vw &lt;- cv(pibpc2015, coefnorm = FALSE, weighting = pop2015)
+Vw.ms[14, 1] &lt;- Vw
+
+anos &lt;- 2002:2015
+
+# Plot Vw no tempo
+plot(anos, Vw.ms[, 1], &quot;l&quot;, xlab = &quot;Ano&quot;, ylab = &quot;Vw do PIB per capita&quot;, main = &quot;Vw dos PIBs municipais per capita de MS, 2002-2015&quot;)</code></pre>
+<p><img src="/post/2020-04-24-economia-regional-em-r-indicadores-de-análise-cv-v-w-e-theil_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code>resultado.vw &lt;- as.data.frame(Vw.ms)
+rownames(resultado.vw) &lt;- anos
+colnames(resultado.vw) &lt;- c(&quot;Vw&quot;)
+knitr::kable(resultado.vw, caption = &quot;Vw dos PIBs per capita municipais de MS, 2002-2015&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-9">Table 2: </span>Vw dos PIBs per capita municipais de MS, 2002-2015</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Vw</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2002</td>
+<td align="right">0.5933009</td>
+</tr>
+<tr class="even">
+<td>2003</td>
+<td align="right">0.6347428</td>
+</tr>
+<tr class="odd">
+<td>2004</td>
+<td align="right">0.7059526</td>
+</tr>
+<tr class="even">
+<td>2005</td>
+<td align="right">0.6996030</td>
+</tr>
+<tr class="odd">
+<td>2006</td>
+<td align="right">0.5732573</td>
+</tr>
+<tr class="even">
+<td>2007</td>
+<td align="right">0.4771571</td>
+</tr>
+<tr class="odd">
+<td>2008</td>
+<td align="right">0.5311643</td>
+</tr>
+<tr class="even">
+<td>2009</td>
+<td align="right">0.5368265</td>
+</tr>
+<tr class="odd">
+<td>2010</td>
+<td align="right">0.6589234</td>
+</tr>
+<tr class="even">
+<td>2011</td>
+<td align="right">0.5548406</td>
+</tr>
+<tr class="odd">
+<td>2012</td>
+<td align="right">0.5344519</td>
+</tr>
+<tr class="even">
+<td>2013</td>
+<td align="right">0.5845273</td>
+</tr>
+<tr class="odd">
+<td>2014</td>
+<td align="right">0.5708930</td>
+</tr>
+<tr class="even">
+<td>2015</td>
+<td align="right">0.5262813</td>
+</tr>
+</tbody>
+</table>
+<p>Os valores normalizados devem estar entre 0 e 1. Assim, farei a normalização, calculando agora para os vários anos, padronizando e usando o peso (weighting = pop). Farei ano a ano.</p>
+<pre class="r"><code>Vwn.ms &lt;- data.frame(matrix(0, nrow = length(pibpc), ncol = 1))
+Vwn &lt;- cv(pibpc2002, coefnorm = TRUE, weighting = pop2002, wmean = TRUE)
+Vwn.ms[1, 1] &lt;- Vwn
+Vwn &lt;- cv(pibpc2003, coefnorm = TRUE, weighting = pop2003, wmean = TRUE)
+Vwn.ms[2, 1] &lt;- Vwn
+Vwn &lt;- cv(pibpc2004, coefnorm = TRUE, weighting = pop2004, wmean = TRUE)
+Vwn.ms[3, 1] &lt;- Vwn
+Vwn &lt;- cv(pibpc2005, coefnorm = TRUE, weighting = pop2005, wmean = TRUE)
+Vwn.ms[4, 1] &lt;- Vwn
+Vwn &lt;- cv(pibpc2006, coefnorm = TRUE, weighting = pop2006, wmean = TRUE)
+Vwn.ms[5, 1] &lt;- Vwn
+Vwn &lt;- cv(pibpc2007, coefnorm = TRUE, weighting = pop2007, wmean = TRUE)
+Vwn.ms[6, 1] &lt;- Vwn
+Vwn &lt;- cv(pibpc2008, coefnorm = TRUE, weighting = pop2008, wmean = TRUE)
+Vwn.ms[7, 1] &lt;- Vwn
+Vwn &lt;- cv(pibpc2009, coefnorm = TRUE, weighting = pop2009, wmean = TRUE)
+Vwn.ms[8, 1] &lt;- Vwn
+Vwn &lt;- cv(pibpc2010, coefnorm = TRUE, weighting = pop2010, wmean = TRUE)
+Vwn.ms[9, 1] &lt;- Vwn
+Vwn &lt;- cv(pibpc2011, coefnorm = TRUE, weighting = pop2011, wmean = TRUE)
+Vwn.ms[10, 1] &lt;- Vwn
+Vwn &lt;- cv(pibpc2012, coefnorm = TRUE, weighting = pop2012, wmean = TRUE)
+Vwn.ms[11, 1] &lt;- Vwn
+Vwn &lt;- cv(pibpc2013, coefnorm = TRUE, weighting = pop2013, wmean = TRUE)
+Vwn.ms[12, 1] &lt;- Vwn
+Vwn &lt;- cv(pibpc2014, coefnorm = TRUE, weighting = pop2014, wmean = TRUE)
+Vwn.ms[13, 1] &lt;- Vwn
+Vwn &lt;- cv(pibpc2015, coefnorm = TRUE, weighting = pop2015, wmean = TRUE)
+Vwn.ms[14, 1] &lt;- Vwn
+
+anos &lt;- 2002:2015
+
+# Plot Vw no tempo
+plot(anos, Vwn.ms[, 1], &quot;l&quot;, xlab = &quot;Ano&quot;, ylab = &quot;Vw normalizado do PIB per capita&quot;, 
+    main = &quot;Vw normalizado dos PIBs municipais per capita de MS, 2002-2015&quot;)</code></pre>
+<p><img src="/post/2020-04-24-economia-regional-em-r-indicadores-de-análise-cv-v-w-e-theil_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<pre class="r"><code>resultado.vwn &lt;- as.data.frame(Vwn.ms)
+rownames(resultado.vwn) &lt;- anos
+colnames(resultado.vwn) &lt;- c(&quot;Vwn&quot;)
+knitr::kable(resultado.vwn, caption = &quot;Vw normalizado dos PIBs per capita municipais de MS, 2002-2015&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-10">Table 3: </span>Vw normalizado dos PIBs per capita municipais de MS, 2002-2015</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Vwn</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2002</td>
+<td align="right">0.0676796</td>
+</tr>
+<tr class="even">
+<td>2003</td>
+<td align="right">0.0716157</td>
+</tr>
+<tr class="odd">
+<td>2004</td>
+<td align="right">0.0797638</td>
+</tr>
+<tr class="even">
+<td>2005</td>
+<td align="right">0.0795561</td>
+</tr>
+<tr class="odd">
+<td>2006</td>
+<td align="right">0.0655780</td>
+</tr>
+<tr class="even">
+<td>2007</td>
+<td align="right">0.0547231</td>
+</tr>
+<tr class="odd">
+<td>2008</td>
+<td align="right">0.0608683</td>
+</tr>
+<tr class="even">
+<td>2009</td>
+<td align="right">0.0615771</td>
+</tr>
+<tr class="odd">
+<td>2010</td>
+<td align="right">0.0754911</td>
+</tr>
+<tr class="even">
+<td>2011</td>
+<td align="right">0.0636437</td>
+</tr>
+<tr class="odd">
+<td>2012</td>
+<td align="right">0.0613026</td>
+</tr>
+<tr class="even">
+<td>2013</td>
+<td align="right">0.0670189</td>
+</tr>
+<tr class="odd">
+<td>2014</td>
+<td align="right">0.0654852</td>
+</tr>
+<tr class="even">
+<td>2015</td>
+<td align="right">0.0603280</td>
+</tr>
+</tbody>
+</table>
+<p>No caso normalizado, observam-se valores próximos a zero, indicando pequena variabilidade entre os municípios. Embora existam discrepâncias, o que pode ser detectado olhando estatísticas descritivas da série, percebe-se que a variabilidade entre os anos é muito pequena, não podendo dizer que são valores diferentes da média do período.</p>
+</div>
+<div id="índice-de-theil" class="section level2">
+<h2>Índice de Theil</h2>
+<p>Este índice é comumento utilizado para avaliar a desigualdade entre extratos de renda ou, como aqui, entre localidades. A expressão básica é como abaixo.</p>
+<p><span class="math display">\[
+J = \sum\limits_r {\left( {\left( {\frac{{{p_r}}}{N}} \right)\ln \left( {\frac{{\frac{{{p_r}}}{N}}}{{\frac{{{Y_r}}}{Y}}}} \right)} \right)} 
+\]</span></p>
+<p>A expressão é a mesma do original de Theil et al (1996, p.12-13) e, neste caso: <span class="math inline">\(p_r\)</span> é a população da localidade de análise <span class="math inline">\(r\)</span>; <span class="math inline">\(N\)</span> é a população da localidade de referência; <span class="math inline">\(Y_r\)</span> é o PIB per capita da localidade de análise <span class="math inline">\(r\)</span>; e <span class="math inline">\(Y\)</span> é o PIB per capita da localidade de referência. No presente exemplo, a localidade de análise é o município e a de referência é o estado de MS.</p>
+<p>Foi elaborada uma função para reproduzir essa expressão. Esclarecemos que o leitor deve ter cautela pois encontram-se outras expressões atribuídas como o índice de Theil, mas com rotinas que dão outros resultados, como por exemplo o da função <code>REAT:::theil</code>.
+A rotina da função utilizada (que nomeamos como <code>theil.mon</code>) é:</p>
+<pre class="r"><code>theil.mon &lt;- function(x, y) {
+    x_sum &lt;- sum(x)
+    y_sum &lt;- sum(y)
+    ln_sum &lt;- log((y/y_sum)/(x/x_sum))
+    J &lt;- sum((y/y_sum) * ln_sum)
+    return(J)
+}</code></pre>
+<pre class="r"><code># x é o PIB per capita e y é a população
+attach(pibpc)
+attach(pop)
+Theil.ms &lt;- data.frame(matrix(0, nrow = 14, ncol = 1))
+Theil &lt;- theil.mon(pibpc2002, pop2002)
+Theil.ms[1, 1] &lt;- Theil
+Theil &lt;- theil.mon(pibpc2003, pop2003)
+Theil.ms[2, 1] &lt;- Theil
+Theil &lt;- theil.mon(pibpc2004, pop2004)
+Theil.ms[3, 1] &lt;- Theil
+Theil &lt;- theil.mon(pibpc2005, pop2005)
+Theil.ms[4, 1] &lt;- Theil
+Theil &lt;- theil.mon(pibpc2006, pop2006)
+Theil.ms[5, 1] &lt;- Theil
+Theil &lt;- theil.mon(pibpc2007, pop2007)
+Theil.ms[6, 1] &lt;- Theil
+Theil &lt;- theil.mon(pibpc2008, pop2008)
+Theil.ms[7, 1] &lt;- Theil
+Theil &lt;- theil.mon(pibpc2009, pop2009)
+Theil.ms[8, 1] &lt;- Theil
+Theil &lt;- theil.mon(pibpc2010, pop2010)
+Theil.ms[9, 1] &lt;- Theil
+Theil &lt;- theil.mon(pibpc2011, pop2011)
+Theil.ms[10, 1] &lt;- Theil
+Theil &lt;- theil.mon(pibpc2012, pop2012)
+Theil.ms[11, 1] &lt;- Theil
+Theil &lt;- theil.mon(pibpc2013, pop2013)
+Theil.ms[12, 1] &lt;- Theil
+Theil &lt;- theil.mon(pibpc2014, pop2014)
+Theil.ms[13, 1] &lt;- Theil
+Theil &lt;- theil.mon(pibpc2015, pop2015)
+
+Theil.ms[14, 1] &lt;- Theil
+resultado.Theil.ms &lt;- as.data.frame(Theil.ms)
+rownames(resultado.Theil.ms) &lt;- anos
+colnames(resultado.Theil.ms) &lt;- c(&quot;Theil.ms&quot;)
+knitr::kable(resultado.Theil.ms, caption = &quot;Theil dos PIBs per capita municipais de MS, 2002-2015&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-12">Table 4: </span>Theil dos PIBs per capita municipais de MS, 2002-2015</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Theil.ms</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2002</td>
+<td align="right">1.226690</td>
+</tr>
+<tr class="even">
+<td>2003</td>
+<td align="right">1.298645</td>
+</tr>
+<tr class="odd">
+<td>2004</td>
+<td align="right">1.318063</td>
+</tr>
+<tr class="even">
+<td>2005</td>
+<td align="right">1.284984</td>
+</tr>
+<tr class="odd">
+<td>2006</td>
+<td align="right">1.236851</td>
+</tr>
+<tr class="even">
+<td>2007</td>
+<td align="right">1.129439</td>
+</tr>
+<tr class="odd">
+<td>2008</td>
+<td align="right">1.164039</td>
+</tr>
+<tr class="even">
+<td>2009</td>
+<td align="right">1.150615</td>
+</tr>
+<tr class="odd">
+<td>2010</td>
+<td align="right">1.192650</td>
+</tr>
+<tr class="even">
+<td>2011</td>
+<td align="right">1.161273</td>
+</tr>
+<tr class="odd">
+<td>2012</td>
+<td align="right">1.162129</td>
+</tr>
+<tr class="even">
+<td>2013</td>
+<td align="right">1.191325</td>
+</tr>
+<tr class="odd">
+<td>2014</td>
+<td align="right">1.175276</td>
+</tr>
+<tr class="even">
+<td>2015</td>
+<td align="right">1.193903</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code># Plot Theil (Monasterio) no tempo
+plot(anos, Theil.ms[, 1], &quot;l&quot;, xlab = &quot;Ano&quot;, ylab = &quot;Theil do PIB per capita&quot;, main = &quot;Theil dos PIBs municipais per capita de MS, 2002-2015&quot;)</code></pre>
+<p><img src="/post/2020-04-24-economia-regional-em-r-indicadores-de-análise-cv-v-w-e-theil_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>É possível ver que a desigualdade reduziu entre os municípios até 2007, aumentados nos anos seguintes.</p>
+</div>
+</div>
+<div id="Referências" class="section level1 unnumbered">
+<h1>Referências</h1>
+<p>BALASSA, B. Trade Liberalization and Revealed Comparative Advantage, The Manchester School 33: 99-123. 1965.</p>
+<p>BALLAND, P.A. Economic Geography in R: Introduction to the EconGeo Package, Papers in Evolutionary Economic Geography, 17 (09): 1-75, 2017.</p>
+<p>BALLAND, Pierre-Alexandre. EconGeo: Computing Key Indicators of the Spatial Distribution of Economic Activities. R package version 1.3. 2019. Disponível em : <a href="https://github.com/PABalland/EconGeo" class="uri">https://github.com/PABalland/EconGeo</a></p>
+<p>COUTINHO, Márcio R. A contribuição das atividades econômicas de base agropecuária na geração de emprego e massa salarial para os municípios de Mato Grosso do Sul. Dissertação de Mestrado (Administração). Campo Grande: UFMS, 2017. p.32-42.</p>
+<p>FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional: Mapas em R. Campo Grande-MS,Brasil: RStudio/Rpubs, 2019a. Disponível em: <a href="http://rpubs.com/amrofi/Regional_Economics_Spatial" class="uri">http://rpubs.com/amrofi/Regional_Economics_Spatial</a>.</p>
+<p>FIGUEIREDO, Adriano Marcos Rodrigues. Apêndice - instalação do RStudio. Campo Grande-MS,Brasil: RStudio/Rpubs, 2019b. Disponível em: <a href="http://rpubs.com/amrofi/instrucoes_Rstudio" class="uri">http://rpubs.com/amrofi/instrucoes_Rstudio</a>.</p>
+<p>FIGUEIREDO, Adriano Marcos Rodrigues. Mapas em R com <code>geobr</code>. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em: <a href="http://rpubs.com/amrofi/maps_geobr" class="uri">http://rpubs.com/amrofi/maps_geobr</a> e <a href="https://adrianofigueiredo.netlify.com/post/mapas-em-r-com-geobr/" class="uri">https://adrianofigueiredo.netlify.com/post/mapas-em-r-com-geobr/</a>.</p>
+<p>IBGE - Instituto Brasileiro de Geografia e Estatística. Produto Interno Bruto dos Municípios. Rio de Janeiro: IBGE/SIDRA. 2020a. Disponível em:<a href="https://sidra.ibge.gov.br/pesquisa/pib-munic/tabelas" class="uri">https://sidra.ibge.gov.br/pesquisa/pib-munic/tabelas</a>.</p>
+<p>IBGE - Instituto Brasileiro de Geografia e Estatística. Estimativas de população. Rio de Janeiro: IBGE/SIDRA. 2020b. Disponível em: <a href="https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html?=&amp;t=downloads" class="uri">https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html?=&amp;t=downloads</a></p>
+<p>MONASTERIO, Leonardo. Indicadores de análise regional e espacial. In: CRUZ et al (orgs). Economia regional e urbana : teorias e métodos com ênfase no Brasil. Brasília: Ipea, 2011. cap. 10. pp.315-331.</p>
+<p>WIELAND, T. REAT: A Regional Economic Analysis Toolbox for R. REGION, 6(3), R1-R57. 2019. Disponível em: <a href="https://doi.org/10.18335/region.v6i3.267" class="uri">https://doi.org/10.18335/region.v6i3.267</a>.</p>
+</div>

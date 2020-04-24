@@ -5,12 +5,60 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Wed, 22 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Fri, 24 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-32.png</url>
       <title>Tags</title>
       <link>/tags/</link>
     </image>
+    
+    <item>
+      <title>CV</title>
+      <link>/tags/cv/</link>
+      <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/cv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>economia regional</title>
+      <link>/tags/economia-regional/</link>
+      <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/economia-regional/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>indicadores regionais</title>
+      <link>/tags/indicadores-regionais/</link>
+      <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/indicadores-regionais/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Theil</title>
+      <link>/tags/theil/</link>
+      <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/theil/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vw</title>
+      <link>/tags/vw/</link>
+      <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/vw/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Williamson</title>
+      <link>/tags/williamson/</link>
+      <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/williamson/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>econometria</title>
@@ -49,14 +97,6 @@
       <link>/tags/x13arima-seats/</link>
       <pubDate>Thu, 16 Apr 2020 00:00:00 +0000</pubDate>
       <guid>/tags/x13arima-seats/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>economia regional</title>
-      <link>/tags/economia-regional/</link>
-      <pubDate>Fri, 31 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/economia-regional/</guid>
       <description></description>
     </item>
     

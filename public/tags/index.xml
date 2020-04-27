@@ -5,12 +5,44 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Fri, 24 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Mon, 27 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-32.png</url>
       <title>Tags</title>
       <link>/tags/</link>
     </image>
+    
+    <item>
+      <title>econometria</title>
+      <link>/tags/econometria/</link>
+      <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/econometria/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>forecasts</title>
+      <link>/tags/forecasts/</link>
+      <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/forecasts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hybrid</title>
+      <link>/tags/hybrid/</link>
+      <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/hybrid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>séries temporais</title>
+      <link>/tags/series-temporais/</link>
+      <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/series-temporais/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>CV</title>
@@ -57,30 +89,6 @@
       <link>/tags/williamson/</link>
       <pubDate>Fri, 24 Apr 2020 00:00:00 +0000</pubDate>
       <guid>/tags/williamson/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>econometria</title>
-      <link>/tags/econometria/</link>
-      <pubDate>Wed, 22 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/econometria/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>forecasts</title>
-      <link>/tags/forecasts/</link>
-      <pubDate>Wed, 22 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/forecasts/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>séries temporais</title>
-      <link>/tags/series-temporais/</link>
-      <pubDate>Wed, 22 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/series-temporais/</guid>
       <description></description>
     </item>
     

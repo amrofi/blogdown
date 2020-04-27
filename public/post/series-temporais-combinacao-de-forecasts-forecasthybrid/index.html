@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.6.3">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Adriano M R Figueiredo">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="This is an exercise for class use. We analyse data on Retail consumption, from January/2000 to jul/2019 and make forecast combination using `forecastHybrid` package.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/series-temporais-combinacao-de-forecasts-forecasthybrid/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/series-temporais-combinacao-de-forecasts-forecasthybrid/">
+
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@amrofi">
+  <meta property="twitter:creator" content="@amrofi">
+  
+  <meta property="og:site_name" content="Adriano M R Figueiredo">
+  <meta property="og:url" content="/post/series-temporais-combinacao-de-forecasts-forecasthybrid/">
+  <meta property="og:title" content="Séries Temporais com R: Combinação de forecasts para o Consumo do Varejo em MS com `forecastHybrid` | Adriano M R Figueiredo">
+  <meta property="og:description" content="This is an exercise for class use. We analyse data on Retail consumption, from January/2000 to jul/2019 and make forecast combination using `forecastHybrid` package."><meta property="og:image" content="/img/icon-32.png">
+  <meta property="twitter:image" content="/img/icon-32.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-04-27T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-04-27T18:33:31-04:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/series-temporais-combinacao-de-forecasts-forecasthybrid/"
+  },
+  "headline": "Séries Temporais com R: Combinação de forecasts para o Consumo do Varejo em MS com `forecastHybrid`",
+  
+  "datePublished": "2020-04-27T00:00:00Z",
+  "dateModified": "2020-04-27T18:33:31-04:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Adriano M R Figueiredo"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Adriano M R Figueiredo",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/logo.png"
+    }
+  },
+  "description": "This is an exercise for class use. We analyse data on Retail consumption, from January/2000 to jul/2019 and make forecast combination using `forecastHybrid` package."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Séries Temporais com R: Combinação de forecasts para o Consumo do Varejo em MS com `forecastHybrid` | Adriano M R Figueiredo</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/"><img src="/img/logo.png" alt="Adriano M R Figueiredo"></a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/"><img src="/img/logo.png" alt="Adriano M R Figueiredo"></a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#biography"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/courses/"><span>Courses</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item">
+        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Séries Temporais com R: Combinação de forecasts para o Consumo do Varejo em MS com `forecastHybrid`</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    Apr 27, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="/rmarkdown-libs/dygraphs/dygraph.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/dygraphs/dygraph-combined.js"></script>
+<script src="/rmarkdown-libs/dygraphs/shapes.js"></script>
+<script src="/rmarkdown-libs/moment/moment.js"></script>
+<script src="/rmarkdown-libs/moment-timezone/moment-timezone-with-data.js"></script>
+<script src="/rmarkdown-libs/moment-fquarter/moment-fquarter.min.js"></script>
+<script src="/rmarkdown-libs/dygraphs-binding/dygraphs.js"></script>
+
+
+<div id="Licença" class="section level1 unnumbered">
+<h1>Licença</h1>
+<p>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <a href="http://creativecommons.org/licenses/by-sa/4.0/" class="uri">http://creativecommons.org/licenses/by-sa/4.0/</a> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.</p>
+<div class="figure">
+<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="License: CC BY-SA 4.0" style="width:25.0%" />
+<p class="caption">License: CC BY-SA 4.0</p>
+</div>
+</div>
+<div id="Citação" class="section level1 unnumbered">
+<h1>Citação</h1>
+<p>Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Séries Temporais com R: Combinação de forecasts para o Consumo do Varejo em MS com <code>forecastHybrid</code>. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <a href="http://rpubs.com/amrofi/forecastHybrid_varejoms" class="uri">http://rpubs.com/amrofi/forecastHybrid_varejoms</a>.</p>
+</div>
+<div id="script-para-reprodução-se-utilizar-citar-como-acima" class="section level1">
+<h1>Script para reprodução (se utilizar, citar como acima)</h1>
+<a href="data:text/x-markdown;base64,LS0tDQp0aXRsZTogJ1PDqXJpZXMgVGVtcG9yYWlzIGNvbSBSOiBDb21iaW5hw6fDo28gZGUgZm9yZWNhc3RzIHBhcmEgbyBDb25zdW1vIGRvIFZhcmVqbyBlbSBNUyBjb20gYGZvcmVjYXN0SHlicmlkYCcNCmF1dGhvcjogIkFkcmlhbm8gTSBSIEZpZ3VlaXJlZG8iDQpkYXRlOiAnMjAyMC0wNC0yNycNCnNsdWc6IHPDqXJpZXMtdGVtcG9yYWlzLWNvbWJpbmHDp8Ojby1kZS1mb3JlY2FzdHMtZm9yZWNhc3RoeWJyaWQNCmNhdGVnb3JpZXM6IFtdDQp0YWdzOg0KICAtIGVjb25vbWV0cmlhDQogIC0gc8OpcmllcyB0ZW1wb3JhaXMNCiAgLSBmb3JlY2FzdHMNCiAgLSBoeWJyaWQNCnN1YnRpdGxlOiAnJw0Kc3VtbWFyeTogJ1RoaXMgaXMgYW4gZXhlcmNpc2UgZm9yIGNsYXNzIHVzZS4gV2UgYW5hbHlzZSBkYXRhIG9uIFJldGFpbCBjb25zdW1wdGlvbiwgZnJvbSBKYW51YXJ5LzIwMDAgdG8ganVsLzIwMTkgYW5kIG1ha2UgZm9yZWNhc3QgY29tYmluYXRpb24gdXNpbmcgYGZvcmVjYXN0SHlicmlkYCBwYWNrYWdlLicNCmF1dGhvcnM6IFtdDQpsYXN0bW9kOiAnMjAyMC0wNC0yN1QxODozMzozMS0wNDowMCcNCmZlYXR1cmVkOiBubw0KaW1hZ2U6DQogIGNhcHRpb246ICcnDQogIGZvY2FsX3BvaW50OiAnJw0KICBwcmV2aWV3X29ubHk6IG5vDQpwcm9qZWN0czogW10NCi0tLQ0KDQpgYGB7ciBrbml0cl9pbml0LCBlY2hvPUZBTFNFLCBjYWNoZT1GQUxTRX0NCmxpYnJhcnkoa25pdHIpDQpsaWJyYXJ5KHJtYXJrZG93bikNCmxpYnJhcnkocm1kZm9ybWF0cykNCg0KIyMgR2xvYmFsIG9wdGlvbnMNCm9wdGlvbnMobWF4LnByaW50PSIxMDAiKQ0Kb3B0c19jaHVuayRzZXQoZWNobz1UUlVFLA0KCSAgICAgICAgICAgICBjYWNoZT1UUlVFLA0KICAgICAgICAgICAgICAgcHJvbXB0PUZBTFNFLA0KICAgICAgICAgICAgICAgdGlkeT1UUlVFLA0KICAgICAgICAgICAgICAgY29tbWVudD1OQSwNCiAgICAgICAgICAgICAgIG1lc3NhZ2U9RkFMU0UsDQogICAgICAgICAgICAgICB3YXJuaW5nPUZBTFNFKQ0Kb3B0c19rbml0JHNldCh3aWR0aD0xMDApDQpgYGANCg0KDQpMaWNlbsOnYSB7LSNMaWNlbsOnYX0NCj09PT09PT09PT09PT09PT09PT0NCg0KVGhpcyB3b3JrIGlzIGxpY2Vuc2VkIHVuZGVyIHRoZSBDcmVhdGl2ZSBDb21tb25zIEF0dHJpYnV0aW9uLVNoYXJlQWxpa2UgNC4wIEludGVybmF0aW9uYWwgTGljZW5zZS4gVG8gdmlldyBhIGNvcHkgb2YgdGhpcyBsaWNlbnNlLCB2aXNpdCA8aHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnktc2EvNC4wLz4gb3Igc2VuZCBhIGxldHRlciB0byBDcmVhdGl2ZSBDb21tb25zLCBQTyBCb3ggMTg2NiwgTW91bnRhaW4gVmlldywgQ0EgOTQwNDIsIFVTQS4NCg0KIVtMaWNlbnNlOiBDQyBCWS1TQSA0LjBdKGh0dHBzOi8vbWlycm9ycy5jcmVhdGl2ZWNvbW1vbnMub3JnL3ByZXNza2l0L2J1dHRvbnMvODh4MzEvcG5nL2J5LXNhLnBuZyl7IHdpZHRoPTI1JSB9DQoNCkNpdGHDp8OjbyB7LSNDaXRhw6fDo299DQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQ0KDQpTdWdlc3TDo28gZGUgY2l0YcOnw6NvOg0KRklHVUVJUkVETywgQWRyaWFubyBNYXJjb3MgUm9kcmlndWVzLiBTw6lyaWVzIFRlbXBvcmFpcyBjb20gUjogQ29tYmluYcOnw6NvIGRlIGZvcmVjYXN0cyBwYXJhIG8gQ29uc3VtbyBkbyBWYXJlam8gZW0gTVMgY29tIGBmb3JlY2FzdEh5YnJpZGAuIENhbXBvIEdyYW5kZS1NUyxCcmFzaWw6IFJTdHVkaW8vUnB1YnMsIDIwMjAuIERpc3BvbsOtdmVsIGVtIDxodHRwOi8vcnB1YnMuY29tL2Ftcm9maS9mb3JlY2FzdEh5YnJpZF92YXJlam9tcz4uIA0KDQoNClNjcmlwdCBwYXJhIHJlcHJvZHXDp8OjbyAoc2UgdXRpbGl6YXIsIGNpdGFyIGNvbW8gYWNpbWEpDQo9PT09PT09PT09PT09PT09PT0NCg0KYGBge3IgZWNobz1GQUxTRX0NCiMgYSBzaW5nbGUgZmlsZQ0KeGZ1bjo6ZW1iZWRfZmlsZSgnMjAyMC0wNC0yNy1zw6lyaWVzLXRlbXBvcmFpcy1jb21iaW5hw6fDo28tZGUtZm9yZWNhc3RzLWZvcmVjYXN0aHlicmlkLlJtZCcpDQpgYGANCg0KSW50cm9kdcOnw6NvDQo9PT09PT09PT09PT09PT09PT09DQoNCk5lc3RlIGFycXVpdm8gdXRpbGl6byBhIHPDqXJpZSBkbyDDjW5kaWNlIGRlIHZvbHVtZSBkZSB2ZW5kYXMgbm8gdmFyZWpvIFRvdGFsIGRlIE1hdG8gR3Jvc3NvIGRvIFN1bCwgc8OpcmllIG1lbnNhbCBhIHBhcnRpciBkZSBqYW4vMjAwMCBhdMOpIGp1bC8yMDE5IG9idGlkYSBjb20gbyBwYWNvdGUgYEJFVFNgIGUgaW1wb3J0YWRhIGRvIEJhbmNvIENlbnRyYWwgZG8gQnJhc2lsLiBQb3J0YW50bywgc8OjbyAyMzUgb2JzZXJ2YcOnw7VlcyBtZW5zYWlzLg0KDQoNCg0KRGFkb3MNCj09PT09PT09PT09PT09PT09PT0NCkZhcmVpIGRlIGR1YXMgZm9ybWFzIHBhcmEgbyBsZWl0b3IuIFVtYSBjYXJyZWdhIGRpcmV0byBkbyBzaXRlIGRvIEJhbmNvIENlbnRyYWwgZG8gQnJhc2lsIGNvbSBvIHBhY290ZSBgQkVUU2AgKEZFUlJFSVJBLCBTUEVSQU5aQSBlIENPU1RBLCAyMDE4KSBlIGEgb3V0cmEgZXUgZ2VyZWkgYSBlc3RydXR1cmEgaWTDqm50aWNhIHBlbGEgZnVuw6fDo28gYGRwdXQoKWAgcGFyYSBvcyBsZWl0b3JlcyBxdWUgbsOjbyBjb25zZWd1aXJlbSBwb3IgcXVhbHF1ZXIgbW90aXZvIG8gYWNlc3NvIGFvIHNpdGUgZG8gQmFuY28gQ2VudHJhbCAoYXMgdmV6ZXMgdmVqbyBpc3NvIG9jb3JyZXIgZGVwZW5kZW5kbyBkb3MgYmxvcXVlaW9zIGRhIHN1YSByZWRlIGRlIGludGVybmV0KS4gQSBmb3JtYSBwZWxvIGRwdXQgYXNzdW1lIG8gbm9tZSB2YXJlam9tczIgZW5xdWFudG8gYSBleHRyYcOtZGEgcGVsbyBCRVRTIHRlbSBub21lIHZhcmVqb21zLiBFc2NsYXJlw6dvIGFvIGxlaXRvciBxdWUgYXDDs3MgYmFpeGFyIGEgc8OpcmllIHBlbG8gQkVUUywgZml6IG8gZHB1dCBlIGEgcGFydGlyIGRlIGVudMOjbywgZGVzYWJpbGl0ZWkgbyBibG9jbyAoYENodW5rYCkgcXVlIGFjZXNzYSBvIEJFVFMgYXBlbmFzIHBhcmEgYWdpbGl6YXIgb3MgY8OhbGN1bG9zLg0KDQpgYGANCmxpYnJhcnkoQkVUUykNCiMgUGVnYW5kbyBhcyBzw6lyaWVzIGEgcGFydGlyIGRvIHNpdGUgZG8gQmFuY28gQ2VudHJhbCBkbyBCcmFzaWwNCiMgw41uZGljZSBkZSB2b2x1bWUgZGUgdmVuZGFzIG5vIHZhcmVqbyBUb3RhbCBkZSBNYXRvIEdyb3NzbyBkbyBTdWwNCiMgbWVuc2FsIGEgcGFydGlyIGRlIGphbi8yMDAwIGF0w6kganVsLzIwMTkgDQojIDIzNSBvYnNlcnZhw6fDtWVzIG1lbnNhaXMNCnZhcmVqb21zIDwtIEJFVFNnZXQoMTQ3OSkgDQpwcmludCh2YXJlam9tcykNCmNsYXNzKHZhcmVqb21zKQ0KZHB1dCh2YXJlam9tcykgICMgb3DDp8OjbyBwYXJhIHRlciBvcyBkYWRvcyBjb21vIG5hIHN0cnVjdHVyZSBhYmFpeG8NCmBgYA0KDQpgYGB7ciB3YXJuaW5nPUZBTFNFLCBjb21tZW50PUZBTFNFfQ0KbGlicmFyeShCRVRTKQ0KDQojIFBlZ2FuZG8gYXMgc8OpcmllcyBhIHBhcnRpciBkbyBzaXRlIGRvIEJhbmNvIENlbnRyYWwgZG8gQnJhc2lsDQojIMONbmRpY2UgZGUgdm9sdW1lIGRlIHZlbmRhcyBubyB2YXJlam8gVG90YWwgZGUgTWF0byBHcm9zc28gZG8gU3VsDQojIG1lbnNhbCBhIHBhcnRpciBkZSBqYW4vMjAwMCBhdMOpIGp1bC8yMDE5IChlbSAwNC4xMC4yMDE5KQ0KDQojdmFyZWpvbXMgPC0gQkVUU2dldCgxNDc5KSANCg0KdmFyZWpvbXM8LSANCiAgc3RydWN0dXJlKGMoMzUuMiwgMzUuNiwgMzkuMiwgNDAuNSwgNDEuNiwgNDAuNCwgNDAuOCwgMzguNywgMzcuMywgDQozNy42LCAzNS42LCA0Ny40LCAzNC4yLCAzMi4yLCAzOCwgMzcuNSwgMzguOCwgMzUsIDM4LjQsIDQwLjIsIA0KMzguMiwgMzkuMywgMzYsIDQ2LjMsIDM2LjQsIDM0LCAzOSwgMzcuOCwgMzguOSwgMzUuMywgMzcuMiwgMzguMSwgDQozNS42LCAzOC4zLCAzNS42LCA0NS43LCAzMi4yLCAzMS42LCAzNS4yLCAzNi44LCAzNy41LCAzNC44LCAzOC40LCANCjM4LjEsIDM3LCAzOSwgMzcuMywgNDksIDM1LjgsIDM1LjMsIDQwLjIsIDQxLjMsIDQzLjksIDQxLjYsIDQ1LjksIA0KNDIuMywgNDIuMiwgNDQsIDQxLjMsIDU2LjksIDM4LjUsIDM4LjUsIDQ1LjMsIDQzLjYsIDQ2LjIsIDQ0LjMsIA0KNDcuNSwgNDYuNSwgNDYuNCwgNDYsIDQ0LjEsIDYxLCA0MiwgNDAuMiwgNDQuNiwgNDQuNSwgNDcuOCwgNDUuMywgDQo0Ni41LCA0OC41LCA0Ny43LCA1MC4yLCA0OS4zLCA2NC41LCA0NywgNDYuOCwgNTEsIDUwLjUsIDU1LCA1MS4zLCANCjUyLjgsIDU1LjMsIDU0LjgsIDU1LjYsIDU1LjMsIDcyLjIsIDU0LjUsIDUyLjEsIDU2LjIsIDU3LjIsIDYwLjgsIA0KNTYuMSwgNjEuOCwgNjEuNiwgNTkuOCwgNjMuMywgNTcuNywgNzcuNCwgNjEuNCwgNTEuOSwgNTcuMywgNTcuOSwgDQo2MS45LCA1Ny4zLCA2MS4xLCA2MS4xLCA2MC42LCA2NS42LCA2My41LCA4My4xLCA2NC4xLCA2MC4yLCA2Ny44LCANCjY3LjEsIDcyLjgsIDY4LjUsIDcxLjEsIDY5LjMsIDY5LjksIDcxLjEsIDY3LjksIDkyLjcsIDY3LjUsIDY0LjgsIA0KNjkuMSwgNjkuNCwgNzkuNiwgNzAuMiwgNzMuOCwgNzIuNSwgNzEuMywgNzUuNiwgNzQuNywgMTAwLjgsIA0KNzkuNSwgNzUuNywgODIuNCwgNzgsIDg0LjgsIDgzLjIsIDg0LjgsIDg4LjUsIDg2LjMsIDkxLjcsIDkyLjgsIA0KMTExLjQsIDkyLjgsIDgzLjcsIDkyLjUsIDg4LjMsIDkzLjksIDg4LjgsIDk2LCA5NS45LCA5My4yLCA5OC4zLCANCjEwMC41LCAxMjguOCwgOTcuMiwgOTAuMiwgOTQuMywgOTQuNCwgMTAxLjEsIDkyLCA5Ni40LCA5OC4yLCANCjk3LjYsIDEwNS44LCAxMDMuMSwgMTI5LjYsIDk5LjYsIDg3LjgsIDk3LCA5NC44LCA5OC42LCA5My40LCANCjk4LjQsIDk2LjQsIDkyLjUsIDEwMC42LCA5Ny4yLCAxMjQuNSwgOTEuNSwgODUuMSwgOTEuNiwgODguNSwgDQo5Mi4yLCA4Ny40LCA5MC41LCA4OC4xLCA4NS4yLCA4OS40LCA5My40LCAxMTYuOSwgOTAuOCwgODQsIDg5LjcsIA0KODYuMywgOTAsIDg3LjMsIDkwLjgsIDkzLjUsIDkzLjcsIDkxLjQsIDkzLjUsIDExNC4xLCA4Ny44LCA4MS4xLCANCjk0LjUsIDgzLjIsIDg5LjksIDg4LjgsIDg5LjMsIDkzLjcsIDkzLjUsIDk2LjMsIDEwMS4zLCAxMTguMywgDQo5My44LCA4NS4yLCA5MCwgODYuNiwgOTAsIDg1LjIsIDkwLjkpLCAuVHNwID0gYygyMDAwLCAyMDE5LjUsIA0KMTIpLCBjbGFzcyA9ICJ0cyIpDQoNCmBgYA0KDQpBIHJvdGluYSBkZSBkYWRvcyBvYnRpZG9zIHBlbG8gQkVUUyBqw6EgcmV0b3JuYSBhIHPDqXJpZSBlbSBmb3JtYXRvIGB0c2AsIG91IHNlamEsIHPDqXJpZSB0ZW1wb3JhbC4gRmFyZWkgZW50w6NvIGEgY3JpYcOnw6NvIGRlIHVtYSBzw6lyaWUgZW0gZGlmZXJlbsOnYXMgcGFyYSBvYnNlcnZhciBvIGNvbXBvcnRhbWVudG8gZGEgc8OpcmllIGVtIG7DrXZlbCBlIGVtIGRpZmVyZW7Dp2FzLiAgICAgDQoNCkluaWNpYWxtZW50ZSBvbGhhcmVpIGFzIGVzdGF0w61zdGljYXMgZGVzY3JpdGl2YXMgZGEgc8OpcmllLiBFbSBzZWd1aWRhIGZhcmVpIHVtIHBsb3QgYsOhc2ljbyBkYSBzw6lyaWUgZSBvIHBsb3QgcGVsbyBwYWNvdGUgYGR5Z3JhcGhzYCwgw7p0aWwgcGFyYSB2ZXIgb3MgcG9udG9zIGRlIHBpY29zIGUgbW9tZW50b3MgZXNwZWPDrWZpY29zLg0KDQpgYGB7cn0NCmR2YXJlam88LWRpZmYodmFyZWpvbXMpDQojIGVzdGF0aXN0aWNhcyBiYXNpY2FzDQpzdW1tYXJ5KHZhcmVqb21zKQ0KIyBNaW4uIDFzdCBRdS4gIE1lZGlhbiAgICBNZWFuIDNyZCBRdS4gICAgTWF4LiANCiMgMzEuNjAgICA0NC4wNSAgIDY0LjUwICAgNjcuMjggICA5MC4wMCAgMTI5LjYwIA0KDQojIHBsb3QgYmFzaWNvDQojIGxlbWJyYXIgcXVlIGVtIGNsYXNzKCksIGVsZSBqw6EgaW5kaWNvdSBxdWUgZXJhIHRzID0gc2VyaWUgdGVtcG9yYWwNCnBsb3QodmFyZWpvbXMpIA0KIyBwZWxvIHBhY290ZSBkeWdyYXBoIGTDoSBtYWlzIG9ww6fDtWVzDQpsaWJyYXJ5KGR5Z3JhcGhzKQ0KZHlncmFwaCh2YXJlam9tcywgbWFpbiA9ICLDjW5kaWNlIGRlIHZvbHVtZSBkZSB2ZW5kYXMgbm8gdmFyZWpvIHRvdGFsIGRlIE1hdG8gR3Jvc3NvIGRvIFN1bCA8YnI+IChNZW5zYWwpICAoMjAxMT0xMDApIEJDQiAxNDc5IikgJT4lDQogIGR5QXhpcygieCIsIGRyYXdHcmlkID0gVFJVRSkgJT4lDQogIGR5RXZlbnQoIjIwMDUtMS0wMSIsICIyMDA1IiwgbGFiZWxMb2MgPSAiYm90dG9tIikgJT4lDQogIGR5RXZlbnQoIjIwMTUtMS0wMSIsICIyMDE1IiwgbGFiZWxMb2MgPSAiYm90dG9tIikgJT4lDQogIGR5RXZlbnQoIjIwMTgtMS0wMSIsICIyMDE4IiwgbGFiZWxMb2MgPSAiYm90dG9tIikgJT4lDQogIGR5RXZlbnQoIjIwMTktMS0wMSIsICIyMDE5IiwgbGFiZWxMb2MgPSAiYm90dG9tIikgJT4lDQogIGR5T3B0aW9ucyhkcmF3UG9pbnRzID0gVFJVRSwgcG9pbnRTaXplID0gMikNCmBgYA0KDQrDiSBwb3NzaXZlbCB2aXN1YWxpemFyIG5vcyBwbG90cyBhY2ltYTogc2F6b25hbGlkYWRlIChwb3IgZXhlbXBsbywgcGljb3MgZW0gZGV6ZW1icm8gZGUgY2FkYSBhbm8pOyBhIHRlbmTDqm5jaWEgYXBhcmVudGVtZW50ZSBjcmVzY2VudGUgYXTDqSAyMDE0IGUgZGVjcmVzY2UgY29tIGEgImNyaXNlIiBicmFzaWxlaXJhOyBlIHVtYSBhcGFyZW50ZSBuw6NvLWVzdGFjaW9uYXJpZWRhZGUgKG3DqWRpYSBlIHZhcmnDom5jaWEgbXVkYW0gbm8gdGVtcG8pLiANCg0KDQpBbsOhbGlzZSBkYSBzw6lyaWUNCj09PT09PT09PT09PT09PT09PT09PT0NCg0KVW1hIHJlc3NhbHZhIGRldmUgc2VyIGZlaXRhLCBxdWUgbm8gcHJlc2VudGUgZXhlcmPDrWNpbywgbsOjbyBmYXJlaSBhIGRpdmlzw6NvIGVudHJlIGFtb3N0cmEgdGVzdGUgZSBhbW9zdHJhIHRyZWlubywgZGUgbW9kbyBxdWUgdXNhcmVpIGEgc8OpcmllIHRvZGEgcGFyYSBvcyBhanVzdGVzLiBPIGxlaXRvciBkZXZlIGVtIGdlcmFsIGZhemVyIGVzdGFzIGRpdmlzw7VlcyBwYXJhIGNlcnRpZmljYXIgZGUgcXVlIG8gbW9kZWxvIMOpIHVtIGJvbSBwcmVkaXRvci4gICAgDQoNCkZhcmVpIGEgZXN0aW1hw6fDo28gcGFyYSBvIG1vZGVsbyByw6FwaWRvIHVzYW5kbyBvIGBmb3JlY2FzdEh5YnJpZGAgZGUgU2hhdWIgZSBFbGxpcyAoMjAxOSkuIFBvcnRhbnRvLCBlc3BlY2lmaWNhcmVpIGEgc8OpcmllIGRlIGB2YXJlam9tc2AsIHNlbSBtZSBwcmVvY3VwYXIgZGUgaW7DrWNpbyBjb20gYSBzYXpvbmFsaWRhZGUgZSBhIG7Do28tZXN0YWNpb25hcmllZGFkZSBkYSBzw6lyaWUsIGltYWdpbmFuZG8gcXVlIG9zIG1vZGVsb3MgY29uc2VndWlyw6NvIHJlc29sdmVyIGVzc2Egc2l0dWHDp8Ojby4gICAgIA0KDQoNCiMjIEFwbGljYcOnw6NvIGRvIGBmb3JlY2FzdEh5YnJpZGANCg0KTyBtb2RlbG8gY29tYmluYSBvcyBtw6l0b2RvczogYEFSSU1BYCAoX0F1dG8gUmVncmVzc2l2ZSBJbnRlZ3JhdGVkIE1vdmluZyBBdmVyYWdlXyksIG8gYEVUU2AgKF9FcnJvciBUcmVuZCBTZWFzb25hbF8gZGUgZGVjb21wb3Npw6fDo28gZXNwYcOnbyBlc3RhZG8pLCAgbyBOTkVUQVIgKF9OZXVyYWwgTmV0d29yayBBdXRvcmVncmVzc2l2ZV8pLCBvIFNUTE0gKF9TZWFzb25hbCBhbmQgVHJlbmQgZGVjb21wb3NpdGlvbiB1c2luZyBMb2Vzc18pLCBvIGBUaGV0YW1gIChtw6l0b2RvIF9UaGV0YSBkZSBBc3NpbWFrb3BvdWxvcyBlIE5pa29sb3BvdWxvc18sIDIwMDApLCBvIGBUQkFUU2AgKF9FeHBvbmVudGlhbCBTbW9vdGhpbmcgTWV0aG9kICsgQm94LUNveCBUcmFuc2Zvcm1hdGlvbiArIEFSTUEgbW9kZWwgZm9yIHJlc2lkdWFscyArIFRyaWdvbm9tZXRyaWMgU2Vhc29uYWxfKS4gICAgIA0KDQpBIGZ1bsOnw6NvIGBoeWJyaWRNb2RlbGAgdXRpbGl6YSBhIG9ww6fDo28gYG1vZGVsc2AgcGFyYSBpbmRpY2FyIHF1YWlzIG9zIG1vZGVsb3MgYSBzZXJlbSB1dGlsaXphZG9zLg0KDQpgYGB7ciwgZXZhbD1UUlVFfQ0KbGlicmFyeShmb3JlY2FzdEh5YnJpZCk7bGlicmFyeShmb3JlY2FzdCk7bGlicmFyeShmcHAyKTtsaWJyYXJ5KHpvbykNCnF1aWNrTW9kZWwgPC0gaHlicmlkTW9kZWwodmFyZWpvbXMpDQojIGVzdGltYSBvcyBtb2RlbG9zOiBhdXRvLmFyaW1hLCBldHMsIHRoZXRhbSwgbm5ldGFyLCBzdGxtIGUgdGJhdHMNCmZjc3QucmVzPC1mb3JlY2FzdChxdWlja01vZGVsLCANCiAgICAgICAgICAgICAgICAgICBoPTYwLA0KICAgICAgICAgICAgICAgICAgIFBJLmNvbWJpbmF0aW9uID0gYygibWVhbiIpKQ0KY2xhc3MocXVpY2tNb2RlbCkgDQpwcmludChxdWlja01vZGVsKQ0KYWNjdXJhY3kocXVpY2tNb2RlbCkNCg0KYXV0b3Bsb3QodmFyZWpvbXMpICsgDQphdXRvbGF5ZXIoZmNzdC5yZXMkbWVhbiwgc2VyaWVzID0gIkNvbWJpbmHDp8OjbyIpICsgDQogIHhsYWIoIkFubyIpICsgDQogIHlsYWIoIsONbmRpY2UgKDIwMTE9MTAwKSIpICsgDQogIGdndGl0bGUoIlZhcmVqbyBNUzogRm9yZWNhc3QgaMOtYnJpZG8gDQogICAgIGNvbnNpZGVyYW5kbyBtb2RlbG9zIFNBUklNQSwgRVRTLCBUaGV0YW0sIE5ORVRBUiwgU1RMTSBlIFRCQVRTOiANCiAgICAgUGVyw61vZG8gQWdvLzIwMTktSnVsaG8vMjAyNCIpDQoNCm1hdHJpei5yZXM8LWNiaW5kKHZhcmVqb21zLA0KICAgICAgICAgICAgICAgICAgZmNzdC5yZXMkbWVhbiwNCiAgICAgICAgICAgICAgICAgIHRzKGZjc3QucmVzJGxvd2VyWywyXSxzdGFydD1jKDIwMTksMDMpLGZyZXF1ZW5jeT0xMiksDQogICAgICAgICAgICAgICAgICB0cyhmY3N0LnJlcyR1cHBlclssMl0sc3RhcnQ9YygyMDE5LDAzKSxmcmVxdWVuY3k9MTIpKQ0Kd3JpdGV4bDo6d3JpdGVfeGxzeChhcy5kYXRhLmZyYW1lKG1hdHJpei5yZXMpLCJyZXNpZC54bHN4IikNCmF1dG9wbG90KHZhcmVqb21zKSArIA0KICBhdXRvbGF5ZXIobWF0cml6LnJlc1ssMl0sIHNlcmllcyA9ICJDb21iaW5hw6fDo28iKSArDQogIGF1dG9sYXllcihtYXRyaXoucmVzWywzXSwgc2VyaWVzID0gIlBJIGluZmVyaW9yIDk1JSIpICsNCiAgYXV0b2xheWVyKG1hdHJpei5yZXNbLDRdLCBzZXJpZXMgPSAiUEkgc3VwZXJpb3IgOTUlIikgKw0KICB4bGFiKCJBbm8iKSArIA0KICB5bGFiKCLDjW5kaWNlICgyMDExPTEwMCkiKSArIA0KICBnZ3RpdGxlKCJWYXJlam8gTVM6IEZvcmVjYXN0IGjDrWJyaWRvIA0KICAgICBjb25zaWRlcmFuZG8gbW9kZWxvcyBTQVJJTUEsIEVUUywgVGhldGFtLCBOTkVUQVIsIFNUTE0gZSBUQkFUUzogDQogICAgIFBlcsOtb2RvIEFnby8yMDE5LUp1bGhvLzIwMjQiKQ0KYGBgDQoNClZhbW9zIGFwZXJmZWnDp29hciBvIG1vZGVsbyBBUklNQSBwYXJhIHBlcm1pdGlyIG1haXMgZGVmYXNhZ2VucyBxdWUgbyBwYWRyw6NvLg0KDQpgYGB7cn0NCiMjIyMgT1BDQU8gUEVMT1MgUEVTT1MgSUdVQUlTDQpobWkgPC0gaHlicmlkTW9kZWwoeSA9IHZhcmVqb21zLCANCiAgICAgICAgICAgICAgICAgIG1vZGVscyA9ICJhZWZuc3R6IiwgDQogICAgICAgICAgICAgICAgICBhLmFyZ3MgPSBsaXN0KHN0ZXB3aXNlID0gRkFMU0UsIGFwcHJveGltYXRpb24gPSBGQUxTRSkpDQooYWN1cmFjaWFpPC1hY2N1cmFjeShobWksIGluZGl2aWR1YWwgPSBUUlVFKSkNCmBgYA0KDQpTZXBhcmFuZG8gYWxndW1hcyBtZWRpZGFzIGRlIGFjdXLDoWNpYSBkZSBpbnRlcmVzc2UuDQoNCmBgYHtyfQ0KUk1TRT1jKEVUUyA9IGFjdXJhY2lhaSRldHNbLCdSTVNFJ10sIA0KICAgICAgIEFSSU1BID0gYWN1cmFjaWFpJGF1dG8uYXJpbWFbLCJSTVNFIl0sDQogICAgICAgYFNUTC1FVFNgID0gYWN1cmFjaWFpJHN0bG1bLCJSTVNFIl0sIA0KICAgICAgIE5OQVIgPSBhY3VyYWNpYWkkbm5ldGFyWywiUk1TRSJdLCANCiAgICAgICBUQkFUUyA9IGFjdXJhY2lhaSR0YmF0c1ssIlJNU0UiXSwNCiAgICAgICBUSEVUQSA9IGFjdXJhY2lhaSR0aGV0YW1bLCJSTVNFIl0sDQogICAgICAgU05BSVZFID0gYWN1cmFjaWFpJHNuYWl2ZVssIlJNU0UiXSwNCiAgICAgICBDb21iaW5hY2FvID0gYWNjdXJhY3koaG1pKVssIlJNU0UiXSkNCg0KTUFQRT1jKEVUUyA9IGFjdXJhY2lhaSRldHNbLCdNQVBFJ10sIA0KICAgICAgIEFSSU1BID0gYWN1cmFjaWFpJGF1dG8uYXJpbWFbLCJNQVBFIl0sDQogICAgICAgYFNUTC1FVFNgID0gYWN1cmFjaWFpJHN0bG1bLCJNQVBFIl0sIA0KICAgICAgIE5OQVIgPSBhY3VyYWNpYWkkbm5ldGFyWywiTUFQRSJdLCANCiAgICAgICBUQkFUUyA9IGFjdXJhY2lhaSR0YmF0c1ssIk1BUEUiXSwNCiAgICAgICBUSEVUQSA9IGFjdXJhY2lhaSR0aGV0YW1bLCJNQVBFIl0sDQogICAgICAgU05BSVZFID0gYWN1cmFjaWFpJHNuYWl2ZVssIk1BUEUiXSwNCiAgICAgICBDb21iaW5hY2FvID0gYWNjdXJhY3koaG1pKVssIk1BUEUiXSkNCg0KTUFFPWMoRVRTID0gYWN1cmFjaWFpJGV0c1ssJ01BRSddLCANCiAgICAgIEFSSU1BID0gYWN1cmFjaWFpJGF1dG8uYXJpbWFbLCJNQUUiXSwNCiAgICAgIGBTVEwtRVRTYCA9IGFjdXJhY2lhaSRzdGxtWywiTUFFIl0sIA0KICAgICAgTk5BUiA9IGFjdXJhY2lhaSRubmV0YXJbLCJNQUUiXSwgDQogICAgICBUQkFUUyA9IGFjdXJhY2lhaSR0YmF0c1ssIk1BRSJdLA0KICAgICAgVEhFVEEgPSBhY3VyYWNpYWkkdGhldGFtWywiTUFFIl0sDQogICAgICBTTkFJVkUgPSBhY3VyYWNpYWkkc25haXZlWywiTUFFIl0sDQogICAgICBDb21iaW5hY2FvID0gYWNjdXJhY3koaG1pKVssIk1BRSJdKQ0KDQp0YWJlbGFpPC1jYmluZChSTVNFLE1BRSxNQVBFKQ0Ka25pdHI6OmthYmxlKHRhYmVsYWkpDQojIGVzdGltYSBvcyBtb2RlbG9zOiBhdXRvLmFyaW1hLCBldHMsIHRoZXRhbSwgbm5ldGFyLCANCiMgICAgICAgICAgICAgICAgICAgc3RsbSwgdGJhdHMgZSBzbmFpdmUNCmZjc3QucmVzaTwtZm9yZWNhc3QoaG1pLCANCiAgICAgICAgICAgICAgICAgICBoPTEyLA0KICAgICAgICAgICAgICAgICAgIFBJLmNvbWJpbmF0aW9uID0gYygibWVhbiIpKQ0KY2xhc3MoaG1pKSANCnByaW50KGhtaSkNCmFjY3VyYWN5KGhtaSkNCmBgYA0KDQoNCiMjIENvbXBhcmHDp8OjbyBjb20gZGFkb3Mgbm92b3MNCg0KQWdvcmEgcXVlIGrDoSB0ZW1vcyBhcyBpbmZvcm1hw6fDtWVzIGF0w6kgZmV2LzIwMjAsIHBvZGVtb3MgY29tcGFyYXIgYXMgZXN0aW1hdGl2YXMgY29tIG9zIGRhZG9zIHJlYWlzLiBGYXJlbW9zIGEgY29tcGFyYcOnw6NvIHJlbGF0aXZhbWVudGUgYW8gZm9yZWNhc3QgZG8gZm9yZWNhc3Q6OnRoZXRhZi4NCg0KYGBge3J9DQojIGRhZG9zbm92b3M8LUJFVFM6OkJFVFNnZXQoMTQ3OSkNCmRhZG9zbm92b3MgPC0gc3RydWN0dXJlKGMoMzUuMiwgMzUuNiwgMzkuMiwgNDAuNSwgNDEuNiwgNDAuNCwgNDAuOCwgMzguNywgMzcuMywgMzcuNiwgDQogICAgMzUuNiwgNDcuNCwgMzQuMiwgMzIuMiwgMzgsIDM3LjUsIDM4LjgsIDM1LCAzOC40LCA0MC4yLCAzOC4yLCAzOS4zLCAzNiwgNDYuMywgDQogICAgMzYuNCwgMzQsIDM5LCAzNy44LCAzOC45LCAzNS4zLCAzNy4yLCAzOC4xLCAzNS42LCAzOC4zLCAzNS42LCA0NS43LCAzMi4yLCAzMS42LCANCiAgICAzNS4yLCAzNi44LCAzNy41LCAzNC44LCAzOC40LCAzOC4xLCAzNywgMzksIDM3LjMsIDQ5LCAzNS44LCAzNS4zLCA0MC4yLCA0MS4zLCANCiAgICA0My45LCA0MS42LCA0NS45LCA0Mi4zLCA0Mi4yLCA0NCwgNDEuMywgNTYuOSwgMzguNSwgMzguNSwgNDUuMywgNDMuNiwgNDYuMiwgNDQuMywgDQogICAgNDcuNSwgNDYuNSwgNDYuNCwgNDYsIDQ0LjEsIDYxLCA0MiwgNDAuMiwgNDQuNiwgNDQuNSwgNDcuOCwgNDUuMywgNDYuNSwgNDguNSwgDQogICAgNDcuNywgNTAuMiwgNDkuMywgNjQuNSwgNDcsIDQ2LjgsIDUxLCA1MC41LCA1NSwgNTEuMywgNTIuOCwgNTUuMywgNTQuOCwgNTUuNiwgDQogICAgNTUuMywgNzIuMiwgNTQuNSwgNTIuMSwgNTYuMiwgNTcuMiwgNjAuOCwgNTYuMSwgNjEuOCwgNjEuNiwgNTkuOCwgNjMuMywgNTcuNywgDQogICAgNzcuNCwgNjEuNCwgNTEuOSwgNTcuMywgNTcuOSwgNjEuOSwgNTcuMywgNjEuMSwgNjEuMSwgNjAuNiwgNjUuNiwgNjMuNSwgODMuMSwgDQogICAgNjQuMSwgNjAuMiwgNjcuOCwgNjcuMSwgNzIuOCwgNjguNSwgNzEuMSwgNjkuMywgNjkuOSwgNzEuMSwgNjcuOSwgOTIuNywgNjcuNSwgDQogICAgNjQuOCwgNjkuMSwgNjkuNCwgNzkuNiwgNzAuMiwgNzMuOCwgNzIuNSwgNzEuMywgNzUuNiwgNzQuNywgMTAwLjgsIDc5LjUsIDc1LjcsIA0KICAgIDgyLjQsIDc4LCA4NC44LCA4My4yLCA4NC44LCA4OC41LCA4Ni4zLCA5MS43LCA5Mi44LCAxMTEuNCwgOTIuOCwgODMuNywgOTIuNSwgDQogICAgODguMywgOTMuOSwgODguOCwgOTYsIDk1LjksIDkzLjIsIDk4LjMsIDEwMC41LCAxMjguOCwgOTcuMiwgOTAuMiwgOTQuMywgOTQuNCwgDQogICAgMTAxLjEsIDkyLCA5Ni40LCA5OC4yLCA5Ny42LCAxMDUuOCwgMTAzLjEsIDEyOS42LCA5OS42LCA4Ny44LCA5NywgOTQuOCwgOTguNiwgDQogICAgOTMuNCwgOTguNCwgOTYuNCwgOTIuNSwgMTAwLjYsIDk3LjIsIDEyNC41LCA5MS41LCA4NS4xLCA5MS42LCA4OC41LCA5Mi4yLCA4Ny40LCANCiAgICA5MC41LCA4OC4xLCA4NS4yLCA4OS40LCA5My40LCAxMTYuOSwgOTAuOCwgODQsIDg5LjcsIDg2LjMsIDkwLCA4Ny4zLCA5MC44LCA5My41LCANCiAgICA5My43LCA5MS40LCA5My41LCAxMTQuMSwgODcuOCwgODEuMSwgOTQuNSwgODMuMiwgODkuOSwgODguOCwgODkuMywgOTMuNywgOTMuNSwgDQogICAgOTYuMywgMTAxLjMsIDExOC4zLCA5My44LCA4NS4yLCA5MCwgODYuNiwgOTAsIDg1LjIsIDkxLCA5NC40LCA5My40LCA5NS45LCAxMDIuNiwgDQogICAgMTE2LCA5NC45LCA4OS4xKSwgLlRzcCA9IGMoMjAwMCwgMjAyMC4wODMzMzMzMzMzMywgMTIpLCBjbGFzcyA9ICJ0cyIpDQojIFZpZXcoY2JpbmQuem9vKGRhdGEuZmNzdCxkYWRvc25vdm9zKSkNCnJlcXVpcmUoem9vKQ0KcHJpbnQoY2JpbmQuem9vKGZjc3QucmVzaSRtZWFuLCBkYWRvc25vdm9zKVsyMzY6MjQyXSkNCmBgYA0KDQpBY3Vyw6FjaWEgZG8gcGVyw61vZG8gQWdvc3RvLzIwMTkgYSBmZXYvMjAyMDoNCg0KYGBge3J9DQpwcmV2aXN0b2kgPC0gZmNzdC5yZXNpJG1lYW4NCm9ic2VydmFkb2kgPC0gZGFkb3Nub3Zvc1syMzY6MjQyXQ0KZm9yZWNhc3Q6OmFjY3VyYWN5KHByZXZpc3RvaSwgb2JzZXJ2YWRvaSkNCmBgYA0KDQpPdSBzZWphLCB1bSBlcnJvIHBlcmNlbnR1YWwgbcOpZGlvIGRlICQzLjc0JCUgZSB1bSBlcnJvIGFic29sdXRvIG3DqWRpbyBkZSAkMy42NyQlLCBwb3J0YW50bywgaW5mZXJpb3Igw6BzIGVzdGltYXRpdmFzIGZlaXRhcyBwZWxvIG3DqXRvZG8gVGhldGEgKDxodHRwczovL3JwdWJzLmNvbS9hbXJvZmkvdmFyZWpvbXNfdGhldGFmPikuIFRhbHZleiBnYW5oZW1vcyBhbGdvIHBlbG8gWDEzQVJJTUEtU0VBVFMgKDxodHRwczovL3JwdWJzLmNvbS9hbXJvZmkveDEzYXJpbWFfc2VhdHNfdmFyZWpvbXM+KSBhbyBpbnNlcmktbG8gbmEgY29tYmluYcOnw6NvLiBGaWNhIHBhcmEgb3V0cm8gZXhlcmPDrWNpbyBhIHNpbXVsYcOnw6NvIGRhIGNvbWJpbmHDp8OjbyBpbmNsdWluZG8gbyBYMTNBUklNQS1TRUFUUy4NCg0KUmVmZXLDqm5jaWFzIHstI1JlZmVyw6puY2lhc30NCj09PT09PT09PT09PT09PT09PT09PT09PQ0KDQpBU1NJTUFLT1BPVUxPUywgVi4gYW5kIE5JS09MT1BPVUxPUywgSy4gKDIwMDApLiBUaGUgdGhldGEgbW9kZWw6IGEgZGVjb21wb3NpdGlvbiBhcHByb2FjaCB0byBmb3JlY2FzdGluZy4gSW50ZXJuYXRpb25hbCBKb3VybmFsIG9mIEZvcmVjYXN0aW5nLCAxNiwgNTIxLTUzMC4gRE9JOiA8aHR0cHM6Ly9kb2kub3JnLzEwLjEwMTYvUzAxNjktMjA3MCgwMCkwMDA2Ni0yPiAgICAgDQoNCkZFUlJFSVJBLCBQZWRybyBDb3N0YTsgU1BFUkFOWkEsIFRhbGl0aGE7ICBDT1NUQSwgSm9uYXRoYSAoMjAxOCkuIEJFVFM6IEJyYXppbGlhbiBFY29ub21pYyBUaW1lIFNlcmllcy4gUiBwYWNrYWdlIHZlcnNpb24gMC40LjkuIERpc3BvbsOtdmVsIGVtOiA8aHR0cHM6Ly9DUkFOLlItcHJvamVjdC5vcmcvcGFja2FnZT1CRVRTPi4gICAgIA0KDQpIWU5ETUFOLCBSb2IgSi4gKDIwMThhKS4gZnBwMjogRGF0YSBmb3IgIkZvcmVjYXN0aW5nOiBQcmluY2lwbGVzIGFuZCBQcmFjdGljZSIgKDJuZCBFZGl0aW9uKS4gUiBwYWNrYWdlIHZlcnNpb24gMi4zLiBEaXNwb27DrXZlbCBlbTogPGh0dHBzOi8vQ1JBTi5SLXByb2plY3Qub3JnL3BhY2thZ2U9ZnBwMj4uICAgIA0KDQpIWU5ETUFOLCBSb2IgSi4gKDIwMThiKS4gQSBmb3JlY2FzdCBlbnNlbWJsZSBiZW5jaG1hcmsuIERpc3BvbsOtdmVsIGVtOjxodHRwczovL3JvYmpoeW5kbWFuLmNvbS9oeW5kc2lnaHQvYmVuY2htYXJrLWNvbWJpbmF0aW9uLz4uICAgICANCg0KSFlORE1BTiwgUi5KLiwgJiBBVEhBTkFTT1BPVUxPUywgRy4gKDIwMTgpIEZvcmVjYXN0aW5nOiBwcmluY2lwbGVzIGFuZCBwcmFjdGljZSwgMm5kIGVkaXRpb24sIE9UZXh0czogTWVsYm91cm5lLCBBdXN0cmFsaWEuIERpc3BvbsOtdmVsIGVtOiA8aHR0cHM6Ly9vdGV4dHMuY29tL2ZwcDIvPi4gQWNjZXNzZWQgb24gMTIgU2V0IDIwMTkuICAgICANCg0KU0hBVUIsICBEYXZpZDsgIEVMTElTLCBQZXRlci4gKDIwMTkpLiBmb3JlY2FzdEh5YnJpZDogQ29udmVuaWVudCBGdW5jdGlvbnMgZm9yIEVuc2VtYmxlIFRpbWUgU2VyaWVzIEZvcmVjYXN0cy4gUiBwYWNrYWdlIHZlcnNpb24gNC4yLjE3LiBEaXNwb27DrXZlbCBlbTogPGh0dHBzOi8vQ1JBTi5SLXByb2plY3Qub3JnL3BhY2thZ2U9Zm9yZWNhc3RIeWJyaWQ+LiBBY2Nlc3NlZCBvbiAyNyBBcHIgMjAyMC4NCg==" download="2020-04-27-séries-temporais-combinação-de-forecasts-forecasthybrid.Rmd">Download 2020-04-27-séries-temporais-combinação-de-forecasts-forecasthybrid.Rmd</a>
+</div>
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Neste arquivo utilizo a série do Índice de volume de vendas no varejo Total de Mato Grosso do Sul, série mensal a partir de jan/2000 até jul/2019 obtida com o pacote <code>BETS</code> e importada do Banco Central do Brasil. Portanto, são 235 observações mensais.</p>
+</div>
+<div id="dados" class="section level1">
+<h1>Dados</h1>
+<p>Farei de duas formas para o leitor. Uma carrega direto do site do Banco Central do Brasil com o pacote <code>BETS</code> (FERREIRA, SPERANZA e COSTA, 2018) e a outra eu gerei a estrutura idêntica pela função <code>dput()</code> para os leitores que não conseguirem por qualquer motivo o acesso ao site do Banco Central (as vezes vejo isso ocorrer dependendo dos bloqueios da sua rede de internet). A forma pelo dput assume o nome varejoms2 enquanto a extraída pelo BETS tem nome varejoms. Esclareço ao leitor que após baixar a série pelo BETS, fiz o dput e a partir de então, desabilitei o bloco (<code>Chunk</code>) que acessa o BETS apenas para agilizar os cálculos.</p>
+<pre><code>library(BETS)
+# Pegando as séries a partir do site do Banco Central do Brasil
+# Índice de volume de vendas no varejo Total de Mato Grosso do Sul
+# mensal a partir de jan/2000 até jul/2019 
+# 235 observações mensais
+varejoms &lt;- BETSget(1479) 
+print(varejoms)
+class(varejoms)
+dput(varejoms)  # opção para ter os dados como na structure abaixo</code></pre>
+<pre class="r"><code>library(BETS)
+
+# Pegando as séries a partir do site do Banco Central do Brasil Índice de volume
+# de vendas no varejo Total de Mato Grosso do Sul mensal a partir de jan/2000 até
+# jul/2019 (em 04.10.2019)
+
+# varejoms &lt;- BETSget(1479)
+
+varejoms &lt;- structure(c(35.2, 35.6, 39.2, 40.5, 41.6, 40.4, 40.8, 38.7, 37.3, 37.6, 
+    35.6, 47.4, 34.2, 32.2, 38, 37.5, 38.8, 35, 38.4, 40.2, 38.2, 39.3, 36, 46.3, 
+    36.4, 34, 39, 37.8, 38.9, 35.3, 37.2, 38.1, 35.6, 38.3, 35.6, 45.7, 32.2, 31.6, 
+    35.2, 36.8, 37.5, 34.8, 38.4, 38.1, 37, 39, 37.3, 49, 35.8, 35.3, 40.2, 41.3, 
+    43.9, 41.6, 45.9, 42.3, 42.2, 44, 41.3, 56.9, 38.5, 38.5, 45.3, 43.6, 46.2, 44.3, 
+    47.5, 46.5, 46.4, 46, 44.1, 61, 42, 40.2, 44.6, 44.5, 47.8, 45.3, 46.5, 48.5, 
+    47.7, 50.2, 49.3, 64.5, 47, 46.8, 51, 50.5, 55, 51.3, 52.8, 55.3, 54.8, 55.6, 
+    55.3, 72.2, 54.5, 52.1, 56.2, 57.2, 60.8, 56.1, 61.8, 61.6, 59.8, 63.3, 57.7, 
+    77.4, 61.4, 51.9, 57.3, 57.9, 61.9, 57.3, 61.1, 61.1, 60.6, 65.6, 63.5, 83.1, 
+    64.1, 60.2, 67.8, 67.1, 72.8, 68.5, 71.1, 69.3, 69.9, 71.1, 67.9, 92.7, 67.5, 
+    64.8, 69.1, 69.4, 79.6, 70.2, 73.8, 72.5, 71.3, 75.6, 74.7, 100.8, 79.5, 75.7, 
+    82.4, 78, 84.8, 83.2, 84.8, 88.5, 86.3, 91.7, 92.8, 111.4, 92.8, 83.7, 92.5, 
+    88.3, 93.9, 88.8, 96, 95.9, 93.2, 98.3, 100.5, 128.8, 97.2, 90.2, 94.3, 94.4, 
+    101.1, 92, 96.4, 98.2, 97.6, 105.8, 103.1, 129.6, 99.6, 87.8, 97, 94.8, 98.6, 
+    93.4, 98.4, 96.4, 92.5, 100.6, 97.2, 124.5, 91.5, 85.1, 91.6, 88.5, 92.2, 87.4, 
+    90.5, 88.1, 85.2, 89.4, 93.4, 116.9, 90.8, 84, 89.7, 86.3, 90, 87.3, 90.8, 93.5, 
+    93.7, 91.4, 93.5, 114.1, 87.8, 81.1, 94.5, 83.2, 89.9, 88.8, 89.3, 93.7, 93.5, 
+    96.3, 101.3, 118.3, 93.8, 85.2, 90, 86.6, 90, 85.2, 90.9), .Tsp = c(2000, 2019.5, 
+    12), class = &quot;ts&quot;)</code></pre>
+<p>A rotina de dados obtidos pelo BETS já retorna a série em formato <code>ts</code>, ou seja, série temporal. Farei então a criação de uma série em diferenças para observar o comportamento da série em nível e em diferenças.</p>
+<p>Inicialmente olharei as estatísticas descritivas da série. Em seguida farei um plot básico da série e o plot pelo pacote <code>dygraphs</code>, útil para ver os pontos de picos e momentos específicos.</p>
+<pre class="r"><code>dvarejo &lt;- diff(varejoms)
+# estatisticas basicas
+summary(varejoms)</code></pre>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  31.60   44.05   64.50   67.28   90.00  129.60 </code></pre>
+<pre class="r"><code># Min. 1st Qu.  Median Mean 3rd Qu.  Max.  31.60 44.05 64.50 67.28 90.00 129.60
+
+# plot basico lembrar que em class(), ele já indicou que era ts = serie temporal
+plot(varejoms)</code></pre>
+<p><img src="/post/2020-04-27-séries-temporais-combinação-de-forecasts-forecasthybrid_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre class="r"><code># pelo pacote dygraph dá mais opções
+library(dygraphs)
+dygraph(varejoms, main = &quot;Índice de volume de vendas no varejo total de Mato Grosso do Sul &lt;br&gt; (Mensal)  (2011=100) BCB 1479&quot;) %&gt;% 
+    dyAxis(&quot;x&quot;, drawGrid = TRUE) %&gt;% dyEvent(&quot;2005-1-01&quot;, &quot;2005&quot;, labelLoc = &quot;bottom&quot;) %&gt;% 
+    dyEvent(&quot;2015-1-01&quot;, &quot;2015&quot;, labelLoc = &quot;bottom&quot;) %&gt;% dyEvent(&quot;2018-1-01&quot;, &quot;2018&quot;, 
+    labelLoc = &quot;bottom&quot;) %&gt;% dyEvent(&quot;2019-1-01&quot;, &quot;2019&quot;, labelLoc = &quot;bottom&quot;) %&gt;% 
+    dyOptions(drawPoints = TRUE, pointSize = 2)</code></pre>
+<div id="htmlwidget-1" style="width:672px;height:480px;" class="dygraphs html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"attrs":{"axes":{"x":{"pixelsPerLabel":60,"drawGrid":true,"drawAxis":true},"y":{"drawAxis":true}},"title":"Índice de volume de vendas no varejo total de Mato Grosso do Sul <br> (Mensal)  (2011=100) BCB 1479","labels":["month","V1"],"legend":"auto","retainDateWindow":false,"stackedGraph":false,"fillGraph":false,"fillAlpha":0.15,"stepPlot":false,"drawPoints":true,"pointSize":2,"drawGapEdgePoints":false,"connectSeparatedPoints":false,"strokeWidth":1,"strokeBorderColor":"white","colorValue":0.5,"colorSaturation":1,"includeZero":false,"drawAxesAtZero":false,"logscale":false,"axisTickSize":3,"axisLineColor":"black","axisLineWidth":0.3,"axisLabelColor":"black","axisLabelFontSize":14,"axisLabelWidth":60,"drawGrid":true,"gridLineWidth":0.3,"rightGap":5,"digitsAfterDecimal":2,"labelsKMB":false,"labelsKMG2":false,"labelsUTC":false,"maxNumberWidth":6,"animatedZooms":false,"mobileDisableYTouch":true,"disableZoom":false},"scale":"monthly","annotations":[],"shadings":[],"events":[{"pos":"2005-01-01T00:00:00.000Z","label":"2005","labelLoc":"bottom","color":"black","strokePattern":[7,3],"axis":"x"},{"pos":"2015-01-01T00:00:00.000Z","label":"2015","labelLoc":"bottom","color":"black","strokePattern":[7,3],"axis":"x"},{"pos":"2018-01-01T00:00:00.000Z","label":"2018","labelLoc":"bottom","color":"black","strokePattern":[7,3],"axis":"x"},{"pos":"2019-01-01T00:00:00.000Z","label":"2019","labelLoc":"bottom","color":"black","strokePattern":[7,3],"axis":"x"}],"format":"date","data":[["2000-01-01T00:00:00.000Z","2000-02-01T00:00:00.000Z","2000-03-01T00:00:00.000Z","2000-04-01T00:00:00.000Z","2000-05-01T00:00:00.000Z","2000-06-01T00:00:00.000Z","2000-07-01T00:00:00.000Z","2000-08-01T00:00:00.000Z","2000-09-01T00:00:00.000Z","2000-10-01T00:00:00.000Z","2000-11-01T00:00:00.000Z","2000-12-01T00:00:00.000Z","2001-01-01T00:00:00.000Z","2001-02-01T00:00:00.000Z","2001-03-01T00:00:00.000Z","2001-04-01T00:00:00.000Z","2001-05-01T00:00:00.000Z","2001-06-01T00:00:00.000Z","2001-07-01T00:00:00.000Z","2001-08-01T00:00:00.000Z","2001-09-01T00:00:00.000Z","2001-10-01T00:00:00.000Z","2001-11-01T00:00:00.000Z","2001-12-01T00:00:00.000Z","2002-01-01T00:00:00.000Z","2002-02-01T00:00:00.000Z","2002-03-01T00:00:00.000Z","2002-04-01T00:00:00.000Z","2002-05-01T00:00:00.000Z","2002-06-01T00:00:00.000Z","2002-07-01T00:00:00.000Z","2002-08-01T00:00:00.000Z","2002-09-01T00:00:00.000Z","2002-10-01T00:00:00.000Z","2002-11-01T00:00:00.000Z","2002-12-01T00:00:00.000Z","2003-01-01T00:00:00.000Z","2003-02-01T00:00:00.000Z","2003-03-01T00:00:00.000Z","2003-04-01T00:00:00.000Z","2003-05-01T00:00:00.000Z","2003-06-01T00:00:00.000Z","2003-07-01T00:00:00.000Z","2003-08-01T00:00:00.000Z","2003-09-01T00:00:00.000Z","2003-10-01T00:00:00.000Z","2003-11-01T00:00:00.000Z","2003-12-01T00:00:00.000Z","2004-01-01T00:00:00.000Z","2004-02-01T00:00:00.000Z","2004-03-01T00:00:00.000Z","2004-04-01T00:00:00.000Z","2004-05-01T00:00:00.000Z","2004-06-01T00:00:00.000Z","2004-07-01T00:00:00.000Z","2004-08-01T00:00:00.000Z","2004-09-01T00:00:00.000Z","2004-10-01T00:00:00.000Z","2004-11-01T00:00:00.000Z","2004-12-01T00:00:00.000Z","2005-01-01T00:00:00.000Z","2005-02-01T00:00:00.000Z","2005-03-01T00:00:00.000Z","2005-04-01T00:00:00.000Z","2005-05-01T00:00:00.000Z","2005-06-01T00:00:00.000Z","2005-07-01T00:00:00.000Z","2005-08-01T00:00:00.000Z","2005-09-01T00:00:00.000Z","2005-10-01T00:00:00.000Z","2005-11-01T00:00:00.000Z","2005-12-01T00:00:00.000Z","2006-01-01T00:00:00.000Z","2006-02-01T00:00:00.000Z","2006-03-01T00:00:00.000Z","2006-04-01T00:00:00.000Z","2006-05-01T00:00:00.000Z","2006-06-01T00:00:00.000Z","2006-07-01T00:00:00.000Z","2006-08-01T00:00:00.000Z","2006-09-01T00:00:00.000Z","2006-10-01T00:00:00.000Z","2006-11-01T00:00:00.000Z","2006-12-01T00:00:00.000Z","2007-01-01T00:00:00.000Z","2007-02-01T00:00:00.000Z","2007-03-01T00:00:00.000Z","2007-04-01T00:00:00.000Z","2007-05-01T00:00:00.000Z","2007-06-01T00:00:00.000Z","2007-07-01T00:00:00.000Z","2007-08-01T00:00:00.000Z","2007-09-01T00:00:00.000Z","2007-10-01T00:00:00.000Z","2007-11-01T00:00:00.000Z","2007-12-01T00:00:00.000Z","2008-01-01T00:00:00.000Z","2008-02-01T00:00:00.000Z","2008-03-01T00:00:00.000Z","2008-04-01T00:00:00.000Z","2008-05-01T00:00:00.000Z","2008-06-01T00:00:00.000Z","2008-07-01T00:00:00.000Z","2008-08-01T00:00:00.000Z","2008-09-01T00:00:00.000Z","2008-10-01T00:00:00.000Z","2008-11-01T00:00:00.000Z","2008-12-01T00:00:00.000Z","2009-01-01T00:00:00.000Z","2009-02-01T00:00:00.000Z","2009-03-01T00:00:00.000Z","2009-04-01T00:00:00.000Z","2009-05-01T00:00:00.000Z","2009-06-01T00:00:00.000Z","2009-07-01T00:00:00.000Z","2009-08-01T00:00:00.000Z","2009-09-01T00:00:00.000Z","2009-10-01T00:00:00.000Z","2009-11-01T00:00:00.000Z","2009-12-01T00:00:00.000Z","2010-01-01T00:00:00.000Z","2010-02-01T00:00:00.000Z","2010-03-01T00:00:00.000Z","2010-04-01T00:00:00.000Z","2010-05-01T00:00:00.000Z","2010-06-01T00:00:00.000Z","2010-07-01T00:00:00.000Z","2010-08-01T00:00:00.000Z","2010-09-01T00:00:00.000Z","2010-10-01T00:00:00.000Z","2010-11-01T00:00:00.000Z","2010-12-01T00:00:00.000Z","2011-01-01T00:00:00.000Z","2011-02-01T00:00:00.000Z","2011-03-01T00:00:00.000Z","2011-04-01T00:00:00.000Z","2011-05-01T00:00:00.000Z","2011-06-01T00:00:00.000Z","2011-07-01T00:00:00.000Z","2011-08-01T00:00:00.000Z","2011-09-01T00:00:00.000Z","2011-10-01T00:00:00.000Z","2011-11-01T00:00:00.000Z","2011-12-01T00:00:00.000Z","2012-01-01T00:00:00.000Z","2012-02-01T00:00:00.000Z","2012-03-01T00:00:00.000Z","2012-04-01T00:00:00.000Z","2012-05-01T00:00:00.000Z","2012-06-01T00:00:00.000Z","2012-07-01T00:00:00.000Z","2012-08-01T00:00:00.000Z","2012-09-01T00:00:00.000Z","2012-10-01T00:00:00.000Z","2012-11-01T00:00:00.000Z","2012-12-01T00:00:00.000Z","2013-01-01T00:00:00.000Z","2013-02-01T00:00:00.000Z","2013-03-01T00:00:00.000Z","2013-04-01T00:00:00.000Z","2013-05-01T00:00:00.000Z","2013-06-01T00:00:00.000Z","2013-07-01T00:00:00.000Z","2013-08-01T00:00:00.000Z","2013-09-01T00:00:00.000Z","2013-10-01T00:00:00.000Z","2013-11-01T00:00:00.000Z","2013-12-01T00:00:00.000Z","2014-01-01T00:00:00.000Z","2014-02-01T00:00:00.000Z","2014-03-01T00:00:00.000Z","2014-04-01T00:00:00.000Z","2014-05-01T00:00:00.000Z","2014-06-01T00:00:00.000Z","2014-07-01T00:00:00.000Z","2014-08-01T00:00:00.000Z","2014-09-01T00:00:00.000Z","2014-10-01T00:00:00.000Z","2014-11-01T00:00:00.000Z","2014-12-01T00:00:00.000Z","2015-01-01T00:00:00.000Z","2015-02-01T00:00:00.000Z","2015-03-01T00:00:00.000Z","2015-04-01T00:00:00.000Z","2015-05-01T00:00:00.000Z","2015-06-01T00:00:00.000Z","2015-07-01T00:00:00.000Z","2015-08-01T00:00:00.000Z","2015-09-01T00:00:00.000Z","2015-10-01T00:00:00.000Z","2015-11-01T00:00:00.000Z","2015-12-01T00:00:00.000Z","2016-01-01T00:00:00.000Z","2016-02-01T00:00:00.000Z","2016-03-01T00:00:00.000Z","2016-04-01T00:00:00.000Z","2016-05-01T00:00:00.000Z","2016-06-01T00:00:00.000Z","2016-07-01T00:00:00.000Z","2016-08-01T00:00:00.000Z","2016-09-01T00:00:00.000Z","2016-10-01T00:00:00.000Z","2016-11-01T00:00:00.000Z","2016-12-01T00:00:00.000Z","2017-01-01T00:00:00.000Z","2017-02-01T00:00:00.000Z","2017-03-01T00:00:00.000Z","2017-04-01T00:00:00.000Z","2017-05-01T00:00:00.000Z","2017-06-01T00:00:00.000Z","2017-07-01T00:00:00.000Z","2017-08-01T00:00:00.000Z","2017-09-01T00:00:00.000Z","2017-10-01T00:00:00.000Z","2017-11-01T00:00:00.000Z","2017-12-01T00:00:00.000Z","2018-01-01T00:00:00.000Z","2018-02-01T00:00:00.000Z","2018-03-01T00:00:00.000Z","2018-04-01T00:00:00.000Z","2018-05-01T00:00:00.000Z","2018-06-01T00:00:00.000Z","2018-07-01T00:00:00.000Z","2018-08-01T00:00:00.000Z","2018-09-01T00:00:00.000Z","2018-10-01T00:00:00.000Z","2018-11-01T00:00:00.000Z","2018-12-01T00:00:00.000Z","2019-01-01T00:00:00.000Z","2019-02-01T00:00:00.000Z","2019-03-01T00:00:00.000Z","2019-04-01T00:00:00.000Z","2019-05-01T00:00:00.000Z","2019-06-01T00:00:00.000Z","2019-07-01T00:00:00.000Z"],[35.2,35.6,39.2,40.5,41.6,40.4,40.8,38.7,37.3,37.6,35.6,47.4,34.2,32.2,38,37.5,38.8,35,38.4,40.2,38.2,39.3,36,46.3,36.4,34,39,37.8,38.9,35.3,37.2,38.1,35.6,38.3,35.6,45.7,32.2,31.6,35.2,36.8,37.5,34.8,38.4,38.1,37,39,37.3,49,35.8,35.3,40.2,41.3,43.9,41.6,45.9,42.3,42.2,44,41.3,56.9,38.5,38.5,45.3,43.6,46.2,44.3,47.5,46.5,46.4,46,44.1,61,42,40.2,44.6,44.5,47.8,45.3,46.5,48.5,47.7,50.2,49.3,64.5,47,46.8,51,50.5,55,51.3,52.8,55.3,54.8,55.6,55.3,72.2,54.5,52.1,56.2,57.2,60.8,56.1,61.8,61.6,59.8,63.3,57.7,77.4,61.4,51.9,57.3,57.9,61.9,57.3,61.1,61.1,60.6,65.6,63.5,83.1,64.1,60.2,67.8,67.1,72.8,68.5,71.1,69.3,69.9,71.1,67.9,92.7,67.5,64.8,69.1,69.4,79.6,70.2,73.8,72.5,71.3,75.6,74.7,100.8,79.5,75.7,82.4,78,84.8,83.2,84.8,88.5,86.3,91.7,92.8,111.4,92.8,83.7,92.5,88.3,93.9,88.8,96,95.9,93.2,98.3,100.5,128.8,97.2,90.2,94.3,94.4,101.1,92,96.4,98.2,97.6,105.8,103.1,129.6,99.6,87.8,97,94.8,98.6,93.4,98.4,96.4,92.5,100.6,97.2,124.5,91.5,85.1,91.6,88.5,92.2,87.4,90.5,88.1,85.2,89.4,93.4,116.9,90.8,84,89.7,86.3,90,87.3,90.8,93.5,93.7,91.4,93.5,114.1,87.8,81.1,94.5,83.2,89.9,88.8,89.3,93.7,93.5,96.3,101.3,118.3,93.8,85.2,90,86.6,90,85.2,90.9]],"fixedtz":false,"tzone":""},"evals":[],"jsHooks":[]}</script>
+<p>É possivel visualizar nos plots acima: sazonalidade (por exemplo, picos em dezembro de cada ano); a tendência aparentemente crescente até 2014 e decresce com a “crise” brasileira; e uma aparente não-estacionariedade (média e variância mudam no tempo).</p>
+</div>
+<div id="análise-da-série" class="section level1">
+<h1>Análise da série</h1>
+<p>Uma ressalva deve ser feita, que no presente exercício, não farei a divisão entre amostra teste e amostra treino, de modo que usarei a série toda para os ajustes. O leitor deve em geral fazer estas divisões para certificar de que o modelo é um bom preditor.</p>
+<p>Farei a estimação para o modelo rápido usando o <code>forecastHybrid</code> de Shaub e Ellis (2019). Portanto, especificarei a série de <code>varejoms</code>, sem me preocupar de início com a sazonalidade e a não-estacionariedade da série, imaginando que os modelos conseguirão resolver essa situação.</p>
+<div id="aplicação-do-forecasthybrid" class="section level2">
+<h2>Aplicação do <code>forecastHybrid</code></h2>
+<p>O modelo combina os métodos: <code>ARIMA</code> (<em>Auto Regressive Integrated Moving Average</em>), o <code>ETS</code> (<em>Error Trend Seasonal</em> de decomposição espaço estado), o NNETAR (<em>Neural Network Autoregressive</em>), o STLM (<em>Seasonal and Trend decomposition using Loess</em>), o <code>Thetam</code> (método <em>Theta de Assimakopoulos e Nikolopoulos</em>, 2000), o <code>TBATS</code> (<em>Exponential Smoothing Method + Box-Cox Transformation + ARMA model for residuals + Trigonometric Seasonal</em>).</p>
+<p>A função <code>hybridModel</code> utiliza a opção <code>models</code> para indicar quais os modelos a serem utilizados.</p>
+<pre class="r"><code>set.seed(12345)
+library(forecastHybrid)
+library(forecast)
+library(fpp2)
+library(zoo)
+quickModel &lt;- hybridModel(varejoms)
+# estima os modelos: auto.arima, ets, thetam, nnetar, stlm e tbats
+fcst.res &lt;- forecast(quickModel, h = 60, PI.combination = c(&quot;mean&quot;))
+class(quickModel)</code></pre>
+<pre><code>[1] &quot;hybridModel&quot;</code></pre>
+<pre class="r"><code>print(quickModel)</code></pre>
+<pre><code>Hybrid forecast model comprised of the following models: auto.arima, ets, thetam, nnetar, stlm, tbats
+############
+auto.arima with weight 0.167 
+############
+ets with weight 0.167 
+############
+thetam with weight 0.167 
+############
+nnetar with weight 0.167 
+############
+stlm with weight 0.167 
+############
+tbats with weight 0.167 </code></pre>
+<pre class="r"><code>accuracy(quickModel)</code></pre>
+<pre><code>                 ME     RMSE      MAE         MPE    MAPE       ACF1 Theil&#39;s U
+Test set 0.06663916 2.510118 1.881037 -0.03385045 2.69985 0.08673647 0.2780059</code></pre>
+<pre class="r"><code>autoplot(varejoms) + autolayer(fcst.res$mean, series = &quot;Combinação&quot;) + xlab(&quot;Ano&quot;) + 
+    ylab(&quot;Índice (2011=100)&quot;) + ggtitle(&quot;Varejo MS: Forecast híbrido 
+     considerando modelos SARIMA, ETS, Thetam, NNETAR, STLM e TBATS: 
+     Período Ago/2019-Julho/2024&quot;)</code></pre>
+<p><img src="/post/2020-04-27-séries-temporais-combinação-de-forecasts-forecasthybrid_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>matriz.res &lt;- cbind(varejoms, fcst.res$mean, ts(fcst.res$lower[, 2], start = c(2019, 
+    3), frequency = 12), ts(fcst.res$upper[, 2], start = c(2019, 3), frequency = 12))
+writexl::write_xlsx(as.data.frame(matriz.res), &quot;resid.xlsx&quot;)
+autoplot(varejoms) + autolayer(matriz.res[, 2], series = &quot;Combinação&quot;) + autolayer(matriz.res[, 
+    3], series = &quot;PI inferior 95%&quot;) + autolayer(matriz.res[, 4], series = &quot;PI superior 95%&quot;) + 
+    xlab(&quot;Ano&quot;) + ylab(&quot;Índice (2011=100)&quot;) + ggtitle(&quot;Varejo MS: Forecast híbrido 
+     considerando modelos SARIMA, ETS, Thetam, NNETAR, STLM e TBATS: 
+     Período Ago/2019-Julho/2024&quot;)</code></pre>
+<p><img src="/post/2020-04-27-séries-temporais-combinação-de-forecasts-forecasthybrid_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p>Vamos aperfeiçoar o modelo ARIMA para permitir mais defasagens que o padrão.</p>
+<pre class="r"><code>#### OPCAO PELOS PESOS IGUAIS
+set.seed(12345)
+hmi &lt;- hybridModel(y = varejoms, models = &quot;aefnstz&quot;, a.args = list(stepwise = FALSE, 
+    approximation = FALSE))
+(acuraciai &lt;- accuracy(hmi, individual = TRUE))</code></pre>
+<pre><code>$auto.arima
+                      ME     RMSE      MAE        MPE     MAPE      MASE
+Training set 0.009480306 2.384598 1.779725 0.02458176 2.619097 0.3883732
+                    ACF1
+Training set 0.004907171
+
+$ets
+                      ME     RMSE      MAE     MPE     MAPE      MASE
+Training set -0.07940018 2.328173 1.771169 -0.1044 2.656467 0.3865061
+                   ACF1
+Training set 0.01989582
+
+$thetam
+                    ME     RMSE      MAE        MPE     MAPE      MASE
+Training set 0.2933461 6.536434 3.911442 -0.2496862 5.539406 0.8535586
+                      ACF1
+Training set -0.0008177642
+
+$nnetar
+                      ME     RMSE      MAE        MPE     MAPE      MASE
+Training set 0.003079752 3.808572 2.940988 -0.3362463 4.378705 0.6417852
+                  ACF1
+Training set 0.5553674
+
+$stlm
+                      ME     RMSE      MAE        MPE     MAPE      MASE
+Training set -0.01530687 2.022176 1.569836 0.06511203 2.413031 0.3425711
+                   ACF1
+Training set -0.0037393
+
+$tbats
+                     ME     RMSE      MAE       MPE  MAPE      MASE       ACF1
+Training set 0.07622443 2.435786 1.930459 0.1243821 2.971 0.3230086 0.02305048
+
+$snaive
+                   ME     RMSE      MAE      MPE     MAPE MASE      ACF1
+Training set 2.936771 5.817096 4.582511 4.332151 6.778317    1 0.8135737</code></pre>
+<p>Separando algumas medidas de acurácia de interesse.</p>
+<pre class="r"><code>RMSE = c(ETS = acuraciai$ets[, &quot;RMSE&quot;], ARIMA = acuraciai$auto.arima[, &quot;RMSE&quot;], `STL-ETS` = acuraciai$stlm[, 
+    &quot;RMSE&quot;], NNAR = acuraciai$nnetar[, &quot;RMSE&quot;], TBATS = acuraciai$tbats[, &quot;RMSE&quot;], 
+    THETA = acuraciai$thetam[, &quot;RMSE&quot;], SNAIVE = acuraciai$snaive[, &quot;RMSE&quot;], Combinacao = accuracy(hmi)[, 
+        &quot;RMSE&quot;])
+
+MAPE = c(ETS = acuraciai$ets[, &quot;MAPE&quot;], ARIMA = acuraciai$auto.arima[, &quot;MAPE&quot;], `STL-ETS` = acuraciai$stlm[, 
+    &quot;MAPE&quot;], NNAR = acuraciai$nnetar[, &quot;MAPE&quot;], TBATS = acuraciai$tbats[, &quot;MAPE&quot;], 
+    THETA = acuraciai$thetam[, &quot;MAPE&quot;], SNAIVE = acuraciai$snaive[, &quot;MAPE&quot;], Combinacao = accuracy(hmi)[, 
+        &quot;MAPE&quot;])
+
+MAE = c(ETS = acuraciai$ets[, &quot;MAE&quot;], ARIMA = acuraciai$auto.arima[, &quot;MAE&quot;], `STL-ETS` = acuraciai$stlm[, 
+    &quot;MAE&quot;], NNAR = acuraciai$nnetar[, &quot;MAE&quot;], TBATS = acuraciai$tbats[, &quot;MAE&quot;], THETA = acuraciai$thetam[, 
+    &quot;MAE&quot;], SNAIVE = acuraciai$snaive[, &quot;MAE&quot;], Combinacao = accuracy(hmi)[, &quot;MAE&quot;])
+
+tabelai &lt;- cbind(RMSE, MAE, MAPE)
+knitr::kable(tabelai)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">RMSE</th>
+<th align="right">MAE</th>
+<th align="right">MAPE</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ETS</td>
+<td align="right">2.328173</td>
+<td align="right">1.771168</td>
+<td align="right">2.656467</td>
+</tr>
+<tr class="even">
+<td>ARIMA</td>
+<td align="right">2.384598</td>
+<td align="right">1.779724</td>
+<td align="right">2.619097</td>
+</tr>
+<tr class="odd">
+<td>STL-ETS</td>
+<td align="right">2.022176</td>
+<td align="right">1.569836</td>
+<td align="right">2.413031</td>
+</tr>
+<tr class="even">
+<td>NNAR</td>
+<td align="right">3.864074</td>
+<td align="right">2.965666</td>
+<td align="right">4.395012</td>
+</tr>
+<tr class="odd">
+<td>TBATS</td>
+<td align="right">2.435786</td>
+<td align="right">1.930459</td>
+<td align="right">2.971000</td>
+</tr>
+<tr class="even">
+<td>THETA</td>
+<td align="right">6.536434</td>
+<td align="right">3.911442</td>
+<td align="right">5.539406</td>
+</tr>
+<tr class="odd">
+<td>SNAIVE</td>
+<td align="right">5.817096</td>
+<td align="right">4.582511</td>
+<td align="right">6.778316</td>
+</tr>
+<tr class="even">
+<td>Combinacao</td>
+<td align="right">2.637798</td>
+<td align="right">1.979749</td>
+<td align="right">2.850239</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code># estima os modelos: auto.arima, ets, thetam, nnetar, stlm, tbats e snaive
+fcst.resi &lt;- forecast(hmi, h = 12, PI.combination = c(&quot;mean&quot;))
+class(hmi)</code></pre>
+<pre><code>[1] &quot;hybridModel&quot;</code></pre>
+<pre class="r"><code>print(hmi)</code></pre>
+<pre><code>Hybrid forecast model comprised of the following models: auto.arima, ets, thetam, nnetar, stlm, tbats, snaive
+############
+auto.arima with weight 0.143 
+############
+ets with weight 0.143 
+############
+thetam with weight 0.143 
+############
+nnetar with weight 0.143 
+############
+stlm with weight 0.143 
+############
+tbats with weight 0.143 
+############
+snaive with weight 0.143 </code></pre>
+<pre class="r"><code>accuracy(hmi)</code></pre>
+<pre><code>               ME     RMSE      MAE       MPE     MAPE      ACF1 Theil&#39;s U
+Test set 0.475493 2.637798 1.979749 0.5901505 2.850239 0.2312181  0.294658</code></pre>
+</div>
+<div id="comparação-com-dados-novos" class="section level2">
+<h2>Comparação com dados novos</h2>
+<p>Agora que já temos as informações até fev/2020, podemos comparar as estimativas com os dados reais. Faremos a comparação relativamente ao forecast do forecast::thetaf.</p>
+<pre class="r"><code># dadosnovos&lt;-BETS::BETSget(1479)
+dadosnovos &lt;- structure(c(35.2, 35.6, 39.2, 40.5, 41.6, 40.4, 40.8, 38.7, 37.3, 37.6, 
+    35.6, 47.4, 34.2, 32.2, 38, 37.5, 38.8, 35, 38.4, 40.2, 38.2, 39.3, 36, 46.3, 
+    36.4, 34, 39, 37.8, 38.9, 35.3, 37.2, 38.1, 35.6, 38.3, 35.6, 45.7, 32.2, 31.6, 
+    35.2, 36.8, 37.5, 34.8, 38.4, 38.1, 37, 39, 37.3, 49, 35.8, 35.3, 40.2, 41.3, 
+    43.9, 41.6, 45.9, 42.3, 42.2, 44, 41.3, 56.9, 38.5, 38.5, 45.3, 43.6, 46.2, 44.3, 
+    47.5, 46.5, 46.4, 46, 44.1, 61, 42, 40.2, 44.6, 44.5, 47.8, 45.3, 46.5, 48.5, 
+    47.7, 50.2, 49.3, 64.5, 47, 46.8, 51, 50.5, 55, 51.3, 52.8, 55.3, 54.8, 55.6, 
+    55.3, 72.2, 54.5, 52.1, 56.2, 57.2, 60.8, 56.1, 61.8, 61.6, 59.8, 63.3, 57.7, 
+    77.4, 61.4, 51.9, 57.3, 57.9, 61.9, 57.3, 61.1, 61.1, 60.6, 65.6, 63.5, 83.1, 
+    64.1, 60.2, 67.8, 67.1, 72.8, 68.5, 71.1, 69.3, 69.9, 71.1, 67.9, 92.7, 67.5, 
+    64.8, 69.1, 69.4, 79.6, 70.2, 73.8, 72.5, 71.3, 75.6, 74.7, 100.8, 79.5, 75.7, 
+    82.4, 78, 84.8, 83.2, 84.8, 88.5, 86.3, 91.7, 92.8, 111.4, 92.8, 83.7, 92.5, 
+    88.3, 93.9, 88.8, 96, 95.9, 93.2, 98.3, 100.5, 128.8, 97.2, 90.2, 94.3, 94.4, 
+    101.1, 92, 96.4, 98.2, 97.6, 105.8, 103.1, 129.6, 99.6, 87.8, 97, 94.8, 98.6, 
+    93.4, 98.4, 96.4, 92.5, 100.6, 97.2, 124.5, 91.5, 85.1, 91.6, 88.5, 92.2, 87.4, 
+    90.5, 88.1, 85.2, 89.4, 93.4, 116.9, 90.8, 84, 89.7, 86.3, 90, 87.3, 90.8, 93.5, 
+    93.7, 91.4, 93.5, 114.1, 87.8, 81.1, 94.5, 83.2, 89.9, 88.8, 89.3, 93.7, 93.5, 
+    96.3, 101.3, 118.3, 93.8, 85.2, 90, 86.6, 90, 85.2, 91, 94.4, 93.4, 95.9, 102.6, 
+    116, 94.9, 89.1), .Tsp = c(2000, 2020.08333333333, 12), class = &quot;ts&quot;)
+# View(cbind.zoo(data.fcst,dadosnovos))
+require(zoo)
+print(cbind.zoo(fcst.resi$mean, dadosnovos)[236:242])</code></pre>
+<pre><code>         fcst.resi$mean dadosnovos
+ago 2019       91.67066       94.4
+set 2019       90.90770       93.4
+out 2019       93.57165       95.9
+nov 2019       95.12952      102.6
+dez 2019      116.17440      116.0
+jan 2020       90.70896       94.9
+fev 2020       83.44558       89.1</code></pre>
+<p>Acurácia do período Agosto/2019 a fev/2020:</p>
+<pre class="r"><code>previstoi &lt;- fcst.resi$mean
+observadoi &lt;- dadosnovos[236:242]
+forecast::accuracy(previstoi, observadoi)</code></pre>
+<pre><code>               ME     RMSE      MAE      MPE     MAPE
+Test set 3.527361 4.216596 3.577189 3.697257 3.740212</code></pre>
+<p>Ou seja, um erro percentual médio de <span class="math inline">\(\approx3.7\)</span>% e um erro absoluto médio de <span class="math inline">\(\approx3.74\)</span>%, portanto, inferior às estimativas feitas pelo método Theta (<a href="https://rpubs.com/amrofi/varejoms_thetaf" class="uri">https://rpubs.com/amrofi/varejoms_thetaf</a>). Talvez ganhemos algo pelo X13ARIMA-SEATS (<a href="https://rpubs.com/amrofi/x13arima_seats_varejoms" class="uri">https://rpubs.com/amrofi/x13arima_seats_varejoms</a>) ao inseri-lo na combinação. Fica para outro exercício a simulação da combinação incluindo o X13ARIMA-SEATS.</p>
+</div>
+</div>
+<div id="Referências" class="section level1 unnumbered">
+<h1>Referências</h1>
+<p>ASSIMAKOPOULOS, V. and NIKOLOPOULOS, K. (2000). The theta model: a decomposition approach to forecasting. International Journal of Forecasting, 16, 521-530. DOI: <a href="https://doi.org/10.1016/S0169-2070(00)00066-2" class="uri">https://doi.org/10.1016/S0169-2070(00)00066-2</a></p>
+<p>FERREIRA, Pedro Costa; SPERANZA, Talitha; COSTA, Jonatha (2018). BETS: Brazilian Economic Time Series. R package version 0.4.9. Disponível em: <a href="https://CRAN.R-project.org/package=BETS" class="uri">https://CRAN.R-project.org/package=BETS</a>.</p>
+<p>HYNDMAN, Rob J. (2018a). fpp2: Data for “Forecasting: Principles and Practice” (2nd Edition). R package version 2.3. Disponível em: <a href="https://CRAN.R-project.org/package=fpp2" class="uri">https://CRAN.R-project.org/package=fpp2</a>.</p>
+<p>HYNDMAN, Rob J. (2018b). A forecast ensemble benchmark. Disponível em:<a href="https://robjhyndman.com/hyndsight/benchmark-combination/" class="uri">https://robjhyndman.com/hyndsight/benchmark-combination/</a>.</p>
+<p>HYNDMAN, R.J., &amp; ATHANASOPOULOS, G. (2018) Forecasting: principles and practice, 2nd edition, OTexts: Melbourne, Australia. Disponível em: <a href="https://otexts.com/fpp2/" class="uri">https://otexts.com/fpp2/</a>. Accessed on 12 Set 2019.</p>
+<p>SHAUB, David; ELLIS, Peter. (2019). forecastHybrid: Convenient Functions for Ensemble Time Series Forecasts. R package version 4.2.17. Disponível em: <a href="https://CRAN.R-project.org/package=forecastHybrid" class="uri">https://CRAN.R-project.org/package=forecastHybrid</a>. Accessed on 27 Apr 2020.</p>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/econometria/">econometria</a>
+  
+  <a class="badge badge-light" href="/tags/series-temporais/">séries temporais</a>
+  
+  <a class="badge badge-light" href="/tags/forecasts/">forecasts</a>
+  
+  <a class="badge badge-light" href="/tags/hybrid/">hybrid</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/series-temporais-combinacao-de-forecasts-forecasthybrid/&amp;text=S%c3%a9ries%20Temporais%20com%20R:%20Combina%c3%a7%c3%a3o%20de%20forecasts%20para%20o%20Consumo%20do%20Varejo%20em%20MS%20com%20%60forecastHybrid%60" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/series-temporais-combinacao-de-forecasts-forecasthybrid/&amp;t=S%c3%a9ries%20Temporais%20com%20R:%20Combina%c3%a7%c3%a3o%20de%20forecasts%20para%20o%20Consumo%20do%20Varejo%20em%20MS%20com%20%60forecastHybrid%60" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=S%c3%a9ries%20Temporais%20com%20R:%20Combina%c3%a7%c3%a3o%20de%20forecasts%20para%20o%20Consumo%20do%20Varejo%20em%20MS%20com%20%60forecastHybrid%60&amp;body=/post/series-temporais-combinacao-de-forecasts-forecasthybrid/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/series-temporais-combinacao-de-forecasts-forecasthybrid/&amp;title=S%c3%a9ries%20Temporais%20com%20R:%20Combina%c3%a7%c3%a3o%20de%20forecasts%20para%20o%20Consumo%20do%20Varejo%20em%20MS%20com%20%60forecastHybrid%60" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=S%c3%a9ries%20Temporais%20com%20R:%20Combina%c3%a7%c3%a3o%20de%20forecasts%20para%20o%20Consumo%20do%20Varejo%20em%20MS%20com%20%60forecastHybrid%60%20/post/series-temporais-combinacao-de-forecasts-forecasthybrid/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/series-temporais-combinacao-de-forecasts-forecasthybrid/&amp;title=S%c3%a9ries%20Temporais%20com%20R:%20Combina%c3%a7%c3%a3o%20de%20forecasts%20para%20o%20Consumo%20do%20Varejo%20em%20MS%20com%20%60forecastHybrid%60" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hue9adce3a1ccb9b9d32568a9f62616c02_114438_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/">Adriano M R Figueiredo</a></h5>
+      <h6 class="card-subtitle">Professor of Regional Economics and Econometrics</h6>
+      <p class="card-text">My research interests include regional economics, econometrics, sustainable public policies and agricultural economics.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/amrofi" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com.br/citations?user=LjuEUroAAAAJ&amp;hl=pt-BR" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/amrofi" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/series-temporais-theta-consumo-varejo-ms/">Séries Temporais com R: Análise Theta para o Consumo do Varejo em MS com pacotes `forecast::thetaf` e `forecTheta`</a></li>
+      
+      <li><a href="/post/series-temporais-consumo-varejo-ms-x13arima-seats/">Séries Temporais com R: Análise ARIMA do Consumo do Varejo em MS com X13ARIMA-SEATS</a></li>
+      
+      <li><a href="/post/series-temporais-com-r-analise-do-consumo-de-morettin-e-toloi-com-x13arima-seats/">Séries Temporais com R: Análise do consumo de Morettin e Toloi com X13ARIMA-SEATS</a></li>
+      
+      <li><a href="/project/projetos-finalizados/">Projetos finalizados</a></li>
+      
+      <li><a href="/courses/econometria/introducao-a-econometria-basica/">Introdução à Econometria Básica</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.3/mermaid.min.js" integrity="" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.600a2e440c16093e23e26e90951c4d4b.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

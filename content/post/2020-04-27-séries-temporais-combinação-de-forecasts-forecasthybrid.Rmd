@@ -50,7 +50,7 @@ Citação {-#Citação}
 ===================================
 
 Sugestão de citação:
-FIGUEIREDO, Adriano Marcos Rodrigues. Séries Temporais com R: Combinação de forecasts para o Consumo do Varejo em MS com `forecastHybrid`. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/forecastHybrid_varejoms>. 
+FIGUEIREDO, Adriano Marcos Rodrigues. Séries Temporais com R: Combinação de forecasts para o Consumo do Varejo em MS com `forecastHybrid`. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/forecastHybrid_varejoms> e em <https://adrianofigueiredo.netlify.app/post/series-temporais-combinacao-de-forecasts-forecasthybrid/>. 
 
 
 Script para reprodução (se utilizar, citar como acima)

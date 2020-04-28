@@ -1,0 +1,899 @@
+---
+title: 'Economia Regional: reprodução de medidas de LQ conforme Haddad (2018) em R'
+author: "Adriano M R Figueiredo"
+date: '2020-04-28'
+slug: economia-regional-reprodução-de-medidas-de-lq
+categories: []
+tags:
+  - economia regional
+  - indicadores regionais
+  - quociente locacional
+  - QL
+subtitle: ''
+summary: 'This is an undergrad student level instruction for class use'
+authors: []
+lastmod: '2020-04-28T10:54:38-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+<div id="Licença" class="section level1 unnumbered">
+<h1>Licença</h1>
+<p>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <a href="http://creativecommons.org/licenses/by-sa/4.0/" class="uri">http://creativecommons.org/licenses/by-sa/4.0/</a> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.</p>
+<div class="figure">
+<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="License: CC BY-SA 4.0" style="width:25.0%" />
+<p class="caption">License: CC BY-SA 4.0</p>
+</div>
+</div>
+<div id="Citação" class="section level1 unnumbered">
+<h1>Citação</h1>
+<p>Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional: reprodução de medidas de LQ conforme Haddad (2018) em R. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <a href="http://rpubs.com/amrofi/medidas_QL_haddad_regional" class="uri">http://rpubs.com/amrofi/medidas_QL_haddad_regional</a>.</p>
+</div>
+<div id="script-para-reprodução-se-utilizar-citar-como-acima" class="section level1">
+<h1>Script para reprodução (se utilizar, citar como acima)</h1>
+<a href="data:text/x-markdown;base64,LS0tDQp0aXRsZTogJ0Vjb25vbWlhIFJlZ2lvbmFsOiByZXByb2R1w6fDo28gZGUgbWVkaWRhcyBkZSBMUSBjb25mb3JtZSBIYWRkYWQgKDIwMTgpIGVtIFInDQphdXRob3I6ICJBZHJpYW5vIE0gUiBGaWd1ZWlyZWRvIg0KZGF0ZTogJzIwMjAtMDQtMjgnDQpzbHVnOiBlY29ub21pYS1yZWdpb25hbC1yZXByb2R1w6fDo28tZGUtbWVkaWRhcy1kZS1scQ0KY2F0ZWdvcmllczogW10NCnRhZ3M6DQogIC0gZWNvbm9taWEgcmVnaW9uYWwNCiAgLSBpbmRpY2Fkb3JlcyByZWdpb25haXMNCiAgLSBxdW9jaWVudGUgbG9jYWNpb25hbA0KICAtIFFMDQpzdWJ0aXRsZTogJycNCnN1bW1hcnk6ICdUaGlzIGlzIGFuIHVuZGVyZ3JhZCBzdHVkZW50IGxldmVsIGluc3RydWN0aW9uIGZvciBjbGFzcyB1c2UnDQphdXRob3JzOiBbXQ0KbGFzdG1vZDogJzIwMjAtMDQtMjhUMTA6NTQ6MzgtMDQ6MDAnDQpmZWF0dXJlZDogbm8NCmltYWdlOg0KICBjYXB0aW9uOiAnJw0KICBmb2NhbF9wb2ludDogJycNCiAgcHJldmlld19vbmx5OiBubw0KcHJvamVjdHM6IFtdDQotLS0NCg0KDQpgYGB7ciBrbml0cl9pbml0LCBlY2hvPUZBTFNFLCBjYWNoZT1GQUxTRX0NCmxpYnJhcnkoa25pdHIpDQpsaWJyYXJ5KHJtYXJrZG93bikNCmxpYnJhcnkocm1kZm9ybWF0cykNCg0KIyMgR2xvYmFsIG9wdGlvbnMNCm9wdGlvbnMobWF4LnByaW50PSIxMDAiKQ0Kb3B0c19jaHVuayRzZXQoZWNobz1UUlVFLA0KCSAgICAgICAgICAgICBjYWNoZT1UUlVFLA0KICAgICAgICAgICAgICAgcHJvbXB0PUZBTFNFLA0KICAgICAgICAgICAgICAgdGlkeT1UUlVFLA0KICAgICAgICAgICAgICAgY29tbWVudD1OQSwNCiAgICAgICAgICAgICAgIG1lc3NhZ2U9RkFMU0UsDQogICAgICAgICAgICAgICB3YXJuaW5nPUZBTFNFKQ0Kb3B0c19rbml0JHNldCh3aWR0aD0xMDApDQpgYGANCg0KDQpMaWNlbsOnYSB7LSNMaWNlbsOnYX0NCj09PT09PT09PT09PT09PT09PT0NCg0KVGhpcyB3b3JrIGlzIGxpY2Vuc2VkIHVuZGVyIHRoZSBDcmVhdGl2ZSBDb21tb25zIEF0dHJpYnV0aW9uLVNoYXJlQWxpa2UgNC4wIEludGVybmF0aW9uYWwgTGljZW5zZS4gVG8gdmlldyBhIGNvcHkgb2YgdGhpcyBsaWNlbnNlLCB2aXNpdCA8aHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnktc2EvNC4wLz4gb3Igc2VuZCBhIGxldHRlciB0byBDcmVhdGl2ZSBDb21tb25zLCBQTyBCb3ggMTg2NiwgTW91bnRhaW4gVmlldywgQ0EgOTQwNDIsIFVTQS4NCg0KIVtMaWNlbnNlOiBDQyBCWS1TQSA0LjBdKGh0dHBzOi8vbWlycm9ycy5jcmVhdGl2ZWNvbW1vbnMub3JnL3ByZXNza2l0L2J1dHRvbnMvODh4MzEvcG5nL2J5LXNhLnBuZyl7IHdpZHRoPTI1JSB9DQoNCkNpdGHDp8OjbyB7LSNDaXRhw6fDo299DQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQ0KDQpTdWdlc3TDo28gZGUgY2l0YcOnw6NvOg0KRklHVUVJUkVETywgQWRyaWFubyBNYXJjb3MgUm9kcmlndWVzLiBFY29ub21pYSBSZWdpb25hbDogcmVwcm9kdcOnw6NvIGRlIG1lZGlkYXMgZGUgTFEgY29uZm9ybWUgSGFkZGFkICgyMDE4KSBlbSBSLiBDYW1wbyBHcmFuZGUtTVMsQnJhc2lsOiBSU3R1ZGlvL1JwdWJzLCAyMDIwLiBEaXNwb27DrXZlbCBlbSA8aHR0cDovL3JwdWJzLmNvbS9hbXJvZmkvbWVkaWRhc19RTF9oYWRkYWRfcmVnaW9uYWw+LiANCg0KU2NyaXB0IHBhcmEgcmVwcm9kdcOnw6NvIChzZSB1dGlsaXphciwgY2l0YXIgY29tbyBhY2ltYSkNCj09PT09PT09PT09PT09PT09PQ0KDQpgYGB7ciBlY2hvPUZBTFNFfQ0KIyBhIHNpbmdsZSBmaWxlDQp4ZnVuOjplbWJlZF9maWxlKCcyMDIwLTA0LTI4LWVjb25vbWlhLXJlZ2lvbmFsLXJlcHJvZHXDp8Ojby1kZS1tZWRpZGFzLWRlLWxxLlJtZCcpDQpgYGANCg0KSW50cm9kdcOnw6NvDQo9PT09PT09PT09PT09PT09PT09DQoNCg0KQSBpZGVpYSBiw6FzaWNhIGRlc3RlIGFycXVpdm8gw6kgb3JpZW50YXIgb3MgcHJvY2VkaW1lbnRvcyBwYXJhIG8NCmPDoWxjdWxvIGRvcyBpbmRpY2Fkb3JlcyBkZSBhbsOhbGlzZSByZWdpb25hbCBhIHNhYmVyOg0KDQoxLiBRdW9jaWVudGUgTG9jYWNpb25hbCAoUUwpDQoNCg0KUGFyYSBlc3NlIGV4ZXJjw61jaW8sIHRlbnRhcmVtb3MgcmVwcm9kdXppciBvcyByZXN1bHRhZG9zIGRhcyBub3RhcyBkZSBhdWxhIGRvIFByb2YuIEVkdWFyZG8gQW1hcmFsIEhhZGRhZCAoRkVBLVVTUCkgdXRpbGl6YW5kbyBvIFIgKEhBRERBRCwgMjAxOCkuIE8gbGluayBwYXJhIG9zIGRhZG9zIGRlIGVtcHJlZ28gZXN0w6NvIGVtIDxodHRwOi8vd3d3LnVzcC5ici9uZXJldXMvd3AtY29udGVudC91cGxvYWRzL0VtcHJlZ28tTXVuaWMlQzMlQURwaW9zLTE5OTJfMjAwMi0yNi1jYXRlZ29yaWFzLnhsc3g+LiBBIGJhc2UgZGUgZGFkb3MgZGUgdmFsb3JlcyBkYSBwcm9kdcOnw6NvIGRhcyByZWdpw7VlcyBlIHNldG9yZXMgZXN0w6NvIGVtIDxodHRwOi8vd3d3LnVzcC5ici9uZXJldXMvd3AtY29udGVudC91cGxvYWRzL0NsYXNzaWNfTWVhc3VyZXNfSXNhcmQueGxzeD4uICAgIA0KICAgIA0KT3Mgc2xpZGVzIGRlIGF1bGEgY29udGVuZG8gYWxndW1hcyBvcmllbnRhw6fDtWVzIHBhcmEgb3MgY8OhbGN1bG9zIGVtIEV4Y2VsIGVzdMOjbyBlbTogPGh0dHA6Ly93d3cudXNwLmJyL25lcmV1cy93cC1jb250ZW50L3VwbG9hZHMvQXVsYV8xX01lZGlkYXMzLnBkZj4sIF9BdWxhIDE6IE1lZGlkYXMgZGUNCkNvbmNlbnRyYcOnw6NvLCBFc3BlY2lhbGl6YcOnw6NvIGUgTG9jYWxpemHDp8Ojb18uIE9zIGRhZG9zIGZvcmFtIGJhaXhhZG9zIGUgYXJtYXplbmFkb3Mgbm8gbWVzbW8gZGlyZXTDs3JpbyBkbyBwcm9qZXRvIGEgZmltIGRlIGFnaWxpemFyIGEgcm90aW5hIGRvIFJNYXJrZG93bi4gRW50cmV0YW50bywgb3MgdXN1w6FyaW9zIHBvZGVtIG9idMOqLWxvcyBmYXplbmRvIHVzbyBkbyBSIGNvbmZvcm1lIHNlZ3VlLg0KDQpgYGB7ciBkYWRvc19WUlAsIGV2YWw9RkFMU0V9DQojIEV4ZWN1dGFyIHVtYSB2ZXogcGFyYSBiYWl4YXIgeGxzeA0KcmVxdWlyZShyZWFkeGwpDQpzdXBwcmVzc01lc3NhZ2VzKHN1cHByZXNzV2FybmluZ3MobGlicmFyeShodHRyKSkpDQp1cmwxPC0NCiAgJ2h0dHA6Ly93d3cudXNwLmJyL25lcmV1cy93cC1jb250ZW50L3VwbG9hZHMvQ2xhc3NpY19NZWFzdXJlc19Jc2FyZC54bHN4Jw0KZG93bmxvYWQuZmlsZSh1cmwxLGRlc3RmaWxlID0gIkNsYXNzaWNfTWVhc3VyZXNfSXNhcmQueGxzeCIsbW9kZSA9ICJ3YiIpDQpgYGANCg0KQXDDs3MgcmVhbGl6YXIgbyBkb3dubG9hZCwgIGNoYW1laSBvcyBkYWRvcyBwYXJhIG8gUlN0dWRpbyBhIHBhcnRpciBkYSBwbGFuaWxoYSAueGxzeCBlIGZpeiB1bSBkcHV0KCkgZG8gb2JqZXRvIHBhcmEgY29sb2PDoS1sbyAiKmVtYmVkZGVkKiIgcGFyYSB2b2PDqnMuIMOJIHPDsyBiYWl4YXIgbyBzY3JpcHQgZGVzdGUgTWFya2Rvd24gZSB2b2PDqnMgY29uc2VndWlyw6NvIGFjZXNzbyBkaXJldG8gYW9zIGRhZG9zLiBFbGVzIGZpY2Fyw6NvICJvbWl0aWRvcyIgZGVzdGUgcG9zdCBhcGVuYXMgcGFyYSBlY29ub21pemFyIGVzcGHDp28gZSBkYXIgbWFpb3IgY2xhcmV6YSBhbyB0ZXh0by4gDQoNCmBgYHtyLCBldmFsPUZBTFNFfQ0KcmVxdWlyZShyZWFkeGwpDQpDbGFzc2ljX01lYXN1cmVzX0lzYXJkIDwtIHJlYWRfZXhjZWwoIkNsYXNzaWNfTWVhc3VyZXNfSXNhcmQueGxzeCIsIA0KICAgIHNoZWV0ID0gIkJhc2ljIGRhdGEiKQ0KYGBgDQoNCmBgYHtyIGRwdXQsaW5jbHVkZT1GQUxTRX0NCiNkcHV0KENsYXNzaWNfTWVhc3VyZXNfSXNhcmQpDQpDbGFzc2ljX01lYXN1cmVzX0lzYXJkPC0NCiAgc3RydWN0dXJlKGxpc3QoLi4uMSA9IGMoTkEsIE5BLCAiQWx0byBkYSBTZXJyYSBkbyBCb3R1Y2FyYWkiLCANCiJBbHRvIEphY3XDrSIsICJDYW1wYW5oYSIsICJDZW50cmFsIiwgIkNlbnRybyBTdWwiLCAiRnJvbnRlaXJhIE5vcm9lc3RlIiwgDQoiRnJvbnRlaXJhIE9lc3RlIiwgIkhvcnTDqm5zaWFzIiwgIkphY3XDrSBDZW50cm8iLCAiTGl0b3JhbCIsICJNw6lkaW8gQWx0byBVcnVndWFpIiwgDQoiTWV0cm9wb2xpdGFubyBkbyBEZWx0YSBkbyBKYWN1w60iLCAiTWlzc8O1ZXMiLCAiTm9yZGVzdGUiLCAiTm9yb2VzdGUgQ29sb25pYWwiLCANCiJOb3J0ZSIsICJQYXJhbmhhbmEtRW5jb3N0YSBkYSBTZXJyYSIsICJQcm9kdcOnw6NvIiwgIlNlcnJhIiwgIlN1bCIsIA0KIlZhbGUgZG8gQ2HDrSIsICJWYWxlIGRvIFJpbyBkb3MgU2lub3MiLCAiVmFsZSBkbyBSaW8gUGFyZG8iLCANCiJWYWxlIGRvIFRhcXVhcmkiLCBOQSwgIlRvdGFsIGRvIFJpbyBHcmFuZGUgZG8gU3VsIiksIGBHUlAgKCQpYCA9IGMoTkEsIA0KTkEsICJSZWdpb24gMSIsICJSZWdpb24gMiIsICJSZWdpb24gMyIsICJSZWdpb24gNCIsICJSZWdpb24gNSIsIA0KIlJlZ2lvbiA2IiwgIlJlZ2lvbiA3IiwgIlJlZ2lvbiA4IiwgIlJlZ2lvbiA5IiwgIlJlZ2lvbiAxMCIsIA0KIlJlZ2lvbiAxMSIsICJSZWdpb24gMTIiLCAiUmVnaW9uIDEzIiwgIlJlZ2lvbiAxNCIsICJSZWdpb24gMTUiLCANCiJSZWdpb24gMTYiLCAiUmVnaW9uIDE3IiwgIlJlZ2lvbiAxOCIsICJSZWdpb24gMTkiLCAiUmVnaW9uIDIwIiwgDQoiUmVnaW9uIDIxIiwgIlJlZ2lvbiAyMiIsICJSZWdpb24gMjMiLCAiUmVnaW9uIDI0IiwgTkEsICJUb3RhbCINCiksIFQwID0gYygiQWdyb3BlY3XDoXJpYSIsICJTZWN0b3IgMSIsICIyMjAwNTMiLCAiMzcxNzAwIiwgIjI3MjY1NyIsIA0KIjY1Nzg4NSIsICIyNTgyMjUiLCAiNDIzMDI1IiwgIjk5MTM4MSIsICIxNTA4NzQiLCAiMjkzMjYzIiwgIjE4ODM2NCIsIA0KIjM5ODk5NiIsICIyNzk1OTgiLCAiNjcwMDM1IiwgIjM5MDQ0MyIsICI1NzU5MTAiLCAiNDA2MjE2IiwgIjQ0NDM3IiwgDQoiNzA3MjExIiwgIjY5OTEzNSIsICI3NjY0NjQiLCAiMjI2Mzk3IiwgIjQwNDk4IiwgIjYyMzc4OSIsICI0NDY4MjUiLCANCk5BLCAiMTAxMDMzODEiKSwgLi4uNCA9IGMoIkluZMO6c3RyaWEiLCAiU2VjdG9yIDIiLCAiMTMwMTg2IiwgDQoiMTgxNTE3IiwgIjM1MzAyNyIsICIzNjgxOTkiLCAiNDQyMzYzIiwgIjM5MDk4NyIsICI4MjE0NDAiLCAiNDUwMDA5IiwgDQoiMTY5NzUzIiwgIjk4Mjg4NCIsICI2NDI3NCIsICI3NjkxNzk0IiwgIjEzMjQyNCIsICI4MDIyOSIsICIyOTE5MDMiLCANCiIyODc1OTUiLCAiMTA5NzU1MiIsICI2MTU4OTUiLCAiNDg3NjI1OSIsICIyNDYwMjc2IiwgIjU1MjY0NiIsIA0KIjk4MDIzNjMiLCAiMjAxMzM5MyIsICIxNjEzNzI2IiwgTkEsICIzNTg3MDY5NCIpLCAuLi41ID0gYygiQ29tw6lyY2lvIiwgDQoiU2VjdG9yIDMiLCAiNTE5NTEiLCAiMTkzNDkwIiwgIjE1MTY5NyIsICIzNDk3NDciLCAiMTEyOTMwIiwgDQoiMTc0OTM1IiwgIjMzOTM2NSIsICIxMDExMDIiLCAiODA2NzQiLCAiMTE2ODIzIiwgIjcwMDM0IiwgIjI2OTUxMzIiLCANCiIyMTg3MzYiLCAiNzYyMzUiLCAiMzE2ODg3IiwgIjE3NTA5NiIsICI3MDE0MCIsICI0ODM3MDQiLCAiNTkwNjYxIiwgDQoiNjIzNzI0IiwgIjc0MzY1IiwgIjE0MzIwOTEiLCAiMjQyODAwIiwgIjE5MTM1NyIsIE5BLCAiODkzMzY3NiINCiksIC4uLjYgPSBjKCJTZXJ2acOnb3MiLCAiU2VjdG9yIDQiLCAiMjU3Mjg4IiwgIjUxMjExNiIsICI1OTQwODMiLCANCiIxMTAxODQxIiwgIjYwMzY1OSIsICI1OTc5MjYiLCAiMTM2MjAwMCIsICI0NDg0NDQiLCAiMzc1NjkxIiwgDQoiNTkzNTI0IiwgIjQ0Nzk2OCIsICI2MjE5NjE0IiwgIjcyNDY1NiIsICIzMjg1MDciLCAiOTAwOTM4IiwgDQoiNTQwMDc4IiwgIjQxNDc2NSIsICIxMDg3Mzc5IiwgIjIxOTAwNjAiLCAiMjEwNzA5NyIsICI0MDQ0NDMiLCANCiIzNDYzODMwIiwgIjk5MTQzOCIsICI4NTMwMDMiLCBOQSwgIjI3MTIwMzQ4IiksIC4uLjcgPSBjKCJUb3RhbCIsIA0KIlRvdGFsIiwgIjY1OTQ3OCIsICIxMjU4ODIzIiwgIjEzNzE0NjQiLCAiMjQ3NzY3MiIsICIxNDE3MTc3IiwgDQoiMTU4Njg3MyIsICIzNTE0MTg2IiwgIjExNTA0MjkiLCAiOTE5MzgxIiwgIjE4ODE1OTUiLCAiOTgxMjcyIiwgDQoiMTY4ODYxMzgiLCAiMTc0NTg1MSIsICI4NzU0MTQiLCAiMjA4NTYzOCIsICIxNDA4OTg1IiwgIjE2MjY4OTQiLCANCiIyODk0MTg5IiwgIjgzNTYxMTUiLCAiNTk1NzU2MSIsICIxMjU3ODUxIiwgIjE0NzM4NzgyIiwgIjM4NzE0MjAiLCANCiIzMTA0OTExIiwgTkEsICI4MjAyODA5OSIpLCAuLi44ID0gYyhOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCANCk5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCBOQSwgTkEsIE5BLCANCk5BLCBOQSwgTkEsIE5BLCBOQSwgTkEpLCBUMSA9IGMoIkFncm9wZWN1w6FyaWEiLCAiU2VjdG9yIDEiLCAiMzI1OTEwIiwgDQoiNjAwOTAwIiwgIjQ5NjY2NSIsICI5NjMyODkiLCAiNDkyNjU2IiwgIjYwNzMzNSIsICIxNjYwNzc5IiwgDQoiMzE4ODA0IiwgIjQwMTU1MSIsICIyODA1MDMiLCAiNjg4MDQwIiwgIjIxNjA3MiIsICI3MDA0MTUiLCAiNjgwOTgzIiwgDQoiOTEyNzQ2IiwgIjU4MDYxOSIsICI5MjUxMiIsICIxMzI5OTI3IiwgIjE1ODIwMjIiLCAiMTAyMTc4OSIsIA0KIjI2NjQ4MyIsICI1NjM3MSIsICIxMDQ1NDY0IiwgIjg0ODQyNyIsIE5BLCAiMTYxNzAyNjIiKSwgLi4uMTAgPSBjKCJJbmTDunN0cmlhIiwgDQoiU2VjdG9yIDIiLCAiNzQwOTgiLCAiMzE2ODY4IiwgIjQxOTY5OCIsICI0MTA5MjciLCAiNTQ5ODQ3IiwgDQoiODEwMjg0IiwgIjU3NDk2MSIsICI0MDIwMTUiLCAiMTgyODc1IiwgIjExMTg2NyIsICI3MzY2OCIsICIxMDU5NDI4OSIsIA0KIjE5NDM2OSIsICIxNDQwMDIiLCAiNTUwNzgxIiwgIjUxMTg4MSIsICIxMTQ1MjI5IiwgIjEyOTI2NjYiLCANCiI2ODM5NjAwIiwgIjIzMzA3MzIiLCAiMTEwMTk2MyIsICIxMTE0OTE2MSIsICIyNDYwNDg2IiwgIjIxNjM0OTkiLCANCk5BLCAiNDQ0MDU3NjYiKSwgLi4uMTEgPSBjKCJDb23DqXJjaW8iLCAiU2VjdG9yIDMiLCAiNjAwOTgiLCAiMjI1MjU2IiwgDQoiMTEwNzUwIiwgIjMzNzI0OCIsICIxMDk3OTQiLCAiMTc1OTYxIiwgIjMwNDkxMSIsICIxMjEzNDAiLCAiNjcyNDEiLCANCiIxMzA1MTEiLCAiNjk4ODkiLCAiMzExMzkzNSIsICIxODkyMTUiLCAiOTEyMzQiLCAiMzMxMzU1IiwgIjIyNzIxNyIsIA0KIjYxNTA4IiwgIjU2MDI5OSIsICI2NzQzOTciLCAiNTA0ODAxIiwgIjgyNTgzIiwgIjE3ODMwOTgiLCAiMjE0NDg2IiwgDQoiMjIzMzYzIiwgTkEsICI5NzcwNDkwIiksIC4uLjEyID0gYygiU2VydmnDp29zIiwgIlNlY3RvciA0IiwgIjM0Njc3NiIsIA0KIjYwNDQwNiIsICI3NTYxMDciLCAiMTY5MzQ0NCIsICI4MzA5NjciLCAiNzM4NDA1IiwgIjE4MjkzNDUiLCANCiI3MjkwMDAiLCAiNDc3ODgzIiwgIjEwNTY5NTMiLCAiNjE0NjIyIiwgIjg5MjA4MDciLCAiODY5MDExIiwgDQoiNDcyMTk5IiwgIjEwNzQzNTgiLCAiNzk2MDU3IiwgIjcwMjcyNSIsICIxNTM4MzQ1IiwgIjMzMjUzOTMiLCANCiIyNzM3Njc2IiwgIjYxMjg4MiIsICI0NzAwMTA4IiwgIjE0NjkyMjgiLCAiMTIyNzUzMiIsIE5BLCAiMzgxMjQyMjkiDQopLCAuLi4xMyA9IGMoIlRvdGFsIiwgIlRvdGFsIiwgIjgwNjg4MiIsICIxNzQ3NDMwIiwgIjE3ODMyMjAiLCANCiIzNDA0OTA4IiwgIjE5ODMyNjQiLCAiMjMzMTk4NSIsICI0MzY5OTk2IiwgIjE1NzExNTkiLCAiMTEyOTU1MCIsIA0KIjE1Nzk4MzQiLCAiMTQ0NjIxOSIsICIyMjg0NTEwMyIsICIxOTUzMDEwIiwgIjEzODg0MTgiLCAiMjg2OTI0MCIsIA0KIjIxMTU3NzQiLCAiMjAwMTk3NCIsICI0NzIxMjM3IiwgIjEyNDIxNDEyIiwgIjY1OTQ5OTgiLCAiMjA2MzkxMSIsIA0KIjE3Njg4NzM4IiwgIjUxODk2NjQiLCAiNDQ2MjgyMSIsIE5BLCAiMTA4NDcwNzQ3IikpLCByb3cubmFtZXMgPSBjKE5BLCANCi0yOEwpLCBjbGFzcyA9IGMoInRibF9kZiIsICJ0YmwiLCAiZGF0YS5mcmFtZSIpKQ0KYGBgDQogIA0KYGBge3J9DQpEVDo6ZGF0YXRhYmxlKENsYXNzaWNfTWVhc3VyZXNfSXNhcmQpDQpgYGANCg0KYGBge3IgZGFkb3NfaGFkZGFkX1FMLCBmaWcuYWxpZ24gPSAiY2VudGVyIiwgb3V0LndpZHRoID0gIjgwJSIsIGZpZy5jYXAgPSAnVGVsYSBkb3MgZGFkb3MgYsOhc2ljb3MgcGFyYSByZWFsaXphciBRdW9jaWVudGUgTG9jYWNpb25hbCcsIGZpZy5zdWJjYXAgPSAnRm9udGU6IERhZG9zIGLDoXNpY29zIGRlIEhhZGRhZCAobm90YXMgZGUgYXVsYSkuJyxlY2hvPUZBTFNFfQ0Ka25pdHI6OmluY2x1ZGVfZ3JhcGhpY3MoImFycXVpdm9zL2Jhc2ljX2RhdGFfaGFkZGFkLnBuZyIpDQpgYGANCg0KDQpQcm9jZWRpbWVudG9zDQo9PT09PT09PT09PT09PT09PT09PT09DQoNCg0KIyMgUXVvY2llbnRlIExvY2FjaW9uYWwgKFFMKQ0KDQoNCk8gUXVvY2llbnRlIExvY2FjaW9uYWwgKFFMKSDDqSB1bWEgbWVkaWRhIHF1ZSBkw6EgYSBpbmZvcm1hw6fDo28gZGUgcXVhbCBvIHNldG9yIG1haXMgcmVwcmVzZW50YWRvIG5vIG11bmljw61waW8gKHJlZ2nDo28gZGUgYW7DoWxpc2UpIHF1YW5kbyBjb21wYXJhZG8gY29tIG8gbWVzbW8gc2V0b3Igbm8gZXN0YWRvIChyZWdpw6NvIGRlIHJlZmVyw6puY2lhKS4gRm9pIGVsYWJvcmFkbyBpbmljaWFsbWVudGUgcG9yIEhhaWcgKDE5MjgpIGUgdmVtIHNlbmRvIG11aXRvIHV0aWxpemFkbyBlbSB2w6FyaWFzIGFuw6FsaXNlcyByZWdpb25haXMgZSBkZSBsb2NhbGl6YcOnw6NvIGluZHVzdHJpYWwuICBUYW1iw6ltIGNoYW1hZG8gZGUgw41uZGljZSBkZSBgUmV2ZWFsZWQgQ29tcGFyYXRpdmUgQWR2YW50YWdlYCAoUkNBIOKAkyBvdSBWYW50YWdlbSBjb21wYXJhdGl2YSByZXZlbGFkYSwgVkNSKSBzZWd1aW5kbyBCYWxhc2EgKDE5NjUpLCBvdSDDrW5kaWNlIGRlIEhvb3Zlci1CYWxhc3NhLiAgICANCg0KQSBleHByZXNzw6NvIGLDoXNpY2Egw6k6DQoNCiQkDQpRTF97a2l9PVxsZWZ0KCB7XGZyYWN7e1xmcmFje3t7RV97a2l9fX19e0VfaX19fXt7XGZyYWN7e3tFX2t9fX17RX19fX0gXHJpZ2h0KQ0KJCQNCmVtIHF1ZTogJHtFX3traX19JCDDqSBvIGVtcHJlZ28gbm8gc2V0b3IgJGskICBuYSBsb2NhbGlkYWRlIGRlIGFuw6FsaXNlICRpJDsgJHtFX2l9JCDDqSBvIGVtcHJlZ28gdG90YWwgbmEgbG9jYWxpZGFkZSBkZSBhbsOhbGlzZSAkaSQ7ICR7RV9rfSQgw6kgbyBlbXByZWdvIG5vIHNldG9yICRrJCBkYSBsb2NhbGlkYWRlIGRlIHJlZmVyw6puY2lhOyBlICRFJCDDqSBvIGVtcHJlZ28gdG90YWwgZGEgbG9jYWxpZGFkZSBkZSByZWZlcsOqbmNpYS4gICAgIA0KDQpBIGlkZWlhIMOpIHNhYmVyIHNlIG5hIGxvY2FsaWRhZGUgZGUgYW7DoWxpc2UsIGEgcHJvcG9yw6fDo28gZG8gZW1wcmVnbyBkbyBzZXRvciDDqSBtYWlvciBvdSBtZW5vciBxdWUgZXN0YSBwcm9wb3LDp8OjbyBubyBsb2NhbCBkZSByZWZlcsOqbmNpYS4gQXNzaW0sIHNlIG8gcmVzdWx0YWRvIGZvciBtYWlvciBxdWUgaHVtICRcbGVmdCgge1FMX3traX19XGd0IDFccmlnaHQpJCwgZW50w6NvIGRpei1zZSBxdWUgYSBsb2NhbGlkYWRlIGRlIGFuw6FsaXNlIMOpIHJlbGF0aXZhbWVudGUgbWFpcyBlc3BlY2lhbGl6YWRhIG5lc3NlIHNldG9yIHF1ZSBhIGxvY2FsaWRhZGUgZGUgcmVmw6puY2lhLiBEZSBvdXRybyBsYWRvLCB2YWxvcmVzIG1lbm9yZXMgcXVlIGEgdW5pZGFkZSAgJFxsZWZ0KCB7UUxfe2tpfX1cbHQgMVxyaWdodCkkIGluZGljYW0gcXVlIGEgbG9jYWxpZGFkZSBhbmFsaXNhZGEgdGVtIHJlcHJlc2VudGHDp8OjbyBtZW5vciBkZXN0ZSBzZXRvciBkbyBxdWUgYSByZXByZXNlbnRhw6fDo28gZGVzdGUgbmEgbG9jYWxpZGFkZSBkZSByZWZlcsOqbmNpYS4gICAgDQogICAgDQpBIHJlcHJlc2VudGHDp8OjbyBkZSBIYWRkYWQgKDIwMTgpIMOpIG5vIG1lc21vIHNlbnRpZG8sIGFwZW5hcyBhIGRpZmVyZW7Dp2Egw6kgcXVlIGludsOpcyBkZSBtZW5jaW9uYXIgbyBlbXByZWdvIGNvbW8gdmFyacOhdmVsLCBlbGUgY29sb2NhIHByb2R1w6fDo28uIElzc28gw6kgcmVhbGl6YWRvIGVtIHbDoXJpb3MgZXN0dWRvcywgcHJpbmNpcGFsbWVudGUgbm9zIGRvIHRpcG8gaW5zdW1vLXByb2R1dG8sIHF1YW5kbyBzZSBjb2xvY2FtIG9zIHZhbG9yZXMgZGUgdmFsb3IgYWRpY2lvbmFkby4gRW0gYWxndW5zIGVzdHVkb3MgZW5jb250cmFtb3MgdGFtYsOpbSB2ZXJzw7VlcyBjb20gYSBwcm9kdcOnw6NvIGFncsOtY29sYSwgb3UgYWluZGEgb3MgdmFsb3JlcyBkZSBleHBvcnRhw6fDtWVzIHBhcmEgYSBhbsOhbG9nYSBkYSB2YW50YWdlbSBjb21wYXJhdGl2YSByZXZlbGFkYSBkZSBCYWxhc3NhLiBBIGbDs3JtdWxhIGRhIG5vdGEgZGUgYXVsYSBkZSBIYWRkYWQgKDIwMTgpLCBwb3J0YW50bywgw6kgYSBtZXNtYSwgYXBlbmFzIGNvbSBpbmRpY2HDp8OjbyBhbGfDqWJyaWNhIGFsdGVyYWRhIHBhcmEgJFJfaSQgZSAkTl9pJCBwYXJhIGluZGljYXIgYSByZWdpw6NvIChSKSBlIG8gcGHDrXMgKE4pIG5vIHNldG9yIGksIGEgc2FiZXI6DQoNCiQkDQpRTF97aX09XGxlZnQoIHtcZnJhY3t7XGZyYWN7e3tSX3tpfX19fXtOX2l9fX17e1xmcmFje3t7Un19fXtOfX19fSBccmlnaHQpPVxsZWZ0KCB7XGZyYWN7e1xmcmFje3t7Ul97aX19fX17Un19fXt7XGZyYWN7e3tOX2l9fX17Tn19fX0gXHJpZ2h0KQ0KJCQNCg0KZW0gcXVlOiAke1JfaX0kIMOpIGEgcHJvZHXDp8OjbyBubyBzZXRvciAkaSQgIG5hIGxvY2FsaWRhZGUgZGUgYW7DoWxpc2U7ICR7Un0kIMOpIGEgcHJvZHXDp8OjbyB0b3RhbCBuYSBsb2NhbGlkYWRlIGRlIGFuw6FsaXNlOyAke05faX0kIMOpIGEgcHJvZHXDp8OjbyBubyBzZXRvciAkaSQgZGEgbG9jYWxpZGFkZSBkZSByZWZlcsOqbmNpYSAoZG8gcGHDrXMpOyBlICROJCDDqSBhIHByb2R1w6fDo28gdG90YWwgZGEgbG9jYWxpZGFkZSBkZSByZWZlcsOqbmNpYSAoZG8gcGHDrXMpLiAgICANCg0Kw4kgaW50ZXJlc3NhbnRlIG9saGFyIGVzdGFzIHJhesO1ZXMgKG91IF9zaGFyZXNfKSwgcG9pcyBubyBjw6FsY3VsbyBleGVtcGxpZmljYWRvIGVtIEV4Y2VsLCBmaWNhcsOjbyBldmlkZW5jaWFkYXMgYXMgb3BlcmHDp8O1ZXMgbWF0ZW3DoXRpY2FzLiANCg0KDQojIyMgRWNvbkdlbyBkZSBCYWxsYW5kICgyMDE3KQ0KDQpFc3RhIHJvdGluYSBwb2RlIHNlciByZXN1bWlkYSBmYXplbmRvIG8gdXNvIGRvIHBhY290ZSBgRWNvbkdlb2AsIGUgYSBmdW7Dp8OjbyBgUkNBYCBwYXJhIG9idGVyIG8gUXVvY2llbnRlIExvY2FjaW9uYWwgKHNpbWlsYXIgYW8gKlJldmVhbGVkIENvbXBhcmF0aXZlIEFkdmFudGFnZSogLSBSQ0EgLSDDrW5kaWNlIGRlIEJhbGFzc2EsIDE5NjUpLiBPIHBhY290ZSBwb2RlIHNlciBpbnN0YWxhZG8gZmF6ZW5kbyBjb21vIGEgc2VndWlyOg0KDQpgYGANCmluc3RhbGwucGFja2FnZXMoImRldnRvb2xzIikNCmxpYnJhcnkoZGV2dG9vbHMpDQpkZXZ0b29sczo6aW5zdGFsbF9naXRodWIoIlBBQmFsbGFuZC9FY29uR2VvIiwgZm9yY2UgPSBUKQ0KYGBgDQoNCkVsYSB1dGlsaXphIHVtYSBtYXRyaXogY29udGVuZG8gb3MgZGFkb3Mgbm8gZm9ybWF0byBhYmFpeG8sIGVtIHF1ZSAkKEkxLEkyLEkzKSQgc8OjbyBhcyBpbmTDunN0cmlhcyBvdSBzZXRvcmVzLCBwYXJhIG9zIG11bmljw61waW9zICQoUjEsUjIsUjMpJC4NCg0KYGBgDQptdW5pY2lwaW8gIHxJMSAgICAgICB8STIgICAgICB8IEkzDQotLS0tLS0tLS0tLXwtLS0tLS0tLS18LS0tLS0tLS18LS0tLS0tLS0tLS0tDQogUjEgICAgICAgIHwxMDAgICAgICB8MTUwICAgICB8IDE2NQ0KIFIyICAgICAgICB8MTMwICAgICAgfDQwMCAgICAgfCAyMjANCiBSMyAgICAgICAgfDIwMCAgICAgIHwxMjAwICAgIHwgMjANCmBgYA0KDQpQcmVwYXJhcmVtb3Mgb3MgZGFkb3MgcGFyYSBvcyBjw6FsY3Vsb3MsIGNvbnN0cnVpbmRvIHVtYSBtYXRyaXogYG1hdGAgcGFyYSBvcyBkYWRvcyBkZSBtZWRpZGFzIGNsw6Fzc2ljYXMgZGUgSXNhcmQ6DQoNCmBgYHtyfQ0KbGlicmFyeShFY29uR2VvKQ0KIyMgZ2VyYXIgYSBtYXRyaXogaW5kdXN0cmlhbCBkYSByZWdpw6NvLCBwYXJhIFQwDQpzZXQuc2VlZCgzMSkNCm1hdF8wIDwtIGFzLm1hdHJpeChDbGFzc2ljX01lYXN1cmVzX0lzYXJkWzM6MjYsMzo2XSkNCnJvd25hbWVzKG1hdF8wKTwtIGMgKCJSMSIsICJSMiIsICJSMyIsICJSNCIsICJSNSIsIlI2IiwgIlI3IiwgIlI4IiwgDQogICAgICAgICAgICAgICAgICAgIlI5IiwgIlIxMCIsIlIxMSIsIlIxMiIsIlIxMyIsICJSMTQiLCAiUjE1IiwgIlIxNiIsDQogICAgICAgICAgICAgICAgICAgIlIxNyIsIlIxOCIsICJSMTkiLCAiUjIwIiwgIlIyMSIsICJSMjIiLCJSMjMiLCJSMjQiKQ0KY29sbmFtZXMobWF0XzApPC1jKCJzZXRvcjEiLCJzZXRvcjIiLCJzZXRvcjMiLCJzZXRvcjQiKQ0KYGBgDQoNCk8gY8OhbGN1bG8gZG8gUXVvY2llbnRlIExvY2FjaW9uYWwgKFFMID0gUkNBKSBzZXLDoSBmYXplbmRvOg0KDQpgYGB7cn0NCmNsYXNzKG1hdF8wKSA8LSAibnVtZXJpYyINClFMX1QwPC1yb3VuZChSQ0EobWF0XzApLGRpZ2l0cyA9IDQpDQpgYGANCg0KVm9jw6ogcG9kZSBjb21wYXJhciBlc3NlIHJlc3VsdGFkbyBjb20gbyBkYSBwbGFuaWxoYSBMUTEsIG9uZGUgb3MgY8OhbGN1bG9zIGZvcm1hIGZlaXRvcyBlbSBmw7NybXVsYXMgZG8gRXhjZWwuIFNpbWlsYXJtZW50ZSBmaXplbW9zIHBhcmEgVDEgZSBkZXBvaXMgY29sb2NhbW9zIHR1ZG8gZW0gdW1hIHPDsyB0YWJlbGEuICAgIA0KDQpgYGB7cn0NCmxpYnJhcnkoRWNvbkdlbykNCiMjIGdlcmFyIGEgbWF0cml6IGluZHVzdHJpYWwgZGEgcmVnacOjbywgcGFyYSBUMA0Kc2V0LnNlZWQoMzEpDQptYXRfMSA8LSBhcy5tYXRyaXgoQ2xhc3NpY19NZWFzdXJlc19Jc2FyZFszOjI2LDk6MTJdKQ0Kcm93bmFtZXMobWF0XzEpPC0gYyAoIlIxIiwgIlIyIiwgIlIzIiwgIlI0IiwgIlI1IiwiUjYiLCAiUjciLCAiUjgiLCANCiAgICAgICAgICAgICAgICAgICAiUjkiLCAiUjEwIiwiUjExIiwiUjEyIiwiUjEzIiwgIlIxNCIsICJSMTUiLCAiUjE2IiwNCiAgICAgICAgICAgICAgICAgICAiUjE3IiwiUjE4IiwgIlIxOSIsICJSMjAiLCAiUjIxIiwgIlIyMiIsIlIyMyIsIlIyNCIpDQpjb2xuYW1lcyhtYXRfMSk8LWMoInNldG9yMSIsInNldG9yMiIsInNldG9yMyIsInNldG9yNCIpDQpjbGFzcyhtYXRfMSkgPC0gIm51bWVyaWMiDQpRTF9UMTwtcm91bmQoUkNBKG1hdF8xKSxkaWdpdHMgPSA0KQ0KYGBgDQoNCmBgYHtyfQ0KTFExPC1jYmluZChRTF9UMCxRTF9UMSkNCmtuaXRyOjprYWJsZShMUTEsY2FwdGlvbiA9ICJRdW9jaWVudGUgTG9jYWNpb25hbCBlbSBUMCBlIFQxIikNCmBgYA0KDQpFIGFnb3JhIHJlcHJvZHV6aW1vcyBhIHRlbGEgZG8gRXhjZWwsIHBhc3RhICJMUTEiLCBwcmV2aWFtZW50ZSBjYWxjdWxhZG8gcGFyYSBjb25mZXLDqm5jaWEuICAgIA0KDQpgYGB7ciwgZmlnLmFsaWduID0gImNlbnRlciIsIG91dC53aWR0aCA9ICI4MCUiLCBmaWcuY2FwID0gJ1Jlc3VsdGFkb3MgZGEgcGxhbmlsaGEgZW0gTVMgRXhjZWwgcGFyYSBMUTEuJywgZmlnLnN1YmNhcCA9ICdGb250ZTogRGFkb3MgYsOhc2ljb3MgZGUgSGFkZGFkICgyMDE4KSAobm90YXMgZGUgYXVsYSkuJyxlY2hvPUZBTFNFfQ0Ka25pdHI6OmluY2x1ZGVfZ3JhcGhpY3MoImFycXVpdm9zL0xRMS5wbmciKQ0KYGBgDQoNCg0KIyMjIEV4ZW1wbGlmaWNhbmRvIHBlbG8gRXhjZWwNCg0KQWNvbXBhbmhhbmRvIGEgbm90YcOnw6NvIGRhIG5vdGEgZGUgYXVsYSBkZSBIYWRkYWQgKDIwMTgpLCBjb2xvY28gYXMgaW1hZ2VucyBkbyBwcm9jZWRpbWVudG8gcmVhbGl6YWRvIG5vIEV4Y2VsLiBQYXJhIHJlY29yZGFyLCBhIGV4cHJlc3PDo28gw6kgICAgDQokJA0KUUxfe2l9PVxsZWZ0KCB7XGZyYWN7e1xmcmFje3t7Ul97aX19fX17Tl9pfX19e3tcZnJhY3t7e1J9fX17Tn19fX0gXHJpZ2h0KT1cbGVmdCgge1xmcmFje3tcZnJhY3t7e1Jfe2l9fX19e1J9fX17e1xmcmFje3t7Tl9pfX19e059fX19IFxyaWdodCkNCiQkDQogICAgIA0KIyMjIyBMUTENCg0KUGFzc28gMTogY2FsY3VsYXIgYXMgcGFyY2VsYXMgcmVnaW9uYWlzICgqcmVnaW9uYWwgc2hhcmVzKikuIERlc3RhIGZvcm1hLCBvIHByaW1laXJvIHBhc3NvIHNlcsOhIG9idGVyICAkXGZyYWN7Ul9pfXtOX2l9JC5PIHByb2NlZGltZW50byBjb21lw6dhIGZhemVuZG8gYXMgY29udGFzIGRvIHZhbG9yIChwYXJhIGEgY8OpbHVsYSBDNCkgaWd1YWwgYSBgPSdCYXNpYyBkYXRhJyFDNC8nQmFzaWMgZGF0YSchQyQyOWAuIE91IHNlamEsIGEgY8OpbHVsYSBDNCAocHJvZHXDp8OjbyBkYSBSZWdpb24xIFNlY3RvcjEgZW0gJ0Jhc2ljIGRhdGEnKSBkaXZpZGlkbyBwZWxhIGPDqWx1bGEgQzI5IChwcm9kdcOnw6NvIFRvdGFsIFNlY3RvcjEgZW0gJ0Jhc2ljIGRhdGEnKS4gT3MgY8OhbGN1bG9zIHNlZ3VlbSBwYXJhIGFzIGRlbWFpcyBjw6lsdWxhcyBlIGVuY29yYWphbW9zIG8gbGVpdG9yIGEgZmF6ZXIgYSBjaGVjYWdlbSBuYSBwbGFuaWxoYS4NCg0KYGBge3IsIGZpZy5hbGlnbiA9ICJjZW50ZXIiLCBvdXQud2lkdGggPSAiODAlIiwgZmlnLmNhcCA9ICdDw6FsY3VsbyBkbyBzaGFyZSByZWdpb25hbC4nLCBmaWcuc3ViY2FwID0gJ0ZvbnRlOiBEYWRvcyBiw6FzaWNvcyBkZSBIYWRkYWQgKDIwMTgpIChub3RhcyBkZSBhdWxhKS4nLGVjaG89RkFMU0V9DQprbml0cjo6aW5jbHVkZV9ncmFwaGljcygiYXJxdWl2b3MvcmVnaW9uYWxfc2hhcmVzLnBuZyIpDQpgYGANCg0KTyByZXN1bHRhZG8gb2J0aWRvIG5hIGNvbHVuYSBHLCBlbSBSZWdpb25hbCBTaGFyZXMsIGluZGljYSBhIHBhcmNlbGEgZGEgcmVnacOjbyAxIG5vIHRvdGFsIChgPSdCYXNpYyBkYXRhJyFHNC8nQmFzaWMgZGF0YSchRyQyOWAgZW0gJ1JlZ2lvbmFsIFNoYXJlcycpLiAgICAgDQoNCg0KUGFzc28gMjogTyByZXN1bHRhZG8gZGEgY29sdW5hIEcgc2Vyw6EgbyBkZW5vbWluYWRvciBkYSBleHByZXNzw6NvIGRlICRRTF9pJC4gT3Ugc2VqYSwgcGFzc2Ftb3MgZW50w6NvIGFvIHBhc3NvIDIgcXVlIMOpIGVmZXRpdmFtZW50ZSBvIGPDoWxjdWxvIGRvIFFMLiAgDQoNCmBgYHtyLCBmaWcuYWxpZ24gPSAiY2VudGVyIiwgb3V0LndpZHRoID0gIjgwJSIsIGZpZy5jYXAgPSAnQ8OhbGN1bG8gZG8gcXVvY2llbnRlIGxvY2FjaW9uYWwgLSBMUTEuJywgZmlnLnN1YmNhcCA9ICdGb250ZTogRGFkb3MgYsOhc2ljb3MgZGUgSGFkZGFkICgyMDE4KSAobm90YXMgZGUgYXVsYSkuJyxlY2hvPUZBTFNFfQ0Ka25pdHI6OmluY2x1ZGVfZ3JhcGhpY3MoImFycXVpdm9zL0xRMV9mb3JtdWxhLnBuZyIpDQpgYGANCg0KTyBjw6FsY3VsbyBkbyB2YWxvciAocGFyYSBhIGPDqWx1bGEgQzQpIGlndWFsIGEgYD0nPSdSZWdpb25hbCBzaGFyZXMnIUM0LydSZWdpb25hbCBzaGFyZXMnISRHNGAuIE91IHNlamEsIGEgY8OpbHVsYSBDNCAoJ1JlZ2lvbmFsIHNoYXJlcycgZGEgUmVnaW9uMSBTZWN0b3IxKSBkaXZpZGlkbyBwZWxhIGPDqWx1bGEgRzQgZGUgJ1JlZ2lvbmFsIHNoYXJlcycgKG8gc2hhcmUgdG90YWwpLiAgICANCg0KIyMjIyBMUTINCk8gY8OhbGN1bG8gc2VtZWxoYW50ZSDDqSBmZWl0byBwb3IgSGFkZGFkICgyMDE4KSBlbSBMUTIgcGFyYSBldmlkZW5jaWFyIHF1ZSBmYXplbmRvIHBlbG8gc2hhcmUgc2V0b3JpYWwgZGFyw6EgcmVzdWx0YWRvIGlndWFsLCBtYXMgZGV2ZS1zZSBhdGVudGFyIHBlbGEgYWx0ZXJhw6fDo28gZG8gc2VudGlkby4gICAgICAgICANCg0KUGFzc28gMSBwYXJhIExRMjogTmVzdGUgTFEyLCBvIGPDoWxjdWxvIHNlcsOhIHBlbGEgbGluaGEgKG91IHNlamEsICRSX2kvUiQuIE5hIHBsYW5pbGhhICdTZWN0b3JhbCBzaGFyZXMnLCB2b2PDqiBlbmNvbnRyYXLDoSBlbSBDNCBhIGbDs3JtdWxhOiBgPSdCYXNpYyBkYXRhJyFDNC8nQmFzaWMgZGF0YSchJEc0YCwgb3Ugc2VqYSwgYWdvcmEgZGl2aWRlLXNlIGEgY29sdW5hIEMgcG9yIEcgZmF6ZW5kbyBvIF9zZWN0b3JhbCBzaGFyZV8uIEEgbGluaGEgMjkgZGFyw6EgbyBkZW5vbWluYWRvciAkTl9pL04kLiAgICANCg0KYGBge3IsIGZpZy5hbGlnbiA9ICJjZW50ZXIiLCBvdXQud2lkdGggPSAiODAlIiwgZmlnLmNhcCA9ICdDw6FsY3VsbyBkbyBzaGFyZSBzZXRvcmlhbC4nLCBmaWcuc3ViY2FwID0gJ0ZvbnRlOiBEYWRvcyBiw6FzaWNvcyBkZSBIYWRkYWQgKDIwMTgpIChub3RhcyBkZSBhdWxhKS4nLGVjaG89RkFMU0V9DQprbml0cjo6aW5jbHVkZV9ncmFwaGljcygiYXJxdWl2b3Mvc2VjdG9yYWxfc2hhcmVzLnBuZyIpDQpgYGANCg0KUGFzc28gMiBwYXJhIExRMjogYWdvcmEgZmF6LXNlIG8gY8OhbGN1bG8gZG8gcXVvY2llbnRlIGxvY2FjaW9uYWwgdXNhbmRvIGEgZsOzcm11bGEsIHBhcmEgYSBjw6lsdWxhIEM0LCBgPSdTZWN0b3JhbCBzaGFyZXMnIUM0LydTZWN0b3JhbCBzaGFyZXMnIUMkMjlgLCBvdSBzZWphLCBvIHNoYXJlIHNldG9yaWFsIGRhIHJlZ2nDo28gZGl2aWRpZG8gcGVsbyBzaGFyZSBzZXRvcmlhbCBkbyBwYcOtcyAodG90YWwpLg0KDQpgYGB7ciwgZmlnLmFsaWduID0gImNlbnRlciIsIG91dC53aWR0aCA9ICI4MCUiLCBmaWcuY2FwID0gJ0PDoWxjdWxvIGRvIHF1b2NpZW50ZSBsb2NhY2lvbmFsIC0gTFEyLicsIGZpZy5zdWJjYXAgPSAnRm9udGU6IERhZG9zIGLDoXNpY29zIGRlIEhhZGRhZCAoMjAxOCkgKG5vdGFzIGRlIGF1bGEpLicsZWNobz1GQUxTRX0NCmtuaXRyOjppbmNsdWRlX2dyYXBoaWNzKCJhcnF1aXZvcy9MUTJfZm9ybXVsYS5wbmciKQ0KYGBgDQoNCg0KDQpSZWZlcsOqbmNpYXMgey0jUmVmZXLDqm5jaWFzfQ0KPT09PT09PT09PT09PT09PT09PT09PT09DQoNCkJBTEFTU0EsIEIuIFRyYWRlIExpYmVyYWxpemF0aW9uIGFuZCBSZXZlYWxlZCBDb21wYXJhdGl2ZSBBZHZhbnRhZ2UsIFRoZSBNYW5jaGVzdGVyIFNjaG9vbCAzMzogOTktMTIzLiAxOTY1LiANCg0KQkFMTEFORCwgUC5BLiBFY29ub21pYyBHZW9ncmFwaHkgaW4gUjogSW50cm9kdWN0aW9uIHRvIHRoZSBFY29uR2VvIFBhY2thZ2UsIFBhcGVycyBpbiBFdm9sdXRpb25hcnkgRWNvbm9taWMgR2VvZ3JhcGh5LCAxNyAoMDkpOiAxLTc1LCAyMDE3Lg0KDQpDUlVaLCBCLk8uOyBRVUVJUk9aLCBJLlYuIEVmZWl0b3MgZW5jYWRlYWRvcyBkbyBwZXJmaWwgIHNldG9yaWFsIGRvcyBpbnZlc3RpbWVudG9zIGUgYSBkaXN0cmlidWnDp8OjbyBlc3BhY2lhbCBkYSAgaW5kw7pzdHJpYTogb25kZSBzZSBsb2NhbGl6YW0gYXMgaW5kw7pzdHJpYXMgZG9zIHNldG9yZXMgY29tICBtYWlvcmVzIGltcGFjdG9zPyBUZXh0byBwYXJhIGRpc2N1c3PDo28gbi4gMjE3MiwgQnJhc8OtbGlhOiBJUEVBLCAyMDE2Lg0KDQpGTE9SRU5DRSwgUC4gU2FyZ2VudC4gSW52ZXN0bWVudCwgbG9jYXRpb24sIGFuZCBzaXplIG9mIHBsYW50LiBDYW1icmlkZ2U6IENhbWJyaWRnZSBVbml2ZXJzaXR5IFByZXNzLCAxOTQ4Lg0KDQpIQUREQUQsIEVkdWFyZG8gQW1hcmFsLiBBdWxhIDE6IE1lZGlkYXMgZGUgQ29uY2VudHJhw6fDo28sIEVzcGVjaWFsaXphw6fDo28gZSBMb2NhbGl6YcOnw6NvLiBJbjogSEFEREFELCBFLkEuICoqTcOpdG9kb3MgZGUgQW7DoWxpc2UgUmVnaW9uYWwgZSBJbnRlci1yZWdpb25hbCoqLiBEZXBhcnRhbWVudG8gZGUgQ2nDqm5jaWFzIEVjb27DtG1pY2FzL1VFTVMsIFBvbnRhIFBvcsOjIC0gTVMsIDEzIGUgMTQgZGUganVuaG8gZGUgMjAxOC4gU8OjbyBQYXVsbzogTkVSRVVTLUZFQS1VU1AsIDIwMTguIERpc3BvbsOtdmVsIGVtOiA8aHR0cDovL3d3dy51c3AuYnIvbmVyZXVzL3dwLWNvbnRlbnQvdXBsb2Fkcy9BdWxhXzFfTWVkaWRhczMucGRmPi4gQWNlc3NvIGVtIDI3IEFiciAyMDIwLiAgICANCg0KSEFEREFELCBQYXVsbyBSLiAob3JnLikgKDE5ODkpLiBFY29ub21pYSBSZWdpb25hbDogVGVvcmlhcyBlIE3DqXRvZG9zIGRlIEFuw6FsaXNlLiBCYW5jbyBkbyBOb3JkZXN0ZSwgRm9ydGFsZXphLCBjYXAuIDQuDQoNCk1PTkFTVEVSSU8sIExlb25hcmRvLiBJbmRpY2Fkb3JlcyBkZSBhbsOhbGlzZSByZWdpb25hbCBlIGVzcGFjaWFsLiBJbjogQ1JVWiBldCBhbCAob3JncykuIEVjb25vbWlhIHJlZ2lvbmFsIGUgdXJiYW5hIDogdGVvcmlhcyBlIG3DqXRvZG9zIGNvbSDDqm5mYXNlIG5vIEJyYXNpbC4gQnJhc8OtbGlhOiBJcGVhLCAyMDExLiBjYXAuIDEwLiBwcC4zMTUtMzMxLg0KDQpOT1JUSCwgRG91Z2xhcy4gVGVvcmlhIGRhIGxvY2FsaXphw6fDo28gZSBjcmVzY2ltZW50byBlY29uw7RtaWNvIHJlZ2lvbmFsLiBJbjogU0NXQVJUWk1BTk4sIEouIChvcmcuKSBFY29ub21pYSByZWdpb25hbCBlIHVyYmFuYTogdGV0b3MgZXNjb2xoaWRvcy4gQmVsbyBIb3Jpem9udGU6IFVGTUcsIHAuMzMzLTM0MywgMTk3Ny4gDQoNClNPVVpBLCBGaWxpcGUgTGFnZSBkZS4gQSBsb2NhbGl6YcOnw6NvIGRhIGluZMO6c3RyaWEgZGUgdHJhbnNmb3JtYcOnw6NvIGJyYXNpbGVpcmEgbmFzIMO6bHRpbWFzIHRyw6pzIGTDqWNhZGFzLiBSaW8gZGUgSmFuZWlybzogRVBHRS1GR1YsIDIwMDIuIChEaXNzZXJ0YcOnw6NvLCBNZXN0cmFkbyBlbSBFY29ub21pYSkuIDEzMHAu" download="2020-04-28-economia-regional-reprodução-de-medidas-de-lq.Rmd">Download 2020-04-28-economia-regional-reprodução-de-medidas-de-lq.Rmd</a>
+</div>
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>A ideia básica deste arquivo é orientar os procedimentos para o
+cálculo dos indicadores de análise regional a saber:</p>
+<ol style="list-style-type: decimal">
+<li>Quociente Locacional (QL)</li>
+</ol>
+<p>Para esse exercício, tentaremos reproduzir os resultados das notas de aula do Prof. Eduardo Amaral Haddad (FEA-USP) utilizando o R (HADDAD, 2018). A base de dados de valores da produção das regiões e setores estão em <a href="http://www.usp.br/nereus/wp-content/uploads/Classic_Measures_Isard.xlsx" class="uri">http://www.usp.br/nereus/wp-content/uploads/Classic_Measures_Isard.xlsx</a>.</p>
+<p>Os slides de aula contendo algumas orientações para os cálculos em Excel estão em: <a href="http://www.usp.br/nereus/wp-content/uploads/Aula_1_Medidas3.pdf" class="uri">http://www.usp.br/nereus/wp-content/uploads/Aula_1_Medidas3.pdf</a>, <em>Aula 1: Medidas de
+Concentração, Especialização e Localização</em>. Os dados foram baixados e armazenados no mesmo diretório do projeto a fim de agilizar a rotina do RMarkdown. Entretanto, os usuários podem obtê-los fazendo uso do R conforme segue.</p>
+<pre class="r"><code># Executar uma vez para baixar xlsx
+require(readxl)
+suppressMessages(suppressWarnings(library(httr)))
+url1 &lt;- &quot;http://www.usp.br/nereus/wp-content/uploads/Classic_Measures_Isard.xlsx&quot;
+download.file(url1, destfile = &quot;Classic_Measures_Isard.xlsx&quot;, mode = &quot;wb&quot;)</code></pre>
+<p>Após realizar o download, chamei os dados para o RStudio a partir da planilha .xlsx e fiz um dput() do objeto para colocá-lo “<em>embedded</em>” para vocês. É só baixar o script deste Markdown e vocês conseguirão acesso direto aos dados. Eles ficarão “omitidos” deste post apenas para economizar espaço e dar maior clareza ao texto.</p>
+<pre class="r"><code>require(readxl)
+Classic_Measures_Isard &lt;- read_excel(&quot;Classic_Measures_Isard.xlsx&quot;, sheet = &quot;Basic data&quot;)</code></pre>
+<pre class="r"><code>knitr::kable(Classic_Measures_Isard)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">…1</th>
+<th align="left">GRP ($)</th>
+<th align="left">T0</th>
+<th align="left">…4</th>
+<th align="left">…5</th>
+<th align="left">…6</th>
+<th align="left">…7</th>
+<th align="left">…8</th>
+<th align="left">T1</th>
+<th align="left">…10</th>
+<th align="left">…11</th>
+<th align="left">…12</th>
+<th align="left">…13</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">Agropecuária</td>
+<td align="left">Indústria</td>
+<td align="left">Comércio</td>
+<td align="left">Serviços</td>
+<td align="left">Total</td>
+<td align="left">NA</td>
+<td align="left">Agropecuária</td>
+<td align="left">Indústria</td>
+<td align="left">Comércio</td>
+<td align="left">Serviços</td>
+<td align="left">Total</td>
+</tr>
+<tr class="even">
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">Sector 1</td>
+<td align="left">Sector 2</td>
+<td align="left">Sector 3</td>
+<td align="left">Sector 4</td>
+<td align="left">Total</td>
+<td align="left">NA</td>
+<td align="left">Sector 1</td>
+<td align="left">Sector 2</td>
+<td align="left">Sector 3</td>
+<td align="left">Sector 4</td>
+<td align="left">Total</td>
+</tr>
+<tr class="odd">
+<td align="left">Alto da Serra do Botucarai</td>
+<td align="left">Region 1</td>
+<td align="left">220053</td>
+<td align="left">130186</td>
+<td align="left">51951</td>
+<td align="left">257288</td>
+<td align="left">659478</td>
+<td align="left">NA</td>
+<td align="left">325910</td>
+<td align="left">74098</td>
+<td align="left">60098</td>
+<td align="left">346776</td>
+<td align="left">806882</td>
+</tr>
+<tr class="even">
+<td align="left">Alto Jacuí</td>
+<td align="left">Region 2</td>
+<td align="left">371700</td>
+<td align="left">181517</td>
+<td align="left">193490</td>
+<td align="left">512116</td>
+<td align="left">1258823</td>
+<td align="left">NA</td>
+<td align="left">600900</td>
+<td align="left">316868</td>
+<td align="left">225256</td>
+<td align="left">604406</td>
+<td align="left">1747430</td>
+</tr>
+<tr class="odd">
+<td align="left">Campanha</td>
+<td align="left">Region 3</td>
+<td align="left">272657</td>
+<td align="left">353027</td>
+<td align="left">151697</td>
+<td align="left">594083</td>
+<td align="left">1371464</td>
+<td align="left">NA</td>
+<td align="left">496665</td>
+<td align="left">419698</td>
+<td align="left">110750</td>
+<td align="left">756107</td>
+<td align="left">1783220</td>
+</tr>
+<tr class="even">
+<td align="left">Central</td>
+<td align="left">Region 4</td>
+<td align="left">657885</td>
+<td align="left">368199</td>
+<td align="left">349747</td>
+<td align="left">1101841</td>
+<td align="left">2477672</td>
+<td align="left">NA</td>
+<td align="left">963289</td>
+<td align="left">410927</td>
+<td align="left">337248</td>
+<td align="left">1693444</td>
+<td align="left">3404908</td>
+</tr>
+<tr class="odd">
+<td align="left">Centro Sul</td>
+<td align="left">Region 5</td>
+<td align="left">258225</td>
+<td align="left">442363</td>
+<td align="left">112930</td>
+<td align="left">603659</td>
+<td align="left">1417177</td>
+<td align="left">NA</td>
+<td align="left">492656</td>
+<td align="left">549847</td>
+<td align="left">109794</td>
+<td align="left">830967</td>
+<td align="left">1983264</td>
+</tr>
+<tr class="even">
+<td align="left">Fronteira Noroeste</td>
+<td align="left">Region 6</td>
+<td align="left">423025</td>
+<td align="left">390987</td>
+<td align="left">174935</td>
+<td align="left">597926</td>
+<td align="left">1586873</td>
+<td align="left">NA</td>
+<td align="left">607335</td>
+<td align="left">810284</td>
+<td align="left">175961</td>
+<td align="left">738405</td>
+<td align="left">2331985</td>
+</tr>
+<tr class="odd">
+<td align="left">Fronteira Oeste</td>
+<td align="left">Region 7</td>
+<td align="left">991381</td>
+<td align="left">821440</td>
+<td align="left">339365</td>
+<td align="left">1362000</td>
+<td align="left">3514186</td>
+<td align="left">NA</td>
+<td align="left">1660779</td>
+<td align="left">574961</td>
+<td align="left">304911</td>
+<td align="left">1829345</td>
+<td align="left">4369996</td>
+</tr>
+<tr class="even">
+<td align="left">Hortênsias</td>
+<td align="left">Region 8</td>
+<td align="left">150874</td>
+<td align="left">450009</td>
+<td align="left">101102</td>
+<td align="left">448444</td>
+<td align="left">1150429</td>
+<td align="left">NA</td>
+<td align="left">318804</td>
+<td align="left">402015</td>
+<td align="left">121340</td>
+<td align="left">729000</td>
+<td align="left">1571159</td>
+</tr>
+<tr class="odd">
+<td align="left">Jacuí Centro</td>
+<td align="left">Region 9</td>
+<td align="left">293263</td>
+<td align="left">169753</td>
+<td align="left">80674</td>
+<td align="left">375691</td>
+<td align="left">919381</td>
+<td align="left">NA</td>
+<td align="left">401551</td>
+<td align="left">182875</td>
+<td align="left">67241</td>
+<td align="left">477883</td>
+<td align="left">1129550</td>
+</tr>
+<tr class="even">
+<td align="left">Litoral</td>
+<td align="left">Region 10</td>
+<td align="left">188364</td>
+<td align="left">982884</td>
+<td align="left">116823</td>
+<td align="left">593524</td>
+<td align="left">1881595</td>
+<td align="left">NA</td>
+<td align="left">280503</td>
+<td align="left">111867</td>
+<td align="left">130511</td>
+<td align="left">1056953</td>
+<td align="left">1579834</td>
+</tr>
+<tr class="odd">
+<td align="left">Médio Alto Uruguai</td>
+<td align="left">Region 11</td>
+<td align="left">398996</td>
+<td align="left">64274</td>
+<td align="left">70034</td>
+<td align="left">447968</td>
+<td align="left">981272</td>
+<td align="left">NA</td>
+<td align="left">688040</td>
+<td align="left">73668</td>
+<td align="left">69889</td>
+<td align="left">614622</td>
+<td align="left">1446219</td>
+</tr>
+<tr class="even">
+<td align="left">Metropolitano do Delta do Jacuí</td>
+<td align="left">Region 12</td>
+<td align="left">279598</td>
+<td align="left">7691794</td>
+<td align="left">2695132</td>
+<td align="left">6219614</td>
+<td align="left">16886138</td>
+<td align="left">NA</td>
+<td align="left">216072</td>
+<td align="left">10594289</td>
+<td align="left">3113935</td>
+<td align="left">8920807</td>
+<td align="left">22845103</td>
+</tr>
+<tr class="odd">
+<td align="left">Missões</td>
+<td align="left">Region 13</td>
+<td align="left">670035</td>
+<td align="left">132424</td>
+<td align="left">218736</td>
+<td align="left">724656</td>
+<td align="left">1745851</td>
+<td align="left">NA</td>
+<td align="left">700415</td>
+<td align="left">194369</td>
+<td align="left">189215</td>
+<td align="left">869011</td>
+<td align="left">1953010</td>
+</tr>
+<tr class="even">
+<td align="left">Nordeste</td>
+<td align="left">Region 14</td>
+<td align="left">390443</td>
+<td align="left">80229</td>
+<td align="left">76235</td>
+<td align="left">328507</td>
+<td align="left">875414</td>
+<td align="left">NA</td>
+<td align="left">680983</td>
+<td align="left">144002</td>
+<td align="left">91234</td>
+<td align="left">472199</td>
+<td align="left">1388418</td>
+</tr>
+<tr class="odd">
+<td align="left">Noroeste Colonial</td>
+<td align="left">Region 15</td>
+<td align="left">575910</td>
+<td align="left">291903</td>
+<td align="left">316887</td>
+<td align="left">900938</td>
+<td align="left">2085638</td>
+<td align="left">NA</td>
+<td align="left">912746</td>
+<td align="left">550781</td>
+<td align="left">331355</td>
+<td align="left">1074358</td>
+<td align="left">2869240</td>
+</tr>
+<tr class="even">
+<td align="left">Norte</td>
+<td align="left">Region 16</td>
+<td align="left">406216</td>
+<td align="left">287595</td>
+<td align="left">175096</td>
+<td align="left">540078</td>
+<td align="left">1408985</td>
+<td align="left">NA</td>
+<td align="left">580619</td>
+<td align="left">511881</td>
+<td align="left">227217</td>
+<td align="left">796057</td>
+<td align="left">2115774</td>
+</tr>
+<tr class="odd">
+<td align="left">Paranhana-Encosta da Serra</td>
+<td align="left">Region 17</td>
+<td align="left">44437</td>
+<td align="left">1097552</td>
+<td align="left">70140</td>
+<td align="left">414765</td>
+<td align="left">1626894</td>
+<td align="left">NA</td>
+<td align="left">92512</td>
+<td align="left">1145229</td>
+<td align="left">61508</td>
+<td align="left">702725</td>
+<td align="left">2001974</td>
+</tr>
+<tr class="even">
+<td align="left">Produção</td>
+<td align="left">Region 18</td>
+<td align="left">707211</td>
+<td align="left">615895</td>
+<td align="left">483704</td>
+<td align="left">1087379</td>
+<td align="left">2894189</td>
+<td align="left">NA</td>
+<td align="left">1329927</td>
+<td align="left">1292666</td>
+<td align="left">560299</td>
+<td align="left">1538345</td>
+<td align="left">4721237</td>
+</tr>
+<tr class="odd">
+<td align="left">Serra</td>
+<td align="left">Region 19</td>
+<td align="left">699135</td>
+<td align="left">4876259</td>
+<td align="left">590661</td>
+<td align="left">2190060</td>
+<td align="left">8356115</td>
+<td align="left">NA</td>
+<td align="left">1582022</td>
+<td align="left">6839600</td>
+<td align="left">674397</td>
+<td align="left">3325393</td>
+<td align="left">12421412</td>
+</tr>
+<tr class="even">
+<td align="left">Sul</td>
+<td align="left">Region 20</td>
+<td align="left">766464</td>
+<td align="left">2460276</td>
+<td align="left">623724</td>
+<td align="left">2107097</td>
+<td align="left">5957561</td>
+<td align="left">NA</td>
+<td align="left">1021789</td>
+<td align="left">2330732</td>
+<td align="left">504801</td>
+<td align="left">2737676</td>
+<td align="left">6594998</td>
+</tr>
+<tr class="odd">
+<td align="left">Vale do Caí</td>
+<td align="left">Region 21</td>
+<td align="left">226397</td>
+<td align="left">552646</td>
+<td align="left">74365</td>
+<td align="left">404443</td>
+<td align="left">1257851</td>
+<td align="left">NA</td>
+<td align="left">266483</td>
+<td align="left">1101963</td>
+<td align="left">82583</td>
+<td align="left">612882</td>
+<td align="left">2063911</td>
+</tr>
+<tr class="even">
+<td align="left">Vale do Rio dos Sinos</td>
+<td align="left">Region 22</td>
+<td align="left">40498</td>
+<td align="left">9802363</td>
+<td align="left">1432091</td>
+<td align="left">3463830</td>
+<td align="left">14738782</td>
+<td align="left">NA</td>
+<td align="left">56371</td>
+<td align="left">11149161</td>
+<td align="left">1783098</td>
+<td align="left">4700108</td>
+<td align="left">17688738</td>
+</tr>
+<tr class="odd">
+<td align="left">Vale do Rio Pardo</td>
+<td align="left">Region 23</td>
+<td align="left">623789</td>
+<td align="left">2013393</td>
+<td align="left">242800</td>
+<td align="left">991438</td>
+<td align="left">3871420</td>
+<td align="left">NA</td>
+<td align="left">1045464</td>
+<td align="left">2460486</td>
+<td align="left">214486</td>
+<td align="left">1469228</td>
+<td align="left">5189664</td>
+</tr>
+<tr class="even">
+<td align="left">Vale do Taquari</td>
+<td align="left">Region 24</td>
+<td align="left">446825</td>
+<td align="left">1613726</td>
+<td align="left">191357</td>
+<td align="left">853003</td>
+<td align="left">3104911</td>
+<td align="left">NA</td>
+<td align="left">848427</td>
+<td align="left">2163499</td>
+<td align="left">223363</td>
+<td align="left">1227532</td>
+<td align="left">4462821</td>
+</tr>
+<tr class="odd">
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">Total do Rio Grande do Sul</td>
+<td align="left">Total</td>
+<td align="left">10103381</td>
+<td align="left">35870694</td>
+<td align="left">8933676</td>
+<td align="left">27120348</td>
+<td align="left">82028099</td>
+<td align="left">NA</td>
+<td align="left">16170262</td>
+<td align="left">44405766</td>
+<td align="left">9770490</td>
+<td align="left">38124229</td>
+<td align="left">108470747</td>
+</tr>
+</tbody>
+</table>
+<div class="figure">
+<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/basic_data_haddad.png" alt="Tela dos dados básicos para realizar Quociente Locacional" style="width:80.0%" />
+<p class="caption">Tela dos dados básicos para realizar Quociente Locacional</p>
+</div>
+</div>
+<div id="procedimentos" class="section level1">
+<h1>Procedimentos</h1>
+<div id="quociente-locacional-ql" class="section level2">
+<h2>Quociente Locacional (QL)</h2>
+<p>O Quociente Locacional (QL) é uma medida que dá a informação de qual o setor mais representado no município (região de análise) quando comparado com o mesmo setor no estado (região de referência). Foi elaborado inicialmente por Haig (1928) e vem sendo muito utilizado em várias análises regionais e de localização industrial. Também chamado de Índice de <code>Revealed Comparative Advantage</code> (RCA – ou Vantagem comparativa revelada, VCR) seguindo Balasa (1965), ou índice de Hoover-Balassa.</p>
+<p>A expressão básica é:</p>
+<p><span class="math display">\[
+QL_{ki}=\left( {\frac{{\frac{{{E_{ki}}}}{E_i}}}{{\frac{{{E_k}}}{E}}}} \right)
+\]</span>
+em que: <span class="math inline">\({E_{ki}}\)</span> é o emprego no setor <span class="math inline">\(k\)</span> na localidade de análise <span class="math inline">\(i\)</span>; <span class="math inline">\({E_i}\)</span> é o emprego total na localidade de análise <span class="math inline">\(i\)</span>; <span class="math inline">\({E_k}\)</span> é o emprego no setor <span class="math inline">\(k\)</span> da localidade de referência; e <span class="math inline">\(E\)</span> é o emprego total da localidade de referência.</p>
+<p>A ideia é saber se na localidade de análise, a proporção do emprego do setor é maior ou menor que esta proporção no local de referência. Assim, se o resultado for maior que hum <span class="math inline">\(\left( {QL_{ki}}\gt 1\right)\)</span>, então diz-se que a localidade de análise é relativamente mais especializada nesse setor que a localidade de refência. De outro lado, valores menores que a unidade <span class="math inline">\(\left( {QL_{ki}}\lt 1\right)\)</span> indicam que a localidade analisada tem representação menor deste setor do que a representação deste na localidade de referência.</p>
+<p>A representação de Haddad (2018) é no mesmo sentido, apenas a diferença é que invés de mencionar o emprego como variável, ele coloca produção. Isso é realizado em vários estudos, principalmente nos do tipo insumo-produto, quando se colocam os valores de valor adicionado. Em alguns estudos encontramos também versões com a produção agrícola, ou ainda os valores de exportações para a análoga da vantagem comparativa revelada de Balassa. A fórmula da nota de aula de Haddad (2018), portanto, é a mesma, apenas com indicação algébrica alterada para <span class="math inline">\(R_i\)</span> e <span class="math inline">\(N_i\)</span> para indicar a região (R) e o país (N) no setor i, a saber:</p>
+<p><span class="math display">\[
+QL_{i}=\left( {\frac{{\frac{{{R_{i}}}}{N_i}}}{{\frac{{{R}}}{N}}}} \right)=\left( {\frac{{\frac{{{R_{i}}}}{R}}}{{\frac{{{N_i}}}{N}}}} \right)
+\]</span></p>
+<p>em que: <span class="math inline">\({R_i}\)</span> é a produção no setor <span class="math inline">\(i\)</span> na localidade de análise; <span class="math inline">\({R}\)</span> é a produção total na localidade de análise; <span class="math inline">\({N_i}\)</span> é a produção no setor <span class="math inline">\(i\)</span> da localidade de referência (do país); e <span class="math inline">\(N\)</span> é a produção total da localidade de referência (do país).</p>
+<p>É interessante olhar estas razões (ou <em>shares</em>), pois no cálculo exemplificado em Excel, ficarão evidenciadas as operações matemáticas.</p>
+<div id="econgeo-de-balland-2017" class="section level3">
+<h3>EconGeo de Balland (2017)</h3>
+<p>Esta rotina pode ser resumida fazendo o uso do pacote <code>EconGeo</code>, e a função <code>RCA</code> para obter o Quociente Locacional (similar ao <em>Revealed Comparative Advantage</em> - RCA - índice de Balassa, 1965). O pacote pode ser instalado fazendo como a seguir:</p>
+<pre><code>install.packages(&quot;devtools&quot;)
+library(devtools)
+devtools::install_github(&quot;PABalland/EconGeo&quot;, force = T)</code></pre>
+<p>Ela utiliza uma matriz contendo os dados no formato abaixo, em que <span class="math inline">\((I1,I2,I3)\)</span> são as indústrias ou setores, para os municípios <span class="math inline">\((R1,R2,R3)\)</span>.</p>
+<pre><code>municipio  |I1       |I2      | I3
+-----------|---------|--------|------------
+ R1        |100      |150     | 165
+ R2        |130      |400     | 220
+ R3        |200      |1200    | 20</code></pre>
+<p>Prepararemos os dados para os cálculos, construindo uma matriz <code>mat</code> para os dados de medidas clássicas de Isard:</p>
+<pre class="r"><code>library(EconGeo)
+## gerar a matriz industrial da região, para T0
+set.seed(31)
+mat_0 &lt;- as.matrix(Classic_Measures_Isard[3:26, 3:6])
+rownames(mat_0) &lt;- c(&quot;R1&quot;, &quot;R2&quot;, &quot;R3&quot;, &quot;R4&quot;, &quot;R5&quot;, &quot;R6&quot;, &quot;R7&quot;, &quot;R8&quot;, &quot;R9&quot;, &quot;R10&quot;, 
+    &quot;R11&quot;, &quot;R12&quot;, &quot;R13&quot;, &quot;R14&quot;, &quot;R15&quot;, &quot;R16&quot;, &quot;R17&quot;, &quot;R18&quot;, &quot;R19&quot;, &quot;R20&quot;, &quot;R21&quot;, 
+    &quot;R22&quot;, &quot;R23&quot;, &quot;R24&quot;)
+colnames(mat_0) &lt;- c(&quot;setor1&quot;, &quot;setor2&quot;, &quot;setor3&quot;, &quot;setor4&quot;)</code></pre>
+<p>O cálculo do Quociente Locacional (QL = RCA) será fazendo:</p>
+<pre class="r"><code>class(mat_0) &lt;- &quot;numeric&quot;
+QL_T0 &lt;- round(RCA(mat_0), digits = 4)</code></pre>
+<p>Você pode comparar esse resultado com o da planilha LQ1, onde os cálculos forma feitos em fórmulas do Excel. Similarmente fizemos para T1 e depois colocamos tudo em uma só tabela.</p>
+<pre class="r"><code>library(EconGeo)
+## gerar a matriz industrial da região, para T0
+set.seed(31)
+mat_1 &lt;- as.matrix(Classic_Measures_Isard[3:26, 9:12])
+rownames(mat_1) &lt;- c(&quot;R1&quot;, &quot;R2&quot;, &quot;R3&quot;, &quot;R4&quot;, &quot;R5&quot;, &quot;R6&quot;, &quot;R7&quot;, &quot;R8&quot;, &quot;R9&quot;, &quot;R10&quot;, 
+    &quot;R11&quot;, &quot;R12&quot;, &quot;R13&quot;, &quot;R14&quot;, &quot;R15&quot;, &quot;R16&quot;, &quot;R17&quot;, &quot;R18&quot;, &quot;R19&quot;, &quot;R20&quot;, &quot;R21&quot;, 
+    &quot;R22&quot;, &quot;R23&quot;, &quot;R24&quot;)
+colnames(mat_1) &lt;- c(&quot;setor1&quot;, &quot;setor2&quot;, &quot;setor3&quot;, &quot;setor4&quot;)
+class(mat_1) &lt;- &quot;numeric&quot;
+QL_T1 &lt;- round(RCA(mat_1), digits = 4)</code></pre>
+<pre class="r"><code>LQ1 &lt;- cbind(QL_T0, QL_T1)
+knitr::kable(LQ1, caption = &quot;Quociente Locacional em T0 e T1&quot;)</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-7">Table 1: </span>Quociente Locacional em T0 e T1</caption>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">setor1</th>
+<th align="right">setor2</th>
+<th align="right">setor3</th>
+<th align="right">setor4</th>
+<th align="right">setor1</th>
+<th align="right">setor2</th>
+<th align="right">setor3</th>
+<th align="right">setor4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>R1</td>
+<td align="right">2.7091</td>
+<td align="right">0.4514</td>
+<td align="right">0.7233</td>
+<td align="right">1.1800</td>
+<td align="right">2.7095</td>
+<td align="right">0.2243</td>
+<td align="right">0.8269</td>
+<td align="right">1.2228</td>
+</tr>
+<tr class="even">
+<td>R2</td>
+<td align="right">2.3973</td>
+<td align="right">0.3297</td>
+<td align="right">1.4113</td>
+<td align="right">1.2305</td>
+<td align="right">2.3067</td>
+<td align="right">0.4429</td>
+<td align="right">1.4311</td>
+<td align="right">0.9841</td>
+</tr>
+<tr class="odd">
+<td>R3</td>
+<td align="right">1.6141</td>
+<td align="right">0.5886</td>
+<td align="right">1.0156</td>
+<td align="right">1.3102</td>
+<td align="right">1.8683</td>
+<td align="right">0.5749</td>
+<td align="right">0.6895</td>
+<td align="right">1.2064</td>
+</tr>
+<tr class="even">
+<td>R4</td>
+<td align="right">2.1558</td>
+<td align="right">0.3398</td>
+<td align="right">1.2961</td>
+<td align="right">1.3451</td>
+<td align="right">1.8978</td>
+<td align="right">0.2948</td>
+<td align="right">1.0996</td>
+<td align="right">1.4151</td>
+</tr>
+<tr class="odd">
+<td>R5</td>
+<td align="right">1.4793</td>
+<td align="right">0.7138</td>
+<td align="right">0.7317</td>
+<td align="right">1.2884</td>
+<td align="right">1.6663</td>
+<td align="right">0.6772</td>
+<td align="right">0.6146</td>
+<td align="right">1.1921</td>
+</tr>
+<tr class="even">
+<td>R6</td>
+<td align="right">2.1643</td>
+<td align="right">0.5634</td>
+<td align="right">1.0122</td>
+<td align="right">1.1397</td>
+<td align="right">1.7470</td>
+<td align="right">0.8488</td>
+<td align="right">0.8377</td>
+<td align="right">0.9009</td>
+</tr>
+<tr class="odd">
+<td>R7</td>
+<td align="right">2.2904</td>
+<td align="right">0.5345</td>
+<td align="right">0.8867</td>
+<td align="right">1.1722</td>
+<td align="right">2.5493</td>
+<td align="right">0.3214</td>
+<td align="right">0.7746</td>
+<td align="right">1.1910</td>
+</tr>
+<tr class="even">
+<td>R8</td>
+<td align="right">1.0648</td>
+<td align="right">0.8945</td>
+<td align="right">0.8069</td>
+<td align="right">1.1790</td>
+<td align="right">1.3611</td>
+<td align="right">0.6250</td>
+<td align="right">0.8574</td>
+<td align="right">1.3201</td>
+</tr>
+<tr class="odd">
+<td>R9</td>
+<td align="right">2.5897</td>
+<td align="right">0.4222</td>
+<td align="right">0.8057</td>
+<td align="right">1.2360</td>
+<td align="right">2.3847</td>
+<td align="right">0.3955</td>
+<td align="right">0.6609</td>
+<td align="right">1.2037</td>
+</tr>
+<tr class="even">
+<td>R10</td>
+<td align="right">0.8128</td>
+<td align="right">1.1945</td>
+<td align="right">0.5701</td>
+<td align="right">0.9541</td>
+<td align="right">1.1910</td>
+<td align="right">0.1730</td>
+<td align="right">0.9171</td>
+<td align="right">1.9035</td>
+</tr>
+<tr class="odd">
+<td>R11</td>
+<td align="right">3.3012</td>
+<td align="right">0.1498</td>
+<td align="right">0.6553</td>
+<td align="right">1.3808</td>
+<td align="right">3.1914</td>
+<td align="right">0.1244</td>
+<td align="right">0.5365</td>
+<td align="right">1.2092</td>
+</tr>
+<tr class="even">
+<td>R12</td>
+<td align="right">0.1344</td>
+<td align="right">1.0416</td>
+<td align="right">1.4655</td>
+<td align="right">1.1140</td>
+<td align="right">0.0634</td>
+<td align="right">1.1328</td>
+<td align="right">1.5133</td>
+<td align="right">1.1110</td>
+</tr>
+<tr class="odd">
+<td>R13</td>
+<td align="right">3.1159</td>
+<td align="right">0.1735</td>
+<td align="right">1.1504</td>
+<td align="right">1.2554</td>
+<td align="right">2.4057</td>
+<td align="right">0.2431</td>
+<td align="right">1.0756</td>
+<td align="right">1.2660</td>
+</tr>
+<tr class="even">
+<td>R14</td>
+<td align="right">3.6211</td>
+<td align="right">0.2096</td>
+<td align="right">0.7996</td>
+<td align="right">1.1350</td>
+<td align="right">3.2901</td>
+<td align="right">0.2534</td>
+<td align="right">0.7295</td>
+<td align="right">0.9676</td>
+</tr>
+<tr class="odd">
+<td>R15</td>
+<td align="right">2.2419</td>
+<td align="right">0.3201</td>
+<td align="right">1.3951</td>
+<td align="right">1.3065</td>
+<td align="right">2.1339</td>
+<td align="right">0.4689</td>
+<td align="right">1.2821</td>
+<td align="right">1.0654</td>
+</tr>
+<tr class="even">
+<td>R16</td>
+<td align="right">2.3407</td>
+<td align="right">0.4668</td>
+<td align="right">1.1410</td>
+<td align="right">1.1594</td>
+<td align="right">1.8408</td>
+<td align="right">0.5910</td>
+<td align="right">1.1923</td>
+<td align="right">1.0705</td>
+</tr>
+<tr class="odd">
+<td>R17</td>
+<td align="right">0.2218</td>
+<td align="right">1.5427</td>
+<td align="right">0.3959</td>
+<td align="right">0.7711</td>
+<td align="right">0.3100</td>
+<td align="right">1.3974</td>
+<td align="right">0.3411</td>
+<td align="right">0.9987</td>
+</tr>
+<tr class="even">
+<td>R18</td>
+<td align="right">1.9839</td>
+<td align="right">0.4866</td>
+<td align="right">1.5346</td>
+<td align="right">1.1364</td>
+<td align="right">1.8896</td>
+<td align="right">0.6688</td>
+<td align="right">1.3175</td>
+<td align="right">0.9271</td>
+</tr>
+<tr class="odd">
+<td>R19</td>
+<td align="right">0.6793</td>
+<td align="right">1.3345</td>
+<td align="right">0.6490</td>
+<td align="right">0.7927</td>
+<td align="right">0.8544</td>
+<td align="right">1.3450</td>
+<td align="right">0.6028</td>
+<td align="right">0.7617</td>
+</tr>
+<tr class="even">
+<td>R20</td>
+<td align="right">1.0445</td>
+<td align="right">0.9444</td>
+<td align="right">0.9613</td>
+<td align="right">1.0698</td>
+<td align="right">1.0393</td>
+<td align="right">0.8633</td>
+<td align="right">0.8498</td>
+<td align="right">1.1811</td>
+</tr>
+<tr class="odd">
+<td>R21</td>
+<td align="right">1.4613</td>
+<td align="right">1.0047</td>
+<td align="right">0.5428</td>
+<td align="right">0.9725</td>
+<td align="right">0.8661</td>
+<td align="right">1.3042</td>
+<td align="right">0.4442</td>
+<td align="right">0.8449</td>
+</tr>
+<tr class="even">
+<td>R22</td>
+<td align="right">0.0223</td>
+<td align="right">1.5209</td>
+<td align="right">0.8922</td>
+<td align="right">0.7108</td>
+<td align="right">0.0214</td>
+<td align="right">1.5396</td>
+<td align="right">1.1191</td>
+<td align="right">0.7560</td>
+</tr>
+<tr class="odd">
+<td>R23</td>
+<td align="right">1.3082</td>
+<td align="right">1.1893</td>
+<td align="right">0.5759</td>
+<td align="right">0.7746</td>
+<td align="right">1.3513</td>
+<td align="right">1.1581</td>
+<td align="right">0.4588</td>
+<td align="right">0.8055</td>
+</tr>
+<tr class="even">
+<td>R24</td>
+<td align="right">1.1684</td>
+<td align="right">1.1885</td>
+<td align="right">0.5659</td>
+<td align="right">0.8309</td>
+<td align="right">1.2753</td>
+<td align="right">1.1842</td>
+<td align="right">0.5556</td>
+<td align="right">0.7826</td>
+</tr>
+</tbody>
+</table>
+<p>E agora reproduzimos a tela do Excel, pasta “LQ1”, previamente calculado para conferência.</p>
+<div class="figure">
+<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/LQ1.png" alt="Resultados da planilha em MS Excel para LQ1" style="width:80.0%" />
+<p class="caption">Resultados da planilha em MS Excel para LQ1</p>
+</div>
+</div>
+<div id="exemplificando-pelo-excel" class="section level3">
+<h3>Exemplificando pelo Excel</h3>
+<p>Acompanhando a notação da nota de aula de Haddad (2018), coloco as imagens do procedimento realizado no Excel. Para recordar, a expressão é<br />
+<span class="math display">\[
+QL_{i}=\left( {\frac{{\frac{{{R_{i}}}}{N_i}}}{{\frac{{{R}}}{N}}}} \right)=\left( {\frac{{\frac{{{R_{i}}}}{R}}}{{\frac{{{N_i}}}{N}}}} \right)
+\]</span></p>
+<div id="lq1" class="section level4">
+<h4>LQ1</h4>
+<p>Passo 1: calcular as parcelas regionais (<em>regional shares</em>). Desta forma, o primeiro passo será obter <span class="math inline">\(\frac{R_i}{N_i}\)</span>.O procedimento começa fazendo as contas do valor (para a célula C4) igual a <code>='Basic data'!C4/'Basic data'!C$29</code>. Ou seja, a célula C4 (produção da Region1 Sector1 em ‘Basic data’) dividido pela célula C29 (produção Total Sector1 em ‘Basic data’). Os cálculos seguem para as demais células e encorajamos o leitor a fazer a checagem na planilha.</p>
+<div class="figure">
+<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/regional_shares.png" alt="Cálculo do share regional" style="width:80.0%" />
+<p class="caption">Cálculo do share regional</p>
+</div>
+<p>O resultado obtido na coluna G, em Regional Shares, indica a parcela da região 1 no total (<code>='Basic data'!G4/'Basic data'!G$29</code> em ‘Regional Shares’).</p>
+<p>Passo 2: O resultado da coluna G será o denominador da expressão de <span class="math inline">\(QL_i\)</span>. Ou seja, passamos então ao passo 2 que é efetivamente o cálculo do QL.</p>
+<div class="figure">
+<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/LQ1_formula.png" alt="Cálculo do quociente locacional - LQ1" style="width:80.0%" />
+<p class="caption">Cálculo do quociente locacional - LQ1</p>
+</div>
+<p>O cálculo do valor (para a célula C4) igual a <code>='Regional shares'!C4/'Regional shares'!$G4</code>. Ou seja, a célula C4 (‘Regional shares’ da Region1 Sector1) dividido pela célula G4 de ‘Regional shares’ (o share total).</p>
+</div>
+<div id="lq2" class="section level4">
+<h4>LQ2</h4>
+<p>O cálculo semelhante é feito por Haddad (2018) em LQ2 para evidenciar que fazendo pelo share setorial dará resultado igual, mas deve-se atentar pela alteração do sentido.</p>
+<p>Passo 1 para LQ2: Neste LQ2, o cálculo será pela linha (ou seja, <span class="math inline">\(R_i/R\)</span>. Na planilha ‘Sectoral shares’, você encontrará em C4 a fórmula: <code>='Basic data'!C4/'Basic data'!$G4</code>, ou seja, agora divide-se a coluna C por G fazendo o <em>sectoral share</em>. A linha 29 dará o denominador <span class="math inline">\(N_i/N\)</span>.</p>
+<div class="figure">
+<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/sectoral_shares.png" alt="Cálculo do share setorial" style="width:80.0%" />
+<p class="caption">Cálculo do share setorial</p>
+</div>
+<p>Passo 2 para LQ2: agora faz-se o cálculo do quociente locacional usando a fórmula, para a célula C4, <code>='Sectoral shares'!C4/'Sectoral shares'!C$29</code>, ou seja, o share setorial da região dividido pelo share setorial do país (total).</p>
+<div class="figure">
+<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/LQ2_formula.png" alt="Cálculo do quociente locacional - LQ2" style="width:80.0%" />
+<p class="caption">Cálculo do quociente locacional - LQ2</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="Referências" class="section level1 unnumbered">
+<h1>Referências</h1>
+<p>BALASSA, B. Trade Liberalization and Revealed Comparative Advantage, The Manchester School 33: 99-123. 1965.</p>
+<p>BALLAND, P.A. Economic Geography in R: Introduction to the EconGeo Package, Papers in Evolutionary Economic Geography, 17 (09): 1-75, 2017.</p>
+<p>CRUZ, B.O.; QUEIROZ, I.V. Efeitos encadeados do perfil setorial dos investimentos e a distribuição espacial da indústria: onde se localizam as indústrias dos setores com maiores impactos? Texto para discussão n. 2172, Brasília: IPEA, 2016.</p>
+<p>FLORENCE, P. Sargent. Investment, location, and size of plant. Cambridge: Cambridge University Press, 1948.</p>
+<p>HADDAD, Eduardo Amaral. Aula 1: Medidas de Concentração, Especialização e Localização. In: HADDAD, E.A. <strong>Métodos de Análise Regional e Inter-regional</strong>. Departamento de Ciências Econômicas/UEMS, Ponta Porã - MS, 13 e 14 de junho de 2018. São Paulo: NEREUS-FEA-USP, 2018. Disponível em: <a href="http://www.usp.br/nereus/wp-content/uploads/Aula_1_Medidas3.pdf" class="uri">http://www.usp.br/nereus/wp-content/uploads/Aula_1_Medidas3.pdf</a>. Acesso em 27 Abr 2020.</p>
+<p>HADDAD, Paulo R. (org.) (1989). Economia Regional: Teorias e Métodos de Análise. Banco do Nordeste, Fortaleza, cap. 4.</p>
+<p>MONASTERIO, Leonardo. Indicadores de análise regional e espacial. In: CRUZ et al (orgs). Economia regional e urbana : teorias e métodos com ênfase no Brasil. Brasília: Ipea, 2011. cap. 10. pp.315-331.</p>
+<p>NORTH, Douglas. Teoria da localização e crescimento econômico regional. In: SCWARTZMANN, J. (org.) Economia regional e urbana: tetos escolhidos. Belo Horizonte: UFMG, p.333-343, 1977.</p>
+<p>SOUZA, Filipe Lage de. A localização da indústria de transformação brasileira nas últimas três décadas. Rio de Janeiro: EPGE-FGV, 2002. (Dissertação, Mestrado em Economia). 130p.</p>
+</div>

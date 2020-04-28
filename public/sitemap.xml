@@ -29,7 +29,42 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-04-27T18:33:31-04:00</lastmod>
+    <lastmod>2020-04-28T10:54:38-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/economia-regional/</loc>
+    <lastmod>2020-04-28T10:54:38-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/economia-regional-reproducao-de-medidas-de-lq/</loc>
+    <lastmod>2020-04-28T10:54:38-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/indicadores-regionais/</loc>
+    <lastmod>2020-04-28T10:54:38-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2020-04-28T10:54:38-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/ql/</loc>
+    <lastmod>2020-04-28T10:54:38-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/quociente-locacional/</loc>
+    <lastmod>2020-04-28T10:54:38-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-04-28T10:54:38-04:00</lastmod>
   </url>
   
   <url>
@@ -48,11 +83,6 @@
   </url>
   
   <url>
-    <loc>/post/</loc>
-    <lastmod>2020-04-27T18:33:31-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/series-temporais/</loc>
     <lastmod>2020-04-27T18:33:31-04:00</lastmod>
   </url>
@@ -63,27 +93,12 @@
   </url>
   
   <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-04-27T18:33:31-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/cv/</loc>
     <lastmod>2020-04-24T18:18:34-04:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/economia-regional/</loc>
-    <lastmod>2020-04-24T18:18:34-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/economia-regional-em-r-indicadores-de-analise-cv-v-w-e-theil/</loc>
-    <lastmod>2020-04-24T18:18:34-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/indicadores-regionais/</loc>
     <lastmod>2020-04-24T18:18:34-04:00</lastmod>
   </url>
   
@@ -183,12 +198,12 @@
   </url>
   
   <url>
-    <loc>/categories/projetos/</loc>
+    <loc>/tags/projetos/</loc>
     <lastmod>2020-01-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/projetos/</loc>
+    <loc>/categories/projetos/</loc>
     <lastmod>2020-01-18T00:00:00+00:00</lastmod>
   </url>
   

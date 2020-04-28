@@ -1,0 +1,318 @@
+---
+title: 'Economia Regional: reprodução de medidas de LQ conforme Haddad (2018) em R'
+author: "Adriano M R Figueiredo"
+date: '2020-04-28'
+slug: economia-regional-reprodução-de-medidas-de-lq
+categories: []
+tags:
+  - economia regional
+  - indicadores regionais
+  - quociente locacional
+  - QL
+subtitle: ''
+summary: 'This is an undergrad student level instruction for class use'
+authors: []
+lastmod: '2020-04-28T10:54:38-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmarkdown)
+library(rmdformats)
+
+## Global options
+options(max.print="100")
+opts_chunk$set(echo=TRUE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=100)
+```
+
+
+Licença {-#Licença}
+===================
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <http://creativecommons.org/licenses/by-sa/4.0/> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+![License: CC BY-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png){ width=25% }
+
+Citação {-#Citação}
+===================================
+
+Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional: reprodução de medidas de LQ conforme Haddad (2018) em R. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/medidas_QL_haddad_regional>. 
+
+Script para reprodução (se utilizar, citar como acima)
+==================
+
+```{r echo=FALSE}
+# a single file
+xfun::embed_file('2020-04-28-economia-regional-reprodução-de-medidas-de-lq.Rmd')
+```
+
+Introdução
+===================
+
+
+A ideia básica deste arquivo é orientar os procedimentos para o
+cálculo dos indicadores de análise regional a saber:
+
+1. Quociente Locacional (QL)
+
+
+Para esse exercício, tentaremos reproduzir os resultados das notas de aula do Prof. Eduardo Amaral Haddad (FEA-USP) utilizando o R (HADDAD, 2018).  A base de dados de valores da produção das regiões e setores estão em <http://www.usp.br/nereus/wp-content/uploads/Classic_Measures_Isard.xlsx>.    
+    
+Os slides de aula contendo algumas orientações para os cálculos em Excel estão em: <http://www.usp.br/nereus/wp-content/uploads/Aula_1_Medidas3.pdf>, _Aula 1: Medidas de
+Concentração, Especialização e Localização_. Os dados foram baixados e armazenados no mesmo diretório do projeto a fim de agilizar a rotina do RMarkdown. Entretanto, os usuários podem obtê-los fazendo uso do R conforme segue.
+
+```{r dados_VRP, eval=FALSE}
+# Executar uma vez para baixar xlsx
+require(readxl)
+suppressMessages(suppressWarnings(library(httr)))
+url1<-
+  'http://www.usp.br/nereus/wp-content/uploads/Classic_Measures_Isard.xlsx'
+download.file(url1,destfile = "Classic_Measures_Isard.xlsx",mode = "wb")
+```
+
+Após realizar o download,  chamei os dados para o RStudio a partir da planilha .xlsx e fiz um dput() do objeto para colocá-lo "*embedded*" para vocês. É só baixar o script deste Markdown e vocês conseguirão acesso direto aos dados. Eles ficarão "omitidos" deste post apenas para economizar espaço e dar maior clareza ao texto. 
+
+```{r, eval=FALSE}
+require(readxl)
+Classic_Measures_Isard <- read_excel("Classic_Measures_Isard.xlsx", 
+    sheet = "Basic data")
+```
+
+```{r dput,include=FALSE}
+#dput(Classic_Measures_Isard)
+Classic_Measures_Isard<-
+  structure(list(...1 = c(NA, NA, "Alto da Serra do Botucarai", 
+"Alto Jacuí", "Campanha", "Central", "Centro Sul", "Fronteira Noroeste", 
+"Fronteira Oeste", "Hortênsias", "Jacuí Centro", "Litoral", "Médio Alto Uruguai", 
+"Metropolitano do Delta do Jacuí", "Missões", "Nordeste", "Noroeste Colonial", 
+"Norte", "Paranhana-Encosta da Serra", "Produção", "Serra", "Sul", 
+"Vale do Caí", "Vale do Rio dos Sinos", "Vale do Rio Pardo", 
+"Vale do Taquari", NA, "Total do Rio Grande do Sul"), `GRP ($)` = c(NA, 
+NA, "Region 1", "Region 2", "Region 3", "Region 4", "Region 5", 
+"Region 6", "Region 7", "Region 8", "Region 9", "Region 10", 
+"Region 11", "Region 12", "Region 13", "Region 14", "Region 15", 
+"Region 16", "Region 17", "Region 18", "Region 19", "Region 20", 
+"Region 21", "Region 22", "Region 23", "Region 24", NA, "Total"
+), T0 = c("Agropecuária", "Sector 1", "220053", "371700", "272657", 
+"657885", "258225", "423025", "991381", "150874", "293263", "188364", 
+"398996", "279598", "670035", "390443", "575910", "406216", "44437", 
+"707211", "699135", "766464", "226397", "40498", "623789", "446825", 
+NA, "10103381"), ...4 = c("Indústria", "Sector 2", "130186", 
+"181517", "353027", "368199", "442363", "390987", "821440", "450009", 
+"169753", "982884", "64274", "7691794", "132424", "80229", "291903", 
+"287595", "1097552", "615895", "4876259", "2460276", "552646", 
+"9802363", "2013393", "1613726", NA, "35870694"), ...5 = c("Comércio", 
+"Sector 3", "51951", "193490", "151697", "349747", "112930", 
+"174935", "339365", "101102", "80674", "116823", "70034", "2695132", 
+"218736", "76235", "316887", "175096", "70140", "483704", "590661", 
+"623724", "74365", "1432091", "242800", "191357", NA, "8933676"
+), ...6 = c("Serviços", "Sector 4", "257288", "512116", "594083", 
+"1101841", "603659", "597926", "1362000", "448444", "375691", 
+"593524", "447968", "6219614", "724656", "328507", "900938", 
+"540078", "414765", "1087379", "2190060", "2107097", "404443", 
+"3463830", "991438", "853003", NA, "27120348"), ...7 = c("Total", 
+"Total", "659478", "1258823", "1371464", "2477672", "1417177", 
+"1586873", "3514186", "1150429", "919381", "1881595", "981272", 
+"16886138", "1745851", "875414", "2085638", "1408985", "1626894", 
+"2894189", "8356115", "5957561", "1257851", "14738782", "3871420", 
+"3104911", NA, "82028099"), ...8 = c(NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 
+NA, NA, NA, NA, NA, NA), T1 = c("Agropecuária", "Sector 1", "325910", 
+"600900", "496665", "963289", "492656", "607335", "1660779", 
+"318804", "401551", "280503", "688040", "216072", "700415", "680983", 
+"912746", "580619", "92512", "1329927", "1582022", "1021789", 
+"266483", "56371", "1045464", "848427", NA, "16170262"), ...10 = c("Indústria", 
+"Sector 2", "74098", "316868", "419698", "410927", "549847", 
+"810284", "574961", "402015", "182875", "111867", "73668", "10594289", 
+"194369", "144002", "550781", "511881", "1145229", "1292666", 
+"6839600", "2330732", "1101963", "11149161", "2460486", "2163499", 
+NA, "44405766"), ...11 = c("Comércio", "Sector 3", "60098", "225256", 
+"110750", "337248", "109794", "175961", "304911", "121340", "67241", 
+"130511", "69889", "3113935", "189215", "91234", "331355", "227217", 
+"61508", "560299", "674397", "504801", "82583", "1783098", "214486", 
+"223363", NA, "9770490"), ...12 = c("Serviços", "Sector 4", "346776", 
+"604406", "756107", "1693444", "830967", "738405", "1829345", 
+"729000", "477883", "1056953", "614622", "8920807", "869011", 
+"472199", "1074358", "796057", "702725", "1538345", "3325393", 
+"2737676", "612882", "4700108", "1469228", "1227532", NA, "38124229"
+), ...13 = c("Total", "Total", "806882", "1747430", "1783220", 
+"3404908", "1983264", "2331985", "4369996", "1571159", "1129550", 
+"1579834", "1446219", "22845103", "1953010", "1388418", "2869240", 
+"2115774", "2001974", "4721237", "12421412", "6594998", "2063911", 
+"17688738", "5189664", "4462821", NA, "108470747")), row.names = c(NA, 
+-28L), class = c("tbl_df", "tbl", "data.frame"))
+```
+  
+```{r}
+knitr::kable(Classic_Measures_Isard)
+```
+
+
+![Tela dos dados básicos para realizar Quociente Locacional](/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/basic_data_haddad.png){width=80%}
+
+Procedimentos
+======================
+
+
+## Quociente Locacional (QL)
+
+
+O Quociente Locacional (QL) é uma medida que dá a informação de qual o setor mais representado no município (região de análise) quando comparado com o mesmo setor no estado (região de referência). Foi elaborado inicialmente por Haig (1928) e vem sendo muito utilizado em várias análises regionais e de localização industrial.  Também chamado de Índice de `Revealed Comparative Advantage` (RCA – ou Vantagem comparativa revelada, VCR) seguindo Balasa (1965), ou índice de Hoover-Balassa.    
+
+A expressão básica é:
+
+$$
+QL_{ki}=\left( {\frac{{\frac{{{E_{ki}}}}{E_i}}}{{\frac{{{E_k}}}{E}}}} \right)
+$$
+em que: ${E_{ki}}$ é o emprego no setor $k$  na localidade de análise $i$; ${E_i}$ é o emprego total na localidade de análise $i$; ${E_k}$ é o emprego no setor $k$ da localidade de referência; e $E$ é o emprego total da localidade de referência.     
+
+A ideia é saber se na localidade de análise, a proporção do emprego do setor é maior ou menor que esta proporção no local de referência. Assim, se o resultado for maior que hum $\left( {QL_{ki}}\gt 1\right)$, então diz-se que a localidade de análise é relativamente mais especializada nesse setor que a localidade de refência. De outro lado, valores menores que a unidade  $\left( {QL_{ki}}\lt 1\right)$ indicam que a localidade analisada tem representação menor deste setor do que a representação deste na localidade de referência.    
+    
+A representação de Haddad (2018) é no mesmo sentido, apenas a diferença é que invés de mencionar o emprego como variável, ele coloca produção. Isso é realizado em vários estudos, principalmente nos do tipo insumo-produto, quando se colocam os valores de valor adicionado. Em alguns estudos encontramos também versões com a produção agrícola, ou ainda os valores de exportações para a análoga da vantagem comparativa revelada de Balassa. A fórmula da nota de aula de Haddad (2018), portanto, é a mesma, apenas com indicação algébrica alterada para $R_i$ e $N_i$ para indicar a região (R) e o país (N) no setor i, a saber:
+
+$$
+QL_{i}=\left( {\frac{{\frac{{{R_{i}}}}{N_i}}}{{\frac{{{R}}}{N}}}} \right)=\left( {\frac{{\frac{{{R_{i}}}}{R}}}{{\frac{{{N_i}}}{N}}}} \right)
+$$
+
+em que: ${R_i}$ é a produção no setor $i$  na localidade de análise; ${R}$ é a produção total na localidade de análise; ${N_i}$ é a produção no setor $i$ da localidade de referência (do país); e $N$ é a produção total da localidade de referência (do país).    
+
+É interessante olhar estas razões (ou _shares_), pois no cálculo exemplificado em Excel, ficarão evidenciadas as operações matemáticas. 
+
+
+### EconGeo de Balland (2017)
+
+Esta rotina pode ser resumida fazendo o uso do pacote `EconGeo`, e a função `RCA` para obter o Quociente Locacional (similar ao *Revealed Comparative Advantage* - RCA - índice de Balassa, 1965). O pacote pode ser instalado fazendo como a seguir:
+
+```
+install.packages("devtools")
+library(devtools)
+devtools::install_github("PABalland/EconGeo", force = T)
+```
+
+Ela utiliza uma matriz contendo os dados no formato abaixo, em que $(I1,I2,I3)$ são as indústrias ou setores, para os municípios $(R1,R2,R3)$.
+
+```
+municipio  |I1       |I2      | I3
+-----------|---------|--------|------------
+ R1        |100      |150     | 165
+ R2        |130      |400     | 220
+ R3        |200      |1200    | 20
+```
+
+Prepararemos os dados para os cálculos, construindo uma matriz `mat` para os dados de medidas clássicas de Isard:
+
+```{r}
+library(EconGeo)
+## gerar a matriz industrial da região, para T0
+set.seed(31)
+mat_0 <- as.matrix(Classic_Measures_Isard[3:26,3:6])
+rownames(mat_0)<- c ("R1", "R2", "R3", "R4", "R5","R6", "R7", "R8", 
+                   "R9", "R10","R11","R12","R13", "R14", "R15", "R16",
+                   "R17","R18", "R19", "R20", "R21", "R22","R23","R24")
+colnames(mat_0)<-c("setor1","setor2","setor3","setor4")
+```
+
+O cálculo do Quociente Locacional (QL = RCA) será fazendo:
+
+```{r}
+class(mat_0) <- "numeric"
+QL_T0<-round(RCA(mat_0),digits = 4)
+```
+
+Você pode comparar esse resultado com o da planilha LQ1, onde os cálculos forma feitos em fórmulas do Excel. Similarmente fizemos para T1 e depois colocamos tudo em uma só tabela.    
+
+```{r}
+library(EconGeo)
+## gerar a matriz industrial da região, para T0
+set.seed(31)
+mat_1 <- as.matrix(Classic_Measures_Isard[3:26,9:12])
+rownames(mat_1)<- c ("R1", "R2", "R3", "R4", "R5","R6", "R7", "R8", 
+                   "R9", "R10","R11","R12","R13", "R14", "R15", "R16",
+                   "R17","R18", "R19", "R20", "R21", "R22","R23","R24")
+colnames(mat_1)<-c("setor1","setor2","setor3","setor4")
+class(mat_1) <- "numeric"
+QL_T1<-round(RCA(mat_1),digits = 4)
+```
+
+```{r}
+LQ1<-cbind(QL_T0,QL_T1)
+knitr::kable(LQ1,caption = "Quociente Locacional em T0 e T1")
+```
+
+E agora reproduzimos a tela do Excel, pasta "LQ1", previamente calculado para conferência.    
+
+![Resultados da planilha em MS Excel para LQ1](/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/LQ1.png){width=80%}
+
+### Exemplificando pelo Excel
+
+Acompanhando a notação da nota de aula de Haddad (2018), coloco as imagens do procedimento realizado no Excel. Para recordar, a expressão é    
+$$
+QL_{i}=\left( {\frac{{\frac{{{R_{i}}}}{N_i}}}{{\frac{{{R}}}{N}}}} \right)=\left( {\frac{{\frac{{{R_{i}}}}{R}}}{{\frac{{{N_i}}}{N}}}} \right)
+$$
+     
+#### LQ1
+
+Passo 1: calcular as parcelas regionais (*regional shares*). Desta forma, o primeiro passo será obter  $\frac{R_i}{N_i}$.O procedimento começa fazendo as contas do valor (para a célula C4) igual a `='Basic data'!C4/'Basic data'!C$29`. Ou seja, a célula C4 (produção da Region1 Sector1 em 'Basic data') dividido pela célula C29 (produção Total Sector1 em 'Basic data'). Os cálculos seguem para as demais células e encorajamos o leitor a fazer a checagem na planilha.
+
+![Cálculo do share regional](/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/regional_shares.png){width=80%}
+
+O resultado obtido na coluna G, em Regional Shares, indica a parcela da região 1 no total (`='Basic data'!G4/'Basic data'!G$29` em 'Regional Shares').     
+
+
+Passo 2: O resultado da coluna G será o denominador da expressão de $QL_i$. Ou seja, passamos então ao passo 2 que é efetivamente o cálculo do QL.  
+
+
+![Cálculo do quociente locacional - LQ1](/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/LQ1_formula.png){width=80%}
+
+O cálculo do valor (para a célula C4) igual a `='Regional shares'!C4/'Regional shares'!$G4`. Ou seja, a célula C4 ('Regional shares' da Region1 Sector1) dividido pela célula G4 de 'Regional shares' (o share total).    
+
+#### LQ2
+
+O cálculo semelhante é feito por Haddad (2018) em LQ2 para evidenciar que fazendo pelo share setorial dará resultado igual, mas deve-se atentar pela alteração do sentido.         
+
+Passo 1 para LQ2: Neste LQ2, o cálculo será pela linha (ou seja, $R_i/R$. Na planilha 'Sectoral shares', você encontrará em C4 a fórmula: `='Basic data'!C4/'Basic data'!$G4`, ou seja, agora divide-se a coluna C por G fazendo o _sectoral share_. A linha 29 dará o denominador $N_i/N$.    
+
+![Cálculo do share setorial](/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/sectoral_shares.png){width=80%}
+
+Passo 2 para LQ2: agora faz-se o cálculo do quociente locacional usando a fórmula, para a célula C4, `='Sectoral shares'!C4/'Sectoral shares'!C$29`, ou seja, o share setorial da região dividido pelo share setorial do país (total).
+
+![Cálculo do quociente locacional - LQ2](/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/LQ2_formula.png){width=80%}
+
+
+
+
+Referências {-#Referências}
+========================
+
+BALASSA, B. Trade Liberalization and Revealed Comparative Advantage, The Manchester School 33: 99-123. 1965. 
+
+BALLAND, P.A. Economic Geography in R: Introduction to the EconGeo Package, Papers in Evolutionary Economic Geography, 17 (09): 1-75, 2017.
+
+CRUZ, B.O.; QUEIROZ, I.V. Efeitos encadeados do perfil  setorial dos investimentos e a distribuição espacial da  indústria: onde se localizam as indústrias dos setores com  maiores impactos? Texto para discussão n. 2172, Brasília: IPEA, 2016.
+
+FLORENCE, P. Sargent. Investment, location, and size of plant. Cambridge: Cambridge University Press, 1948.
+
+HADDAD, Eduardo Amaral. Aula 1: Medidas de Concentração, Especialização e Localização. In: HADDAD, E.A. **Métodos de Análise Regional e Inter-regional**. Departamento de Ciências Econômicas/UEMS, Ponta Porã - MS, 13 e 14 de junho de 2018. São Paulo: NEREUS-FEA-USP, 2018. Disponível em: <http://www.usp.br/nereus/wp-content/uploads/Aula_1_Medidas3.pdf>. Acesso em 27 Abr 2020.    
+
+HADDAD, Paulo R. (org.) (1989). Economia Regional: Teorias e Métodos de Análise. Banco do Nordeste, Fortaleza, cap. 4.
+
+MONASTERIO, Leonardo. Indicadores de análise regional e espacial. In: CRUZ et al (orgs). Economia regional e urbana : teorias e métodos com ênfase no Brasil. Brasília: Ipea, 2011. cap. 10. pp.315-331.
+
+NORTH, Douglas. Teoria da localização e crescimento econômico regional. In: SCWARTZMANN, J. (org.) Economia regional e urbana: tetos escolhidos. Belo Horizonte: UFMG, p.333-343, 1977. 
+
+SOUZA, Filipe Lage de. A localização da indústria de transformação brasileira nas últimas três décadas. Rio de Janeiro: EPGE-FGV, 2002. (Dissertação, Mestrado em Economia). 130p.

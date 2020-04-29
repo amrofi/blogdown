@@ -195,7 +195,7 @@ QL_T1<-cbind(nomes,QL_T1)
 
 Para ver como elaborar mapas, ver Figueiredo (2019a;2020a). Utilizarei o pacote `geobr` para obter os arquivos básicos de mapas (*shapes*). Posso verificar que para MS, especificarei 50 e para o ano de 2016. Posso baixar os dados (*shapes*) para os municípios de Mato Grosso do Sul fazendo uso da função read_municipality(code_muni=50, year=2016) em:
 
-```{r, message = FALSE,warning=FALSE}
+```{r, message = FALSE,include=FALSE,results='hide'}
 library(geobr)
 options(timeout= 4000000)
 all_mun_ms <- read_municipality(code_muni=50, year=2016)

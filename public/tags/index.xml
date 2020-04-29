@@ -5,7 +5,7 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Tue, 28 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Wed, 29 Apr 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-32.png</url>
       <title>Tags</title>
@@ -13,18 +13,58 @@
     </image>
     
     <item>
+      <title>Diversidade</title>
+      <link>/tags/diversidade/</link>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/diversidade/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>economia regional</title>
       <link>/tags/economia-regional/</link>
-      <pubDate>Tue, 28 Apr 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
       <guid>/tags/economia-regional/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>especialização</title>
+      <link>/tags/especializacao/</link>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/especializacao/</guid>
       <description></description>
     </item>
     
     <item>
       <title>indicadores regionais</title>
       <link>/tags/indicadores-regionais/</link>
-      <pubDate>Tue, 28 Apr 2020 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
       <guid>/tags/indicadores-regionais/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>KSI</title>
+      <link>/tags/ksi/</link>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/ksi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>quociente locacional</title>
+      <link>/tags/quociente-locacional/</link>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/quociente-locacional/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubiquidade</title>
+      <link>/tags/ubiquidade/</link>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/ubiquidade/</guid>
       <description></description>
     </item>
     
@@ -33,14 +73,6 @@
       <link>/tags/ql/</link>
       <pubDate>Tue, 28 Apr 2020 00:00:00 +0000</pubDate>
       <guid>/tags/ql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>quociente locacional</title>
-      <link>/tags/quociente-locacional/</link>
-      <pubDate>Tue, 28 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/quociente-locacional/</guid>
       <description></description>
     </item>
     

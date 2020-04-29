@@ -1,0 +1,12 @@
+base
+knitr
+rmarkdown
+rmdformats
+readxl
+EconGeo
+geobr
+dplyr
+ggplot2
+sf
+ggspatial
+REAT

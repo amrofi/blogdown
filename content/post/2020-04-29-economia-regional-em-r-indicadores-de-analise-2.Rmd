@@ -1,0 +1,663 @@
+---
+title: 'Economia Regional em R: Indicadores de análise de especialização regional
+  - QL, CE, KSI, RDI, DIV, UBIQ'
+author: Adriano M R Figueiredo
+date: '2020-04-29'
+slug: economia-regional-em-r-indicadores-de-analise-2
+categories: []
+tags:
+  - economia regional
+  - indicadores regionais
+  - quociente locacional
+  - Diversidade
+  - Ubiquidade
+  - especialização
+  - KSI
+subtitle: ''
+summary: 'This is a undergraduate exercise for class use.'
+authors: []
+lastmod: '2020-04-29T16:46:18-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmarkdown)
+library(rmdformats)
+
+## Global options
+options(max.print="100")
+opts_chunk$set(echo=TRUE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=100)
+```
+
+
+Licença {-#Licença}
+===================
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <http://creativecommons.org/licenses/by-sa/4.0/> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+![License: CC BY-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png){ width=25% }
+
+Citação {-#Citação}
+===================================
+
+Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional em R: Indicadores de análise de especialização regional - $QL$, $CE$, $KSI$, $RDI$, $DIV$, $UBIQ$. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/regional_indicadores_2> e <https://adrianofigueiredo.netlify.app/post/economia-regional-em-r-indicadores-de-analise-2/>. 
+
+Script para reprodução (se utilizar, citar como acima)
+==================
+
+```{r echo=FALSE}
+# a single file
+xfun::embed_file('2020-04-29-economia-regional-em-r-indicadores-de-analise-2.Rmd')
+```
+
+Introdução
+===================
+
+
+Este material é uma sequência ao conteúdo da primeira parte disponível em Figueiredo (2020b). Na primeira parte foram apresentados os indicadores de desigualdade. Agora falaremos dos indicadores de especialização regional, conforme cita Monastério (2011). Outras leituras úteis além deste autor, são Coutinho (2017) e Figueiredo (2019c). Utilizaremos os pacotes `REAT` de Wieland (2019); e `EconGeo` de  Balland (2017, 2019), além de algumas funções próprias.     
+
+
+Indicadores de Especialização Regional
+======================
+
+O objetivo desses indicadores é resumir os padrões espaciais da atividade econômica, tentando compreender como um setor está distribuído em um local ou região, ou ainda, quais os locais mais importantes para um setor. Existem vários indicadores ($QL$, $CE$, $KSI$, $RDI$, $DIV$, $UBIQ$ entre outros) para uma mesma variável (por ex.: do nível de atividade, emprego, produção etc). É importante ressaltar a necessidade de se avaliar e compreender a organização dos dados nas planilhas e nas variáveis ou objetos em um software, de modo a realizar os procedimentos corretamente.     
+
+A ideia básica deste arquivo é orientar os procedimentos para o cálculo dos indicadores de análise regional a saber:
+
+1. Quociente Locacional $QL$     
+2. Coeficiente de Especialização $CE$    
+3. Coeficiente de Especialização de Krugman $KSI$     
+4. Índice de Diversidade Regional $RDI$     
+5. Índice de Diversidade $DIV$     
+6. Índice de Ubiqüidade $UBIQ$     
+
+
+## Organização dos dados
+
+Para os próximos indicadores, necessita-se dos dados de emprego por setor em cada município de MS. Desta forma, chama-se a planilha já preparada com os dados da base de informações RAIS do Ministério do Trabalho e Emprego do Brasil (MTE). Um meio de obter tais informações eletronicamente é pelo pacote `raisr`. Outra forma é pela página da Secretaria do Trabalho do Ministério da Economia (antigo Ministério do Trabalho e Emprego - MTE) <http://pdet.mte.gov.br/>.     
+
+A RAIS possui os dados para o final de cada ano (dezembro), portanto, os saldos de empregados ocupados. A CAGED apresenta outro tipo de informação, a de ligados e desligados, invés do saldo de pessoas ocupadas. Utilizaremos os dados da RAIS por vínculos, por Divisão CNAE 2.0 e por município. Outras agregações podem ser testadas, a critério do usuário. O procedimento recomendado é baixar os dados primeiro, organizar e depois chamar a planilha consolidada para o No site, só consegui essa extratificação para após 2006. Sugiro olhar o video ilustrativo em <https://youtu.be/b93l_T3xhiA>.
+ 
+Quociente Locacional $QL$  
+========================
+O Quociente Locacional (QL) é uma medida que dá a informação de qual o setor mais representado no município (região de análise) quando comparado com o mesmo setor no estado (região de referência). Foi elaborado inicialmente por Haig (1928) e vem sendo muito utilizado em várias análises regionais e de localização industrial.  Também chamado de Índice de `Revealed Comparative Advantage` (RCA – ou Vantagem comparativa revelada, VCR) seguindo Ballasa (1965), ou índice de Hoover-Balassa.
+
+A expressão básica é:
+
+$$
+QL_{ki}=\left( {\frac{{\frac{{{E_{ki}}}}{E_i}}}{{\frac{{{E_k}}}{E}}}} \right)
+$$
+em que: ${E_{ki}}$ é o emprego no setor $k$  na localidade de análise $i$; ${E_i}$ é o emprego total na localidade de análise $i$; ${E_k}$ é o emprego no setor $k$ da localidade de referência; e $E$ é o emprego total da localidade de referência. 
+A ideia é saber se na localidade de análise, a proporção do emprego do setor é maior ou menor que esta proporção no local de referência. Assim, se o resultado for maior que hum $\left( {QL_{ki}}\gt 1\right)$, então diz-se que a localidade de análise é relativamente mais especializada nesse setor que a localidade de refência. De outro lado, valores menores que a unidade  $\left( {QL_{ki}}\lt 1\right)$ indicam que a localidade analisada tem representação menor deste setor do que a representação deste na localidade de referência.
+A função `REAT:::locq` pode ser utilizada para realizar este cálculo de QL, mas só permite para um local e não para uma série. Desta forma, elaborou-se uma função `QL` para realizar o cálculo do setor e para todas as localidades de modo automatizado. Segue a função `QL(e_ki, e_i, e_k, e)` a ser utilizada, em que: `e_ki` é o emprego no setor $k$  no município $i$; `e_i` é o emprego total no município $i$; `e_k` é o emprego no setor $k$ do MS; e `e` é o emprego total do MS. 
+
+
+```{r }
+#chamar os dados para o QL, IHH, PR e ICN
+#E<-sum(ei)  # ei é o emprego total da regiao i, E é o emprego total MS
+#Ek<-sum(eki)   # Ek é o emprego total MS do setor k
+QL <-
+  function (e_ki, e_i, e_k, e) {
+    
+    #if (e_ki > e_i) { return (NA) }
+    
+    #if (e_k > e) { return (NA) }
+    
+    #if (e_i > e) { return (NA) }
+    
+    s_ki <- e_ki/e_i
+    
+    s_i <- e_k/e  
+    
+    LQ <- s_ki/s_i
+    
+    return(LQ)
+  }
+# chamar dados de emprego
+library(readxl)
+dadosemprego <- read_excel("emprego.xlsx", sheet = "2006")
+#View(dadosemprego)
+# attach(dadosemprego)
+
+ei<-rowSums(as.matrix(dadosemprego[,2:88]))
+E<-colSums (dadosemprego[,89], dims = 1)
+ei<-dadosemprego[,89]  
+# ei é o emprego total da regiao i, 
+# E é o emprego total MS
+# Ek é o emprego total MS do setor k
+Ek<- t(colSums(dadosemprego[,2:88], dims = 1))
+
+# teste - divisao 1
+ql.ms<-QL(dadosemprego$`ADMINISTRAÇÃO PÚBLICA, DEFESA E SEGURIDADE SOCIAL`,
+          ei, Ek[1,1], E)
+ql.ms
+# agora tentar automatizar para todas as colunas
+# QL <- function (e_ki, e_i, e_k, e)
+QL.MS.2006<-dadosemprego$Munic
+for (k in 1:87){
+    # retirando linha 80 e coluna 1
+      dadosemp2<-dadosemprego[1:79,k+1]
+      QL.2006<-QL(dadosemp2, ei, Ek[1,k], E)
+      QL.MS.2006<-cbind(QL.MS.2006,QL.2006)
+}
+QL.MS.2006[,1:3] # pedi para sair apenas duas divisoes
+```
+
+O mesmo procedimento é mais facilmente obtido com uso do pacote `EconGeo` de Balland (2019). Outra opção é calcular no Excel. Maiores detalhes podem ser obtidos em Figueiredo (2020c)
+Agora vamos recalcular para 2006 e 2016, com dados da RAIS no mesmo formato. 
+
+*   Para 2006:
+
+```{r}
+require(EconGeo);library(readxl)
+dadosemprego <- read_excel("emprego.xlsx", sheet = "2006")
+nomes <- read_excel("emprego.xlsx", sheet = "nomes")
+mat_0 <- as.matrix(dadosemprego[1:79,2:88]) # 2006
+rownames(mat_0)<- (dadosemprego$Munic)
+class(mat_0) <- "numeric"
+# considerando T0 para 20006 e T1 para 2016
+QL_T0<-as.data.frame(round(RCA(mat_0),digits = 4))
+QL_T0<-cbind(nomes,QL_T0)
+# salvar data.frames para csv com write.csv() ou para excel
+#writexl::write_xlsx(QL_T0,"qlms2006.xlsx")
+```
+
+*   Para 2016:
+
+```{r}
+require(EconGeo);library(readxl)
+dadosemprego_1 <- read_excel("emprego.xlsx", sheet = "2016")
+mat_1 <- as.matrix(dadosemprego_1[1:79,2:88]) # 2016
+rownames(mat_1)<- (dadosemprego_1$Munic)
+class(mat_1) <- "numeric"
+# considerando T0 para 20006 e T1 para 2016
+QL_T1<-as.data.frame(round(RCA(mat_1),digits = 4))
+QL_T1<-cbind(nomes,QL_T1)
+# salvar data.frames para csv com write.csv() ou para excel
+#writexl::write_xlsx(QL_T1,"qlms2016.xlsx")
+```
+
+## Mapa de QL para 2016
+
+Para ver como elaborar mapas, ver Figueiredo (2019a;2020a). Utilizarei o pacote `geobr` para obter os arquivos básicos de mapas (*shapes*). Posso verificar que para MS, especificarei 50 e para o ano de 2016. Posso baixar os dados (*shapes*) para os municípios de Mato Grosso do Sul fazendo uso da função read_municipality(code_muni=50, year=2016) em:
+
+```{r, message = FALSE,warning=FALSE}
+library(geobr)
+options(timeout= 4000000)
+all_mun_ms <- read_municipality(code_muni=50, year=2016)
+```
+
+Agora vou construir uma variável para ser plotada no mapa. Farei com o QL da divisão 'Agricultura, pecuária e serviços relacionados', 2016, a qual foi colocada dentro do objeto `QL_T1_AGR`. Preciso ter os meus dados em uma planilha em que uma das colunas será o código do município da mesma forma que consta em `code_muni` no objeto `all_mun_ms`. Recomendo fazer a associação entre os dados por meio do código, menos sujeito a erros de digitação que para os nomes dos municípios. Juntarei os datasets pela condição de que o `code_muni` do objeto `all_mun_ms` é igual ao `code_muni` do objeto `QL_T1` todo.
+
+ 
+```{r}
+library(dplyr);library(ggplot2);library(sf)
+QL_T1_AGR<-QL_T1$`AGRICULTURA, PECUÁRIA E SERVIÇOS RELACIONADOS`
+dataset_T1 = left_join(all_mun_ms, QL_T1, by=c("code_muni"="code_muni"))
+max(dataset_T1$`AGRICULTURA, PECUÁRIA E SERVIÇOS RELACIONADOS`)
+min(dataset_T1$`AGRICULTURA, PECUÁRIA E SERVIÇOS RELACIONADOS`)
+```
+    
+No mapa abaixo tem-se o QL da divisão Agricultura, pecuária e serviços relacionados em 2016, para Mato Grosso do Sul. É possível identificar que dez (10) entre os 79 municípios têm QL menores que 1 ($QL\lt1$). São eles: Campo Grande, Dourados, Três Lagoas, Coronel Sapucaia, Mundo Novo, Ladário, Bataguassu, Japorã, Angélica, Fátima do Sul. 
+
+```{r}
+library(ggplot2);library("ggspatial")
+ggplot() +
+  geom_sf(data=dataset_T1, 
+          aes(fill=`AGRICULTURA, PECUÁRIA E SERVIÇOS RELACIONADOS`), 
+          color= NA, size=.15)+
+  labs(title="QL 2016 dos Municípios de MS para AGRIC",
+       caption='Fonte: Elaboração própria', size=8)+
+  scale_fill_distiller(palette = "RdGy", limits=c(0, 7),name="QL_T1")+
+  theme_minimal()+
+  annotation_north_arrow(location = "bl", which_north = "true", 
+        pad_x = unit(0.65, "in"), pad_y = unit(0.3, "in"),
+        style = north_arrow_fancy_orienteering)+
+  annotation_scale(location = "bl", width_hint = 0.3)
+```
+
+
+
+Coeficiente de Especialização $CE$  
+========================
+
+O Coeficiente de especialização ($CE$) de Hoover e Giarratani (1984) faz uma análise alternativa ao indicador de quociente locacional, também para avaliar se o local é especializado em determinada atividade comparativamente ao local de referência. Para seu cálculo, recomenda-se utilizar os dados de emprego de cada local para cada setor, e comparar com os mesmos dados da economia de referência. Utiliza-se aqui a mesma notação utilizada no $QL$, para a expressão de $CE$ para a localidade $i$:
+
+$$
+C{E_i} = \frac{1}{2}\sum\limits_k {\left| {\frac{{{E_{ki}}}}{{{E_i}}} - \frac{{{E_k}}}{E}} \right|}
+$$
+
+em que: ${E_{ki}}$ é o emprego no setor $k$  na localidade de análise $i$; ${E_i}$ é o emprego total na localidade de análise $i$; ${E_k}$ é o emprego no setor $k$ da localidade de referência; e $E$ é o emprego total da localidade de referência.    
+
+Valores próximos de zero ($\left( {CE_{i}}= 0\right)$) indicam que o local $i$ tem estrutura no mesmo padrão de especialização que a localidade de referência. De forma oposta, valores próximos a hum ($\left( {CE_{i}}= 1\right)$) indicam que o local $i$ tem padrão de especialização completamente diferente da localidade de referência. 
+    
+O chunk abaixo é para um setor. É preciso fazer para cada setor e depois somar para todos os setores. Isto será finalizado, portanto, após o outro chunk.    
+
+```{r}
+# para um setor
+#E<-sum(ei)  # ei é o emprego total da regiao i, E é o emprego total MS
+#Ek<-sum(eki)   # Ek é o emprego total MS do setor k
+CE <- function(e_ki, e_i, e_k, e) {
+    
+    s_ki <- e_ki/e_i
+  
+    s_i <- e_k/e
+    
+    CEH <- 0.5*abs(s_ki-s_i)  # está fazendo para um setor apenas
+    
+    return(CEH)
+  
+}
+# chamar dados de emprego 2006
+
+# dadosemprego <- read_excel("emprego.xlsx", 
+#                           sheet = "2006")
+# View(dadosemprego)
+# attach(dadosemprego)
+# ei é o emprego total da regiao i
+# ei<-rowSums(as.matrix(dadosemprego[,2:88]))  # mas já coloquei o total geral no xlsx
+# E é o emprego total MS
+E<-colSums (dadosemprego[,89], dims = 1)
+ei<-dadosemprego[,89]  
+ 
+# Ek é o emprego total MS do setor k
+Ek<- t(colSums(dadosemprego[,2:88], dims = 1))
+
+# teste - divisao 1
+ce.ms<-CE(dadosemprego$`ADMINISTRAÇÃO PÚBLICA, DEFESA E SEGURIDADE SOCIAL`,
+          ei, Ek[1,1], E)
+```
+
+Agora tentar automatizar para todas as colunas e ano de 2006. Reforço: o chunk acima é para um setor. É preciso fazer para cada setor e depois somar para todos os setores.
+
+```{r, eval=TRUE}
+
+# agora tentar automatizar para todas as colunas e 2006
+# CE <- function (e_ki, e_i, e_k, e)
+# QL <- function (e_ki, e_i, e_k, e)
+CE.MS.2006<-dadosemprego$Munic
+for (k in 1:87){
+  # retirando linha 80 e coluna 1
+  dadosemp2<-dadosemprego[1:79,k+1]
+  
+  #CE.2006<- apply(X=dadosemp2,MARGIN=2,FUN = QL,e_i=ei,
+  #                e_k=Ek,e=E)
+  CE.2006<-CE(dadosemp2, ei, Ek[1,k], E)
+  CE.MS.2006<-cbind(CE.MS.2006,CE.2006)
+}
+
+CE_2006<-round(rowSums(as.matrix(CE.MS.2006[,2:88])),4)
+knitr::kable(CE_2006)
+```
+
+Esta rotina pode ser resumida fazendo o uso do pacote `EconGeo`, e a função `spec.coeff`. Ela utiliza uma matriz contendo os dados no formato abaixo, em que $(I1,I2,I3)$ são as indústrias ou setores, para os municípios $(R1,R2,R3)$.
+
+
+municipio  |I1       |I2      | I3
+-----------|---------|--------|------------
+ R1        |100      |150     | 165
+ R2        |130      |400     | 220
+ R3        |200      |1200    | 20
+
+    
+*   Para 2006, usando a matriz mat_0, criada anteriormente: :    
+
+```{r}
+# Coeficiente de especialização de Hoover pelo EconGeo
+# retorna exatamente o coeficiente (CE) visto anteriormente
+library(EconGeo)
+## gerar a matriz industrial da região, para T0=2006
+# para a matriz mat_0 criada anteriormente
+## run the function
+CE_T0<-as.data.frame(round(spec.coeff(mat_0),digits = 4))
+CE_T0<-cbind(nomes,CE_T0)
+colnames(CE_T0)<-c("code_muni","nomemun","CE_T0")
+# salvar data.frames para csv com write.csv() ou para excel
+#writexl::write_xlsx(CE_T0,"cems2006.xlsx")
+knitr::kable(CE_T0)
+```
+    
+*   Para 2016, usando a matriz mat_1, criada anteriormente:    
+    
+```{r}
+require(EconGeo);library(readxl)
+# considerando T0 para 20006 e T1 para 2016
+CE_T1<-as.data.frame(round(spec.coeff(mat_1),digits = 4))
+CE_T1<-cbind(nomes,CE_T1)
+colnames(CE_T1)<-c("code_muni","nomemun","CE_T1")
+# salvar data.frames para csv com write.csv() ou para excel
+#writexl::write_xlsx(CE_T1,"cems2016.xlsx")
+knitr::kable(CE_T1)
+```
+
+Os resultados por essa rotina são exatamente os mesmos daqueles obtidos pela função do `for-loop` dos setores.
+
+## Mapa de CE para 2016
+
+Agora vou construir o mapa para CE de 2016. Farei nova junção dos datasets pela condição de que o `code_muni` do objeto `all_mun_ms` é igual ao `code_muni` do objeto `CE_T1` todo.
+
+ 
+```{r}
+require(dplyr);require(ggplot2);require(sf)
+dataset_CET1 = left_join(all_mun_ms, CE_T1, by=c("code_muni"="code_muni"))
+max(dataset_CET1$CE_T1)
+min(dataset_CET1$CE_T1)
+```
+
+Portanto, o mapa pode ser feito conforme abaixo:    
+
+```{r}
+library(ggplot2);library("ggspatial")
+ggplot() +
+  geom_sf(data=dataset_CET1, 
+          aes(fill=CE_T1), 
+          color= NA, size=.15)+
+  labs(title="CE 2016 dos Municípios de MS",
+       caption='Fonte: Elaboração própria', size=8)+
+  scale_fill_distiller(palette = "RdGy", limits=c(0.1, 0.8),name="CE_T1")+
+  theme_minimal()+
+  annotation_north_arrow(location = "bl", which_north = "true", 
+        pad_x = unit(0.65, "in"), pad_y = unit(0.3, "in"),
+        style = north_arrow_fancy_orienteering)+
+  annotation_scale(location = "bl", width_hint = 0.3)
+```
+
+Assim, como exposto anteriormente, valores próximos de zero ($\left( {CE_{i}}= 0\right)$) indicam que o local $i$ tem estrutura no mesmo padrão de especialização que a localidade de referência. De forma oposta, valores próximos a hum ($\left( {CE_{i}}= 1\right)$) indicam que o local $i$ tem padrão de especialização completamente diferente da localidade de referência, neste caso, Angélica com 0.7682, o mais próximo de 1. Como era de esperar, os municípios mais populosos e com maiores economias estão mais próximos da referência que foi o estado de MS.
+
+
+Coeficiente de Especialização de Krugman $KSI$   
+========================
+
+Baseado em Krugman (1991), esse indicador remete ao índice de Florence (1948) para comparações entre economias; neste caso, faz-se o município i e o estado j pela expressão:
+
+
+$$
+KS{I_{ij}} = \sum\limits_k {\left| {\frac{{{E_{ki}}}}{{{E_i}}} - \frac{{{E_{kj}}}}{{{E_j}}}} \right|}
+$$
+com  $0 \le KSI \le 2$ em que: ${E_{ki}}$ é o emprego no setor $k$  na localidade de análise $i$; ${E_i}$ é o emprego total na localidade de análise $i$; ${E_k}$ é o emprego no setor $k$ da localidade de referência $j$; e $E$ é o emprego total da localidade de referência $j$.       
+Valores próximos de zero ($\left( {KSI_{ij}}= 0\right)$) indicam que o local $i$ tem estrutura no mesmo padrão de especialização que a localidade de referência. De forma oposta, valores próximos a dois ($\left( {KSI_{ij}}= 2\right)$) indicam que o local $i$ tem padrão de especialização completamente diferente da localidade de referência. Se dividido por 2, indica o mesmo que o $CE_i$, ou o quanto da estrutura produtiva de uma localidade teria que ser modificada para ficar semelhante à de referência.
+
+Para usar o pacote `REAT`, e a função `krugman.spec`, os dados devem estar no formato:
+
+setor   |municipio |estado
+--------|----------|--------
+A       |100       |150
+B       |130       |400
+C       |200       |1200
+
+Neste caso, o comando será `krugman.spec(e_ij, e_il)` sendo:
+e_ij <- um vetor numérico com o emprego dos setores i na região j; 
+e_il <- um vetor numérico com o emprego dos setores i na região l.
+
+```{r}
+require(REAT)
+# os dados emprego estao com setores nas colunas e municipios nas linhas
+# farei para campo grande e 2006
+cg<-t(dadosemprego[20,2:88])
+KSI.ms<-krugman.spec(cg,Ek)
+KSI.ms
+# [1] 0.3959924  === dobro do CE!!!
+
+# Calcularei agora para dourados
+dour<-t(dadosemprego[32,2:88])
+KSId.ms<-krugman.spec(dour,Ek)
+KSId.ms
+# [1] 0.5432039   === dobro do CE!!!
+```
+
+Agora, faz-se o mesmo cálculo de KSI para o conjunto de municípios de MS em 2006 com uso do pacote `EconGeo` e da função `Krugman.index`. Será necessário criar uma matriz com os dados desejados, no mesmo formato daquele utilizado para CE, ou seja:
+
+Ela utiliza uma matriz contendo os dados no formato abaixo, em que $(I1,I2,I3)$ são as indústrias ou setores, para os municípios $(R1,R2,R3)$.
+
+
+municipio  |I1       |I2      | I3
+-----------|---------|--------|------------
+ R1        |100      |150     | 165
+ R2        |130      |400     | 220
+ R3        |200      |1200    | 20
+
+
+```{r}
+# Coeficiente de especialização de Krugman pelo EconGeo
+library(EconGeo)
+# gerar a matriz industrial da região, para 2006 = mat_0,
+# e para 2016 mat_1
+KSI_T0<-Krugman.index(mat_0)
+KSI_T1<-Krugman.index(mat_1)
+KSI_T01<-cbind(nomes,KSI_T0,KSI_T1)
+knitr::kable(cbind(nomes,KSI_T0,KSI_T1),
+    caption = "Coeficiente de especialização de Krugman em T0 e T1")
+# retorna exatamente o mesmo que anteriormente para campo grande e
+# dourados, mas agora fez para todos os municípios de MS
+```
+
+## Mapa de KSI para 2016
+
+Agora vou construir o mapa para KSI de 2016. Farei nova junção dos datasets pela condição de que o `code_muni` do objeto `all_mun_ms` é igual ao `code_muni` do objeto `KSI_T01` todo.
+
+ 
+```{r}
+require(dplyr);require(ggplot2);require(sf)
+dataset_KSIT1 = left_join(all_mun_ms, KSI_T01, by=c("code_muni"="code_muni"))
+max(dataset_KSIT1$KSI_T1)
+min(dataset_KSIT1$KSI_T1)
+```
+
+Portanto, o mapa pode ser feito conforme abaixo:    
+
+```{r}
+library(ggplot2);library("ggspatial")
+ggplot() +
+  geom_sf(data=dataset_KSIT1, 
+          aes(fill=KSI_T1), 
+          color= NA, size=.15)+
+  labs(title="KSI 2016 dos Municípios de MS",
+       caption='Fonte: Elaboração própria', size=8)+
+  scale_fill_distiller(palette = "RdGy", limits=c(0.3, 1.6),name="KSI_T1")+
+  theme_minimal()+
+  annotation_north_arrow(location = "bl", which_north = "true", 
+        pad_x = unit(0.65, "in"), pad_y = unit(0.3, "in"),
+        style = north_arrow_fancy_orienteering)+
+  annotation_scale(location = "bl", width_hint = 0.3)
+```
+
+Valores próximos de zero ($\left( {KSI_{ij}}= 0\right)$) indicam que o local $i$ tem estrutura no mesmo padrão de especialização que a localidade de referência. São os municípios indicados em tons de cinza. De forma oposta, valores próximos a dois ($\left( {KSI_{ij}}= 2\right)$) indicam que o local $i$ tem padrão de especialização completamente diferente da localidade de referência, o caso dos tons quentes: laranja e avermelhados.
+
+Índice de Diversidade Regional $RDI$     
+========================
+
+O Índice de Diversidade Industrial Regional (RDI, _regional industrial diversity_, ou _Relative Diversity index_  - MCCANN, 2001, p.82), é o inverso do KSI.
+
+```{r}
+# farei para campo grande e 2006
+
+RDI.ms<-1/KSI.ms
+RDI.ms
+
+# Calcularei agora para dourados
+
+RDId.ms<-1/KSId.ms
+RDId.ms
+
+```
+
+Usando os objetos gerados no item anterior, para KSI_T0 e KSI_T1, tem-se:
+
+```{r}
+
+RDI_T0<-1/KSI_T0
+RDI_T1<-1/KSI_T1
+RDI_T01<-cbind(RDI_T0,RDI_T1)
+knitr::kable(round(RDI_T01,digits = 4),
+    caption = "Coeficiente de especialização de Krugman em T0 e T1")
+```
+
+## Mapa de RDI para 2016
+
+Agora vou construir o mapa para RDI de 2016. Farei nova junção dos datasets pela condição de que o `code_muni` do objeto `all_mun_ms` é igual ao `code_muni` do objeto `RDI_T01` todo.
+
+ 
+```{r}
+require(dplyr);require(ggplot2);require(sf)
+RDI_T01<-cbind(nomes,RDI_T0,RDI_T1)
+dataset_RDIT1 = left_join(all_mun_ms, RDI_T01, by=c("code_muni"="code_muni"))
+max(dataset_RDIT1$RDI_T1)
+min(dataset_RDIT1$RDI_T1)
+```
+
+Portanto, o mapa pode ser feito conforme abaixo:    
+
+```{r}
+library(ggplot2);library("ggspatial")
+ggplot() +
+  geom_sf(data=dataset_RDIT1, 
+          aes(fill=RDI_T1), 
+          color= NA, size=.15)+
+  labs(title="RDI 2016 dos Municípios de MS",
+       caption='Fonte: Elaboração própria', size=8)+
+  scale_fill_distiller(palette = "RdGy", limits=c(0.6, 2.7),name="RDI_T1")+
+  theme_minimal()+
+  annotation_north_arrow(location = "bl", which_north = "true", 
+        pad_x = unit(0.65, "in"), pad_y = unit(0.3, "in"),
+        style = north_arrow_fancy_orienteering)+
+  annotation_scale(location = "bl", width_hint = 0.3)
+```
+
+De forma oposta à especialização, os municípios com maiores RDI são os de menor KSI. Assim, nesse caso, os tons avermelhados são mais diversificados e os tons de cinza menos diversificados relativamente ao estado de MS.     
+
+
+Índice de Diversidade $DIV$     
+========================
+
+Cálculo da diversidade pelo pacote `EconGeo`, função `diversity`. A função calcula uma medida simples de diversidade das regiões calculando o número de setores nos quais a região tem vantagem comparativa relativa (RCA), ou seja,  QL > 1 em relação as regiões das matrizes de incidência.   
+     
+```{r}
+# gerar a matriz industrial da região, 
+# para 2006 = mat_0, e para 2016 mat_1
+DIV_T0<-diversity(mat_0,RCA = TRUE)
+DIV_T1<-diversity(mat_1,RCA = TRUE)
+DIV_T01<-cbind(DIV_T0,DIV_T1)
+knitr::kable(round(DIV_T01,digits = 4),
+    caption = "Índice de diversidade dos municípios de MS em T0 e T1")
+
+```
+
+## Mapa de Diversidade para 2016
+
+Agora vou construir o mapa para DIV de 2016. Farei nova junção dos datasets pela condição de que o `code_muni` do objeto `all_mun_ms` é igual ao `code_muni` do objeto `DIV_T01` todo.
+
+ 
+```{r}
+require(dplyr);require(ggplot2);require(sf)
+DIV_T01<-cbind(nomes,DIV_T0,DIV_T1)
+dataset_DIVT1 = left_join(all_mun_ms, DIV_T01, by=c("code_muni"="code_muni"))
+max(dataset_DIVT1$DIV_T1)
+min(dataset_DIVT1$DIV_T1)
+```
+
+Portanto, o mapa pode ser feito conforme abaixo:    
+
+```{r}
+library(ggplot2);library("ggspatial")
+ggplot() +
+  geom_sf(data=dataset_DIVT1, 
+          aes(fill=DIV_T1), 
+          color= NA, size=.15)+
+  labs(title="DIV 2016 dos Municípios de MS",
+       caption='Fonte: Elaboração própria', size=8)+
+  scale_fill_distiller(palette = "RdGy", limits=c(0, 52),name="DIV_T1")+
+  theme_minimal()+
+  annotation_north_arrow(location = "bl", which_north = "true", 
+        pad_x = unit(0.65, "in"), pad_y = unit(0.3, "in"),
+        style = north_arrow_fancy_orienteering)+
+  annotation_scale(location = "bl", width_hint = 0.3)
+```
+
+Neste caso, percebe-se que Campo Grande se destaca na diversidade, enquanto outros municípios em tons cinza estão com menso de 20 divisões CNAE cujo QL supera a unidade ($QL\gt1$).    
+
+
+Índice de Ubiqüidade $UBIQ$ 
+========================
+
+A função `ubiquity` do pacote `EconGeo` calcula uma medida simples do número de regiões em que um setor é encontrado (ou seja, com QL>1). Teoricamente, setores que são mais comumente encontrados são setores menos complexos e, portanto, menos exigentes de capacidades técnicas.
+
+```{r}
+UBIQ_T0<-ubiquity(mat_0,RCA = TRUE) # 2006
+UBIQ_T1<-ubiquity(mat_1,RCA = TRUE) # 2016
+UBIQ_T01<-cbind(UBIQ_T0,UBIQ_T1)
+knitr::kable(round(UBIQ_T01,digits = 4),
+    caption = "Índice de Ubiqüidade dos municípios de MS em T0 e T1")
+```
+
+Nesse caso, as ubiqüidades são medidas por divisão CNAE e podemos verificar os valores ordenados. Ou seja, ranquear as divisões da maior para menor ubiqüidade. Os maiores valores são as divisões mais comuns nos municípios do estado de MS em 2016.     
+
+```{r}
+divisoes <- read_excel("emprego.xlsx", sheet = "divisoes", 
+    col_names = FALSE)
+UBIQ_T01<-cbind(divisoes,UBIQ_T0,UBIQ_T1)
+rank.UBIQ  <-UBIQ_T01[order(-UBIQ_T01$UBIQ_T1),]
+knitr::kable(rank.UBIQ[3:4])
+```
+
+Olhando os dados acima, percebemos que as divisões "Agricultura,..." e "Administração pública, ..." são as mais ubíqüas, ou seja, as que mais apresentam municípios especializados nessas divisões, consideradas básicas. São em geral atividades de baixa complexidade econômica. É possível observar que mais municípios se especializaram nelas de 2006 (T0) para 2016 (T1).    
+
+
+
+Referências {-#Referências}
+========================
+
+BALASSA, B. Trade Liberalization and Revealed Comparative Advantage, The Manchester School 33: 99-123. 1965. 
+
+BALLAND, P.A. Economic Geography in R: Introduction to the EconGeo Package, Papers in Evolutionary Economic Geography, 17 (09): 1-75, 2017.
+
+BALLAND,  Pierre-Alexandre. EconGeo: Computing Key Indicators of the Spatial Distribution of Economic Activities. R package version 1.3. 2019. Disponível em : <https://github.com/PABalland/EconGeo>    
+
+COUTINHO, Márcio R. A contribuição das atividades econômicas de base agropecuária na geração de emprego e massa salarial para os municípios de Mato Grosso do Sul. Dissertação de Mestrado (Administração). Campo Grande: UFMS, 2017. p.32-42.    
+
+CRUZ, B.O.;QUEIROZ, I.V. Efeitos encadeados do perfil  setorial dos investimentos e a distribuição espacial da  indústria: onde se localizam as indústrias dos setores com  maiores impactos? Texto para discussão n. 2172, Brasília: IPEA, p.27.
+
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional: Mapas em R. Campo Grande-MS,Brasil: RStudio/Rpubs, 2019a. Disponível em: <http://rpubs.com/amrofi/Regional_Economics_Spatial>.    
+
+FIGUEIREDO, Adriano Marcos Rodrigues. Apêndice - instalação do RStudio. Campo Grande-MS,Brasil: RStudio/Rpubs, 2019b. Disponível em: <http://rpubs.com/amrofi/instrucoes_Rstudio>.   
+
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional: polos, diversidade e especialização em R. Campo Grande-MS,Brasil: RStudio/Rpubs, 2019c. Disponível em: <http://rpubs.com/amrofi/Regional_Economics_poles_diversity>.
+
+FIGUEIREDO, Adriano Marcos Rodrigues. Mapas em R com `geobr`. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020a. Disponível em: <http://rpubs.com/amrofi/maps_geobr>   e <https://adrianofigueiredo.netlify.com/post/mapas-em-r-com-geobr/>. 
+
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional: $CV$, $V_w$ e $Theil$ em R. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020b. Disponível em <http://rpubs.com/amrofi/regional_indicadores_1> e <https://adrianofigueiredo.netlify.app/post/economia-regional-em-r-indicadores-de-analise-cv-v-w-e-theil/>.     
+
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional: reprodução de medidas de LQ conforme Haddad (2018) em R. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020c. Disponível em <https://adrianofigueiredo.netlify.app/post/economia-regional-reproducao-de-medidas-de-lq/> e em <http://rpubs.com/amrofi/medidas_QL_haddad_regional>.
+
+FLORENCE, P. Sargent. Investment, location, and size of plant. Cambridge: Cambridge University Press, 1948.
+
+HOOVER, Edgar M.; GIARRATANI, Frank. An Introduction to Regional Economics, The Web Book of Regional Science. West Virginia: Regional research Institute, West Virginia University. Disponível em: <www.rri.wvu.edu/WebBook/Giarratani/chapternine.htm>, v. 9, 1984. Atualizado em: Hoover, Edgar M. and Giarratani, Frank, "An Introduction to Regional Economics" (2020). Web Book of Regional Science. 4. <https://researchrepository.wvu.edu/rri-web-book/4>.    
+
+IBGE - Instituto Brasileiro de Geografia e Estatística. Produto Interno Bruto dos Municípios. Rio de Janeiro: IBGE/SIDRA. 2020a. Disponível em:<https://sidra.ibge.gov.br/pesquisa/pib-munic/tabelas>.    
+
+IBGE - Instituto Brasileiro de Geografia e Estatística. Estimativas de população. Rio de Janeiro: IBGE/SIDRA. 2020b. Disponível em: <https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html?=&t=downloads>
+
+LAUTERT, V.; ARAUJO, N.C.M. Concentração industrial no Brasil no período 1996-2001: uma análise por meio do índice de Ellison e Glaeser (1994). Economia Aplicada, São Paulo, v. 11, n. 3, p. 347-368, Jul.-Set., 2007.
+
+MONASTERIO, Leonardo. Indicadores de análise regional e espacial. In: CRUZ et al (orgs). Economia regional e urbana : teorias e métodos com ênfase no Brasil. Brasília: Ipea, 2011. cap. 10. pp.315-331.
+
+NORTH, Douglas. Teoria da localização e crescimento econômico regional. In: SCWARTZMANN, J. (org.) Economia regional e urbana: tetos escolhidos. Belo Horizonte: UFMG, p.333-343, 1977. 
+
+Pereira et al. Quantifying Urban Centrality: A Simple Index Proposal And International Comparison. Brasília: Ipea, 2012. Disponível em: <http://ipea.gov.br/agencia/images/stories/PDFs/TDs/td_1675a.pdf>.
+
+SOUZA, Filipe Lage de. A localização da indústria de transformação brasileira nas últimas três décadas. Rio de Janeiro: EPGE-FGV, 2002. (Dissertação, Mestrado em Economia). 130p.
+
+WIELAND, T. REAT: A Regional Economic Analysis Toolbox for R. REGION, 6(3), R1-R57. 2019. Disponível em: <https://doi.org/10.18335/region.v6i3.267>.

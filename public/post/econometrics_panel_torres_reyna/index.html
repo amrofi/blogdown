@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.6.3">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Adriano M R Figueiredo">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="This is an undergrad student level instruction for class use. Based on Torres-Reyna (2010).">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/econometrics_panel_torres_reyna/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  <script src="/js/mathjax-config.js"></script>
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" integrity="" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/econometrics_panel_torres_reyna/">
+
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="twitter:site" content="@amrofi">
+  <meta property="twitter:creator" content="@amrofi">
+  
+  <meta property="og:site_name" content="Adriano M R Figueiredo">
+  <meta property="og:url" content="/post/econometrics_panel_torres_reyna/">
+  <meta property="og:title" content="Econometria: exemplo de dados em painel em R - Torres-Reyna data | Adriano M R Figueiredo">
+  <meta property="og:description" content="This is an undergrad student level instruction for class use. Based on Torres-Reyna (2010)."><meta property="og:image" content="/img/icon-32.png">
+  <meta property="twitter:image" content="/img/icon-32.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-05-04T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-05-04T17:40:56-04:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/econometrics_panel_torres_reyna/"
+  },
+  "headline": "Econometria: exemplo de dados em painel em R - Torres-Reyna data",
+  
+  "datePublished": "2020-05-04T00:00:00Z",
+  "dateModified": "2020-05-04T17:40:56-04:00",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Adriano M R Figueiredo"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Adriano M R Figueiredo",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/logo.png"
+    }
+  },
+  "description": "This is an undergrad student level instruction for class use. Based on Torres-Reyna (2010)."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Econometria: exemplo de dados em painel em R - Torres-Reyna data | Adriano M R Figueiredo</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/"><img src="/img/logo.png" alt="Adriano M R Figueiredo"></a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/"><img src="/img/logo.png" alt="Adriano M R Figueiredo"></a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#biography"><span>About</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/courses/"><span>Courses</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+      <li class="nav-item">
+        <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+      <li class="nav-item">
+        <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+      </li>
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Econometria: exemplo de dados em painel em R - Torres-Reyna data</h1>
+
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+          Last updated on
+      
+    
+    May 4, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    17 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+<script src="/rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="/rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="/rmarkdown-libs/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/datatables-binding/datatables.js"></script>
+<link href="/rmarkdown-libs/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="/rmarkdown-libs/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="/rmarkdown-libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="/rmarkdown-libs/crosstalk/js/crosstalk.min.js"></script>
+
+
+<div id="Licença" class="section level1 unnumbered">
+<h1>Licença</h1>
+<p>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <a href="http://creativecommons.org/licenses/by-sa/4.0/" class="uri">http://creativecommons.org/licenses/by-sa/4.0/</a> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.</p>
+<div class="figure">
+<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="License: CC BY-SA 4.0" style="width:25.0%" />
+<p class="caption">License: CC BY-SA 4.0</p>
+</div>
+</div>
+<div id="Citação" class="section level1 unnumbered">
+<h1>Citação</h1>
+<p>Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Econometria: exemplo de dados em painel em R - Torres-Reyna data. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <a href="http://rpubs.com/amrofi/Econometrics_panel_torres_reyna" class="uri">http://rpubs.com/amrofi/Econometrics_panel_torres_reyna</a> e em <a href="https://adrianofigueiredo.netlify.app/post/Econometrics_panel_torres_reyna/" class="uri">https://adrianofigueiredo.netlify.app/post/Econometrics_panel_torres_reyna/</a>.</p>
+</div>
+<div id="script-para-reprodução-se-utilizar-citar-como-acima" class="section level1">
+<h1>Script para reprodução (se utilizar, citar como acima)</h1>
+<a href="data:text/x-markdown;base64,LS0tDQp0aXRsZTogJ0Vjb25vbWV0cmlhOiBleGVtcGxvIGRlIGRhZG9zIGVtIHBhaW5lbCBlbSBSIC0gVG9ycmVzLVJleW5hIGRhdGEnDQphdXRob3I6ICdBZHJpYW5vIE0gUiBGaWd1ZWlyZWRvJw0KZGF0ZTogJzIwMjAtMDUtMDQnDQpzbHVnOiBFY29ub21ldHJpY3NfcGFuZWxfdG9ycmVzX3JleW5hDQpjYXRlZ29yaWVzOiBbXQ0KdGFnczoNCiAgLSBlY29ub21ldHJpYQ0KICAtIHBhaW5lbA0Kc3VidGl0bGU6ICcnDQpzdW1tYXJ5OiAnVGhpcyBpcyBhbiB1bmRlcmdyYWQgc3R1ZGVudCBsZXZlbCBpbnN0cnVjdGlvbiBmb3IgY2xhc3MgdXNlLiBCYXNlZCBvbiBUb3JyZXMtUmV5bmEgKDIwMTApLicNCmF1dGhvcnM6IFtdDQpsYXN0bW9kOiAnMjAyMC0wNS0wNFQxNzo0MDo1Ni0wNDowMCcNCmZlYXR1cmVkOiBubw0KaW1hZ2U6DQogIGNhcHRpb246ICcnDQogIGZvY2FsX3BvaW50OiAnJw0KICBwcmV2aWV3X29ubHk6IG5vDQpwcm9qZWN0czogW10NCi0tLQ0KDQpgYGB7ciBrbml0cl9pbml0LCBlY2hvPUZBTFNFLCBjYWNoZT1GQUxTRX0NCmxpYnJhcnkoa25pdHIpDQpsaWJyYXJ5KHJtYXJrZG93bikNCmxpYnJhcnkocm1kZm9ybWF0cykNCg0KIyMgR2xvYmFsIG9wdGlvbnMNCm9wdGlvbnMobWF4LnByaW50PSIxMDAiKQ0Kb3B0c19jaHVuayRzZXQoZWNobz1UUlVFLA0KCSAgICAgICAgICAgICBjYWNoZT1UUlVFLA0KICAgICAgICAgICAgICAgcHJvbXB0PUZBTFNFLA0KICAgICAgICAgICAgICAgdGlkeT1UUlVFLA0KICAgICAgICAgICAgICAgY29tbWVudD1OQSwNCiAgICAgICAgICAgICAgIG1lc3NhZ2U9RkFMU0UsDQogICAgICAgICAgICAgICB3YXJuaW5nPUZBTFNFKQ0Kb3B0c19rbml0JHNldCh3aWR0aD0xMDApDQpgYGANCg0KDQpMaWNlbsOnYSB7LSNMaWNlbsOnYX0NCj09PT09PT09PT09PT09PT09PT0NCg0KVGhpcyB3b3JrIGlzIGxpY2Vuc2VkIHVuZGVyIHRoZSBDcmVhdGl2ZSBDb21tb25zIEF0dHJpYnV0aW9uLVNoYXJlQWxpa2UgNC4wIEludGVybmF0aW9uYWwgTGljZW5zZS4gVG8gdmlldyBhIGNvcHkgb2YgdGhpcyBsaWNlbnNlLCB2aXNpdCA8aHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnktc2EvNC4wLz4gb3Igc2VuZCBhIGxldHRlciB0byBDcmVhdGl2ZSBDb21tb25zLCBQTyBCb3ggMTg2NiwgTW91bnRhaW4gVmlldywgQ0EgOTQwNDIsIFVTQS4NCg0KIVtMaWNlbnNlOiBDQyBCWS1TQSA0LjBdKGh0dHBzOi8vbWlycm9ycy5jcmVhdGl2ZWNvbW1vbnMub3JnL3ByZXNza2l0L2J1dHRvbnMvODh4MzEvcG5nL2J5LXNhLnBuZyl7IHdpZHRoPTI1JSB9DQoNCkNpdGHDp8OjbyB7LSNDaXRhw6fDo299DQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQ0KDQpTdWdlc3TDo28gZGUgY2l0YcOnw6NvOg0KRklHVUVJUkVETywgQWRyaWFubyBNYXJjb3MgUm9kcmlndWVzLiBFY29ub21ldHJpYTogZXhlbXBsbyBkZSBkYWRvcyBlbSBwYWluZWwgZW0gUiAtIFRvcnJlcy1SZXluYSBkYXRhLiBDYW1wbyBHcmFuZGUtTVMsQnJhc2lsOiBSU3R1ZGlvL1JwdWJzLCAyMDIwLiBEaXNwb27DrXZlbCBlbSA8aHR0cDovL3JwdWJzLmNvbS9hbXJvZmkvRWNvbm9tZXRyaWNzX3BhbmVsX3RvcnJlc19yZXluYT4gZSBlbSA8aHR0cHM6Ly9hZHJpYW5vZmlndWVpcmVkby5uZXRsaWZ5LmFwcC9wb3N0L0Vjb25vbWV0cmljc19wYW5lbF90b3JyZXNfcmV5bmEvPi4gDQoNClNjcmlwdCBwYXJhIHJlcHJvZHXDp8OjbyAoc2UgdXRpbGl6YXIsIGNpdGFyIGNvbW8gYWNpbWEpDQo9PT09PT09PT09PT09PT09PT0NCg0KYGBge3IgZWNobz1GQUxTRX0NCiMgYSBzaW5nbGUgZmlsZQ0KeGZ1bjo6ZW1iZWRfZmlsZSgnMjAyMC0wNS0wNC1FY29ub21ldHJpY3NfcGFuZWxfdG9ycmVzX3JleW5hLlJtZCcpDQpgYGANCg0KSW50cm9kdcOnw6NvDQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQ0KDQpFc3RlIMOpIHVtIGV4ZXJjw61jaW8gcGFyYSBhdWxhIGRlIGVjb25vbWV0cmlhIGNvbSBkYWRvcyBlbSBwYWluZWwsIGFkYXB0YWRvIGEgcGFydGlyIGRlIFRvcnJlcy1SZXluYSAoMjAxMCksIEthdGNob3ZhICgyMDEzKS4gVU0gZXhlbXBsbyBkZSBkYWRvcyBlbSBwYWluZWwgcG9kZSBzZXIgdmlzdG8gZW0gRmlndWVpcmVkbyAoMjAxOSwgPGh0dHA6Ly9ycHVicy5jb20vYW1yb2ZpL1RTX2RhdGFzZXRfdHlwZXM+KSBjb21vIGFwcmVzZW50YWRvIHBvciBHcmVlbmUgKDIwMDMpLCBvdSBHcmVlbmUgKDIwMTIpLg0KDQpgYGB7ciwgZWNobz1UUlVFLCB0aWR5PVRSVUUsIHJlc3VsdHM9J2FzaXMnfQ0KIyBFeGVtcGxvIGRlIERhZG9zIGRlIENvcnRlIFRyYW5zdmVyc2FsDQpsaWJyYXJ5KHRpZHlyKTtsaWJyYXJ5KGRwbHlyKTtsaWJyYXJ5KERUKTtsaWJyYXJ5KG1hZ3JpdHRyKQ0KbGlicmFyeShwbG0pO2xpYnJhcnkoc3lzdGVtZml0KQ0KYGBgDQoNCk9zIGRhZG9zIGVtIHBhaW5lbCwgb3UgZGUgY29tYmluYcOnw6NvIGRlIHNlw6fDo28gY3J1emFkYSBlIHPDqXJpZSB0ZW1wb3JhbCAoU0NTVCksIG91IHRhbWLDqW0gY2hhbWFkb3MgZGUgZGFkb3MgbG9uZ2l0dWRpbmFpcywgYXNzb2NpYW0gZGFkb3MgZGUgZGlmZXJlbnRlcyB1bmlkYWRlcyBvdSBpbmRpdsOtZHVvcyBwYXJhIGRpZmVyZW50ZXMgcGVyw61vZG9zIGRlIHRlbXBvLiAgICAgDQoNClNlZ3VlIG8gZXhlbXBsbyBkZSBUb3JyZXMtUmV5bmEgKDIwMTApIHBhcmEgb3MgZGFkb3MgZW0gYFBhbmVsMTAxLmR0YWAsIHBhcmEgMTAgYW5vcyAoMTk5MC05OSkgZSA3IHBhw61zZXMgKGFxdWkgZGVzaWduYWRvcyBwZWxhcyBsZXRyYXMgQSBhdMOpIEcpOg0KDQpgYGB7cn0NCmxpYnJhcnkoZm9yZWlnbikNClBhbmVsIDwtcmVhZC5kdGEoImh0dHA6Ly9kc3MucHJpbmNldG9uLmVkdS90cmFpbmluZy9QYW5lbDEwMS5kdGEiKQ0KZGF0YXRhYmxlKFBhbmVsKQ0KY29wbG90KHkgfiB5ZWFyfGNvdW50cnksIA0KICAgICAgIHR5cGU9ImwiLCBkYXRhPVBhbmVsKSAjIExpbmhhcw0KY29wbG90KHkgfiB5ZWFyfGNvdW50cnksIA0KICAgICAgIHR5cGU9ImIiLCBkYXRhPVBhbmVsKSAjIFBvbnRvcyBlIGxpbmhhcw0KIyBBcyBiYXJyYXMgYW8gdG9wbyBpbmRpY2FtIG8gZ3LDoWZpY28gY29ycmVzcG9uZGVudGUgYSBjYWRhIHBhw61zLCANCiMgZGEgZXNxdWVyZGEgcGFyYSBkaXJlaXRhIGUgZGUgYmFpeG8gcGFyYSBjaW1hIChNdWVuY2hlbi9IaWxiZTozNTUpLg0KYGBgDQoNCg0KYGBge3J9DQpsaWJyYXJ5KGNhcikNCnNjYXR0ZXJwbG90KHl+eWVhcnxjb3VudHJ5LCANCiAgICAgICAgICAgIGJveHBsb3RzPUZBTFNFLCBzbW9vdGg9VFJVRSwgDQogICAgICAgICAgICByZWcubGluZT1GQUxTRSwgZGF0YT1QYW5lbCkNCmBgYA0KDQpNb2RlbG8gRW1waWxoYWRvIChwb29sZWQgT0xTKQ0KPT09PT09PT09PT09PT09PT09PT09PT09PT09DQoNCk8gbW9kZWxvIHBvb2xlZCwgb3UgdGFtYsOpbSBjaGFtYWRvIGRlIGRhZG9zIGVtcGlsaGFkb3MsIGVzdGltYWRvIHBvciBNUU8gKG3DrW5pbW9zIHF1YWRyYWRvcyBvcmRpbsOhcmlvcyksIHNlcsOhIG8gbWVzbW8gcXVlIGEgZXN0aW1hw6fDo28gZG8gbW9kZWxvIHBvciBNUU8gaWdub3JhbmRvIG8gZm9ybWF0byBkZSBwYWluZWwuIA0KDQpgYGB7ciwgZXZhbD1UUlVFfQ0KbGlicmFyeShwbG0pDQojb3B0aW9ucygic2NpcGVuIj0xMDAsICJkaWdpdHMiPTQpDQpQYW5lbC5zZXQgPC0gcGRhdGEuZnJhbWUoUGFuZWwsIA0KICAgICAgICAgICAgICAgICAgICAgICAgIGluZGV4ID0gYygiY291bnRyeSIsICJ5ZWFyIikpDQpmb3JtdWxhPC15IH4geDENCiMgcG9vbGVkIE9MUw0KcG9vbGVkIDwtIHBsbShmb3JtdWxhLCANCiAgICAgICAgICBkYXRhID0gUGFuZWwuc2V0LCANCiAgICAgICAgICBpbmRleCA9IGMoImNvdW50cnkiLCAieWVhciIpLA0KICAgICAgICAgIG1vZGVsID0gInBvb2xpbmciKQ0Kc3VtbWFyeShwb29sZWQpDQoNCiMgbyBtZXNtbyBxdWUgbyBPTFMgY29tdW0gc2VtIGVzcGVjaWZpY2FyIHBhaW5lbA0Kb2xzPC1sbSh5IH4geDEsIGRhdGE9UGFuZWwpDQpzdW1tYXJ5KG9scykNCg0Kc3VwcHJlc3NNZXNzYWdlcyhsaWJyYXJ5KHN0YXJnYXplcikpDQpzdGFyZ2F6ZXIocG9vbGVkLCANCiAgICAgICAgICAgIHRpdGxlPSJUw610dWxvOiBSZXN1bHRhZG8gZGEgUmVncmVzc8OjbyBQb29sZWQgT0xTIiwNCiAgICAgICAgICAgIGFsaWduPVRSVUUsDQogICAgICAgICAgICB0eXBlID0gInRleHQiLCBzdHlsZSA9ICJhbGwiLA0KICAgICAgICAgICAga2VlcC5zdGF0PWMoImFpYyIsImJpYyIsInJzcSIsICJhZGoucnNxIiwibiIpDQopDQpgYGANCg0KYGBge3J9DQojIHBsb3QgZG8gTVFPDQp5aGF0IDwtIG9scyRmaXR0ZWQNCnBsb3QoUGFuZWwkeDEsIFBhbmVsJHksIHBjaD0xOSwgeGxhYj0ieDEiLCB5bGFiPSJ5IikNCmFibGluZShsbShQYW5lbCR5flBhbmVsJHgxKSxsd2Q9MywgY29sPSJyZWQiKQ0KYGBgDQoNCsOJIHBvc3PDrXZlbCBlc3RpbWFyIGNvbSBlcnJvcy1wYWRyw7Vlc3JvYnVzdG9zIGNvbmZvcm1lIEFyZWxsYW5vIGUgYWluZGEgY29tIGVycm9zLXBhZHLDtWVzIGNvbnNpc3RlbnRlcyBkZSBXaGl0ZSAocHJpbmNpcGFsbWVudGUgcGFyYXMgYXMgY29ycmVsYcOnw7VlcyBjcnV6YWRhcyksIGFuYWxvZ2FtZW50ZSBhbyByZWFsaXphZG8gcG9yIEdyZWVuZSAoMjAxMiwgcC4zNTIpLCBkZSBtb2RvIGEgdGVyIGlkZWlhIGRvIGVmZWl0byBkZSBpZ25vcmFyIGFzIGNhcmFjdGVyw61zdGljYXMgZW50cmUgaW5kaXbDrWR1b3MgZSBlbnRyZSBwZXLDrW9kb3MuDQoNCmBgYHtyfQ0KIyBvIG1vZGVsbyBjb20gZXJyb3MtcGFkcsO1ZXMgcm9idXN0b3MgZGUgQXJlbGxhbm8NCnN1bW1hcnkocG9vbGVkLCANCiAgICAgICAgdmNvdiA9IGZ1bmN0aW9uKHgpIHZjb3ZIQyh4LCBtZXRob2QgPSAiYXJlbGxhbm8iKSkNCg0KIyBvIG1vZGVsbyBjb20gZXJyb3MtcGFkcsO1ZXMgY29uc2lzdGVudGVzIGNvbSBoZXRlcm9jZWRhc3RpY2lkYWRlIGRlIFdoaXRlDQpzdW1tYXJ5KHBvb2xlZCwgDQogICAgICAgIHZjb3YgPSBmdW5jdGlvbih4KSB2Y292SEMoeCwgbWV0aG9kID0gIndoaXRlMSIpKQ0KYGBgDQoNCk1vZGVsbyBkZSBFZmVpdG9zIEZpeG9zICgqRml4ZWQgRWZmZWN0cyogLSBGRSkNCj09PT09PT09PT09PT09PT09PT09PT09PT09PQ0KDQooTW9kZWxvIENvdmFyaWFuY2lhLCBFc3RpbWFkb3IgJ1dpdGhpbicsIE1vZGVsbyBkZSB2YXJpw6F2ZWwgZHVtbXkgaW5kaXZpZHVhbCwgTW9kZWxvICpMZWFzdCBTcXVhcmVzIER1bW15IFZhcmlhYmxlKiAoTFNEVikpDQoNClVzZSBvIG1vZGVsbyBkZSBlZmVpdG9zIGZpeG9zIChGRSBwYXJhICpGaXhlZCBFZmZlY3RzKikgc2VtcHJlIHF1ZSBlc3RpdmVyIGludGVyZXNzYWRvIGFwZW5hcyBlbSBhbmFsaXNhciBvIGltcGFjdG8gZGUgdmFyacOhdmVpcyBxdWUgdmFyaWFtIGFvIGxvbmdvIGRvIHRlbXBvLiBPIEZFIGV4cGxvcmEgYSByZWxhw6fDo28gZW50cmUgdmFyacOhdmVpcyBwcmVkaXRvcmFzIGUgbyByZXN1bHRhZG8gZGVudHJvIGRlIHVtYSBlbnRpZGFkZSAocGHDrXMsIHBlc3NvYSwgZW1wcmVzYSwgZXRjLikuIENhZGEgZW50aWRhZGUgdGVtIHN1YXMgcHLDs3ByaWFzIGNhcmFjdGVyw61zdGljYXMgaW5kaXZpZHVhaXMgcXVlIHBvZGVtIG91IG7Do28gaW5mbHVlbmNpYXIgYXMgdmFyacOhdmVpcyBwcmVkaXRvcmFzIChwb3IgZXhlbXBsbywgc2VyIGhvbWVtIG91IG11bGhlciBwb2RlIGluZmx1ZW5jaWFyIGEgb3BpbmnDo28gZW0gcmVsYcOnw6NvIMOgIGRldGVybWluYWRhIHF1ZXN0w6NvIG91IG8gc2lzdGVtYSBwb2zDrXRpY28gZGUgdW0gZGV0ZXJtaW5hZG8gcGHDrXMgcG9kZSB0ZXIgYWxndW0gZWZlaXRvIHNvYnJlIG8gY29tw6lyY2lvIG91IFBJQjsgb3UgYXMgcHLDoXRpY2FzIGRlIG5lZ8OzY2lvcyBkZSB1bWEgZW1wcmVzYSBwb2RlbSBpbmZsdWVuY2lhciBvIHByZcOnbyBkZSBzdWFzIGHDp8O1ZXMpLiAgICANCg0KQW8gdXNhciBvIEZFLCBzdXDDtWUtc2UgcXVlIGFsZ28gZGVudHJvIGRvIGluZGl2w61kdW8gcG9kZSBpbXBhY3RhciBvdSB2aWVzYXIgbyBwcmVkaXRvciBvdSBhcyB2YXJpw6F2ZWlzIGRlIHJlc3VsdGFkbyBlIMOpIHByZWNpc28gY29udHJvbGFyIGlzc28uICAgIA0KDQpFc3NhIMOpIGEganVzdGlmaWNhdGl2YSBwb3IgdHLDoXMgZGEgc3Vwb3Npw6fDo28gZGEgY29ycmVsYcOnw6NvIGVudHJlIG8gdGVybW8gZGUgZXJybyBkYSBlbnRpZGFkZSBlIGFzIHZhcmnDoXZlaXMgcHJlZGl0b3Jhcy4gTyBGRSByZW1vdmUgbyBlZmVpdG8gZGVzc2FzIGNhcmFjdGVyw61zdGljYXMgaW52YXJpYW50ZXMgbm8gdGVtcG8sIHBhcmEgcXVlIHNlIGF2YWxpZSBvIGVmZWl0byBsw61xdWlkbyBkb3MgcHJlZGl0b3JlcyBuYSB2YXJpw6F2ZWwgZGUgcmVzdWx0YWRvLiAgICANCg0KT3V0cmEgcHJlc3N1cG9zacOnw6NvIGltcG9ydGFudGUgZG8gbW9kZWxvIEZFIMOpIHF1ZSBlc3NhcyBjYXJhY3RlcsOtc3RpY2FzIGludmFyaWFudGVzIG5vIHRlbXBvIHPDo28gZXhjbHVzaXZhcyBkbyBpbmRpdsOtZHVvIGUgbsOjbyBkZXZlbSBzZXIgY29ycmVsYWNpb25hZGFzIGNvbSBvdXRyYXMgY2FyYWN0ZXLDrXN0aWNhcyBpbmRpdmlkdWFpcy4gQ2FkYSBlbnRpZGFkZSDDqSBkaWZlcmVudGUsIHBvcnRhbnRvLCBvIHRlcm1vIGRlIGVycm8gZGEgZW50aWRhZGUgZSBhIGNvbnN0YW50ZSAocXVlIGNhcHR1cmEgYXMgY2FyYWN0ZXLDrXN0aWNhcyBpbmRpdmlkdWFpcykgbsOjbyBkZXZlbSBzZXIgY29ycmVsYWNpb25hZGFzIGNvbSBhcyBvdXRyYXMuICAgICANCg0KU2Ugb3MgdGVybW9zIGRlIGVycm9zIGVzdMOjbyBjb3JyZWxhY2lvbmFkb3MsIGVudMOjbyBvIEZFIG7Do28gw6kgYWRlcXVhZG8sIHVtYSB2ZXogcXVlIGFzIGluZmVyw6puY2lhcyBwb2RlbSBuw6NvIGVzdGFyIGNvcnJldGFzIGUgdm9jw6ogcHJlY2lzYSBtb2RlbGFyIGVzc2EgcmVsYcOnw6NvIChwcm92YXZlbG1lbnRlIHVzYW5kbyBlZmVpdG9zIGFsZWF0w7NyaW9zKSwgZXN0YSDDqSBhIHByaW5jaXBhbCByYXrDo28gcGFyYSBvIHRlc3RlIGRlIEhhdXNtYW4gKGFwcmVzZW50YWRvIG1haXMgYWRpYW50ZSkuDQoNCiMjIEhldGVyb2dlbmVpZGFkZSBlbnRyZSBwYcOtc2VzDQoNCmBgYHtyfQ0KbGlicmFyeShncGxvdHMpDQpwbG90bWVhbnMoeSB+IGNvdW50cnksIG1haW49IkhldGVyb2dlbmVpZGFkZSBlbnRyZSBwYcOtc2VzIiwgDQogICAgICAgICAgZGF0YT1QYW5lbCkNCiMgcGxvdG1lYW5zIGZheiB1bSBpbnRlcnZhbG8gZGUgY29uZmlhbsOnYSBkZSA5NSUgZW0gdG9ybm8gZGFzIG3DqWRpYXMNCmRldGFjaCgicGFja2FnZTpncGxvdHMiKQ0KIyBkZXRhY2ggcmVtb3ZlIG8gcGFjb3RlIOKAmGdwbG90c+KAmSBkbyBhbWJpZW50ZSBkZSB0cmFiYWxobw0KYGBgDQoNCiMjIEhldGVyb2dlbmVpZGFkZSBlbnRyZSBhbm9zDQoNCmBgYHtyfQ0KbGlicmFyeShncGxvdHMpDQpwbG90bWVhbnMoeSB+IHllYXIsIG1haW49IkhldGVyb2dlbmVpZGFkZSBlbnRyZSBhbm9zIiwgDQogICAgICAgICAgZGF0YT1QYW5lbCkNCiMgcGxvdG1lYW5zIGZheiB1bSBpbnRlcnZhbG8gZGUgY29uZmlhbsOnYSBkZSA5NSUgZW0gdG9ybm8gZGFzIG3DqWRpYXMNCmRldGFjaCgicGFja2FnZTpncGxvdHMiKQ0KIyBkZXRhY2ggcmVtb3ZlIG8gcGFjb3RlIOKAmGdwbG90c+KAmSBkbyBhbWJpZW50ZSBkZSB0cmFiYWxobw0KYGBgDQoNCg0KDQpPcGVyYWNpb25hbGl6YcOnw6NvIGRlIG91dHJvcyBtb2RlbG9zDQo9PT09PT09PT09PT09PT09PT09PT09PQ0KDQojIyBFZmVpdG9zIEZpeG9zIGNvbSAqTGVhc3Qgc3F1YXJlcyBkdW1teSB2YXJpYWJsZSogLSBMU0RWDQoNCmBgYHtyfQ0KZml4ZWQuZHVtIDwtbG0oeSB+IHgxICsgZmFjdG9yKGNvdW50cnkpIC0gMSwgDQogICAgICAgICAgICAgICBkYXRhPVBhbmVsKQ0Kc3VtbWFyeShmaXhlZC5kdW0pDQpgYGANCg0KDQoNCiMjIEJldHdlZW4gZXN0aW1hdG9yIChjb20gdmFyaWHDp8OjbykNCg0KDQpgYGB7ciwgZXZhbD1UUlVFfQ0KDQpiZXR3ZWVuIDwtIHBsbShmb3JtdWxhLCBkYXRhPVBhbmVsLnNldCwgbW9kZWw9ICJiZXR3ZWVuIikNCnN1bW1hcnkoYmV0d2VlbikNCmBgYA0KDQojIyBGaXJzdCBkaWZmZXJlbmNlcyBlc3RpbWF0b3INCg0KYGBge3IsIGV2YWw9VFJVRX0NCmZpcnN0ZGlmZiA8LSBwbG0oZm9ybXVsYSwgZGF0YT1QYW5lbC5zZXQsIG1vZGVsPSAiZmQiKQ0Kc3VtbWFyeShmaXJzdGRpZmYpDQpgYGANCg0KIyMgRml4ZWQgZWZmZWN0cyBvciB3aXRoaW4gZXN0aW1hdG9yDQoNCiMjIyBPbmV3YXkgKGluZGl2aWR1YWwpIGVmZmVjdCBXaXRoaW4gTW9kZWwNCg0KYGBge3IsIGV2YWw9VFJVRX0NCmZpeGVkIDwtIHBsbShmb3JtdWxhLCANCiAgICAgICAgICAgICBkYXRhPVBhbmVsLnNldCwgDQogICAgICAgICAgICAgaW5kZXggPSBjKCJjb3VudHJ5IiwgInllYXIiKSwNCiAgICAgICAgICAgICBlZmZlY3QgPSBjKCJpbmRpdmlkdWFsIiksDQogICAgICAgICAgICAgbW9kZWw9ICJ3aXRoaW4iKQ0Kc3VtbWFyeShmaXhlZCkNCmBgYA0KDQojIyMjIEVmZWl0b3MgZml4b3MgKG9uZS13YXkgaW5kaXZpZHVhbCkgDQoNCmBgYHtyfQ0KcHJpbnQoZml4ZWYoZml4ZWQpKQ0KYGBgDQoNCg0KDQojIyMgT25ld2F5ICh0aW1lKSBlZmZlY3QgV2l0aGluIE1vZGVsDQoNCkFnb3JhIGFsdGVyYW5kbyBwYXJhIGNvbnRlciBlZmVpdG9zIGZpeG9zIG5vIHRlbXBvLiANCg0KYGBge3IsIGV2YWw9VFJVRX0NCmZpeGVkLm9uZXQgPC0gcGxtKGZvcm11bGEgPSBmb3JtdWxhLCANCiAgICAgICAgICAgICBkYXRhID0gUGFuZWwuc2V0LCANCiAgICAgICAgICAgICBpbmRleCA9IGMoImNvdW50cnkiLCAieWVhciIpLA0KICAgICAgICAgICAgIGVmZmVjdCA9IGMoInRpbWUiKSwNCiAgICAgICAgICAgICBtb2RlbD0gIndpdGhpbiIpDQpzdW1tYXJ5KGZpeGVkLm9uZXQpDQpgYGANCg0KYGBge3J9DQpzdW1tYXJ5KGZpeGVkLm9uZXQsIHZjb3YgPSBmdW5jdGlvbih4KSB2Y292SEMoeCwgbWV0aG9kID0gImFyZWxsYW5vIikpDQpgYGANCg0KIyMjIyBFZmVpdG9zIGZpeG9zIChvbmUtd2F5IHRpbWUpIA0KDQpgYGB7cn0NCmZpeGVmKGZpeGVkLm9uZXQpDQpgYGANCg0KIyMgVHdvLXdheXMgKGluZGl2aWR1YWwgYW5kIHRpbWUpIGVmZmVjdHMgV2l0aGluIE1vZGVsDQoNCg0KYGBge3IsIGV2YWw9VFJVRX0NCmZpeGVkLnR3byA8LSBwbG0oZm9ybXVsYSA9IGZvcm11bGEsIA0KICAgICAgICAgICAgIGRhdGEgPSBQYW5lbC5zZXQsIA0KICAgICAgICAgICAgIGluZGV4ID0gYygiY291bnRyeSIsICJ5ZWFyIiksDQogICAgICAgICAgICAgZWZmZWN0ID0gYygidHdvd2F5cyIpLA0KICAgICAgICAgICAgIG1vZGVsPSAid2l0aGluIikNCnN1bW1hcnkoZml4ZWQudHdvKQ0KYGBgDQoNCg0KIyMjIEVmZWl0b3MgZml4b3MgKHR3by13YXlzIC0gaW5kaXZpZHVhbCBhbmQgdGltZSkgDQoNCmBgYHtyfQ0KZml4ZWYoZml4ZWQudHdvKQ0KYGBgDQoNCiMjIFJhbmRvbSBlZmZlY3RzIGVzdGltYXRvcg0KDQojIyMgT25ld2F5IChpbmRpdmlkdWFsKSBlZmZlY3QgUmFuZG9tIEVmZmVjdCBNb2RlbCAoU3dhbXktQXJvcmEncyB0cmFuc2Zvcm1hdGlvbiAtIGRlZmF1bHQpDQoNCmBgYHtyLCBldmFsPVRSVUV9DQpyYW5kb20gPC0gcGxtKGZvcm11bGEgPSBmb3JtdWxhLCANCiAgICAgICAgICAgICBkYXRhID0gUGFuZWwuc2V0LA0KICAgICAgICAgICAgIGVmZmVjdCA9IGMoImluZGl2aWR1YWwiKSwNCiAgICAgICAgICAgICBtb2RlbD0gInJhbmRvbSIpDQpzdW1tYXJ5KHJhbmRvbSkNCmBgYA0KDQojIyMgVHdvLXdheXMgZWZmZWN0cyBSYW5kb20gRWZmZWN0IE1vZGVsIChBbWVtaXlhJ3MgdHJhbnNmb3JtYXRpb24pDQogICANCmBgYHtyLCBldmFsPVRSVUV9DQpyYW5kb20uYSA8LSBwbG0oZm9ybXVsYSA9IGZvcm11bGEsIA0KICAgICAgICAgICAgIGRhdGEgPSBQYW5lbC5zZXQsDQogICAgICAgICAgICAgZWZmZWN0ID0gYygidHdvd2F5cyIpLA0KICAgICAgICAgICAgIG1vZGVsPSAicmFuZG9tIiwNCiAgICAgICAgICAgICByYW5kb20ubWV0aG9kID0gImFtZW1peWEiKQ0Kc3VtbWFyeShyYW5kb20uYSkNCmBgYA0KDQojIyMgVHdvLXdheXMgZWZmZWN0cyBSYW5kb20gRWZmZWN0IE1vZGVsIChXYWxsYWNlLUh1c3NhaW4ncyB0cmFuc2Zvcm1hdGlvbikNCg0KRXN0YSBvcMOnw6NvIGNvbmZlcmUgZXhhdGFtZW50ZSBjb20gYSBvcMOnw6NvIGRvIEV2aWV3cyBwYXJhIGVmZWl0b3MgcmFuZG9tIG5vIGNyb3NzLXNlY3Rpb24gZSBubyBwZXJpb2QgZSBtZXRob2QgV2FsbGFjZS1IdXNzYWluLg0KICAgDQpgYGB7ciwgZXZhbD1UUlVFfQ0KcmFuZG9tLndoIDwtIHBsbShmb3JtdWxhID0gZm9ybXVsYSwgDQogICAgICAgICAgICAgZGF0YSA9IFBhbmVsLnNldCwNCiAgICAgICAgICAgICBlZmZlY3QgPSBjKCJ0d293YXlzIiksDQogICAgICAgICAgICAgbW9kZWw9ICJyYW5kb20iLA0KICAgICAgICAgICAgIHJhbmRvbS5tZXRob2QgPSAid2FsaHVzIikNCnN1bW1hcnkocmFuZG9tLndoKQ0KYGBgDQoNCiMjIyBUd28td2F5cyBlZmZlY3RzIFJhbmRvbSBFZmZlY3QgTW9kZWwgKE5lcmxvdmUncyB0cmFuc2Zvcm1hdGlvbikNCiAgIA0KYGBge3IsIGV2YWw9VFJVRX0NCnJhbmRvbS5uIDwtIHBsbShmb3JtdWxhID0gZm9ybXVsYSwgDQogICAgICAgICAgICAgZGF0YSA9IFBhbmVsLnNldCwNCiAgICAgICAgICAgICBlZmZlY3QgPSBjKCJ0d293YXlzIiksDQogICAgICAgICAgICAgbW9kZWw9ICJyYW5kb20iLA0KICAgICAgICAgICAgIHJhbmRvbS5tZXRob2QgPSAibmVybG92ZSIpDQpzdW1tYXJ5KHJhbmRvbS5uKQ0KYGBgDQoNCiMjIFJlc3Vtbw0KDQoNCmBgYHtyfQ0Kb3B0aW9ucygic2NpcGVuIj0xMDAsICJkaWdpdHMiPTQpDQpzdXBwcmVzc01lc3NhZ2VzKGxpYnJhcnkoc3RhcmdhemVyKSkNCnN0YXJnYXplcihwb29sZWQsZml4ZWQuZHVtLGJldHdlZW4sZmlyc3RkaWZmLA0KICAgICAgICAgIGNvbHVtbi5sYWJlbHMgPSBjKCJwb29sZWQiLCJmaXhlZC5kdW0iLCJiZXR3ZWVuIiwiZmlyc3RkaWZmIiksDQogICAgICAgICAgdGl0bGU9IlTDrXR1bG86IFJlc3VsdGFkb3MgZGFzIFJlZ3Jlc3PDtWVzIGVtIFBhaW5lbCIsDQogICAgICAgICAgYWxpZ249VFJVRSwNCiAgICAgICAgICB0eXBlID0gInRleHQiLCBzdHlsZSA9ICJhbGwiLA0KICAgICAgICAgIGtlZXAuc3RhdD1jKCJhaWMiLCJiaWMiLCJyc3EiLCAiYWRqLnJzcSIsIm4iKSkNCg0Kc3RhcmdhemVyKGZpeGVkLGZpeGVkLm9uZXQsZml4ZWQudHdvLA0KICAgICAgICAgIGNvbHVtbi5sYWJlbHMgPSBjKCJmaXhlZCIsImZpeGVkLm9uZXQiLCJmaXhlZC50d28iKSwNCiAgICAgICAgICB0aXRsZT0iVMOtdHVsbzogUmVzdWx0YWRvcyBkYXMgUmVncmVzc8O1ZXMgZW0gUGFpbmVsIC0gZml4ZWQgZWZmZWN0cyIsDQogICAgICAgICAgYWxpZ249VFJVRSwNCiAgICAgICAgICB0eXBlID0gInRleHQiLCBzdHlsZSA9ICJhbGwiLA0KICAgICAgICAgIGtlZXAuc3RhdD1jKCJhaWMiLCJiaWMiLCJyc3EiLCAiYWRqLnJzcSIsIm4iKSkNCg0Kc3RhcmdhemVyKHJhbmRvbSxyYW5kb20uYSxyYW5kb20ud2gscmFuZG9tLm4sDQogICAgICAgICAgY29sdW1uLmxhYmVscyA9IGMoInJhbmRvbSIsInJhbmRvbS5hIiwgInJhbmRvbS53aCIsInJhbmRvbS5uIiksDQogICAgICAgICAgdGl0bGU9IlTDrXR1bG86IFJlc3VsdGFkb3MgZGFzIFJlZ3Jlc3PDtWVzIGVtIFBhaW5lbCAtIHJhbmRvbSBlZmZlY3RzIiwNCiAgICAgICAgICBhbGlnbj1UUlVFLA0KICAgICAgICAgIHR5cGUgPSAidGV4dCIsIHN0eWxlID0gImFsbCIsDQogICAgICAgICAga2VlcC5zdGF0PWMoImFpYyIsImJpYyIsInJzcSIsICJhZGoucnNxIiwibiIpKQ0KYGBgDQoNCiMjIExNIHRlc3QgZm9yIHJhbmRvbSBlZmZlY3RzIHZlcnN1cyBPTFMNCg0KYGBge3IsIGV2YWw9VFJVRX0NCnBsbXRlc3QocG9vbGVkKQ0KYGBgDQoNCiMjIExNIHRlc3QgZm9yIGZpeGVkIGVmZmVjdHMgdmVyc3VzIE9MUw0KDQpgYGB7ciwgZXZhbD1UUlVFfQ0KcEZ0ZXN0KGZpeGVkLCBwb29sZWQpDQpgYGANCg0KIyMgSGF1c21hbiB0ZXN0IGZvciBmaXhlZCB2ZXJzdXMgcmFuZG9tIGVmZmVjdHMgbW9kZWwNCg0KYGBge3IsIGV2YWw9VFJVRX0NCnBodGVzdChyYW5kb20sIGZpeGVkKQ0KDQpgYGANCg0KUmVmZXLDqm5jaWFzIHstI1JlZmVyw6puY2lhc30NCj09PT09PT09PT09PT09PT09PT09PT09PQ0KDQpDUk9JU1NBTlQsIFk7IE1JTExPLCBHLiDigJxQYW5lbCBEYXRhIEVjb25vbWV0cmljcyBpbiBSOiBUaGUgcGxtIFBhY2thZ2Uu4oCdIF9Kb3VybmFsIG9mIFN0YXRpc3RpY2FsIFNvZnR3YXJlXywgKjI3KigyKSwgMS00MywgMjAxOC4gZG9pOg0KMTAuMTg2MzcvanNzLnYwMjcuaTAyIChVUkw6IGh0dHA6Ly9kb2kub3JnLzEwLjE4NjM3L2pzcy52MDI3LmkwMikuDQoNCkZJR1VFSVJFRE8sIEFkcmlhbm8gTWFyY29zIFJvZHJpZ3Vlcy4gVMOzcGljb3MgZGUgZWNvbm9tZXRyaWE6IHRpcG9zIGRlIGRhdGFzZXRzLiBDYW1wbyBHcmFuZGUtTVMsQnJhc2lsOiBSU3R1ZGlvL1JwdWJzLCAyMDE5LiBEaXNwb27DrXZlbCBlbSA8aHR0cDovL3JwdWJzLmNvbS9hbXJvZmkvVFNfZGF0YXNldF90eXBlcz4uDQoNCkdSRUVORSwgV2lsbGlhbSBILiBFY29ub21ldHJpYyBhbmFseXNpcy4gNy5lZC4gUGVhcnNvbiBFZHVjYXRpb24sIDIwMTIuIA0KDQpLQVRDSE9WQSwgQW5pLiBPaGlvIFN0YXRlIFVuaXZlcnNpdHksIERlcGFydG1lbnQgb2YgQWdyaWN1bHR1cmFsLCBFbnZpcm9ubWVudGFsLCBhbmQgRGV2ZWxvcG1lbnQgRWNvbm9taWNzLiAyMDEzLiBEaXNwb27DrXZlbCBlbSA8aHR0cHM6Ly9zaXRlcy5nb29nbGUuY29tL3NpdGUvZWNvbm9tZXRyaWNzYWNhZGVteS9lY29ub21ldHJpY3MtbW9kZWxzL3BhbmVsLWRhdGEtbW9kZWxzPi4NCg0KVE9SUkVTLVJFWU5BLCBPc2Nhci4gR2V0dGluZyBTdGFydGVkIGluIEZpeGVkL1JhbmRvbSBFZmZlY3RzIE1vZGVscyB1c2luZyBSLiBQcmluY2V0b246IFByaW5jZXRvbiBVbml2ZXJzaXR5LCAyMDEwLiBEaXNwb27DrXZlbCBlbTogPGh0dHA6Ly93d3cucHJpbmNldG9uLmVkdS9+b3RvcnJlcy9QYW5lbDEwMVIucGRmPi4NCg0KVGhlIGNvbnRlbnRzIG9mIHRoaXMgZG9jdW1lbnQgcmVseSBoZWF2aWx5IG9uIHRoZSBkb2N1bWVudDoNCuKAnFBhbmVsIERhdGEgRWNvbm9tZXRyaWNzaW4gUjogdGhlcGxtcGFja2FnZeKAnSBodHRwOi8vY3Jhbi5yLXByb2plY3Qub3JnL3dlYi9wYWNrYWdlcy9wbG0vdmlnbmV0dGVzL3BsbS5wZGZhbmQgbm90ZXMgDQpmcm9tIHRoZSBJQ1BTUuKAmXMgU3VtbWVyIFByb2dyYW0gaW4gUXVhbnRpdGF0aXZlIE1ldGhvZHMgb2YgU29jaWFsIFJlc2VhcmNoKHN1bW1lciAyMDEwKQ==" download="2020-05-04-Econometrics_panel_torres_reyna.Rmd">Download 2020-05-04-Econometrics_panel_torres_reyna.Rmd</a>
+</div>
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Este é um exercício para aula de econometria com dados em painel, adaptado a partir de Torres-Reyna (2010), Katchova (2013). UM exemplo de dados em painel pode ser visto em Figueiredo (2019, <a href="http://rpubs.com/amrofi/TS_dataset_types" class="uri">http://rpubs.com/amrofi/TS_dataset_types</a>) como apresentado por Greene (2003), ou Greene (2012).</p>
+<pre class="r"><code># Exemplo de Dados de Corte Transversal
+library(tidyr)
+library(dplyr)
+library(DT)
+library(magrittr)
+library(plm)
+library(systemfit)</code></pre>
+<p>Os dados em painel, ou de combinação de seção cruzada e série temporal (SCST), ou também chamados de dados longitudinais, associam dados de diferentes unidades ou indivíduos para diferentes períodos de tempo.</p>
+<p>Segue o exemplo de Torres-Reyna (2010) para os dados em <code>Panel101.dta</code>, para 10 anos (1990-99) e 7 países (aqui designados pelas letras A até G):</p>
+<pre class="r"><code>library(foreign)
+Panel &lt;- read.dta(&quot;http://dss.princeton.edu/training/Panel101.dta&quot;)
+datatable(Panel)</code></pre>
+<div id="htmlwidget-1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","43","44","45","46","47","48","49","50","51","52","53","54","55","56","57","58","59","60","61","62","63","64","65","66","67","68","69","70"],["A","A","A","A","A","A","A","A","A","A","B","B","B","B","B","B","B","B","B","B","C","C","C","C","C","C","C","C","C","C","D","D","D","D","D","D","D","D","D","D","E","E","E","E","E","E","E","E","E","E","F","F","F","F","F","F","F","F","F","F","G","G","G","G","G","G","G","G","G","G"],[1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999],[1342787840,-1899660544,-11234363,2645775360,3008334848,3229574144,2756754176,2771810560,3397338880,39770336,-5934699520,-711623744,-1933116160,3072741632,3768078848,2837581312,577199360,1786851584,-149072048,-1174480128,-1292379264,-3415966464,-355804672,1225180032,3802287616,1959696640,530576672,3128852224,3201045760,4663067648,1883025152,6037768704,10244189,5067265024,3882478336,8827006976,5782000128,5090524160,1850565248,-2025476864,1342787840,2296009472,1737627776,113973136,260098048,-7863482880,3520491520,5234565120,344746176,243920688,1342787840,3560401920,3192281088,8941232128,8124504576,491740096,3497164544,4764803072,-4671723520,6349319168,1342787840,-1518985728,1912769920,1345690240,2793515008,1323696384,254524176,3297033216,3011820800,3296283392],[1,0,0,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1],[0.277903646230698,0.3206847012043,0.36346572637558,0.246144041419029,0.424623042345047,0.477214127779007,0.499805003404617,0.0516283884644508,0.366410791873932,0.395842522382736,-0.0818499773740768,0.106160014867783,0.353785187005997,0.726776957511902,0.719394862651825,0.671546578407288,0.81985729932785,0.880167186260223,0.704516112804413,0.23696731030941,1.31256067752838,1.17748355865479,1.25640797615051,1.42154455184937,1.11419308185577,1.15948390960693,1.16045427322388,1.44641160964966,1.15162670612335,1.19054412841797,-0.313912689685822,0.360091000795364,0.0518877021968365,0.209443539381027,0.382070004940033,0.242085799574852,0.486366778612137,0.359425991773605,0.232203513383865,-0.0799889639019966,0.452867150306702,0.419040322303772,0.38521346449852,-0.244287729263306,1.39113998413086,0.319685578346252,0.610976815223694,0.717614948749542,0.696138262748718,0.606620669364929,-0.567574858665466,0.159745782613754,0.887066423892975,0.532417953014374,0.872600138187408,0.919352293014526,1.39689230918884,0.986886084079742,0.788309097290039,0.279386967420578,0.944881737232208,1.09872829914093,1.2525749206543,0.762764513492584,1.20645558834076,1.08718645572662,0.781075477600098,1.25787949562073,1.24277663230896,1.23420023918152],[-1.10795593261719,-0.94871997833252,-0.789484024047852,-0.885532975196838,-0.7297682762146,-0.723245978355408,-0.781571567058563,-0.704845488071442,-0.698371231555939,-0.64315402507782,1.42512023448944,1.64960181713104,1.59371912479401,1.69175755977631,1.74142611026764,1.70831394195557,1.53249609470367,1.50219619274139,1.42364633083344,1.45458590984344,-1.29313564300537,-1.34421801567078,-1.25995099544525,-1.31174516677856,-1.28499484062195,-1.2188276052475,-1.23500633239746,-1.32759642601013,-1.2061128616333,-1.12661719322205,1.73665571212769,2.13186407089233,1.68167746067047,1.61497688293457,1.56830108165741,1.54122149944305,1.74233913421631,1.87428653240204,1.59530210494995,1.70479726791382,1.72840261459351,1.70684003829956,1.68527746200562,1.64928352832794,2.53027653694153,1.18905520439148,1.48452770709991,1.55446195602417,1.7010406255722,1.61190402507782,-0.34667095541954,-0.464118212461472,-0.581565499305725,-0.755323767662048,-0.711443066596985,-0.369744062423706,-0.360140591859818,-0.359090179204941,-0.75565242767334,-0.460167914628983,-1.51501512527466,-1.46147167682648,-1.4079282283783,-1.35193145275116,-1.32521748542786,-1.40981674194336,-1.32799959182739,-1.57736670970917,-1.60121774673462,-1.62176144123077],[0.28255358338356,0.49253848195076,0.702523350715637,-0.0943909212946892,0.946130633354187,1.02968037128448,1.09228813648224,1.41590082645416,1.54872274398804,1.79419803619385,0.0234281159937382,0.260362505912781,-0.234398767352104,0.25622433423996,0.411749511957169,0.535843014717102,-0.49964901804924,-0.576267719268799,-0.448419243097305,-0.0493639931082726,0.20408296585083,0.283971875905991,0.373392701148987,-0.375965625047684,0.560467541217804,0.69540798664093,0.816893815994263,-0.142069071531296,1.19458138942719,1.67016041278839,0.64663702249527,1.09994173049927,0.969768226146698,-0.21257820725441,-1.16538667678833,-0.184131011366844,-0.0373145267367363,0.0878679528832436,0.0724754706025124,0.558432996273041,0.5970578789711,0.793135344982147,0.989212810993195,1.22413277626038,-0.526201367378235,-0.484253704547882,-0.978955090045929,-0.988636612892151,-0.089652456343174,-0.0892988443374634,1.25841927528381,0.326652973890305,-0.605113327503204,-0.511575877666473,0.205702692270279,-0.0129275480285287,0.678676426410675,0.242261737585068,0.733478009700775,1.17317199707031,1.45265734195709,1.43964469432831,1.42663204669952,1.85448634624481,2.23653030395508,2.82980847358704,4.27822399139404,4.58732557296753,6.11376190185547,7.16892194747925],["Str agree","Disag","Disag","Disag","Disag","Str agree","Disag","Str agree","Disag","Str disag","Agree","Str agree","Agree","Str disag","Disag","Str disag","Str agree","Disag","Agree","Str disag","Agree","Str agree","Agree","Disag","Str disag","Agree","Agree","Str disag","Str agree","Disag","Disag","Disag","Str agree","Str agree","Disag","Agree","Str disag","Str agree","Disag","Str agree","Str disag","Str agree","Agree","Str agree","Str disag","Agree","Agree","Str disag","Disag","Str disag","Str agree","Str disag","Agree","Agree","Str agree","Str agree","Str agree","Str agree","Agree","Disag","Str disag","Agree","Str agree","Str disag","Str disag","Str disag","Str agree","Disag","Disag","Disag"],[1,0,0,0,0,1,0,1,0,0,1,1,1,0,0,0,1,0,1,0,1,1,1,0,0,1,1,0,1,0,0,0,1,1,0,1,0,1,0,1,0,1,1,1,0,1,1,0,0,0,1,0,1,1,1,1,1,1,1,0,0,1,1,0,0,0,1,0,0,0]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>country<\/th>\n      <th>year<\/th>\n      <th>y<\/th>\n      <th>y_bin<\/th>\n      <th>x1<\/th>\n      <th>x2<\/th>\n      <th>x3<\/th>\n      <th>opinion<\/th>\n      <th>op<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,5,6,7,9]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<pre class="r"><code>coplot(y ~ year | country, type = &quot;l&quot;, data = Panel)  # Linhas</code></pre>
+<p><img src="/post/2020-05-04-Econometrics_panel_torres_reyna_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<pre class="r"><code>coplot(y ~ year | country, type = &quot;b&quot;, data = Panel)  # Pontos e linhas</code></pre>
+<p><img src="/post/2020-05-04-Econometrics_panel_torres_reyna_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
+<pre class="r"><code># As barras ao topo indicam o gráfico correspondente a cada país, da esquerda
+# para direita e de baixo para cima (Muenchen/Hilbe:355).</code></pre>
+<pre class="r"><code>library(car)
+scatterplot(y ~ year | country, boxplots = FALSE, smooth = TRUE, reg.line = FALSE, 
+    data = Panel)</code></pre>
+<p><img src="/post/2020-05-04-Econometrics_panel_torres_reyna_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>
+<div id="modelo-empilhado-pooled-ols" class="section level1">
+<h1>Modelo Empilhado (pooled OLS)</h1>
+<p>O modelo pooled, ou também chamado de dados empilhados, estimado por MQO (mínimos quadrados ordinários), será o mesmo que a estimação do modelo por MQO ignorando o formato de painel.</p>
+<pre class="r"><code>library(plm)
+# options(&#39;scipen&#39;=100, &#39;digits&#39;=4)
+Panel.set &lt;- pdata.frame(Panel, index = c(&quot;country&quot;, &quot;year&quot;))
+formula &lt;- y ~ x1
+# pooled OLS
+pooled &lt;- plm(formula, data = Panel.set, index = c(&quot;country&quot;, &quot;year&quot;), model = &quot;pooling&quot;)
+summary(pooled)</code></pre>
+<pre><code>Pooling Model
+
+Call:
+plm(formula = formula, data = Panel.set, model = &quot;pooling&quot;, index = c(&quot;country&quot;, 
+    &quot;year&quot;))
+
+Balanced Panel: n = 7, T = 10, N = 70
+
+Residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-9.55e+09 -1.58e+09  1.55e+08  0.00e+00  1.42e+09  7.18e+09 
+
+Coefficients:
+              Estimate Std. Error t-value Pr(&gt;|t|)  
+(Intercept) 1524319070  621072624  2.4543  0.01668 *
+x1           494988914  778861261  0.6355  0.52722  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Total Sum of Squares:    6.2729e+20
+Residual Sum of Squares: 6.2359e+20
+R-Squared:      0.0059046
+Adj. R-Squared: -0.0087145
+F-statistic: 0.403897 on 1 and 68 DF, p-value: 0.52722</code></pre>
+<pre class="r"><code># o mesmo que o OLS comum sem especificar painel
+ols &lt;- lm(y ~ x1, data = Panel)
+summary(ols)</code></pre>
+<pre><code>
+Call:
+lm(formula = y ~ x1, data = Panel)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-9.546e+09 -1.578e+09  1.554e+08  1.422e+09  7.183e+09 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept) 1.524e+09  6.211e+08   2.454   0.0167 *
+x1          4.950e+08  7.789e+08   0.636   0.5272  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 3.028e+09 on 68 degrees of freedom
+Multiple R-squared:  0.005905,  Adjusted R-squared:  -0.008714 
+F-statistic: 0.4039 on 1 and 68 DF,  p-value: 0.5272</code></pre>
+<pre class="r"><code>suppressMessages(library(stargazer))
+stargazer(pooled, title = &quot;Título: Resultado da Regressão Pooled OLS&quot;, align = TRUE, 
+    type = &quot;text&quot;, style = &quot;all&quot;, keep.stat = c(&quot;aic&quot;, &quot;bic&quot;, &quot;rsq&quot;, &quot;adj.rsq&quot;, &quot;n&quot;))</code></pre>
+<pre><code>
+Título: Resultado da Regressão Pooled OLS
+========================================
+                 Dependent variable:    
+             ---------------------------
+                          y             
+----------------------------------------
+x1                 494,988,914.000      
+                  (778,861,261.000)     
+                      t = 0.636         
+                      p = 0.528         
+Constant         1,524,319,070.000**    
+                  (621,072,624.000)     
+                      t = 2.454         
+                      p = 0.017         
+----------------------------------------
+Observations             70             
+R2                      0.006           
+Adjusted R2            -0.009           
+========================================
+Note:        *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<pre class="r"><code># plot do MQO
+yhat &lt;- ols$fitted
+plot(Panel$x1, Panel$y, pch = 19, xlab = &quot;x1&quot;, ylab = &quot;y&quot;)
+abline(lm(Panel$y ~ Panel$x1), lwd = 3, col = &quot;red&quot;)</code></pre>
+<p><img src="/post/2020-05-04-Econometrics_panel_torres_reyna_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>É possível estimar com erros-padrõesrobustos conforme Arellano e ainda com erros-padrões consistentes de White (principalmente paras as correlações cruzadas), analogamente ao realizado por Greene (2012, p.352), de modo a ter ideia do efeito de ignorar as características entre indivíduos e entre períodos.</p>
+<pre class="r"><code># o modelo com erros-padrões robustos de Arellano
+summary(pooled, vcov = function(x) vcovHC(x, method = &quot;arellano&quot;))</code></pre>
+<pre><code>Pooling Model
+
+Note: Coefficient variance-covariance matrix supplied: function(x) vcovHC(x, method = &quot;arellano&quot;)
+
+Call:
+plm(formula = formula, data = Panel.set, model = &quot;pooling&quot;, index = c(&quot;country&quot;, 
+    &quot;year&quot;))
+
+Balanced Panel: n = 7, T = 10, N = 70
+
+Residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-9.55e+09 -1.58e+09  1.55e+08  0.00e+00  1.42e+09  7.18e+09 
+
+Coefficients:
+              Estimate Std. Error t-value Pr(&gt;|t|)  
+(Intercept) 1524319070  890414623  1.7119  0.09147 .
+x1           494988914  772694006  0.6406  0.52393  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Total Sum of Squares:    6.2729e+20
+Residual Sum of Squares: 6.2359e+20
+R-Squared:      0.0059046
+Adj. R-Squared: -0.0087145
+F-statistic: 0.41037 on 1 and 6 DF, p-value: 0.54545</code></pre>
+<pre class="r"><code># o modelo com erros-padrões consistentes com heterocedasticidade de White
+summary(pooled, vcov = function(x) vcovHC(x, method = &quot;white1&quot;))</code></pre>
+<pre><code>Pooling Model
+
+Note: Coefficient variance-covariance matrix supplied: function(x) vcovHC(x, method = &quot;white1&quot;)
+
+Call:
+plm(formula = formula, data = Panel.set, model = &quot;pooling&quot;, index = c(&quot;country&quot;, 
+    &quot;year&quot;))
+
+Balanced Panel: n = 7, T = 10, N = 70
+
+Residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-9.55e+09 -1.58e+09  1.55e+08  0.00e+00  1.42e+09  7.18e+09 
+
+Coefficients:
+              Estimate Std. Error t-value Pr(&gt;|t|)  
+(Intercept) 1524319070  654083961  2.3305  0.02276 *
+x1           494988914  680225903  0.7277  0.46931  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Total Sum of Squares:    6.2729e+20
+Residual Sum of Squares: 6.2359e+20
+R-Squared:      0.0059046
+Adj. R-Squared: -0.0087145
+F-statistic: 0.529523 on 1 and 6 DF, p-value: 0.49421</code></pre>
+</div>
+<div id="modelo-de-efeitos-fixos-fixed-effects---fe" class="section level1">
+<h1>Modelo de Efeitos Fixos (<em>Fixed Effects</em> - FE)</h1>
+<p>(Modelo Covariancia, Estimador ‘Within’, Modelo de variável dummy individual, Modelo <em>Least Squares Dummy Variable</em> (LSDV))</p>
+<p>Use o modelo de efeitos fixos (FE para <em>Fixed Effects</em>) sempre que estiver interessado apenas em analisar o impacto de variáveis que variam ao longo do tempo. O FE explora a relação entre variáveis preditoras e o resultado dentro de uma entidade (país, pessoa, empresa, etc.). Cada entidade tem suas próprias características individuais que podem ou não influenciar as variáveis preditoras (por exemplo, ser homem ou mulher pode influenciar a opinião em relação à determinada questão ou o sistema político de um determinado país pode ter algum efeito sobre o comércio ou PIB; ou as práticas de negócios de uma empresa podem influenciar o preço de suas ações).</p>
+<p>Ao usar o FE, supõe-se que algo dentro do indivíduo pode impactar ou viesar o preditor ou as variáveis de resultado e é preciso controlar isso.</p>
+<p>Essa é a justificativa por trás da suposição da correlação entre o termo de erro da entidade e as variáveis preditoras. O FE remove o efeito dessas características invariantes no tempo, para que se avalie o efeito líquido dos preditores na variável de resultado.</p>
+<p>Outra pressuposição importante do modelo FE é que essas características invariantes no tempo são exclusivas do indivíduo e não devem ser correlacionadas com outras características individuais. Cada entidade é diferente, portanto, o termo de erro da entidade e a constante (que captura as características individuais) não devem ser correlacionadas com as outras.</p>
+<p>Se os termos de erros estão correlacionados, então o FE não é adequado, uma vez que as inferências podem não estar corretas e você precisa modelar essa relação (provavelmente usando efeitos aleatórios), esta é a principal razão para o teste de Hausman (apresentado mais adiante).</p>
+<div id="heterogeneidade-entre-países" class="section level2">
+<h2>Heterogeneidade entre países</h2>
+<pre class="r"><code>library(gplots)
+plotmeans(y ~ country, main = &quot;Heterogeneidade entre países&quot;, data = Panel)</code></pre>
+<p><img src="/post/2020-05-04-Econometrics_panel_torres_reyna_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<pre class="r"><code># plotmeans faz um intervalo de confiança de 95% em torno das médias
+detach(&quot;package:gplots&quot;)
+# detach remove o pacote ‘gplots’ do ambiente de trabalho</code></pre>
+</div>
+<div id="heterogeneidade-entre-anos" class="section level2">
+<h2>Heterogeneidade entre anos</h2>
+<pre class="r"><code>library(gplots)
+plotmeans(y ~ year, main = &quot;Heterogeneidade entre anos&quot;, data = Panel)</code></pre>
+<p><img src="/post/2020-05-04-Econometrics_panel_torres_reyna_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<pre class="r"><code># plotmeans faz um intervalo de confiança de 95% em torno das médias
+detach(&quot;package:gplots&quot;)
+# detach remove o pacote ‘gplots’ do ambiente de trabalho</code></pre>
+</div>
+</div>
+<div id="operacionalização-de-outros-modelos" class="section level1">
+<h1>Operacionalização de outros modelos</h1>
+<div id="efeitos-fixos-com-least-squares-dummy-variable---lsdv" class="section level2">
+<h2>Efeitos Fixos com <em>Least squares dummy variable</em> - LSDV</h2>
+<pre class="r"><code>fixed.dum &lt;- lm(y ~ x1 + factor(country) - 1, data = Panel)
+summary(fixed.dum)</code></pre>
+<pre><code>
+Call:
+lm(formula = y ~ x1 + factor(country) - 1, data = Panel)
+
+Residuals:
+       Min         1Q     Median         3Q        Max 
+-8.634e+09 -9.697e+08  5.405e+08  1.386e+09  5.612e+09 
+
+Coefficients:
+                   Estimate Std. Error t value Pr(&gt;|t|)    
+x1                2.476e+09  1.107e+09   2.237  0.02889 *  
+factor(country)A  8.805e+08  9.618e+08   0.916  0.36347    
+factor(country)B -1.058e+09  1.051e+09  -1.006  0.31811    
+factor(country)C -1.723e+09  1.632e+09  -1.056  0.29508    
+factor(country)D  3.163e+09  9.095e+08   3.478  0.00093 ***
+factor(country)E -6.026e+08  1.064e+09  -0.566  0.57329    
+factor(country)F  2.011e+09  1.123e+09   1.791  0.07821 .  
+factor(country)G -9.847e+08  1.493e+09  -0.660  0.51190    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 2.796e+09 on 62 degrees of freedom
+Multiple R-squared:  0.4402,    Adjusted R-squared:  0.368 
+F-statistic: 6.095 on 8 and 62 DF,  p-value: 8.892e-06</code></pre>
+</div>
+<div id="between-estimator-com-variação" class="section level2">
+<h2>Between estimator (com variação)</h2>
+<pre class="r"><code>between &lt;- plm(formula, data = Panel.set, model = &quot;between&quot;)
+summary(between)</code></pre>
+<pre><code>Oneway (individual) effect Between Model
+
+Call:
+plm(formula = formula, data = Panel.set, model = &quot;between&quot;)
+
+Balanced Panel: n = 7, T = 10, N = 70
+Observations used in estimation: 7
+
+Residuals:
+          A           B           C           D           E           F 
+ -407819091 -1758911755    62115802  1362404534 -1229066428  1692772511 
+          G 
+  278504427 
+
+Coefficients:
+              Estimate Std. Error t-value Pr(&gt;|t|)  
+(Intercept) 2461785986 1092643022  2.2531  0.07399 .
+x1          -951717959 1480461707 -0.6429  0.54864  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Total Sum of Squares:    1.0365e+19
+Residual Sum of Squares: 9.5737e+18
+R-Squared:      0.076342
+Adj. R-Squared: -0.10839
+F-statistic: 0.413259 on 1 and 5 DF, p-value: 0.54864</code></pre>
+</div>
+<div id="first-differences-estimator" class="section level2">
+<h2>First differences estimator</h2>
+<pre class="r"><code>firstdiff &lt;- plm(formula, data = Panel.set, model = &quot;fd&quot;)
+summary(firstdiff)</code></pre>
+<pre><code>Oneway (individual) effect First-Difference Model
+
+Call:
+plm(formula = formula, data = Panel.set, model = &quot;fd&quot;)
+
+Balanced Panel: n = 7, T = 10, N = 70
+Observations used in estimation: 63
+
+Residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-9.09e+09 -1.92e+09 -4.71e+07  0.00e+00  1.73e+09  1.21e+10 
+
+Coefficients:
+              Estimate Std. Error t-value Pr(&gt;|t|)  
+(Intercept)  112324037  459179084  0.2446  0.80757  
+x1          2332571239 1205546123  1.9349  0.05765 .
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Total Sum of Squares:    8.5496e+20
+Residual Sum of Squares: 8.0552e+20
+R-Squared:      0.057824
+Adj. R-Squared: 0.042378
+F-statistic: 3.74371 on 1 and 61 DF, p-value: 0.057647</code></pre>
+</div>
+<div id="fixed-effects-or-within-estimator" class="section level2">
+<h2>Fixed effects or within estimator</h2>
+<div id="oneway-individual-effect-within-model" class="section level3">
+<h3>Oneway (individual) effect Within Model</h3>
+<pre class="r"><code>fixed &lt;- plm(formula, data = Panel.set, index = c(&quot;country&quot;, &quot;year&quot;), effect = c(&quot;individual&quot;), 
+    model = &quot;within&quot;)
+summary(fixed)</code></pre>
+<pre><code>Oneway (individual) effect Within Model
+
+Call:
+plm(formula = formula, data = Panel.set, effect = c(&quot;individual&quot;), 
+    model = &quot;within&quot;, index = c(&quot;country&quot;, &quot;year&quot;))
+
+Balanced Panel: n = 7, T = 10, N = 70
+
+Residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-8.63e+09 -9.70e+08  5.40e+08  0.00e+00  1.39e+09  5.61e+09 
+
+Coefficients:
+     Estimate Std. Error t-value Pr(&gt;|t|)  
+x1 2475617827 1106675594   2.237  0.02889 *
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Total Sum of Squares:    5.2364e+20
+Residual Sum of Squares: 4.8454e+20
+R-Squared:      0.074684
+Adj. R-Squared: -0.029788
+F-statistic: 5.00411 on 1 and 62 DF, p-value: 0.028892</code></pre>
+<div id="efeitos-fixos-one-way-individual" class="section level4">
+<h4>Efeitos fixos (one-way individual)</h4>
+<pre class="r"><code>print(fixef(fixed))</code></pre>
+<pre><code>          A           B           C           D           E           F 
+  880542404 -1057858363 -1722810755  3162826897  -602622000  2010731793 
+          G 
+ -984717493 </code></pre>
+</div>
+</div>
+<div id="oneway-time-effect-within-model" class="section level3">
+<h3>Oneway (time) effect Within Model</h3>
+<p>Agora alterando para conter efeitos fixos no tempo.</p>
+<pre class="r"><code>fixed.onet &lt;- plm(formula = formula, data = Panel.set, index = c(&quot;country&quot;, &quot;year&quot;), 
+    effect = c(&quot;time&quot;), model = &quot;within&quot;)
+summary(fixed.onet)</code></pre>
+<pre><code>Oneway (time) effect Within Model
+
+Call:
+plm(formula = formula, data = Panel.set, effect = c(&quot;time&quot;), 
+    model = &quot;within&quot;, index = c(&quot;country&quot;, &quot;year&quot;))
+
+Balanced Panel: n = 7, T = 10, N = 70
+
+Residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-9.47e+09 -1.56e+09 -7.39e+06  0.00e+00  1.48e+09  7.20e+09 
+
+Coefficients:
+     Estimate Std. Error t-value Pr(&gt;|t|)
+x1 -173111508  815529770 -0.2123   0.8326
+
+Total Sum of Squares:    5.1406e+20
+Residual Sum of Squares: 5.1367e+20
+R-Squared:      0.00076311
+Adj. R-Squared: -0.1686
+F-statistic: 0.045058 on 1 and 59 DF, p-value: 0.83263</code></pre>
+<pre class="r"><code>summary(fixed.onet, vcov = function(x) vcovHC(x, method = &quot;arellano&quot;))</code></pre>
+<pre><code>Oneway (time) effect Within Model
+
+Note: Coefficient variance-covariance matrix supplied: function(x) vcovHC(x, method = &quot;arellano&quot;)
+
+Call:
+plm(formula = formula, data = Panel.set, effect = c(&quot;time&quot;), 
+    model = &quot;within&quot;, index = c(&quot;country&quot;, &quot;year&quot;))
+
+Balanced Panel: n = 7, T = 10, N = 70
+
+Residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-9.47e+09 -1.56e+09 -7.39e+06  0.00e+00  1.48e+09  7.20e+09 
+
+Coefficients:
+     Estimate Std. Error t-value Pr(&gt;|t|)
+x1 -173111508  691358030 -0.2504   0.8032
+
+Total Sum of Squares:    5.1406e+20
+Residual Sum of Squares: 5.1367e+20
+R-Squared:      0.00076311
+Adj. R-Squared: -0.1686
+F-statistic: 0.0626969 on 1 and 6 DF, p-value: 0.81064</code></pre>
+<div id="efeitos-fixos-one-way-time" class="section level4">
+<h4>Efeitos fixos (one-way time)</h4>
+<pre class="r"><code>fixef(fixed.onet)</code></pre>
+<pre><code>      1990       1991       1992       1993       1994       1995       1996 
+  53946716  711200607  762927804 3292078022 3813870160 1664285774 2559291627 
+      1997       1998       1999 
+3865882558 1125968837 1723033310 </code></pre>
+</div>
+</div>
+</div>
+<div id="two-ways-individual-and-time-effects-within-model" class="section level2">
+<h2>Two-ways (individual and time) effects Within Model</h2>
+<pre class="r"><code>fixed.two &lt;- plm(formula = formula, data = Panel.set, index = c(&quot;country&quot;, &quot;year&quot;), 
+    effect = c(&quot;twoways&quot;), model = &quot;within&quot;)
+summary(fixed.two)</code></pre>
+<pre><code>Twoways effects Within Model
+
+Call:
+plm(formula = formula, data = Panel.set, effect = c(&quot;twoways&quot;), 
+    model = &quot;within&quot;, index = c(&quot;country&quot;, &quot;year&quot;))
+
+Balanced Panel: n = 7, T = 10, N = 70
+
+Residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-7.92e+09 -1.05e+09 -1.40e+08  0.00e+00  1.63e+09  5.49e+09 
+
+Coefficients:
+     Estimate Std. Error t-value Pr(&gt;|t|)
+x1 1389050354 1319849567  1.0524   0.2974
+
+Total Sum of Squares:    4.1041e+20
+Residual Sum of Squares: 4.0201e+20
+R-Squared:      0.020471
+Adj. R-Squared: -0.27524
+F-statistic: 1.10761 on 1 and 53 DF, p-value: 0.29738</code></pre>
+<div id="efeitos-fixos-two-ways---individual-and-time" class="section level3">
+<h3>Efeitos fixos (two-ways - individual and time)</h3>
+<pre class="r"><code>fixef(fixed.two)</code></pre>
+<pre><code>         A          B          C          D          E          F          G 
+1252552899 -499653716 -376476457 3372498854  -20764090 2690388678  196220903 </code></pre>
+</div>
+</div>
+<div id="random-effects-estimator" class="section level2">
+<h2>Random effects estimator</h2>
+<div id="oneway-individual-effect-random-effect-model-swamy-aroras-transformation---default" class="section level3">
+<h3>Oneway (individual) effect Random Effect Model (Swamy-Arora’s transformation - default)</h3>
+<pre class="r"><code>random &lt;- plm(formula = formula, data = Panel.set, effect = c(&quot;individual&quot;), model = &quot;random&quot;)
+summary(random)</code></pre>
+<pre><code>Oneway (individual) effect Random Effect Model 
+   (Swamy-Arora&#39;s transformation)
+
+Call:
+plm(formula = formula, data = Panel.set, effect = c(&quot;individual&quot;), 
+    model = &quot;random&quot;)
+
+Balanced Panel: n = 7, T = 10, N = 70
+
+Effects:
+                    var   std.dev share
+idiosyncratic 7.815e+18 2.796e+09 0.873
+individual    1.133e+18 1.065e+09 0.127
+theta: 0.3611
+
+Residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-8.94e+09 -1.51e+09  2.82e+08  0.00e+00  1.56e+09  6.63e+09 
+
+Coefficients:
+              Estimate Std. Error z-value Pr(&gt;|z|)
+(Intercept) 1037014284  790626206  1.3116   0.1896
+x1          1247001782  902145601  1.3823   0.1669
+
+Total Sum of Squares:    5.6595e+20
+Residual Sum of Squares: 5.5048e+20
+R-Squared:      0.02733
+Adj. R-Squared: 0.013026
+Chisq: 1.91065 on 1 DF, p-value: 0.16689</code></pre>
+</div>
+<div id="two-ways-effects-random-effect-model-amemiyas-transformation" class="section level3">
+<h3>Two-ways effects Random Effect Model (Amemiya’s transformation)</h3>
+<pre class="r"><code>random.a &lt;- plm(formula = formula, data = Panel.set, effect = c(&quot;twoways&quot;), model = &quot;random&quot;, 
+    random.method = &quot;amemiya&quot;)
+summary(random.a)</code></pre>
+<pre><code>Twoways effects Random Effect Model 
+   (Amemiya&#39;s transformation)
+
+Call:
+plm(formula = formula, data = Panel.set, effect = c(&quot;twoways&quot;), 
+    model = &quot;random&quot;, random.method = &quot;amemiya&quot;)
+
+Balanced Panel: n = 7, T = 10, N = 70
+
+Effects:
+                    var   std.dev share
+idiosyncratic 7.445e+18 2.728e+09 0.830
+individual    1.307e+18 1.143e+09 0.146
+time          2.231e+17 4.723e+08 0.025
+theta: 0.3976 (id) 0.09083 (time) 0.06913 (total)
+
+Residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-8.89e+09 -1.46e+09  3.23e+08  0.00e+00  1.57e+09  6.57e+09 
+
+Coefficients:
+              Estimate Std. Error z-value Pr(&gt;|z|)
+(Intercept) 1063973603  826846057  1.2868   0.1982
+x1          1205397932  918919642  1.3118   0.1896
+
+Total Sum of Squares:    5.4162e+20
+Residual Sum of Squares: 5.2825e+20
+R-Squared:      0.02468
+Adj. R-Squared: 0.010337
+Chisq: 1.7207 on 1 DF, p-value: 0.1896</code></pre>
+</div>
+<div id="two-ways-effects-random-effect-model-wallace-hussains-transformation" class="section level3">
+<h3>Two-ways effects Random Effect Model (Wallace-Hussain’s transformation)</h3>
+<p>Esta opção confere exatamente com a opção do Eviews para efeitos random no cross-section e no period e method Wallace-Hussain.</p>
+<pre class="r"><code>random.wh &lt;- plm(formula = formula, data = Panel.set, effect = c(&quot;twoways&quot;), model = &quot;random&quot;, 
+    random.method = &quot;walhus&quot;)
+summary(random.wh)</code></pre>
+<pre><code>Twoways effects Random Effect Model 
+   (Wallace-Hussain&#39;s transformation)
+
+Call:
+plm(formula = formula, data = Panel.set, effect = c(&quot;twoways&quot;), 
+    model = &quot;random&quot;, random.method = &quot;walhus&quot;)
+
+Balanced Panel: n = 7, T = 10, N = 70
+
+Effects:
+                    var   std.dev share
+idiosyncratic 7.509e+18 2.740e+09 0.853
+individual    8.780e+17 9.370e+08 0.100
+time          4.142e+17 6.436e+08 0.047
+theta: 0.321 (id) 0.1506 (time) 0.09722 (total)
+
+Residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-9.02e+09 -1.45e+09  3.20e+08  0.00e+00  1.48e+09  6.70e+09 
+
+Coefficients:
+              Estimate Std. Error z-value Pr(&gt;|z|)
+(Intercept) 1236238948  786374284  1.5721   0.1159
+x1           939556596  890823442  1.0547   0.2916
+
+Total Sum of Squares:    5.3989e+20
+Residual Sum of Squares: 5.312e+20
+R-Squared:      0.016096
+Adj. R-Squared: 0.0016264
+Chisq: 1.1124 on 1 DF, p-value: 0.29156</code></pre>
+</div>
+<div id="two-ways-effects-random-effect-model-nerloves-transformation" class="section level3">
+<h3>Two-ways effects Random Effect Model (Nerlove’s transformation)</h3>
+<pre class="r"><code>random.n &lt;- plm(formula = formula, data = Panel.set, effect = c(&quot;twoways&quot;), model = &quot;random&quot;, 
+    random.method = &quot;nerlove&quot;)
+summary(random.n)</code></pre>
+<pre><code>Twoways effects Random Effect Model 
+   (Nerlove&#39;s transformation)
+
+Call:
+plm(formula = formula, data = Panel.set, effect = c(&quot;twoways&quot;), 
+    model = &quot;random&quot;, random.method = &quot;nerlove&quot;)
+
+Balanced Panel: n = 7, T = 10, N = 70
+
+Effects:
+                    var   std.dev share
+idiosyncratic 5.743e+18 2.396e+09 0.600
+individual    2.393e+18 1.547e+09 0.250
+time          1.430e+18 1.196e+09 0.149
+theta: 0.5601 (id) 0.3962 (time) 0.3367 (total)
+
+Residuals:
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-8.63e+09 -1.34e+09  3.53e+08  0.00e+00  1.56e+09  6.30e+09 
+
+Coefficients:
+              Estimate Std. Error z-value Pr(&gt;|z|)
+(Intercept) 1081472553 1044994566  1.0349   0.3007
+x1          1178393405 1001120715  1.1771   0.2392
+
+Total Sum of Squares:    4.7176e+20
+Residual Sum of Squares: 4.6234e+20
+R-Squared:      0.019968
+Adj. R-Squared: 0.005556
+Chisq: 1.3855 on 1 DF, p-value: 0.23917</code></pre>
+</div>
+</div>
+<div id="resumo" class="section level2">
+<h2>Resumo</h2>
+<pre class="r"><code>options(scipen = 100, digits = 4)
+suppressMessages(library(stargazer))
+stargazer(pooled, fixed.dum, between, firstdiff, column.labels = c(&quot;pooled&quot;, &quot;fixed.dum&quot;, 
+    &quot;between&quot;, &quot;firstdiff&quot;), title = &quot;Título: Resultados das Regressões em Painel&quot;, 
+    align = TRUE, type = &quot;text&quot;, style = &quot;all&quot;, keep.stat = c(&quot;aic&quot;, &quot;bic&quot;, &quot;rsq&quot;, 
+        &quot;adj.rsq&quot;, &quot;n&quot;))</code></pre>
+<pre><code>
+Título: Resultados das Regressões em Painel
+=================================================================================================
+                                               Dependent variable:                               
+                 --------------------------------------------------------------------------------
+                                                        y                                        
+                        panel                OLS                           panel                 
+                       linear                                             linear                 
+                       pooled             fixed.dum             between            firstdiff     
+                         (1)                 (2)                  (3)                 (4)        
+-------------------------------------------------------------------------------------------------
+x1                 494,988,914.000   2,475,617,827.000**   -951,717,959.000   2,332,571,239.000* 
+                  (778,861,261.000)  (1,106,675,594.000)  (1,480,461,707.000) (1,205,546,123.000)
+                      t = 0.636           t = 2.237           t = -0.643           t = 1.935     
+                      p = 0.528           p = 0.029            p = 0.549           p = 0.058     
+factor(country)A                       880,542,404.000                                           
+                                      (961,807,052.000)                                          
+                                          t = 0.916                                              
+                                          p = 0.364                                              
+factor(country)B                      -1,057,858,363.000                                         
+                                     (1,051,067,684.000)                                         
+                                          t = -1.006                                             
+                                          p = 0.319                                              
+factor(country)C                      -1,722,810,755.000                                         
+                                     (1,631,513,751.000)                                         
+                                          t = -1.056                                             
+                                          p = 0.296                                              
+factor(country)D                     3,162,826,897.000***                                        
+                                      (909,459,150.000)                                          
+                                          t = 3.478                                              
+                                          p = 0.001                                              
+factor(country)E                       -602,622,000.000                                          
+                                     (1,064,291,684.000)                                         
+                                          t = -0.566                                             
+                                          p = 0.574                                              
+factor(country)F                      2,010,731,793.000*                                         
+                                     (1,122,809,097.000)                                         
+                                          t = 1.791                                              
+                                          p = 0.079                                              
+factor(country)G                       -984,717,493.000                                          
+                                     (1,492,723,118.000)                                         
+                                          t = -0.660                                             
+                                          p = 0.512                                              
+Constant         1,524,319,070.000**                      2,461,785,985.000*    112,324,037.000  
+                  (621,072,624.000)                       (1,092,643,022.000)  (459,179,084.000) 
+                      t = 2.454                                t = 2.253           t = 0.245     
+                      p = 0.017                                p = 0.074           p = 0.808     
+-------------------------------------------------------------------------------------------------
+Observations             70                   70                   7                  63         
+R2                      0.006               0.440                0.076               0.058       
+Adjusted R2            -0.009               0.368               -0.108               0.042       
+=================================================================================================
+Note:                                                                 *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<pre class="r"><code>stargazer(fixed, fixed.onet, fixed.two, column.labels = c(&quot;fixed&quot;, &quot;fixed.onet&quot;, 
+    &quot;fixed.two&quot;), title = &quot;Título: Resultados das Regressões em Painel - fixed effects&quot;, 
+    align = TRUE, type = &quot;text&quot;, style = &quot;all&quot;, keep.stat = c(&quot;aic&quot;, &quot;bic&quot;, &quot;rsq&quot;, 
+        &quot;adj.rsq&quot;, &quot;n&quot;))</code></pre>
+<pre><code>
+Título: Resultados das Regressões em Painel - fixed effects
+======================================================================
+                                Dependent variable:                   
+             ---------------------------------------------------------
+                                         y                            
+                    fixed           fixed.onet          fixed.two     
+                     (1)                (2)                (3)        
+----------------------------------------------------------------------
+x1           2,475,617,827.000** -173,111,508.000   1,389,050,354.000 
+             (1,106,675,594.000) (815,529,770.000) (1,319,849,567.000)
+                  t = 2.237         t = -0.212          t = 1.052     
+                  p = 0.029          p = 0.833          p = 0.298     
+----------------------------------------------------------------------
+Observations         70                 70                 70         
+R2                  0.075              0.001              0.020       
+Adjusted R2        -0.030             -0.169             -0.275       
+======================================================================
+Note:                                      *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+<pre class="r"><code>stargazer(random, random.a, random.wh, random.n, column.labels = c(&quot;random&quot;, &quot;random.a&quot;, 
+    &quot;random.wh&quot;, &quot;random.n&quot;), title = &quot;Título: Resultados das Regressões em Painel - random effects&quot;, 
+    align = TRUE, type = &quot;text&quot;, style = &quot;all&quot;, keep.stat = c(&quot;aic&quot;, &quot;bic&quot;, &quot;rsq&quot;, 
+        &quot;adj.rsq&quot;, &quot;n&quot;))</code></pre>
+<pre><code>
+Título: Resultados das Regressões em Painel - random effects
+======================================================================================
+                                        Dependent variable:                           
+             -------------------------------------------------------------------------
+                                                 y                                    
+                  random           random.a          random.wh          random.n      
+                    (1)               (2)               (3)                (4)        
+--------------------------------------------------------------------------------------
+x1           1,247,001,782.000 1,205,397,932.000  939,556,596.000   1,178,393,405.000 
+             (902,145,601.000) (918,919,642.000) (890,823,442.000) (1,001,120,715.000)
+                 t = 1.382         t = 1.312         t = 1.055          t = 1.177     
+                 p = 0.167         p = 0.190         p = 0.292          p = 0.240     
+Constant     1,037,014,284.000 1,063,973,603.000 1,236,238,948.000  1,081,472,553.000 
+             (790,626,206.000) (826,846,057.000) (786,374,284.000) (1,044,994,566.000)
+                 t = 1.312         t = 1.287         t = 1.572          t = 1.035     
+                 p = 0.190         p = 0.199         p = 0.116          p = 0.301     
+--------------------------------------------------------------------------------------
+Observations        70                70                70                 70         
+R2                 0.027             0.025             0.016              0.020       
+Adjusted R2        0.013             0.010             0.002              0.006       
+======================================================================================
+Note:                                                      *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+<div id="lm-test-for-random-effects-versus-ols" class="section level2">
+<h2>LM test for random effects versus OLS</h2>
+<pre class="r"><code>plmtest(pooled)</code></pre>
+<pre><code>
+    Lagrange Multiplier Test - (Honda) for balanced panels
+
+data:  formula
+normal = 1.6, p-value = 0.05
+alternative hypothesis: significant effects</code></pre>
+</div>
+<div id="lm-test-for-fixed-effects-versus-ols" class="section level2">
+<h2>LM test for fixed effects versus OLS</h2>
+<pre class="r"><code>pFtest(fixed, pooled)</code></pre>
+<pre><code>
+    F test for individual effects
+
+data:  formula
+F = 3, df1 = 6, df2 = 62, p-value = 0.01
+alternative hypothesis: significant effects</code></pre>
+</div>
+<div id="hausman-test-for-fixed-versus-random-effects-model" class="section level2">
+<h2>Hausman test for fixed versus random effects model</h2>
+<pre class="r"><code>phtest(random, fixed)</code></pre>
+<pre><code>
+    Hausman Test
+
+data:  formula
+chisq = 3.7, df = 1, p-value = 0.06
+alternative hypothesis: one model is inconsistent</code></pre>
+</div>
+</div>
+<div id="Referências" class="section level1 unnumbered">
+<h1>Referências</h1>
+<p>CROISSANT, Y; MILLO, G. “Panel Data Econometrics in R: The plm Package.” <em>Journal of Statistical Software</em>, <em>27</em>(2), 1-43, 2018. doi:
+10.18637/jss.v027.i02 (URL: <a href="http://doi.org/10.18637/jss.v027.i02" class="uri">http://doi.org/10.18637/jss.v027.i02</a>).</p>
+<p>FIGUEIREDO, Adriano Marcos Rodrigues. Tópicos de econometria: tipos de datasets. Campo Grande-MS,Brasil: RStudio/Rpubs, 2019. Disponível em <a href="http://rpubs.com/amrofi/TS_dataset_types" class="uri">http://rpubs.com/amrofi/TS_dataset_types</a>.</p>
+<p>GREENE, William H. Econometric analysis. 7.ed. Pearson Education, 2012.</p>
+<p>KATCHOVA, Ani. Ohio State University, Department of Agricultural, Environmental, and Development Economics. 2013. Disponível em <a href="https://sites.google.com/site/econometricsacademy/econometrics-models/panel-data-models" class="uri">https://sites.google.com/site/econometricsacademy/econometrics-models/panel-data-models</a>.</p>
+<p>TORRES-REYNA, Oscar. Getting Started in Fixed/Random Effects Models using R. Princeton: Princeton University, 2010. Disponível em: <a href="http://www.princeton.edu/~otorres/Panel101R.pdf" class="uri">http://www.princeton.edu/~otorres/Panel101R.pdf</a>.</p>
+<p>The contents of this document rely heavily on the document:
+“Panel Data Econometricsin R: theplmpackage” <a href="http://cran.r-project.org/web/packages/plm/vignettes/plm.pdfand" class="uri">http://cran.r-project.org/web/packages/plm/vignettes/plm.pdfand</a> notes
+from the ICPSR’s Summer Program in Quantitative Methods of Social Research(summer 2010)</p>
+</div>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/econometria/">econometria</a>
+  
+  <a class="badge badge-light" href="/tags/painel/">painel</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/econometrics_panel_torres_reyna/&amp;text=Econometria:%20exemplo%20de%20dados%20em%20painel%20em%20R%20-%20Torres-Reyna%20data" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/econometrics_panel_torres_reyna/&amp;t=Econometria:%20exemplo%20de%20dados%20em%20painel%20em%20R%20-%20Torres-Reyna%20data" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Econometria:%20exemplo%20de%20dados%20em%20painel%20em%20R%20-%20Torres-Reyna%20data&amp;body=/post/econometrics_panel_torres_reyna/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/econometrics_panel_torres_reyna/&amp;title=Econometria:%20exemplo%20de%20dados%20em%20painel%20em%20R%20-%20Torres-Reyna%20data" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Econometria:%20exemplo%20de%20dados%20em%20painel%20em%20R%20-%20Torres-Reyna%20data%20/post/econometrics_panel_torres_reyna/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/econometrics_panel_torres_reyna/&amp;title=Econometria:%20exemplo%20de%20dados%20em%20painel%20em%20R%20-%20Torres-Reyna%20data" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="portrait mr-3" src="/authors/admin/avatar_hue9adce3a1ccb9b9d32568a9f62616c02_114438_250x250_fill_q90_lanczos_center.jpg" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/">Adriano M R Figueiredo</a></h5>
+      <h6 class="card-subtitle">Professor of Regional Economics and Econometrics</h6>
+      <p class="card-text">My research interests include regional economics, econometrics, sustainable public policies and agricultural economics.</p>
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="/#contact" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://twitter.com/amrofi" target="_blank" rel="noopener">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://scholar.google.com.br/citations?user=LjuEUroAAAAJ&amp;hl=pt-BR" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/amrofi" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  
+  
+  <div class="article-widget content-widget-hr">
+    <h3>Related</h3>
+    <ul>
+      
+      <li><a href="/post/series-temporais-combinacao-de-forecasts-forecasthybrid/">Séries Temporais com R: Combinação de forecasts para o Consumo do Varejo em MS com `forecastHybrid`</a></li>
+      
+      <li><a href="/post/series-temporais-theta-consumo-varejo-ms/">Séries Temporais com R: Análise Theta para o Consumo do Varejo em MS com pacotes `forecast::thetaf` e `forecTheta`</a></li>
+      
+      <li><a href="/post/series-temporais-consumo-varejo-ms-x13arima-seats/">Séries Temporais com R: Análise ARIMA do Consumo do Varejo em MS com X13ARIMA-SEATS</a></li>
+      
+      <li><a href="/post/series-temporais-com-r-analise-do-consumo-de-morettin-e-toloi-com-x13arima-seats/">Séries Temporais com R: Análise do consumo de Morettin e Toloi com X13ARIMA-SEATS</a></li>
+      
+      <li><a href="/project/projetos-finalizados/">Projetos finalizados</a></li>
+      
+    </ul>
+  </div>
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.4.3/mermaid.min.js" integrity="" crossorigin="anonymous" title="mermaid"></script>
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.600a2e440c16093e23e26e90951c4d4b.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

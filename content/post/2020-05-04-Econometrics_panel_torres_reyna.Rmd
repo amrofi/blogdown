@@ -1,0 +1,387 @@
+---
+title: 'Econometria: exemplo de dados em painel em R - Torres-Reyna data'
+author: 'Adriano M R Figueiredo'
+date: '2020-05-04'
+slug: Econometrics_panel_torres_reyna
+categories: []
+tags:
+  - econometria
+  - painel
+subtitle: ''
+summary: 'This is an undergrad student level instruction for class use. Based on Torres-Reyna (2010).'
+authors: []
+lastmod: '2020-05-04T17:40:56-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmarkdown)
+library(rmdformats)
+
+## Global options
+options(max.print="100")
+opts_chunk$set(echo=TRUE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=100)
+```
+
+
+Licença {-#Licença}
+===================
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <http://creativecommons.org/licenses/by-sa/4.0/> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+![License: CC BY-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png){ width=25% }
+
+Citação {-#Citação}
+===================================
+
+Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Econometria: exemplo de dados em painel em R - Torres-Reyna data. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/Econometrics_panel_torres_reyna> e em <https://adrianofigueiredo.netlify.app/post/Econometrics_panel_torres_reyna/>. 
+
+Script para reprodução (se utilizar, citar como acima)
+==================
+
+```{r echo=FALSE}
+# a single file
+xfun::embed_file('2020-05-04-Econometrics_panel_torres_reyna.Rmd')
+```
+
+Introdução
+===================================
+
+Este é um exercício para aula de econometria com dados em painel, adaptado a partir de Torres-Reyna (2010), Katchova (2013). UM exemplo de dados em painel pode ser visto em Figueiredo (2019, <http://rpubs.com/amrofi/TS_dataset_types>) como apresentado por Greene (2003), ou Greene (2012).
+
+```{r, echo=TRUE, tidy=TRUE, results='asis'}
+# Exemplo de Dados de Corte Transversal
+library(tidyr);library(dplyr);library(DT);library(magrittr)
+library(plm);library(systemfit)
+```
+
+Os dados em painel, ou de combinação de seção cruzada e série temporal (SCST), ou também chamados de dados longitudinais, associam dados de diferentes unidades ou indivíduos para diferentes períodos de tempo.     
+
+Segue o exemplo de Torres-Reyna (2010) para os dados em `Panel101.dta`, para 10 anos (1990-99) e 7 países (aqui designados pelas letras A até G):
+
+```{r}
+library(foreign)
+Panel <-read.dta("http://dss.princeton.edu/training/Panel101.dta")
+datatable(Panel)
+coplot(y ~ year|country, 
+       type="l", data=Panel) # Linhas
+coplot(y ~ year|country, 
+       type="b", data=Panel) # Pontos e linhas
+# As barras ao topo indicam o gráfico correspondente a cada país, 
+# da esquerda para direita e de baixo para cima (Muenchen/Hilbe:355).
+```
+
+
+```{r}
+library(car)
+scatterplot(y~year|country, 
+            boxplots=FALSE, smooth=TRUE, 
+            reg.line=FALSE, data=Panel)
+```
+
+Modelo Empilhado (pooled OLS)
+===========================
+
+O modelo pooled, ou também chamado de dados empilhados, estimado por MQO (mínimos quadrados ordinários), será o mesmo que a estimação do modelo por MQO ignorando o formato de painel. 
+
+```{r, eval=TRUE}
+library(plm)
+#options("scipen"=100, "digits"=4)
+Panel.set <- pdata.frame(Panel, 
+                         index = c("country", "year"))
+formula<-y ~ x1
+# pooled OLS
+pooled <- plm(formula, 
+          data = Panel.set, 
+          index = c("country", "year"),
+          model = "pooling")
+summary(pooled)
+
+# o mesmo que o OLS comum sem especificar painel
+ols<-lm(y ~ x1, data=Panel)
+summary(ols)
+
+suppressMessages(library(stargazer))
+stargazer(pooled, 
+            title="Título: Resultado da Regressão Pooled OLS",
+            align=TRUE,
+            type = "text", style = "all",
+            keep.stat=c("aic","bic","rsq", "adj.rsq","n")
+)
+```
+
+```{r}
+# plot do MQO
+yhat <- ols$fitted
+plot(Panel$x1, Panel$y, pch=19, xlab="x1", ylab="y")
+abline(lm(Panel$y~Panel$x1),lwd=3, col="red")
+```
+
+É possível estimar com erros-padrõesrobustos conforme Arellano e ainda com erros-padrões consistentes de White (principalmente paras as correlações cruzadas), analogamente ao realizado por Greene (2012, p.352), de modo a ter ideia do efeito de ignorar as características entre indivíduos e entre períodos.
+
+```{r}
+# o modelo com erros-padrões robustos de Arellano
+summary(pooled, 
+        vcov = function(x) vcovHC(x, method = "arellano"))
+
+# o modelo com erros-padrões consistentes com heterocedasticidade de White
+summary(pooled, 
+        vcov = function(x) vcovHC(x, method = "white1"))
+```
+
+Modelo de Efeitos Fixos (*Fixed Effects* - FE)
+===========================
+
+(Modelo Covariancia, Estimador 'Within', Modelo de variável dummy individual, Modelo *Least Squares Dummy Variable* (LSDV))
+
+Use o modelo de efeitos fixos (FE para *Fixed Effects*) sempre que estiver interessado apenas em analisar o impacto de variáveis que variam ao longo do tempo. O FE explora a relação entre variáveis preditoras e o resultado dentro de uma entidade (país, pessoa, empresa, etc.). Cada entidade tem suas próprias características individuais que podem ou não influenciar as variáveis preditoras (por exemplo, ser homem ou mulher pode influenciar a opinião em relação à determinada questão ou o sistema político de um determinado país pode ter algum efeito sobre o comércio ou PIB; ou as práticas de negócios de uma empresa podem influenciar o preço de suas ações).    
+
+Ao usar o FE, supõe-se que algo dentro do indivíduo pode impactar ou viesar o preditor ou as variáveis de resultado e é preciso controlar isso.    
+
+Essa é a justificativa por trás da suposição da correlação entre o termo de erro da entidade e as variáveis preditoras. O FE remove o efeito dessas características invariantes no tempo, para que se avalie o efeito líquido dos preditores na variável de resultado.    
+
+Outra pressuposição importante do modelo FE é que essas características invariantes no tempo são exclusivas do indivíduo e não devem ser correlacionadas com outras características individuais. Cada entidade é diferente, portanto, o termo de erro da entidade e a constante (que captura as características individuais) não devem ser correlacionadas com as outras.     
+
+Se os termos de erros estão correlacionados, então o FE não é adequado, uma vez que as inferências podem não estar corretas e você precisa modelar essa relação (provavelmente usando efeitos aleatórios), esta é a principal razão para o teste de Hausman (apresentado mais adiante).
+
+## Heterogeneidade entre países
+
+```{r}
+library(gplots)
+plotmeans(y ~ country, main="Heterogeneidade entre países", 
+          data=Panel)
+# plotmeans faz um intervalo de confiança de 95% em torno das médias
+detach("package:gplots")
+# detach remove o pacote ‘gplots’ do ambiente de trabalho
+```
+
+## Heterogeneidade entre anos
+
+```{r}
+library(gplots)
+plotmeans(y ~ year, main="Heterogeneidade entre anos", 
+          data=Panel)
+# plotmeans faz um intervalo de confiança de 95% em torno das médias
+detach("package:gplots")
+# detach remove o pacote ‘gplots’ do ambiente de trabalho
+```
+
+
+
+Operacionalização de outros modelos
+=======================
+
+## Efeitos Fixos com *Least squares dummy variable* - LSDV
+
+```{r}
+fixed.dum <-lm(y ~ x1 + factor(country) - 1, 
+               data=Panel)
+summary(fixed.dum)
+```
+
+
+
+## Between estimator (com variação)
+
+
+```{r, eval=TRUE}
+
+between <- plm(formula, data=Panel.set, model= "between")
+summary(between)
+```
+
+## First differences estimator
+
+```{r, eval=TRUE}
+firstdiff <- plm(formula, data=Panel.set, model= "fd")
+summary(firstdiff)
+```
+
+## Fixed effects or within estimator
+
+### Oneway (individual) effect Within Model
+
+```{r, eval=TRUE}
+fixed <- plm(formula, 
+             data=Panel.set, 
+             index = c("country", "year"),
+             effect = c("individual"),
+             model= "within")
+summary(fixed)
+```
+
+#### Efeitos fixos (one-way individual) 
+
+```{r}
+print(fixef(fixed))
+```
+
+
+
+### Oneway (time) effect Within Model
+
+Agora alterando para conter efeitos fixos no tempo. 
+
+```{r, eval=TRUE}
+fixed.onet <- plm(formula = formula, 
+             data = Panel.set, 
+             index = c("country", "year"),
+             effect = c("time"),
+             model= "within")
+summary(fixed.onet)
+```
+
+```{r}
+summary(fixed.onet, vcov = function(x) vcovHC(x, method = "arellano"))
+```
+
+#### Efeitos fixos (one-way time) 
+
+```{r}
+fixef(fixed.onet)
+```
+
+## Two-ways (individual and time) effects Within Model
+
+
+```{r, eval=TRUE}
+fixed.two <- plm(formula = formula, 
+             data = Panel.set, 
+             index = c("country", "year"),
+             effect = c("twoways"),
+             model= "within")
+summary(fixed.two)
+```
+
+
+### Efeitos fixos (two-ways - individual and time) 
+
+```{r}
+fixef(fixed.two)
+```
+
+## Random effects estimator
+
+### Oneway (individual) effect Random Effect Model (Swamy-Arora's transformation - default)
+
+```{r, eval=TRUE}
+random <- plm(formula = formula, 
+             data = Panel.set,
+             effect = c("individual"),
+             model= "random")
+summary(random)
+```
+
+### Two-ways effects Random Effect Model (Amemiya's transformation)
+   
+```{r, eval=TRUE}
+random.a <- plm(formula = formula, 
+             data = Panel.set,
+             effect = c("twoways"),
+             model= "random",
+             random.method = "amemiya")
+summary(random.a)
+```
+
+### Two-ways effects Random Effect Model (Wallace-Hussain's transformation)
+
+Esta opção confere exatamente com a opção do Eviews para efeitos random no cross-section e no period e method Wallace-Hussain.
+   
+```{r, eval=TRUE}
+random.wh <- plm(formula = formula, 
+             data = Panel.set,
+             effect = c("twoways"),
+             model= "random",
+             random.method = "walhus")
+summary(random.wh)
+```
+
+### Two-ways effects Random Effect Model (Nerlove's transformation)
+   
+```{r, eval=TRUE}
+random.n <- plm(formula = formula, 
+             data = Panel.set,
+             effect = c("twoways"),
+             model= "random",
+             random.method = "nerlove")
+summary(random.n)
+```
+
+## Resumo
+
+
+```{r}
+options("scipen"=100, "digits"=4)
+suppressMessages(library(stargazer))
+stargazer(pooled,fixed.dum,between,firstdiff,
+          column.labels = c("pooled","fixed.dum","between","firstdiff"),
+          title="Título: Resultados das Regressões em Painel",
+          align=TRUE,
+          type = "text", style = "all",
+          keep.stat=c("aic","bic","rsq", "adj.rsq","n"))
+
+stargazer(fixed,fixed.onet,fixed.two,
+          column.labels = c("fixed","fixed.onet","fixed.two"),
+          title="Título: Resultados das Regressões em Painel - fixed effects",
+          align=TRUE,
+          type = "text", style = "all",
+          keep.stat=c("aic","bic","rsq", "adj.rsq","n"))
+
+stargazer(random,random.a,random.wh,random.n,
+          column.labels = c("random","random.a", "random.wh","random.n"),
+          title="Título: Resultados das Regressões em Painel - random effects",
+          align=TRUE,
+          type = "text", style = "all",
+          keep.stat=c("aic","bic","rsq", "adj.rsq","n"))
+```
+
+## LM test for random effects versus OLS
+
+```{r, eval=TRUE}
+plmtest(pooled)
+```
+
+## LM test for fixed effects versus OLS
+
+```{r, eval=TRUE}
+pFtest(fixed, pooled)
+```
+
+## Hausman test for fixed versus random effects model
+
+```{r, eval=TRUE}
+phtest(random, fixed)
+
+```
+
+Referências {-#Referências}
+========================
+
+CROISSANT, Y; MILLO, G. “Panel Data Econometrics in R: The plm Package.” _Journal of Statistical Software_, *27*(2), 1-43, 2018. doi:
+10.18637/jss.v027.i02 (URL: http://doi.org/10.18637/jss.v027.i02).
+
+FIGUEIREDO, Adriano Marcos Rodrigues. Tópicos de econometria: tipos de datasets. Campo Grande-MS,Brasil: RStudio/Rpubs, 2019. Disponível em <http://rpubs.com/amrofi/TS_dataset_types>.
+
+GREENE, William H. Econometric analysis. 7.ed. Pearson Education, 2012. 
+
+KATCHOVA, Ani. Ohio State University, Department of Agricultural, Environmental, and Development Economics. 2013. Disponível em <https://sites.google.com/site/econometricsacademy/econometrics-models/panel-data-models>.
+
+TORRES-REYNA, Oscar. Getting Started in Fixed/Random Effects Models using R. Princeton: Princeton University, 2010. Disponível em: <http://www.princeton.edu/~otorres/Panel101R.pdf>.
+
+The contents of this document rely heavily on the document:
+“Panel Data Econometricsin R: theplmpackage” http://cran.r-project.org/web/packages/plm/vignettes/plm.pdfand notes 
+from the ICPSR’s Summer Program in Quantitative Methods of Social Research(summer 2010)

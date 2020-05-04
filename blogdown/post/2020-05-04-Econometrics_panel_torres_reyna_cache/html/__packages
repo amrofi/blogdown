@@ -1,0 +1,17 @@
+base
+knitr
+rmarkdown
+rmdformats
+tidyr
+dplyr
+DT
+magrittr
+plm
+Matrix
+carData
+car
+zoo
+lmtest
+systemfit
+foreign
+stargazer

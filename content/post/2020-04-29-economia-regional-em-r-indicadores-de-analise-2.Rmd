@@ -54,7 +54,7 @@ Citação {-#Citação}
 ===================================
 
 Sugestão de citação:
-FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional em R: Indicadores de análise de especialização regional - $QL$, $CE$, $KSI$, $RDI$, $DIV$, $UBIQ$. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/regional_indicadores_2> e <https://adrianofigueiredo.netlify.app/post/economia-regional-em-r-indicadores-de-analise-2/>. 
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional em R: Indicadores de análise de especialização regional - $QL$, $CE$, $KSI$, $RDI$, $DIV$, $UBIQ$. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <https://rpubs.com/amrofi/regional_parte_2> e <https://adrianofigueiredo.netlify.app/post/economia-regional-em-r-indicadores-de-analise-2/>. 
 
 Script para reprodução (se utilizar, citar como acima)
 ==================

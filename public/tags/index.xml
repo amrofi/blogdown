@@ -5,12 +5,84 @@
     <link>/tags/</link>
       <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Mon, 04 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Wed, 06 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-32.png</url>
       <title>Tags</title>
       <link>/tags/</link>
     </image>
+    
+    <item>
+      <title>Centralidade</title>
+      <link>/tags/centralidade/</link>
+      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/centralidade/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Centro econômico</title>
+      <link>/tags/centro-economico/</link>
+      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/centro-economico/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CL</title>
+      <link>/tags/cl/</link>
+      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/cl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>economia regional</title>
+      <link>/tags/economia-regional/</link>
+      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/economia-regional/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>EG</title>
+      <link>/tags/eg/</link>
+      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/eg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>indicadores regionais</title>
+      <link>/tags/indicadores-regionais/</link>
+      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/indicadores-regionais/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>localização</title>
+      <link>/tags/localizacao/</link>
+      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/localizacao/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mato Grosso do Sul</title>
+      <link>/tags/mato-grosso-do-sul/</link>
+      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/mato-grosso-do-sul/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Proximidade</title>
+      <link>/tags/proximidade/</link>
+      <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+      <guid>/tags/proximidade/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>econometria</title>
@@ -37,26 +109,10 @@
     </item>
     
     <item>
-      <title>economia regional</title>
-      <link>/tags/economia-regional/</link>
-      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/economia-regional/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>especialização</title>
       <link>/tags/especializacao/</link>
       <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
       <guid>/tags/especializacao/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>indicadores regionais</title>
-      <link>/tags/indicadores-regionais/</link>
-      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/indicadores-regionais/</guid>
       <description></description>
     </item>
     
@@ -209,14 +265,6 @@
       <link>/tags/mato-grosso/</link>
       <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
       <guid>/tags/mato-grosso/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mato Grosso do Sul</title>
-      <link>/tags/mato-grosso-do-sul/</link>
-      <pubDate>Sat, 18 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/tags/mato-grosso-do-sul/</guid>
       <description></description>
     </item>
     

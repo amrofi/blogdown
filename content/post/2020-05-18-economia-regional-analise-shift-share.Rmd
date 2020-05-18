@@ -1,0 +1,566 @@
+---
+title: 'Economia Regional: análise de decomposição shift-share em R'
+author: Adriano Marcos Rodrigues Figueiredo
+date: '2020-05-18'
+slug: economia-regional-analise-shift-share
+categories: []
+tags:
+  - economia regional
+  - Mato Grosso do Sul
+  - Shift-share
+  - SSA
+  - REAT
+subtitle: ''
+summary: 'This is a undergraduate exercise for class use'
+authors: []
+lastmod: '2020-05-18T07:32:56-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmarkdown)
+library(rmdformats)
+
+## Global options
+options(max.print="100")
+opts_chunk$set(echo=TRUE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=100)
+```
+
+
+Licença {-#Licença}
+===================
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <http://creativecommons.org/licenses/by-sa/4.0/> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+![License: CC BY-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png){ width=30% }
+
+Citação {-#Citação}
+===================================
+
+Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional: análise de decomposição shift-share em R. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <https://rpubs.com/amrofi/regional_shiftshare> e <https://adrianofigueiredo.netlify.app/post/economia-regional-analise-shift-share/>. 
+
+Script para reprodução (se utilizar, citar como acima)
+==================
+
+```{r echo=FALSE}
+# a single file
+xfun::embed_file('2020-05-18-economia-regional-analise-shift-share.Rmd')
+```
+
+Introdução
+===================
+
+Primeiro passo, faremos um exemplo para três municípios de Mato Grosso do Sul (Campo Grande, Dourados e Três Lagoas), pelo método clássico e pelo método de decomposição de Arcelus (1984), para os 25 subsetores do IBGE, para a variação do emprego enre 2006 e 2016 com dados da RAIS/MTE.   
+Antes, porém, faz-se com um dataset conhecido para um 'county' dos Estados Unidos para conferir reprodução. 
+
+Exemplo 1
+===================
+
+Exemplo com dados da planilha `regional_shift_share_forvideo.xlsx`. Neste caso, será utilizada uma função adaptada `shift.2` (adaptação da função `shift` do pacote `REAT` de WIELAND, 2019) e o pesquisador deve se atentar para que o código seja executado para carregar a função. Leitores mais curiosos podem obter uma visão interessante do modelo no site <https://minnesota.reaproject.org/analysis/shift-share/tools/270013/2010/2018/> do _Pacific Northwest Regional Economic Analysis Project (PNREAP)_.
+
+```{r funcao_shift2}
+# a notacao acompanha a de Matlaba et al (2012)
+
+shift.2 <-
+  function (region_t, region_t1, nation_t, nation_t1) {
+    
+    industries <- length(region_t)
+    
+    sum_region_t <- sum(region_t)
+    sum_region_t1 <- sum(region_t1)
+    sum_nation_t <- sum(nation_t)
+    sum_nation_t1 <- sum(nation_t1)
+    # National Growth Effect on industry i in the rth region between (t-1) and t.
+    
+    i <- 0
+    NS_tir <- vector()
+    IM_tir <- vector()
+    RS_tir <- vector()
+    for (i in 1:industries) {
+      NS_tir[i] <- (region_t[i]*((sum_nation_t1/sum_nation_t)-1))
+      IM_tir[i] <- (region_t[i]*
+                 ((nation_t1[i]/nation_t[i])-(sum_nation_t1/sum_nation_t)))
+      RS_tir[i] <- (region_t[i]*
+                 ((region_t1[i]/region_t[i])-(nation_t1[i]/nation_t[i])))
+    }
+    shifts <- list(NS_tir=NS_tir,IM_tir=IM_tir,RS_tir=RS_tir)
+    
+    return(shifts)
+  }
+```
+
+## Carregar dados
+
+```{r}
+# Example US County dataset
+dados.county <- structure(list(industry = c("Natural Resources and Mining", "Construction", "Manufacturing", "Trade, Transportation, and Utilities", "Information", "Financial Activities", "Professional and Business Services", "Education and Health Services", "Leisure and Hospitality", "Other Services", "Government"), e_County2000 = c(394, 1478, 3947, 8443, 1092, 1163, 2629, 4837, 3733, 1357, 4782), e_County2010 = c(397, 1490, 3483, 8661, 1146, 1513, 2426, 7946, 3576, 1273, 5090), e_g_County0010 = c(0.761421319796954, 0.81190798376184, -11.7557638712947, 2.58202060878835, 4.94505494505495, 30.0945829750645, -7.72156713579308, 64.2753772999793, -4.20573265470131, -6.19012527634488, 6.44081974069427), e_US2000 = c(1604107, 6652513, 17225035, 26916200, 3739480, 7648205, 16924068, 14659790, 11732708, 4185780, 20295357), e_US2010 = c(1727150, 5394677, 11570589, 25347938, 2714841, 7435174, 17095063, 18953034, 12860993, 4368295, 
+21827606), e_g_US_0010 = c(7.67049828970262, -18.9076819541728, -32.8269057218171, -5.82646138756585, -27.4005744114155, -2.78537251551181, 1.01036582930298, 29.2858492515923, 9.61657786079735, 4.3603581650254, 7.54975140373239), color = c("blue", "yellow", "green", "red", "grey", "brown", "orange", "lightblue", "plum", "lightred", "lightgreen")), row.names = c(NA, -11L), class = c("tbl_df", "tbl", "data.frame"))
+```
+
+## Cálculo do Modelo Clássico Shift-share
+
+```{r}
+# Loads the data
+results<-shift.2(dados.county$e_County2000, 
+      dados.county$e_County2010, 
+      dados.county$e_US2000,
+      dados.county$e_US2010)
+# results for County and US (2000 vs. 2010)
+# et+1 - et = nps+nds+nts
+
+list(dados.county$e_County2000, 
+     dados.county$e_County2010, 
+     dados.county$e_US2000,
+     dados.county$e_US2010)
+list(results)
+list(somaNS=sum(results$NS_tir))
+list(somaIM=sum(results$IM_tir))
+list(somaRS=sum(results$RS_tir))
+#total shift by industry
+list(total <- I(results$NS_tir+results$IM_tir+results$RS_tir))
+
+tabela<-cbind(dados.county$industry,as.data.frame(results))
+print(tabela)
+```
+
+Modelo Shift-share de Arcelus (1984)
+===================
+
+O modelo clássico foi decomposto por Arcelus (1984) de modo a poder melhorar seu poder de explicação dentro de cada componente. Conforme exposto por Martinez (2007, p.199) existem três fontes potenciais de interação entre o efeito da composição da estrutura econômica da região que procedem de sua particular capacidade competitiva.  
+
+Primeiro, o volume da atividade econômica de um setor no ano t0 influencia no tamanho do efeito competitivo desta atividade, pois duas localidades com a mesma taxa de crescimento regional do setor i no período de estudo, mas que tenham partido de níveis de desenvolvimento distintos apresentarão valores diferentes para este componente competitivo. Isto será um problema para comparações entre estas localidades.  
+
+Segundo, devido às relações interindustriais dentro do modelo de crescimento de cada local. Um setor $i$ com vantagem competitiva em uma localidade induzirá maior expansão de seu setor. O efeito do shift-share seria positivo e grande, mas se poderia argumentar a existência de maiores ligações setoriais com localidades geograficamente próximas.   
+
+Terceiro, o setor $i$ pode apresentar comportamento parecido ao competitivo mas que não comercialize seus produtos além do mercado local e que não esteja competindo pelos recursos produtivos destes setores em outras localidades.    
+
+Estas dificuldades foram trabalhadas por Esteban-Marquillas (1972) em torno do componente homotético e o componente residual. O componente homotético seria o emprego teórico que o município teria se sua estrutura produtiva fosse exatamente a mesma que a estrutura produtiva da localidade de referência (por exemplo o estado).   
+
+Portanto, Esteban-Marquillas decompõe o efeito total em nacional, mix industrial, regional e alocativo, para cada local $j$ e setor $i$. Ou seja,
+
+$$
+e^{t}_{i}-e^{t-1}_i=NS_i+IM_i+RS_i+AL_i
+$$
+
+em que $e^{t}_{i}$ e $e^{t-1}_i$ são os valores do emprego em dois períodos de tempo (final e inicial) em uma localidade $j$ e o setor $i$. Para o caso dos municípios relativamente ao estado de MS como localidade de referência.
+
+O cálculo do componente regional homotético de um setor $i$ ($h^{t-1}_i$) será baseado nos valores do município ($e^{t-1}$) e do estado ($E^{t-1}$) entre todos os setores, e o emprego estadual específico da indústria ($E^{t-1}_i$).
+
+
+$$
+h_i^{t-1} = e^{t-1}  \frac{E_i^{t-1}}{E^{t-1}}
+$$
+
+As equações do modelo de Esteban-Marquillas (1972) de shift-share serão:
+
+$$
+NS_i = e^{t-1}_iG
+$$
+
+
+$$
+IM_i = e^{t-1}_i(G_i-G)
+$$
+
+$$
+RS_i = h_i^{t-1} (g_i-G_i)
+$$
+
+$$
+AL_i = (e^{t-1}_i-h_i^{t-1}) (g_i-G_i)
+$$
+
+A mudança percentual total do emprego do estado para toos os setores i combinados será $G$, enquanto as mudanças percentuais do componente nacional setorial e regional setorial  serão $G_i$ e $g_i$ respectivamente.
+
+O modelo Arcelus (1984) então será uma extensão dessa decomposição, inserindo efeitos esperados e diferenciais também nos componentes nacional (NS) e mix industrial (IM) da seguinte forma, com oito componentes, após desagregar entre os componentes homotético esperado (E) e o diferencial residual (D):
+
+$$
+e^{t}_i-e^{t-1}_i=NSE_i+NSD_i+IME_i+IMD_i+RGE_i+RGD_i+RIE_i+RID_i
+$$
+
+em que:
+
+$$
+NS_i = NSE_i+NSD_i
+$$
+
+$$
+IM_i = IME_i+IMD_i
+$$
+
+$$
+RS_i = RGE_i+RGD_i+RIE_i+RID_i
+$$
+
+$$
+h_i^{t-1} = e^{t-1}  \frac{E_i^{t-1}}{E^{t-1}}
+$$
+
+de tal forma que:
+
+$$
+NSE_i = h_i^{t-1} G
+$$
+
+$$
+NSD_i = (e_i^{t-1}-h_i^{t-1}) G
+$$
+
+$$
+IME_i = h_i^{t-1} (G_i-G)
+$$
+
+$$
+IMD_i = (e_i^{t-1}-h_i^{t-1}) (G_i-G)
+$$
+
+
+$$
+RGE_i = h_i^{t-1} (g-G)
+$$
+
+$$
+RGD_i = (e_i^{t-1}-h_i^{t-1}) (g-G)
+$$
+
+$$
+RIE_i = h_i^{t-1} (g_i-g-G_i+G)
+$$
+
+$$
+RID_i = (e_i^{t-1}-h_i^{t-1}) (g_i-g-G_i+G)
+$$
+
+A mudança percentual total do emprego estadual e municipal para todos os setores combinados são G e g respectivamente, enquanto as mudanças específicas do setor para o estado e o município são, respectivamente, $G_i$ e $g_i$.   
+
+Isto posto, é preciso alterar a função para realizar estas decomposições. Faremos a partir da função `shift.2.R` do modelo tradicional.
+
+Seja a funçao clássica para o setor $i$ e região $r$:
+
+```
+# a notacao acompanha a do Matlaba et al (2012)
+
+shift.2 <-
+  function (region_t, region_t1, nation_t, nation_t1) {
+    
+    industries <- length(region_t)
+    
+    sum_region_t <- sum(region_t)
+    sum_region_t1 <- sum(region_t1)
+    sum_nation_t <- sum(nation_t)
+    sum_nation_t1 <- sum(nation_t1)
+    # National Growth Effect on industry i in the rth region between (t-1) and t.
+    
+    i <- 0
+    NS_tir <- vector()
+    IM_tir <- vector()
+    RS_tir <- vector()
+    for (i in 1:industries) {
+      NS_tir[i] <- (region_t[i]*((sum_nation_t1/sum_nation_t)-1))
+    
+      
+      IM_tir[i] <- (region_t[i]*
+                      ((nation_t1[i]/nation_t[i])-(sum_nation_t1/sum_nation_t)))
+      RS_tir[i] <- (region_t[i]*
+                      ((region_t1[i]/region_t[i])-(nation_t1[i]/nation_t[i])))
+    }
+    shifts <- list(NS_tir=NS_tir,IM_tir=IM_tir,RS_tir=RS_tir)
+    
+    return(shifts)
+  }
+```    
+
+A nova função será chamada de `shift.arcelus`, para indicar a desagregação utilizada.
+
+```{r}
+shift.arcelus <-
+  function (region_t, region_t1, nation_t, nation_t1) {
+    
+    industries <- length(region_t)
+    
+    sum_region_t <- sum(region_t)
+    sum_region_t1 <- sum(region_t1)
+    sum_nation_t <- sum(nation_t)
+    sum_nation_t1 <- sum(nation_t1)
+    # National Growth Effect on industry i in the rth region between (t-1) and t.
+    
+    i <- 0
+    # novos componentes de taxas de crescimento e homotetico
+    h<- vector()
+    G<- vector()
+    g<- vector()
+    gi<- vector()
+    Gi<- vector()
+    
+    
+    #NS_tir <- vector()
+    NSE <-vector()
+    NSD <-vector()
+
+    #IM_tir <- vector()
+    IME <-vector()
+    IMD <-vector()
+    
+    #RS_tir <- vector()
+    RGE <-vector()
+    RGD <-vector()
+    RIE <-vector()
+    RID <-vector()
+    
+    VarTot<-vector()
+    conferencia<- vector()
+    
+    for (i in 1:industries) {
+      h[i] <- region_t[i]*(nation_t[i]/sum_nation_t)
+      
+      G[i] <- (sum_nation_t1-sum_nation_t)/sum_nation_t
+      
+      g[i] <- (sum_region_t1-sum_region_t)/sum_region_t
+      
+      gi[i] <- (region_t1[i]-region_t[i])/region_t[i]
+      
+      Gi[i] <- (nation_t1[i]-nation_t[i])/nation_t[i]
+      
+      # componentes
+      
+      NSE[i] <- h[i]*G[i]
+      
+      NSD[i] <- (region_t[i]-h[i])*G[i]
+      
+      IME[i] <- h[i]*(Gi[i]-G[i])
+      
+      IMD[i] <- (region_t[i]-h[i])*(Gi[i]-G[i])
+      
+      
+      RGE[i] <- h[i]*(g[i]-G[i])
+        
+      RGD[i] <- (region_t[i]-h[i])*(g[i]-G[i])
+        
+      RIE[i] <- h[i]*(gi[i]-g[i]-Gi[i]+G[i])
+        
+      RID[i] <- (region_t[i]-h[i])*(gi[i]-g[i]-Gi[i]+G[i])
+        
+      VarTot[i]<-NSE[i]+NSD[i]+IME[i]+IMD[i]+RGE[i]+RGD[i]+RIE[i]+RID[i]
+      
+      conferencia[i]<-region_t1[i]-region_t[i]
+      
+      }
+    shifts <- list(NSE=NSE,NSD=NSD,IME=IME,IMD=IMD,
+                   RGE=RGE,RGD=RGD,RIE=RIE,RID=RID,
+                   VarTot=VarTot,conferencia=conferencia)
+      
+    return(shifts)
+  }
+
+```
+
+Exemplo 2
+===================
+
+Exemplo com dados de emprego formal dos municípios brasileiros de Campo Grande-MS, Dourados-MS e Três Lagoas-MS (os dados básicos da planilha `emprego_r.xlsx` foram colocados em formato `dput()` para facilitar reprodução). Primeiro vou testar o shift-share para Campo Grande, Dourados e Três Lagoas, para o período 2006-2016 relativamente ao estado de MS.
+
+
+## Carregar dados
+
+
+```{r}
+dados.MS <- 
+  structure(list(industry = c("01-Extrativa Mineral", "02-Prod. Mineral Não Metálico", 
+"03-Indústria Metalúrgica", "04-Indústria Mecânica", "05-Elétrico e Comunic", 
+"06-Material de Transporte", "07-Madeira e Mobiliário", "08-Papel e Gráf", 
+"09-Borracha, Fumo, Couros", "10-Indústria Química", "11-Indústria Têxtil", 
+"12-Indústria Calçados", "13-Alimentos e Bebidas", "14-Serviço Utilidade Pública", 
+"15-Construção Civil", "16-Comércio Varejista", "17-Comércio Atacadista", 
+"18-Instituição Financeira", "19-Adm Técnica Profissional", "20-Transporte e Comunicações", 
+"21-Aloj Comunic", "22-Médicos Odontológicos Vet", "23-Ensino", 
+"24-Administração Pública", "25-Agricultura"
+), MS2016 = c(2448, 3738, 4206, 2754, 553, 426, 2645, 4975, 3267, 
+13348, 5972, 1762, 45894, 6688, 25891, 109490, 15879, 7217, 43617, 
+30063, 60136, 24689, 24507, 122472, 70917), MS2006 = c(1601, 
+2845, 2514, 826, 256, 387, 2592, 2309, 2250, 1466, 5257, 1014, 
+31425, 3023, 14525, 72503, 9226, 6062, 24633, 16937, 32809, 16028, 
+12209, 118264, 57724), CG2016 = c(107, 815, 1327, 628, 131, 179, 
+873, 938, 1266, 1374, 2163, 25, 7480, 4862, 14376, 45364, 6918, 
+3626, 29612, 14260, 29033, 14713, 15219, 65284, 4168), CG2006 = c(169, 
+626, 683, 439, 141, 130, 845, 1450, 1201, 705, 1263, 18, 4378, 
+2072, 10962, 32039, 4720, 3487, 17498, 9719, 20498, 11210, 7069, 
+69417, 4321), DO2016 = c(17, 421, 377, 419, 19, 34, 175, 261, 
+201, 1849, 379, 0, 5602, 210, 1710, 13229, 1935, 832, 3856, 2623, 
+14889, 3383, 3901, 4975, 1805), DO2006 = c(30, 274, 573, 153, 
+3, 54, 140, 311, 235, 230, 256, 0, 3850, 184, 722, 8928, 1056, 
+689, 1864, 1496, 3346, 1445, 1850, 4439, 1768), TL2016 = c(80, 
+272, 650, 1035, 221, 62, 86, 2762, 94, 837, 1627, 812, 1318, 
+357, 4334, 5458, 494, 245, 2504, 2164, 2210, 1426, 993, 3357, 
+4179), TL2006 = c(11, 274, 71, 71, 76, 46, 43, 121, 224, 352, 
+1695, 492, 958, 43, 266, 3357, 313, 156, 1449, 823, 994, 622, 
+362, 1863, 2745)), row.names = c(NA, -25L), class = c("tbl_df", 
+"tbl", "data.frame"))
+# Loads the data
+# formato (cg2006,cg2016,ms2006,ms2016)
+```
+
+## Resultado para Campo Grande - Shift-share Clássico
+
+```{r}
+results<-shift.2(dados.MS$CG2006, 
+      dados.MS$CG2016, 
+      dados.MS$MS2006,
+      dados.MS$MS2016)
+# resultados para o município e o MS (2006 vs. 2016)
+# et+1 - et = nps+nds+nts
+
+list(dados.MS$CG2006, 
+      dados.MS$CG2016, 
+      dados.MS$MS2006,
+      dados.MS$MS2016)
+list(results)
+results
+list(somaNS=sum(results$NS_tir))
+list(somaIM=sum(results$IM_tir))
+list(somaRS=sum(results$RS_tir))
+#total shift by industry
+list(total <- I(results$NS_tir+results$IM_tir+results$RS_tir))
+
+tabela<-cbind(dados.MS$industry,as.data.frame(results))
+# CAMPO GRANDE
+print(tabela)
+```
+
+
+## Resultado para Dourados - Shift-share Clássico
+
+```{r}
+# DOURADOS
+results<-shift.2(dados.MS$DO2006, 
+      dados.MS$DO2016, 
+      dados.MS$MS2006,
+      dados.MS$MS2016)
+# resultados para o município e o MS (2006 vs. 2016)
+# et+1 - et = nps+nds+nts
+
+list(dados.MS$DO2006, 
+      dados.MS$DO2016, 
+      dados.MS$MS2006,
+      dados.MS$MS2016)
+list(results)
+results
+list(somaNS=sum(results$NS_tir))
+list(somaIM=sum(results$IM_tir))
+list(somaRS=sum(results$RS_tir))
+#total shift by industry
+list(total <- I(results$NS_tir+results$IM_tir+results$RS_tir))
+
+tabela<-cbind(dados.MS$industry,as.data.frame(results))
+print(tabela)
+```
+
+
+## Resultado para Três Lagoas - Shift-share Clássico
+
+```{r}
+# TRES LAGOAS
+results<-shift.2(dados.MS$TL2006, 
+      dados.MS$TL2016, 
+      dados.MS$MS2006,
+      dados.MS$MS2016)
+# resultados para o município e o MS (2006 vs. 2016)
+# et+1 - et = nps+nds+nts
+
+list(dados.MS$TL2006, 
+      dados.MS$TL2016, 
+      dados.MS$MS2006,
+      dados.MS$MS2016)
+list(results)
+results
+list(somaNS=sum(results$NS_tir))
+list(somaIM=sum(results$IM_tir))
+list(somaRS=sum(results$RS_tir))
+#total shift by industry
+list(total <- I(results$NS_tir+results$IM_tir+results$RS_tir))
+
+tabela<-cbind(dados.MS$industry,as.data.frame(results))
+print(tabela)
+```
+
+
+Agora faz-se para a função `shift.arcelus`:
+
+## Resultados para Campo Grande - Shift-share Arcelus
+
+```{r}
+# CAMPO GRANDE - ARCELUS
+results.CG<-shift.arcelus(dados.MS$CG2006, 
+                 dados.MS$CG2016, 
+                 dados.MS$MS2006,
+                 dados.MS$MS2016)
+tabelacg.arcelus<-cbind(dados.MS$industry,as.data.frame(results.CG))
+list(tabelacg.arcelus)
+somaNSa.CG<-results.CG$NSE+results.CG$NSD
+somaIMa.CG<-results.CG$IME+results.CG$IMD
+somaRSa.CG<-results.CG$RGE+results.CG$RGD+results.CG$RIE+results.CG$RID
+comp.classic.CG<-cbind(somaNSa.CG,somaIMa.CG,somaRSa.CG)
+list(comp.classic.CG)
+```
+
+
+## Resultados para Dourados - Shift-share Arcelus
+
+```{r}
+# DOURADOS - ARCELUS
+results.DO<-shift.arcelus(dados.MS$DO2006, 
+                          dados.MS$DO2016, 
+                          dados.MS$MS2006,
+                          dados.MS$MS2016)
+tabelado.arcelus<-cbind(dados.MS$industry,as.data.frame(results.DO))
+list(tabelado.arcelus)
+somaNSa.DO<-results.DO$NSE+results.DO$NSD
+somaIMa.DO<-results.DO$IME+results.DO$IMD
+somaRSa.DO<-results.DO$RGE+results.DO$RGD+results.DO$RIE+results.DO$RID
+comp.classic.DO<-cbind(somaNSa.DO,somaIMa.DO,somaRSa.DO)
+list(comp.classic.DO)
+```
+
+
+## Resultados para Três Lagoas - Shift-share Arcelus
+
+```{r}
+# TRES LAGOAS - ARCELUS
+results.TL<-shift.arcelus(dados.MS$TL2006, 
+                          dados.MS$TL2016, 
+                          dados.MS$MS2006,
+                          dados.MS$MS2016)
+tabelaTL.arcelus<-cbind(dados.MS$industry,as.data.frame(results.TL))
+list(tabelaTL.arcelus)
+somaNSa.TL<-results.TL$NSE+results.TL$NSD
+somaIMa.TL<-results.TL$IME+results.TL$IMD
+somaRSa.TL<-results.TL$RGE+results.TL$RGD+results.TL$RIE+results.TL$RID
+comp.classic.TL<-cbind(somaNSa.TL,somaIMa.TL,somaRSa.TL)
+list(comp.classic.TL)
+```
+
+Próximos passos
+===================
+
+Agora faz-se uso do comando capply para rodar para as colunas automaticamente. A dificuldade é na saída dos resultados, o que provavelmente ficará melhor se colocar uma planilha no excel para cada município.
+
+
+Referências {-#Referências}
+========================
+
+MATLABA, V.; HOLMES, M.; MCCANN, P.; POOT, J. Agglomeration Externalities and 1981-2006 Regional Growth in Brazil. Working Paper in Economics 07/12. Hamilton, New Zealand: University of Waikato, 2012. Disponível em: <https://researchcommons.waikato.ac.nz/bitstream/handle/10289/6693/Economics_wp_0712.pdf?sequence=1&isAllowed=y>. Access: 18 de Maio de 2020.
+
+WIELAND, T. (2019). REAT: A Regional Economic Analysis Toolbox for R. REGION, 6(3), R1-R57. URL: <https://doi.org/10.18335/region.v6i3.267>.

@@ -5,12 +5,902 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Wed, 06 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License: CC BY-SA 4.0. 2019 Adriano M. R. Figueiredo</copyright><lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>/img/icon-32.png</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Economia Regional: análise de decomposição shift-share em R</title>
+      <link>/post/economia-regional-analise-shift-share/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/economia-regional-analise-shift-share/</guid>
+      <description>
+
+
+&lt;div id=&#34;Licença&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Licença&lt;/h1&gt;
+&lt;p&gt;This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/4.0/&#34; class=&#34;uri&#34;&gt;http://creativecommons.org/licenses/by-sa/4.0/&lt;/a&gt; or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png&#34; alt=&#34;License: CC BY-SA 4.0&#34; style=&#34;width:30.0%&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;License: CC BY-SA 4.0&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;Citação&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Citação&lt;/h1&gt;
+&lt;p&gt;Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional: análise de decomposição shift-share em R. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em &lt;a href=&#34;https://rpubs.com/amrofi/regional_shiftshare&#34; class=&#34;uri&#34;&gt;https://rpubs.com/amrofi/regional_shiftshare&lt;/a&gt; e &lt;a href=&#34;https://adrianofigueiredo.netlify.app/post/economia-regional-analise-shift-share/&#34; class=&#34;uri&#34;&gt;https://adrianofigueiredo.netlify.app/post/economia-regional-analise-shift-share/&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;script-para-reprodução-se-utilizar-citar-como-acima&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Script para reprodução (se utilizar, citar como acima)&lt;/h1&gt;
+&lt;a href=&#34;data:text/x-markdown;base64,LS0tDQp0aXRsZTogJ0Vjb25vbWlhIFJlZ2lvbmFsOiBhbsOhbGlzZSBkZSBkZWNvbXBvc2nDp8OjbyBzaGlmdC1zaGFyZSBlbSBSJw0KYXV0aG9yOiBBZHJpYW5vIE1hcmNvcyBSb2RyaWd1ZXMgRmlndWVpcmVkbw0KZGF0ZTogJzIwMjAtMDUtMTgnDQpzbHVnOiBlY29ub21pYS1yZWdpb25hbC1hbmFsaXNlLXNoaWZ0LXNoYXJlDQpjYXRlZ29yaWVzOiBbXQ0KdGFnczoNCiAgLSBlY29ub21pYSByZWdpb25hbA0KICAtIE1hdG8gR3Jvc3NvIGRvIFN1bA0KICAtIFNoaWZ0LXNoYXJlDQogIC0gU1NBDQogIC0gUkVBVA0Kc3VidGl0bGU6ICcnDQpzdW1tYXJ5OiAnVGhpcyBpcyBhIHVuZGVyZ3JhZHVhdGUgZXhlcmNpc2UgZm9yIGNsYXNzIHVzZScNCmF1dGhvcnM6IFtdDQpsYXN0bW9kOiAnMjAyMC0wNS0xOFQwNzozMjo1Ni0wNDowMCcNCmZlYXR1cmVkOiBubw0KaW1hZ2U6DQogIGNhcHRpb246ICcnDQogIGZvY2FsX3BvaW50OiAnJw0KICBwcmV2aWV3X29ubHk6IG5vDQpwcm9qZWN0czogW10NCi0tLQ0KDQpgYGB7ciBrbml0cl9pbml0LCBlY2hvPUZBTFNFLCBjYWNoZT1GQUxTRX0NCmxpYnJhcnkoa25pdHIpDQpsaWJyYXJ5KHJtYXJrZG93bikNCmxpYnJhcnkocm1kZm9ybWF0cykNCg0KIyMgR2xvYmFsIG9wdGlvbnMNCm9wdGlvbnMobWF4LnByaW50PSIxMDAiKQ0Kb3B0c19jaHVuayRzZXQoZWNobz1UUlVFLA0KCSAgICAgICAgICAgICBjYWNoZT1UUlVFLA0KICAgICAgICAgICAgICAgcHJvbXB0PUZBTFNFLA0KICAgICAgICAgICAgICAgdGlkeT1UUlVFLA0KICAgICAgICAgICAgICAgY29tbWVudD1OQSwNCiAgICAgICAgICAgICAgIG1lc3NhZ2U9RkFMU0UsDQogICAgICAgICAgICAgICB3YXJuaW5nPUZBTFNFKQ0Kb3B0c19rbml0JHNldCh3aWR0aD0xMDApDQpgYGANCg0KDQpMaWNlbsOnYSB7LSNMaWNlbsOnYX0NCj09PT09PT09PT09PT09PT09PT0NCg0KVGhpcyB3b3JrIGlzIGxpY2Vuc2VkIHVuZGVyIHRoZSBDcmVhdGl2ZSBDb21tb25zIEF0dHJpYnV0aW9uLVNoYXJlQWxpa2UgNC4wIEludGVybmF0aW9uYWwgTGljZW5zZS4gVG8gdmlldyBhIGNvcHkgb2YgdGhpcyBsaWNlbnNlLCB2aXNpdCA8aHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnktc2EvNC4wLz4gb3Igc2VuZCBhIGxldHRlciB0byBDcmVhdGl2ZSBDb21tb25zLCBQTyBCb3ggMTg2NiwgTW91bnRhaW4gVmlldywgQ0EgOTQwNDIsIFVTQS4NCg0KIVtMaWNlbnNlOiBDQyBCWS1TQSA0LjBdKGh0dHBzOi8vbWlycm9ycy5jcmVhdGl2ZWNvbW1vbnMub3JnL3ByZXNza2l0L2J1dHRvbnMvODh4MzEvcG5nL2J5LXNhLnBuZyl7IHdpZHRoPTI1JSB9DQoNCkNpdGHDp8OjbyB7LSNDaXRhw6fDo299DQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQ0KDQpTdWdlc3TDo28gZGUgY2l0YcOnw6NvOg0KRklHVUVJUkVETywgQWRyaWFubyBNYXJjb3MgUm9kcmlndWVzLiBFY29ub21pYSBSZWdpb25hbDogYW7DoWxpc2UgZGUgZGVjb21wb3Npw6fDo28gc2hpZnQtc2hhcmUgZW0gUi4gQ2FtcG8gR3JhbmRlLU1TLEJyYXNpbDogUlN0dWRpby9ScHVicywgMjAyMC4gRGlzcG9uw612ZWwgZW0gPGh0dHBzOi8vcnB1YnMuY29tL2Ftcm9maS9yZWdpb25hbF9zaGlmdHNoYXJlPiBlIDxodHRwczovL2Fkcmlhbm9maWd1ZWlyZWRvLm5ldGxpZnkuYXBwL3Bvc3QvZWNvbm9taWEtcmVnaW9uYWwtYW5hbGlzZS1zaGlmdC1zaGFyZS8+LiANCg0KU2NyaXB0IHBhcmEgcmVwcm9kdcOnw6NvIChzZSB1dGlsaXphciwgY2l0YXIgY29tbyBhY2ltYSkNCj09PT09PT09PT09PT09PT09PQ0KDQpgYGB7ciBlY2hvPUZBTFNFfQ0KIyBhIHNpbmdsZSBmaWxlDQp4ZnVuOjplbWJlZF9maWxlKCcyMDIwLTA1LTE4LWVjb25vbWlhLXJlZ2lvbmFsLWFuYWxpc2Utc2hpZnQtc2hhcmUuUm1kJykNCmBgYA0KDQpJbnRyb2R1w6fDo28NCj09PT09PT09PT09PT09PT09PT0NCg0KUHJpbWVpcm8gcGFzc28sIGZhcmVtb3MgdW0gZXhlbXBsbyBwYXJhIHRyw6pzIG11bmljw61waW9zIGRlIE1hdG8gR3Jvc3NvIGRvIFN1bCAoQ2FtcG8gR3JhbmRlLCBEb3VyYWRvcyBlIFRyw6pzIExhZ29hcyksIHBlbG8gbcOpdG9kbyBjbMOhc3NpY28gZSBwZWxvIG3DqXRvZG8gZGUgZGVjb21wb3Npw6fDo28gZGUgQXJjZWx1cyAoMTk4NCksIHBhcmEgb3MgMjUgc3Vic2V0b3JlcyBkbyBJQkdFLCBwYXJhIGEgdmFyaWHDp8OjbyBkbyBlbXByZWdvIGVucmUgMjAwNiBlIDIwMTYgY29tIGRhZG9zIGRhIFJBSVMvTVRFLiAgIA0KQW50ZXMsIHBvcsOpbSwgZmF6LXNlIGNvbSB1bSBkYXRhc2V0IGNvbmhlY2lkbyBwYXJhIHVtICdjb3VudHknIGRvcyBFc3RhZG9zIFVuaWRvcyBwYXJhIGNvbmZlcmlyIHJlcHJvZHXDp8Ojby4gDQoNCkV4ZW1wbG8gMQ0KPT09PT09PT09PT09PT09PT09PQ0KDQpFeGVtcGxvIGNvbSBkYWRvcyBkYSBwbGFuaWxoYSBgcmVnaW9uYWxfc2hpZnRfc2hhcmVfZm9ydmlkZW8ueGxzeGAuIE5lc3RlIGNhc28sIHNlcsOhIHV0aWxpemFkbyB1bSBjb2RpZ28gYHNoaWZ0LmZ1bmN0aW9uMi5SYCBlIG8gcGVzcXVpc2Fkb3IgZGV2ZSBzZSBhdGVudGFyIHBhcmEgcXVlIG8gY8OzZGlnbyBzZWphIGluZGljYWRvIG5vIGRpcmV0w7NyaW8gZG8gcHJvamV0by4=&#34; download=&#34;2020-05-18-economia-regional-analise-shift-share.Rmd&#34;&gt;Download 2020-05-18-economia-regional-analise-shift-share.Rmd&lt;/a&gt;
+&lt;/div&gt;
+&lt;div id=&#34;introdução&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introdução&lt;/h1&gt;
+&lt;p&gt;Primeiro passo, faremos um exemplo para três municípios de Mato Grosso do Sul (Campo Grande, Dourados e Três Lagoas), pelo método clássico e pelo método de decomposição de Arcelus (1984), para os 25 subsetores do IBGE, para a variação do emprego enre 2006 e 2016 com dados da RAIS/MTE.&lt;br /&gt;
+Antes, porém, faz-se com um dataset conhecido para um ‘county’ dos Estados Unidos para conferir reprodução.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exemplo-1&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Exemplo 1&lt;/h1&gt;
+&lt;p&gt;Exemplo com dados da planilha &lt;code&gt;regional_shift_share_forvideo.xlsx&lt;/code&gt;. Neste caso, será utilizada uma função adaptada &lt;code&gt;shift.2&lt;/code&gt; (adaptação da função &lt;code&gt;shift&lt;/code&gt; do pacote &lt;code&gt;REAT&lt;/code&gt; de WIELAND, 2019) e o pesquisador deve se atentar para que o código seja executado para carregar a função. Leitores mais curiosos podem obter uma visão interessante do modelo no site &lt;a href=&#34;https://minnesota.reaproject.org/analysis/shift-share/tools/270013/2010/2018/&#34; class=&#34;uri&#34;&gt;https://minnesota.reaproject.org/analysis/shift-share/tools/270013/2010/2018/&lt;/a&gt; do &lt;em&gt;Pacific Northwest Regional Economic Analysis Project (PNREAP)&lt;/em&gt;.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# a notacao acompanha a de Matlaba et al (2012)
+
+shift.2 &amp;lt;- function(region_t, region_t1, nation_t, nation_t1) {
+    
+    industries &amp;lt;- length(region_t)
+    
+    sum_region_t &amp;lt;- sum(region_t)
+    sum_region_t1 &amp;lt;- sum(region_t1)
+    sum_nation_t &amp;lt;- sum(nation_t)
+    sum_nation_t1 &amp;lt;- sum(nation_t1)
+    # National Growth Effect on industry i in the rth region between (t-1) and t.
+    
+    i &amp;lt;- 0
+    NS_tir &amp;lt;- vector()
+    IM_tir &amp;lt;- vector()
+    RS_tir &amp;lt;- vector()
+    for (i in 1:industries) {
+        NS_tir[i] &amp;lt;- (region_t[i] * ((sum_nation_t1/sum_nation_t) - 1))
+        IM_tir[i] &amp;lt;- (region_t[i] * ((nation_t1[i]/nation_t[i]) - (sum_nation_t1/sum_nation_t)))
+        RS_tir[i] &amp;lt;- (region_t[i] * ((region_t1[i]/region_t[i]) - (nation_t1[i]/nation_t[i])))
+    }
+    shifts &amp;lt;- list(NS_tir = NS_tir, IM_tir = IM_tir, RS_tir = RS_tir)
+    
+    return(shifts)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;carregar-dados&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Carregar dados&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Example US County dataset
+dados.county &amp;lt;- structure(list(industry = c(&amp;quot;Natural Resources and Mining&amp;quot;, &amp;quot;Construction&amp;quot;, 
+    &amp;quot;Manufacturing&amp;quot;, &amp;quot;Trade, Transportation, and Utilities&amp;quot;, &amp;quot;Information&amp;quot;, &amp;quot;Financial Activities&amp;quot;, 
+    &amp;quot;Professional and Business Services&amp;quot;, &amp;quot;Education and Health Services&amp;quot;, &amp;quot;Leisure and Hospitality&amp;quot;, 
+    &amp;quot;Other Services&amp;quot;, &amp;quot;Government&amp;quot;), e_County2000 = c(394, 1478, 3947, 8443, 1092, 
+    1163, 2629, 4837, 3733, 1357, 4782), e_County2010 = c(397, 1490, 3483, 8661, 
+    1146, 1513, 2426, 7946, 3576, 1273, 5090), e_g_County0010 = c(0.761421319796954, 
+    0.81190798376184, -11.7557638712947, 2.58202060878835, 4.94505494505495, 30.0945829750645, 
+    -7.72156713579308, 64.2753772999793, -4.20573265470131, -6.19012527634488, 6.44081974069427), 
+    e_US2000 = c(1604107, 6652513, 17225035, 26916200, 3739480, 7648205, 16924068, 
+        14659790, 11732708, 4185780, 20295357), e_US2010 = c(1727150, 5394677, 11570589, 
+        25347938, 2714841, 7435174, 17095063, 18953034, 12860993, 4368295, 21827606), 
+    e_g_US_0010 = c(7.67049828970262, -18.9076819541728, -32.8269057218171, -5.82646138756585, 
+        -27.4005744114155, -2.78537251551181, 1.01036582930298, 29.2858492515923, 
+        9.61657786079735, 4.3603581650254, 7.54975140373239), color = c(&amp;quot;blue&amp;quot;, &amp;quot;yellow&amp;quot;, 
+        &amp;quot;green&amp;quot;, &amp;quot;red&amp;quot;, &amp;quot;grey&amp;quot;, &amp;quot;brown&amp;quot;, &amp;quot;orange&amp;quot;, &amp;quot;lightblue&amp;quot;, &amp;quot;plum&amp;quot;, &amp;quot;lightred&amp;quot;, 
+        &amp;quot;lightgreen&amp;quot;)), row.names = c(NA, -11L), class = c(&amp;quot;tbl_df&amp;quot;, &amp;quot;tbl&amp;quot;, &amp;quot;data.frame&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cálculo-do-modelo-clássico-shift-share&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Cálculo do Modelo Clássico Shift-share&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# Loads the data
+results &amp;lt;- shift.2(dados.county$e_County2000, dados.county$e_County2010, dados.county$e_US2000, 
+    dados.county$e_US2010)
+# results for County and US (2000 vs. 2010) et+1 - et = nps+nds+nts
+
+list(dados.county$e_County2000, dados.county$e_County2010, dados.county$e_US2000, 
+    dados.county$e_US2010)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+ [1]  394 1478 3947 8443 1092 1163 2629 4837 3733 1357 4782
+
+[[2]]
+ [1]  397 1490 3483 8661 1146 1513 2426 7946 3576 1273 5090
+
+[[3]]
+ [1]  1604107  6652513 17225035 26916200  3739480  7648205 16924068 14659790
+ [9] 11732708  4185780 20295357
+
+[[4]]
+ [1]  1727150  5394677 11570589 25347938  2714841  7435174 17095063 18953034
+ [9] 12860993  4368295 21827606&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(results)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+[[1]]$NS_tir
+ [1]   -6.850613  -25.698493  -68.627843 -146.801338  -18.986979  -20.221480
+ [7]  -45.711325  -84.102579  -64.906952  -23.594625  -83.146275
+
+[[1]]$IM_tir
+ [1]    37.07238  -253.75705 -1227.05013  -345.12680  -280.22729   -12.17240
+ [7]    72.27384  1500.65911   423.89380    82.76468   444.17539
+
+[[1]]$RS_tir
+ [1]  -27.22176  291.45554  831.67797  709.92813  353.21427  382.39388
+ [7] -229.56252 1692.44347 -515.98685 -143.17006  -53.02911&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(somaNS = sum(results$NS_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$somaNS
+[1] -588.6485&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(somaIM = sum(results$IM_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$somaIM
+[1] 442.5055&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(somaRS = sum(results$RS_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$somaRS
+[1] 3292.143&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# total shift by industry
+list(total &amp;lt;- I(results$NS_tir + results$IM_tir + results$RS_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+ [1]    3   12 -464  218   54  350 -203 3109 -157  -84  308&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tabela &amp;lt;- cbind(dados.county$industry, as.data.frame(results))
+print(tabela)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;                  dados.county$industry      NS_tir      IM_tir     RS_tir
+1          Natural Resources and Mining   -6.850613    37.07238  -27.22176
+2                          Construction  -25.698493  -253.75705  291.45554
+3                         Manufacturing  -68.627843 -1227.05013  831.67797
+4  Trade, Transportation, and Utilities -146.801338  -345.12680  709.92813
+5                           Information  -18.986979  -280.22729  353.21427
+6                  Financial Activities  -20.221480   -12.17240  382.39388
+7    Professional and Business Services  -45.711325    72.27384 -229.56252
+8         Education and Health Services  -84.102579  1500.65911 1692.44347
+9               Leisure and Hospitality  -64.906952   423.89380 -515.98685
+10                       Other Services  -23.594625    82.76468 -143.17006
+11                           Government  -83.146275   444.17539  -53.02911&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;modelo-shift-share-de-arcelus-1984&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Modelo Shift-share de Arcelus (1984)&lt;/h1&gt;
+&lt;p&gt;O modelo clássico foi decomposto por Arcelus (1984) de modo a poder melhorar seu poder de explicação dentro de cada componente. Conforme exposto por Martinez (2007, p.199) existem três fontes potenciais de interação entre o efeito da composição da estrutura econômica da região que procedem de sua particular capacidade competitiva.&lt;/p&gt;
+&lt;p&gt;Primeiro, o volume da atividade econômica de um setor no ano t0 influencia no tamanho do efeito competitivo desta atividade, pois duas localidades com a mesma taxa de crescimento regional do setor i no período de estudo, mas que tenham partido de níveis de desenvolvimento distintos apresentarão valores diferentes para este componente competitivo. Isto será um problema para comparações entre estas localidades.&lt;/p&gt;
+&lt;p&gt;Segundo, devido às relações interindustriais dentro do modelo de crescimento de cada local. Um setor &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; com vantagem competitiva em uma localidade induzirá maior expansão de seu setor. O efeito do shift-share seria positivo e grande, mas se poderia argumentar a existência de maiores ligações setoriais com localidades geograficamente próximas.&lt;/p&gt;
+&lt;p&gt;Terceiro, o setor &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; pode apresentar comportamento parecido ao competitivo mas que não comercialize seus produtos além do mercado local e que não esteja competindo pelos recursos produtivos destes setores em outras localidades.&lt;/p&gt;
+&lt;p&gt;Estas dificuldades foram trabalhadas por Esteban-Marquillas (1972) em torno do componente homotético e o componente residual. O componente homotético seria o emprego teórico que o município teria se sua estrutura produtiva fosse exatamente a mesma que a estrutura produtiva da localidade de referência (por exemplo o estado).&lt;/p&gt;
+&lt;p&gt;Portanto, Esteban-Marquillas decompõe o efeito total em nacional, mix industrial, regional e alocativo, para cada local &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; e setor &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;. Ou seja,&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+e^{t}_{i}-e^{t-1}_i=NS_i+IM_i+RS_i+AL_i
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;em que &lt;span class=&#34;math inline&#34;&gt;\(e^{t}_{i}\)&lt;/span&gt; e &lt;span class=&#34;math inline&#34;&gt;\(e^{t-1}_i\)&lt;/span&gt; são os valores do emprego em dois períodos de tempo (final e inicial) em uma localidade &lt;span class=&#34;math inline&#34;&gt;\(j\)&lt;/span&gt; e o setor &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt;. Para o caso dos municípios relativamente ao estado de MS como localidade de referência.&lt;/p&gt;
+&lt;p&gt;O cálculo do componente regional homotético de um setor &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; (&lt;span class=&#34;math inline&#34;&gt;\(h^{t-1}_i\)&lt;/span&gt;) será baseado nos valores do município (&lt;span class=&#34;math inline&#34;&gt;\(e^{t-1}\)&lt;/span&gt;) e do estado (&lt;span class=&#34;math inline&#34;&gt;\(E^{t-1}\)&lt;/span&gt;) entre todos os setores, e o emprego estadual específico da indústria (&lt;span class=&#34;math inline&#34;&gt;\(E^{t-1}_i\)&lt;/span&gt;).&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+h_i^{t-1} = e^{t-1}  \frac{E_i^{t-1}}{E^{t-1}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;As equações do modelo de Esteban-Marquillas (1972) de shift-share serão:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+NS_i = e^{t-1}_iG
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+IM_i = e^{t-1}_i(G_i-G)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+RS_i = h_i^{t-1} (g_i-G_i)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+AL_i = (e^{t-1}_i-h_i^{t-1}) (g_i-G_i)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;A mudança percentual total do emprego do estado para toos os setores i combinados será &lt;span class=&#34;math inline&#34;&gt;\(G\)&lt;/span&gt;, enquanto as mudanças percentuais do componente nacional setorial e regional setorial serão &lt;span class=&#34;math inline&#34;&gt;\(G_i\)&lt;/span&gt; e &lt;span class=&#34;math inline&#34;&gt;\(g_i\)&lt;/span&gt; respectivamente.&lt;/p&gt;
+&lt;p&gt;O modelo Arcelus (1984) então será uma extensão dessa decomposição, inserindo efeitos esperados e diferenciais também nos componentes nacional (NS) e mix industrial (IM) da seguinte forma, com oito componentes, após desagregar entre os componentes homotético esperado (E) e o diferencial residual (D):&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+e^{t}_i-e^{t-1}_i=NSE_i+NSD_i+IME_i+IMD_i+RGE_i+RGD_i+RIE_i+RID_i
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;em que:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+NS_i = NSE_i+NSD_i
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+IM_i = IME_i+IMD_i
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+RS_i = RGE_i+RGD_i+RIE_i+RID_i
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+h_i^{t-1} = e^{t-1}  \frac{E_i^{t-1}}{E^{t-1}}
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;de tal forma que:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+NSE_i = h_i^{t-1} G
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+NSD_i = (e_i^{t-1}-h_i^{t-1}) G
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+IME_i = h_i^{t-1} (G_i-G)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+IMD_i = (e_i^{t-1}-h_i^{t-1}) (G_i-G)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+RGE_i = h_i^{t-1} (g-G)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+RGD_i = (e_i^{t-1}-h_i^{t-1}) (g-G)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+RIE_i = h_i^{t-1} (g_i-g-G_i+G)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[
+RID_i = (e_i^{t-1}-h_i^{t-1}) (g_i-g-G_i+G)
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;A mudança percentual total do emprego estadual e municipal para todos os setores combinados são G e g respectivamente, enquanto as mudanças específicas do setor para o estado e o município são, respectivamente, &lt;span class=&#34;math inline&#34;&gt;\(G_i\)&lt;/span&gt; e &lt;span class=&#34;math inline&#34;&gt;\(g_i\)&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Isto posto, é preciso alterar a função para realizar estas decomposições. Faremos a partir da função &lt;code&gt;shift.2.R&lt;/code&gt; do modelo tradicional.&lt;/p&gt;
+&lt;p&gt;Seja a funçao clássica para o setor &lt;span class=&#34;math inline&#34;&gt;\(i\)&lt;/span&gt; e região &lt;span class=&#34;math inline&#34;&gt;\(r\)&lt;/span&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# a notacao acompanha a do Matlaba et al (2012)
+
+shift.2 &amp;lt;-
+  function (region_t, region_t1, nation_t, nation_t1) {
+    
+    industries &amp;lt;- length(region_t)
+    
+    sum_region_t &amp;lt;- sum(region_t)
+    sum_region_t1 &amp;lt;- sum(region_t1)
+    sum_nation_t &amp;lt;- sum(nation_t)
+    sum_nation_t1 &amp;lt;- sum(nation_t1)
+    # National Growth Effect on industry i in the rth region between (t-1) and t.
+    
+    i &amp;lt;- 0
+    NS_tir &amp;lt;- vector()
+    IM_tir &amp;lt;- vector()
+    RS_tir &amp;lt;- vector()
+    for (i in 1:industries) {
+      NS_tir[i] &amp;lt;- (region_t[i]*((sum_nation_t1/sum_nation_t)-1))
+    
+      
+      IM_tir[i] &amp;lt;- (region_t[i]*
+                      ((nation_t1[i]/nation_t[i])-(sum_nation_t1/sum_nation_t)))
+      RS_tir[i] &amp;lt;- (region_t[i]*
+                      ((region_t1[i]/region_t[i])-(nation_t1[i]/nation_t[i])))
+    }
+    shifts &amp;lt;- list(NS_tir=NS_tir,IM_tir=IM_tir,RS_tir=RS_tir)
+    
+    return(shifts)
+  }&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;A nova função será chamada de &lt;code&gt;shift.arcelus&lt;/code&gt;, para indicar a desagregação utilizada.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;shift.arcelus &amp;lt;- function(region_t, region_t1, nation_t, nation_t1) {
+    
+    industries &amp;lt;- length(region_t)
+    
+    sum_region_t &amp;lt;- sum(region_t)
+    sum_region_t1 &amp;lt;- sum(region_t1)
+    sum_nation_t &amp;lt;- sum(nation_t)
+    sum_nation_t1 &amp;lt;- sum(nation_t1)
+    # National Growth Effect on industry i in the rth region between (t-1) and t.
+    
+    i &amp;lt;- 0
+    # novos componentes de taxas de crescimento e homotetico
+    h &amp;lt;- vector()
+    G &amp;lt;- vector()
+    g &amp;lt;- vector()
+    gi &amp;lt;- vector()
+    Gi &amp;lt;- vector()
+    
+    
+    # NS_tir &amp;lt;- vector()
+    NSE &amp;lt;- vector()
+    NSD &amp;lt;- vector()
+    
+    # IM_tir &amp;lt;- vector()
+    IME &amp;lt;- vector()
+    IMD &amp;lt;- vector()
+    
+    # RS_tir &amp;lt;- vector()
+    RGE &amp;lt;- vector()
+    RGD &amp;lt;- vector()
+    RIE &amp;lt;- vector()
+    RID &amp;lt;- vector()
+    
+    VarTot &amp;lt;- vector()
+    conferencia &amp;lt;- vector()
+    
+    for (i in 1:industries) {
+        h[i] &amp;lt;- region_t[i] * (nation_t[i]/sum_nation_t)
+        
+        G[i] &amp;lt;- (sum_nation_t1 - sum_nation_t)/sum_nation_t
+        
+        g[i] &amp;lt;- (sum_region_t1 - sum_region_t)/sum_region_t
+        
+        gi[i] &amp;lt;- (region_t1[i] - region_t[i])/region_t[i]
+        
+        Gi[i] &amp;lt;- (nation_t1[i] - nation_t[i])/nation_t[i]
+        
+        # componentes
+        
+        NSE[i] &amp;lt;- h[i] * G[i]
+        
+        NSD[i] &amp;lt;- (region_t[i] - h[i]) * G[i]
+        
+        IME[i] &amp;lt;- h[i] * (Gi[i] - G[i])
+        
+        IMD[i] &amp;lt;- (region_t[i] - h[i]) * (Gi[i] - G[i])
+        
+        
+        RGE[i] &amp;lt;- h[i] * (g[i] - G[i])
+        
+        RGD[i] &amp;lt;- (region_t[i] - h[i]) * (g[i] - G[i])
+        
+        RIE[i] &amp;lt;- h[i] * (gi[i] - g[i] - Gi[i] + G[i])
+        
+        RID[i] &amp;lt;- (region_t[i] - h[i]) * (gi[i] - g[i] - Gi[i] + G[i])
+        
+        VarTot[i] &amp;lt;- NSE[i] + NSD[i] + IME[i] + IMD[i] + RGE[i] + RGD[i] + RIE[i] + 
+            RID[i]
+        
+        conferencia[i] &amp;lt;- region_t1[i] - region_t[i]
+        
+    }
+    shifts &amp;lt;- list(NSE = NSE, NSD = NSD, IME = IME, IMD = IMD, RGE = RGE, RGD = RGD, 
+        RIE = RIE, RID = RID, VarTot = VarTot, conferencia = conferencia)
+    
+    return(shifts)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exemplo-2&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Exemplo 2&lt;/h1&gt;
+&lt;p&gt;Exemplo com dados de emprego formal dos municípios brasileiros de Campo Grande-MS, Dourados-MS e Três Lagoas-MS (os dados básicos da planilha &lt;code&gt;emprego_r.xlsx&lt;/code&gt; foram colocados em formato &lt;code&gt;dput()&lt;/code&gt; para facilitar reprodução). Primeiro vou testar o shift-share para Campo Grande, Dourados e Três Lagoas, para o período 2006-2016 relativamente ao estado de MS.&lt;/p&gt;
+&lt;div id=&#34;carregar-dados-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Carregar dados&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dados.MS &amp;lt;- structure(list(industry = c(&amp;quot;01-Extrativa Mineral&amp;quot;, &amp;quot;02-Prod. Mineral Não Metálico&amp;quot;, 
+    &amp;quot;03-Indústria Metalúrgica&amp;quot;, &amp;quot;04-Indústria Mecânica&amp;quot;, &amp;quot;05-Elétrico e Comunic&amp;quot;, 
+    &amp;quot;06-Material de Transporte&amp;quot;, &amp;quot;07-Madeira e Mobiliário&amp;quot;, &amp;quot;08-Papel e Gráf&amp;quot;, &amp;quot;09-Borracha, Fumo, Couros&amp;quot;, 
+    &amp;quot;10-Indústria Química&amp;quot;, &amp;quot;11-Indústria Têxtil&amp;quot;, &amp;quot;12-Indústria Calçados&amp;quot;, &amp;quot;13-Alimentos e Bebidas&amp;quot;, 
+    &amp;quot;14-Serviço Utilidade Pública&amp;quot;, &amp;quot;15-Construção Civil&amp;quot;, &amp;quot;16-Comércio Varejista&amp;quot;, 
+    &amp;quot;17-Comércio Atacadista&amp;quot;, &amp;quot;18-Instituição Financeira&amp;quot;, &amp;quot;19-Adm Técnica Profissional&amp;quot;, 
+    &amp;quot;20-Transporte e Comunicações&amp;quot;, &amp;quot;21-Aloj Comunic&amp;quot;, &amp;quot;22-Médicos Odontológicos Vet&amp;quot;, 
+    &amp;quot;23-Ensino&amp;quot;, &amp;quot;24-Administração Pública&amp;quot;, &amp;quot;25-Agricultura&amp;quot;), MS2016 = c(2448, 
+    3738, 4206, 2754, 553, 426, 2645, 4975, 3267, 13348, 5972, 1762, 45894, 6688, 
+    25891, 109490, 15879, 7217, 43617, 30063, 60136, 24689, 24507, 122472, 70917), 
+    MS2006 = c(1601, 2845, 2514, 826, 256, 387, 2592, 2309, 2250, 1466, 5257, 1014, 
+        31425, 3023, 14525, 72503, 9226, 6062, 24633, 16937, 32809, 16028, 12209, 
+        118264, 57724), CG2016 = c(107, 815, 1327, 628, 131, 179, 873, 938, 1266, 
+        1374, 2163, 25, 7480, 4862, 14376, 45364, 6918, 3626, 29612, 14260, 29033, 
+        14713, 15219, 65284, 4168), CG2006 = c(169, 626, 683, 439, 141, 130, 845, 
+        1450, 1201, 705, 1263, 18, 4378, 2072, 10962, 32039, 4720, 3487, 17498, 9719, 
+        20498, 11210, 7069, 69417, 4321), DO2016 = c(17, 421, 377, 419, 19, 34, 175, 
+        261, 201, 1849, 379, 0, 5602, 210, 1710, 13229, 1935, 832, 3856, 2623, 14889, 
+        3383, 3901, 4975, 1805), DO2006 = c(30, 274, 573, 153, 3, 54, 140, 311, 235, 
+        230, 256, 0, 3850, 184, 722, 8928, 1056, 689, 1864, 1496, 3346, 1445, 1850, 
+        4439, 1768), TL2016 = c(80, 272, 650, 1035, 221, 62, 86, 2762, 94, 837, 1627, 
+        812, 1318, 357, 4334, 5458, 494, 245, 2504, 2164, 2210, 1426, 993, 3357, 
+        4179), TL2006 = c(11, 274, 71, 71, 76, 46, 43, 121, 224, 352, 1695, 492, 
+        958, 43, 266, 3357, 313, 156, 1449, 823, 994, 622, 362, 1863, 2745)), row.names = c(NA, 
+    -25L), class = c(&amp;quot;tbl_df&amp;quot;, &amp;quot;tbl&amp;quot;, &amp;quot;data.frame&amp;quot;))
+# Loads the data formato (cg2006,cg2016,ms2006,ms2016)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;resultado-para-campo-grande---shift-share-clássico&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Resultado para Campo Grande - Shift-share Clássico&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;results &amp;lt;- shift.2(dados.MS$CG2006, dados.MS$CG2016, dados.MS$MS2006, dados.MS$MS2016)
+# resultados para o município e o MS (2006 vs. 2016) et+1 - et = nps+nds+nts
+
+list(dados.MS$CG2006, dados.MS$CG2016, dados.MS$MS2006, dados.MS$MS2016)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+ [1]   169   626   683   439   141   130   845  1450  1201   705  1263    18
+[13]  4378  2072 10962 32039  4720  3487 17498  9719 20498 11210  7069 69417
+[25]  4321
+
+[[2]]
+ [1]   107   815  1327   628   131   179   873   938  1266  1374  2163    25
+[13]  7480  4862 14376 45364  6918  3626 29612 14260 29033 14713 15219 65284
+[25]  4168
+
+[[3]]
+ [1]   1601   2845   2514    826    256    387   2592   2309   2250   1466
+[11]   5257   1014  31425   3023  14525  72503   9226   6062  24633  16937
+[21]  32809  16028  12209 118264  57724
+
+[[4]]
+ [1]   2448   3738   4206   2754    553    426   2645   4975   3267  13348
+[11]   5972   1762  45894   6688  25891 109490  15879   7217  43617  30063
+[21]  60136  24689  24507 122472  70917&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(results)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+[[1]]$NS_tir
+ [1]    75.07177   278.07651   303.39658   195.00893    62.63385    57.74752
+ [7]   375.35887   644.10693   533.49823   313.16923   561.03935     7.99581
+[13]  1944.75873   920.40660  4869.44842 14232.09795  2096.67912  1548.96612
+[19]  7772.81594  4317.29330  9105.45098  4979.61291  3140.13235 30835.84206
+[25]  1919.43866
+
+[[1]]$IM_tir
+ [1]     14.336721    -81.585122    156.283615    829.678725    100.948185
+ [6]    -44.646743   -358.080704   1030.081027      9.353775   5400.889430
+[11]   -389.259817      5.282296     71.002037   1591.627806   3708.458091
+[16]   2112.418728   1306.980103   -884.583904   5712.428729   3214.831280
+[21]   7967.573071   1077.899567   3980.398567 -28365.887245   -931.860652
+
+[[1]]$RS_tir
+ [1]  -151.408495    -7.491388   184.319809  -835.687651  -173.582031
+ [6]    35.899225    10.721836 -2186.187960  -477.852000 -5045.058663
+[11]   728.220468    -6.278107  1086.239236   277.965597 -5163.906506
+[16] -3019.516682 -1205.659224  -525.382217 -1371.244672 -2991.124579
+[21] -8538.024048 -2554.512478  1029.469080 -6602.954813 -1140.578009&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;results&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$NS_tir
+ [1]    75.07177   278.07651   303.39658   195.00893    62.63385    57.74752
+ [7]   375.35887   644.10693   533.49823   313.16923   561.03935     7.99581
+[13]  1944.75873   920.40660  4869.44842 14232.09795  2096.67912  1548.96612
+[19]  7772.81594  4317.29330  9105.45098  4979.61291  3140.13235 30835.84206
+[25]  1919.43866
+
+$IM_tir
+ [1]     14.336721    -81.585122    156.283615    829.678725    100.948185
+ [6]    -44.646743   -358.080704   1030.081027      9.353775   5400.889430
+[11]   -389.259817      5.282296     71.002037   1591.627806   3708.458091
+[16]   2112.418728   1306.980103   -884.583904   5712.428729   3214.831280
+[21]   7967.573071   1077.899567   3980.398567 -28365.887245   -931.860652
+
+$RS_tir
+ [1]  -151.408495    -7.491388   184.319809  -835.687651  -173.582031
+ [6]    35.899225    10.721836 -2186.187960  -477.852000 -5045.058663
+[11]   728.220468    -6.278107  1086.239236   277.965597 -5163.906506
+[16] -3019.516682 -1205.659224  -525.382217 -1371.244672 -2991.124579
+[21] -8538.024048 -2554.512478  1029.469080 -6602.954813 -1140.578009&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(somaNS = sum(results$NS_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$somaNS
+[1] 91090.05&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(somaIM = sum(results$IM_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$somaIM
+[1] 7234.568&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(somaRS = sum(results$RS_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$somaRS
+[1] -38643.61&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# total shift by industry
+list(total &amp;lt;- I(results$NS_tir + results$IM_tir + results$RS_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+ [1]   -62   189   644   189   -10    49    28  -512    65   669   900     7
+[13]  3102  2790  3414 13325  2198   139 12114  4541  8535  3503  8150 -4133
+[25]  -153&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tabela &amp;lt;- cbind(dados.MS$industry, as.data.frame(results))
+# CAMPO GRANDE
+print(tabela)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;   dados.MS$industry      NS_tir        IM_tir       RS_tir
+1                 s1    75.07177     14.336721  -151.408495
+2                 s2   278.07651    -81.585122    -7.491388
+3                 s3   303.39658    156.283615   184.319809
+4                 s4   195.00893    829.678725  -835.687651
+5                 s5    62.63385    100.948185  -173.582031
+6                 s6    57.74752    -44.646743    35.899225
+7                 s7   375.35887   -358.080704    10.721836
+8                 s8   644.10693   1030.081027 -2186.187960
+9                 s9   533.49823      9.353775  -477.852000
+10               s10   313.16923   5400.889430 -5045.058663
+11               s11   561.03935   -389.259817   728.220468
+12               s12     7.99581      5.282296    -6.278107
+13               s13  1944.75873     71.002037  1086.239236
+14               s14   920.40660   1591.627806   277.965597
+15               s15  4869.44842   3708.458091 -5163.906506
+16               s16 14232.09795   2112.418728 -3019.516682
+17               s17  2096.67912   1306.980103 -1205.659224
+18               s18  1548.96612   -884.583904  -525.382217
+19               s19  7772.81594   5712.428729 -1371.244672
+20               s20  4317.29330   3214.831280 -2991.124579
+21               s21  9105.45098   7967.573071 -8538.024048
+22               s22  4979.61291   1077.899567 -2554.512478
+23               s23  3140.13235   3980.398567  1029.469080
+24               s24 30835.84206 -28365.887245 -6602.954813
+25               s25  1919.43866   -931.860652 -1140.578009&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;resultado-para-dourados---shift-share-clássico&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Resultado para Dourados - Shift-share Clássico&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# DOURADOS
+results &amp;lt;- shift.2(dados.MS$DO2006, dados.MS$DO2016, dados.MS$MS2006, dados.MS$MS2016)
+# resultados para o município e o MS (2006 vs. 2016) et+1 - et = nps+nds+nts
+
+list(dados.MS$DO2006, dados.MS$DO2016, dados.MS$MS2006, dados.MS$MS2016)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+ [1]   30  274  573  153    3   54  140  311  235  230  256    0 3850  184  722
+[16] 8928 1056  689 1864 1496 3346 1445 1850 4439 1768
+
+[[2]]
+ [1]    17   421   377   419    19    34   175   261   201  1849   379     0
+[13]  5602   210  1710 13229  1935   832  3856  2623 14889  3383  3901  4975
+[25]  1805
+
+[[3]]
+ [1]   1601   2845   2514    826    256    387   2592   2309   2250   1466
+[11]   5257   1014  31425   3023  14525  72503   9226   6062  24633  16937
+[21]  32809  16028  12209 118264  57724
+
+[[4]]
+ [1]   2448   3738   4206   2754    553    426   2645   4975   3267  13348
+[11]   5972   1762  45894   6688  25891 109490  15879   7217  43617  30063
+[21]  60136  24689  24507 122472  70917&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(results)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+[[1]]$NS_tir
+ [1]   13.326350  121.714000  254.533292   67.964387    1.332635   23.987431
+ [7]   62.189635  138.149832  104.389744  102.168686  113.718190    0.000000
+[13] 1710.214961   81.734949  320.720832 3965.921862  469.087532  306.061846
+[19]  828.010568  664.540670 1486.332275  641.885875  821.791604 1971.855639
+[25]  785.366247
+
+[[1]]$IM_tir
+ [1]     2.544980   -35.709782   131.113487   289.159100     2.147834
+ [6]   -18.545570   -59.326981   220.934620     1.830256  1761.992296
+[11]   -78.899852     0.000000    62.438977   141.341465   244.253489
+[16]   588.647411   292.409108  -174.785865   608.524811   494.843872
+[21]  1300.590277   138.944235  1041.694349 -1813.909755  -381.284340
+
+[[1]]$RS_tir
+ [1]  -28.87133   60.99578 -581.64678  -91.12349   12.51953  -25.44186
+ [7]   32.13735 -409.08445 -140.22000 -245.16098   88.18166        NaN
+[13]  -20.65394 -197.07641  423.02568 -253.56927  117.50336   11.72402
+[19]  555.46462  -32.38454 8756.07745 1157.16989  187.51405  378.05412
+[25] -367.08191&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;results&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$NS_tir
+ [1]   13.326350  121.714000  254.533292   67.964387    1.332635   23.987431
+ [7]   62.189635  138.149832  104.389744  102.168686  113.718190    0.000000
+[13] 1710.214961   81.734949  320.720832 3965.921862  469.087532  306.061846
+[19]  828.010568  664.540670 1486.332275  641.885875  821.791604 1971.855639
+[25]  785.366247
+
+$IM_tir
+ [1]     2.544980   -35.709782   131.113487   289.159100     2.147834
+ [6]   -18.545570   -59.326981   220.934620     1.830256  1761.992296
+[11]   -78.899852     0.000000    62.438977   141.341465   244.253489
+[16]   588.647411   292.409108  -174.785865   608.524811   494.843872
+[21]  1300.590277   138.944235  1041.694349 -1813.909755  -381.284340
+
+$RS_tir
+ [1]  -28.87133   60.99578 -581.64678  -91.12349   12.51953  -25.44186
+ [7]   32.13735 -409.08445 -140.22000 -245.16098   88.18166        NaN
+[13]  -20.65394 -197.07641  423.02568 -253.56927  117.50336   11.72402
+[19]  555.46462  -32.38454 8756.07745 1157.16989  187.51405  378.05412
+[25] -367.08191&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(somaNS = sum(results$NS_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$somaNS
+[1] 15057&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(somaIM = sum(results$IM_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$somaIM
+[1] 4760.948&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(somaRS = sum(results$RS_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$somaRS
+[1] NaN&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# total shift by industry
+list(total &amp;lt;- I(results$NS_tir + results$IM_tir + results$RS_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+ [1]   -13   147  -196   266    16   -20    35   -50   -34  1619   123   NaN
+[13]  1752    26   988  4301   879   143  1992  1127 11543  1938  2051   536
+[25]    37&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tabela &amp;lt;- cbind(dados.MS$industry, as.data.frame(results))
+print(tabela)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;   dados.MS$industry      NS_tir       IM_tir     RS_tir
+1                 s1   13.326350     2.544980  -28.87133
+2                 s2  121.714000   -35.709782   60.99578
+3                 s3  254.533292   131.113487 -581.64678
+4                 s4   67.964387   289.159100  -91.12349
+5                 s5    1.332635     2.147834   12.51953
+6                 s6   23.987431   -18.545570  -25.44186
+7                 s7   62.189635   -59.326981   32.13735
+8                 s8  138.149832   220.934620 -409.08445
+9                 s9  104.389744     1.830256 -140.22000
+10               s10  102.168686  1761.992296 -245.16098
+11               s11  113.718190   -78.899852   88.18166
+12               s12    0.000000     0.000000        NaN
+13               s13 1710.214961    62.438977  -20.65394
+14               s14   81.734949   141.341465 -197.07641
+15               s15  320.720832   244.253489  423.02568
+16               s16 3965.921862   588.647411 -253.56927
+17               s17  469.087532   292.409108  117.50336
+18               s18  306.061846  -174.785865   11.72402
+19               s19  828.010568   608.524811  555.46462
+20               s20  664.540670   494.843872  -32.38454
+21               s21 1486.332275  1300.590277 8756.07745
+22               s22  641.885875   138.944235 1157.16989
+23               s23  821.791604  1041.694349  187.51405
+24               s24 1971.855639 -1813.909755  378.05412
+25               s25  785.366247  -381.284340 -367.08191&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;resultado-para-três-lagoas---shift-share-clássico&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Resultado para Três Lagoas - Shift-share Clássico&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# TRES LAGOAS
+results &amp;lt;- shift.2(dados.MS$TL2006, dados.MS$TL2016, dados.MS$MS2006, dados.MS$MS2016)
+# resultados para o município e o MS (2006 vs. 2016) et+1 - et = nps+nds+nts
+
+list(dados.MS$TL2006, dados.MS$TL2016, dados.MS$MS2006, dados.MS$MS2016)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+ [1]   11  274   71   71   76   46   43  121  224  352 1695  492  958   43  266
+[16] 3357  313  156 1449  823  994  622  362 1863 2745
+
+[[2]]
+ [1]   80  272  650 1035  221   62   86 2762   94  837 1627  812 1318  357 4334
+[16] 5458  494  245 2504 2164 2210 1426  993 3357 4179
+
+[[3]]
+ [1]   1601   2845   2514    826    256    387   2592   2309   2250   1466
+[11]   5257   1014  31425   3023  14525  72503   9226   6062  24633  16937
+[21]  32809  16028  12209 118264  57724
+
+[[4]]
+ [1]   2448   3738   4206   2754    553    426   2645   4975   3267  13348
+[11]   5972   1762  45894   6688  25891 109490  15879   7217  43617  30063
+[21]  60136  24689  24507 122472  70917&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(results)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+[[1]]$NS_tir
+ [1]    4.886328  121.714000   31.539029   31.539029   33.760088   20.433737
+ [7]   19.101102   53.749613   99.503416  156.362511  752.938794  218.552146
+[13]  425.554788   19.101102  118.160306 1491.218603  139.038255   69.297022
+[19]  643.662722  365.586211  441.546408  276.299664  160.804627  827.566356
+[25] 1219.361056
+
+[[1]]$IM_tir
+ [1]    0.9331594  -35.7097819   16.2461737  134.1849418   54.4117875
+ [6]  -15.7980783  -18.2218583   85.9584857    1.7445841 2696.6142970
+[11] -522.4033178  144.3827656   15.5367637   33.0308859   89.9881274
+[16]  221.3361737   86.6705026  -39.5741580  473.0431608  272.2302854
+[21]  386.3678228   59.8085219  203.8342455 -761.2781874 -591.9827562
+
+[[1]]$RS_tir
+ [1]    63.18051   -88.00422   531.21480   798.27603    56.82812    11.36434
+ [7]    42.12076  2501.29190  -231.24800 -2367.97681  -298.53548   -42.93491
+[13]   -81.09155   261.86801  3859.85157   388.44522   -44.70876    59.27714
+[19]   -61.70588   703.18350   388.08577   467.89181   266.36113  1427.71183
+[25]   806.62170&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;results&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$NS_tir
+ [1]    4.886328  121.714000   31.539029   31.539029   33.760088   20.433737
+ [7]   19.101102   53.749613   99.503416  156.362511  752.938794  218.552146
+[13]  425.554788   19.101102  118.160306 1491.218603  139.038255   69.297022
+[19]  643.662722  365.586211  441.546408  276.299664  160.804627  827.566356
+[25] 1219.361056
+
+$IM_tir
+ [1]    0.9331594  -35.7097819   16.2461737  134.1849418   54.4117875
+ [6]  -15.7980783  -18.2218583   85.9584857    1.7445841 2696.6142970
+[11] -522.4033178  144.3827656   15.5367637   33.0308859   89.9881274
+[16]  221.3361737   86.6705026  -39.5741580  473.0431608  272.2302854
+[21]  386.3678228   59.8085219  203.8342455 -761.2781874 -591.9827562
+
+$RS_tir
+ [1]    63.18051   -88.00422   531.21480   798.27603    56.82812    11.36434
+ [7]    42.12076  2501.29190  -231.24800 -2367.97681  -298.53548   -42.93491
+[13]   -81.09155   261.86801  3859.85157   388.44522   -44.70876    59.27714
+[19]   -61.70588   703.18350   388.08577   467.89181   266.36113  1427.71183
+[25]   806.62170&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(somaNS = sum(results$NS_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$somaNS
+[1] 7741.277&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(somaIM = sum(results$IM_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$somaIM
+[1] 2991.355&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;list(somaRS = sum(results$RS_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$somaRS
+[1] 9417.369&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# total shift by industry
+list(total &amp;lt;- I(results$NS_tir + results$IM_tir + results$RS_tir))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+ [1]   69   -2  579  964  145   16   43 2641 -130  485  -68  320  360  314 4068
+[16] 2101  181   89 1055 1341 1216  804  631 1494 1434&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;tabela &amp;lt;- cbind(dados.MS$industry, as.data.frame(results))
+print(tabela)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;   dados.MS$industry      NS_tir       IM_tir      RS_tir
+1                 s1    4.886328    0.9331594    63.18051
+2                 s2  121.714000  -35.7097819   -88.00422
+3                 s3   31.539029   16.2461737   531.21480
+4                 s4   31.539029  134.1849418   798.27603
+5                 s5   33.760088   54.4117875    56.82812
+6                 s6   20.433737  -15.7980783    11.36434
+7                 s7   19.101102  -18.2218583    42.12076
+8                 s8   53.749613   85.9584857  2501.29190
+9                 s9   99.503416    1.7445841  -231.24800
+10               s10  156.362511 2696.6142970 -2367.97681
+11               s11  752.938794 -522.4033178  -298.53548
+12               s12  218.552146  144.3827656   -42.93491
+13               s13  425.554788   15.5367637   -81.09155
+14               s14   19.101102   33.0308859   261.86801
+15               s15  118.160306   89.9881274  3859.85157
+16               s16 1491.218603  221.3361737   388.44522
+17               s17  139.038255   86.6705026   -44.70876
+18               s18   69.297022  -39.5741580    59.27714
+19               s19  643.662722  473.0431608   -61.70588
+20               s20  365.586211  272.2302854   703.18350
+21               s21  441.546408  386.3678228   388.08577
+22               s22  276.299664   59.8085219   467.89181
+23               s23  160.804627  203.8342455   266.36113
+24               s24  827.566356 -761.2781874  1427.71183
+25               s25 1219.361056 -591.9827562   806.62170&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Agora faz-se para a função &lt;code&gt;shift.arcelus&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;resultados-para-campo-grande---shift-share-arcelus&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Resultados para Campo Grande - Shift-share Arcelus&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# CAMPO GRANDE - ARCELUS
+results.CG &amp;lt;- shift.arcelus(dados.MS$CG2006, dados.MS$CG2016, dados.MS$MS2006, dados.MS$MS2016)
+tabelacg.arcelus &amp;lt;- cbind(dados.MS$industry, as.data.frame(results.CG))
+list(tabelacg.arcelus)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+  dados.MS$industry        NSE       NSD         IME         IMD         RGE
+1                s1 0.27397771  74.79780  0.05232249   14.284399 -0.09447112
+2                s2 1.80340717 276.27310 -0.52910328  -81.056019 -0.62183852
+3                s3 1.73869403 301.65788  0.89562444  155.387990 -0.59952458
+4                s4 0.36718231 194.64174  1.56220210  828.116523 -0.12660929
+5                s5 0.03655075  62.59730  0.05890955  100.889275 -0.01260318
+6                s6 0.05094382  57.69657 -0.03938655  -44.607356 -0.01756610
+7                s7 2.21783326 373.14103 -2.11574407 -355.964960 -0.76473809
+8                s8 3.39022968 640.71670  5.42178805 1024.659239 -1.16899581
+9                s9 2.73629371 530.76193  0.04797518    9.305799 -0.94351008
+         RGD          RIE         RID VarTot conferencia
+1  -25.79126  -0.45810077  -125.06466    -62         -62
+2  -95.26260   0.57325468    87.81980    189         189
+3 -104.01561   1.65581782   287.27912    644         644
+4  -67.11503  -1.44690701  -766.99910    189         189
+5  -21.58437  -0.08869274  -151.89636    -10         -10
+6  -19.89454   0.04923575    55.76209     49          49
+7 -128.66394   0.82808879   139.32242     28          28
+8 -220.92755 -10.33791234 -1953.75350   -512        -512
+9 -183.01370  -1.50737609  -292.38742     65          65
+ [ reached &amp;#39;max&amp;#39; / getOption(&amp;quot;max.print&amp;quot;) -- omitted 16 rows ]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;somaNSa.CG &amp;lt;- results.CG$NSE + results.CG$NSD
+somaIMa.CG &amp;lt;- results.CG$IME + results.CG$IMD
+somaRSa.CG &amp;lt;- results.CG$RGE + results.CG$RGD + results.CG$RIE + results.CG$RID
+comp.classic.CG &amp;lt;- cbind(somaNSa.CG, somaIMa.CG, somaRSa.CG)
+list(comp.classic.CG)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+       somaNSa.CG    somaIMa.CG   somaRSa.CG
+ [1,]    75.07177     14.336721  -151.408495
+ [2,]   278.07651    -81.585122    -7.491388
+ [3,]   303.39658    156.283615   184.319809
+ [4,]   195.00893    829.678725  -835.687651
+ [5,]    62.63385    100.948185  -173.582031
+ [6,]    57.74752    -44.646743    35.899225
+ [7,]   375.35887   -358.080704    10.721836
+ [8,]   644.10693   1030.081027 -2186.187960
+ [9,]   533.49823      9.353775  -477.852000
+[10,]   313.16923   5400.889430 -5045.058663
+[11,]   561.03935   -389.259817   728.220468
+[12,]     7.99581      5.282296    -6.278107
+[13,]  1944.75873     71.002037  1086.239236
+[14,]   920.40660   1591.627806   277.965597
+[15,]  4869.44842   3708.458091 -5163.906506
+[16,] 14232.09795   2112.418728 -3019.516682
+[17,]  2096.67912   1306.980103 -1205.659224
+[18,]  1548.96612   -884.583904  -525.382217
+[19,]  7772.81594   5712.428729 -1371.244672
+[20,]  4317.29330   3214.831280 -2991.124579
+[21,]  9105.45098   7967.573071 -8538.024048
+[22,]  4979.61291   1077.899567 -2554.512478
+[23,]  3140.13235   3980.398567  1029.469080
+[24,] 30835.84206 -28365.887245 -6602.954813
+[25,]  1919.43866   -931.860652 -1140.578009&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;resultados-para-dourados---shift-share-arcelus&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Resultados para Dourados - Shift-share Arcelus&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# DOURADOS - ARCELUS
+results.DO &amp;lt;- shift.arcelus(dados.MS$DO2006, dados.MS$DO2016, dados.MS$MS2006, dados.MS$MS2016)
+tabelado.arcelus &amp;lt;- cbind(dados.MS$industry, as.data.frame(results.DO))
+list(tabelado.arcelus)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+  dados.MS$industry          NSE        NSD          IME        IMD
+1                s1 0.0486350956  13.277715  0.009288016   2.535692
+2                s2 0.7893507401 120.924649 -0.231588337 -35.478194
+3                s3 1.4586701048 253.074621  0.751380387 130.362106
+4                s4 0.1279701459  67.836417  0.544457678 288.614642
+5                s5 0.0007776755   1.331857  0.001253395   2.146580
+6                s6 0.0211612789  23.966269 -0.016360568 -18.529210
+7                s7 0.3674516652  61.822183 -0.350537478 -58.976443
+8                s8 0.7271458149 137.422686  1.162880058 219.771740
+9                s9 0.5354113425 103.854333  0.009387317   1.820868
+           RGE        RGD          RIE        RID VarTot conferencia
+1 0.0457022021  12.477015 -0.151069379  -41.24298    -13         -13
+2 0.7417496906 113.632403 -0.346174278  -53.03220    147         147
+3 1.3707063843 237.813196 -4.703986528 -816.12669   -196        -196
+4 0.1202530273  63.745606 -0.291829443 -154.69752    266         266
+5 0.0007307785   1.251541  0.006575147   11.26068     16          16
+6 0.0198851680  22.521006 -0.042329519  -47.94042    -20         -20
+7 0.3452928402  58.094055 -0.155407159  -26.14660     35          35
+8 0.6832959746 129.135541 -2.836494739 -536.06679    -50         -50
+9 0.5031238681  97.591496 -1.222307337 -237.09231    -34         -34
+ [ reached &amp;#39;max&amp;#39; / getOption(&amp;quot;max.print&amp;quot;) -- omitted 16 rows ]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;somaNSa.DO &amp;lt;- results.DO$NSE + results.DO$NSD
+somaIMa.DO &amp;lt;- results.DO$IME + results.DO$IMD
+somaRSa.DO &amp;lt;- results.DO$RGE + results.DO$RGD + results.DO$RIE + results.DO$RID
+comp.classic.DO &amp;lt;- cbind(somaNSa.DO, somaIMa.DO, somaRSa.DO)
+list(comp.classic.DO)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+       somaNSa.DO   somaIMa.DO somaRSa.DO
+ [1,]   13.326350     2.544980  -28.87133
+ [2,]  121.714000   -35.709782   60.99578
+ [3,]  254.533292   131.113487 -581.64678
+ [4,]   67.964387   289.159100  -91.12349
+ [5,]    1.332635     2.147834   12.51953
+ [6,]   23.987431   -18.545570  -25.44186
+ [7,]   62.189635   -59.326981   32.13735
+ [8,]  138.149832   220.934620 -409.08445
+ [9,]  104.389744     1.830256 -140.22000
+[10,]  102.168686  1761.992296 -245.16098
+[11,]  113.718190   -78.899852   88.18166
+[12,]    0.000000     0.000000        NaN
+[13,] 1710.214961    62.438977  -20.65394
+[14,]   81.734949   141.341465 -197.07641
+[15,]  320.720832   244.253489  423.02568
+[16,] 3965.921862   588.647411 -253.56927
+[17,]  469.087532   292.409108  117.50336
+[18,]  306.061846  -174.785865   11.72402
+[19,]  828.010568   608.524811  555.46462
+[20,]  664.540670   494.843872  -32.38454
+[21,] 1486.332275  1300.590277 8756.07745
+[22,]  641.885875   138.944235 1157.16989
+[23,]  821.791604  1041.694349  187.51405
+[24,] 1971.855639 -1813.909755  378.05412
+[25,]  785.366247  -381.284340 -367.08191&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;resultados-para-três-lagoas---shift-share-arcelus&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Resultados para Três Lagoas - Shift-share Arcelus&lt;/h2&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# TRES LAGOAS - ARCELUS
+results.TL &amp;lt;- shift.arcelus(dados.MS$TL2006, dados.MS$TL2016, dados.MS$MS2006, dados.MS$MS2016)
+tabelaTL.arcelus &amp;lt;- cbind(dados.MS$industry, as.data.frame(results.TL))
+list(tabelaTL.arcelus)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+  dados.MS$industry        NSE        NSD          IME         IMD        RGE
+1                s1 0.01783287   4.868496  0.003405606   0.9297538 0.02858484
+2                s2 0.78935074 120.924649 -0.231588337 -35.4781935 1.26527379
+3                s3 0.18074272  31.358286  0.093102980  16.1530707 0.28971788
+4                s4 0.05938484  31.479644  0.252656831 133.9322850 0.09518973
+5                s5 0.01970111  33.740386  0.031752664  54.3800348 0.03157950
+6                s6 0.01802627  20.415711 -0.013936780 -15.7841415 0.02889485
+7                s7 0.11286015  18.988242 -0.107665083 -18.1141932 0.18090690
+8                s8 0.28290882  53.466704  0.452438865  85.5060468 0.45348297
+9                s9 0.51034953  98.993066  0.008947911   1.7356362 0.81805445
+         RGD          RIE         RID VarTot conferencia
+1   7.803856  0.201995194   55.146076     69          69
+2 193.833718 -1.836006772 -281.267203     -2          -2
+3  50.265130  2.754548507  477.905400    579         579
+4  50.459658  1.407884234  746.313297    964         964
+5  54.083469  0.001583249    2.711493    145         145
+6  32.724950 -0.018869435  -21.370635     16          16
+7  30.436818  0.067966438   11.435065     43          43
+8  85.703371 12.711961486 2402.423086   2641        2641
+9 158.678931 -2.004117346 -388.740868   -130        -130
+ [ reached &amp;#39;max&amp;#39; / getOption(&amp;quot;max.print&amp;quot;) -- omitted 16 rows ]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;somaNSa.TL &amp;lt;- results.TL$NSE + results.TL$NSD
+somaIMa.TL &amp;lt;- results.TL$IME + results.TL$IMD
+somaRSa.TL &amp;lt;- results.TL$RGE + results.TL$RGD + results.TL$RIE + results.TL$RID
+comp.classic.TL &amp;lt;- cbind(somaNSa.TL, somaIMa.TL, somaRSa.TL)
+list(comp.classic.TL)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;[[1]]
+       somaNSa.TL   somaIMa.TL  somaRSa.TL
+ [1,]    4.886328    0.9331594    63.18051
+ [2,]  121.714000  -35.7097819   -88.00422
+ [3,]   31.539029   16.2461737   531.21480
+ [4,]   31.539029  134.1849418   798.27603
+ [5,]   33.760088   54.4117875    56.82813
+ [6,]   20.433737  -15.7980783    11.36434
+ [7,]   19.101102  -18.2218583    42.12076
+ [8,]   53.749613   85.9584857  2501.29190
+ [9,]   99.503416    1.7445841  -231.24800
+[10,]  156.362511 2696.6142970 -2367.97681
+[11,]  752.938794 -522.4033178  -298.53548
+[12,]  218.552146  144.3827656   -42.93491
+[13,]  425.554788   15.5367637   -81.09155
+[14,]   19.101102   33.0308859   261.86801
+[15,]  118.160306   89.9881274  3859.85157
+[16,] 1491.218603  221.3361737   388.44522
+[17,]  139.038255   86.6705026   -44.70876
+[18,]   69.297022  -39.5741580    59.27714
+[19,]  643.662722  473.0431608   -61.70588
+[20,]  365.586211  272.2302854   703.18350
+[21,]  441.546408  386.3678228   388.08577
+[22,]  276.299664   59.8085219   467.89181
+[23,]  160.804627  203.8342455   266.36113
+[24,]  827.566356 -761.2781874  1427.71183
+[25,] 1219.361056 -591.9827562   806.62170&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;próximos-passos&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Próximos passos&lt;/h1&gt;
+&lt;p&gt;Agora faz-se uso do comando capply para rodar para as colunas automaticamente. A dificuldade é na saída dos resultados, o que provavelmente ficará melhor se colocar uma planilha no excel para cada município.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;Referências&#34; class=&#34;section level1 unnumbered&#34;&gt;
+&lt;h1&gt;Referências&lt;/h1&gt;
+&lt;p&gt;MATLABA, V.; HOLMES, M.; MCCANN, P.; POOT, J. Agglomeration Externalities and 1981-2006 Regional Growth in Brazil. Working Paper in Economics 07/12. Hamilton, New Zealand: University of Waikato, 2012. Disponível em: &lt;a href=&#34;https://researchcommons.waikato.ac.nz/bitstream/handle/10289/6693/Economics_wp_0712.pdf?sequence=1&amp;amp;isAllowed=y&#34; class=&#34;uri&#34;&gt;https://researchcommons.waikato.ac.nz/bitstream/handle/10289/6693/Economics_wp_0712.pdf?sequence=1&amp;amp;isAllowed=y&lt;/a&gt;. Access: 18 de Maio de 2020.&lt;/p&gt;
+&lt;p&gt;WIELAND, T. (2019). REAT: A Regional Economic Analysis Toolbox for R. REGION, 6(3), R1-R57. URL: &lt;a href=&#34;https://doi.org/10.18335/region.v6i3.267&#34; class=&#34;uri&#34;&gt;https://doi.org/10.18335/region.v6i3.267&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Economia Regional em R: Indicadores de localização - Coeficiente de Localização, Potencial de mercado, Centro econômico, Ellison-Glaeser, Separação espacial de Venables, Proximidade, Centralidade Urbana</title>
@@ -9776,7 +10666,7 @@ FIGUEIREDO, Adriano Marcos Rodrigues. Mapas em R com &lt;code&gt;geobr&lt;/code&
 &lt;pre&gt;&lt;code&gt;## Loading required namespace: sf&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
 library(sf)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Linking to GEOS 3.6.1, GDAL 2.2.3, PROJ 4.9.3&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## Attaching package: &amp;#39;dplyr&amp;#39;&lt;/code&gt;&lt;/pre&gt;
@@ -9880,7 +10770,7 @@ print(dados_ms)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(geobr)
 # sugiro permanecer o timeout anterior, options(timeout= 4000000)
 all_mun_ms &amp;lt;- read_municipality(code_muni=50, year=2010)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Using data from year 2010&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Using year 2010&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Juntarei os datasets pela condição de que o &lt;code&gt;code_muni&lt;/code&gt; do objeto &lt;code&gt;all_mun_ms&lt;/code&gt; é igual ao &lt;code&gt;Codmun7&lt;/code&gt; do objeto &lt;code&gt;dados_ms&lt;/code&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;dataset_final = left_join(all_mun_ms, dados_ms, by=c(&amp;quot;code_muni&amp;quot;=&amp;quot;Codmun7&amp;quot;))
 max(dataset_final$IDHM) # 0.784&lt;/code&gt;&lt;/pre&gt;

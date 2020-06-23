@@ -187,7 +187,7 @@ Ou usando o `mapview` conforme Pebesma (2018) e <https://r-spatial.github.io/sf/
 
 ```{r, eval=T}
 library(mapview)
-mapview(emprego_sf_merged["CE_2016"], col.regions = sf.colors(79))
+mapview(emprego_sf_merged["CE_2016"], col.regions = sf.colors(10))
 ```
 
 Referências {-#Referências}

@@ -28,6 +28,36 @@
   </url>
   
   <url>
+    <loc>/tags/books/</loc>
+    <lastmod>2020-06-23T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/books-and-chapters/</loc>
+    <lastmod>2020-06-23T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/chapters/</loc>
+    <lastmod>2020-06-23T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/papers/</loc>
+    <lastmod>2020-06-23T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/publication/</loc>
+    <lastmod>2020-06-23T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-06-23T19:56:18-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/economia-regional/</loc>
     <lastmod>2020-05-18T07:32:56-04:00</lastmod>
   </url>
@@ -64,11 +94,6 @@
   
   <url>
     <loc>/tags/ssa/</loc>
-    <lastmod>2020-05-18T07:32:56-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2020-05-18T07:32:56-04:00</lastmod>
   </url>
   
@@ -308,21 +333,6 @@
   </url>
   
   <url>
-    <loc>/tags/books/</loc>
-    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication/books-and-chapters/</loc>
-    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/chapters/</loc>
-    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/conferences/</loc>
     <lastmod>2019-12-23T19:56:18-04:00</lastmod>
   </url>
@@ -343,18 +353,8 @@
   </url>
   
   <url>
-    <loc>/tags/papers/</loc>
-    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/publication/papers-in-conferences/</loc>
     <lastmod>2019-12-23T19:56:18-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication/</loc>
-    <lastmod>2020-01-13T19:56:18-04:00</lastmod>
   </url>
   
   <url>

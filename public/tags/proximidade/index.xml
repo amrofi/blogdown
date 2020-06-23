@@ -24,14 +24,14 @@
 &lt;h1&gt;Licença&lt;/h1&gt;
 &lt;p&gt;This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/4.0/&#34; class=&#34;uri&#34;&gt;http://creativecommons.org/licenses/by-sa/4.0/&lt;/a&gt; or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png&#34; alt=&#34;License: CC BY-SA 4.0&#34; style=&#34;width:25.0%&#34; /&gt;
+&lt;img src=&#34;https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png&#34; style=&#34;width:25.0%&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;License: CC BY-SA 4.0&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;Citação&#34; class=&#34;section level1 unnumbered&#34;&gt;
 &lt;h1&gt;Citação&lt;/h1&gt;
 &lt;p&gt;Sugestão de citação:
-FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional em R: Indicadores de localização - Coeficiente de Localização, Potencial de mercado, Centro econômico, Ellison-Glaeser, Separação espacial de Venables, Proximidade, Centralidade Urbana. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em &lt;a href=&#34;http://rpubs.com/amrofi/regional_indicators_3&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/regional_indicators_3&lt;/a&gt; e &lt;a href=&#34;https://adrianofigueiredo.netlify.app/post/economia-regional-em-r-indicadores-de-analise-3/&#34; class=&#34;uri&#34;&gt;https://adrianofigueiredo.netlify.app/post/economia-regional-em-r-indicadores-de-analise-3/&lt;/a&gt;.&lt;/p&gt;
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional em R: Indicadores de localização - Coeficiente de Localização, Potencial de mercado, Centro econômico, Ellison-Glaeser, Separação espacial de Venables, Proximidade, Centralidade Urbana. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em &lt;a href=&#34;http://rpubs.com/amrofi/regional_indicators_3&#34; class=&#34;uri&#34;&gt;http://rpubs.com/amrofi/regional_indicators_3&lt;/a&gt; e &lt;a href=&#34;https://adrianofigueiredo.netlify.app/post/Regional_Economics_CEmaps/&#34; class=&#34;uri&#34;&gt;https://adrianofigueiredo.netlify.app/post/Regional_Economics_CEmaps/&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;script-para-reprodução-se-utilizar-citar-como-acima&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Script para reprodução (se utilizar, citar como acima)&lt;/h1&gt;
@@ -603,7 +603,7 @@ centro.economico&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# -54.26200,-20.92285&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;O resultado gráfico pode ser plotado no Google Maps ou Google Earth como abaixo:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;centro2015.png&#34; alt=&#34;Plotagem do centro econômico de MS em 2015&#34; /&gt;
+&lt;img src=&#34;centro2015.png&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;&lt;em&gt;Plotagem do centro econômico de MS em 2015&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;distancia-do-municipio-ao-centro-economico-d&#34; class=&#34;section level3&#34;&gt;

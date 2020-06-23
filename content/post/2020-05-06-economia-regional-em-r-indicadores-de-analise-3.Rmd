@@ -57,7 +57,7 @@ Citação {-#Citação}
 ===================================
 
 Sugestão de citação:
-FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional em R: Indicadores de localização - Coeficiente de Localização, Potencial de mercado, Centro econômico, Ellison-Glaeser, Separação espacial de Venables, Proximidade, Centralidade Urbana. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/regional_indicators_3> e <https://adrianofigueiredo.netlify.app/post/economia-regional-em-r-indicadores-de-analise-3/>. 
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional em R: Indicadores de localização - Coeficiente de Localização, Potencial de mercado, Centro econômico, Ellison-Glaeser, Separação espacial de Venables, Proximidade, Centralidade Urbana. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/regional_indicators_3> e <https://adrianofigueiredo.netlify.app/post/Regional_Economics_CEmaps/>. 
 
 
 

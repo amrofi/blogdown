@@ -58,27 +58,47 @@
   </url>
   
   <url>
-    <loc>/tags/economia-regional/</loc>
-    <lastmod>2020-05-18T07:32:56-04:00</lastmod>
+    <loc>/tags/desenvolvimento-regional/</loc>
+    <lastmod>2020-06-23T15:51:29-04:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/economia-regional-analise-shift-share/</loc>
-    <lastmod>2020-05-18T07:32:56-04:00</lastmod>
+    <loc>/tags/economia-regional/</loc>
+    <lastmod>2020-06-23T15:51:29-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/regional_economics_cemaps/</loc>
+    <lastmod>2020-06-23T15:51:29-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/especializacao/</loc>
+    <lastmod>2020-06-23T15:51:29-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/mapas/</loc>
+    <lastmod>2020-06-23T15:51:29-04:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/mato-grosso/</loc>
-    <lastmod>2020-05-18T07:32:56-04:00</lastmod>
+    <lastmod>2020-06-23T15:51:29-04:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/mato-grosso-do-sul/</loc>
-    <lastmod>2020-05-18T07:32:56-04:00</lastmod>
+    <lastmod>2020-06-23T15:51:29-04:00</lastmod>
   </url>
   
   <url>
     <loc>/post/</loc>
+    <lastmod>2020-06-23T15:51:29-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/economia-regional-analise-shift-share/</loc>
     <lastmod>2020-05-18T07:32:56-04:00</lastmod>
   </url>
   
@@ -159,11 +179,6 @@
   
   <url>
     <loc>/post/economia-regional-em-r-indicadores-de-analise-2/</loc>
-    <lastmod>2020-04-29T16:46:18-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/especializacao/</loc>
     <lastmod>2020-04-29T16:46:18-04:00</lastmod>
   </url>
   
@@ -268,11 +283,6 @@
   </url>
   
   <url>
-    <loc>/tags/mapas/</loc>
-    <lastmod>2020-01-31T08:30:07-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/mapas-em-r-com-geobr/</loc>
     <lastmod>2020-01-31T08:30:07-04:00</lastmod>
   </url>
@@ -294,11 +304,6 @@
   
   <url>
     <loc>/project/</loc>
-    <lastmod>2020-01-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/desenvolvimento-regional/</loc>
     <lastmod>2020-01-18T00:00:00+00:00</lastmod>
   </url>
   

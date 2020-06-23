@@ -1,17 +1,17 @@
 ---
 title: 'Economia Regional: Mapas de coeficiente de especialização em R'
-author: "Adriano Marcos Rodrigues Figueiredo"
+author: 'Adriano M R Figueiredo'
 date: '2020-05-22'
 slug: Regional_Economics_CEmaps
 categories: []
 tags:
-- economia regional
-- desenvolvimento regional
-- especialização
-- mapas
-- Mato Grosso do Sul
+  - economia regional
+  - desenvolvimento regional
+  - especialização
+  - mapas
+  - Mato Grosso do Sul
 subtitle: ''
-summary: ''
+summary: 'This is a undergraduate exercise for class use.'
 authors: []
 lastmod: '2020-06-23T15:51:29-04:00'
 featured: no
@@ -53,7 +53,15 @@ Citação {-#Citação}
 ===================================
 
 Sugestão de citação:
-FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional: Mapas de Coeficiente de Especialização em R. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/Regional_Economics_CEmaps>. 
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional: Mapas de Coeficiente de Especialização em R. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/Regional_Economics_CEmaps> e <https://adrianofigueiredo.netlify.app/post/regional_economics_cemaps/>. 
+
+Script para reprodução (se utilizar, citar como acima)
+==================
+
+```{r echo=FALSE}
+# a single file
+xfun::embed_file('2020-05-22-Regional_Economics_CEmaps.Rmd')
+```
 
 Introdução
 ======================
@@ -79,7 +87,7 @@ library(rgdal); library(maptools); library(readxl); library(spdep); library(ctv)
 O pacote *rgdal* já fornecerá a primeira função prática para fazer o mapa. Usa-se aqui a função *readOGR* e indica-se o nome do arquivo shape a ser buscado, neste caso, na pasta MS e o arquivo de nome 50MUE250GC_SIR. Neste caso, a base de municípios (indicado por MU). A saída (*plot*) mostra o mapa e as características básicas (79 municípios e 2 campos - nome e código do município).
 
 ```{r warning=FALSE, message=FALSE}
-MS.mu <- readOGR("MS", "50MUE250GC_SIR")
+MS.mu <- readOGR("arquivos", "50MUE250GC_SIR")
 plot(MS.mu)
 ```
 
@@ -90,7 +98,7 @@ Agora propõe-se colorir o mapa municipal com cores inserindo o valor do Coefici
 library(rgdal);library(maptools);library(readxl)
 library(spdep);library(ctv);library(sf) 
 
-emprego_sf <-  st_read("MS/50MUE250GC_SIR.shp")
+emprego_sf <-  st_read("arquivos/50MUE250GC_SIR.shp")
 
 # ou para ver apenas o contorno
 plot(st_geometry(emprego_sf))
@@ -177,9 +185,9 @@ ggplot() + geom_sf(data = emprego_sf_merged, aes(fill = CE_2016), color = NA, si
 
 Ou usando o `mapview` conforme Pebesma (2018) e <https://r-spatial.github.io/sf/articles/sf5.html>:
 
-```{r}
+```{r, eval=T}
 library(mapview)
-mapview(emprego_sf_merged["CE_2016"], col.regions = sf.colors(10))
+mapview(emprego_sf_merged["CE_2016"], col.regions = sf.colors(79))
 ```
 
 Referências {-#Referências}

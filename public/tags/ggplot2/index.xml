@@ -24,7 +24,7 @@
 &lt;h1&gt;Licença&lt;/h1&gt;
 &lt;p&gt;This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/4.0/&#34; class=&#34;uri&#34;&gt;http://creativecommons.org/licenses/by-sa/4.0/&lt;/a&gt; or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png&#34; alt=&#34;License: CC BY-SA 4.0&#34; style=&#34;width:25.0%&#34; /&gt;
+&lt;img src=&#34;https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png&#34; style=&#34;width:25.0%&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;License: CC BY-SA 4.0&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;As ideias aqui expressas são de responsabilidade exclusiva do autor, e não representam as opiniões da instituição a que pertence.&lt;/p&gt;
@@ -49,8 +49,9 @@ FIGUEIREDO, Adriano Marcos Rodrigues. Mapas em R com &lt;code&gt;geobr&lt;/code&
 &lt;p&gt;Os pacotes (previamente instalados) são aqui carregados:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(geobr)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Loading required namespace: sf&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)
-library(sf)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(ggplot2)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Warning: package &amp;#39;ggplot2&amp;#39; was built under R version 4.0.2&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(sf)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## Linking to GEOS 3.8.0, GDAL 3.0.4, PROJ 6.3.1&lt;/code&gt;&lt;/pre&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr)&lt;/code&gt;&lt;/pre&gt;
 &lt;pre&gt;&lt;code&gt;## 
@@ -76,7 +77,7 @@ A visualização da saída do objeto &lt;code&gt;all_mun_ms&lt;/code&gt; indica 
 [1] &amp;quot;sf&amp;quot;         &amp;quot;data.frame&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;O dataset pode então ser observado. O dataset contém o código do município, o nome do município, o código do estado, a sigla do estado e aspectos geográficos como latitude, longitude dos vários segmentos que permitirão construir o mapa.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;/post/2020-01-31-mapas-em-r-com-geobr_files/saida_all_mun_ms.PNG&#34; alt=&#34;Imagem do objeto all_mun_ms.&#34; /&gt;
+&lt;img src=&#34;/post/2020-01-31-mapas-em-r-com-geobr_files/saida_all_mun_ms.PNG&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;Imagem do objeto &lt;code&gt;all_mun_ms&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;Agora vou construir uma variável para ser plotada no mapa. Preciso ter os meus dados em uma planilha em que uma das colunas será o código do município da mesma forma que consta em &lt;code&gt;code_muni&lt;/code&gt; no objeto &lt;code&gt;all_mun_ms&lt;/code&gt;. Recomendo fazer a associação entre os dados por meio do código, menos sujeito a erros de digitação que para os nomes dos municípios. Para este exemplo, baixei os dados de &lt;a href=&#34;http://atlasbrasil.org.br/2013/pt/download/&#34; class=&#34;uri&#34;&gt;http://atlasbrasil.org.br/2013/pt/download/&lt;/a&gt;, ou mais precisamente em &lt;a href=&#34;http://atlasbrasil.org.br/2013/data/rawData/atlas2013_dadosbrutos_pt.xlsx&#34; class=&#34;uri&#34;&gt;http://atlasbrasil.org.br/2013/data/rawData/atlas2013_dadosbrutos_pt.xlsx&lt;/a&gt;, o site oficial do PNUD para o Índice de Desenvolvimento Humano Municipal do Brasil, para 2013, que nesse caso se refere aos dados do censo demográfico 2010.&lt;/p&gt;

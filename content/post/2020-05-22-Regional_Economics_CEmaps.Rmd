@@ -1,0 +1,195 @@
+---
+title: 'Economia Regional: Mapas de coeficiente de especialização em R'
+author: "Adriano Marcos Rodrigues Figueiredo"
+date: '2020-05-22'
+slug: Regional_Economics_CEmaps
+categories: []
+tags:
+- economia regional
+- desenvolvimento regional
+- especialização
+- mapas
+- Mato Grosso do Sul
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-06-23T15:51:29-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmarkdown)
+library(rmdformats)
+
+## Global options
+options(max.print="100")
+opts_chunk$set(echo=TRUE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=100)
+```
+
+
+Licença {-#Licença}
+===================
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <http://creativecommons.org/licenses/by-sa/4.0/> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+![License: CC BY-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png){ width=25% }
+
+
+Citação {-#Citação}
+===================================
+
+Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional: Mapas de Coeficiente de Especialização em R. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/Regional_Economics_CEmaps>. 
+
+Introdução
+======================
+
+Para realizar seu mapa em R, inicialmente o leitor deve baixar os programas e pacotes necessários ao projeto. Neste caso, sugere-se que utilize o RStudio e o R atualizados, a partir de: http://cran.r-project.org/bin/windows/base/ e https://www.rstudio.com/products/rstudio/download3/. Quando esta revisão foi feita, a versão do RStudio era a _RStudio Desktop 1.2.5042_ e do _R-4.0 for Windows (32/64 bit)_. 
+
+Primeiro instale o R e posteriormente o RStudio, de modo que o segundo reconheça automaticamente o primeiro. Se tudo estiver perfeito, a tela inicial do RStudio mostrará corretamente a versão do R.
+
+
+Mapas em R
+================
+
+Agora a meta é gerar um mapa simples em R. Para tanto, primeiro define-se a malha municipal desejada. Para o presente caso, utilizam-se as malhas digitais do IBGE de http://mapas.ibge.gov.br/bases-e-referenciais/bases-cartograficas/malhas-digitais. Primeiro faz-se o download do arquivo zip completo para Mato Grosso do Sul (MS). A partir de <ftp://geoftp.ibge.gov.br/organizacao_do_territorio/malhas_territoriais/malhas_municipais/municipio_2015/UFs/MS/MS.zip>,  o arquivo foi descompactado no mesmo diretorio de trabalho do projeto R, numa pasta de nome MS. Neste arquivo zip, existem arquivos referentes a unidade da federação 50 para Mato Grosso do Sul (50UE), assim como para a mesorregião (50ME), microrregião (50MI) e municípios (50MU). A referência E250GC_SIR diz respeito à escala (1:250.000) e origem georeferenciada dos mapas (Datum SIRGAS). 
+
+## Pacotes necessários
+
+Agora deve-se instalar os pacotes úteis para fazer os mapas. O R vem com alguns pacotes automaticamente instalados, mas outros pacotes púbicos devem ser chamados para realizar operações específicas. Um deles é o pacote *rgdal*.
+
+```{r warning=FALSE, message=FALSE}
+library(rgdal); library(maptools); library(readxl); library(spdep); library(ctv); library(sf) 
+```
+
+O pacote *rgdal* já fornecerá a primeira função prática para fazer o mapa. Usa-se aqui a função *readOGR* e indica-se o nome do arquivo shape a ser buscado, neste caso, na pasta MS e o arquivo de nome 50MUE250GC_SIR. Neste caso, a base de municípios (indicado por MU). A saída (*plot*) mostra o mapa e as características básicas (79 municípios e 2 campos - nome e código do município).
+
+```{r warning=FALSE, message=FALSE}
+MS.mu <- readOGR("MS", "50MUE250GC_SIR")
+plot(MS.mu)
+```
+
+Agora propõe-se colorir o mapa municipal com cores inserindo o valor do Coeficiente de Especialização - CE. Para tanto, será necessário o pacote *sf*. Colocaremos a saída dput() dos dados do CE calculado para os 79 municipios e 87 divisões CNAE, a partir dos dados de empregos do MTE/RAIS. 
+
+```{r warning=FALSE}
+# pacotes chamados anteriormente
+library(rgdal);library(maptools);library(readxl)
+library(spdep);library(ctv);library(sf) 
+
+emprego_sf <-  st_read("MS/50MUE250GC_SIR.shp")
+
+# ou para ver apenas o contorno
+plot(st_geometry(emprego_sf))
+
+```
+
+Agora usarei o comando `merge` para juntar os dados de CE ao objeto `emprego_sf` criado no último chunk (bloco de scripts).
+
+```{r dados_CE}
+ce_2016<-
+  structure(list(
+    codmun = c("5000203", "5000252", "5000609", "5000708", 
+               "5000807", "5000856", "5000906", "5001003", "5001102", "5001243", 
+               "5001508", "5001904", "5002001", "5002100", "5002159", "5002209", 
+               "5002308", "5002407", "5002605", "5002704", "5002803", "5002902", 
+               "5002951", "5003108", "5003157", "5003207", "5003256", "5003306", 
+               "5003454", "5003488", "5003504", "5003702", "5003751", "5003801", 
+               "5003900", "5004007", "5004106", "5004304", "5004403", "5004502", 
+               "5004601", "5004700", "5004809", "5004908", "5005004", "5005103", 
+               "5005152", "5005202", "5005251", "5005400", "5005608", "5005681", 
+               "5005707", "5005806", "5006002", "5006200", "5006259", "5006275", 
+               "5006309", "5006358", "5006408", "5006606", "5006903", "5007109", 
+               "5007208", "5007307", "5007406", "5007505", "5007554", "5007695", 
+               "5007802", "5007703", "5007901", "5007935", "5007950", "5007976", 
+               "5008008", "5008305", "5008404"), 
+    nomemun = c("Água Clara - MS","Alcinópolis - MS", "Amambai - MS", "Anastácio - MS", 
+                "Anaurilândia - MS", "Angélica - MS", "Antônio João - MS", 
+                "Aparecida do Taboado - MS", 
+                "Aquidauana - MS", "Aral Moreira - MS", "Bandeirantes - MS", 
+                "Bataguassu - MS", "Batayporã - MS", "Bela Vista - MS", "Bodoquena - MS", 
+                "Bonito - MS", "Brasilândia - MS", "Caarapó - MS", "Camapuã - MS", 
+                "Campo Grande - MS", "Caracol - MS", "Cassilândia - MS", "Chapadão do Sul - MS", 
+                "Corguinho - MS", "Coronel Sapucaia - MS", "Corumbá - MS", "Costa Rica - MS", 
+                "Coxim - MS", "Deodápolis - MS", "Dois Irmãos do Buriti - MS", 
+                "Douradina - MS", "Dourados - MS", "Eldorado - MS", "Fátima do Sul - MS", 
+                "Figueirão - MS", "Glória de Dourados - MS", "Guia Lopes da Laguna - MS", 
+                "Iguatemi - MS", "Inocência - MS", "Itaporã - MS", "Itaquiraí - MS", 
+                "Ivinhema - MS", "Japorã - MS", "Jaraguari - MS", "Jardim - MS", 
+                "Jateí - MS", "Juti - MS", "Ladário - MS", "Laguna Carapã - MS", 
+                "Maracaju - MS", "Miranda - MS", "Mundo Novo - MS", "Naviraí - MS", 
+                "Nioaque - MS", "Nova Alvorada do Sul - MS", "Nova Andradina - MS", 
+                "Novo Horizonte do Sul - MS", "Paraíso das Águas - MS", "Paranaíba - MS", 
+                "Paranhos - MS", "Pedro Gomes - MS", "Ponta Porã - MS", "Porto Murtinho - MS", 
+                "Ribas do Rio Pardo - MS", "Rio Brilhante - MS", "Rio Negro - MS", 
+                "Rio Verde de Mato Grosso - MS", "Rochedo - MS", "Santa Rita do Pardo - MS", 
+                "São Gabriel do Oeste - MS", "Selvíria - MS", "Sete Quedas - MS", 
+                "Sidrolândia - MS", "Sonora - MS", "Tacuru - MS", "Taquarussu - MS", 
+                "Terenos - MS", "Três Lagoas - MS", "Vicentina - MS"), 
+    CE_2016 = c(0.5772, 0.5627, 0.2312, 0.4615, 0.4398, 0.7682, 0.5212, 0.4393, 0.2811, 
+                0.4744, 0.4282, 0.4141, 0.3852, 0.3901, 0.4941, 0.4008, 0.4639, 
+                0.3579, 0.3499, 0.19, 0.5811, 0.2847, 0.3367, 0.5722, 0.4153, 
+                0.2426, 0.4267, 0.2797, 0.3323, 0.4934, 0.4316, 0.2656, 0.2798, 
+                0.3251, 0.564, 0.3027, 0.3983, 0.3286, 0.4468, 0.3832, 0.4548, 
+                0.2763, 0.6395, 0.5064, 0.2479, 0.6099, 0.4653, 0.6171, 0.5526, 
+                0.2785, 0.3785, 0.3125, 0.2198, 0.431, 0.449, 0.2381, 0.3679, 
+                0.5354, 0.3131, 0.4944, 0.4372, 0.1949, 0.5528, 0.5936, 0.4358, 
+                0.4569, 0.3518, 0.5224, 0.5895, 0.344, 0.5973, 0.3571, 0.3364, 
+                0.498, 0.4703, 0.6074, 0.4552, 0.3702, 0.5127)), 
+    class = c("tbl_df", "tbl", "data.frame"), row.names = c(NA, -79L))
+```
+
+Aos leitores mais curiosos, uma boa leitura está em <https://r-spatial.github.io/sf/articles/sf5.html>.
+
+```{r merge}
+emprego_sf_merged <- merge(emprego_sf, ce_2016, by.x = "CD_GEOCMU", by.y = "codmun")
+names(emprego_sf_merged)
+plot(emprego_sf_merged[, "CE_2016"], 
+     border = "red", axes = TRUE, main = "CE 2016 MS, 79obs",
+     breaks = c(0,.1,.2,.3,.4,.5,.6,.7,.8,.9,1))
+```
+
+Ou fazendo igual ao mapa de Figueiredo (2020), ou associar o objeto `sf` com o `ggplot2`::
+
+```{r}
+library(ggplot2)
+library("ggspatial")
+ggplot() + geom_sf(data = emprego_sf_merged, aes(fill = CE_2016), color = NA, size = 0.15) + 
+    labs(title = "CE 2016 dos Municípios de MS", caption = "Fonte: Elaboração própria", 
+        size = 8) + scale_fill_distiller(palette = "RdGy", limits = c(0.1, 0.8), 
+    name = "CE_2016") + theme_minimal() + annotation_north_arrow(location = "bl", which_north = "true", 
+    pad_x = unit(0.65, "in"), pad_y = unit(0.3, "in"), style = north_arrow_fancy_orienteering) + 
+    annotation_scale(location = "bl", width_hint = 0.3)
+```
+
+Ou usando o `mapview` conforme Pebesma (2018) e <https://r-spatial.github.io/sf/articles/sf5.html>:
+
+```{r}
+library(mapview)
+mapview(emprego_sf_merged["CE_2016"], col.regions = sf.colors(10))
+```
+
+Referências {-#Referências}
+========================
+
+
+ENGEL, Claudia A. Using Spatial Data with R. Disponível em: <https://cengel.github.io/R-spatial/>. 11 Feb, 2019.
+
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional: polos, diversidade e especialização em R. Campo Grande-MS,Brasil: RStudio/Rpubs, 2019. Disponível em http://rpubs.com/amrofi/Regional_Economics_poles_diversity.
+
+FIGUEIREDO, Adriano Marcos Rodrigues. Economia Regional em R: Indicadores de análise de especialização regional - QL, CE, KSI, RDI, DIV, UBIQ. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em http://rpubs.com/amrofi/regional_parte_2 e https://adrianofigueiredo.netlify.app/post/economia-regional-em-r-indicadores-de-analise-2/.
+
+PEBESMA, E., 2018. Simple Features for R: Standardized Support for Spatial Vector Data. The R Journal 10 (1), 439-446, https://doi.org/10.32614/RJ-2018-009.

@@ -185,10 +185,28 @@ ggplot() + geom_sf(data = emprego_sf_merged, aes(fill = CE_2016), color = NA, si
 
 Ou usando o `mapview` conforme Pebesma (2018) e <https://r-spatial.github.io/sf/articles/sf5.html>:
 
-```{r, eval=T}
-library(mapview)
-mapview(emprego_sf_merged["CE_2016"], col.regions = sf.colors(10))
+```{r, eval=T,message=F,warning=F}
+library(mapview);library(sf);library(mapview)
+library(leaflet); library(leafem)
+library(leaflet.extras)
+library(htmlwidgets)
+library(dplyr)
+m<-mapview(emprego_sf_merged["CE_2016"])
+mapshot(m, url = paste0(getwd(), "/map.html"))
 ```
+
+O chunk acima gerou um arquivo html que foi colocado externamente para vocês [aqui](https:\\github.com\amrofi\blogdown\tree\master\static\post\map.html).   
+
+
+```{r, eval=T,message=FALSE,warning=FALSE}
+library(tmap);library(sf)
+map_emprego = qtm(emprego_sf_merged, fill="CE_2016")
+tmap_mode(mode = c("plot")) # "view" para mapa dinamico
+map_emprego + 
+  tm_compass(type = "8star", position = c("left", "top")) +
+  tm_scale_bar(breaks = c(0, 100, 200), text.size = 1)
+```
+
 
 Referências {-#Referências}
 ========================

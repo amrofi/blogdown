@@ -13,3 +13,9 @@ ctv
 ggplot2
 ggspatial
 mapview
+tmap
+leaflet
+leafem
+leaflet.extras
+htmlwidgets
+dplyr

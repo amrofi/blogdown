@@ -149,7 +149,7 @@ library(htmlwidgets)
 library(dplyr)
 m &amp;lt;- mapview(emprego_sf_merged[&amp;quot;CE_2016&amp;quot;])
 mapshot(m, url = paste0(getwd(), &amp;quot;/map.html&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;O chunk acima gerou um arquivo html que foi colocado externamente para vocês &lt;a href=&#34;https://adrianofigueiredo.netlify.app/github.com/amrofi/blogdown/tree/master/static/post/map.html&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;O chunk acima gerou um arquivo html que foi colocado externamente para vocês &lt;a href=&#34;https://github.com/amrofi/blogdown/blob/master/static/post/map.html&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tmap)
 library(sf)
 map_emprego = qtm(emprego_sf_merged, fill = &amp;quot;CE_2016&amp;quot;)

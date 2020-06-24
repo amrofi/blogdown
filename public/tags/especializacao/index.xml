@@ -149,7 +149,7 @@ library(htmlwidgets)
 library(dplyr)
 m &amp;lt;- mapview(emprego_sf_merged[&amp;quot;CE_2016&amp;quot;])
 mapshot(m, url = paste0(getwd(), &amp;quot;/map.html&amp;quot;))&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;O chunk acima gerou um arquivo html que foi colocado externamente para vocês &lt;a href=&#34;https://adrianofigueiredo.netlify.app/github.com/amrofi/blogdown/tree/master/static/post/map.html&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;O chunk acima gerou um arquivo html que foi colocado externamente para vocês &lt;a href=&#34;https://github.com/amrofi/blogdown/blob/master/static/post/map.html&#34;&gt;aqui&lt;/a&gt;.&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(tmap)
 library(sf)
 map_emprego = qtm(emprego_sf_merged, fill = &amp;quot;CE_2016&amp;quot;)
@@ -181,7 +181,7 @@ map_emprego + tm_compass(type = &amp;quot;8star&amp;quot;, position = c(&amp;quo
 &lt;h1&gt;Licença&lt;/h1&gt;
 &lt;p&gt;This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit &lt;a href=&#34;http://creativecommons.org/licenses/by-sa/4.0/&#34; class=&#34;uri&#34;&gt;http://creativecommons.org/licenses/by-sa/4.0/&lt;/a&gt; or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png&#34; alt=&#34;License: CC BY-SA 4.0&#34; style=&#34;width:25.0%&#34; /&gt;
+&lt;img src=&#34;https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png&#34; style=&#34;width:25.0%&#34; alt=&#34;&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;License: CC BY-SA 4.0&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;

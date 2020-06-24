@@ -27,7 +27,7 @@ projects: []
 <h1>Licença</h1>
 <p>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <a href="http://creativecommons.org/licenses/by-sa/4.0/" class="uri">http://creativecommons.org/licenses/by-sa/4.0/</a> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.</p>
 <div class="figure">
-<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="License: CC BY-SA 4.0" style="width:25.0%" />
+<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" style="width:25.0%" alt="" />
 <p class="caption">License: CC BY-SA 4.0</p>
 </div>
 </div>
@@ -501,7 +501,7 @@ Classic_Measures_Isard &lt;- read_excel(&quot;Classic_Measures_Isard.xlsx&quot;,
 </tbody>
 </table>
 <div class="figure">
-<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/basic_data_haddad.png" alt="Tela dos dados básicos para realizar Quociente Locacional" style="width:80.0%" />
+<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/basic_data_haddad.png" style="width:80.0%" alt="" />
 <p class="caption">Tela dos dados básicos para realizar Quociente Locacional</p>
 </div>
 </div>
@@ -843,7 +843,7 @@ knitr::kable(LQ1, caption = &quot;Quociente Locacional em T0 e T1&quot;)</code><
 </table>
 <p>E agora reproduzimos a tela do Excel, pasta “LQ1”, previamente calculado para conferência.</p>
 <div class="figure">
-<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/LQ1.png" alt="Resultados da planilha em MS Excel para LQ1" style="width:80.0%" />
+<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/LQ1.png" style="width:80.0%" alt="" />
 <p class="caption">Resultados da planilha em MS Excel para LQ1</p>
 </div>
 </div>
@@ -857,13 +857,13 @@ QL_{i}=\left( {\frac{{\frac{{{R_{i}}}}{N_i}}}{{\frac{{{R}}}{N}}}} \right)=\left(
 <h4>LQ1</h4>
 <p>Passo 1: calcular as parcelas regionais (<em>regional shares</em>). Desta forma, o primeiro passo será obter <span class="math inline">\(\frac{R_i}{N_i}\)</span>.O procedimento começa fazendo as contas do valor (para a célula C4) igual a <code>='Basic data'!C4/'Basic data'!C$29</code>. Ou seja, a célula C4 (produção da Region1 Sector1 em ‘Basic data’) dividido pela célula C29 (produção Total Sector1 em ‘Basic data’). Os cálculos seguem para as demais células e encorajamos o leitor a fazer a checagem na planilha.</p>
 <div class="figure">
-<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/regional_shares.png" alt="Cálculo do share regional" style="width:80.0%" />
+<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/regional_shares.png" style="width:80.0%" alt="" />
 <p class="caption">Cálculo do share regional</p>
 </div>
 <p>O resultado obtido na coluna G, em Regional Shares, indica a parcela da região 1 no total (<code>='Basic data'!G4/'Basic data'!G$29</code> em ‘Regional Shares’).</p>
 <p>Passo 2: O resultado da coluna G será o denominador da expressão de <span class="math inline">\(QL_i\)</span>. Ou seja, passamos então ao passo 2 que é efetivamente o cálculo do QL.</p>
 <div class="figure">
-<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/LQ1_formula.png" alt="Cálculo do quociente locacional - LQ1" style="width:80.0%" />
+<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/LQ1_formula.png" style="width:80.0%" alt="" />
 <p class="caption">Cálculo do quociente locacional - LQ1</p>
 </div>
 <p>O cálculo do valor (para a célula C4) igual a <code>='Regional shares'!C4/'Regional shares'!$G4</code>. Ou seja, a célula C4 (‘Regional shares’ da Region1 Sector1) dividido pela célula G4 de ‘Regional shares’ (o share total).</p>
@@ -873,12 +873,12 @@ QL_{i}=\left( {\frac{{\frac{{{R_{i}}}}{N_i}}}{{\frac{{{R}}}{N}}}} \right)=\left(
 <p>O cálculo semelhante é feito por Haddad (2018) em LQ2 para evidenciar que fazendo pelo share setorial dará resultado igual, mas deve-se atentar pela alteração do sentido.</p>
 <p>Passo 1 para LQ2: Neste LQ2, o cálculo será pela linha (ou seja, <span class="math inline">\(R_i/R\)</span>. Na planilha ‘Sectoral shares’, você encontrará em C4 a fórmula: <code>='Basic data'!C4/'Basic data'!$G4</code>, ou seja, agora divide-se a coluna C por G fazendo o <em>sectoral share</em>. A linha 29 dará o denominador <span class="math inline">\(N_i/N\)</span>.</p>
 <div class="figure">
-<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/sectoral_shares.png" alt="Cálculo do share setorial" style="width:80.0%" />
+<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/sectoral_shares.png" style="width:80.0%" alt="" />
 <p class="caption">Cálculo do share setorial</p>
 </div>
 <p>Passo 2 para LQ2: agora faz-se o cálculo do quociente locacional usando a fórmula, para a célula C4, <code>='Sectoral shares'!C4/'Sectoral shares'!C$29</code>, ou seja, o share setorial da região dividido pelo share setorial do país (total).</p>
 <div class="figure">
-<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/LQ2_formula.png" alt="Cálculo do quociente locacional - LQ2" style="width:80.0%" />
+<img src="/post/2020-04-28-economia-regional-reprodução-de-medidas-de-lq_files/LQ2_formula.png" style="width:80.0%" alt="" />
 <p class="caption">Cálculo do quociente locacional - LQ2</p>
 </div>
 </div>

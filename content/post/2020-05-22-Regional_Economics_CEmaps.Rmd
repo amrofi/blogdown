@@ -195,7 +195,7 @@ m<-mapview(emprego_sf_merged["CE_2016"])
 mapshot(m, url = paste0(getwd(), "/map.html"))
 ```
 
-O chunk acima gerou um arquivo html que foi colocado externamente para vocês [aqui](https:\\github.com\amrofi\blogdown\tree\master\static\post\map.html).   
+O chunk acima gerou um arquivo html que foi colocado externamente para vocês [aqui](https://adrianofigueiredo.netlify.app/github.com/amrofi/blogdown/tree/master/static/post/map.html).   
 
 
 ```{r, eval=T,message=FALSE,warning=FALSE}

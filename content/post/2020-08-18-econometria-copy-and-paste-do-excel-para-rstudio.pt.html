@@ -1,0 +1,117 @@
+---
+title: 'Econometria: copy and paste do Excel para RStudio'
+author: 'Adriano M R Figueiredo'
+date: '2020-08-18'
+slug: copy-paste
+categories: []
+tags:
+  - econometria
+subtitle: ''
+summary: 'This is an undergrad student level instruction for class use.'
+authors: []
+lastmod: '2020-08-18T17:43:05-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+<div id="Licença" class="section level1 unnumbered">
+<h1>Licença</h1>
+<p>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <a href="http://creativecommons.org/licenses/by-sa/4.0/" class="uri">http://creativecommons.org/licenses/by-sa/4.0/</a> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.</p>
+<div class="figure">
+<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" style="width:25.0%" alt="" />
+<p class="caption">License: CC BY-SA 4.0</p>
+</div>
+</div>
+<div id="Citação" class="section level1 unnumbered">
+<h1>Citação</h1>
+<p>Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Econometria: copy and paste do Excel para RStudio. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <a href="http://rpubs.com/amrofi/copy_paste" class="uri">http://rpubs.com/amrofi/copy_paste</a> e <a href="https://adrianofigueiredo.netlify.app/post/copy-paste/" class="uri">https://adrianofigueiredo.netlify.app/post/copy-paste/</a>.</p>
+</div>
+<div id="script-para-reprodução-se-utilizar-citar-como-acima" class="section level1">
+<h1>Script para reprodução (se utilizar, citar como acima)</h1>
+<a href="data:text/x-markdown;base64,LS0tDQp0aXRsZTogJ0Vjb25vbWV0cmlhOiBjb3B5IGFuZCBwYXN0ZSBkbyBFeGNlbCBwYXJhIFJTdHVkaW8nDQphdXRob3I6ICdBZHJpYW5vIE0gUiBGaWd1ZWlyZWRvJw0KZGF0ZTogJzIwMjAtMDgtMTgnDQpzbHVnOiBjb3B5LXBhc3RlDQpjYXRlZ29yaWVzOiBbXQ0KdGFnczoNCiAgLSBlY29ub21ldHJpYQ0Kc3VidGl0bGU6ICcnDQpzdW1tYXJ5OiAnVGhpcyBpcyBhbiB1bmRlcmdyYWQgc3R1ZGVudCBsZXZlbCBpbnN0cnVjdGlvbiBmb3IgY2xhc3MgdXNlLicNCmF1dGhvcnM6IFtdDQpsYXN0bW9kOiAnMjAyMC0wOC0xOFQxNzo0MzowNS0wNDowMCcNCmZlYXR1cmVkOiBubw0KaW1hZ2U6DQogIGNhcHRpb246ICcnDQogIGZvY2FsX3BvaW50OiAnJw0KICBwcmV2aWV3X29ubHk6IG5vDQpwcm9qZWN0czogW10NCi0tLQ0KDQpgYGB7ciBrbml0cl9pbml0LCBlY2hvPUZBTFNFLCBjYWNoZT1GQUxTRX0NCmxpYnJhcnkoa25pdHIpDQpsaWJyYXJ5KHJtYXJrZG93bikNCmxpYnJhcnkocm1kZm9ybWF0cykNCg0KIyMgR2xvYmFsIG9wdGlvbnMNCm9wdGlvbnMobWF4LnByaW50PSIxMDAiKQ0Kb3B0c19jaHVuayRzZXQoZWNobz1UUlVFLA0KCSAgICAgICAgICAgICBjYWNoZT1UUlVFLA0KICAgICAgICAgICAgICAgcHJvbXB0PUZBTFNFLA0KICAgICAgICAgICAgICAgdGlkeT1UUlVFLA0KICAgICAgICAgICAgICAgY29tbWVudD1OQSwNCiAgICAgICAgICAgICAgIG1lc3NhZ2U9RkFMU0UsDQogICAgICAgICAgICAgICB3YXJuaW5nPUZBTFNFKQ0Kb3B0c19rbml0JHNldCh3aWR0aD0xMDApDQpgYGANCg0KDQpMaWNlbsOnYSB7LSNMaWNlbsOnYX0NCj09PT09PT09PT09PT09PT09PT0NCg0KVGhpcyB3b3JrIGlzIGxpY2Vuc2VkIHVuZGVyIHRoZSBDcmVhdGl2ZSBDb21tb25zIEF0dHJpYnV0aW9uLVNoYXJlQWxpa2UgNC4wIEludGVybmF0aW9uYWwgTGljZW5zZS4gVG8gdmlldyBhIGNvcHkgb2YgdGhpcyBsaWNlbnNlLCB2aXNpdCA8aHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbGljZW5zZXMvYnktc2EvNC4wLz4gb3Igc2VuZCBhIGxldHRlciB0byBDcmVhdGl2ZSBDb21tb25zLCBQTyBCb3ggMTg2NiwgTW91bnRhaW4gVmlldywgQ0EgOTQwNDIsIFVTQS4NCg0KIVtMaWNlbnNlOiBDQyBCWS1TQSA0LjBdKGh0dHBzOi8vbWlycm9ycy5jcmVhdGl2ZWNvbW1vbnMub3JnL3ByZXNza2l0L2J1dHRvbnMvODh4MzEvcG5nL2J5LXNhLnBuZyl7IHdpZHRoPTI1JSB9DQoNCkNpdGHDp8OjbyB7LSNDaXRhw6fDo299DQo9PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PQ0KDQpTdWdlc3TDo28gZGUgY2l0YcOnw6NvOg0KRklHVUVJUkVETywgQWRyaWFubyBNYXJjb3MgUm9kcmlndWVzLiBFY29ub21ldHJpYTogY29weSBhbmQgcGFzdGUgZG8gRXhjZWwgcGFyYSBSU3R1ZGlvLiBDYW1wbyBHcmFuZGUtTVMsQnJhc2lsOiBSU3R1ZGlvL1JwdWJzLCAyMDIwLiBEaXNwb27DrXZlbCBlbSA8aHR0cDovL3JwdWJzLmNvbS9hbXJvZmkvY29weV9wYXN0ZT4gZSA8aHR0cHM6Ly9hZHJpYW5vZmlndWVpcmVkby5uZXRsaWZ5LmFwcC9wb3N0L2NvcHktcGFzdGUvPi4gDQoNClNjcmlwdCBwYXJhIHJlcHJvZHXDp8OjbyAoc2UgdXRpbGl6YXIsIGNpdGFyIGNvbW8gYWNpbWEpDQo9PT09PT09PT09PT09PT09PT0NCg0KYGBge3IgZWNobz1GQUxTRX0NCiMgYSBzaW5nbGUgZmlsZQ0KeGZ1bjo6ZW1iZWRfZmlsZSgnMjAyMC0wOC0xOC1lY29ub21ldHJpYS1jb3B5LWFuZC1wYXN0ZS1kby1leGNlbC1wYXJhLXJzdHVkaW8ucHQuUm1kJykNCmBgYA0KDQpJbnRyb2R1w6fDo28NCj09PT09PT09PT09PT09PT09PT0NCg0KDQpFc3RlIG1hdGVyaWFsIMOpIHVtIHBlcXVlbm8gYXV4w61saW8gcGFyYSB0cmF6ZXIgb3MgZGFkb3MgZG8gTVMgRXhjZWwgcGFyYSBvIFJTdHVkaW8gZmF6ZW5kbyBjb3BpYXIgKGNvbnRyb2wrQykgZSBjb2xhciAoY29udHJvbCtWKS4NCiAgICANCk8gZXhlbXBsbyBwYXJ0ZSBkYSBpZGVpYSBkZSBTb3V6YSAoMjAxNSkuDQoNClByb2NlZGltZW50b3MNCj09PT09PT09PT09PT09PT09PT0NCg0KQSBsw7NnaWNhIGRvIHByb2NlZGltZW50byDDqSBjb2xvY2FyIG9zIGRhZG9zIG5hIF9jbGlwYm9hcmRfIGUgZGVwb2lzIHB1eGFyIHBhcmEgbyBSU3R1ZGlvLg0KDQoxLiAgICBBYnJhIHN1YSBwbGFuaWxoYSBlbSBNUyBFeGNlbCBjb250ZW5kbyBvcyBkYWRvcyBvcmdhbml6YWRvczsgICAgDQoyLiAgICBBYnJhIG8gUlN0dWRpbyBubyBwcm9qZXRvIGRlIHRyYWJhbGhvIGUgYWJyYSB1bSBzY3JpcHQ7ICAgIA0KMy4gICAgTm8gTVMgRXhjZWwsIGNvcGllIChjb250cm9sK0MpIG5vcyBkYWRvcyBjb20gcsOzdHVsb3M7IA0KDQoNCg0KYGBge3Igc2VsZWNhb194bHN4LCBmaWcuYWxpZ24gPSAiY2VudGVyIiwgb3V0LndpZHRoID0gIjgwJSIsIGZpZy5jYXAgPSAnw4FyZWEgc2VsZWNpb25hZGEgbmEgcGxhbmlsaGEgTVMgRXhjZWwuIEZvbnRlOiBFbGFib3Jhw6fDo28gcHLDs3ByaWEuJyxlY2hvPUZBTFNFfQ0Ka25pdHI6OmluY2x1ZGVfZ3JhcGhpY3MoIkltYWdlbTEucG5nIikNCmBgYA0KDQo0LiAgICBObyBzY3JpcHQgZG8gUlN0dWRpbywgY29sZSBvIGPDs2RpZ28gYWJhaXhvIGUgZXhlY3V0ZSBhcMOzcyBvICdjb3BpYXInIGRvIE1TIEV4Y2VsOg0KDQpgYGB7ciwgZXZhbD1GQUxTRX0NCmRhZG9zIDwtIHJlYWQudGFibGUoJ2NsaXBib2FyZCcsDQogICAgICAgICAgICAgICAgICAgc2VwPScnLCANCiAgICAgICAgICAgICAgICAgICBoZWFkZXI9VFJVRSwgDQogICAgICAgICAgICAgICAgICAgZGVjPScsJywgDQogICAgICAgICAgICAgICAgICAgcm93Lm5hbWVzPTEpDQpgYGANCiAgICANCkFvIHJvZGFyIG8gc2NyaXB0LCBvIFJTdHVkaW8gZW50ZW5kZXLDoSBxdWUgZGV2ZSBwZWdhciBvcyBkYWRvcyBkbyBfY2xpcGJvYXJkXyBlIGNvbG9jYXIgbm8gb2JqZXRvIGBkYWRvc2AuIEEgb3DDp8OjbyBgc2VwYCBpbmRpY2EgcXVlIG9zIGRhZG9zIGVzdMOjbyBzZXBhcmFkb3MgcG9yIHRhYnVsYcOnw6NvIChkZWZhdWx0IGRvIEV4Y2VsKTsgYSBvcMOnw6NvIGBoZWFkZXI9VFJVRWAgaW5kaWNhIHF1ZSBvIHLDs3R1bG8gZGFzIGNvbHVuYXMgZGV2ZSBzZXIgbWFudGlkbzsgYSBvcMOnw6NvIGBkZWM9JywnYCBpbmRpY2EgcXVlIG9zIGRlY2ltYWlzIGVzdMOjbyBzZXBhcmFkb3MgcG9yIHbDrXJndWxhIChfY29tbWEgc2VwYXJhdGVkIHZhbHVlc18pOyBhIG9ww6fDo28gYHJvdy5uYW1lcz0xYCBpbmRpY2EgYSBjb2x1bmEgaWRlbnRpZmljYWRvcmEgbmEgcGxhbmlsaGEgb3JpZ2luYWwuIENvbW8gbm8gcHJlc2VudGUgY2FzbyBuw6NvIHNlIHRlbSBjb2x1bmEgaWRlbnRpZmljYWRvcmEsIGRlaXhhLXNlIHNlbSBlc3NhIG9ww6fDo28gZSBlbGUgbnVtZXJhcsOhIHNlcXVlbmNpYWxtZW50ZSBvcyBkYWRvcy4gTm8gY2FzbywgY29tbyBhIGPDqWx1bGEgQTEgZXN0w6EgdmF6aWEsIG8gUlN0dWRpbyBlbnRlbmRlIHF1ZSBlc3RhIMOpIGEgY29sdW5hIGlkZW50aWZpY2Fkb3JhLiBQb3J0YW50bywgZXhlY3V0b3Utc2UgYWJhaXhvOiAgICANCg0KUG9ydGFudG8sIGRldmUtc2UgdGVyIG9zIGRhZG9zIG5vIG9iamV0byBkYWRvcyBlIHN1YSB2aXN1YWxpemHDp8OjbyDDqSBmZWl0YSBwZWxhIGZ1bsOnw6NvIGBWaWV3YCBvdSBubyBwcmVzZW50ZSBjYXNvLCBgcHJpbnRgLiBBIGZ1bsOnw6NvIGB0eXBlLmNvbnZlcnRgIGluc3RydWkgYSBjb252ZXJzw6NvIGRhcyBjb2x1bmFzIGRlIGRhZG9zIGRlIGBjaGFyYWN0ZXJgIHBhcmEgYGRvdWJsZWAgKG91IHNlamEsIG51bcOpcmljbykNCg0KYGBge3J9DQpkYWRvcyA8LSByZWFkLnRhYmxlKCdjbGlwYm9hcmQnLA0KICAgICAgICAgICAgICAgICAgIHNlcD0nJywgDQogICAgICAgICAgICAgICAgICAgaGVhZGVyPVRSVUUsIA0KICAgICAgICAgICAgICAgICAgIGRlYz0nLCcpDQpkYWRvcy5jb252ZXJ0PC10eXBlLmNvbnZlcnQoZGFkb3MpDQpwcmludChkYWRvcy5jb252ZXJ0WywxOjddKQ0KYGBgDQoNCmBgYHtyfQ0Kc3VtbWFyeShkYWRvcy5jb252ZXJ0KQ0KYGBgDQoNClJlZmVyw6puY2lhcyB7LSNSZWZlcsOqbmNpYXN9DQo9PT09PT09PT09PT09PT09PT09PT09PT0NCg0KU09VWkEsIFIuTy4gQ29waWFuZG8gcGxhbmlsaGFzIFJTdHVkaW8uIFJTdHVkaW8sIDIwMTUuIERpc3BvbsOtdmVsIGVtOiA8aHR0cHM6Ly9ycHVicy5jb20vUk9HUk8vNjkyNTY+LiBBY2Vzc28gZW0gMTguQWdvLjIwMjAu" download="2020-08-18-econometria-copy-and-paste-do-excel-para-rstudio.pt.Rmd">Download 2020-08-18-econometria-copy-and-paste-do-excel-para-rstudio.pt.Rmd</a>
+</div>
+<div id="introdução" class="section level1">
+<h1>Introdução</h1>
+<p>Este material é um pequeno auxílio para trazer os dados do MS Excel para o RStudio fazendo copiar (control+C) e colar (control+V).</p>
+<p>O exemplo parte da ideia de Souza (2015).</p>
+</div>
+<div id="procedimentos" class="section level1">
+<h1>Procedimentos</h1>
+<p>A lógica do procedimento é colocar os dados na <em>clipboard</em> e depois puxar para o RStudio.</p>
+<ol style="list-style-type: decimal">
+<li>Abra sua planilha em MS Excel contendo os dados organizados;<br />
+</li>
+<li>Abra o RStudio no projeto de trabalho e abra um script;<br />
+</li>
+<li>No MS Excel, copie (control+C) nos dados com rótulos;</li>
+</ol>
+<div class="figure">
+<img src="Imagem1.png" alt="" />
+<p class="caption"><em>Área selecionada na planilha MS Excel. Fonte: Elaboração própria.</em></p>
+</div>
+<ol start="4" style="list-style-type: decimal">
+<li>No script do RStudio, cole o código abaixo e execute após o ‘copiar’ do MS Excel:</li>
+</ol>
+<pre class="r"><code>dados &lt;- read.table(&quot;clipboard&quot;, sep = &quot;&quot;, header = TRUE, dec = &quot;,&quot;, row.names = 1)</code></pre>
+<p>Ao rodar o script, o RStudio entenderá que deve pegar os dados do <em>clipboard</em> e colocar no objeto <code>dados</code>. A opção <code>sep</code> indica que os dados estão separados por tabulação (default do Excel); a opção <code>header=TRUE</code> indica que o rótulo das colunas deve ser mantido; a opção <code>dec=','</code> indica que os decimais estão separados por vírgula (<em>comma separated values</em>); a opção <code>row.names=1</code> indica a coluna identificadora na planilha original. Como no presente caso não se tem coluna identificadora, deixa-se sem essa opção e ele numerará sequencialmente os dados. No caso, como a célula A1 está vazia, o RStudio entende que esta é a coluna identificadora. Portanto, executou-se abaixo:</p>
+<p>Portanto, deve-se ter os dados no objeto dados e sua visualização é feita pela função <code>View</code> ou no presente caso, <code>print</code>. A função <code>type.convert</code> instrui a conversão das colunas de dados de <code>character</code> para <code>double</code> (ou seja, numérico)</p>
+<pre class="r"><code>dados &lt;- read.table(&quot;clipboard&quot;, sep = &quot;&quot;, header = TRUE, dec = &quot;,&quot;)
+dados.convert &lt;- type.convert(dados)
+print(dados.convert[, 1:7])</code></pre>
+<pre><code>   YEAR    Y    X2   X3   X4    X5    X6
+1  1960 27.8 397.5 42.2 50.7  78.3  65.8
+2  1961 29.9 413.3 38.1 52.0  79.2  66.9
+3  1962 29.8 439.2 40.3 54.0  79.2  67.8
+4  1963 30.8 459.7 39.5 55.3  79.2  69.6
+5  1964 31.2 492.9 37.3 54.7  77.4  68.7
+6  1965 33.3 528.6 38.1 63.7  80.2  73.6
+7  1966 35.6 560.3 39.3 69.8  80.4  76.3
+8  1967 36.4 624.6 37.8 65.9  83.9  77.2
+9  1968 36.7 666.4 38.4 64.5  85.5  78.1
+10 1969 38.4 717.8 40.1 70.0  93.7  84.7
+11 1970 40.4 768.2 38.6 73.2 106.1  93.3
+12 1971 40.3 843.3 39.8 67.8 104.8  89.7
+13 1972 41.8 911.6 39.7 79.1 114.0 100.7
+14 1973 40.4 931.1 52.1 95.4 124.1 113.5
+ [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 9 rows ]</code></pre>
+<pre class="r"><code>summary(dados.convert)</code></pre>
+<pre><code>      YEAR            Y               X2               X3       
+ Min.   :1960   Min.   :27.80   Min.   : 397.5   Min.   :37.30  
+ 1st Qu.:1966   1st Qu.:34.45   1st Qu.: 544.5   1st Qu.:38.95  
+ Median :1971   Median :40.30   Median : 843.3   Median :40.30  
+ Mean   :1971   Mean   :39.67   Mean   :1035.1   Mean   :48.00  
+ 3rd Qu.:1976   3rd Qu.:43.40   3rd Qu.:1399.5   3rd Qu.:58.10  
+ Max.   :1982   Max.   :52.90   Max.   :2478.7   Max.   :70.40  
+       X4              X5              X6              lny       
+ Min.   : 50.7   Min.   : 77.4   Min.   : 65.80   Min.   :3.325  
+ 1st Qu.: 64.1   1st Qu.: 80.3   1st Qu.: 74.95   1st Qu.:3.539  
+ Median : 73.2   Median :106.1   Median : 93.30   Median :3.696  
+ Mean   : 90.4   Mean   :124.4   Mean   :107.86   Mean   :3.664  
+ 3rd Qu.:125.8   3rd Qu.:143.2   3rd Qu.:134.40   3rd Qu.:3.770  
+ Max.   :168.2   Max.   :232.6   Max.   :189.40   Max.   :3.968  
+      lnx2            lnx3            lnx4            lnx5      
+ Min.   :5.985   Min.   :3.619   Min.   :3.926   Min.   :4.349  
+ 1st Qu.:6.299   1st Qu.:3.662   1st Qu.:4.160   1st Qu.:4.386  
+ Median :6.737   Median :3.696   Median :4.293   Median :4.664  
+ Mean   :6.783   Mean   :3.847   Mean   :4.434   Mean   :4.751  
+ 3rd Qu.:7.243   3rd Qu.:4.062   3rd Qu.:4.834   3rd Qu.:4.965  
+ Max.   :7.815   Max.   :4.254   Max.   :5.125   Max.   :5.449  
+      lnx6      
+ Min.   :4.187  
+ 1st Qu.:4.317  
+ Median :4.536  
+ Mean   :4.619  
+ 3rd Qu.:4.901  
+ Max.   :5.244  </code></pre>
+</div>
+<div id="Referências" class="section level1 unnumbered">
+<h1>Referências</h1>
+<p>SOUZA, R.O. Copiando planilhas RStudio. RStudio, 2015. Disponível em: <a href="https://rpubs.com/ROGRO/69256" class="uri">https://rpubs.com/ROGRO/69256</a>. Acesso em 18.Ago.2020.</p>
+</div>

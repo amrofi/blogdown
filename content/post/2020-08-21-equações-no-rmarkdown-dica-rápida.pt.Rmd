@@ -1,0 +1,156 @@
+---
+title: 'Equações no RMarkdown: dica rápida'
+author: "Adriano M R Figueiredo"
+date: '2020-08-21'
+slug: dica-equations
+categories: []
+tags:
+- econometria
+- equações
+subtitle: ''
+summary: This is an undergrad student level instruction for class use.
+authors: []
+lastmod: '2020-08-21T16:05:05-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+library(knitr)
+library(rmarkdown)
+library(rmdformats)
+
+## Global options
+options(max.print="100")
+opts_chunk$set(echo=TRUE,
+	             cache=TRUE,
+               prompt=FALSE,
+               tidy=TRUE,
+               comment=NA,
+               message=FALSE,
+               warning=FALSE)
+opts_knit$set(width=100)
+```
+
+
+Licença {-#Licença}
+===================
+
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <http://creativecommons.org/licenses/by-sa/4.0/> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+![License: CC BY-SA 4.0](https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png){ width=25% }
+
+Citação {-#Citação}
+===================================
+
+Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Equações no RMarkdown: dica rápida. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <http://rpubs.com/amrofi/dica-equations> e <https://adrianofigueiredo.netlify.app/post/dica-equations/>. 
+
+Descrição
+===================
+
+Esta é uma dica rápida para fazer equações no seu texto.    
+
+> Exemplo 1
+
+Seja um dataset como do script abaixo:
+
+```{r dados}
+dados <- structure(list(y = c(70, 65, 90, 95, 110, 115, 120, 140, 155, 150), 
+    x = c(80, 100, 120, 140, 160, 180, 200, 220, 240, 260), obs = c(1, 2, 3, 
+        4, 5, 6, 7, 8, 9, 10)), row.names = c(NA, -10L), class = c("tbl_df", 
+    "tbl", "data.frame"))
+attach(dados)
+library(knitr)  # pacote para a funcao kable
+kable(dados,caption = "Dados básicos.")  # funcao para visualizar os dados em uma forma de tabela
+```
+
+Agora farei a regressão pela função nativa `lm`:
+
+```{r regressao}
+reg1 <- lm(y ~ x)  # regressao pela funcao lm nativa do R 
+summary(reg1)  # ver o sumario de resultados do objeto reg1: saída da regressao
+```
+Agora posso fazer a equação que representa essa saída utilizando o pacote `equatiomatic` (https://github.com/datalorax/equatiomatic) desenvolvido por Daniel Anderson et al. Você precisará instalá-lo a partir do GitHub.
+
+```
+remotes::install_github("datalorax/equatiomatic")
+```
+
+Após a instalação, faço então a representação da equação teórica com o script e a função `extract_eq` pegará o formato da regressão `reg1`:
+
+```{r}
+library(equatiomatic)
+equatiomatic::extract_eq(reg1)
+```
+O resultado sai em formato Latex e então você pode inserir em seu Rmd.  
+
+$$
+\operatorname{y} = \alpha + \beta_{1}(\operatorname{x}) + \epsilon
+$$
+
+Posso ainda realizar a exibição da equação com os coeficientes estimados:
+
+```{r}
+equatiomatic::extract_eq(reg1, use_coefs = TRUE)
+```
+O resultado saída em formato Latex e então você pode inserir em seu Rmd.    
+
+$$
+\operatorname{y} = 24.45 + 0.51(\operatorname{x}) + \epsilon
+$$
+Atentar que o pacote não avalia se o parâmetro é não-signicativo e inclui mesmo que não seja. Caberá ao leitor fazer essa avaliação.    
+
+> Exemplo 2: 
+
+O exemplo citado no pacote `equatiomatic` usa o dataset `mtcars`:    
+
+```{r}
+library(equatiomatic)
+
+# Fit a simple model
+reg2 <- lm(mpg ~ cyl + disp, mtcars)
+
+# Give the results to extract_eq
+extract_eq(reg2)
+#> $$
+#> \operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon
+#> $$
+```
+
+
+cuja equação teórica será:
+
+$$
+\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon
+$$
+
+E a equação com parâmetros estimados será:
+
+```{r}
+equatiomatic::extract_eq(reg2, use_coefs = TRUE)
+```
+
+$$
+\operatorname{mpg} = 34.66 - 1.59(\operatorname{cyl}) - 0.02(\operatorname{disp}) + \epsilon
+$$
+
+Compare com os resultados do modelo:
+
+```{r}
+summary(reg2)
+
+```
+
+Referências
+===================
+
+Anderson, Daniel;  Heiss, Andrew (2020). equatiomatic: Transform Models into 'LaTeX' Equations. R package version 0.1.0. https://github.com/datalorax/equatiomatic
+
+Xie, Yihui  (2020). bookdown: Authoring Books and Technical Documents with R Markdown. R package version 0.20.
+
+Xie, Yihui (2016). bookdown: Authoring Books and Technical Documents with R Markdown. Chapman and Hall/CRC. ISBN 978-1138700109

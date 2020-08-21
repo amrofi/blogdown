@@ -1,0 +1,210 @@
+---
+title: 'Equações no RMarkdown: dica rápida'
+author: "Adriano M R Figueiredo"
+date: '2020-08-21'
+slug: dica-equations
+categories: []
+tags:
+- econometria
+- equações
+subtitle: ''
+summary: This is an undergrad student level instruction for class use.
+authors: []
+lastmod: '2020-08-21T16:05:05-04:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+
+
+<div id="Licença" class="section level1 unnumbered">
+<h1>Licença</h1>
+<p>This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit <a href="http://creativecommons.org/licenses/by-sa/4.0/" class="uri">http://creativecommons.org/licenses/by-sa/4.0/</a> or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.</p>
+<div class="figure">
+<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" style="width:25.0%" alt="" />
+<p class="caption">License: CC BY-SA 4.0</p>
+</div>
+</div>
+<div id="Citação" class="section level1 unnumbered">
+<h1>Citação</h1>
+<p>Sugestão de citação:
+FIGUEIREDO, Adriano Marcos Rodrigues. Equações no RMarkdown: dica rápida. Campo Grande-MS,Brasil: RStudio/Rpubs, 2020. Disponível em <a href="http://rpubs.com/amrofi/dica-equations" class="uri">http://rpubs.com/amrofi/dica-equations</a> e <a href="https://adrianofigueiredo.netlify.app/post/dica-equations/" class="uri">https://adrianofigueiredo.netlify.app/post/dica-equations/</a>.</p>
+</div>
+<div id="descrição" class="section level1">
+<h1>Descrição</h1>
+<p>Esta é uma dica rápida para fazer equações no seu texto.</p>
+<blockquote>
+<p>Exemplo 1</p>
+</blockquote>
+<p>Seja um dataset como do script abaixo:</p>
+<pre class="r"><code>dados &lt;- structure(list(y = c(70, 65, 90, 95, 110, 115, 120, 140, 155, 150), x = c(80, 
+    100, 120, 140, 160, 180, 200, 220, 240, 260), obs = c(1, 2, 3, 4, 5, 6, 7, 8, 
+    9, 10)), row.names = c(NA, -10L), class = c(&quot;tbl_df&quot;, &quot;tbl&quot;, &quot;data.frame&quot;))
+attach(dados)
+library(knitr)  # pacote para a funcao kable
+kable(dados, caption = &quot;Dados básicos.&quot;)  # funcao para visualizar os dados em uma forma de tabela</code></pre>
+<table>
+<caption>Dados básicos.</caption>
+<thead>
+<tr class="header">
+<th align="right">y</th>
+<th align="right">x</th>
+<th align="right">obs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">70</td>
+<td align="right">80</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">65</td>
+<td align="right">100</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td align="right">90</td>
+<td align="right">120</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td align="right">95</td>
+<td align="right">140</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="right">110</td>
+<td align="right">160</td>
+<td align="right">5</td>
+</tr>
+<tr class="even">
+<td align="right">115</td>
+<td align="right">180</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="right">120</td>
+<td align="right">200</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="right">140</td>
+<td align="right">220</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="right">155</td>
+<td align="right">240</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="right">150</td>
+<td align="right">260</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
+<p>Agora farei a regressão pela função nativa <code>lm</code>:</p>
+<pre class="r"><code>reg1 &lt;- lm(y ~ x)  # regressao pela funcao lm nativa do R 
+summary(reg1)  # ver o sumario de resultados do objeto reg1: saída da regressao</code></pre>
+<pre><code>
+Call:
+lm(formula = y ~ x)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-10.364  -4.977   1.409   4.364   8.364 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 24.45455    6.41382   3.813  0.00514 ** 
+x            0.50909    0.03574  14.243 5.75e-07 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 6.493 on 8 degrees of freedom
+Multiple R-squared:  0.9621,    Adjusted R-squared:  0.9573 
+F-statistic: 202.9 on 1 and 8 DF,  p-value: 5.753e-07</code></pre>
+<p>Agora posso fazer a equação que representa essa saída utilizando o pacote <code>equatiomatic</code> (<a href="https://github.com/datalorax/equatiomatic" class="uri">https://github.com/datalorax/equatiomatic</a>) desenvolvido por Daniel Anderson et al. Você precisará instalá-lo a partir do GitHub.</p>
+<pre><code>remotes::install_github(&quot;datalorax/equatiomatic&quot;)</code></pre>
+<p>Após a instalação, faço então a representação da equação teórica com o script e a função <code>extract_eq</code> pegará o formato da regressão <code>reg1</code>:</p>
+<pre class="r"><code>library(equatiomatic)
+equatiomatic::extract_eq(reg1)</code></pre>
+<pre><code>$$
+\operatorname{y} = \alpha + \beta_{1}(\operatorname{x}) + \epsilon
+$$</code></pre>
+<p>O resultado sai em formato Latex e então você pode inserir em seu Rmd.</p>
+<p><span class="math display">\[
+\operatorname{y} = \alpha + \beta_{1}(\operatorname{x}) + \epsilon
+\]</span></p>
+<p>Posso ainda realizar a exibição da equação com os coeficientes estimados:</p>
+<pre class="r"><code>equatiomatic::extract_eq(reg1, use_coefs = TRUE)</code></pre>
+<pre><code>$$
+\operatorname{y} = 24.45 + 0.51(\operatorname{x}) + \epsilon
+$$</code></pre>
+<p>O resultado saída em formato Latex e então você pode inserir em seu Rmd.</p>
+<p><span class="math display">\[
+\operatorname{y} = 24.45 + 0.51(\operatorname{x}) + \epsilon
+\]</span>
+Atentar que o pacote não avalia se o parâmetro é não-signicativo e inclui mesmo que não seja. Caberá ao leitor fazer essa avaliação.</p>
+<blockquote>
+<p>Exemplo 2:</p>
+</blockquote>
+<p>O exemplo citado no pacote <code>equatiomatic</code> usa o dataset <code>mtcars</code>:</p>
+<pre class="r"><code>library(equatiomatic)
+
+# Fit a simple model
+reg2 &lt;- lm(mpg ~ cyl + disp, mtcars)
+
+# Give the results to extract_eq
+extract_eq(reg2)</code></pre>
+<pre><code>$$
+\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon
+$$</code></pre>
+<pre class="r"><code># &gt; $$ &gt; \operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) +
+# \beta_{2}(\operatorname{disp}) + \epsilon &gt; $$</code></pre>
+<p>cuja equação teórica será:</p>
+<p><span class="math display">\[
+\operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon
+\]</span></p>
+<p>E a equação com parâmetros estimados será:</p>
+<pre class="r"><code>equatiomatic::extract_eq(reg2, use_coefs = TRUE)</code></pre>
+<pre><code>$$
+\operatorname{mpg} = 34.66 - 1.59(\operatorname{cyl}) - 0.02(\operatorname{disp}) + \epsilon
+$$</code></pre>
+<p><span class="math display">\[
+\operatorname{mpg} = 34.66 - 1.59(\operatorname{cyl}) - 0.02(\operatorname{disp}) + \epsilon
+\]</span></p>
+<p>Compare com os resultados do modelo:</p>
+<pre class="r"><code>summary(reg2)</code></pre>
+<pre><code>
+Call:
+lm(formula = mpg ~ cyl + disp, data = mtcars)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.4213 -2.1722 -0.6362  1.1899  7.0516 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 34.66099    2.54700  13.609 4.02e-14 ***
+cyl         -1.58728    0.71184  -2.230   0.0337 *  
+disp        -0.02058    0.01026  -2.007   0.0542 .  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 3.055 on 29 degrees of freedom
+Multiple R-squared:  0.7596,    Adjusted R-squared:  0.743 
+F-statistic: 45.81 on 2 and 29 DF,  p-value: 1.058e-09</code></pre>
+</div>
+<div id="referências" class="section level1">
+<h1>Referências</h1>
+<p>Anderson, Daniel; Heiss, Andrew (2020). equatiomatic: Transform Models into ‘LaTeX’ Equations. R package version 0.1.0. <a href="https://github.com/datalorax/equatiomatic" class="uri">https://github.com/datalorax/equatiomatic</a></p>
+<p>Xie, Yihui (2020). bookdown: Authoring Books and Technical Documents with R Markdown. R package version 0.20.</p>
+<p>Xie, Yihui (2016). bookdown: Authoring Books and Technical Documents with R Markdown. Chapman and Hall/CRC. ISBN 978-1138700109</p>
+</div>

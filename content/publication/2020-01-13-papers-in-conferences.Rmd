@@ -25,6 +25,8 @@ authors: []
 ## Trabalhos publicados em anais de eventos (completo)     
      
      
+**Dados atualiados em <http://lattes.cnpq.br/3815837428657319>**.    
+
 1.	 SILVA JUNIOR, E. A.; FAGUNDES, Mayra Batista Bitencourt; FIGUEIREDO, ADRIANO MARCOS RODRIGUES; MACHADO, J. V.. 2019.
 COMPLEXIDADE ECONÔMICA REGIONAL: UMA ABORDAGEM A PARTIR DE DADOS DE EMPREGO In Anais do 57º CONGRESSO DA SOCIEDADE BRASILEIRA DE ECONOMIA, ADMINISTRAÇÃO E SOCIOLOGIA RURAL 57º CONGRESSO DA SOCIEDADE BRASILEIRA DE ECONOMIA, ADMINISTRAÇÃO E SOCIOLOGIA RURAL Ilhéus-BA 2019 57 1 Ilhéus-BA: SOBER/UESC
 Palavras-chave: índice de complexidade econômica, Desenvolvimento Regional, diversidade
